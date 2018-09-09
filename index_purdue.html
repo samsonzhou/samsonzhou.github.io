@@ -1,0 +1,797 @@
+<html>
+<head>
+<title>Samson Zhou</title>
+<script language="JavaScript" type="text/JavaScript">
+var imageURLS = ["samson2.jpg","zhou230.jpg"];
+
+function randomimage() {
+  var randomIndex = Math.floor(Math.random() * imageURLs.length);
+  return imageURLs[randomIndex];
+}
+
+function toggle(id) {
+if (document.getElementById){
+	if (document.getElementById(id).style.display == "none"){
+		document.getElementById(id).style.display = "flex";
+		}
+	else{
+		document.getElementById(id).style.display = "none";
+		}
+	}
+}
+</script>
+</head>
+
+<style type="text/css">
+body
+{
+background: url(background.jpg) no-repeat;
+background-size: 100% 100%;
+}
+
+h1 {
+font-family: times-roman
+}
+
+h3 {
+font-family: times-roman
+}
+
+p
+{
+font-family: times-roman}
+
+p#abs{
+font-family: times-roman;
+border:2px solid black
+}
+
+ul{font-family: times-roman}
+li{font-family: times-roman}
+
+
+a:link {color: teal;
+	text-decoration: none;}
+a:visited {color: teal;
+	text-decoration: none;}
+a:hover {color: midnightblue;
+	text-decoration: underline;}
+</style>
+
+<center>
+<table border="0" cellpadding="5" cellspacing="5">
+<tr>
+<td width = "40%" colspan="2">
+<img hr width = "20%" src="samson2.jpg" align = "left">
+<script type="text/javascript">
+  document.write("<img hr width = "20%" src="randomimage()" align = "left">");
+</script>
+</td>
+<td width = "50%">
+<h1>
+Samson Zhou
+</h1>
+</td>
+<td width = "20%"><img hr width = "100%" src="logo_purdue.png" align = "right">
+</td>
+</tr>
+<tr>
+<td width = "40%"><p><a href="https://www.cs.purdue.edu/homes/zhou230/Samson-Zhou-CV.pdf">Curriculum Vitae</a></p></td>
+</tr>
+</table>
+</center>
+<h3>
+About
+</h3>
+
+<p id="intro">
+Hi, I'm a Postdoctoral Fellow at <a href="https://www.purdue.edu/">
+Purdue University</a>, hosted by <a href="https://www.cs.purdue.edu/homes/jblocki/">Jeremiah Blocki</a>. 
+My research interests lie broadly in the fields of approximation algorithms and sublinear algorithms, with an emphasis
+on streaming algorithms. 
+</br>
+</br>
+Previously, I was a <a href="https://www.cs.purdue.edu/people/graduate-students/zhou230/">
+graduate student</a> in the <a href="https://www.cs.purdue.edu/">
+Department of Computer Science</a> at <a href="https://www.purdue.edu/">
+Purdue University</a>, where I was fortunate to be advised by <a href="https://www.cs.purdue.edu/homes/gnf/">Greg Frederickson</a>
+and <a href="https://www.cs.purdue.edu/homes/egrigore/">Elena Grigorescu</a>.  
+I was a member of the <a href="http://theory.cs.purdue.edu"/>Theory Group</a> and for the Fall 2016 - Fall 2017 semesters, I organized the 
+<a href="https://theory.cs.purdue.edu//spring2018.html">TCS Reading Group</a>.
+<!--<a href="https://www.cs.purdue.edu/homes/zhou230/tcs/index.html">TCS Reading Group</a>.-->
+</br>
+</br>
+Here are some of my favorite <a href="https://www.cs.purdue.edu/homes/zhou230/links">links</a>.
+</p>
+
+<hr>
+<h3>
+Education
+</h3>
+<ul>
+<li>Bachelor of Science, Massachusetts Institute of Technology, Mathematics (2010)</li>
+<li>Bachelor of Science, Massachusetts Institute of Technology, Computer Science (2011)</li>
+<li>Master of Engineering, Massachusetts Institute of Technology, Computer Science (2011)</li>
+<li>Doctor of Philosophy, Purdue University, Computer Science (2018)</li>
+</ul>
+
+<hr>
+<h3>
+Teaching
+</h3>
+<p>
+Spring 2018: CS 584: Theory of Computation/Complexity Theory (Teaching Assistant) </br>
+Spring 2016: <a href="https://www.cs.purdue.edu/homes/amahmoo/cs381spring2016/cs381spring2016.html">CS 381</a>: Introduction to the Analysis of Algorithms (Teaching Assistant) </br>
+Fall 2015: <a href="https://www.cs.purdue.edu/homes/egrigore/580FT15/">CS 580</a>: Algorithm Design and Analysis (Teaching Assistant, ACM Graduate TA Award)
+</p>
+
+<hr>
+<h3>
+Research [<a href="https://dblp.uni-trier.de/pers/hd/z/Zhou:Samson">dblp</a>]
+[<a href="https://scholar.google.com/citations?user=NpjsgocAAAAJ">Scholar</a>]</h3>
+<ul>
+<li>
+<h3>
+Publications
+</h3>
+<ul>
+
+
+
+<li>
+<b>
+Bandwidth-Hard Functions: Reductions and Lower Bounds
+</b>
+</br><i>
+Jeremiah Blocki,
+<a href="http://people.csail.mit.edu/renling/">Ling Ren</a>,  
+Samson Zhou.</br></i>
+<a href="https://www.sigsac.org/ccs/CCS2018/">CCS 2018</a>
+[<a href="javascript:toggle('RedBlue')">abstract</a>]
+[<a href="https://eprint.iacr.org/2018/221.pdf">pdf</a>]
+</br>
+<div id="RedBlue" style="display: none">
+<p id="abs">
+Memory Hard Functions (MHFs) have been proposed as an answer to the growing inequality between the computational speed of general purpose CPUs and Application Specific Integrated Circuits (ASICs). 
+MHFs have seen widespread applications including password hashing, key stretching and proofs of work. 
+Several metrics have been proposed to quantify the `memory hardness' of a function. Cumulative memory complexity (CMC) \cite{STOC:AlwSer15} (or amortized Area $\times$ Time complexity \cite{CCS:AlwBloHar17}) attempts to quantify the amortized cost to acquire/build the hardware to evaluate the function --- amortized by the number of instances of the function that can be evaluated of this hardware. 
+By contrast, bandwidth hardness \cite{TCC:RenDev17} attempts to quantify the amortized energy costs of evaluating this function on hardware --- which in turn is largely dominated by the number of cache misses. 
+Ideally, a good MHF would be both bandwidth hard and have high cumulative memory complexity. 
+While the cumulative memory complexity of leading MHF candidates is well understood, little is known about the bandwidth hardness of many of the most prominent MHF candidates.
+ 
+Our contributions are as follows: 
+First, we provide the first reduction proving that, in the parallel random oracle model, the bandwidth hardness of a Data-Independent Memory Hard Function (iMHF) is described by the red-blue pebbling cost of the directed acyclic graph (DAG) associated with that iMHF. 
+Second, we show that the goals of designing an MHF with high CMC/bandwidth hardness are well aligned. In particular, we prove that {\em any} function with high CMC also has relatively high bandwidth costs. This result leads to the first {\em unconditional} lower bound on the bandwidth cost of scrypt.
+Third, we analyze the bandwidth hardness of several prominent  iMHF candidates such as Argon2i \cite{BiryukovDK15}, winner of the password hashing competition, aATSample and DRSample \cite{CCS:AlwBloHar17} --- the first practical iMHF with asymptotically optimal CMC. More specifically, we show that Argon2i is maximally bandwidth hard as long as the cache-size $m$ is at most $m \in\O{n^{2/3-\epsilon}}$ where $n$ is the total number of data-labels produced during computation. 
+We also show that aATSample and DRSample are maximally bandwidth hard as long as the cache-size is $m \in\O{n^{1-\epsilon}}$. 
+Finally, we show that the problem of finding a red-blue pebbling with minimum bandwidth cost is NP-hard. 
+</div>
+</li>
+</br>
+
+
+
+
+<li>
+<b>
+Nearly Optimal Distinct Elements and Heavy Hitters on Sliding Windows
+<!--Nearly Optimal &#8467;<sub>2</sub>-Heavy Hitters on Sliding Windows-->
+</b>
+</br><i>
+<a href="http://www.cs.jhu.edu/~vova/">Vladimir Braverman</a>,
+Elena Grigorescu, 
+<a href="http://dblp.uni-trier.de/pers/hd/l/Lang:Harry">Harry Lang</a>, 
+<a href="http://www.cs.cmu.edu/~dwoodruf/">David P. Woodruff</a>,
+Samson Zhou.</br></i>
+<a href="http://cui.unige.ch/tcs/random-approx/2018/index.php">APPROX 2018</a>
+[<a href="javascript:toggle('DEHHSliding')">abstract</a>]
+[<a href="https://arxiv.org/pdf/1805.00212v2.pdf">pdf</a>]
+</br>
+<div id="DEHHSliding" style="display: none">
+<p id="abs">
+We study the \emph{distinct elements} and \emph{$\ell_p$-heavy hitters} problems in the \emph{sliding window} model, where only the most recent $n$ elements in the data stream form the underlying set. 
+We first introduce the \emph{\histogram}, a simple twist on the exponential (Datar \etal, SODA 2002) and smooth histograms (Braverman and Ostrovsky, FOCS 2007) that may be of independent interest. 
+We then show that the \histogram{} along with a careful combination of existing techniques to track either the identity or frequency of a few specific items suffices to obtain algorithms for both distinct elements and $\ell_p$-heavy hitters that are nearly optimal in both $n$ and $\eps$. 
+
+Applying our new \histogram{} framework, we provide an algorithm that outputs a $(1+\eps)$-approximation to the number of distinct elements in the sliding window model and uses $\O{\frac{1}{\eps^2}\log n\log\frac{1}{\eps}\log\log n+\frac{1}{\eps}\log^2 n}$ bits of space. 
+For $\ell_p$-heavy hitters, we provide an algorithm using space $\O{\frac{1}{\eps^p}\log^2 n\left(\log\log n+\log\frac{1}{\eps}\right)}$ for $0<p\le 2$, improving upon the best-known algorithm for $\ell_2$-heavy hitters (Braverman \etal, COCOON 2014), which has space complexity $\O{\frac{1}{\eps^4}\log^3 n}$. 
+We also show complementing nearly optimal lower bounds of $\Omega\left(\frac{1}{\eps}\log^2 n+\frac{1}{\eps^2}\log n\right)$ for distinct elements and $\Omega\left(\frac{1}{\eps^p}\log^2 n\right)$ for $\ell_p$-heavy hitters, both tight up to $\O{\log\log n}$ and $\O{\log\frac{1}{\eps}}$ factors.
+</div>
+</li>
+</br>
+
+
+<li>
+<b>
+Structural Results on Matching Estimation with Applications to Streaming
+</b>
+</br><i>
+<a href="http://ls2-www.cs.uni-dortmund.de/~gille/">Marc Bury</a>, 
+Elena Grigorescu, 
+<a href="http://people.cs.umass.edu/~mcgregor/">Andrew McGregor</a>, 
+<a href="http://iuuk.mff.cuni.cz/~monemi/">Morteza Monemizadeh</a>, 
+<a href="http://ls2-www.cs.uni-dortmund.de/~schwiegelshohn/">Chris Schwiegelshohn</a>, 
+<a href="https://people.cs.umass.edu/~svorotni/">Sofya Vorotnikova</a>, 
+Samson Zhou.
+</br></i>
+<a href="https://link.springer.com/journal/453">Algorithmica 2018</a>
+[<a href="javascript:toggle('StructuralMatching')">abstract</a>]
+[<a href="https://www.cs.purdue.edu/homes/zhou230/Papers/matching.pdf">pdf</a>]</br>
+<div id="StructuralMatching" style="display: none">
+<p id="abs">
+We study the problem of  estimating the size of a matching when the graph is revealed in a streaming fashion. 
+Our results are multifold:
+\begin{enumerate}
+\item We give a tight structural result relating the size of a maximum matching to the {\em arboricity} of a graph, which has been one of the most studied graph parameters for matching algorithms in data streams.
+\item  We further show that the weight of a maximum weighted matching can be efficiently estimated by augmenting any  routine for estimating the size of an  unweighted matching. 
+Namely, given an algorithm for computing a $\lambda$-approximation in the unweighted case, we obtain a $2(1+\varepsilon)\cdot \lambda$ approximation for the weighted case, while only incurring a  multiplicative logarithmic factor in the space bounds. 
+The algorithm is implementable in any streaming model, including {\em dynamic}  streams. 
+\item  We also  investigate algebraic aspects of computing matchings in data streams, by proposing new algorithms and lower bounds  based on analyzing  the rank of the {\em Tutte-matrix} of the graph.
+In particular, we present an algorithm determining whether there exists a matching of size $k$ using $k^2\text{polylog } n $ space,  where $n$ is the number of nodes in the graph.
+We also show a lower bound of $\Omega(n^{1-\varepsilon})$ space for small approximation factors to the rank of a matrix in {\em insertion-only} streams.
+\end{enumerate}
+</p>
+</div>
+</li>
+</br>
+
+
+
+
+
+<li>
+<b>
+Relaxed Locally Correctable Codes in Computationally Bounded Channels
+</b>
+</br><i>
+Jeremiah Blocki,  
+<a href="https://www.cs.purdue.edu/homes/vgandiko/">Venkata Gandikota</a>, 
+Elena Grigorescu, 
+Samson Zhou.</br></i>
+<a href="https://iuuk.mff.cuni.cz/~icalp2018/">ICALP 2018</a> (Brief Announcement)
+[<a href="javascript:toggle('RedGreen')">abstract</a>]
+[<a href="https://arxiv.org/pdf/1803.05652.pdf">pdf</a>]
+</br>
+<div id="RedGreen" style="display: none">
+<p id="abs">
+Error-correcting codes that admit {\em local} decoding and correcting algorithms have been the focus of much recent research due to their numerous theoretical and practical applications.  
+The goal is to obtain the best possible tradeoffs between the number of queries the algorithm can make to its oracle (the {\em locality} of the task), the amount of redundancy in the encoding (the {\em rate} of the code),  and the amount of error it withstands.
+
+In the standard adverstimes channel model the current tradeoffs are dramatic, allowing either small query complexity and superpolynomial blocklength, or small blocklength but high query complexity. 
+However, in the realistic, computationally bounded channel model, constructions of locally decodable codes (\LDCs) suddenly exhibit small locality and small blocklength, for constant error rate. 
+The first such constructions are due to  Ostrovsky, Pandey and Sahai (ICALP 2007) who built private \LDCs under the assumption that one-way functions exist, and in the setting where the sender and receiver share a private key.
+
+We study variants of locally decodable and locally correctable codes in  computationally bounded but adverstimes channels, under the much weaker assumption that collision-resistant hash functions exist, and with no public-key or private-key cryptographic setup.
+Specifically, we provide constructions of {\em relaxed locally correctable codes} (\RLCCs) and {\em relaxed locally decodable codes} (\RLDCs) over binary alphabets, with constant rate and poly-logarithmic locality, that compare favorably with existing schemes built under much stronger cryptographic assumptions, and with classical \RLCCs in the computationally unbounded Hamming channel.
+
+Our constructions crucially employ {\em collision resistant hash functions} and {\em local expander graphs}, extending ideas from recent cryptographic constructions of memory-hard functions.
+</div>
+</li>
+</br>
+
+
+
+
+
+
+<li>
+<b>
+Periodicity in Data Streams with Wildcards</b>
+</br><i>
+<a href="http://homes.soic.indiana.edu/fergun/">Funda Erg&uuml;n</a>, 
+Elena Grigorescu, 
+<a href="http://homes.soic.indiana.edu/esadeqia/">Erfan Sadeqi Azer</a>, 
+Samson Zhou.
+</br></i>
+<a href="https://logic.pdmi.ras.ru/csr2018/">CSR 2018</a>
+[<a href="javascript:toggle('wildcardperiodicity')">abstract</a>]
+[<a href="https://arxiv.org/pdf/1802.07375v2.pdf">pdf</a>]
+</br>
+<div id="wildcardperiodicity" style="display: none">
+<p id="abs">
+We investigate the problem of detecting periodic trends within a string $S$ of length $n$, arriving in the streaming model, containing at most $k$ wildcard characters, where $k=o(n)$. 
+We say $S$ has wildcard-period $p$ if there exists an assignment to each of the wildcard characters so that in the resulting stream the length $n-p$ prefix equals the length $n-p$ suffix. 
+We present a two-pass streaming algorithm that computes wildcard-periods of $S$ using $\O{k^3\,\polylog\,n}$ bits of space, while we also show that this problem cannot be solved in sublinear space in one pass.
+
+In addition, we present complementing lower bounds, while showing a new communication complexity on the sparse index problem.
+</p>
+</div>
+</li>
+</br>
+
+
+
+<li>
+<b>
+On the Computational Complexity of Minimal Cumulative Cost Graph Pebbling
+</b>
+</br><i>
+Jeremiah Blocki, 
+Samson Zhou.
+</br></i>
+<a href="http://fc18.ifca.ai/">FC 2018</a> 
+[<a href="javascript:toggle('GraphPebbling')">abstract</a>]
+[<a href="https://www.cs.purdue.edu/homes/zhou230/Talks/On the Computational Complexity of Minimal Cumulative Cost.pdf">slides</a>]
+[<a href="https://arxiv.org/pdf/1609.04449v2.pdf">pdf</a>]</br>
+<div id="GraphPebbling" style="display: none">
+<p id="abs">
+We consider the computational complexity of finding a legal black pebbling of a DAG $G=(V,E)$ with minimum cumulative cost. 
+A black pebbling is a sequence $P_0,\ldots, P_t \subseteq V$ of sets of nodes which must satisfy the following properties: 
+$P_0 = \emptyset$ (we start off with no pebbles on $G$), $\sinks(G) \subseteq \bigcup_{j \leq t} P_j$ (every sink node was pebbled at some point) 
+and $\parents\big(P_{i+1}\backslash P_i\big) \subseteq P_i$ (we can only place a new pebble on a node $v$ if all of $v$'s parents had a pebble during the last round). 
+The cumulative cost of a pebbling $P_0,P_1,\ldots, P_t \subseteq V$ is $\cc(P) = \left| P_1\right| + \ldots + \left| P_t\right|$. 
+The cumulative pebbling cost is an especially important security metric for data-independent memory hard functions, an important primitive for password hashing. 
+Thus, an efficient (approximation) algorithm would be an invaluable tool for the cryptanalysis of password hash functions as it would provide an 
+automated tool to establish tight bounds on the amortized space-time cost of computing the function.  We show that such a tool is unlikely to exist in the most general case. 
+In particular, we prove the following results.
+\begin{itemize}
+\item It is $\NPhard$ to find a pebbling minimizing cumulative cost. 
+\item The natural linear program relaxation for the problem has integrality gap $\tilde{O}(n)$, where $n$ is the number of nodes in $G$. 
+We conjecture that the problem is hard to approximate.  
+\item We show that a related problem, find the minimum size subset $S\subseteq V$ such that $\depth(G-S) \leq d$, is also $\NPhard$. 
+In fact, under the Unique Games Conjecture there is no $(2-\epsilon)$-approximation algorithm.
+\end{itemize}
+</p>
+</div>
+</li>
+</br>
+
+<li>
+<b>
+On the Economics of Offline Password Cracking
+</b>
+</br><i>
+Jeremiah Blocki,
+<a href="https://www.cs.purdue.edu/homes/bharsha/">Ben Harsha</a>,
+Samson Zhou.</br></i>
+<a href="https://www.ieee-security.org/TC/SP2018/">S&P 2018</a>
+[<a href="javascript:toggle('zipfs')">abstract</a>]
+[<a href="https://www.cs.purdue.edu/homes/zhou230/Papers/zipfs.pdf">pdf</a>]
+</br>
+<div id="zipfs" style="display: none">
+<p id="abs">
+We develop an economic model of an offline password cracker which allows us to make quantitative predictions about the fraction of accounts 
+that a rational password attacker would crack in the event of an authentication server breach. We apply our economic model to analyze recent 
+massive password breaches at Yahoo!, Dropbox, LastPass and AshleyMadison. All four organizations were using key-stretching to protect user passwords. 
+In fact, LastPass' use of PBKDF2-SHA256 with $10^5$ hash iterations exceeds 2017 NIST minimum recommendation by an order of magnitude. Nevertheless, 
+our analysis paints a bleak picture: the adopted key-stretching levels provide insufficient protection for user passwords. In particular, we present 
+strong evidence that most user passwords follow a Zipf's law distribution, and characterize the behavior of a rational attacker when user passwords 
+are selected from a Zipf's law distribution. We show that there is a finite threshold  which depends on the Zipf's law parameters that characterizes 
+the behavior of a rational attacker ---  if the value of a cracked password (normalized by the cost of computing the password hash function) exceeds 
+this threshold then the adversary's optimal strategy is {\em always} to continue attacking until each user password has been cracked. In all cases 
+(Yahoo!, Dropbox, LastPass and AshleyMadison) we find that the value of a cracked password almost certainly exceeds this threshold meaning that a 
+rational attacker would crack all passwords that are selected from the Zipf's law distribution (i.e., most user passwords). This prediction holds 
+even if we incorporate an aggressive model of diminishing returns for the attacker (e.g., the total value of $500$ million cracked passwords is 
+less than $100$ times the total value of $5$ million passwords). On a positive note our analysis demonstrates that memory hard functions (MHFs) 
+such as SCRYPT or Argon2i can significantly reduce the damage of an offline attack. In particular, we find that because MHFs substantially 
+increase guessing costs a rational attacker will give up well before he cracks most user passwords and this prediction holds even if the attacker 
+does not encounter diminishing returns for additional cracked passwords. Based on our analysis we advocate that password hashing standards should be 
+updated to require the use of memory hard functions for password hashing and disallow the use of non-memory hard functions such as BCRYPT or PBKDF2. 
+</p>
+</div>
+</li>
+</br>
+
+
+<li>
+<b>
+Streaming for Aibohphobes: Longest Palindrome with Mismatches
+</b>
+</br><i>
+Elena Grigorescu, 
+Erfan Sadeqi Azer, 
+Samson Zhou.
+</br></i>
+<a href="http://fsttcs.org/archives/2017/">FSTTCS 2017</a>
+[<a href="javascript:toggle('nearpalindrome')">abstract</a>]
+[<a href="https://www.cs.purdue.edu/homes/zhou230/Talks/palindrome-slides.pdf">slides</a>]
+[<a href="https://arxiv.org/pdf/1705.01887.pdf">pdf</a>]</br>
+<div id="nearpalindrome" style="display: none">
+<p id="abs">
+A palindrome is a string that reads the same as its reverse, such as ``aibohphobia'' (fear of palindromes).
+Given an integer $d>0$, a {\em $d$-near-palindrome} is a string of Hamming distance at most $d$ from its reverse.
+We study the natural problem of identifying a longest $d$-near-palindrome in data streams. 
+The problem is relevant to the analysis of DNA databases, and to the task of repairing recursive structures in documents such as XML and JSON.
+We present an algorithm that returns a $d$-near-palindrome whose length is within a multiplicative $(1+\eps)$-factor of the longest $d$-near-palindrome. 
+Our algorithm also returns the set of mismatched indices of the $d$-near-palindrome,  using $\bigO{\frac{d\log^7 n}{\eps\log(1+\eps)}}$ bits of space, and $\bigO{\frac{d\log^6 n}{\eps\log(1+\eps)}}$ update time per arriving symbol. 
+We show that $\Omega(d\log n)$ space is necessary for estimating the length of longest $d$-near-palindromes  with high probability.
+We further obtain an additive-error approximation algorithm and a comparable lower bound, as well as an {\em exact} two-pass algorithm that  solves the longest $d$-near-palindrome problem using $\bigO{d^2\sqrt{n}\log^6 n}$  bits of space.
+</p>
+</div>
+</li>
+</br>
+
+
+
+<li>
+<b>
+On the Depth-Robustness and Cumulative Pebbling Cost of Argon2i
+</b>
+</br><i>
+Jeremiah Blocki,
+Samson Zhou.</br></i>
+<a href="https://www.iacr.org/workshops/tcc2017/index.html">TCC 2017</a>
+[<a href="javascript:toggle('argon')">abstract</a>]
+[<a href="http://eprint.iacr.org/2017/442.pdf">pdf</a>]
+</br>
+<div id="argon" style="display: none">
+<p id="abs">
+Argon2i is a data-independent memory hard function that won the password hashing competition. The password hashing algorithm has already been incorporated into several open source crypto libraries such as libsodium. In this paper we analyze the cumulative memory cost of computing Argon2i. On the positive side we provide a lower bound for Argon2i. On the negative side we exhibit an improved attack against Argon2i which demonstrates that our lower bound is nearly tight. In particular, we show that
+\begin{enumerate}
+\item An Argon2i DAG is $\left(e,O\left(n^3/e^3\right)\right))$-reducible.
+\item The cumulative pebbling cost for Argon2i is at most $O\left(n^{1.768}\right)$. This improves upon the previous best upper bound of $O\left(n^{1.8}\right)$ \cite{AB17}.
+\item Argon2i DAG is $\left(e,\tilde{\Omega}\left(n^3/e^3\right)\right))$-depth robust. By contrast, analysis of \cite{ABP17} only established that Argon2i was $\left(e,\tilde{\Omega}\left(n^3/e^2\right)\right))$-depth robust. 
+\item The cumulative pebbling complexity of Argon2i is at least $\tilde{\Omega}\left( n^{1.75}\right)$. This improves on the previous best bound of $\Omega\left( n^{1.66}\right)$ \cite{ABP17}  and demonstrates that Argon2i has higher cumulative memory cost than competing proposals such as Catena or Balloon Hashing. 
+\end{enumerate}
+We also show that Argon2i has high {\em fractional} depth-robustness which strongly suggests that data-dependent modes of Argon2 are resistant to space-time tradeoff attacks. 
+</p>
+</div>
+</li>
+</br>
+
+
+<li>
+<b>
+Longest Alignment with Edits in Data Streams
+</b>
+</br><i>
+Elena Grigorescu, 
+Erfan Sadeqi Azer,
+Samson Zhou.
+</br></i>
+<a href="https://conf.papercept.net/conferences/conferences/ALLER17/program/">Allerton 2017</a>
+[<a href="javascript:toggle('nearalignment')">abstract</a>]
+[<a href="https://www.cs.purdue.edu/homes/zhou230/Papers/near-alignment.pdf">pdf</a>]
+<div id="nearalignment" style="display: none">
+<p id="abs">
+Analyzing patterns in streamed data generated by network traffic, sensor networks, or satellite feeds is a challenge for systems in which the available storage is limited. 
+In addition, real data is noisy, which makes designing data stream algorithms even more challenging.
+
+Motivated by such challenges, we study algorithms for detecting the similarity of two data streams that can be read in sync. 
+Two strings $S, T\in \Sigma^n$ form a $d$-near-alignment if the distance between them in some given metric is at most $d$. 
+We study the problem of identifying a longest substring of $S$ and $T$ that forms a  {\em $d$-near-alignment}  under the {\em edit} distance, in  the {\em simultaneous streaming model}. 
+In this model,  symbols of strings $S$ and $T$ are streamed at the same time, and the amount of available processing space is sublinear in the length of the strings.
+
+We give several algorithms, including an exact one-pass algorithm that uses $\O{d^2+d\log n}$ bits of space. 
+We couple these results with comparable lower bounds. </p>
+</div>
+</li>
+</br>
+
+
+<li>
+<b>
+Streaming Periodicity with Mismatches
+</b>
+</br><i>
+Funda Erg&uuml;n, 
+Elena Grigorescu, 
+Erfan Sadeqi Azer,
+Samson Zhou.
+</br></i>
+<a href="http://cui.unige.ch/tcs/random-approx/2017/index.php">
+RANDOM 2017</a>
+[<a href="javascript:toggle('kperiodicity')">abstract</a>]
+[<a href="https://www.cs.purdue.edu/homes/zhou230/Talks/Streaming Periodicity with Mismatches.pdf">slides</a>]
+[<a href="http://drops.dagstuhl.de/opus/volltexte/2017/7591/pdf/LIPIcs-APPROX-RANDOM-2017-42.pdf">conference</a>]
+[<a href="https://arxiv.org/pdf/1708.04381.pdf">full</a>]
+</br>
+<div id="kperiodicity" style="display: none">
+<p id="abs">
+We study the problem of finding all k-periods of a length-n string S, presented as a data stream. 
+S is said to have k-period p if its prefix of length n-p differs from its suffix of length n-p in at most k locations.
+
+The study of periodic patterns in sequences is fundamental to string algorithms, time series data mining, and computational biology. 
+Since real data is rarely perfect, exact pattern finding in streamed data can be unrealistic; consequently, one needs to design algorithms that can withstand errors in the patterns. 
+It is often the case that such tasks become much more difficult to analyze than their no-error analogues. 
+This turns out to be the case in the study of near periodicity here. 
+While our algorithms are similar to the ones in the exact version previously studied, our analysis requires a new structural understanding of k-periodicity.  
+
+We give a one-pass streaming algorithm that computes the k-periods of a string S using poly(k, log n) bits of space, for k-periods of length at most n/2. 
+We also present a two-pass streaming algorithm that computes k-periods of S using poly(k, log n)  bits of space, regardless of period length. 
+We complement these results with comparable lower bounds.
+</p>
+</div>
+</li>
+</br>
+
+
+<li>
+<b>
+Nearly Optimal Sparse Group Testing
+</b>
+</br><i>
+Venkata Gandikota, 
+Elena Grigorescu, 
+<a href="http://jaggi.name/">Sidharth Jaggi</a>, 
+Samson Zhou.
+</br></i>
+<a href="https://conf.papercept.net/conferences/conferences/ALLER16/program/">Allerton 2016</a>
+[<a href="javascript:toggle('GroupTesting')">abstract</a>]
+[<a href="https://www.cs.purdue.edu/homes/zhou230/Talks/Nearly Optimal Sparse Group Testing.pdf">slides</a>]
+[<a href="https://www.cs.purdue.edu/homes/zhou230/Papers/Group-Testing.pdf">conference</a>]
+[<a href="https://arxiv.org/pdf/1708.03429.pdf">full</a>]
+</br>
+<div id="GroupTesting" style="display: none">
+<p id="abs">
+Group testing is the process of pooling arbitrary subsets from a set of $n$ items so as to identify, 
+with a minimal number of disjunctive tests, a ``small'' subset of $d$ defective items. 
+In ``classical'' non-adaptive group testing, it is known that when $d = o(n^{1-\delta})$ for any $\delta>0$, 
+$\theta(d\log(n))$ tests are both information-theoretically necessary, and sufficient to guarantee recovery 
+with high probability. Group testing schemes in the literature meeting this bound require most items to be 
+tested $\Omega(\log(n))$ times, and most tests to incorporate $\Omega(n/d)$ items.
+</br>
+Motivated by physical considerations, we study group testing models in which the testing procedure is 
+constrained to be ``sparse''. Specifically, we consider (separately) scenarios in which (a) items are 
+finitely divisible and hence may participate in at most $\gamma$ tests; and (b) tests are size-constrained 
+to pool no more than $\rho$ items per test. For both scenarios we provide information-theoretic lower bounds 
+on the number of tests required to guarantee high probability recovery. In particular, one of our main 
+results shows that $\gamma$-finite divisibility of items forces {\it any} group testing algorithm with 
+probability of recovery error at most $\epsilon$ to perform at least 
+$\Omega(\gamma d(n/d)^{(1-2\epsilon)/((1+2\epsilon)\gamma)})$ tests. 
+Analogously, for $\rho$-sized constrained tests, we show an information-theoretic lower bound of 
+$\Omega(n\log(n/d)/(\rho\log(n/\rho d)))$. In both scenarios we provide both randomized constructions 
+(under both $\epsilon$-error and zero-error reconstruction guarantees) and explicit constructions of computationally 
+efficient group-testing algorithms (under $\epsilon$-error reconstruction guarantees) that require a number of tests 
+that are optimal up to constant factors in some regimes of $n, d, \gamma \text{ and } \rho$. We also investigate the 
+effect of unreliability/noise in test outcomes. 
+</p>
+</div>
+</li>
+</br>
+
+
+
+</ul>
+
+<li>
+<h3>Manuscripts</h3>
+<ul>
+
+
+<li>
+<b>
+Improved Methods on Time-Decay Streams
+</b>
+</br><i>
+Vladimir Braverman, 
+Harry Lang, 
+Samson Zhou.</br></i>
+Manuscript
+[<a href="javascript:toggle('TimeDecay')">abstract</a>]
+</br>
+<div id="TimeDecay" style="display: none">
+<p id="abs">
+In the time-decay model for data streams, elements of an underlying data set arrive sequentially with the recently arrived elements being more important. 
+A common approach for handling large data sets is to maintain a \emph{coreset}, some succinct summary of the processed data that allows approximate recovery of a predetermined query. 
+We provide a general framework that takes any offline-coreset and gives a time-decay coreset for polynomial time decay functions.
+
+As an application of our framework, we consider the problem of $k$-means clustering on time-decay data streams, where we seek $k$ centers to minimize the weighted sum of the distances of all points to the closest center. 
+The weighted sum for each point is a function of the location of the point in the data stream, with older points given less weight. 
+For the polynomial time decay model, we provide a constant factor approximation algorithm that generalizes to any problem that can be approximated by maintaining coresets. 
+
+We also consider the exponential time decay model for $k$-means clustering, where we provide a constant factor approximation algorithm that utilizes the online facility location algorithm. 
+Our algorithm stores $\O{k\log(h\Delta)+h}$ points where $h$ is a given input, the half-life of the function, and $\Delta$ is the aspect ratio.
+</div>
+</li>
+</br>
+
+
+
+<li>
+<b>
+Numerical Linear Algebra in the Sliding Window Model
+</b>
+</br><i>
+Vladimir Braverman,
+<a href="http://www.drineas.org">Petros Drineas</a>, 
+<a href="https://scholar.google.com/citations?user=vHTMzPQAAAAJ&hl=en">Jalaj Upadhyay</a>, 
+Samson Zhou.</br></i>
+[<a href="javascript:toggle('RandNLASliding')">abstract</a>]
+[<a href="https://arxiv.org/pdf/1805.03765.pdf">pdf</a>]
+</br>
+<div id="RandNLASliding" style="display: none">
+<p id="abs">
+We initiate the study of numerical linear algebra in the sliding window model, where only the most recent $W$ updates in the data stream form the underlying set. 
+Much of the previous work in the sliding window model uses one of two frameworks: either the {\em exponential histogram} (Datar \emph{et al.}, SICOMP'02) or the {\em smooth histogram} (Braverman and Ostrovsky, FOCS'07). 
+We show that some elementary linear algebraic problems, such as the estimation of matrix $\ell_p$ norms, can be addressed in the sliding window model using these frameworks.
+Specifically, we show that approximating matrix entrywise norms for all $p < \infty$ and Schatten $p$-norms for $p=0,1$, and $2$ (which include the matrix rank, the trace or nuclear norm, and the Frobenius norm) are suitable for the smooth histogram framework.
+
+However, most "interesting" problems are not smooth and specifically, we show that the spectral norm, vector induced matrix norms, generalized regression, low-rank approximation, and leverage scores are not amenable for the smooth histogram framework. 
+To overcome this challenge, we generalize the smooth histogram framework from real-valued functions to matrix-valued functions. 
+We believe that this framework is a natural way to study numerical linear algebra problems in the sliding window model and perhaps beyond. 
+
+We then apply our framework to derive approximations for the following linear algebraic functions in the sliding window model:
+Spectral sparsification, Low-rank approximation, Generalized regression, Graph sparsification (and applications), Matrix multiplication, Row-subset selection. 
+In addition to the results presented in this paper, we hope that our new framework will be useful in developing future randomized numerical linear algebra algorithms.
+</div>
+</li>
+</br>
+
+
+
+
+<li>
+<b>
+Optimal Parametric Search for Path and Tree Partitioning
+</b>
+</br><i>
+Greg Frederickson, 
+Samson Zhou.</br></i>
+[<a href="javascript:toggle('ParametricPartitioning')">abstract</a>]
+[<a href="https://arxiv.org/pdf/1711.00599.pdf">pdf</a>]
+</br>
+<div id="ParametricPartitioning" style="display: none">
+<p id="abs">
+We present linear-time algorithms for partitioning a path or a tree with weights on the vertices by removing $k$ edges to maximize the minimum-weight component. We also use the same framework to partition a path with weight on the vertices, removing $k$ edges to minimize the  maximum-weight component. The algorithms use the parametric search paradigm, testing candidate values until an optimum is found while simultaneously reducing the running time needed for each test.
+For path-partitioning, the algorithm employs a synthetic weighting scheme that results in a constant fraction reduction in running time after each test. 
+For tree-partitioning, our dual-pronged strategy makes progress no matter what the layout of our tree is.
+</div>
+</li>
+</br>
+
+
+
+
+
+<!--
+<li>
+<b>
+Streaming Weighted Matchings: Optimal Meets Greedy
+</b>
+</br><i>
+Elena Grigorescu, 
+Morteza Monemizadeh, 
+Samson Zhou.
+</br></i>
+[<a href="javascript:toggle('SemistreamingWeightedMatchings')">abstract</a>]
+[<a href="http://arxiv.org/pdf/1608.01487v1.pdf">pdf</a>]</br>
+<div id="SemistreamingWeightedMatchings" style="display: none">
+<p id="abs">
+We consider the problem of approximating a maximum weighted matching, when the edges 
+of an underlying weighted graph $G(V,E)$ are revealed in a streaming fashion. 
+We analyze a variant of the previously best-known $(4+\epsilon)$-approximation algorithm due to Crouch and Stubbs 
+(APPROX, 2014), and prove their conjecture that it achieves a tight  approximation factor of $3.5+\epsilon$. 
+
+The algorithm splits the stream into substreams on which it runs a greedy maximum matching algorithm. 
+At the end of the stream, the selected edges are given as input to an optimal maximum weighted matching algorithm.
+To analyze the approximation guarantee, we develop a novel charging argument in which we decompose the edges of 
+a maximum weighted matching of $G$ into a few natural classes, and then charge them separately to the edges 
+of the matching output by our algorithm.
+</p>
+</div>
+</li>
+</br>
+-->
+
+<li>
+<b>
+Estimating Weighted Matchings in o(n) Space
+</b>
+</br><i>
+Elena Grigorescu, 
+Morteza Monemizadeh, 
+Samson Zhou.
+</br></i>
+[<a href="javascript:toggle('EstimateWeightedMatchings')">abstract</a>]
+[<a href="https://arxiv.org/pdf/1604.07467v3.pdf">pdf</a>]</br>
+<div id="EstimateWeightedMatchings" style="display: none">
+<p id="abs">
+We consider the problem of estimating the weight of a maximum weighted matching of a weighted graph $G(V,E)$ 
+whose edges are revealed in a streaming fashion. 
+Extending the framework from Crouch and Stubbs (APPROX 2014), we develop a reduction from the maximum weighted 
+matching problem to the maximum cardinality matching problem that only doubles the approximation factor 
+of a streaming algorithm developed for the maximum cardinality matching problem. 
+Our results hold for  the insertion-only and the dynamic (i.e, insertion and deletion) edge-arrival streaming models. 
+The previous best-known reduction is due to Bury and Schwiegelshohn (ESA 2015)  who develop an algorithm whose 
+approximation guarantee scales by a polynomial factor.
+
+As an application, we obtain improved estimators for weighted planar graphs and, more generally, for weighted 
+bounded-arboricity graphs, by feeding into our reduction   the recent estimators due to Esfandiari \etal\  (SODA 2015) 
+and to Chitnis \etal\  (SODA 2016).  In particular, we obtain a $(48+\eps)$-approximation estimator for the weight of 
+a maximum weighted matching in planar graphs.
+</p>
+</div>
+</li>
+</ul>
+</ul>
+
+
+<hr>
+<h3>
+News
+</h3>
+<ul>
+<li>
+2018
+<ul>
+<li>
+June 14: I am presenting a poster, <a href="https://www.cs.purdue.edu/homes/zhou230/Talks/WOLA.pdf">"Nearly Optimal Distinct Elements and Heavy Hitters"</a> at the <a href="http://people.csail.mit.edu/joanne/WOLA18.html">Workshop for Local Algorithms</a> in Cambridge, MA.
+</li>
+<li>
+April 18: I successfully defended my dissertation, "Approximating Properties of Data Streams"!
+</li>
+<li>
+April 13: I am giving a talk, "Password Hashing and Graph Pebbling"</a>, at <a href="https://sites.google.com/ttic.edu/MTD2018">Midwest Theory Day</a> in Chicago, IL.
+</li>
+<li>
+April 11: I am presenting a poster, <a href="https://www.cs.purdue.edu/homes/zhou230/Talks/Password Hashing and Graph Pebbling 56.pdf">"Password Hashing and Graph Pebbling"</a>, at the Purdue Sigma Xi Awards Banquet.
+</li>
+<li>
+February 28: I am giving a talk, "On the Computational Complexity of Minimal Cumulative Cost", at <a href="http://fc18.ifca.ai/">FC</a> in Cura&#231;ao.
+</li>
+<li>
+February 21: I am presenting a poster, <a href="https://www.cs.purdue.edu/homes/zhou230/Talks/Password Hashing and Graph Pebbling 56.pdf">"Password Hashing and Graph Pebbling"</a>, at the Purdue Sigma Xi Poster Competition.
+</li>
+<li>
+January 11 - January 15: I am attending <a href="http://itcs-conf.org/">ITCS</a> in Cambridge, MA and <a href="https://www.youtube.com/watch?v=zosmDrbNiag&feature=youtu.be&t=3635s">speaking</a> at the Graduating Bits.
+</li>
+</ul>
+<li>
+2017
+<ul>
+<li>
+November 27 - December 1: I am visiting Johns Hopkins University. 
+I am also giving a talk, <a href="https://www.cs.purdue.edu/homes/zhou230/Talks/Pattern Matching over Noisy Data Streams.pdf">
+"Pattern Matching over Noisy Data Streams"</a>, on November 29.
+<li>
+October 20: I am attending the Northwestern Quarterly Theory Workshop on
+<a href="https://theory.eecs.northwestern.edu/qtw-analytic/">Analytic Methods in Computer Science</a>.
+</li>
+<li>
+September 8: I am presenting a poster, 
+<a href="https://www.cs.purdue.edu/homes/zhou230/Talks/STOC Poster.pdf">"Streaming Algorithms for Strings with Mismatches"</a>
+, at the Purdue CS Student Research Showcase.
+</li>
+<li>
+August 16: I am giving a talk, "Streaming Periodicity with Mismatches", at <a href="http://cui.unige.ch/tcs/random-approx/2017/index.php">RANDOM</a>.
+</li>
+<li>
+June 19 - June 23: I am attending <a href="http://acm-stoc.org/stoc2017/">STOC</a> in Montreal, Canada. 
+I am also presenting a poster, "Streaming Algorithms for Strings with Mismatches", on June 22nd.
+</li>
+<li>
+April 15 - April 16: I am attending <a href="http://caml.indiana.edu/mtd.html">Midwest Theory Day</a> in Bloomington, IN.
+</li>
+<li>
+February 10: I am giving a talk, "Streaming for Aibohphobes: Longest Near-Palindrome under Hamming Distance", at Indiana University-Bloomington.
+</li>
+</li>
+</ul>
+<li>
+2016
+<ul>
+<li>
+December 12 - January 6: I am visiting Texas A&M University.
+</li>
+<li>
+October 11 - October 14: I am visiting Rutgers University.
+</li>
+<li>
+October 8 - October 11: I am attending <a href="http://dimacs.rutgers.edu/FOCS16/">FOCS</a> in New Brunswick, NJ.
+</li>
+<li>
+September 28: I am giving a talk, "Nearly Optimal Sparse Group Testing" at 
+<a href="http://allerton.csl.illinois.edu/">Allerton</a>.
+</li>
+<li>
+June 19 - June 21: I am attending <a href="http://acm-stoc.org/stoc2016/">STOC</a> in Boston, MA.
+</li>
+<li>
+June 13 - June 17: I am attending the <a href="https://icerm.brown.edu/topical_workshops/tw16-3-act/">ICERM</a> Algorithmic Coding Workshop in Providence, RI.
+</li>
+</li>
+</ul>
+</ul>
+
+<hr>
+<h3>
+Contact Information</h3>
+<p>
+You may reach me at:</br>
+samsonzhou AT gmail DOT com</br>
+LWSN 3133 (#20)
+</p>
+</body>
+</html>
+

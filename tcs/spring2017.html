@@ -1,0 +1,300 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<!--	<meta HTTP-EQUIV="REFRESH" content="0; url=http://www.ssites.google.com/site/srikanthgvs"\> -->
+	<head> 
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+		<script language="JavaScript" type="text/javascript">
+	<!-- Copyright 2005, Sandeep Gangadharan -->
+	if (document.getElementById) {
+	document.writeln('<style type="text/css"><!--')
+	document.writeln('.texter {display:none} @media print {.texter {display:block;}}')
+	document.writeln('//--></style>') }
+
+	function openClose(theID) {
+	if (document.getElementById(theID).style.display == "block") { document.getElementById(theID).style.display = "none" }
+	else { document.getElementById(theID).style.display = "block" } }
+	// -->
+	</script>
+	<title> Theoretical CS Reading Group</title>
+	</head>
+    
+<!-- Body Starts Here ...... -->
+	<body>
+		<div id="content">
+			<div id="title">
+				<h1><span id="GroupTitle">Theoretical CS Reading Group</span></h1>
+				<hr/>
+			</div>
+	
+    <!-- Left Pane begin  -->
+			<div style="float:left; width:25%;" >
+				<table border="0" style="width:300px" align="justify">
+					<tr>
+						<td> 
+							The reading group meets once a week
+							usually, Monday 1:30-2:30pm to discuss
+							a particular paper or topic.
+							<br/><br/>
+							Please join our 
+							<a href="https://lists.purdue.edu/mailman/listinfo/tcs_reading_group" >
+							mailing list </a>
+							to get notifications about the weekly meetings 
+							and discussions. 
+							<br/><br/>
+							You might also be interested in the
+							<br/><a href="https://www.cs.purdue.edu/homes/egrigore/seminarST17.html">
+							Theory Seminar</a>.
+							<br/><br/>
+							<!--
+							Upcoming talks will be listed on this
+							webpage regularly. If you wish to give a
+							talk or present a paper please send a mail
+							to vgandiko at purdue.edu
+							<br/><br/>
+							-->
+
+						</td>
+					</tr>
+                    <tr>
+                        <td>
+                            <!-- Links for Previous semesters -->
+			    <a href="./index.html">Fall 2017</a><br/>
+                            Spring 2017 <br/>
+			    <a href="./fall2016.html">Fall 2016</a><br/>
+                            <a href="./spring2016.html">Spring & Summer 2016</a><br/>
+                            <a href="./fall2015.html">Fall 2015</a><br/>
+                            <a href="./spring2015.html">Spring & Summer 2015</a><br/>
+                            <a href="./fall2014.html">Fall 2014</a><br/>
+                            <a href="./spring2014.html">Spring 2014</a><br/>
+                            <a href="./fall2013.html">Summer & Fall 2013</a>
+                        </td>
+                    </tr>
+				</table>
+			</div>
+			
+    <!-- Left Pane ends -->
+    
+    <!-- Center Pane -->
+   			<div style="float:right; width:75%;">
+                
+    <!-- Content for Spring 2017 -->
+            <div id="schedule">
+                <h1><span id="fall2016"> Spring 2017 </span></h1>
+                 
+		 <p>
+                 <b> Friday, 20th January 2017</b> &mdash;
+		 Vladimir Braverman, Stephen R. Chestnut, Nikita Ivkin, David P. Woodruff <br/>
+		<a href="https://arxiv.org/abs/1511.00661">Beating CountSketch for Heavy Hitters in Insertion Streams</a> <br/>
+                 <b>Presenter:</b> Samson Zhou </br>
+                 <!--<div onClick="openClose('a?')" style="cursor:hand; cursor:pointer"><b>Abstract</b></div>
+                 <div id="a?" class="texter">
+                 <p> ABSTRACT</p>
+                 </div>
+		 -->
+		<hr/>
+
+		 <p>
+                 <b> Monday, 23rd January 2017</b> <br/>
+		 Locally Decodable Codes <br/>
+                 <b>Presenter:</b> GV </br>
+                 <!--<div onClick="openClose('a?')" style="cursor:hand; cursor:pointer"><b>Abstract</b></div>
+                 <div id="a?" class="texter">
+                 <p> ABSTRACT</p>
+                 </div>
+		 -->
+		<hr/>
+
+		 <p>
+                 <b> Tuesday, 31st January 2017</b> &mdash;
+		 Theory Seminar - Prof. Jeremiah Blocki, Purdue University <br/>
+		 <a href="https://arxiv.org/abs/1404.0024">Towards Human Computable Passwords</a></br>
+		 <div onClick="openClose('a-blocki')" style="cursor:hand; cursor:pointer"><b>Click to view Abstract</b></div>
+                 <div id="a-blocki" class="texter">
+                 <p>
+		An interesting challenge for the cryptography community is to design authentication protocols that are so simple that a human can execute them
+		without relying on a fully trusted computer. We propose several candidate authentication protocols for a setting in which the human user can
+		only receive assistance from a semi-trusted computer---a computer that stores information and performs computations correctly
+		but does not provide confidentiality. Our schemes use a semi-trusted computer to store and display public challenges $C_i\in[n]^k$.
+		The human user memorizes a random secret mapping $\sigma:[n]\rightarrow \mathbb{Z}_d$ and authenticates by computing responses $f(\sigma(C_i))$ to
+		a sequence of public challenges where $f:\mathbb{Z}_d^k\rightarrow \mathbb{Z}_d$ is a function that is easy for the human to evaluate. We prove
+		that any statistical adversary needs to sample $m=\tilde{\Omega}\paren{n^{s(f)}}$ challenge-response pairs to recover $\sigma$, for a security
+		parameter $s(f)$ that depends on two key properties of $f$. Our lower bound generalizes recent results of Feldman et al. \cite{feldman2013complexity}
+		who proved analogous results for the special case $d=2$. To obtain our results, we apply the general hypercontractivity theorem \cite{o2007analysis}
+		to lower bound the {\em statistical dimension } of the distribution over challenge-response pairs induced by $f$ and $\sigma$.
+		Our {\em statistical dimension} lower bounds apply to arbitrary functions $f:\mathbb{Z}_d^k\rightarrow \mathbb{Z}_d$ (not just to functions that
+		are easy for a human to evaluate). As an application, we propose a family of human computable password
+		functions $f_{k_1,k_2}$ in which the user needs to perform $2k_1+2k_2+1$ primitive operations (e.g., adding two digits or remembering a
+		secret value $\sigma(i)$), and we show that $s(f) = \min\{k_1+1, (k_2+1)/2\}$. For these schemes, we prove that forging passwords is
+		equivalent to recovering the secret mapping. Thus, our human computable password schemes can maintain strong security guarantees even after
+		an adversary has observed the user login to many different accounts.
+
+		Joint work with Manuel Blum, Anupam Datta, Santosh Vempala.
+		 </p>
+                 </div>
+                 </p>
+                 <hr/>
+
+		 <p>
+                 <b> Monday, 6th February 2017</b> <br/>
+		 Certifying Algorithms <br/>
+                 <b>Presenter:</b> Nima Darivandpour </br>
+                 <!--<div onClick="openClose('a?')" style="cursor:hand; cursor:pointer"><b>Abstract</b></div>
+                 <div id="a?" class="texter">
+                 <p> ABSTRACT</p>
+                 </div>
+		 -->
+		<hr/>
+
+		 <p>
+                 <b> Thursday, 9th February 2017</b> &mdash;
+		 Theory Seminar - Samson Zhou, Purdue University <br/>
+		 Streaming for Aibohphobes: Longest Near-Palindrome under Hamming Distance</br>
+		 <div onClick="openClose('a-samson')" style="cursor:hand; cursor:pointer"><b>Click to view Abstract</b></div>
+                 <div id="a-samson" class="texter">
+                 <p>
+		Palindromes are strings which read the same backwards and forwards, such as "racecar". 
+		Given a metric and an integer d>0, a d-near-palindrome is a string of distance at most d from its reverse. 
+		This talk will cover the problem of identifying the longest d-near-palindrome in data streams under the Hamming distance. 
+		The problem is relevant to the analysis of DNA databases, and to the task of repairing recursive structures in documents such as XML and JSON.
+
+		We present the first streaming algorithm for the longest d-near-palindrome problem, which returns a d-near-palindrome whose length is within a multiplicative (1+c)-factor of the longest d-near-palindrome, for "small" d. 
+		We present additional streaming algorithms which return a d-near-palindrome whose length is within an additive sqrt(n)-factor of the longest d-near-palindrome in one-pass, as well as the longest length d-near-palindrome in two passes.
+		Finally, we provide lower bounds for the space necessary to approximate the longest d-near-palindrome.
+
+		Joint work with Elena Grigorescu and Erfan Sadeqi Azer.
+		 </p>
+                 </div>
+                 </p>
+                 <hr/>
+
+		 <p>
+                 <b> Wednesday, 15th February 2017</b> <br/>
+		 Holant problems and Holographic transformations <br/>
+                 <b>Presenter:</b> Minshen Zhu </br>
+                 <!--<div onClick="openClose('a?')" style="cursor:hand; cursor:pointer"><b>Abstract</b></div>
+                 <div id="a?" class="texter">
+                 <p> ABSTRACT</p>
+                 </div>
+		 -->
+		<hr/>
+
+		 <p>
+                 <b> Wednesday, 22nd February 2017</b> &mdash;
+		 Theory Seminar - Hai Nguyen, Purdue University <br/>
+		 <a href="https://www.cs.purdue.edu/homes/hmaji/papers/FULL:BloMajNgu17.pdf">Secure Computation based on Leaky Correlations: High Resilience Setting</a></br>
+                 <!--<div onClick="openClose('a?')" style="cursor:hand; cursor:pointer"><b>Abstract</b></div>
+                 <div id="a?" class="texter">
+                 <p> ABSTRACT</p>
+                 </div>
+                 -->
+                 <hr/>
+
+		 <p>
+                 <b> Wednesday, 1st March 2017</b> &mdash;
+		 Guruswami et. al. <br/>
+		<a href="https://www.cs.cmu.edu/~venkatg/pubs/papers/pricing-soda05.pdf">On Profit-Maximization Envy-Free Pricing</a> <br/>
+                 <b>Presenter:</b> Young-San Lin </br>
+                 <!--<div onClick="openClose('a?')" style="cursor:hand; cursor:pointer"><b>Abstract</b></div>
+                 <div id="a?" class="texter">
+                 <p> ABSTRACT</p>
+                 </div>
+		 -->
+		<hr/>
+
+		 <p>
+                 <b> Wednesday, 8th March 2017</b> </br>
+		 An Introduction to Sum of Squares </br>
+		 <b>Presenter:</b> Negin Karisani </br>
+                 <!--<div onClick="openClose('a?')" style="cursor:hand; cursor:pointer"><b>Abstract</b></div>
+                 <div id="a?" class="texter">
+                 <p> ABSTRACT</p>
+                 </div>
+		 -->
+		<hr/>
+
+		<p>
+                <b> Wednesday, 29th March 2017</b> &mdash;
+		<a href="https://sites.google.com/site/plustcs/">TCS+</a> Talk - Noah Stephens-Davidowitz, NYU <br/>
+                A Reverse Minkowski Theorem</br>
+                <!--<div onClick="openClose('a?')" style="cursor:hand; cursor:pointer"><b>Abstract</b></div>
+                <div id="a?" class="texter">
+                <p> ABSTRACT</p>
+                </div>
+		-->
+                </p>
+                <hr/>
+
+		 <p>
+                 <b> Thursday, 6th April 2017</b> </br>
+		 Dependent Random Choice </br>
+		 <b>Presenters:</b> Akash Kumar </br>
+                 <!--<div onClick="openClose('a?')" style="cursor:hand; cursor:pointer"><b>Abstract</b></div>
+                 <div id="a?" class="texter">
+                 <p> ABSTRACT</p>
+                 </div>
+		 -->
+		<hr/>
+
+		 <p>
+                 <b> Wednesday, 19th April 2017</b> &mdash;
+		 Theory Seminar - Andrej Bogdanov, CUHK <br/>
+		 On the complexity and efficiency of secret sharing schemes</br>
+		 <div onClick="openClose('a-andrej')" style="cursor:hand; cursor:pointer"><b>Click to view Abstract</b></div>
+                 <div id="a-andrej" class="texter">
+                 <p>
+		A secret sharing scheme is a mechanism for dividing up a secret among several parties so that unqualified subsets of the 
+		parties do not learn any information about the secret, while qualified subsets can recover the secret. Such schemes were 
+		introduced by Shamir and Blakley in 1979 and have become an indispensable component in the architecture of secure communication and 
+		computation protocols. This talk will address the following foundational aspects of secret sharing and reconstruction: 1. Most secret 
+		sharing schemes are based on codes or polynomials. Is the use of linear algebra a necessity in this context or merely a convenience? 
+		What are "non-algebraic" schemes good for? What would be the consequences of the non-existence of such schemes? 2. In known secret 
+		sharing schemes, the shares are sometimes substantially larger than the secret. Is this loss in information efficiency a necessary 
+		price to pay for security? Our methods (from joint works with Siyao Guo, Yuval Ishai, Ilan Komargodski, Emanuele Viola, and Christopher 
+		Williamson) expose new connections between secret sharing, approximation theory, and game theory.
+
+		Bio: Andrej Bogdanov is associate professor of Computer Science and co-director of the Institute of Theoretical Computer Science and 
+		Communications at the Chinese University of Hong Kong. He obtained his B.Sc. and M.Eng. degrees from MIT and his Ph.D. from UC Berkeley. 
+		He has worked as a postdoctoral researcher at the Institute for Advanced Study in Princeton, at DIMACS (Rutgers University), and at 
+		ITCS (Tsinghua University), and as a visiting professor at the Tokyo Institute of Technology. He is currently a long-term participant 
+		in the pseudorandomness program at the UC Berkeley Simons Institute for the Theory of Computing. His research interests are in 
+		computational complexity and the foundations of cryptography. 
+		 </p>
+                 </div>
+                 </p>
+		 <hr/>
+
+		<p>
+                <b> Wednesday, 26th April 2017</b> &mdash;
+		<a href="https://sites.google.com/site/plustcs/">TCS+</a> Talk - Santosh Vempala, Georgia Tech <br/>
+                Sampling Polytopes: from Euclid to Riemann</br>
+                <!--<div onClick="openClose('a?')" style="cursor:hand; cursor:pointer"><b>Abstract</b></div>
+                <div id="a?" class="texter">
+                <p> ABSTRACT</p>
+                </div>
+		-->
+                </p>
+                <hr/>
+	
+		 <!-- FORMAT FOR ENTRY
+                 <p>
+                 <b> Friday, 31th Oct 2014</b> &mdash;
+                 TOPIC <br/>
+                 <b>Presenter:</b> NAME </br>
+                 <div onClick="openClose('a?')" style="cursor:hand; cursor:pointer"><b>Abstract</b></div>
+                 <div id="a?" class="texter">
+                 <p> ABSTRACT</p>
+                 </div>
+                 </p>
+                 <hr/>
+				<-->
+			</div>
+    <!-- Content for Spring 2017 ends -->
+    
+		</div>
+    <!-- Center Pane ends -->
+
+        </div>
+        
+	</body>
+</html>
+

@@ -1,0 +1,319 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<!--	<meta HTTP-EQUIV="REFRESH" content="0; url=http://www.ssites.google.com/site/srikanthgvs"\> -->
+	<head> 
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+		<script language="JavaScript" type="text/javascript">
+	<!-- Copyright 2005, Sandeep Gangadharan -->
+	if (document.getElementById) {
+	document.writeln('<style type="text/css"><!--')
+	document.writeln('.texter {display:none} @media print {.texter {display:block;}}')
+	document.writeln('//--></style>') }
+
+	function openClose(theID) {
+	if (document.getElementById(theID).style.display == "block") { document.getElementById(theID).style.display = "none" }
+	else { document.getElementById(theID).style.display = "block" } }
+	// -->
+	</script>
+	<title> Theoretical CS Reading Group</title>
+	</head>
+    
+<!-- Body Starts Here ...... -->
+	<body>
+		<div id="content">
+			<div id="title">
+				<h1><span id="GroupTitle">Theoretical CS Reading Group</span></h1>
+				<hr/>
+			</div>
+	
+    <!-- Left Pane begin  -->
+			<div style="float:left; width:25%;" >
+				<table border="0" style="width:300px" align="justify">
+					<tr>
+						<td> 
+							The reading group meets once a week
+							usually, Monday 1:30-2:30pm to discuss
+							a particular paper or topic.
+							<br/><br/>
+							Please join our 
+							<a href="https://lists.purdue.edu/mailman/listinfo/tcs_reading_group" >
+							mailing list </a>
+							to get notifications about the weekly meetings 
+							and discussions. 
+							<br/><br/>
+							You might also be interested in the
+							<br/><a href="https://www.cs.purdue.edu/homes/egrigore/seminarFT17.html">
+							Theory Seminar</a>.
+							<br/><br/>
+							<!--
+							Upcoming talks will be listed on this
+							webpage regularly. If you wish to give a
+							talk or present a paper please send a mail
+							to vgandiko at purdue.edu
+							<br/><br/>
+							-->
+
+						</td>
+					</tr>
+                    <tr>
+                        <td>
+                            <!-- Links for Previous semesters -->
+                            Fall 2017 <br/>
+			    <a href="./spring2017.html">Spring 2017</a><br/>
+			    <a href="./fall2016.html">Fall 2016</a><br/>
+                            <a href="./spring2016.html">Spring & Summer 2016</a><br/>
+                            <a href="./fall2015.html">Fall 2015</a><br/>
+                            <a href="./spring2015.html">Spring & Summer 2015</a><br/>
+                            <a href="./fall2014.html">Fall 2014</a><br/>
+                            <a href="./spring2014.html">Spring 2014</a><br/>
+                            <a href="./fall2013.html">Summer & Fall 2013</a>
+                        </td>
+                    </tr>
+				</table>
+			</div>
+			
+    <!-- Left Pane ends -->
+    
+    <!-- Center Pane -->
+   			<div style="float:right; width:75%;">
+                
+    <!-- Content for Fall 2017 -->
+            <div id="schedule">
+                <h1><span id="fall2017"> Fall 2017 </span></h1>
+                 
+		 <p>
+                 <b> Tuesday, 5th September 2017</b> &mdash;
+		 Theory Seminar - Clayton Thomas, Purdue University <br/>
+		 <a href="https://www.cs.purdue.edu/homes/egrigore/papers/boundedMRC.pdf">Maximally Recoverable Codes: the Bounded Case</a></br>
+		 <div onClick="openClose('a-clayton')" style="cursor:hand; cursor:pointer"><b>Click to view Abstract</b></div>
+                 <div id="a-clayton" class="texter">
+                 <p>
+		Modern distributed storage systems employ Maximally Recoverable codes that aim to bal-
+ance failure recovery capabilities with encoding/decoding efficiency tradeoffs.  Recent works of
+Gopalan et al [SODA 2017] and Kane et al [FOCS 2017] show that the alphabet size of grid-like
+topologies of practical interest must be large, a feature that hampers decoding efficiency.
+To  bypass  such  shortcomings,  in  this  work  we  initiate  the  study  of  a  weaker  version  of
+recoverability, where instead of being able to correct all correctable erasure patterns (as is the
+case for maximal recoverability), we only require to correct all erasure patterns of
+bounded size.
+The study of this notion reduces to a variant of a combinatorial problem studied in the literature,
+which is interesting in its own right.
+We study the alphabet size of codes withstanding all erasure patterns of small (constant) size.
+We believe the questions we propose are relevant to both real storage systems and combinatorial
+analysis, and merit further study.
+
+		Joint work with Venkata Gandikota, Elena Grigorescu, Minshen Zhu.
+		 </p>
+                 </div>
+                 </p>
+                 <hr/>
+
+		 <p>
+                 <b> Monday, 11th September 2017</b> &mdash;
+		 Theory Seminar - Young-San Lin, Purdue University <br/>
+		 On Variants of Network Flow Stability
+		 <div onClick="openClose('a-youngsan')" style="cursor:hand; cursor:pointer"><b>Click to view Abstract</b></div>
+                 <div id="a-youngsan" class="texter">
+                 <p>
+		We present a variant of the stable flow problem. 
+Instead of the traditional flow problem that obeys Kirchhoff law, for each vertex, 
+the outflow is monotone and piecewise linear to the inflow. 
+In a directed and capacitated network, each vertex has strict preference over their incident edges. 
+A stable flow assignment does not allow a group of vertices to benefit from privately rerouting along a path.
+ In this paper, we first show the existence of flow stability by reducing this variant of stable flow problem to Scarf's Lemma, 
+then introduce a path augmenting algorithm that runs in polynomial time.
+
+
+		 </p>
+                 </div>
+                 </p>
+                 <hr/>
+
+
+
+		 <p>
+                 <b> Monday, 18th September 2017</b> &mdash;
+		 Brett Hemenway, Rafail Ostrovsky, and Mary Wootters <br/>
+		<a href="https://arxiv.org/pdf/1304.8129.pdf">Local Correctability of Expander Codes</a> <br/>
+                 <b>Presenter:</b> Samson Zhou </br>
+                 <!--<div onClick="openClose('a?')" style="cursor:hand; cursor:pointer"><b>Abstract</b></div>
+                 <div id="a?" class="texter">
+                 <p> ABSTRACT</p>
+                 </div>
+		 -->
+		<hr/>
+
+		 <p>
+                 <b> Monday, 25th September 2017</b> &mdash;
+		 Swastik Kopparty and Shubhangi Saraf <br/>
+		<a href="https://arxiv.org/abs/1511.00661">Local Testing and Decoding of High-Rate Error-Correcting Codes</a> <br/>
+                 <b>Presenter:</b> GV </br>
+                 <!--<div onClick="openClose('a?')" style="cursor:hand; cursor:pointer"><b>Abstract</b></div>
+                 <div id="a?" class="texter">
+                 <p> ABSTRACT</p>
+                 </div>
+		 -->
+		<hr/>
+
+		 <p>
+                 <b> Monday, 2nd October 2017</b> &mdash;
+		 Theory Seminar - Alexander Block, Purdue University <br/>
+		 A Sublinear Upper Bound on Our Combinatorial Problem
+		 <!--<div onClick="openClose('a-youngsan')" style="cursor:hand; cursor:pointer"><b>Click to view Abstract</b></div>
+                 <div id="a-youngsan" class="texter">
+                 <p>
+		 </p>
+                 </div>
+                 </p>
+		-->
+                 <hr/>
+
+		<p>
+                <b> Wednesday, 11th October 2017</b> &mdash;
+		<a href="https://sites.google.com/site/plustcs/">TCS+</a> Talk - Moses Charikar, Stanford <br/>
+                Hashing-based-Estimators for Kernel Density in High Dimensions</br>
+                <!--<div onClick="openClose('a?')" style="cursor:hand; cursor:pointer"><b>Abstract</b></div>
+                <div id="a?" class="texter">
+                <p> ABSTRACT</p>
+                </div>
+		-->
+                </p>
+                <hr/>
+
+		 <p>
+                 <b> Monday, 16th October 2017</b> &mdash;
+		 Luna Frank-Fischer, Venkatesan
+Guruswami, and Mary Wootters <br/>
+		<https://arxiv.org/pdf/1704.08627.pdf">Locality
+via Partially Lifted Codes</a> <br/>
+                 <b>Presenter:</b> Minshen Zhu </br>
+                 <!--<div onClick="openClose('a?')" style="cursor:hand; cursor:pointer"><b>Abstract</b></div>
+                 <div id="a?" class="texter">
+                 <p> ABSTRACT</p>
+                 </div>
+		 -->
+		<hr/>
+
+		 <p>
+                 <b> Monday, 23rd October 2017</b> &mdash;
+		 Theory Seminar - Evgenia-Maria Kontopoulou, Purdue University <br/>
+		 Towards Randomized Algorithms for the Estimation of Log-Determinants and Von-Neumann Entropies
+		 <div onClick="openClose('a-evgenia')" style="cursor:hand; cursor:pointer"><b>Click to view Abstract</b></div>
+                 <div id="a-evgenia" class="texter">
+                 <p>
+In the first part, we introduce a novel randomized algorithm for approximating the log-determinant of a
+Symmetric Positive Definite (SPD) matrix. The algorithm approximates the trace of a small number of
+matrix powers of a specially constructed matrix, using a method from [1]. We will present theoretical and
+empirical results for our algorithm when the eigenvalues of the matrix lie in the interval (theta, 1), with 0 < theta < 1. In the second part we will briefly introduce a randomized algorithm to approximate the Von-
+Neumann entropy of Density matrices that is constructed along similar lines with the one for approximating the log-determinant of SPD matrices. We will present theoretical and preliminary
+experimental results.
+
+[1] H. Avron, S. Toledo (2011), "Randomized algorithms for estimating the trace of an implicit symmetric
+positive semi-definite matrix," J. ACM 58(2)8
+[2] C. Boutsidis, P. Drineas, P. Kambadur, E. Kontopoulou, A. Zouzias (2017) "A randomized algorithm for
+approximating the log determinant of a symmetric positive definite matrix," Elsevier Journal of Linear
+Algebra and its Applications 533:95-117
+		 </p>
+                 </div>
+                 </p>
+                 <hr/>
+
+		<p>
+                <b> Wednesday, 25th October 2017</b> &mdash;
+		<a href="https://sites.google.com/site/plustcs/">TCS+</a> Talk - Seth Pettie, Michigan <br/>
+                A Time Hierarchy Theorem for the LOCAL Model</br>
+                <!--<div onClick="openClose('a?')" style="cursor:hand; cursor:pointer"><b>Abstract</b></div>
+                <div id="a?" class="texter">
+                <p> ABSTRACT</p>
+                </div>
+		-->
+                </p>
+                <hr/>
+
+                 <b> Monday, 6th November 2017</b> &mdash;
+		 Theory Seminar - Abhiram Natarajan, Purdue University <br/>
+		 Communication-efficient distributed learning of discrete probability distributions
+		 <div onClick="openClose('a-abhiram')" style="cursor:hand; cursor:pointer"><b>Click to view Abstract</b></div>
+                 <div id="a-abhiram" class="texter">
+ Abstract: We initiate a systematic investigation of distribution learning (density estimation) when the data is distributed across multiple servers.
+ The servers must communicate with a referee and the goal is to estimate the underlying distribution with as few bits of communication as possible. 
+We focus on non-parametric density estimation of discrete distributions with respect to the l1 and l2 norms. 
+We provide the first non-trivial upper and lower bounds on the communication complexity of this basic estimation task in various settings of interest.
+ Our results provide insights on the interplay between structure and communication efficiency for a range of fundamental distribution estimation tasks.
+
+Joint work with Ilias Diakonikolas, Elena Grigorescu, Jerry Li, Krzysztof Onak, Ludwig Schmidt 
+		 </p>
+                 </div>
+                 </p>
+                 <hr/>
+
+                 <b> Tuesday, 14th November 2017</b> &mdash;
+		 Theory Seminar - Peng Zhang, Georgia Tech <br/>
+  		 Hardness Results for Structured Linear Systems
+		 <div onClick="openClose('a-peng')" style="cursor:hand; cursor:pointer"><b>Click to view Abstract</b></div>
+                 <div id="a-peng" class="texter">
+                 <p>
+Spielman and Teng (2004) showed that linear systems in Laplacian matrices can be solved in nearly-linear time. 
+Since then, a major research goal has been to develop fast solvers for linear systems in other classes of matrices, e.g., connection 
+Laplacians (Kyng et al., 2016), directed Laplacians (Cohen et al., 2017), etc. Connection Laplacians are a special case of PSD-Graph-Structured 
+Block Matrices (Spielman, 2016), block matrices whose non-zero structure corresponds to a graph, and which additionally can be expressed as a 
+sum of positive semi-definite matrices each corresponding to an edge in the graph. A major open question is whether fast solvers can be obtained 
+for all PGSBMs (Spielman, 2016). Other important families of matrices in the PGSBM class include truss stiffness matrices, multi-commodity Laplacians,
+ and total variation matrices, etc. In this talk, we show that if we can solve linear systems in just slightly larger families in PGSBMs, e.g.,
+ truss stiffness matrices, multi-commodity Laplacians, total variation matrices, then we can quickly solve all systems of linear equations over 
+the reals. This result can be viewed either positively or negatively: either we will develop nearly-linear time algorithms for solving all real 
+systems of linear equations, or progress on the families we can solve in nearly linear time will soon halt.
+
+Joint work with Rasmus Kyng. 
+		 </p>
+                 </div>
+                 </p>
+                 <hr/>
+
+                 <b> Friday, 1st December 2017</b> &mdash;
+		 Theory Seminar - Madhur Tulsani, TTI-C<br/>
+  		 From Weak to Strong LP Gaps for all CSPs
+		 <div onClick="openClose('a-madhur')" style="cursor:hand; cursor:pointer"><b>Click to view Abstract</b></div>
+                 <div id="a-madhur" class="texter">
+                 <p>
+We study the approximability of constraint satisfaction problems (CSPs) by linear programming (LP) relaxations. 
+We show that for every CSP, the approximation obtained by a basic LP relaxation, is no weaker than the approximation 
+obtained using relaxations given by \Omega( log n / (log log n)) levels of the of the Sherali-Adams hierarchy on instances of size n. 
+It was proved by Chan et al. [FOCS 2013] that any polynomial size LP extended formulation is no stronger than relaxations obtained by a 
+super-constant levels of the Sherali-Adams hierarchy.. 
+Combining this with our result also implies that any polynomial size LP extended formulation is no stronger than the basic LP, 
+which can be thought of as the base level of the Sherali-Adams hierarchy. This essentially gives a dichotomy result for 
+approximation of CSPs by polynomial size LP extended formulations. Using our techniques, we also simplify and strengthen the 
+result by Khot et al. [STOC 2014] on (strong) approximation resistance for LPs. They provided a necessary and sufficient condition 
+under which \Omega(log log n) levels of the Sherali-Adams hierarchy cannot achieve an approximation better than a random assignment. 
+We simplify their proof and strengthen the bound to \Omega(log n / (log log n)) levels. 
+
+Joint work with Mrinalkanti Ghosh.  
+		 </p>
+                 </div>
+                 </p>
+                 <hr/>
+
+		 <!-- FORMAT FOR ENTRY
+                 <p>
+                 <b> Friday, 31th Oct 2014</b> &mdash;
+                 TOPIC <br/>
+                 <b>Presenter:</b> NAME </br>
+                 <div onClick="openClose('a?')" style="cursor:hand; cursor:pointer"><b>Abstract</b></div>
+                 <div id="a?" class="texter">
+                 <p> ABSTRACT</p>
+                 </div>
+                 </p>
+                 <hr/>
+				<-->
+			</div>
+    <!-- Content for Spring 2017 ends -->
+    
+		</div>
+    <!-- Center Pane ends -->
+
+        </div>
+        
+	</body>
+</html>
+

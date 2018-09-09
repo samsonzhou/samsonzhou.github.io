@@ -1,0 +1,76 @@
+<html>
+<head>
+<title>Samson Zhou's Links</title>
+</head>
+
+<body background="background.jpg">
+
+
+<h1>
+Interesting Links
+</h1>
+<h3>
+Purdue
+</h3>
+<ul>
+<li>
+<a href="https://www.cs.purdue.edu/homes/egrigore/seminarFT17.html">CS Theory/Math Seminar</a></li>
+<li>
+<a href="https://www.cs.purdue.edu/homes/zhou230/tcs/index.html">Theoretical Computer Science Reading Group</a></li>
+<li>
+<a href="https://owl.english.purdue.edu/writinglab/">Purdue Writing Lab</a></li>
+</ul>
+<h3>
+Resources
+</h3>
+<ul>
+<li>
+<a href="https://www.careercup.com/page?pid=algorithm-interview-questions">Algorithm Interview Questions</a></li>
+<li>
+<a href="http://arxiv.org/">arXiv</a></li>
+<li>
+<a href="http://www.csrankings.org/">CS Rankings</a></li>
+<li>
+<a href="https://cstheoryevents.wordpress.com/">CS Theory Events</a></li>
+<li>
+<a href="http://dblp.uni-trier.de/">DBLP Computer Science Bibliography</a></li>
+<li>
+<a href="http://www.confsearch.org/confsearch/faces/pages/topic.jsp?topic=Theory&sortMode=1&graphicView=1">List of Conference Deadlines</a></li>
+<li>
+<a href="http://sublinear.info/index.php?title=Main_Page">Open Problems in Sublinear Algorithms</a></li>
+<li>
+<a href="http://ptreview.sublinear.info/">Property Testing Review</a></li>
+<li>
+<a href="https://sites.google.com/site/plustcs/">TCS+</a></li>
+<li>
+<a href="http://feedworld.net/toc/">Theory of Computing Blog Aggregator</a></li>
+</ul>
+<h3>
+Reading
+</h3>
+<ul>
+<li>
+<a href="http://www.contrib.andrew.cmu.edu/~ryanod/">Analysis of Boolean Functions</a>, by Ryan O'Donnell</li>
+<li>
+<a href="http://www.wisdom.weizmann.ac.il/~oded/pt-intro.html">Introduction to Property Testing</a>, by Oded Goldreich</li>
+<li>
+<a href="https://www.cc.gatech.edu/fac/Vijay.Vazirani/book.pdf">Approximation Algorithms</a>, by Vijay Vazirani</li>
+<li>
+<a href="http://www.designofapproxalgs.com/book.pdf">The Design of Approximation Algorithms</a>, by David P. Williamson and David B. Shmoys</li>
+<li>
+<a href="https://www.cse.buffalo.edu/faculty/atri/courses/coding-theory/book/index.html">Essential Coding Theory</a>, by 
+Venkatesan Guruswami, Atri Rudra and Madhu Sudan</li>
+<!--
+<li>
+<a href="http://www.cambridge.org/us/academic/subjects/computer-science/algorithmics-complexity-computer-algebra-and-computational-g/algorithmic-game-theory">Algorithmic Game Theory</a>, 
+by Noam Nisan, Tim Roughgarden, Eva Tardos, and Vijay Vazirani (check under the Resources tab for a pdf)</li>
+-->
+<li>
+<a href="http://www.cs.dartmouth.edu/~ac/Teach/data-streams-lecnotes.pdf">Lecture Notes on Data Stream Algorithms</a>, by Amit Chakrabarti</li>
+<li>
+<a href="https://arxiv.org/pdf/1712.08880.pdf">Lectures on Randomized Numerical Linear Algebra</a>, by Petros Drineas and Michael Mahoney</li>
+</ul>
+
+Back to <a href="https://www.cs.purdue.edu/homes/zhou230/">my homepage</a>.
+</body>
+</html>
