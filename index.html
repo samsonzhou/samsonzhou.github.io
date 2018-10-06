@@ -166,7 +166,8 @@ Samson Zhou.</br></i>
 <p id="abs">
 Memory Hard Functions (MHFs) have been proposed as an answer to the growing inequality between the computational speed of general purpose CPUs and Application Specific Integrated Circuits (ASICs). 
 MHFs have seen widespread applications including password hashing, key stretching and proofs of work. 
-Several metrics have been proposed to quantify the `memory hardness' of a function. Cumulative memory complexity (CMC) \cite{STOC:AlwSer15} (or amortized Area $\times$ Time complexity \cite{CCS:AlwBloHar17}) attempts to quantify the amortized cost to acquire/build the hardware to evaluate the function --- amortized by the number of instances of the function that can be evaluated of this hardware. 
+Several metrics have been proposed to quantify the `memory hardness' of a function. Cumulative memory complexity (CMC) \cite{STOC:AlwSer15} (or amortized Area $\times$ Time complexity \cite{CCS:AlwBloHar17}) attempts to quantify the amortized cost to acquire/build the hardware to evaluate 
+the function --- amortized by the number of instances of the function that can be evaluated of this hardware. 
 By contrast, bandwidth hardness \cite{TCC:RenDev17} attempts to quantify the amortized energy costs of evaluating this function on hardware --- which in turn is largely dominated by the number of cache misses. 
 Ideally, a good MHF would be both bandwidth hard and have high cumulative memory complexity. 
 While the cumulative memory complexity of leading MHF candidates is well understood, little is known about the bandwidth hardness of many of the most prominent MHF candidates.
@@ -174,7 +175,8 @@ While the cumulative memory complexity of leading MHF candidates is well underst
 Our contributions are as follows: 
 First, we provide the first reduction proving that, in the parallel random oracle model, the bandwidth hardness of a Data-Independent Memory Hard Function (iMHF) is described by the red-blue pebbling cost of the directed acyclic graph (DAG) associated with that iMHF. 
 Second, we show that the goals of designing an MHF with high CMC/bandwidth hardness are well aligned. In particular, we prove that {\em any} function with high CMC also has relatively high bandwidth costs. This result leads to the first {\em unconditional} lower bound on the bandwidth cost of scrypt.
-Third, we analyze the bandwidth hardness of several prominent  iMHF candidates such as Argon2i \cite{BiryukovDK15}, winner of the password hashing competition, aATSample and DRSample \cite{CCS:AlwBloHar17} --- the first practical iMHF with asymptotically optimal CMC. More specifically, we show that Argon2i is maximally bandwidth hard as long as the cache-size $m$ is at most $m \in\O{n^{2/3-\epsilon}}$ where $n$ is the total number of data-labels produced during computation. 
+Third, we analyze the bandwidth hardness of several prominent  iMHF candidates such as Argon2i \cite{BiryukovDK15}, winner of the password hashing competition, aATSample and DRSample \cite{CCS:AlwBloHar17} --- the first practical iMHF with asymptotically optimal CMC. More specifically, we show that 
+Argon2i is maximally bandwidth hard as long as the cache-size $m$ is at most $m \in\O{n^{2/3-\epsilon}}$ where $n$ is the total number of data-labels produced during computation. 
 We also show that aATSample and DRSample are maximally bandwidth hard as long as the cache-size is $m \in\O{n^{1-\epsilon}}$. 
 Finally, we show that the problem of finding a red-blue pebbling with minimum bandwidth cost is NP-hard. 
 </div>
@@ -406,9 +408,11 @@ Given an integer $d>0$, a {\em $d$-near-palindrome} is a string of Hamming dista
 We study the natural problem of identifying a longest $d$-near-palindrome in data streams. 
 The problem is relevant to the analysis of DNA databases, and to the task of repairing recursive structures in documents such as XML and JSON.
 We present an algorithm that returns a $d$-near-palindrome whose length is within a multiplicative $(1+\eps)$-factor of the longest $d$-near-palindrome. 
-Our algorithm also returns the set of mismatched indices of the $d$-near-palindrome,  using $\bigO{\frac{d\log^7 n}{\eps\log(1+\eps)}}$ bits of space, and $\bigO{\frac{d\log^6 n}{\eps\log(1+\eps)}}$ update time per arriving symbol. 
+Our algorithm also returns the set of mismatched indices of the $d$-near-palindrome,  using $\bigO{\frac{d\log^7 n}{\eps\log(1+\eps)}}$ bits of space, and 
+$\bigO{\frac{d\log^6 n}{\eps\log(1+\eps)}}$ update time per arriving symbol. 
 We show that $\Omega(d\log n)$ space is necessary for estimating the length of longest $d$-near-palindromes  with high probability.
-We further obtain an additive-error approximation algorithm and a comparable lower bound, as well as an {\em exact} two-pass algorithm that  solves the longest $d$-near-palindrome problem using $\bigO{d^2\sqrt{n}\log^6 n}$  bits of space.
+We further obtain an additive-error approximation algorithm and a comparable lower bound, as well as an {\em exact} two-pass algorithm that  solves the longest 
+$d$-near-palindrome problem using $\bigO{d^2\sqrt{n}\log^6 n}$  bits of space.
 </p>
 </div>
 </li>
@@ -429,7 +433,10 @@ Samson Zhou.</br></i>
 </br>
 <div id="argon" style="display: none">
 <p id="abs">
-Argon2i is a data-independent memory hard function that won the password hashing competition. The password hashing algorithm has already been incorporated into several open source crypto libraries such as libsodium. In this paper we analyze the cumulative memory cost of computing Argon2i. On the positive side we provide a lower bound for Argon2i. On the negative side we exhibit an improved attack against Argon2i which demonstrates that our lower bound is nearly tight. In particular, we show that
+Argon2i is a data-independent memory hard function that won the password hashing competition. 
+The password hashing algorithm has already been incorporated into several open source crypto libraries such as libsodium. 
+In this paper we analyze the cumulative memory cost of computing Argon2i. On the positive side we provide a lower bound for Argon2i. 
+On the negative side we exhibit an improved attack against Argon2i which demonstrates that our lower bound is nearly tight. In particular, we show that
 \begin{enumerate}
 \item An Argon2i DAG is $\left(e,O\left(n^3/e^3\right)\right))$-reducible.
 \item The cumulative pebbling cost for Argon2i is at most $O\left(n^{1.768}\right)$. This improves upon the previous best upper bound of $O\left(n^{1.8}\right)$ \cite{AB17}.
@@ -558,8 +565,84 @@ effect of unreliability/noise in test outcomes.
 </ul>
 
 <li>
-<h3>Manuscripts</h3>
+<h3>Preprints</h3>
 <ul>
+
+
+<li>
+<b>
+Data-Independent Memory Hard Functions: New Attacks and Stronger Constructions
+</b>
+</br><i>
+Jeremiah Blocki, 
+Ben Harsha, 
+Siteng Kang, 
+<a href="https://www.cs.purdue.edu//people/graduate-students/lee2856/">Seunghoon Lee</a>, 
+<a href="https://www.cs.purdue.edu/homes/xingl/">Lu Xing</a>,
+Samson Zhou.</br></i>
+[<a href="javascript:toggle('imhfnewattacks')">abstract</a>]
+[<a href="https://eprint.iacr.org/2018/944.pdf">pdf</a>]
+</br>
+<div id="imhfnewattacks" style="display: none">
+<p id="abs">
+Data-Independent Memory-hard functions (iMHFs) are a key cryptographic primitive underlying the design of moderately expensive password hashing 
+algorithms and egalitarian proofs of work that are resistant to side-channel attacks. Several goals for MHFs have been proposed including bandwidth 
+hardness, space-time (ST) complexity, amortized area-time (aAT) complexity and sustained space complexity. An iMHF can be specified using a directed 
+acyclic graph (DAG) $G$ with $N=2^n$ nodes and low indegree, and the cost (aAT, ST etc...) to evaluate the iMHF can be analyzed using pebbling games.  
+In particular, given a parameter $N$ (e.g., maximum acceptable running time) we would like to design the DAG $G$ to have maximum possible pebbling 
+cost i.e., to ensure that the iMHF is as expensive as possible for an attacker to compute. Recently, Alwen et al.~\cite{CCS:AlwBloHar17} gave a 
+randomized DAG construction called DRSample and proved that the aAT cost to pebble the graph was $\Omega\left( N^2/\log N\right)$. In an asymptotic 
+sense the DRSample outperformed all prior constructions including Argon2i, the winner of the password hashing competition, which can be pebbled 
+with aAT cost at most $\bigO\left(N^{1.767}\right)$. In this work we first prove a matching {\em upper bound} on the pebbling cost of DRSample by 
+analyzing the greedy pebbling attack of Boneh et al.~\cite{AC:BonCorSch16}. This sequential attack on DRSample is simple, easy to implement and 
+has good concrete performance. In fact, our results show that, for practical values of $N\leq 2^{24}$, Argon2i provides {\em stronger} resistance 
+to known pebbling attacks than DRSample reversing a finding of Alwen et al.~\cite{CCS:AlwBloHar17}. We then develop a new iMHF candidate by extending 
+DRSample with the bit-reversal graph, and show that the iMHF resists {\em all known attacks} in practice and has {\em optimal} asymptotic performance 
+under every MHF metric. In particular, we prove that (1) {\em any} (nearly) sequential  pebbling attack (including the greedy pebbling attack) has 
+aAT cost $\Omega\left( N^2\right)$, (2) {\em any} parallel attacker has aAT cost at least $\Omega\left(N^2/\log N\right)$ and {\em at least} 
+$\Omega\left(N^2 \log \log N/\log N\right)$ unless one can find new depth-reducing attacks against DRSample which significantly improve upon the state 
+of the art, (3) the graph has high bandwidth-complexity, and (4) any pebbling {\em either} has aAT cost $\omega(N^2)$ or {\em requires} at least $\Omega(N)$ 
+steps with $\Omega(N/\log N)$ pebbles on the DAG. This makes our construction the first practical iMHF with strong guarantees on the sustained space-complexity. 
+We also observe that the Argon2i round function can (trivially) be evaluated in parallel, which would allow an attacker to reduce aAT costs by 
+(nearly) an order of magnitude, and we develop an {\em inherently} sequential version of the Argon2i round function that prevents this attack. 
+We implement our new iMHF candidate (with and without the sequential round function) and show that evaluation speed is nearly identical to Argon2i. 
+Finally, we provide a pebbling reduction which proves that in the parallel random oracle model (PROM) the cost of evaluating an iMHF like Argon2i or 
+DRSample+BRG is given by the pebbling cost of the underlying DAG. </div>
+</li>
+</br>
+
+
+
+<li>
+<b>
+Approximate F<sub>2</sub>-Sketching of Valuation Functions
+</b>
+</br><i>
+Grigory Yaroslavtsev, 
+Samson Zhou.</br></i>
+[<a href="javascript:toggle('linsketch')">abstract</a>]
+[<a href="/Papers/linsketch.pdf">pdf</a>]
+</br>
+<div id="linsketch" style="display: none">
+<p id="abs">
+We study the problem of constructing a linear sketch of minimum dimension that allows approximation of a given real-valued function 
+$f \colon \ftwo^n \rightarrow \mathbb R$ with small expected squared error. 
+We develop a general theory of linear sketching for such functions through which we analyze their dimension for most commonly studied 
+types of valuation functions: additive, budget-additive, coverage, $\alpha$-Lipschitz submodular and matroid rank functions. 
+This gives a characterization of how many bits of information have to be stored about the input $x$ so that one can compute $f$ under 
+additive updates to its coordinates.
+
+Our results are tight in most cases and we also give extensions to the distributional version of the problem where the input $x \in \ftwo^n$ 
+is generated uniformly at random. Using known connections with dynamic streaming algorithms, both upper and lower bounds on dimension obtained 
+in our work extend to the space complexity of algorithms evaluating $f(x)$ under long sequences of additive updates to the input $x$ presented as a stream. 
+Similar results hold for simultaneous communication in a distributed setting.
+</p>
+</div>
+</li>
+</br>
+
+
+
 
 <!--
 <li>
@@ -636,7 +719,9 @@ Samson Zhou.</br></i>
 </br>
 <div id="ParametricPartitioning" style="display: none">
 <p id="abs">
-We present linear-time algorithms for partitioning a path or a tree with weights on the vertices by removing $k$ edges to maximize the minimum-weight component. We also use the same framework to partition a path with weight on the vertices, removing $k$ edges to minimize the  maximum-weight component. The algorithms use the parametric search paradigm, testing candidate values until an optimum is found while simultaneously reducing the running time needed for each test.
+We present linear-time algorithms for partitioning a path or a tree with weights on the vertices by removing $k$ edges to maximize the minimum-weight component. 
+We also use the same framework to partition a path with weight on the vertices, removing $k$ edges to minimize the  maximum-weight component. 
+The algorithms use the parametric search paradigm, testing candidate values until an optimum is found while simultaneously reducing the running time needed for each test.
 For path-partitioning, the algorithm employs a synthetic weighting scheme that results in a constant fraction reduction in running time after each test. 
 For tree-partitioning, our dual-pronged strategy makes progress no matter what the layout of our tree is.
 </div>
