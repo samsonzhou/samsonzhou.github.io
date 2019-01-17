@@ -149,6 +149,41 @@ Publications
 <ul>
 
 
+<li>
+<b>
+Structural Results on Matching Estimation with Applications to Streaming
+</b>
+</br><i>
+<a href="http://ls2-www.cs.uni-dortmund.de/~gille/">Marc Bury</a>, 
+Elena Grigorescu, 
+<a href="http://people.cs.umass.edu/~mcgregor/">Andrew McGregor</a>, 
+<a href="http://iuuk.mff.cuni.cz/~monemi/">Morteza Monemizadeh</a>, 
+<a href="http://ls2-www.cs.uni-dortmund.de/~schwiegelshohn/">Chris Schwiegelshohn</a>, 
+<a href="https://people.cs.umass.edu/~svorotni/">Sofya Vorotnikova</a>, 
+Samson Zhou.
+</br></i>
+<a href="https://link.springer.com/journal/453">Algorithmica 2019</a>
+[<a href="javascript:toggle('StructuralMatching')">abstract</a>]
+[<a href="/Papers/matching.pdf">pdf</a>]</br>
+<div id="StructuralMatching" style="display: none">
+<p id="abs">
+We study the problem of  estimating the size of a matching when the graph is revealed in a streaming fashion. 
+Our results are multifold:
+\begin{enumerate}
+\item We give a tight structural result relating the size of a maximum matching to the {\em arboricity} of a graph, which has been one of the most studied graph parameters for matching algorithms in data streams.
+\item  We further show that the weight of a maximum weighted matching can be efficiently estimated by augmenting any  routine for estimating the size of an  unweighted matching. 
+Namely, given an algorithm for computing a $\lambda$-approximation in the unweighted case, we obtain a $2(1+\varepsilon)\cdot \lambda$ approximation for the weighted case, while only incurring a  multiplicative logarithmic factor in the space bounds. 
+The algorithm is implementable in any streaming model, including {\em dynamic}  streams. 
+\item  We also  investigate algebraic aspects of computing matchings in data streams, by proposing new algorithms and lower bounds  based on analyzing  the rank of the {\em Tutte-matrix} of the graph.
+In particular, we present an algorithm determining whether there exists a matching of size $k$ using $k^2\text{polylog } n $ space,  where $n$ is the number of nodes in the graph.
+We also show a lower bound of $\Omega(n^{1-\varepsilon})$ space for small approximation factors to the rank of a matrix in {\em insertion-only} streams.
+\end{enumerate}
+</p>
+</div>
+</li>
+</br>
+
+
 
 <li>
 <b>
@@ -211,41 +246,6 @@ We then show that the \histogram{} along with a careful combination of existing 
 Applying our new \histogram{} framework, we provide an algorithm that outputs a $(1+\eps)$-approximation to the number of distinct elements in the sliding window model and uses $\O{\frac{1}{\eps^2}\log n\log\frac{1}{\eps}\log\log n+\frac{1}{\eps}\log^2 n}$ bits of space. 
 For $\ell_p$-heavy hitters, we provide an algorithm using space $\O{\frac{1}{\eps^p}\log^2 n\left(\log\log n+\log\frac{1}{\eps}\right)}$ for $0<p\le 2$, improving upon the best-known algorithm for $\ell_2$-heavy hitters (Braverman \etal, COCOON 2014), which has space complexity $\O{\frac{1}{\eps^4}\log^3 n}$. 
 We also show complementing nearly optimal lower bounds of $\Omega\left(\frac{1}{\eps}\log^2 n+\frac{1}{\eps^2}\log n\right)$ for distinct elements and $\Omega\left(\frac{1}{\eps^p}\log^2 n\right)$ for $\ell_p$-heavy hitters, both tight up to $\O{\log\log n}$ and $\O{\log\frac{1}{\eps}}$ factors.
-</div>
-</li>
-</br>
-
-
-<li>
-<b>
-Structural Results on Matching Estimation with Applications to Streaming
-</b>
-</br><i>
-<a href="http://ls2-www.cs.uni-dortmund.de/~gille/">Marc Bury</a>, 
-Elena Grigorescu, 
-<a href="http://people.cs.umass.edu/~mcgregor/">Andrew McGregor</a>, 
-<a href="http://iuuk.mff.cuni.cz/~monemi/">Morteza Monemizadeh</a>, 
-<a href="http://ls2-www.cs.uni-dortmund.de/~schwiegelshohn/">Chris Schwiegelshohn</a>, 
-<a href="https://people.cs.umass.edu/~svorotni/">Sofya Vorotnikova</a>, 
-Samson Zhou.
-</br></i>
-<a href="https://link.springer.com/journal/453">Algorithmica 2018</a>
-[<a href="javascript:toggle('StructuralMatching')">abstract</a>]
-[<a href="/Papers/matching.pdf">pdf</a>]</br>
-<div id="StructuralMatching" style="display: none">
-<p id="abs">
-We study the problem of  estimating the size of a matching when the graph is revealed in a streaming fashion. 
-Our results are multifold:
-\begin{enumerate}
-\item We give a tight structural result relating the size of a maximum matching to the {\em arboricity} of a graph, which has been one of the most studied graph parameters for matching algorithms in data streams.
-\item  We further show that the weight of a maximum weighted matching can be efficiently estimated by augmenting any  routine for estimating the size of an  unweighted matching. 
-Namely, given an algorithm for computing a $\lambda$-approximation in the unweighted case, we obtain a $2(1+\varepsilon)\cdot \lambda$ approximation for the weighted case, while only incurring a  multiplicative logarithmic factor in the space bounds. 
-The algorithm is implementable in any streaming model, including {\em dynamic}  streams. 
-\item  We also  investigate algebraic aspects of computing matchings in data streams, by proposing new algorithms and lower bounds  based on analyzing  the rank of the {\em Tutte-matrix} of the graph.
-In particular, we present an algorithm determining whether there exists a matching of size $k$ using $k^2\text{polylog } n $ space,  where $n$ is the number of nodes in the graph.
-We also show a lower bound of $\Omega(n^{1-\varepsilon})$ space for small approximation factors to the rank of a matrix in {\em insertion-only} streams.
-\end{enumerate}
-</p>
 </div>
 </li>
 </br>
