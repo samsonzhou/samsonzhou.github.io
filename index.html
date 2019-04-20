@@ -103,6 +103,7 @@ My current research interests are sublinear algorithms, machine learning, and pa
 </br>
 </br>
 For Summer 2018, I was a Postdoctoral Fellow at <a href="https://www.purdue.edu/">Purdue University</a>, hosted by 
+--jeremiahblocki--
 <a href="https://www.cs.purdue.edu/homes/jblocki/">Jeremiah Blocki</a>. 
 Previously, I was a <a href="https://www.cs.purdue.edu/people/graduate-students/zhou230/">
 graduate student</a> in the <a href="https://www.cs.purdue.edu/">
@@ -986,6 +987,14 @@ var info = new Array(  new Array('--jeremiahblocki--', 'Jeremiah Blocki', 'https
                      , new Array('--xiuyu--', 'Xiuyu Ye', 'https://www.cerias.purdue.edu/site/people/students/view/1616')
                      , new Array('--albert--', 'Albert Yu', '')
                      );
+					 
+for (i = 0; i < info.length; i++) {
+    var find = info[i][0];
+    var regex = new RegExp(find, "g");
+    var replace = '<a href="' + info[i][2] + '">' + info[i][1] + '</a>';
+    document.body.innerHTML = document.body.innerHTML.replace(regex, replace);
+}
+					 
 </script>
 </html>
 
