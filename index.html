@@ -110,6 +110,17 @@ I was a member of the <a href="http://theory.cs.purdue.edu"/>Theory Group</a> an
 Here are some of my favorite <a href="links.html">links</a>.
 </p>
 
+
+<hr>
+<h3>
+Contact Information</h3>
+<p>
+You may reach me at:</br>
+samsonzhou AT gmail DOT com</br>
+Luddy Hall 2030
+</p>
+
+
 <hr>
 <h3>
 Academic Positions and Education
@@ -139,15 +150,9 @@ Algorithm Design and Analysis (Teaching Assistant, ACM Graduate TA Award)</li>
 
 <hr>
 <h3>
-Research [<a href="https://dblp.uni-trier.de/pers/hd/z/Zhou:Samson">dblp</a>]
+Publications [<a href="https://dblp.uni-trier.de/pers/hd/z/Zhou:Samson">dblp</a>]
 [<a href="https://scholar.google.com/citations?user=NpjsgocAAAAJ">Scholar</a>]</h3>
 <ul>
-<li>
-<h3>
-Publications
-</h3>
-<ul>
-
 
 <li>
 <b>
@@ -565,12 +570,40 @@ effect of unreliability/noise in test outcomes.
 
 
 
-</ul>
+<h3>Preprints</h3>
 
 <li>
-<h3>Preprints</h3>
-<ul>
+<b>
+Approximating Cumulative Pebbling Cost is Unique Games Hard
+</b>
+</br><i>
+Jeremiah Blocki, 
+<a href="https://www.cs.purdue.edu/homes/lee2856/">Seunghoon Lee</a>, 
+Samson Zhou.</br></i>
+[<a href="javascript:toggle('approxcc')">abstract</a>]
+[<a href="https://arxiv.org/pdf/1904.08078.pdf">pdf</a>]
+</br>
+<div id="approxcc" style="display: none">
+The cumulative pebbling complexity of a directed acyclic graph G is defined as cc(G) = \min_P \sum_i |P_i|, where the minimum is taken over 
+all legal (parallel) black pebblings of G and |P_i| denotes the number of pebbles on the graph during round i. Intuitively, cc(G) captures the 
+amortized Space-Time complexity of pebbling m copies of G in parallel. The cumulative pebbling complexity of a graph G is of particular interest 
+in the field of cryptography as cc(G) is tightly related to the amortized Area-Time complexity of the data-independent memory hard function 
+(iMHF) f_{G,H} (Alwen and Serbinenko, STOC 2015) defined using a constant indegree directed acyclic graph (DAG) G and a random oracle H. 
+A secure iMHF should have amortized Space-Time complexity as high as possible e.g., to deter brute-force password attacker who wants to find x 
+such that f_{G,H}(x) = h. Thus, to analyze the (in)security of a candidate iMHF f_{G,H}, it is crucial to estimate the value cc(G) but currently, 
+upper and lower bounds for leading iMHF candidates differ by several orders of magnitude. Blocki and Zhou recently showed that is NP-Hard to compute 
+cc(G), but their techniques do not even rule out an efficient (1+epsilon)-approximation algorithm for any constant epsilon>0. We show 
+that for any constant c > 0, it is Unique Games hard to approximate cc(G) to within a factor of c.
 
+Along the way, we show the hardness of approximation of the DAG Vertex Deletion problem on DAGs of constant indegree. Namely, we show that 
+for any k,epsilon>0 given a DAG G with N nodes and constant indegree, the it is Unique Games hard to distinguish between the case that 
+(e_1, d_1)-reducible with e_1=N^{1/(1+2epsilon)}/k and d_1=k N^{2epsilon/(1+2epsilon)} and the case that G is (e_2, d_2)-depth-robust with e_2 
+= (1-epsilon)k e_1 and d_2= 0.9 N^{(1+epsilon)/(1+2epsilon)}, which may be of independent interest. Our result generalizes a result of Svensson 
+who proved an analogous result for DAGs with indegree O(N).
+</div>
+<p id="abs">
+</li>
+</br>
 
 <li>
 <b>
@@ -580,7 +613,7 @@ Data-Independent Memory Hard Functions: New Attacks and Stronger Constructions
 Jeremiah Blocki, 
 Ben Harsha, 
 <a href="https://dblp.org/pers/hd/k/Kang:Siteng">Siteng Kang</a>, 
-<a href="https://www.cs.purdue.edu/homes/lee2856/">Seunghoon Lee</a>, 
+Seunghoon Lee, 
 <a href="https://www.cs.purdue.edu/homes/xingl/">Lu Xing</a>,
 Samson Zhou.</br></i>
 [<a href="javascript:toggle('imhfnewattacks')">abstract</a>]
@@ -814,6 +847,16 @@ News
 </h3>
 <ul>
 <li>
+2019
+<ul>
+<li>
+April 19: I am giving a talk, "Numerical Linear Algebra in the Sliding Window Model", at Indiana University-Bloomington.
+</li>
+<li>
+March 20: I am giving a talk, "Adversarially Robust Submodular Maximization under Knapsack Constraints" at the <a href="http://caml.indiana.edu/">CAML Seminar</a>, in Bloomington, IN.
+</li>
+</ul>
+<li>
 2018
 <ul>
 <li>
@@ -904,14 +947,7 @@ June 13 - June 17: I am attending the <a href="https://icerm.brown.edu/topical_w
 </ul>
 </ul>
 
-<hr>
-<h3>
-Contact Information</h3>
-<p>
-You may reach me at:</br>
-samsonzhou AT gmail DOT com</br>
-Luddy Hall 2030
-</p>
+
 </body>
 </html>
 
