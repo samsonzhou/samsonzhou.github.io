@@ -158,6 +158,86 @@ Publications [<a href="https://dblp.uni-trier.de/pers/hd/z/Zhou:Samson">dblp</a>
 [<a href="https://scholar.google.com/citations?user=NpjsgocAAAAJ">Scholar</a>]</h3>
 <ol reversed>
 
+
+
+<li>
+<b>
+Data-Independent Memory Hard Functions: New Attacks and Stronger Constructions
+</b>
+</br><i>
+--jeremiahblocki--, 
+--benharsha--, 
+--sitengkang--, 
+--seunghoonlee--, 
+--luxing--,
+Samson Zhou.</br></i>
+<a href="https://crypto.iacr.org/2019/">CRYPTO 2019</a>
+[<a href="javascript:toggle('imhfnewattacks')">abstract</a>]
+[<a href="https://eprint.iacr.org/2018/944.pdf">pdf</a>]
+</br>
+<div id="imhfnewattacks" style="display: none">
+<p id="abs">
+Data-Independent Memory-hard functions (iMHFs) are a key cryptographic primitive underlying the design of moderately expensive password hashing 
+algorithms and egalitarian proofs of work that are resistant to side-channel attacks. Several goals for MHFs have been proposed including bandwidth 
+hardness, space-time (ST) complexity, amortized area-time (aAT) complexity and sustained space complexity. An iMHF can be specified using a directed 
+acyclic graph (DAG) $G$ with $N=2^n$ nodes and low indegree, and the cost (aAT, ST etc...) to evaluate the iMHF can be analyzed using pebbling games.  
+In particular, given a parameter $N$ (e.g., maximum acceptable running time) we would like to design the DAG $G$ to have maximum possible pebbling 
+cost i.e., to ensure that the iMHF is as expensive as possible for an attacker to compute. Recently, Alwen et al.~\cite{CCS:AlwBloHar17} gave a 
+randomized DAG construction called DRSample and proved that the aAT cost to pebble the graph was $\Omega\left( N^2/\log N\right)$. In an asymptotic 
+sense the DRSample outperformed all prior constructions including Argon2i, the winner of the password hashing competition, which can be pebbled 
+with aAT cost at most $\bigO\left(N^{1.767}\right)$. In this work we first prove a matching {\em upper bound} on the pebbling cost of DRSample by 
+analyzing the greedy pebbling attack of Boneh et al.~\cite{AC:BonCorSch16}. This sequential attack on DRSample is simple, easy to implement and 
+has good concrete performance. In fact, our results show that, for practical values of $N\leq 2^{24}$, Argon2i provides {\em stronger} resistance 
+to known pebbling attacks than DRSample reversing a finding of Alwen et al.~\cite{CCS:AlwBloHar17}. We then develop a new iMHF candidate by extending 
+DRSample with the bit-reversal graph, and show that the iMHF resists {\em all known attacks} in practice and has {\em optimal} asymptotic performance 
+under every MHF metric. In particular, we prove that (1) {\em any} (nearly) sequential  pebbling attack (including the greedy pebbling attack) has 
+aAT cost $\Omega\left( N^2\right)$, (2) {\em any} parallel attacker has aAT cost at least $\Omega\left(N^2/\log N\right)$ and {\em at least} 
+$\Omega\left(N^2 \log \log N/\log N\right)$ unless one can find new depth-reducing attacks against DRSample which significantly improve upon the state 
+of the art, (3) the graph has high bandwidth-complexity, and (4) any pebbling {\em either} has aAT cost $\omega(N^2)$ or {\em requires} at least $\Omega(N)$ 
+steps with $\Omega(N/\log N)$ pebbles on the DAG. This makes our construction the first practical iMHF with strong guarantees on the sustained space-complexity. 
+We also observe that the Argon2i round function can (trivially) be evaluated in parallel, which would allow an attacker to reduce aAT costs by 
+(nearly) an order of magnitude, and we develop an {\em inherently} sequential version of the Argon2i round function that prevents this attack. 
+We implement our new iMHF candidate (with and without the sequential round function) and show that evaluation speed is nearly identical to Argon2i. 
+Finally, we provide a pebbling reduction which proves that in the parallel random oracle model (PROM) the cost of evaluating an iMHF like Argon2i or 
+DRSample+BRG is given by the pebbling cost of the underlying DAG. </div>
+</li>
+</br>
+
+
+
+<li>
+<b>
+Adversarially Robust Submodular Maximization under Knapsack Constraints
+</b>
+</br><i>
+--dmitriiavdiukhin--, 
+--slobodanmitrovic--, 
+--grigoryyaroslavtsev--,
+Samson Zhou.
+</br></i>
+<a href="https://www.kdd.org/kdd2019/">KDD 2019</a> (selected for oral presentation)
+[<a href="javascript:toggle('RobustSubmodularKnapsack')">abstract</a>]
+<!--[<a href="/Papers/matching.pdf">pdf</a>]-->
+</br>
+<div id="RobustSubmodularKnapsack" style="display: none">
+<p id="abs">
+We propose the first adversarially robust algorithm for monotone submodular maximization under single and multiple knapsack constraints 
+with scalable implementations in distributed and streaming settings. For a single knapsack constraint, our algorithm outputs a robust summary 
+of almost optimal (up to polylogarithmic factors) size, from which a constant-factor approximation to the optimal solution can be constructed. 
+For multiple knapsack constraints, our approximation is within a constant-factor of the best known non-robust solution. 
+
+We evaluate the performance of our algorithms by comparison to natural robustifications of existing non-robust algorithms under two objectives: 
+1) dominating set for large social network graphs from Facebook and Twitter collected by the Stanford Network Analysis Project (SNAP), 
+2) movie recommendations on a dataset from MovieLens. Experimental results show that our algorithms give the best objective for a 
+majority of the inputs and show strong performance even compared to offline algorithms that are given the set of removals in advance. 
+</p>
+</div>
+</li>
+</br>
+
+
+
+
 <li>
 <b>
 Structural Results on Matching Estimation with Applications to Streaming
@@ -611,47 +691,6 @@ who proved an analogous result for DAGs with indegree O(N).
 </li>
 </br>
 
-<li>
-<b>
-Data-Independent Memory Hard Functions: New Attacks and Stronger Constructions
-</b>
-</br><i>
---jeremiahblocki--, 
---benharsha--, 
---sitengkang--, 
---seunghoonlee--, 
---luxing--,
-Samson Zhou.</br></i>
-[<a href="javascript:toggle('imhfnewattacks')">abstract</a>]
-[<a href="https://eprint.iacr.org/2018/944.pdf">pdf</a>]
-</br>
-<div id="imhfnewattacks" style="display: none">
-<p id="abs">
-Data-Independent Memory-hard functions (iMHFs) are a key cryptographic primitive underlying the design of moderately expensive password hashing 
-algorithms and egalitarian proofs of work that are resistant to side-channel attacks. Several goals for MHFs have been proposed including bandwidth 
-hardness, space-time (ST) complexity, amortized area-time (aAT) complexity and sustained space complexity. An iMHF can be specified using a directed 
-acyclic graph (DAG) $G$ with $N=2^n$ nodes and low indegree, and the cost (aAT, ST etc...) to evaluate the iMHF can be analyzed using pebbling games.  
-In particular, given a parameter $N$ (e.g., maximum acceptable running time) we would like to design the DAG $G$ to have maximum possible pebbling 
-cost i.e., to ensure that the iMHF is as expensive as possible for an attacker to compute. Recently, Alwen et al.~\cite{CCS:AlwBloHar17} gave a 
-randomized DAG construction called DRSample and proved that the aAT cost to pebble the graph was $\Omega\left( N^2/\log N\right)$. In an asymptotic 
-sense the DRSample outperformed all prior constructions including Argon2i, the winner of the password hashing competition, which can be pebbled 
-with aAT cost at most $\bigO\left(N^{1.767}\right)$. In this work we first prove a matching {\em upper bound} on the pebbling cost of DRSample by 
-analyzing the greedy pebbling attack of Boneh et al.~\cite{AC:BonCorSch16}. This sequential attack on DRSample is simple, easy to implement and 
-has good concrete performance. In fact, our results show that, for practical values of $N\leq 2^{24}$, Argon2i provides {\em stronger} resistance 
-to known pebbling attacks than DRSample reversing a finding of Alwen et al.~\cite{CCS:AlwBloHar17}. We then develop a new iMHF candidate by extending 
-DRSample with the bit-reversal graph, and show that the iMHF resists {\em all known attacks} in practice and has {\em optimal} asymptotic performance 
-under every MHF metric. In particular, we prove that (1) {\em any} (nearly) sequential  pebbling attack (including the greedy pebbling attack) has 
-aAT cost $\Omega\left( N^2\right)$, (2) {\em any} parallel attacker has aAT cost at least $\Omega\left(N^2/\log N\right)$ and {\em at least} 
-$\Omega\left(N^2 \log \log N/\log N\right)$ unless one can find new depth-reducing attacks against DRSample which significantly improve upon the state 
-of the art, (3) the graph has high bandwidth-complexity, and (4) any pebbling {\em either} has aAT cost $\omega(N^2)$ or {\em requires} at least $\Omega(N)$ 
-steps with $\Omega(N/\log N)$ pebbles on the DAG. This makes our construction the first practical iMHF with strong guarantees on the sustained space-complexity. 
-We also observe that the Argon2i round function can (trivially) be evaluated in parallel, which would allow an attacker to reduce aAT costs by 
-(nearly) an order of magnitude, and we develop an {\em inherently} sequential version of the Argon2i round function that prevents this attack. 
-We implement our new iMHF candidate (with and without the sequential round function) and show that evaluation speed is nearly identical to Argon2i. 
-Finally, we provide a pebbling reduction which proves that in the parallel random oracle model (PROM) the cost of evaluating an iMHF like Argon2i or 
-DRSample+BRG is given by the pebbling cost of the underlying DAG. </div>
-</li>
-</br>
 
 
 
@@ -851,16 +890,22 @@ a maximum weighted matching in planar graphs.
 News
 </h3>
 <ul>
-<!--<li>
+<li>
 2019
 <ul>
+<li>
+April 29: I am giving a talk, "Numerical Linear Algebra in the Sliding Window Model", at Purdue University.
+</li>
+<li>
+April 26-27: I am attending the <a href="https://sites.google.com/view/midwesttheoryday2019/home">Midwest Theory Days</a> at Purdue University and presenting posters 
+"Adversarially Robust Submodular Maximization under Knapsack Constraints" and "Numerical Linear Algebra in the Sliding Window Model".
+</li>
 <li>
 April 19: I am giving a talk, "Numerical Linear Algebra in the Sliding Window Model", at Indiana University-Bloomington.
 </li>
 <li>
 March 20: I am giving a talk, "Adversarially Robust Submodular Maximization under Knapsack Constraints" at the <a href="http://caml.indiana.edu/">CAML Seminar</a>, in Bloomington, IN.
 </li>
-</ul>-->
 <li>
 2018
 <ul>
@@ -978,6 +1023,8 @@ var info = new Array(  new Array('--jeremiahblocki--', 'Jeremiah Blocki', 'https
                      , new Array('--luxing--', 'Lu Xing', 'https://www.cs.purdue.edu/homes/xingl/')
                      , new Array('--petrosdrineas--', 'Petros Drineas', 'https://www.cs.purdue.edu/homes/pdrineas/')
                      , new Array('--jalajupadhyay--', 'Jalaj Upadhyay', 'https://sites.google.com/view/jalajupadhyay/home')
+                     , new Array('--dmitriiavdiukhin--', 'Dmitrii Avdiukhin', 'https://dyukha.github.io/')
+                     , new Array('--slobodanmitrovic--', 'Slobodan Mitrovi&#263', 'https://sites.google.com/view/jalajupadhyay/home')					 
                      );
 					 
 for (i = 0; i < info.length; i++) {
