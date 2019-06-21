@@ -163,6 +163,65 @@ Publications [<a href="https://dblp.uni-trier.de/pers/hd/z/Zhou:Samson">dblp</a>
 <ol reversed>
 
 
+<li>
+<b>
+Approximate F<sub>2</sub>-Sketching of Valuation Functions
+</b>
+</br><i>
+--grigoryyaroslavtsev--, 
+Samson Zhou.</br></i>
+<a href="https://randomconference.wordpress.com/">RANDOM 2019</a>
+[<a href="javascript:toggle('linsketch')">abstract</a>]
+[<a href="/Papers/linsketch.pdf">pdf</a>]
+</br>
+<div id="linsketch" style="display: none">
+<p id="abs">
+We study the problem of constructing a linear sketch of minimum dimension that allows approximation of a given real-valued function 
+$f \colon \ftwo^n \rightarrow \mathbb R$ with small expected squared error. 
+We develop a general theory of linear sketching for such functions through which we analyze their dimension for most commonly studied 
+types of valuation functions: additive, budget-additive, coverage, $\alpha$-Lipschitz submodular and matroid rank functions. 
+This gives a characterization of how many bits of information have to be stored about the input $x$ so that one can compute $f$ under 
+additive updates to its coordinates.
+
+Our results are tight in most cases and we also give extensions to the distributional version of the problem where the input $x \in \ftwo^n$ 
+is generated uniformly at random. Using known connections with dynamic streaming algorithms, both upper and lower bounds on dimension obtained 
+in our work extend to the space complexity of algorithms evaluating $f(x)$ under long sequences of additive updates to the input $x$ presented as a stream. 
+Similar results hold for simultaneous communication in a distributed setting.
+</p>
+</div>
+</li>
+</br>
+
+
+
+
+<li>
+<b>
+Improved Methods on Time-Decay Streams
+</b>
+</br><i>
+--vladimirbraverman--, 
+--harrylang--, 
+--enayatullah--, 
+Samson Zhou.</br></i>
+<a href="https://approxconference.wordpress.com/">APPROX 2019</a>
+[<a href="javascript:toggle('TimeDecay')">abstract</a>]
+</br>
+<div id="TimeDecay" style="display: none">
+<p id="abs">
+In the time-decay model for data streams, elements of an underlying data set arrive sequentially with the recently arrived elements being more important. 
+A common approach for handling large data sets is to maintain a \emph{coreset}, a succinct summary of the processed data that allows approximate recovery of a 
+predetermined query. We provide a general framework that takes any offline-coreset and gives a time-decay coreset for polynomial time decay functions.
+
+We also consider the exponential time decay model for $k$-median clustering, where we provide a constant factor approximation algorithm that utilizes the online 
+facility location algorithm. Our algorithm stores $O(k\log(h\Delta)+h)$ points where $h$ is the half-life of the decay function and $\Delta$ is the aspect ratio 
+of the dataset. Our techniques extend to $k$-means clustering and $M$-estimators as well.
+</div>
+</li>
+</br>
+
+
+
 
 <li>
 <b>
@@ -704,68 +763,6 @@ who proved an analogous result for DAGs with indegree O(N).
 
 <li>
 <b>
-Approximate F<sub>2</sub>-Sketching of Valuation Functions
-</b>
-</br><i>
---grigoryyaroslavtsev--, 
-Samson Zhou.</br></i>
-[<a href="javascript:toggle('linsketch')">abstract</a>]
-[<a href="/Papers/linsketch.pdf">pdf</a>]
-</br>
-<div id="linsketch" style="display: none">
-<p id="abs">
-We study the problem of constructing a linear sketch of minimum dimension that allows approximation of a given real-valued function 
-$f \colon \ftwo^n \rightarrow \mathbb R$ with small expected squared error. 
-We develop a general theory of linear sketching for such functions through which we analyze their dimension for most commonly studied 
-types of valuation functions: additive, budget-additive, coverage, $\alpha$-Lipschitz submodular and matroid rank functions. 
-This gives a characterization of how many bits of information have to be stored about the input $x$ so that one can compute $f$ under 
-additive updates to its coordinates.
-
-Our results are tight in most cases and we also give extensions to the distributional version of the problem where the input $x \in \ftwo^n$ 
-is generated uniformly at random. Using known connections with dynamic streaming algorithms, both upper and lower bounds on dimension obtained 
-in our work extend to the space complexity of algorithms evaluating $f(x)$ under long sequences of additive updates to the input $x$ presented as a stream. 
-Similar results hold for simultaneous communication in a distributed setting.
-</p>
-</div>
-</li>
-</br>
-
-
-
-
-<!--
-<li>
-<b>
-Improved Methods on Time-Decay Streams
-</b>
-</br><i>
---vladimirbraverman--, 
---harrylang--, 
-<a href="https://in.linkedin.com/in/enayat-ullah-b9489717">Enayat Ullah</a>, 
-Samson Zhou.</br></i>
-Manuscript
-[<a href="javascript:toggle('TimeDecay')">abstract</a>]
-</br>
-<div id="TimeDecay" style="display: none">
-<p id="abs">
-In the time-decay model for data streams, elements of an underlying data set arrive sequentially with the recently arrived elements being more important. 
-A common approach for handling large data sets is to maintain a \emph{coreset}, some succinct summary of the processed data that allows approximate recovery of a predetermined query. 
-We provide a general framework that takes any offline-coreset and gives a time-decay coreset for polynomial time decay functions.
-
-As an application of our framework, we consider the problem of $k$-means clustering on time-decay data streams, where we seek $k$ centers to minimize the weighted sum of the distances of all points to the closest center. 
-The weighted sum for each point is a function of the location of the point in the data stream, with older points given less weight. 
-For the polynomial time decay model, we provide a constant factor approximation algorithm that generalizes to any problem that can be approximated by maintaining coresets. 
-
-We also consider the exponential time decay model for $k$-means clustering, where we provide a constant factor approximation algorithm that utilizes the online facility location algorithm. 
-Our algorithm stores $\O{k\log(h\Delta)+h}$ points where $h$ is a given input, the half-life of the function, and $\Delta$ is the aspect ratio.
-</div>
-</li>
-</br>
--->
-
-
-<li>
-<b>
 Numerical Linear Algebra in the Sliding Window Model
 </b>
 </br><i>
@@ -922,7 +919,8 @@ var info = new Array(  new Array('--jeremiahblocki--', 'Jeremiah Blocki', 'https
                      , new Array('--petrosdrineas--', 'Petros Drineas', 'https://www.cs.purdue.edu/homes/pdrineas/')
                      , new Array('--jalajupadhyay--', 'Jalaj Upadhyay', 'https://sites.google.com/view/jalajupadhyay/home')
                      , new Array('--dmitriiavdiukhin--', 'Dmitrii Avdiukhin', 'https://dyukha.github.io/')
-                     , new Array('--slobodanmitrovic--', 'Slobodan Mitrovi&#263', 'https://sites.google.com/view/slobodan-mitrovic')					 
+                     , new Array('--slobodanmitrovic--', 'Slobodan Mitrovi&#263', 'https://sites.google.com/view/slobodan-mitrovic')
+                     , new Array('--enayatullah--', 'Enayat Ullah', 'https://in.linkedin.com/in/enayat-ullah-b9489717')
                      );
 					 
 for (i = 0; i < info.length; i++) {
