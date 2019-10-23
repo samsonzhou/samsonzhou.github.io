@@ -89,7 +89,7 @@ Samson Zhou
 </td>
 </tr>
 <tr>
-<td width = "40%"><p> <a href="/Samson-Zhou-CV.pdf">CV</a></p> </td>
+<td width = "40%"><p> <!--<a href="/Samson-Zhou-CV.pdf">CV</a></p>--> </td>
 </tr>
 </table>
 </center>
@@ -153,6 +153,39 @@ Algorithm Design and Analysis (Teaching Assistant, ACM Graduate TA Award)</li>
 Publications [<a href="https://dblp.uni-trier.de/pers/hd/z/Zhou:Samson">dblp</a>]
 [<a href="https://scholar.google.com/citations?user=NpjsgocAAAAJ">Scholar</a>]</h3>
 <ol reversed>
+
+<li>
+<b>
+Memory-Efficient Performance Monitoring on Programmable Switches with Lean Algorithms
+</b>
+</br><i>
+--zaoxlingliu--, 
+Samson Zhou,
+--orirottenstreich--,
+--vladimirbraverman--,
+--jenniferrexford--
+</br></i>
+<a href="https://www.siam.org/conferences/cm/conference/apocs20">APoCS 2020</a>
+[<a href="javascript:toggle('LZRBR20')">abstract</a>]
+<--[<a href="https://arxiv.org/pdf/1910.05686.pdf">pdf</a>]-->
+</br>
+<div id="LZRBR20" style="display: none">
+<p id="abs">
+Network performance problems are notoriously difficult to diagnose. 
+Prior profiling systems collect performance statistics by keeping information about each network flow, but maintaining per-flow state is 
+not scalable on resource-constrained NIC and switch hardware. Instead, we propose sketch-based performance monitoring using memory that 
+is sublinear in the number of flows. Existing sketches estimate metrics based on flow sizes. In contrast, performance monitoring typically 
+requires combining information across pairs of packets, such as matching a data packet with its acknowledgment to compute a round-trip time. 
+We define a new class of \emph{lean} algorithms that use memory sublinear in both the size of input data and the number of flows. 
+We then introduce lean algorithms for a set of important statistics, such as identifying flows with high latency, loss, out-of-order, 
+or retransmitted packets. We implement prototypes of our lean algorithms on a commodity programmable switch using the P4 language. 
+Our experiments show that lean algorithms detect $\sim$82\% of top 100 problematic flows among real-world packet traces using just 40KB memory.
+</p>
+</div>
+</li>
+</br>
+
+
 
 <li>
 <b>
@@ -1045,6 +1078,9 @@ var info = new Array(  new Array('--jeremiahblocki--', 'Jeremiah Blocki', 'https
                      , new Array('--danfeldman--', 'Dan Feldman', 'http://people.csail.mit.edu/dannyf/')
                      , new Array('--benmussay--', 'Ben Mussay', 'https://dblp.uni-trier.de/pers/hd/m/Mussay:Ben')
                      , new Array('--shubhangkulkarni--', 'Shubhang Kulkarni', 'https://shubhangk.github.io/')
+                     , new Array('--zaoxlingliu--', 'Zaoxing Liu', 'https://zaoxing.github.io/')
+                     , new Array('--orirottenstreich--', 'Ori Rottenstreich', 'https://sites.google.com/site/orirottenstreich/')
+                     , new Array('--jenniferrexford--', 'Jennifer Rexford', 'https://www.cs.princeton.edu/~jrex/')					 
                      );
 					 
 for (i = 0; i < info.length; i++) {
