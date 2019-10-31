@@ -155,6 +155,85 @@ Publications [<a href="https://dblp.uni-trier.de/pers/hd/z/Zhou:Samson">dblp</a>
 [<a href="https://scholar.google.com/citations?user=NpjsgocAAAAJ">Scholar</a>]</h3>
 <ol reversed>
 
+
+
+<li>
+<b>
+Approximating Cumulative Pebbling Cost is Unique Games Hard
+</b>
+</br><i>
+--jeremiahblocki--, 
+--seunghoonlee--, 
+Samson Zhou</br></i>
+<a href="http://itcs-conf.org/index.html">ITCS 2020</a>
+[<a href="javascript:toggle('approxcc')">abstract</a>]
+[<a href="https://arxiv.org/pdf/1904.08078.pdf">pdf</a>]
+</br>
+<div id="approxcc" style="display: none">
+<p id="abs">
+The cumulative pebbling complexity of a directed acyclic graph G is defined as cc(G) = \min_P \sum_i |P_i|, where the minimum is taken over 
+all legal (parallel) black pebblings of G and |P_i| denotes the number of pebbles on the graph during round i. Intuitively, cc(G) captures the 
+amortized Space-Time complexity of pebbling m copies of G in parallel. The cumulative pebbling complexity of a graph G is of particular interest 
+in the field of cryptography as cc(G) is tightly related to the amortized Area-Time complexity of the data-independent memory hard function 
+(iMHF) f_{G,H} (Alwen and Serbinenko, STOC 2015) defined using a constant indegree directed acyclic graph (DAG) G and a random oracle H. 
+A secure iMHF should have amortized Space-Time complexity as high as possible e.g., to deter brute-force password attacker who wants to find x 
+such that f_{G,H}(x) = h. Thus, to analyze the (in)security of a candidate iMHF f_{G,H}, it is crucial to estimate the value cc(G) but currently, 
+upper and lower bounds for leading iMHF candidates differ by several orders of magnitude. Blocki and Zhou recently showed that is NP-Hard to compute 
+cc(G), but their techniques do not even rule out an efficient (1+epsilon)-approximation algorithm for any constant epsilon>0. We show 
+that for any constant c > 0, it is Unique Games hard to approximate cc(G) to within a factor of c.
+
+Along the way, we show the hardness of approximation of the DAG Vertex Deletion problem on DAGs of constant indegree. Namely, we show that 
+for any k,epsilon>0 given a DAG G with N nodes and constant indegree, the it is Unique Games hard to distinguish between the case that 
+(e_1, d_1)-reducible with e_1=N^{1/(1+2epsilon)}/k and d_1=k N^{2epsilon/(1+2epsilon)} and the case that G is (e_2, d_2)-depth-robust with e_2 
+= (1-epsilon)k e_1 and d_2= 0.9 N^{(1+epsilon)/(1+2epsilon)}, which may be of independent interest. Our result generalizes a result of Svensson 
+who proved an analogous result for DAGs with indegree O(N).
+</div>
+</li>
+</br>
+
+
+
+<li>
+<b>
+Computationally Data-Independent Memory Hard Functions
+</b>
+</br><i>
+--hassanameri--, 
+--jeremiahblocki--, 
+Samson Zhou</br></i>
+<a href="http://itcs-conf.org/index.html">ITCS 2020</a>
+[<a href="javascript:toggle('ABZ20')">abstract</a>]
+<!--[<a href="https://arxiv.org/pdf/1904.08078.pdf">pdf</a>]-->
+</br>
+<div id="ABZ20" style="display: none">
+<p id="abs">
+Memory hard functions (MHFs) are an important cryptographic primitive that are used to design egalitarian proofs of work and in the construction of moderately 
+expensive key-derivation functions resistant to brute-force attacks. Broadly speaking, MHFs can be divided into two categories: data-dependent memory hard 
+functions (dMHFs) and data-independent memory hard functions (iMHFs). iMHFs are resistant to certain side-channel attacks as the memory access pattern induced 
+by the honest evaluation algorithm is independent of the potentially sensitive input e.g., password. While dMHFs are potentially vulnerable to side-channel 
+attacks (the induced memory access pattern might leak useful information to a brute-force attacker), they can achieve higher cumulative memory complexity (CMC) 
+in comparison than an iMHF. In particular, any iMHF that can be evaluated in $N$ steps on a sequential machine has CMC {\em at most} $\O{\frac{N^2\log\log N}{\log N}}$. 
+By contrast, the dMHF scrypt achieves maximal CMC $\Omega(N^2)$ --- though the CMC of scrypt would be reduced to just $\O{N}$ after a side-channel attack. 
+
+In this paper, we introduce the notion of computationally data-independent memory hard functions (ciMHFs). 
+Intuitively, we require that memory access pattern induced by the (randomized) ciMHF evaluation algorithm appears to be independent from the standpoint of a 
+computationally bounded eavesdropping attacker --- even if the attacker selects the initial input. We then ask whether it is possible to circumvent known 
+upper bound for iMHFs and build a ciMHF with CMC $\Omega(N^2)$. Surprisingly, we answer the question in the affirmative when the ciMHF evaluation algorithm 
+is executed on a two-tiered memory architecture (RAM/Cache). 
+
+We introduce the notion of a $k$-restricted dynamic graph to quantify the continuum between unrestricted dMHFs $(k=n)$ and iMHFs ($k=1$). For any $\eps > 0$ 
+we show how to construct a $k$-restricted dynamic graph with $k=\Omega(N^{1-\eps})$ that provably achieves maximum cumulative pebbling cost $\Omega(N^2)$. 
+We can use $k$-restricted dynamic graphs to build a ciMHF provided that cache is large enough to hold $k$ hash outputs and the dynamic graph satisfies a 
+certain property that we call ``amenable to shuffling.''  In particular, we prove that the induced memory access pattern is indistinguishable to a 
+polynomial time attacker who can monitor the locations of read/write requests to RAM, but not cache. We also show that when $k=o\left(N^{1/\log\log N}\right)$, 
+then any $k$-restricted graph with constant indegree has cumulative pebbling cost $o(N^2)$. Our results almost completely characterize the spectrum of 
+$k$-restricted dynamic graphs. 
+</div>
+</li>
+</br>
+
+
+
 <li>
 <b>
 Memory-Efficient Performance Monitoring on Programmable Switches with Lean Algorithms
@@ -881,39 +960,6 @@ on MNIST and actually improves the accuracy </div>
 
 
 
-<li>
-<b>
-Approximating Cumulative Pebbling Cost is Unique Games Hard
-</b>
-</br><i>
---jeremiahblocki--, 
---seunghoonlee--, 
-Samson Zhou</br></i>
-[<a href="javascript:toggle('approxcc')">abstract</a>]
-[<a href="https://arxiv.org/pdf/1904.08078.pdf">pdf</a>]
-</br>
-<div id="approxcc" style="display: none">
-<p id="abs">
-The cumulative pebbling complexity of a directed acyclic graph G is defined as cc(G) = \min_P \sum_i |P_i|, where the minimum is taken over 
-all legal (parallel) black pebblings of G and |P_i| denotes the number of pebbles on the graph during round i. Intuitively, cc(G) captures the 
-amortized Space-Time complexity of pebbling m copies of G in parallel. The cumulative pebbling complexity of a graph G is of particular interest 
-in the field of cryptography as cc(G) is tightly related to the amortized Area-Time complexity of the data-independent memory hard function 
-(iMHF) f_{G,H} (Alwen and Serbinenko, STOC 2015) defined using a constant indegree directed acyclic graph (DAG) G and a random oracle H. 
-A secure iMHF should have amortized Space-Time complexity as high as possible e.g., to deter brute-force password attacker who wants to find x 
-such that f_{G,H}(x) = h. Thus, to analyze the (in)security of a candidate iMHF f_{G,H}, it is crucial to estimate the value cc(G) but currently, 
-upper and lower bounds for leading iMHF candidates differ by several orders of magnitude. Blocki and Zhou recently showed that is NP-Hard to compute 
-cc(G), but their techniques do not even rule out an efficient (1+epsilon)-approximation algorithm for any constant epsilon>0. We show 
-that for any constant c > 0, it is Unique Games hard to approximate cc(G) to within a factor of c.
-
-Along the way, we show the hardness of approximation of the DAG Vertex Deletion problem on DAGs of constant indegree. Namely, we show that 
-for any k,epsilon>0 given a DAG G with N nodes and constant indegree, the it is Unique Games hard to distinguish between the case that 
-(e_1, d_1)-reducible with e_1=N^{1/(1+2epsilon)}/k and d_1=k N^{2epsilon/(1+2epsilon)} and the case that G is (e_2, d_2)-depth-robust with e_2 
-= (1-epsilon)k e_1 and d_2= 0.9 N^{(1+epsilon)/(1+2epsilon)}, which may be of independent interest. Our result generalizes a result of Svensson 
-who proved an analogous result for DAGs with indegree O(N).
-</div>
-</li>
-</br>
-
 
 
 
@@ -1082,7 +1128,8 @@ var info = new Array(  new Array('--jeremiahblocki--', 'Jeremiah Blocki', 'https
                      , new Array('--shubhangkulkarni--', 'Shubhang Kulkarni', 'https://shubhangk.github.io/')
                      , new Array('--zaoxlingliu--', 'Zaoxing Liu', 'https://zaoxing.github.io/')
                      , new Array('--orirottenstreich--', 'Ori Rottenstreich', 'https://sites.google.com/site/orirottenstreich/')
-                     , new Array('--jenniferrexford--', 'Jennifer Rexford', 'https://www.cs.princeton.edu/~jrex/')					 
+                     , new Array('--jenniferrexford--', 'Jennifer Rexford', 'https://www.cs.princeton.edu/~jrex/')
+                     , new Array('--hassanameri--', 'Mohammad Hassan Ameri', 'https://www.cs.purdue.edu/homes/mameriek/')
                      );
 					 
 for (i = 0; i < info.length; i++) {
