@@ -156,6 +156,43 @@ Publications [<a href="https://dblp.uni-trier.de/pers/hd/z/Zhou:Samson">dblp</a>
 <ol reversed>
 
 
+<li>
+<b>
+Data-Independent Neural Pruning via Coresets
+</b>
+</br><i>
+--benmussay--,
+--margaritaosadchy--,
+--vladimirbraverman--,
+Samson Zhou,
+--danfeldman--
+</br></i>
+<a href="https://iclr.cc/Conferences/2020/">ICLR 2020</a>
+[<a href="javascript:toggle('coresetsReLU')">abstract</a>]
+[<a href="https://arxiv.org/pdf/1907.04018.pdf">pdf</a>]
+</br>
+<div id="coresetsReLU" style="display: none">
+<p id="abs">
+Previous work showed empirically that large neural networks can be significantly reduced in size while preserving their accuracy.
+ Model compression became a central research topic, as it is crucial for deployment of neural networks on devices with limited computational and 
+ memory resources. The majority of the compression methods are based on heuristics and offer no worst-case guarantees on the trade-off between the 
+ compression rate and the approximation error for an arbitrarily new sample.
+
+We propose the first efficient, data-independent neural pruning algorithm with a provable trade-off between its compression rate and the approximation 
+error for any future test sample. Our method is based on the coreset framework, which finds a small weighted subset of points that provably approximates 
+the original inputs. Specifically, we approximate the output of a layer of neurons by a coreset of neurons in the previous layer and discard the rest. 
+We apply this framework in a layer-by-layer fashion from the top to the bottom. Unlike previous works, our coreset is data independent, 
+meaning that it provably guarantees the accuracy of the function for any input $x\in \mathbb{R}^d$, including an adversarial one. 
+We demonstrate the effectiveness of our method on popular network architectures. In particular, our coresets yield 90\% compression of the 
+LeNet-300-100 architecture on MNIST while improving classification accuracy.
+</div>
+</li>
+</br>
+
+
+
+
+
 
 <li>
 <b>
@@ -924,38 +961,6 @@ security parameter against various resource constrained channels.
 
 
 
-<li>
-<b>
-Data-Independent Neural Pruning via Coresets
-</b>
-</br><i>
---benmussay--,
---margaritaosadchy--,
---vladimirbraverman--,
-Samson Zhou,
---danfeldman--
-</br></i>
-[<a href="javascript:toggle('coresetsReLU')">abstract</a>]
-[<a href="https://arxiv.org/pdf/1907.04018.pdf">pdf</a>]
-</br>
-<div id="coresetsReLU" style="display: none">
-<p id="abs">
-Model compression provides a means to efficiently deploy deep neural networks (DNNs) on devices that limited computation resources and tight power 
-budgets, such as mobile and IoT (Internet of Things) devices. Consequently, model compression is one of the most critical topics in modern deep 
-learning. Typically, the state-of-the-art model compression methods suffer from a big limitation: they are only based on heuristics rather than 
-theoretical foundation and thus offer no worst-case guarantees. To bridge this gap, Baykal et al. [2018a] suggested using a coreset, a small weighted 
-subset of the data that provably approximates the original data set, to sparsify the parameters of a trained fully-connected neural network by sampling 
-a number of neural network parameters based on the importance of the data. However, the sampling procedure is data-dependent and can only be only be 
-performed after an expensive training phase. 
-
-We propose the use of data-independent coresets to perform provable model compression without the need for 
-training. We first prove that there exists a coreset whose size is independent of the input size of the data for any neuron whose activation function 
-is from a family of functions that includes variants of ReLU, sigmoid and others. We then provide a compression-based algorithm that constructs these 
-coresets and explicitly applies neuron pruning for the underlying model. We demonstrate the effectiveness of ourmethods with experimental evaluations 
-for both synthetic and real-world benchmark network compression. In particular, our framework provides up to 90% compression on the LeNet-300-100 architecture 
-on MNIST and actually improves the accuracy </div>
-</li>
-</br>
 
 
 
