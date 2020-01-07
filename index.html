@@ -158,6 +158,39 @@ Publications [<a href="https://dblp.uni-trier.de/pers/hd/z/Zhou:Samson">dblp</a>
 
 <li>
 <b>
+"Bring Your Own Greedy"+Max: Near-Optimal 1/2-Approximations for Submodular Knapsack 
+</b>
+</br><i>
+--dmitriiavdiukhin--, 
+--grigoryyaroslavtsev--,
+Samson Zhou
+</br></i>
+<a href="https://www.aistats.org/">AISTATS 2020</a>
+[<a href="javascript:toggle('AYZ19')">abstract</a>]
+[<a href="https://arxiv.org/pdf/1910.05646.pdf">pdf</a>]
+</br>
+<div id="AYZ19" style="display: none">
+<p id="abs">
+The problem of selecting a small-size representative summary of a large dataset is a cornerstone of machine learning, optimization and data science. 
+Motivated by applications to recommendation systems and other scenarios with query-limited access to vast amounts of data, we propose a new rigorous 
+algorithmic framework for a standard formulation of this problem as a submodular maximization subject to a linear (knapsack) constraint. 
+Our framework is based on augmenting all partial Greedy solutions with the best additional item. 
+It can be instantiated with negligible overhead in any model of computation, which allows the classic Greedy algorithm and its variants to be implemented. 
+We give such instantiations in the offline (Greedy+Max), multi-pass streaming (Sieve+Max) and distributed (Distributed+Max) settings. 
+Our algorithms give (1/2-epsilon)-approximation with most other key parameters of interest being near-optimal. 
+Our analysis is based on a new set of first-order linear differential inequalities and their robust approximate versions. 
+Experiments on typical datasets (movie recommendations, influence maximization) confirm scalability and high quality of solutions obtained via our framework. 
+Instance-specific approximations are typically in the 0.6-0.7 range and frequently beat even the (1-1/epsilon) \approx 0.63 worst-case barrier for polynomial-time 
+algorithms.
+</p>
+</div>
+</li>
+</br>
+
+
+
+<li>
+<b>
 Data-Independent Neural Pruning via Coresets
 </b>
 </br><i>
@@ -896,35 +929,7 @@ effect of unreliability/noise in test outcomes.
 <h3>Preprints</h3>
 <ul>
 
-<li>
-<b>
-"Bring Your Own Greedy"+Max: Near-Optimal 1/2-Approximations for Submodular Knapsack 
-</b>
-</br><i>
---dmitriiavdiukhin--, 
---grigoryyaroslavtsev--,
-Samson Zhou
-</br></i>
-[<a href="javascript:toggle('AYZ19')">abstract</a>]
-[<a href="https://arxiv.org/pdf/1910.05646.pdf">pdf</a>]
-</br>
-<div id="AYZ19" style="display: none">
-<p id="abs">
-The problem of selecting a small-size representative summary of a large dataset is a cornerstone of machine learning, optimization and data science. 
-Motivated by applications to recommendation systems and other scenarios with query-limited access to vast amounts of data, we propose a new rigorous 
-algorithmic framework for a standard formulation of this problem as a submodular maximization subject to a linear (knapsack) constraint. 
-Our framework is based on augmenting all partial Greedy solutions with the best additional item. 
-It can be instantiated with negligible overhead in any model of computation, which allows the classic Greedy algorithm and its variants to be implemented. 
-We give such instantiations in the offline (Greedy+Max), multi-pass streaming (Sieve+Max) and distributed (Distributed+Max) settings. 
-Our algorithms give (1/2-epsilon)-approximation with most other key parameters of interest being near-optimal. 
-Our analysis is based on a new set of first-order linear differential inequalities and their robust approximate versions. 
-Experiments on typical datasets (movie recommendations, influence maximization) confirm scalability and high quality of solutions obtained via our framework. 
-Instance-specific approximations are typically in the 0.6-0.7 range and frequently beat even the (1-1/epsilon) \approx 0.63 worst-case barrier for polynomial-time 
-algorithms.
-</p>
-</div>
-</li>
-</br>
+
 
 
 
