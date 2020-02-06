@@ -154,6 +154,43 @@ Algorithm Design and Analysis (Teaching Assistant, ACM Graduate TA Award)</li>
 Publications [<a href="https://dblp.uni-trier.de/pers/hd/z/Zhou:Samson">dblp</a>]
 [<a href="https://scholar.google.com/citations?user=NpjsgocAAAAJ">Scholar</a>]</h3>
 <ol reversed>
+<li>
+<b>
+Non-Adaptive Adaptive Sampling on Turnstile Streams
+</b>
+</br><i>
+--sepidehmahabadi--,
+--ilyarazenshteyn--,
+--davidwoodruff--,
+Samson Zhou
+</br></i>
+<a href="http://acm-stoc.org/stoc2020/">STOC 2020</a>
+[<a href="javascript:toggle('MRWZ20')">abstract</a>]
+<!--[<a href="https://arxiv.org/pdf/1910.05646.pdf">pdf</a>]-->
+</br>
+<div id="AYZ19" style="display: none">
+<p id="abs">
+Adaptive sampling is a useful algorithmic tool for data summarization problems in the classical centralized setting, where the entire dataset is available to the single processor performing the computation. 
+Adaptive sampling repeatedly selects rows of an underlying matrix $\A\in\mathbb{R}^{n\times d}$, where $n\gg d$, with probabilities proportional to their distances to the subspace of the previously selected rows. 
+Intuitively, adaptive sampling seems to be limited to trivial multi-pass algorithms in the streaming model of computation due to its inherently sequential nature of assigning sampling probabilities to each row only after the previous iteration is completed. 
+Surprisingly, we show this is not the case by giving the first one-pass algorithms for adaptive sampling on turnstile streams and using space $d\,\poly(k,\log n)$, where $k$ is the number of adaptive sampling rounds to be performed. 
+
+Our adaptive sampling procedure has a number of applications to various data summarization problems that either improve state-of-the-art or have only been previously studied in the more relaxed row-arrival model. 
+We give the first relative-error algorithm for column subset selection on turnstile streams. 
+We show our adaptive sampling algorithm also gives the first relative-error algorithm for subspace approximation on turnstile streams that returns $k$ noisy rows of $\A$. 
+The quality of the output can be improved to a $(1+\eps)$-approximation at the tradeoff of a bicriteria algorithm that outputs a larger number of rows. 
+We then give the first algorithm for projective clustering on turnstile streams that uses space sublinear in $n$. 
+In fact, we use space $d\,\poly\left(k,s,\frac{1}{\eps},\log n\right)$ to output a $(1+\eps)$-approximation, where $s$ is the number of $k$-dimensional subspaces. 
+Our adaptive sampling primitive also provides the first algorithm for volume maximization on turnstile streams. 
+We complement our volume maximization algorithmic results with lower bounds that are tight up to lower order terms, even for multi-pass algorithms. 
+By a similar construction, we also obtain lower bounds for volume maximization in the row-arrival model, which we match with competitive upper bounds. 
+</p>
+</div>
+</li>
+</br>
+
+
+
 
 
 <li>
@@ -1143,6 +1180,8 @@ var info = new Array(  new Array('--jeremiahblocki--', 'Jeremiah Blocki', 'https
                      , new Array('--jenniferrexford--', 'Jennifer Rexford', 'https://www.cs.princeton.edu/~jrex/')
                      , new Array('--hassanameri--', 'Mohammad Hassan Ameri', 'https://www.cs.purdue.edu/homes/mameriek/')
                      , new Array('--margaritaosadchy--', 'Margarita Osadchy', 'http://rita.osadchy.net/')
+                     , new Array('--sepidehmahabadi--', 'Sepideh Mahabadi', 'http://www.mit.edu/~mahabadi/')
+                     , new Array('--ilyarazenshteyn--', 'Ilya Razenshteyn', 'https://www.ilyaraz.org/')
                      );
 					 
 for (i = 0; i < info.length; i++) {
