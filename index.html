@@ -156,6 +156,46 @@ Publications [<a href="https://dblp.uni-trier.de/pers/hd/z/Zhou:Samson">dblp</a>
 <!--Please respect the copyrights of the sources from which the reference materials are compiled. -->
 
 <ol reversed>
+
+
+<li>
+<b>
+On Locally Decodable Codes in Resource Bounded Channels
+</b>
+</br><i>
+--jeremiahblocki--,
+--shubhangkulkarni--,
+Samson Zhou
+</br></i>
+<a href="https://itcrypto.github.io/index.html">ITC 2020</a>
+[<a href="javascript:toggle('resourceLDC')">abstract</a>]
+[<a href="https://arxiv.org/pdf/1909.11245.pdf">pdf</a>]
+</br>
+<div id="resourceLDC" style="display: none">
+<p id="abs">
+Constructions of locally decodable codes (\LDCs) have one of two undesirable properties: low rate or high locality (polynomial in the length of the message). 
+In settings where the encoder/decoder have already exchanged cryptographic keys and the channel is a probabilistic polynomial time (\PPT) algorithm, 
+it is possible to circumvent these barriers and design \LDCs\ with constant rate and small locality. 
+However, the assumption that the encoder/decoder have exchanged cryptographic keys is often prohibitive. 
+We thus consider the problem of designing explicit and efficient \LDCs\ in settings where the channel is {\em slightly} more constrained than the 
+encoder/decoder with respect to some resource e.g., space or (sequential) time. Given an explicit function $f$ that the channel cannot compute, we show 
+how the encoder can transmit a random secret key to the local decoder using $f(\cdot)$ and a random oracle $\oracleH$. 
+This allows bootstrap from the private key \LDC\ construction of Ostrovsky, Pandey and Sahai (ICALP, 2007), thereby answering an open question posed by 
+Guruswami and Smith (FOCS 2010) of whether such bootstrapping techniques may apply to \LDCs\ in weaker channel models than just \PPT\ algorithms. 
+Specifically, in the random oracle model we show how to construct explicit constant rate \LDCs\ with optimal locality of $\polylog$ in the 
+security parameter against various resource constrained channels.
+</div>
+</li>
+</br>
+
+
+
+
+
+
+
+
+
 <li>
 <b>
 Non-Adaptive Adaptive Sampling on Turnstile Streams
@@ -976,51 +1016,6 @@ effect of unreliability/noise in test outcomes.
 
 <h3>Preprints</h3>
 <ul>
-
-
-
-
-
-
-
-<li>
-<b>
-On Locally Decodable Codes in Resource Bounded Channels
-</b>
-</br><i>
---jeremiahblocki--,
---shubhangkulkarni--,
-Samson Zhou
-</br></i>
-[<a href="javascript:toggle('resourceLDC')">abstract</a>]
-[<a href="https://arxiv.org/pdf/1909.11245.pdf">pdf</a>]
-</br>
-<div id="resourceLDC" style="display: none">
-<p id="abs">
-Constructions of locally decodable codes (\LDCs) have one of two undesirable properties: low rate or high locality (polynomial in the length of the message). 
-In settings where the encoder/decoder have already exchanged cryptographic keys and the channel is a probabilistic polynomial time (\PPT) algorithm, 
-it is possible to circumvent these barriers and design \LDCs\ with constant rate and small locality. 
-However, the assumption that the encoder/decoder have exchanged cryptographic keys is often prohibitive. 
-We thus consider the problem of designing explicit and efficient \LDCs\ in settings where the channel is {\em slightly} more constrained than the 
-encoder/decoder with respect to some resource e.g., space or (sequential) time. Given an explicit function $f$ that the channel cannot compute, we show 
-how the encoder can transmit a random secret key to the local decoder using $f(\cdot)$ and a random oracle $\oracleH$. 
-This allows bootstrap from the private key \LDC\ construction of Ostrovsky, Pandey and Sahai (ICALP, 2007), thereby answering an open question posed by 
-Guruswami and Smith (FOCS 2010) of whether such bootstrapping techniques may apply to \LDCs\ in weaker channel models than just \PPT\ algorithms. 
-Specifically, in the random oracle model we show how to construct explicit constant rate \LDCs\ with optimal locality of $\polylog$ in the 
-security parameter against various resource constrained channels.
-</div>
-</li>
-</br>
-
-
-
-
-
-
-
-
-
-
 
 
 <li>
