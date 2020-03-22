@@ -153,7 +153,6 @@ Algorithm Design and Analysis (Teaching Assistant, ACM Graduate TA Award)</li>
 <h3>
 Publications [<a href="https://dblp.uni-trier.de/pers/hd/z/Zhou:Samson">dblp</a>]
 [<a href="https://scholar.google.com/citations?user=NpjsgocAAAAJ">Scholar</a>]</h3>
-<!--Please respect the copyrights of the sources from which the reference materials are compiled. -->
 
 <ol reversed>
 
@@ -215,14 +214,14 @@ Samson Zhou
 Adaptive sampling is a useful algorithmic tool for data summarization problems in the classical centralized setting, where the entire dataset is available to the single processor performing the computation. 
 Adaptive sampling repeatedly selects rows of an underlying matrix $\A\in\mathbb{R}^{n\times d}$, where $n\gg d$, with probabilities proportional to their distances to the subspace of the previously selected rows. 
 Intuitively, adaptive sampling seems to be limited to trivial multi-pass algorithms in the streaming model of computation due to its inherently sequential nature of assigning sampling probabilities to each row only after the previous iteration is completed. 
-Surprisingly, we show this is not the case by giving the first one-pass algorithms for adaptive sampling on turnstile streams and using space $d\,\poly(k,\log n)$, where $k$ is the number of adaptive sampling rounds to be performed. 
+Surprisingly, we show this is not the case by giving the first one-pass algorithms for adaptive sampling on turnstile streams and using space $\poly(d,k,\log n)$, where $k$ is the number of adaptive sampling rounds to be performed. 
 
 Our adaptive sampling procedure has a number of applications to various data summarization problems that either improve state-of-the-art or have only been previously studied in the more relaxed row-arrival model. 
 We give the first relative-error algorithm for column subset selection on turnstile streams. 
 We show our adaptive sampling algorithm also gives the first relative-error algorithm for subspace approximation on turnstile streams that returns $k$ noisy rows of $\A$. 
 The quality of the output can be improved to a $(1+\eps)$-approximation at the tradeoff of a bicriteria algorithm that outputs a larger number of rows. 
 We then give the first algorithm for projective clustering on turnstile streams that uses space sublinear in $n$. 
-In fact, we use space $d\,\poly\left(k,s,\frac{1}{\eps},\log n\right)$ to output a $(1+\eps)$-approximation, where $s$ is the number of $k$-dimensional subspaces. 
+In fact, we use space $\poly\left(d,k,s,\frac{1}{\eps},\log n\right)$ to output a $(1+\eps)$-approximation, where $s$ is the number of $k$-dimensional subspaces. 
 Our adaptive sampling primitive also provides the first algorithm for volume maximization on turnstile streams. 
 We complement our volume maximization algorithmic results with lower bounds that are tight up to lower order terms, even for multi-pass algorithms. 
 By a similar construction, we also obtain lower bounds for volume maximization in the row-arrival model, which we match with competitive upper bounds. 
@@ -316,11 +315,9 @@ Approximating Cumulative Pebbling Cost is Unique Games Hard
 Samson Zhou</br></i>
 <a href="http://itcs-conf.org/index.html">ITCS 2020</a>
 [<a href="javascript:toggle('approxcc')">abstract</a>]
-<!--
-[<a href="https://www.cs.purdue.edu/homes/lee2856/docs/itcs-poster.pdf">poster</a>]
-[<a href="https://www.cs.purdue.edu/homes/lee2856/docs/crypto-reading-group-presentation.pdf">slides</a>]
+[<a href="https://www.cs.purdue.edu/homes/lee2856/docs/itcs-poster.pdf">Seunghoon's poster</a>]
+[<a href="https://www.cs.purdue.edu/homes/lee2856/docs/crypto-reading-group-presentation.pdf">Seunghoon's slides</a>]
 [<a href="https://www.cs.purdue.edu/homes/lee2856/itcs2020.html">website</a>]
--->
 [<a href="https://arxiv.org/pdf/1904.08078.pdf">pdf</a>]
 </br>
 <div id="approxcc" style="display: none">
@@ -526,7 +523,7 @@ Data-Independent Memory Hard Functions: New Attacks and Stronger Constructions
 Samson Zhou</br></i>
 <a href="https://crypto.iacr.org/2019/">CRYPTO 2019</a>
 [<a href="javascript:toggle('imhfnewattacks')">abstract</a>]
-<!--[<a href="https://www.cs.purdue.edu/homes/jblocki/slides/Blocki2019Crypto.pptx">slides</a>]-->
+[<a href="https://www.cs.purdue.edu/homes/jblocki/slides/Blocki2019Crypto.pptx">Jeremiah's slides</a>]
 [<a href="https://eprint.iacr.org/2018/944.pdf">pdf</a>]
 </br>
 <div id="imhfnewattacks" style="display: none">
@@ -642,7 +639,7 @@ Samson Zhou</br></i>
 <a href="https://www.sigsac.org/ccs/CCS2018/">CCS 2018</a>
 [<a href="javascript:toggle('RedBlue')">abstract</a>]
 [<a href="https://www.youtube.com/watch?v=z-VqQzwN4bs">video</a>]
-<!--[<a href="https://www.cs.purdue.edu/homes/jblocki/slides/2018BlockiPurdueCryptoGroupBandwdithHardFunctions.pptx">slides</a>]-->
+[<a href="https://www.cs.purdue.edu/homes/jblocki/slides/2018BlockiPurdueCryptoGroupBandwdithHardFunctions.pptx">Jeremiah's slides</a>]
 [<a href="https://eprint.iacr.org/2018/221.pdf">pdf</a>]
 </br>
 <div id="RedBlue" style="display: none">
@@ -879,7 +876,7 @@ On the Depth-Robustness and Cumulative Pebbling Cost of Argon2i
 Samson Zhou</br></i>
 <a href="https://www.iacr.org/workshops/tcc2017/index.html">TCC 2017</a>
 [<a href="javascript:toggle('argon')">abstract</a>]
-<!--[<a href="https://www.cs.purdue.edu/homes/jblocki/slides/BlockiTCC2017Argon2.pptx">slides</a>]-->
+[<a href="https://www.cs.purdue.edu/homes/jblocki/slides/BlockiTCC2017Argon2.pptx">Jeremiah's slides</a>]
 [<a href="http://eprint.iacr.org/2017/442.pdf">pdf</a>]
 </br>
 <div id="argon" style="display: none">
