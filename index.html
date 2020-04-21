@@ -1018,11 +1018,13 @@ effect of unreliability/noise in test outcomes.
 
 <li>
 <b>
-Numerical Linear Algebra in the Sliding Window Model
+Near Optimal Linear Algebra in the Online and Sliding Window Models
 </b>
 </br><i>
 --vladimirbraverman--,
 --petrosdrineas--, 
+--cameronmusco--,
+--christophermusco--,
 --jalajupadhyay--, 
 --davidwoodruff--, 
 Samson Zhou</br></i>
@@ -1031,26 +1033,25 @@ Samson Zhou</br></i>
 </br>
 <div id="RandNLASliding" style="display: none">
 <p id="abs">
-We initiate the study of numerical linear algebra in the sliding window model, where only the most recent $W$ updates in the data stream form the underlying set. 
-Although most existing work in the sliding window model uses the {\em smooth histogram} framework, most interesting linear-algebraic problems are not smooth; 
-we show that the spectral norm, vector induced matrix norms, generalized regression, and low-rank approximation are not amenable for the smooth histogram framework. 
+We initiate the study of numerical linear algebra in the sliding window model, where only the most recent $W$ updates in a stream form the underlying data set. 
+Although many existing algorithms in the sliding window model use or borrow elements from the smooth histogram framework (Braverman and Ostrovsky, FOCS 2007), 
+we show that many interesting linear-algebraic problems, including spectral and vector induced matrix norms, generalized regression, and low-rank approximation, 
+are not amenable to this approach in the row-arrival model. To overcome this challenge, we first introduce a unified row-sampling based framework that gives 
+\emph{randomized} algorithms for spectral approximation, low-rank approximation/projection-cost preservation, and $\ell_1$-subspace embeddings in the 
+sliding window model, which often use nearly optimal space and achieve nearly input sparsity runtime. Our algorithms are based on ``reverse online'' versions 
+of offline sampling distributions such as (ridge) leverage scores, $\ell_1$ sensitivities, and Lewis weights to quantify both the importance and 
+the recency of a row; our structural results on these distributions may be of independent interest for future algorithmic design. 
 
-To overcome this challenge, we first give a deterministic algorithm that achieves spectral approximation in the sliding window model that can be viewed as a 
-generalization of smooth histograms, using the Loewner ordering of positive semidefinite matrices. 
-We then give algorithms for both spectral approximation and low-rank approximation that are space-optimal up to polylogarithmic factors. 
-Our algorithms are based on a new notion of ``reverse online'' leverage scores that account for both how unique and how recent a row is. 
-We show that by sampling rows based on their reverse online leverage scores and repeatedly downsampling each time a new row arrives, we can both oversample rows with 
-respect to their true leverage scores, and also bound the total number of rows stored. 
-The downsampling procedure can be streamlined so that both our spectral approximation algorithm and our low-rank approximation algorithm run in input sparsity runtime, 
-up to lower order factors. 
-
-We show that our techniques have a number of applications to linear-algebraic problems in other settings. 
-Specifically, we show that our analysis immediately implies an algorithm for low-rank approximation in the online setting that is space-optimal up to logarithmic factors, 
-as well as nearly input sparsity time. 
-We then show our deterministic spectral approximation algorithm can be used to handle $\ell_1$ spectral approximation in the sliding window model under a 
-certain assumption on the bit complexity of the entries. 
-Finally, we show that our downsampling framework can be applied to the problem of approximate matrix multiplication and provide upper and lower bounds 
-that are tight up to $\log\log W$ factors. 
+Although our techniques initially address numerical linear algebra in the sliding window model, our row-sampling framework rather surprisingly 
+implies connections to the well-studied online model; our structural results also give the first sample optimal (up to lower order terms) online 
+algorithm for low-rank approximation/projection-cost preservation. Using this powerful primitive, we give online algorithms for column/row subset 
+selection and principal component analysis that resolves the main open question of Bhaskara~\etal\,(FOCS 2019). We also give the first online 
+algorithm for $\ell_1$-subspace embeddings. We further formalize the connection between the online model and the sliding window model by introducing 
+an \emph{additional} unified framework for \emph{deterministic} algorithms using a merge and reduce paradigm and the concept of online coresets, 
+which we define as a weighted subset of rows of the input matrix that can be used to compute a good approximation to some given function 
+on all of its prefixes. Our sampling based algorithms in the row-arrival online model yield online coresets, giving deterministic algorithms for 
+spectral approximation, low-rank approximation/projection-cost preservation, and $\ell_1$-subspace embeddings in the sliding window model that use nearly 
+optimal space. 
 </div>
 </li>
 </br>
@@ -1186,6 +1187,10 @@ var info = new Array(  new Array('--jeremiahblocki--', 'Jeremiah Blocki', 'https
                      , new Array('--margaritaosadchy--', 'Margarita Osadchy', 'http://rita.osadchy.net/')
                      , new Array('--sepidehmahabadi--', 'Sepideh Mahabadi', 'http://www.mit.edu/~mahabadi/')
                      , new Array('--ilyarazenshteyn--', 'Ilya Razenshteyn', 'https://www.ilyaraz.org/')
+					 , new Array('--cameronmusco--', 'Cameron Musco', 'https://people.cs.umass.edu/~cmusco/')
+					 , new Array('--christophermusco--', 'Christopher Musco', 'https://www.chrismusco.com/')
+					 
+					 
                      );
 					 
 for (i = 0; i < info.length; i++) {
