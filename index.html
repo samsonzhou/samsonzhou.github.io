@@ -158,7 +158,49 @@ Preprints
 </h3>
 <ul>
 
+<li>
+<b>
+Sensitivity Analysis of the Maximum Matching Problem
+</b>
+</br><i>
+--yuichiyoshida--, 
+Samson Zhou</br></i>
+[<a href="javascript:toggle('YZ20')">abstract</a>]
+[<a href="https://arxiv.org/pdf/2009.04556.pdf>pdf</a>]
+</br>
+<div id="YZ20" style="display: none">
+<p id="abs">
+We consider the \emph{sensitivity} of algorithms for the maximum matching problem against edge and vertex modifications.
+When an algorithm $A$ for the maximum matching problem is deterministic, the sensitivity of $A$ on $G$ is defined as 
+$\max_{e \in E(G)}|A(G) \triangle A(G - e)|$, where $G-e$ is the graph obtained from $G$ by removing an edge $e \in E(G)$ and 
+$\triangle$ denotes the symmetric difference. When $A$ is randomized, the sensitivity is defined as 
+$\max_{e \in E(G)}d_{\mathrm{EM}}(A(G),A(G-e))$, where $d_{\mathrm{EM}}(\cdot,\cdot)$ denotes the earth mover's distance between two distributions.
+Thus the sensitivity measures the difference between the output of an algorithm after the input is slightly perturbed.
+Algorithms with low sensitivity, or \emph{stable} algorithms are desirable because they are robust to edge failure or attack.
 
+In this work, we show a randomized $(1-\epsilon)$-approximation algorithm with \emph{worst-case} sensitivity $O_{\epsilon}(1)$, 
+which substantially improves upon the $(1-\epsilon)$-approximation algorithm of Varma and Yoshida (arXiv 2020) 
+that obtains \emph{average} sensitivity $n^{O(1/(1+\epsilon^2))}$ sensitivity algorithm, and show a deterministic 
+$1/2$-approximation algorithm with sensitivity $\exp(O(\log^*n))$ for bounded-degree graphs. 
+We then show that any deterministic constant-factor approximation algorithm must have sensitivity $\Omega(\log^* n)$.
+Our results imply that randomized algorithms are strictly more powerful than deterministic ones in that the former 
+can achieve sensitivity independent of $n$ whereas the latter cannot. We also show analogous results for vertex sensitivity, 
+where we remove a vertex instead of an edge. As an application of our results, we give an algorithm for the online maximum 
+matching with $O_{\epsilon}(n)$ total replacements in the vertex-arrival model. By comparison, 
+Bernstein~et~al.~(J. ACM 2019) gave an online algorithm that always outputs the maximum matching, 
+but only for bipartite graphs and with $O(n\log n)$ total replacements.
+
+Finally, we introduce the notion of normalized weighted sensitivity, a natural generalization of sensitivity that 
+accounts for the weights of deleted edges. For a graph with weight function $w$, the normalized weighted sensitivity 
+is defined to be the sum of the weighted edges in the symmetric difference of the algorithm normalized by the 
+altered edge, i.e., $\max_{e \in E(G)}\frac{1}{w(e)}w\left(A(G) \triangle A(G - e)\right)$. Hence the normalized 
+weighted sensitivity measures the weighted difference between the output of an algorithm after the input is 
+slightly perturbed, normalized by the weight of the perturbation. We show that if all edges in a graph have 
+polynomially bounded weight, then given a trade-off parameter $\alpha>2$, there exists an algorithm that outputs a 
+$\frac{1}{4\alpha}$-approximation to the maximum weighted matching in $O(m\log_{\alpha} n)$ time, with normalized weighted sensitivity $O(1)$.
+</div>
+</li>
+</br>
 
 
 <li>
@@ -1266,7 +1308,7 @@ var info = new Array(  new Array('--jeremiahblocki--', 'Jeremiah Blocki', 'https
 					 , new Array('--cameronmusco--', 'Cameron Musco', 'https://people.cs.umass.edu/~cmusco/')
 					 , new Array('--christophermusco--', 'Christopher Musco', 'https://www.chrismusco.com/')
 					 , new Array('--agnivachowdhury--', 'Agniva Chowdhury', 'https://web.ics.purdue.edu/~chowdhu5/index.html')
-					 
+					 , new Array('--yuichiyoshida--', 'Yuichi Yoshida', 'http://research.nii.ac.jp/~yyoshida/')
 					 
                      );
 					 
