@@ -270,6 +270,47 @@ Publications
 <ol reversed>
 
 
+<li>
+<b>
+Learning a Latent Simplex in Input Sparsity Time
+</b>
+</br><i>
+--aineshbakshi--, 
+--chiranjibbhattacharyya--, 
+--ravikannan--, 
+--davidwoodruff--, 
+Samson Zhou</br></i>
+<a href="https://iclr.cc/Conferences/2021">ICLR 2021</a>
+[<a href="javascript:toggle('BBKWZ21')">abstract</a>]
+<!--[<a href="https://arxiv.org/pdf/2009.04556.pdf">pdf</a>]-->
+</br>
+<div id="BBKWZ21" style="display: none">
+<p id="abs">
+We consider the problem of learning a latent $k$-vertex simplex $K\in\mathbb{R}^d$, given access to  $\AA\in\mathbb{R}^{d\times n}$, 
+which can be viewed as a data matrix with $n$ points that are obtained by randomly perturbing latent points in the simplex $K$ (potentially beyond $K$). 
+A large class of latent variable models, such as adversarial clustering, mixed membership stochastic block models, and topic models can be cast as 
+learning a latent simplex. Bhattacharyya and Kannan (SODA 2020) give an algorithm for learning such a latent simplex in time roughly $O(k\cdot\nnz(\AA))$, 
+where $\nnz(\AA)$ is the number of non-zeros in $\AA$. We show that the dependence on $k$ in the running time is unnecessary given a natural assumption 
+about the mass of the top $k$ singular values of $\AA$, which holds in many of these applications. Further, we show this assumption is necessary, 
+as otherwise an algorithm for learning a latent simplex would imply an algorithmic breakthrough for spectral low rank approximation. 
+
+At a high level, Bhattacharyya and Kannan provide an adaptive algorithm that makes $k$ matrix-vector product queries to $\AA$ and 
+each query is a function of all queries preceding it. Since each matrix-vector product requires $\nnz(\AA)$ time, 
+their overall running time appears unavoidable. Instead, we obtain a low-rank approximation to $\AA$ in input-sparsity time and 
+show that the column space thus obtained has small $\sin\Theta$ (angular) distance to the right top-$k$ singular space of $\AA$. 
+Our algorithm then selects $k$ points in the low-rank  subspace with the largest inner product (in absolute value) with 
+$k$ carefully chosen random vectors. By working in the low-rank subspace, we avoid reading the entire matrix in each iteration and 
+thus circumvent the $\Theta(k\cdot\nnz(\AA))$ running time. 
+</div>
+</li>
+</br>
+
+
+
+
+
+
+
 
 <li>
 <b>
@@ -1356,7 +1397,9 @@ var info = new Array(  new Array('--jeremiahblocki--', 'Jeremiah Blocki', 'https
 					 , new Array('--christophermusco--', 'Christopher Musco', 'https://www.chrismusco.com/')
 					 , new Array('--agnivachowdhury--', 'Agniva Chowdhury', 'https://web.ics.purdue.edu/~chowdhu5/index.html')
 					 , new Array('--yuichiyoshida--', 'Yuichi Yoshida', 'http://research.nii.ac.jp/~yyoshida/')
-					 
+					 , new Array('--aineshbakshi--', 'Ainesh Bakshi', 'http://aineshbakshi.com/')
+					 , new Array('--chiranjibbhattacharyya--', 'Chiranjib Bhattacharyya', 'https://www.csa.iisc.ac.in/~chiru/')
+					 , new Array('--ravikannan--', 'Ravi Kannan', 'https://en.wikipedia.org/wiki/Ravindran_Kannan')
                      );
 					 
 for (i = 0; i < info.length; i++) {
