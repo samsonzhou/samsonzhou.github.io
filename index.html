@@ -282,6 +282,44 @@ Publications
 
 <ol reversed>
 
+
+<li>
+<b>
+Truly Perfect Samplers for Data Streams and Sliding Windows 
+</b>
+</br><i>
+--rajeshjayaram--,
+--davidwoodruff--,
+Samson Zhou</br></i>
+<a href="https://2022.sigmod.org/">PODS 2022</a>
+[<a href="javascript:toggle('JWZ22')">abstract</a>]
+[<a href="https://arxiv.org/pdf/2106.14952.pdf">pdf</a>]
+<div id="JWZ22" style="display: none">
+<p id="abs">
+In the $G$-sampling problem, the goal is to output an index $i$ of a vector $f \in\mathbb{R}^n$, such that for all coordinates $j \in [n]$,
+\[\textbf{Pr}[i=j] = (1 \pm \eps) \frac{G(f_j)}{\sum_{k\in[n]} G(f_k)} + \gamma,\]
+where $G:\mathbb{R} \to \mathbb{R}_{\geq 0}$ is some non-negative function. If $\eps = 0$ and $\gamma = 1/\poly(n)$, the sampler is called \textit{perfect}. 
+In the data stream model, $f$ is defined implicitly by a sequence of updates to its coordinates, and the goal is to design such a sampler in small space. 
+Jayaram and Woodruff (FOCS 2018) gave the first perfect $L_p$ samplers in turnstile streams, where $G(x)=|x|^p$, using $\text{polylog}(n)$ space for $p\in(0,2]$. 
+However, to date all known sampling algorithms are not \textit{truly perfect}, since their output distribution is only point-wise $\gamma = 1/\poly(n)$ close 
+to the true distribution. This small error can be significant when samplers are run many times on successive portions of a stream, and leak potentially 
+sensitive information about the data stream.
+	 
+In this work, we initiate the study of \textit{truly perfect} samplers, with $\eps = \gamma = 0$, and comprehensively investigate their complexity in the 
+data stream and sliding window models. We begin by showing that sublinear space truly perfect sampling is impossible in the turnstile model, by proving 
+a lower bound of $\Omega\left(\min\left\{n,\log \frac{1}{\gamma}\right\}\right)$ for any $G$-sampler with point-wise error $\gamma$ from the true distribution. 
+We then give a general time-efficient sublinear-space framework for developing truly perfect samplers in the insertion-only streaming and sliding window models. 
+As specific applications, our framework addresses $L_p$ sampling for all $p>0$, e.g., $\tO{n^{1-1/p}}$ space for $p\ge 1$, concave functions, and a 
+large number of measure functions, including the $L_1-L_2$, Fair, Huber, and Tukey estimators. The update time of our truly perfect $L_p$-samplers is $\O{1}$, 
+which is an exponential improvement over the running time of previous perfect $L_p$-samplers. 
+</div>
+</li>
+</br>
+
+
+
+
+
 <li>
 <b>
 Adversarial Robustness of Streaming Algorithms through Importance Sampling
@@ -1538,6 +1576,7 @@ var info = new Array(  new Array('--jeremiahblocki--', 'Jeremiah Blocki', 'https
 					 , new Array('--michaelkapralov--', 'Michael Kapralov', 'https://theory.epfl.ch/kapralov/')
 					 , new Array('--amulyamusipatla--', 'Amulya Musipatla', 'https://dblp.org/pid/278/1693.html')
 					 , new Array('--jakabtardos--', 'Jakab Tardos', 'https://scholar.google.com/citations?user=HlLm4LIAAAAJ')
+					 , new Array('--rajeshjayaram--', 'Rajesh Jayaram', 'https://rajeshjayaram.com/')
                      );
 
 					 
