@@ -278,7 +278,38 @@ which is an exponential improvement over the running time of previous perfect $L
 
 
 
+<li>
+<b>
+Efficient Coreset Constructions via Sensitivity Sampling
+</b>
+</br><i>
+--vladimirbraverman--,
+--danfeldman--,
+--harrylang--,
+--adielstatman--,
+Samson Zhou</br></i>
+<a href="http://www.acml-conf.org/2021/">ACML 2021</a>
+[<a href="javascript:toggle('BFLSZ21')">abstract</a>]
+<!--[<a href="https://arxiv.org/pdf/2108.12017.pdf">pdf</a>]-->
+<div id="BFLSZ22" style="display: none">
+<p id="abs">
+A coreset for a set of points is a small subset of weighted points that approximately preserves important properties of the original set. Specifically, 
+if $P$ is a set of points, $Q$ is a set of queries, and $f:P\times Q\to\mathbb{R}$ is a cost function, then a set $S\subseteq P$ with weights 
+$w:P\to[0,\infty)$ is an $\epsilon$-coreset for some parameter $\epsilon>0$ if $\sum_{s\in S}w(s)f(s,q)$ is a $(1+\epsilon)$ multiplicative approximation 
+to $\sum_{p\in P}f(p,q)$ for all $q\in Q$. Coresets are used to solve fundamental problems in machine learning under various big data models of computation. 
+Many of the suggested coresets in the recent decade used, or could have used a general framework for constructing coresets whose size depends quadratically 
+on what is known as total sensitivity $t$. 
 
+In this paper we improve this bound from $O(t^2)$ to $O(t\log t)$. Thus our results imply more space efficient solutions to a number of problems, 
+including projective clustering, $k$-line clustering, and subspace approximation. The main technical result is a generic reduction to the sample complexity of 
+learning a class of functions with bounded VC dimension. We show that obtaining an $(\nu,\alpha)$-sample for this class of functions with appropriate parameters 
+$\nu$ and $\alpha$ suffices to achieve space efficient $\epsilon$-coresets. 
+
+Our result implies more efficient coreset constructions for a number of interesting problems in machine learning; we show applications to $k$-median/$k$-means, 
+$k$-line clustering, $j$-subspace approximation, and the integer $(j,k)$-projective clustering problem. 
+</div>
+</li>
+</br>
 
 
 <li>
