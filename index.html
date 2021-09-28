@@ -277,6 +277,75 @@ which is an exponential improvement over the running time of previous perfect $L
 </br>
 
 
+<li>
+<b>
+Adversarial Robustness of Streaming Algorithms through Importance Sampling
+</b>
+</br><i>
+--vladimirbraverman--,
+--avinatanhassidim--,
+--yossimatias--,
+--marianoschain--,
+--sandeepsilwal--, 
+Samson Zhou</br></i>
+<a href="https://nips.cc/Conferences/2021">NeurIPS 2021</a>
+[<a href="javascript:toggle('BHMSSZ21')">abstract</a>]
+[<a href="/Talks/advML21.pdf">poster</a>]
+[<a href="https://arxiv.org/pdf/2106.14952.pdf">pdf</a>]</br>
+<a href="https://advml-workshop.github.io/icml2021/">AdvML @ ICML 2021</a> (selected for oral presentation)</br>
+<b>Silver Best Paper Award at AdvML @ ICML 2021</b></br>
+<div id="BHMSSZ21" style="display: none">
+<p id="abs">
+Robustness against adversarial attacks has recently been at the forefront of algorithmic design for machine learning tasks. 
+In the adversarial streaming model, an adversary gives an algorithm a sequence of adaptively chosen updates $u_1,\ldots,u_n$ as a data stream. 
+The goal of the algorithm is to compute or approximate some predetermined function for every prefix of the adversarial stream, 
+but the adversary may generate future updates based on previous outputs of the algorithm. In particular, the adversary may gradually 
+learn the random bits internally used by an algorithm to manipulate dependencies in the input. This is especially problematic as 
+many important problems in the streaming model require randomized algorithms, as they are known to not admit any deterministic algorithms 
+that use sublinear space. In this paper, we introduce adversarially robust streaming algorithms for central machine learning and algorithmic tasks, 
+such as regression and clustering, as well as their more general counterparts, subspace embedding, low-rank approximation, and coreset construction. 
+For regression and other numerical linear algebra related tasks, we consider the row arrival streaming model. Our results are based on a simple, 
+but powerful, observation that sampling based algorithms give rise to adversarial robustness which is in contrast to sketching based algorithms, 
+which are very prevalent in the streaming literature but suffer from adversarial attacks. In addition, we show that the well-known 
+merge and reduce paradigm in streaming is adversarially robust. Since the merge and reduce paradigm defines coreset constructions, 
+we thus obtain robust algorithms for $k$-means, $k$-median, $k$-center, Bregman clustering, projective clustering, principal component analysis (PCA) 
+and non-negative matrix factorization. To the best of our knowledge, these are the first adversarially robust methods for these problems. 
+Finally, we empirically confirm the robustness of our algorithms on various adversarial attacks and demonstrate that by contrast, 
+common existing algorithms are not robust. 
+</div>
+</li>
+</br>
+
+
+
+
+<li>
+<b>
+Dimensionality Reduction for Wasserstein Barycenter
+</b>
+</br><i>
+--zacharyizzo--,
+--sandeepsilwal--, 
+Samson Zhou</br></i>
+<a href="https://nips.cc/Conferences/2021">NeurIPS 2021</a>
+[<a href="javascript:toggle('ISZ21')">abstract</a>]
+<!--[<a href="/Talks/advML21.pdf">poster</a>]
+[<a href="https://arxiv.org/pdf/2106.14952.pdf">pdf</a>]</br>-->
+<div id="ISZ21" style="display: none">
+<p id="abs">
+The Wasserstein barycenter is a geometric construct which captures the notion of centrality among probability distributions, and which has found many applications in machine learning. 
+However, most algorithms for finding even an approximate barycenter suffer an exponential dependence on the dimension $d$ of the underlying space of the distributions. In order to cope 
+with this ``curse of dimensionality,'' we study dimensionality reduction techniques for the Wasserstein barycenter problem. When the barycenter is restricted to support of size $n$, 
+we show that randomized dimensionality reduction can be used to map the problem to a space of dimension $O(\log n)$ independent of both $d$ and $k$, and that \emph{any} solution found 
+in the reduced dimension will have its cost preserved up to arbitrary small error in the original space. We provide matching upper and lower bounds on the size of the reduced dimension, 
+showing that our methods are optimal up to constant factors. We also provide a coreset construction for the Wasserstein barycenter problem that significantly decreases the number of 
+input distributions. The coresets can be used in conjunction with random projections and thus further improve computation time. Lastly, our experimental results validate the speedup 
+provided by dimensionality reduction while maintaining solution quality.
+</div>
+</li>
+</br>
+
+
 
 <li>
 <b>
@@ -310,6 +379,8 @@ $k$-line clustering, $j$-subspace approximation, and the integer $(j,k)$-project
 </div>
 </li>
 </br>
+
+
 
 
 <li>
@@ -385,51 +456,6 @@ for loss functions that are Orlicz norms in both the streaming and sliding windo
 </div>
 </li>
 </br>
-
-
-
-<li>
-<b>
-Adversarial Robustness of Streaming Algorithms through Importance Sampling
-</b>
-</br><i>
---vladimirbraverman--,
---avinatanhassidim--,
---yossimatias--,
---marianoschain--,
---sandeepsilwal--, 
-Samson Zhou</br></i>
-<a href="https://advml-workshop.github.io/icml2021/">AdvML @ ICML 2021</a> (selected for oral presentation) 
-[<a href="javascript:toggle('BHMSSZ21')">abstract</a>]
-[<a href="/Talks/advML21.pdf">poster</a>]
-[<a href="https://arxiv.org/pdf/2106.14952.pdf">pdf</a>]
-</br>
-<b>Silver Best Paper Award at AdvML @ ICML 2021</b></br>
-<div id="BHMSSZ21" style="display: none">
-<p id="abs">
-Robustness against adversarial attacks has recently been at the forefront of algorithmic design for machine learning tasks. 
-In the adversarial streaming model, an adversary gives an algorithm a sequence of adaptively chosen updates $u_1,\ldots,u_n$ as a data stream. 
-The goal of the algorithm is to compute or approximate some predetermined function for every prefix of the adversarial stream, 
-but the adversary may generate future updates based on previous outputs of the algorithm. In particular, the adversary may gradually 
-learn the random bits internally used by an algorithm to manipulate dependencies in the input. This is especially problematic as 
-many important problems in the streaming model require randomized algorithms, as they are known to not admit any deterministic algorithms 
-that use sublinear space. In this paper, we introduce adversarially robust streaming algorithms for central machine learning and algorithmic tasks, 
-such as regression and clustering, as well as their more general counterparts, subspace embedding, low-rank approximation, and coreset construction. 
-For regression and other numerical linear algebra related tasks, we consider the row arrival streaming model. Our results are based on a simple, 
-but powerful, observation that sampling based algorithms give rise to adversarial robustness which is in contrast to sketching based algorithms, 
-which are very prevalent in the streaming literature but suffer from adversarial attacks. In addition, we show that the well-known 
-merge and reduce paradigm in streaming is adversarially robust. Since the merge and reduce paradigm defines coreset constructions, 
-we thus obtain robust algorithms for $k$-means, $k$-median, $k$-center, Bregman clustering, projective clustering, principal component analysis (PCA) 
-and non-negative matrix factorization. To the best of our knowledge, these are the first adversarially robust methods for these problems. 
-Finally, we empirically confirm the robustness of our algorithms on various adversarial attacks and demonstrate that by contrast, 
-common existing algorithms are not robust. 
-</div>
-</li>
-</br>
-
-
-
-
 
 
 
@@ -1653,6 +1679,7 @@ var info = new Array(  new Array('--jeremiahblocki--', 'Jeremiah Blocki', 'https
 					 , new Array('--rajeshjayaram--', 'Rajesh Jayaram', 'https://rajeshjayaram.com/')
 					 , new Array('--viskawei--', 'Viska Wei', 'https://scholar.google.com/citations?user=Jbay8EQAAAAJ')
 					 , new Array('--adielstatman--', 'Adiel Statman', 'https://dblp.org/pid/155/3580.html')
+					 , new Array('--zacharyizzo--', 'Zachary Izzo', 'https://zleizzo.github.io/')
                      );
 
 					 
