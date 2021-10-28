@@ -163,6 +163,32 @@ Preprints
 </h3>
 <ul>
 
+<li>
+<b>
+Learning-Augmented <i>k</i>-means Clustering
+</b>
+</br><i>
+--jonergun--,
+--zhilifeng--,
+--sandeepsilwal--,
+--davidwoodruff--, 
+Samson Zhou</br></i>
+[<a href="javascript:toggle('ERSWZ22')">abstract</a>]
+[<a href="https://arxiv.org/pdf/2110.14094.pdf">pdf</a>]
+</br>
+<div id="ERSWZ22" style="display: none">
+<p id="abs">
+$k$-means clustering is a well-studied problem due to its wide applicability. Unfortunately, there exist strong theoretical limits on the performance 
+of any algorithm for the $k$-means problem on worst-case inputs. To overcome this barrier, we consider a scenario where ``advice'' is provided to help 
+perform clustering. Specifically, we consider the $k$-means problem augmented with a predictor that, given any point, returns its cluster label in an 
+approximately optimal clustering up to some, possibly adversarial, error. We present an algorithm whose performance improves along with the accuracy 
+of the predictor, even though na\"{i}vely following the accurate predictor can still lead to a high clustering cost. Thus if the predictor is 
+sufficiently accurate, we can retrieve a close to optimal clustering with nearly optimal runtime, breaking known computational barriers for algorithms 
+that do not have access to such advice. We evaluate our algorithms on real datasets and show significant improvements in the quality of clustering.
+</div>
+</li>
+</br>
+
 
 
 <li>
@@ -1242,7 +1268,8 @@ However, in the realistic, computationally bounded channel model, constructions 
 The first such constructions are due to  Ostrovsky, Pandey and Sahai (ICALP 2007) who built private \LDCs under the assumption that one-way functions exist, and in the setting where the sender and receiver share a private key.
 
 We study variants of locally decodable and locally correctable codes in  computationally bounded but adverstimes channels, under the much weaker assumption that collision-resistant hash functions exist, and with no public-key or private-key cryptographic setup.
-Specifically, we provide constructions of {\em relaxed locally correctable codes} (\RLCCs) and {\em relaxed locally decodable codes} (\RLDCs) over binary alphabets, with constant rate and poly-logarithmic locality, that compare favorably with existing schemes built under much stronger cryptographic assumptions, and with classical \RLCCs in the computationally unbounded Hamming channel.
+Specifically, we provide constructions of {\em relaxed locally correctable codes} (\RLCCs) and {\em relaxed locally decodable codes} (\RLDCs) over binary alphabets, with constant rate and poly-logarithmic locality, 
+that compare favorably with existing schemes built under much stronger cryptographic assumptions, and with classical \RLCCs in the computationally unbounded Hamming channel.
 
 Our constructions crucially employ {\em collision resistant hash functions} and {\em local expander graphs}, extending ideas from recent cryptographic constructions of memory-hard functions.
 </div>
@@ -1679,6 +1706,8 @@ var info = new Array(  new Array('--jeremiahblocki--', 'Jeremiah Blocki', 'https
 					 , new Array('--viskawei--', 'Viska Wei', 'https://scholar.google.com/citations?user=Jbay8EQAAAAJ')
 					 , new Array('--adielstatman--', 'Adiel Statman', 'https://dblp.org/pid/155/3580.html')
 					 , new Array('--zacharyizzo--', 'Zachary Izzo', 'https://zleizzo.github.io/')
+					 , new Array('--jonergun--', 'Jon Ergun', '')
+					 , new Array('--zhilifeng--', 'Zhili Feng', 'http://pages.cs.wisc.edu/~zfeng49/')
                      );
 
 					 
