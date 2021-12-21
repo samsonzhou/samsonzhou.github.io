@@ -28,6 +28,76 @@ if (document.getElementById){
 </script>
 </head>
 
+<script>
+var info = new Array(  new Array('--jeremiahblocki--', 'Jeremiah Blocki', 'https://www.cs.purdue.edu/homes/jblocki/')
+                     , new Array('--grigoryyaroslavtsev--', 'Grigory Yaroslavtsev', 'http://grigory.us/')
+                     , new Array('--elenagrigorescu--', 'Elena Grigorescu', 'https://www.cs.purdue.edu/homes/egrigore/')
+                     , new Array('--gregfrederickson--', 'Greg Frederickson', 'https://www.cs.purdue.edu/homes/gnf/')
+                     , new Array('--marcbury--', 'Marc Bury', 'http://ls2-www.cs.uni-dortmund.de/~gille/')
+                     , new Array('--andrewmcgregor--', 'Andrew McGregor', 'http://people.cs.umass.edu/~mcgregor/')
+                     , new Array('--mortezamonemizadeh--', 'Morteza Monemizadeh', 'http://home.dimacs.rutgers.edu/~mortezam/')
+                     , new Array('--chrisschwiegelshohn--', 'Chris Schwiegelshohn', 'https://cs.au.dk/~schwiegelshohn/')
+                     , new Array('--sofyavorotnikova--', 'Sofya Vorotnikova', 'https://dblp.org/pid/150/2747.html')
+                     , new Array('--lingren--', 'Ling Ren', 'https://sites.google.com/view/renling')
+                     , new Array('--vladimirbraverman--', 'Vladimir Braverman', 'http://www.cs.jhu.edu/~vova/')
+                     , new Array('--harrylang--', 'Harry Lang', 'http://dblp.uni-trier.de/pers/hd/l/Lang:Harry')
+                     , new Array('--davidwoodruff--', 'David P. Woodruff', 'http://www.cs.cmu.edu/~dwoodruf/')
+                     , new Array('--venkatagandikota--', 'Venkata Gandikota', 'https://sites.google.com/view/gvenkata')
+                     , new Array('--fundaergun--', 'Funda Erg&uuml;n', 'http://homes.soic.indiana.edu/fergun/')
+                     , new Array('--erfansadeqiazer--', 'Erfan Sadeqi Azer', 'https://scholar.google.com/citations?user=L_3aqTcAAAAJ')
+                     , new Array('--benharsha--', 'Ben Harsha', 'https://www.cs.purdue.edu/homes/bharsha/')
+                     , new Array('--sidharthjaggi--', 'Sidharth Jaggi', 'http://jaggi.name/')
+                     , new Array('--seunghoonlee--', 'Seunghoon Lee', 'https://www.cs.purdue.edu/homes/lee2856/')
+                     , new Array('--sitengkang--', 'Siteng Kang', 'https://dblp.org/pers/hd/k/Kang:Siteng')
+                     , new Array('--luxing--', 'Lu Xing', 'https://www.cs.purdue.edu/homes/xingl/')
+                     , new Array('--petrosdrineas--', 'Petros Drineas', 'https://www.cs.purdue.edu/homes/pdrineas/')
+                     , new Array('--jalajupadhyay--', 'Jalaj Upadhyay', 'https://sites.google.com/view/jalajupadhyay/home')
+                     , new Array('--dmitriiavdiukhin--', 'Dmitrii Avdiukhin', 'https://dyukha.github.io/')
+                     , new Array('--slobodanmitrovic--', 'Slobodan Mitrovi&#263', 'https://sites.google.com/view/slobodan-mitrovic')
+                     , new Array('--enayatullah--', 'Enayat Ullah', 'https://in.linkedin.com/in/enayat-ullah-b9489717')
+                     , new Array('--danfeldman--', 'Dan Feldman', 'http://people.csail.mit.edu/dannyf/')
+                     , new Array('--benmussay--', 'Ben Mussay', 'https://dblp.uni-trier.de/pers/hd/m/Mussay:Ben')
+                     , new Array('--shubhangkulkarni--', 'Shubhang Kulkarni', 'https://shubhangk.github.io/')
+                     , new Array('--zaoxlingliu--', 'Zaoxing Liu', 'https://zaoxing.github.io/')
+                     , new Array('--orirottenstreich--', 'Ori Rottenstreich', 'https://sites.google.com/site/orirottenstreich/')
+                     , new Array('--jenniferrexford--', 'Jennifer Rexford', 'https://www.cs.princeton.edu/~jrex/')
+                     , new Array('--hassanameri--', 'Mohammad Hassan Ameri', 'https://www.cs.purdue.edu/homes/mameriek/')
+                     , new Array('--margaritaosadchy--', 'Margarita Osadchy', 'http://rita.osadchy.net/')
+                     , new Array('--sepidehmahabadi--', 'Sepideh Mahabadi', 'http://www.mit.edu/~mahabadi/')
+                     , new Array('--ilyarazenshteyn--', 'Ilya Razenshteyn', 'https://www.ilyaraz.org/')
+					 , new Array('--cameronmusco--', 'Cameron Musco', 'https://people.cs.umass.edu/~cmusco/')
+					 , new Array('--christophermusco--', 'Christopher Musco', 'https://www.chrismusco.com/')
+					 , new Array('--agnivachowdhury--', 'Agniva Chowdhury', 'https://web.ics.purdue.edu/~chowdhu5/index.html')
+					 , new Array('--yuichiyoshida--', 'Yuichi Yoshida', 'http://research.nii.ac.jp/~yyoshida/')
+					 , new Array('--aineshbakshi--', 'Ainesh Bakshi', 'http://aineshbakshi.com/')
+					 , new Array('--chiranjibbhattacharyya--', 'Chiranjib Bhattacharyya', 'https://www.csa.iisc.ac.in/~chiru/')
+					 , new Array('--ravikannan--', 'Ravi Kannan', 'https://en.wikipedia.org/wiki/Ravindran_Kannan')
+					 , new Array('--avinatanhassidim--', 'Avinatan Hassidim', 'https://research.google/people/105831/')
+					 , new Array('--yossimatias--', 'Yossi Matias', 'https://sites.google.com/site/yossimatias/bio')
+					 , new Array('--marianoschain--', 'Mariano Schain', 'https://research.google/people/105841/')
+					 , new Array('--sandeepsilwal--', 'Sandeep Silwal', 'https://sandeepsilwal.com/')
+					 , new Array('--michaelkapralov--', 'Michael Kapralov', 'https://theory.epfl.ch/kapralov/')
+					 , new Array('--amulyamusipatla--', 'Amulya Musipatla', 'https://dblp.org/pid/278/1693.html')
+					 , new Array('--jakabtardos--', 'Jakab Tardos', 'https://scholar.google.com/citations?user=HlLm4LIAAAAJ')
+					 , new Array('--rajeshjayaram--', 'Rajesh Jayaram', 'https://rajeshjayaram.com/')
+					 , new Array('--viskawei--', 'Viska Wei', 'https://scholar.google.com/citations?user=Jbay8EQAAAAJ')
+					 , new Array('--adielstatman--', 'Adiel Statman', 'https://dblp.org/pid/155/3580.html')
+					 , new Array('--zacharyizzo--', 'Zachary Izzo', 'https://zleizzo.github.io/')
+					 , new Array('--jonergun--', 'Jon Ergun', '')
+					 , new Array('--zhilifeng--', 'Zhili Feng', 'http://pages.cs.wisc.edu/~zfeng49/')
+					 , new Array('--aritrabose--', 'Aritra Bose', 'https://aritra90.github.io/')
+                     );
+
+					 
+for (i = 0; i < info.length; i++) {
+    var find = info[i][0];
+    var regex = new RegExp(find, "g");
+    var replace = '<a href="' + info[i][2] + '">' + info[i][1] + '</a>';
+    document.body.innerHTML = document.body.innerHTML.replace(regex, replace);
+}
+					 
+</script>
+
 <style type="text/css">
 \\body
 \\{
@@ -232,6 +302,38 @@ Publications
 </h3>
 
 <ol reversed>
+
+
+
+
+<li>
+<b>
+A Fast, Provably Accurate Approximation Algorithm for Sparse Principal Component Analysis Reveals Human Genetic Variation Across the World
+</b>
+</br><i>
+--aritrabose--,
+--agnivachowdhury--,
+Samson Zhou,
+--davidwoodruff--,
+--petrosdrineas--
+</br></i>
+<a href="https://recomb2022.net/">RECOMB 2022</a>
+[<a href="javascript:toggle('CDWZ20')">abstract</a>]
+[<a href="https://arxiv.org/pdf/2006.12748.pdf">pdf</a>]
+</br>
+<div id="CDWZ20" style="display: none">
+<p id="abs">
+Principal component analysis (PCA) is a widely used dimensionality reduction technique in machine learning and multivariate statistics. 
+To improve the interpretability of PCA, various approaches to obtain sparse principal direction loadings have been proposed, which are termed 
+Sparse Principal Component Analysis (SPCA). In this paper, we present \texttt{ThreSPCA}, a provably accurate algorithm based on thresholding the 
+Singular Value Decomposition for the SPCA problem, without imposing any restrictive assumptions on the input covariance matrix. Our thresholding algorithm 
+is conceptually simple; much faster than current state-of-the-art; and performs well in practice. When applied to genotype data from the 1000 Genomes Project, 
+\texttt{ThreSPCA} is faster than previous benchmarks, at least as accurate, and leads to a set of interpretable biomarkers, revealing genetic diversity across the world. 
+</div>
+</li>
+</br>
+
+
 
 
 <li>
@@ -1652,73 +1754,6 @@ a maximum weighted matching in planar graphs.
 
 </body>
 
-<script>
-var info = new Array(  new Array('--jeremiahblocki--', 'Jeremiah Blocki', 'https://www.cs.purdue.edu/homes/jblocki/')
-                     , new Array('--grigoryyaroslavtsev--', 'Grigory Yaroslavtsev', 'http://grigory.us/')
-                     , new Array('--elenagrigorescu--', 'Elena Grigorescu', 'https://www.cs.purdue.edu/homes/egrigore/')
-                     , new Array('--gregfrederickson--', 'Greg Frederickson', 'https://www.cs.purdue.edu/homes/gnf/')
-                     , new Array('--marcbury--', 'Marc Bury', 'http://ls2-www.cs.uni-dortmund.de/~gille/')
-                     , new Array('--andrewmcgregor--', 'Andrew McGregor', 'http://people.cs.umass.edu/~mcgregor/')
-                     , new Array('--mortezamonemizadeh--', 'Morteza Monemizadeh', 'http://home.dimacs.rutgers.edu/~mortezam/')
-                     , new Array('--chrisschwiegelshohn--', 'Chris Schwiegelshohn', 'https://cs.au.dk/~schwiegelshohn/')
-                     , new Array('--sofyavorotnikova--', 'Sofya Vorotnikova', 'https://dblp.org/pid/150/2747.html')
-                     , new Array('--lingren--', 'Ling Ren', 'https://sites.google.com/view/renling')
-                     , new Array('--vladimirbraverman--', 'Vladimir Braverman', 'http://www.cs.jhu.edu/~vova/')
-                     , new Array('--harrylang--', 'Harry Lang', 'http://dblp.uni-trier.de/pers/hd/l/Lang:Harry')
-                     , new Array('--davidwoodruff--', 'David P. Woodruff', 'http://www.cs.cmu.edu/~dwoodruf/')
-                     , new Array('--venkatagandikota--', 'Venkata Gandikota', 'https://sites.google.com/view/gvenkata')
-                     , new Array('--fundaergun--', 'Funda Erg&uuml;n', 'http://homes.soic.indiana.edu/fergun/')
-                     , new Array('--erfansadeqiazer--', 'Erfan Sadeqi Azer', 'https://scholar.google.com/citations?user=L_3aqTcAAAAJ')
-                     , new Array('--benharsha--', 'Ben Harsha', 'https://www.cs.purdue.edu/homes/bharsha/')
-                     , new Array('--sidharthjaggi--', 'Sidharth Jaggi', 'http://jaggi.name/')
-                     , new Array('--seunghoonlee--', 'Seunghoon Lee', 'https://www.cs.purdue.edu/homes/lee2856/')
-                     , new Array('--sitengkang--', 'Siteng Kang', 'https://dblp.org/pers/hd/k/Kang:Siteng')
-                     , new Array('--luxing--', 'Lu Xing', 'https://www.cs.purdue.edu/homes/xingl/')
-                     , new Array('--petrosdrineas--', 'Petros Drineas', 'https://www.cs.purdue.edu/homes/pdrineas/')
-                     , new Array('--jalajupadhyay--', 'Jalaj Upadhyay', 'https://sites.google.com/view/jalajupadhyay/home')
-                     , new Array('--dmitriiavdiukhin--', 'Dmitrii Avdiukhin', 'https://dyukha.github.io/')
-                     , new Array('--slobodanmitrovic--', 'Slobodan Mitrovi&#263', 'https://sites.google.com/view/slobodan-mitrovic')
-                     , new Array('--enayatullah--', 'Enayat Ullah', 'https://in.linkedin.com/in/enayat-ullah-b9489717')
-                     , new Array('--danfeldman--', 'Dan Feldman', 'http://people.csail.mit.edu/dannyf/')
-                     , new Array('--benmussay--', 'Ben Mussay', 'https://dblp.uni-trier.de/pers/hd/m/Mussay:Ben')
-                     , new Array('--shubhangkulkarni--', 'Shubhang Kulkarni', 'https://shubhangk.github.io/')
-                     , new Array('--zaoxlingliu--', 'Zaoxing Liu', 'https://zaoxing.github.io/')
-                     , new Array('--orirottenstreich--', 'Ori Rottenstreich', 'https://sites.google.com/site/orirottenstreich/')
-                     , new Array('--jenniferrexford--', 'Jennifer Rexford', 'https://www.cs.princeton.edu/~jrex/')
-                     , new Array('--hassanameri--', 'Mohammad Hassan Ameri', 'https://www.cs.purdue.edu/homes/mameriek/')
-                     , new Array('--margaritaosadchy--', 'Margarita Osadchy', 'http://rita.osadchy.net/')
-                     , new Array('--sepidehmahabadi--', 'Sepideh Mahabadi', 'http://www.mit.edu/~mahabadi/')
-                     , new Array('--ilyarazenshteyn--', 'Ilya Razenshteyn', 'https://www.ilyaraz.org/')
-					 , new Array('--cameronmusco--', 'Cameron Musco', 'https://people.cs.umass.edu/~cmusco/')
-					 , new Array('--christophermusco--', 'Christopher Musco', 'https://www.chrismusco.com/')
-					 , new Array('--agnivachowdhury--', 'Agniva Chowdhury', 'https://web.ics.purdue.edu/~chowdhu5/index.html')
-					 , new Array('--yuichiyoshida--', 'Yuichi Yoshida', 'http://research.nii.ac.jp/~yyoshida/')
-					 , new Array('--aineshbakshi--', 'Ainesh Bakshi', 'http://aineshbakshi.com/')
-					 , new Array('--chiranjibbhattacharyya--', 'Chiranjib Bhattacharyya', 'https://www.csa.iisc.ac.in/~chiru/')
-					 , new Array('--ravikannan--', 'Ravi Kannan', 'https://en.wikipedia.org/wiki/Ravindran_Kannan')
-					 , new Array('--avinatanhassidim--', 'Avinatan Hassidim', 'https://research.google/people/105831/')
-					 , new Array('--yossimatias--', 'Yossi Matias', 'https://sites.google.com/site/yossimatias/bio')
-					 , new Array('--marianoschain--', 'Mariano Schain', 'https://research.google/people/105841/')
-					 , new Array('--sandeepsilwal--', 'Sandeep Silwal', 'https://sandeepsilwal.com/')
-					 , new Array('--michaelkapralov--', 'Michael Kapralov', 'https://theory.epfl.ch/kapralov/')
-					 , new Array('--amulyamusipatla--', 'Amulya Musipatla', 'https://dblp.org/pid/278/1693.html')
-					 , new Array('--jakabtardos--', 'Jakab Tardos', 'https://scholar.google.com/citations?user=HlLm4LIAAAAJ')
-					 , new Array('--rajeshjayaram--', 'Rajesh Jayaram', 'https://rajeshjayaram.com/')
-					 , new Array('--viskawei--', 'Viska Wei', 'https://scholar.google.com/citations?user=Jbay8EQAAAAJ')
-					 , new Array('--adielstatman--', 'Adiel Statman', 'https://dblp.org/pid/155/3580.html')
-					 , new Array('--zacharyizzo--', 'Zachary Izzo', 'https://zleizzo.github.io/')
-					 , new Array('--jonergun--', 'Jon Ergun', '')
-					 , new Array('--zhilifeng--', 'Zhili Feng', 'http://pages.cs.wisc.edu/~zfeng49/')
-                     );
 
-					 
-for (i = 0; i < info.length; i++) {
-    var find = info[i][0];
-    var regex = new RegExp(find, "g");
-    var replace = '<a href="' + info[i][2] + '">' + info[i][1] + '</a>';
-    document.body.innerHTML = document.body.innerHTML.replace(regex, replace);
-}
-					 
-</script>
 </html>
 
