@@ -164,32 +164,6 @@ Preprints
 </h3>
 <ul>
 
-<li>
-<b>
-Learning-Augmented <i>k</i>-means Clustering
-</b>
-</br><i>
---jonergun--,
---zhilifeng--,
---sandeepsilwal--,
---davidwoodruff--, 
-Samson Zhou</br></i>
-[<a href="javascript:toggle('ERSWZ22')">abstract</a>]
-[<a href="https://arxiv.org/pdf/2110.14094.pdf">pdf</a>]
-</br>
-<div id="ERSWZ22" style="display: none">
-<p id="abs">
-$k$-means clustering is a well-studied problem due to its wide applicability. Unfortunately, there exist strong theoretical limits on the performance 
-of any algorithm for the $k$-means problem on worst-case inputs. To overcome this barrier, we consider a scenario where ``advice'' is provided to help 
-perform clustering. Specifically, we consider the $k$-means problem augmented with a predictor that, given any point, returns its cluster label in an 
-approximately optimal clustering up to some, possibly adversarial, error. We present an algorithm whose performance improves along with the accuracy 
-of the predictor, even though na\"{i}vely following the accurate predictor can still lead to a high clustering cost. Thus if the predictor is 
-sufficiently accurate, we can retrieve a close to optimal clustering with nearly optimal runtime, breaking known computational barriers for algorithms 
-that do not have access to such advice. We evaluate our algorithms on real datasets and show significant improvements in the quality of clustering.
-</div>
-</li>
-</br>
-
 
 
 
@@ -233,6 +207,67 @@ Publications
 </h3>
 
 <ol reversed>
+
+
+<li>
+<b>
+Learning-Augmented <i>k</i>-means Clustering
+</b>
+</br><i>
+--jonergun--,
+--zhilifeng--,
+--sandeepsilwal--,
+--davidwoodruff--, 
+Samson Zhou</br></i>
+<a href="https://iclr.cc/Conferences/2022">ICLR 2022</a>
+[<a href="javascript:toggle('ERSWZ22')">abstract</a>]
+[<a href="https://arxiv.org/pdf/2110.14094.pdf">pdf</a>]
+</br>
+<div id="ERSWZ22" style="display: none">
+<p id="abs">
+$k$-means clustering is a well-studied problem due to its wide applicability. Unfortunately, there exist strong theoretical limits on the performance 
+of any algorithm for the $k$-means problem on worst-case inputs. To overcome this barrier, we consider a scenario where ``advice'' is provided to help 
+perform clustering. Specifically, we consider the $k$-means problem augmented with a predictor that, given any point, returns its cluster label in an 
+approximately optimal clustering up to some, possibly adversarial, error. We present an algorithm whose performance improves along with the accuracy 
+of the predictor, even though na\"{i}vely following the accurate predictor can still lead to a high clustering cost. Thus if the predictor is 
+sufficiently accurate, we can retrieve a close to optimal clustering with nearly optimal runtime, breaking known computational barriers for algorithms 
+that do not have access to such advice. We evaluate our algorithms on real datasets and show significant improvements in the quality of clustering.
+</div>
+</li>
+</br>
+
+
+
+<li>
+<b>
+Fast Regression for Structured Inputs
+</b>
+</br><i>
+--raphaelmeyer--,
+--cameronmusco--,
+--christophermusco--,
+--davidwoodruff--, 
+Samson Zhou</br></i>
+<a href="https://iclr.cc/Conferences/2022">ICLR 2022</a>
+[<a href="javascript:toggle('MMMWZ22')">abstract</a>]
+<!--[<a href="https://arxiv.org/pdf/2110.14094.pdf">pdf</a>]-->
+</br>
+<div id="MMMWZ22" style="display: none">
+<p id="abs">
+$L_p$ Regression on Structured Inputs is an important problem in data analysis and machine learning where we find a vector \(\mathbf{x}\in\mathbb R^{d}\) 
+that minimizes \(\|\mathbf{A}\mathbf{x}-\mathbf{b}\|_p\) for a \textit{structured} matrix \(\mathbf{A}\in\mathbb R^{n \times d}\) and response vector 
+\(\mathbf{b}\in\mathbb R^{n}\). Unfortunately, for many common classes of matrices, sampling-based algorithms for approximately solving $L_p$ regression 
+require runtime that is exponential in $p$, e.g., $d^{\mathcal{O}(p)}$, which is prohibitively expensive. We show that for a large class of structured inputs, 
+such as combinations of low-rank matrices, sparse matrices, and Vandermonde matrices, $L_p$ regression can be approximately solved using runtime that is 
+polynomial in $p$. For example, we show that $L_p$ regression on Vandermonde matrices can be approximately solved using time 
+$\mathcal{O}(T(\mathbf{A})\log n+(dp)^\omega\cdot\text{polylog}\,n)$, where $T(\mathbf{A})$ is the time to multiply $\mathbf{A}\mathbf{x}$ for an 
+arbitrary vector $\mathbf{x}\in\mathbb{R}^d$, and $\omega$ is the exponent of matrix multiplication. The polynomial dependence on $p$ also crucially 
+allows our algorithms to extend naturally to sublinear time algorithms for $L_\infty$ regression. Of independent interest, we develop a new algorithm 
+for solving $L_p$ regression for arbitrary matrices, which is significantly faster in practice for every $p\ge4$. 
+</div>
+</li>
+</br>
+
 
 
 
@@ -1782,6 +1817,7 @@ var info = new Array(  new Array('--jeremiahblocki--', 'Jeremiah Blocki', 'https
 					 , new Array('--aritrabose--', 'Aritra Bose', 'https://aritra90.github.io/')
 					 , new Array('--muradtukan--', 'Murad Tukan', 'https://dblp.org/pid/259/0724.html')
 					 , new Array('--xuanwu--', 'Xuan Wu', 'https://iiis.tsinghua.edu.cn/en/2015211648/')
+					 , new Array('--raphaelmeyer--', 'Raphael Meyer', 'https://ram900.hosting.nyu.edu/')
                      );
 
 					 
