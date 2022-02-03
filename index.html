@@ -208,6 +208,39 @@ Publications
 
 <ol reversed>
 
+<li>
+<b>
+Memory Bounds for the Experts Problem
+</b>
+</br><i>
+--vaidehisrinivas--,
+--ziyuwu--,
+--davidwoodruff--, 
+Samson Zhou</br></i>
+<a href="http://acm-stoc.org/stoc2022/">STOC 2022</a>
+[<a href="javascript:toggle('SWWZ22')">abstract</a>]
+<!--[<a href="https://arxiv.org/pdf/2110.14094.pdf">pdf</a>]-->
+</br>
+<div id="SWWZ22" style="display: none">
+<p id="abs">
+While online learning with experts has been studied in many settings and there is a large body of work in understanding optimal algorithms for this problem, 
+there is much less work on understanding the memory required to solve this problem in natural streaming models. This is especially important when the number of experts, 
+as well as the number of days the experts make predictions on, are large. The goal is for a streaming algorithm that processes the predictions of each expert 
+on a day to make a prediction with the minimum cost for that day. After having made a prediction, the streaming algorithm sees the actual outcome on that day, 
+updates its state, and then moves on to the next day. 
+
+We initialize the study of the online learning with experts problem in the streaming model. We first give a lower bound for the discrete prediction with 
+experts problem where each prediction is either correct or incorrect for that day. Our lower bound shows that to achieve the optimal regret from online learning, 
+any algorithm must essentially use space linear in the number of experts. Our lower bound also gives a smooth regret versus memory tradeoff. We then give an upper 
+bound for the more general online learning problem in the random-order model, that is tight with our lower-bound up to low order terms. Our upper bound shows that 
+there are natural tradeoffs between the regret of the streaming algorithm, the memory required, and the total number of days. Finally, for adversarially ordered streams, 
+we give upper bounds for the prediction with experts problems that use sublinear space and achieve sublinear regret in a number of natural parameter regimes. 
+We hope that these results and techniques can inspire multiplicative weights algorithms for a wide range of other problems in the memory-constrained setting.
+</div>
+</li>
+</br>
+
+
 
 <li>
 <b>
@@ -1818,6 +1851,8 @@ var info = new Array(  new Array('--jeremiahblocki--', 'Jeremiah Blocki', 'https
 					 , new Array('--muradtukan--', 'Murad Tukan', 'https://dblp.org/pid/259/0724.html')
 					 , new Array('--xuanwu--', 'Xuan Wu', 'https://iiis.tsinghua.edu.cn/en/2015211648/')
 					 , new Array('--raphaelmeyer--', 'Raphael A. Meyer', 'https://ram900.hosting.nyu.edu/')
+					 , new Array('--vaidehisrinivas--', 'Vaidehi Srinivas', 'https://vaidehi8913.github.io/')
+					 , new Array('--ziyuwu--', 'Ziyu Wu', 'https://neilzxu.me/')
                      );
 
 					 
