@@ -213,6 +213,49 @@ Publications
 
 <li>
 <b>
+The White-Box Adversarial Data Stream Model 
+</b>
+</br><i>
+--miklosajtai--,
+--vladimirbraverman--,
+--tsjayram--,
+--sandeepsilwal--,
+--alecsun--,
+--davidwoodruff--, 
+Samson Zhou</br></i>
+<a href="https://2022.sigmod.org/">PODS 2022</a>
+[<a href="javascript:toggle('ABJSSWZ22')">abstract</a>]
+<!--[<a href="https://arxiv.org/pdf/2110.14094.pdf">pdf</a>]-->
+</br>
+<div id="ABJSSWZ22" style="display: none">
+<p id="abs">
+There has been a large body of recent literature studying streaming algorithms on adaptive inputs, where an input stream is chosen adaptively by a 
+black-box adversary who observes the outputs of the algorithm at each time. Many of these algorithms use techniques that crucially use the fact 
+that the adversary can only see the output of the algorithm by using either differential privacy to hide the internal randomness of the algorithm 
+or switching between parallel instances of the algorithm to information theoretically hide the internal randomness of the algorithm. These 
+techniques fail when the entire internal states of the algorithm at each point in time are also revealed to the adversary.
+
+We introduce and consider the problem of streaming algorithms in the white-box adversarial model, where the stream is chosen adaptively by an 
+adversary who observes the entire internal state of the algorithm at each time. We first show that there exists a randomized algorithm for the 
+$\eps$-$L_1$-heavy hitters problem that uses space $\O{\frac{1}{\eps}\left(\log n+\log\frac{1}{\eps}\right)+\log\log m}$, which outperforms the 
+well-known deterministic Misra-Gries algorithm. We also show that if the white-box adversary is computationally bounded, then there exist efficient 
+algorithms for the $(\varphi,\eps)$-$L_1$-heavy hitters problem and the vertex neighborhood identity problem. 
+
+We also show a general technique for proving lower bounds for (possibly randomized) algorithms robust to white-box algorithms through two-player 
+(possibly deterministic) communication problems. In particular, our results show that for all $p\ge 0$, there exists a constant $C_p>1$ such that 
+any $C_p$-approximation algorithm for $F_p$ moment estimation requires $\Omega(n)$ space. Similarly, there exists a constant $C>1$ such that any 
+$C$-approximation algorithm for matrix rank requires $\Omega(n)$ space. We also prove a lower bound of $\Omega(\log n)$ for the fundamental problem of 
+deterministic approximate counting in a stream of $0$s and $1$s, which holds even if we we know how many total stream updates we have seen so far at 
+each point in the stream. Such a lower bound on approximate counting with additional information was unknown, and may be of independent interest. 
+In our context, it shows a separation between multiplayer deterministic maximum communication and the white box space complexity of a streaming algorithm. 
+</div>
+</li>
+</br>
+
+
+
+<li>
+<b>
 Memory Bounds for the Experts Problem
 </b>
 </br><i>
@@ -1856,6 +1899,9 @@ var info = new Array(  new Array('--jeremiahblocki--', 'Jeremiah Blocki', 'https
 					 , new Array('--raphaelmeyer--', 'Raphael A. Meyer', 'https://ram900.hosting.nyu.edu/')
 					 , new Array('--vaidehisrinivas--', 'Vaidehi Srinivas', 'https://vaidehi8913.github.io/')
 					 , new Array('--ziyuwu--', 'Ziyu Wu', 'https://neilzxu.me/')
+					 , new Array('--miklosajtai--', 'Mikl&oacute;s Ajtai', 'https://en.wikipedia.org/wiki/Mikl%C3%B3s_Ajtai')
+					 , new Array('--tsjayram--', 'T.S. Jayram', 'https://scholar.google.com/citations?user=8P-bBdIAAAAJ')
+					 , new Array('--alecsun--', 'Alec Sun', 'https://sites.google.com/view/alecsun/home')
                      );
 
 					 
