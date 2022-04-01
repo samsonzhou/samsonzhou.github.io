@@ -163,33 +163,47 @@ Algorithm Design and Analysis (Teaching Assistant, ACM Graduate TA Award)</li>
 </ul>-->
 
 <hr>
-<h3>
+<!--<h3>
 Preprints
 </h3>
 <ul>
+
+</ul>-->
+
+
+<h3>
+Publications
+</h3>
+
+<ol reversed>
 
 
 
 
 <li>
 <b>
-Approximation Algorithms for Sparse Principal Component Analysis
+Private Data Stream Analysis for Universal Symmetric Norm Estimation
 </b>
 </br><i>
---agnivachowdhury--,
---petrosdrineas--,
---davidwoodruff--, 
+--vladimirbraverman--,
+--joelmanning--,
+--zhiweistevenwu--,
 Samson Zhou</br></i>
-[<a href="javascript:toggle('CDWZ20')">abstract</a>]
-[<a href="https://arxiv.org/pdf/2006.12748.pdf">pdf</a>]
+<a href="https://responsiblecomputing.org/forc-2022/">FORC 2022</a>
+[<a href="javascript:toggle('BMWZ22')">abstract</a>]
+<!--[<a href="https://arxiv.org/pdf/2110.14094.pdf">pdf</a>]-->
 </br>
-<div id="CDWZ20" style="display: none">
+<div id="BMWZ22" style="display: none">
 <p id="abs">
-We present three provably accurate, polynomial time, approximation algorithms for the Sparse Principal Component Analysis (SPCA) problem, 
-without imposing any restrictive assumptions on the input covariance matrix. The first algorithm is based on randomized matrix multiplication; 
-the second algorithm is based on a novel deterministic thresholding scheme; and the third algorithm is based on a semidefinite programming 
-relaxation of SPCA. All algorithms come with provable guarantees and run in low-degree polynomial time. Our empirical evaluations confirm 
-our theoretical findings.
+We study how to release summary statistics on a data stream subject to the constraint of differential privacy. In particular, we focus on releasing the 
+family of \emph{symmetric norms, which are invariant under sign-flips and coordinate-wise permutations on an input data stream and include $L_p$ norms, 
+$k$-support norms, top-$k$ norms, and the box norm as special cases}. Although it may be possible to design and analyze a separate mechanism for each 
+symmetric norm, we propose a general parametrizable framework that differentially privately releases a number of sufficient statistics from which the 
+approximation of all symmetric norms can be simultaneously computed. Our framework partitions the coordinates of the underlying frequency vector into 
+different levels based on their magnitude and releases approximate frequencies for the ``heavy'' coordinates in important levels and releases approximate 
+level sizes for the ``light'' coordinates in important levels.  Surprisingly, our mechanism allows for the release of an \emph{arbitrary} number of 
+symmetric norm approximations without any overhead or additional loss in privacy. Moreover, our mechanism permits $(1+\alpha)$-approximation to each 
+of the symmetric norms and can be implemented using sublinear space in the streaming model for many regimes of the accuracy and privacy parameters.
 </div>
 </li>
 </br>
@@ -199,18 +213,7 @@ our theoretical findings.
 
 
 
-</ul>
 
-
-
-
-
-
-<h3>
-Publications
-</h3>
-
-<ol reversed>
 
 <li>
 <b>
@@ -1739,6 +1742,33 @@ effect of unreliability/noise in test outcomes.
 
 <h3>Other Writings</h3>
 <ul>
+
+
+<li>
+<b>
+Approximation Algorithms for Sparse Principal Component Analysis
+</b>
+</br><i>
+--agnivachowdhury--,
+--petrosdrineas--,
+--davidwoodruff--, 
+Samson Zhou</br></i>
+[<a href="javascript:toggle('CDWZ20')">abstract</a>]
+[<a href="https://arxiv.org/pdf/2006.12748.pdf">pdf</a>]
+</br>
+<div id="CDWZ20" style="display: none">
+<p id="abs">
+We present three provably accurate, polynomial time, approximation algorithms for the Sparse Principal Component Analysis (SPCA) problem, 
+without imposing any restrictive assumptions on the input covariance matrix. The first algorithm is based on randomized matrix multiplication; 
+the second algorithm is based on a novel deterministic thresholding scheme; and the third algorithm is based on a semidefinite programming 
+relaxation of SPCA. All algorithms come with provable guarantees and run in low-degree polynomial time. Our empirical evaluations confirm 
+our theoretical findings.
+</div>
+</li>
+</br>
+
+
+
 <li>
 <b>
 Optimal Parametric Search for Path and Tree Partitioning
@@ -1903,6 +1933,8 @@ var info = new Array(  new Array('--jeremiahblocki--', 'Jeremiah Blocki', 'https
 					 , new Array('--miklosajtai--', 'Mikl&oacute;s Ajtai', 'https://en.wikipedia.org/wiki/Mikl%C3%B3s_Ajtai')
 					 , new Array('--tsjayram--', 'T.S. Jayram', 'https://scholar.google.com/citations?user=8P-bBdIAAAAJ')
 					 , new Array('--alecsun--', 'Alec Sun', 'https://sites.google.com/view/alecsun/home')
+					 , new Array('--zhiweistevenwu--', 'Zhiwei Steven Wu', 'https://zstevenwu.com/index.html#')
+					 , new Array('--joelmanning--', 'Joel Manning', 'https://www.linkedin.com/in/joel-manning')
                      );
 
 					 
