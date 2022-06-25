@@ -179,6 +179,35 @@ Publications
 
 <li>
 <b>
+Adaptive Sketches for Robust Regression with Importance Sampling
+</b>
+</br><i>
+--sepidehmahabadi--,
+--davidwoodruff--,
+Samson Zhou</br></i>
+<a href="https://randomconference.com/random-2022-home/">RANDOM 2022</a>
+[<a href="javascript:toggle('MWZ22')">abstract</a>]
+<!--[<a href="https://arxiv.org/pdf/2110.14094.pdf">pdf</a>]-->
+</br>
+<div id="MWZ22" style="display: none">
+<p id="abs">
+We introduce data structures for solving robust regression through stochastic gradient descent (SGD) by sampling gradients 
+with probability proportional to their norm, i.e., importance sampling. Although SGD is widely used for large scale machine learning, 
+it is well-known for possibly experiencing slow convergence rates due to the high variance from uniform sampling. On the other hand, 
+importance sampling can significantly decrease the variance but is usually difficult to implement because computing the sampling probabilities 
+requires additional passes over the data, in which case standard gradient descent (GD) could be used instead. In this paper, we introduce 
+an algorithm that approximately samples $T$ gradients of dimension $d$ from nearly the optimal importance sampling distribution for a 
+robust regression problem over $n$ rows. Thus our algorithm effectively runs $T$ steps of SGD with importance sampling while using sublinear space 
+and just making a single pass over the data. Our techniques also extend to performing importance sampling for second-order optimization. 
+</div>
+</li>
+</br>
+
+
+
+
+<li>
+<b>
 Hardness and Algorithms for Robust and Sparse Optimization
 </b>
 </br><i>
