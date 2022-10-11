@@ -1847,6 +1847,45 @@ effect of unreliability/noise in test outcomes.
 <ul>
 
 
+
+<li>
+<b>
+How to Make Your Approximation Algorithm Private: A Black-Box Differentially-Private Transformation for Tunable Approximation Algorithms of Functions with Low Sensitivity 
+</b>
+</br><i>
+--jeremiahblocki--,
+--elenagrigorescu--,
+--tamalikamukherjee--,
+Samson Zhou</br></i>
+[<a href="javascript:toggle('BGMZ22')">abstract</a>]
+[<a href="https://arxiv.org/pdf/2210.03831.pdf">pdf</a>]
+</br>
+<div id="BGMZ22" style="display: none">
+<p id="abs">
+We develop a framework for efficiently transforming certain approximation algorithms into differentially-private variants, in a black-box manner. 
+Specifically, our results focus on algorithms $A$ that output an approximation to a function $f$ of the form $(1-\alpha)f(x)-\kappa\leq A(x) \leq (1+\alpha)f(x)+\kappa$, 
+where $\alpha\in [0,1)$ is a parameter that can be``tuned" to small-enough values while incurring only a polynomial blowup in the running time/space. 
+We show that such algorithms can be made differentially private without sacrificing accuracy, as long as the function $f$ has small ``global sensitivity''. 
+We achieve these results by applying the ``smooth sensitivity'' framework developed by Nissim, Raskhodnikova, and Smith (STOC 2007). 
+
+Our framework naturally applies to transform non-private FPRAS (resp. FPTAS) algorithms into $(\varepsilon,\delta)$-differentially private 
+(resp. $\varepsilon$-differentially private) approximation algorithms. We apply our framework in the context of sublinear-time and sublinear-space algorithms, 
+while preserving the nature of the algorithm in meaningful ranges of the parameters. Our results include the first (to the best of our knowledge) 
+$(\eps,\delta)$-edge differentially-private sublinear-time algorithm for estimating the number of triangles, the number of connected components, 
+and the weight of a minimum spanning tree of a graph, as well as a more efficient algorithm (while sacrificing pure DP in contrast to previous results) 
+for estimating the average degree of a graph. In the area of streaming algorithms, our results include $(\eps,\delta)$-DP algorithms for 
+estimating $L_p$-norms, distinct elements, and weighted minimum spanning tree for both insertion-only and turnstile streams. Our transformation 
+also provides a private version of the smooth histogram framework, which is commonly used for converting streaming algorithms into sliding window variants, 
+and achieves a multiplicative approximation to many problems, such as estimating $L_p$-norms, distinct elements, and the length of the longest increasing subsequence. 
+</div>
+</li>
+</br>
+
+
+
+
+
+
 <li>
 <b>
 Approximation Algorithms for Sparse Principal Component Analysis
