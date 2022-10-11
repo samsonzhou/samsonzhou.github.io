@@ -180,6 +180,91 @@ Publications
 
 <ol reversed>
 
+
+<li>
+<b>
+Near-Linear Sample Complexity for L<sub>p</sub> Polynomial Regression
+</b>
+</br><i>
+--raphaelmeyer--,
+--cameronmusco--,
+--christophermusco--,
+--davidwoodruff--,
+Samson Zhou</br></i>
+<a href="https://www.siam.org/conferences/cm/conference/soda23">SODA 2023</a>
+[<a href="javascript:toggle('MMMWZ23')">abstract</a>]
+<!--[<a href="https://arxiv.org/pdf/2209.10614.pdf">pdf</a>]-->
+</br>
+<div id="MMMWZ23" style="display: none">
+<p id="abs">
+We study $L_p$ polynomial regression. Given query access to a function $f:[-1,1] \rightarrow \R$, the goal is to find a degree $d$ polynomial $\widehat{q}$ such that, 
+for a given parameter $\varepsilon > 0$,
+\begin{align}\label{first}
+\|\widehat{q}-f\|_p\le (1+\epsilon) \cdot\min_{q:\deg(q)\le d}\|q-f\|_p.
+\end{align}
+Here $\norm{\cdot}_p$ is the $L_p$ norm, $\norm{g}_p = (\int_{-1}^1 |g(t)|^p dt)^{1/p}$. We show that querying $f$ at points randomly drawn from the 
+Chebyshev measure on $[-1,1]$ is a near-optimal strategy for polynomial regression in all $L_p$ norms. In particular, to output $\hat q$ satisfying \eqref{first}, 
+it suffices to sample $O(\frac{dp^4\polylog d}{\poly\,\varepsilon})$ points from $[-1,1]$ with probabilities proportional to this measure. While polynomial regression 
+is well understood for $L_2$ and $L_\infty$, no prior work explicitly studies polynomial regression for other values of $p$ without strong assumptions 
+like having bounded noise. Naively generalizing techniques from prior works would have a higher runtime than our algorithm. Further, they would either 
+only give results for constant $\varepsilon$, or require a suboptimal $\Omega(d^2)$ sample complexity for $p > 2$. 
+
+One of our main technical contributions is to provide explicit bounds on the \textit{$L_p$ Lewis weight function} of an infinite linear operator underlying 
+the polynomial regression problem. Using tools from the orthogonal polynomial literature, we show that this function is closely related to the Chebyshev density. 
+Our approach advances prior work, which studies explicit bounds on the $L_2$ leverage scores of infinite linear operators. A second contribution is to prove 
+tighter bounds on $L_p$ Lewis weight sampling for the polynomial operator than hold for general linear operators or matrices.
+</div>
+</li>
+</br>
+
+
+
+
+
+
+
+<li>
+<b>
+Optimal Algorithms for Linear Algebra in the Current Matrix Multiplication Time
+</b>
+</br><i>
+--yeshwanthcherapanamjeri--,
+--sandeepsilwal--,
+--davidwoodruff--,
+Samson Zhou</br></i>
+<a href="https://www.siam.org/conferences/cm/conference/soda23">SODA 2023</a>
+[<a href="javascript:toggle('CSWZ23')">abstract</a>]
+<!--[<a href="https://arxiv.org/pdf/2209.10614.pdf">pdf</a>]-->
+</br>
+<div id="CSWZ23" style="display: none">
+<p id="abs">
+We study fundamental problems in linear algebra, such as finding a maximal linearly independent subset of rows or columns (a basis), solving linear regression, 
+or computing a subspace embedding. For these problems, we consider input matrices  $\mathbf{A}\in\mathbb{R}^{n\times d}$ with $n > d$. The input can be read 
+in $\text{nnz}(\mathbf{A})$ time, which denotes the number of nonzero entries of $\mathbf{A}$. In this paper, we show that beyond the time required to read the 
+input matrix, these fundamental linear algebra problems can be solved in $d^{\omega}$ time, i.e., where $\omega \approx 2.37$ is the current matrix-multiplication exponent.
+
+To do so, we introduce a constant-factor subspace embedding with the optimal $m=\mathcal{O}(d)$ number of rows, and which can be applied in time 
+$\mathcal{O}\left(\frac{\text{nnz}(\mathbf{A})}{\alpha}\right) + d^{2 + \alpha}\text{poly}(\log d)$ for any trade-off parameter $\alpha>0$, 
+tightening a recent result by Chepurko et. al. [SODA 2022] that achieves an $\exp(\text{poly}(\log\log n))$ distortion with $m=d\cdot\text{poly}(\log\log d)$ rows 
+in $\mathcal{O}\left(\frac{\text{nnz}(\mathbf{A})}{\alpha}+d^{2+\alpha+o(1)}\right)$ time. Our subspace embedding uses a recently shown property of 
+{\it stacked} Subsampled Randomized Hadamard Transforms (SRHT), which actually increase the input dimension, to ``spread'' the mass of an input vector 
+among a large number of coordinates, followed by random sampling. To control the effects of random sampling, we use fast semidefinite programming to 
+reweight the rows. We then use our constant-factor subspace embedding to give the first optimal runtime algorithms for finding a maximal linearly independent subset 
+of columns, regression, and leverage score sampling. To do so, we also introduce a novel subroutine that iteratively grows a set of independent rows, 
+which may be of independent interest. 
+</div>
+</li>
+</br>
+
+
+
+
+
+
+
+
+
+
 <li>
 <b>
 Learning-Augmented Algorithms for Online Linear and Semidefinite Programming
@@ -2082,6 +2167,8 @@ var info = new Array(  new Array('--jeremiahblocki--', 'Jeremiah Blocki', 'https
 					 , new Array('--youngsanlin--', 'Young-San Lin', 'https://www.cs.purdue.edu/homes/lin532/')
 					 , new Array('--maoyuansong--', 'Maoyuan Song', 'https://maoyuans.github.io')
 					 , new Array('--tamalikamukherjee--', 'Tamalika Mukherjee', 'https://web.ics.purdue.edu/~tmukherj/')
+					 , new Array('--yeshwanthcherapanamjeri--', 'Yeshwanth Cherapanamjeri', 'https://yeshwanth94.github.io/')
+					 
 					 );
 
 					 
