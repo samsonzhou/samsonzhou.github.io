@@ -181,6 +181,125 @@ Publications
 <ol reversed>
 
 
+
+
+
+<li>
+<b>
+Sub-quadratic Algorithms for Kernel Matrices via Kernel Density Estimation
+</b>
+</br><i>
+--aineshbakshi--,
+--praneethkacham--,
+--piotrindyk--,
+--sandeepsilwal--,
+Samson Zhou</br></i>
+<a href="https://iclr.cc/Conferences/2023">ICLR 2023</a> (selected for spotlight presentation)
+[<a href="javascript:toggle('BKISZ23')">abstract</a>]
+[<a href="https://arxiv.org/pdf/2212.00642.pdf">pdf</a>]
+</br>
+<div id="BKISZ23" style="display: none">
+<p id="abs">
+Kernel matrices, as well as weighted graphs represented by them, are ubiquitous objects in machine learning, statistics and other related fields. 
+The main drawback of using kernel methods (learning and inference using kernel matrices) is efficiency -- given $n$ input points, most 
+kernel-based algorithms need to materialize the full $n \times n$ kernel matrix before performing any subsequent computation, 
+thus incurring $\Omega(n^2)$ runtime. Breaking this quadratic barrier for various problems has therefore, been a subject of extensive research efforts. 
+
+We break the quadratic barrier and obtain \emph{subquadratic} time  algorithms for several fundamental linear-algebraic and 
+graph processing primitives, including approximating the top eigenvalue and eigenvector, spectral sparsification, solving linear systems, 
+local clustering, low-rank approximation, arboricity estimation and counting weighted triangles. We build on the recently developed 
+Kernel Density Estimation framework, which (after preprocessing in time subquadratic in $n$) can return estimates of row/column sums 
+of the kernel matrix. In particular, we develop efficient reductions from \emph{weighted vertex} and \emph{weighted edge sampling} on kernel graphs, 
+\emph{simulating random walks} on kernel graphs, and \emph{importance sampling} on matrices to Kernel Density Estimation and show that we can 
+generate samples from these distributions in \emph{sublinear} (in the support of the distribution) time. Our reductions are the central ingredient 
+in each of our applications and we believe they may be of independent interest. We empirically demonstrate the efficacy of our algorithms on 
+low-rank approximation (LRA) and spectral sparsification, where we observe a $\textbf{9x}$ decrease in the number of kernel evaluations 
+over baselines for LRA and a $\textbf{41x}$ reduction in the graph size for spectral sparsification.
+</div>
+</li>
+</br>
+
+
+
+<li>
+<b>
+Robust Algorithms on Adaptive Inputs from Bounded Adversaries
+</b>
+</br><i>
+--yeshwanthcherapanamjeri--,
+--sandeepsilwal--,
+--davidwoodruff--,
+--fredzhang--,
+--qiuyizhang--,
+Samson Zhou</br></i>
+<a href="https://iclr.cc/Conferences/2023">ICLR 2023</a>
+[<a href="javascript:toggle('CSWZZZ23')">abstract</a>]
+<!--[<a href="https://arxiv.org/pdf/2212.00642.pdf">pdf</a>]-->
+</br>
+<div id="CSWZZZ" style="display: none">
+<p id="abs">
+We study dynamic algorithms robust to adaptive input generated from sources with bounded capabilities, such as sparsity or limited interaction. 
+For example, we consider robust linear algebraic algorithms when the updates to the input are sparse but given by an adversary with access 
+to a query oracle. We also study robust algorithms in the standard centralized setting, where an adversary queries an algorithm in an 
+adaptive manner, but the number of interactions between the adversary and the algorithm is bounded. Together, we provide a unified framework 
+for answering $Q$ adaptive queries that incurs $\widetilde{\mathcal{O}}(\sqrt{Q})$ overhead in space, which is roughly a quadratic improvement 
+over the na\"{i}ve implementation, and only incurs a logarithmic overhead in query time. Our general framework has diverse applications 
+in machine learning and data science, such as adaptive distance estimation, kernel density estimation, linear regression, range queries, 
+and point queries. Surprisingly, we show that these novel subroutines for each of these problems can be generally combined with the 
+elegant use of differential privacy to hide the internal randomness of various subroutines, leading to robust algorithms across these 
+different settings. In addition, we demonstrate even better algorithmic improvements for (1) reducing the pre-processing time for 
+adaptive distance estimation and (2) permitting an unlimited number of adaptive queries for kernel density estimation.
+</div>
+</li>
+</br>
+
+
+
+
+<li>
+<b>
+Differentially Private L<sub>2</sub>-Heavy Hitters in the Sliding Window Model
+</b>
+</br><i>
+--jeremiahblocki--,
+--seunghoonlee--,
+--tamalikamukherjee--,
+Samson Zhou</br></i>
+<a href="https://iclr.cc/Conferences/2023">ICLR 2023</a> (selected for spotlight presentation)
+[<a href="javascript:toggle('BLMZ23')">abstract</a>]
+<!--[<a href="https://arxiv.org/pdf/2212.00642.pdf">pdf</a>]-->
+</br>
+<div id="BLMZ23" style="display: none">
+<p id="abs">
+The data management of large companies often prioritize more recent data, as a source of higher accuracy prediction 
+than outdated data. For example, the Facebook data policy retains user search histories for $6$ months while the 
+Google data retention policy states that browser information may be stored for up to $9$ months. These policies are 
+captured by the sliding window model, in which only the most recent $W$ statistics form the underlying dataset. 
+
+In this paper, we consider the problem of privately releasing the $L_2$-heavy hitters in the sliding window model, 
+which include $L_p$-heavy hitters for $p\le 2$ and in some sense are the strongest possible guarantees that can be achieved 
+using polylogarithmic space, but cannot be handled by existing techniques due to the sub-additivity of the $L_2$ norm. 
+Moreover, existing non-private sliding window algorithms use the smooth histogram framework, which has high sensitivity. 
+
+To overcome these barriers, we introduce the first differentially private algorithm for $L_2$-heavy hitters in the sliding 
+window model by initiating a number of $L_2$-heavy hitter algorithms across the stream with significantly lower threshold. 
+Similarly, we augment the algorithms with an approximate frequency tracking algorithm with significantly higher accuracy. 
+We then use smooth sensitivity and statistical distance arguments to show that we can add noise proportional to an estimation 
+of the $L_2$ norm. To the best of our knowledge, our techniques are the first to privately release statistics that are related 
+to a sub-additive function in the sliding window model, and may be of independent interest to future differentially private 
+algorithmic design in the sliding window model.
+</div>
+</li>
+</br>
+
+
+
+
+
+
+
+
+
 <li>
 <b>
 Near-Linear Sample Complexity for L<sub>p</sub> Polynomial Regression
@@ -1931,41 +2050,6 @@ effect of unreliability/noise in test outcomes.
 <h3>Other Writings</h3>
 <ul>
 
-<li>
-<b>
-Sub-quadratic Algorithms for Kernel Matrices via Kernel Density Estimation
-</b>
-</br><i>
---aineshbakshi--,
---praneethkacham--,
---piotrindyk--,
---sandeepsilwal--,
-Samson Zhou</br></i>
-[<a href="javascript:toggle('BKISZ23')">abstract</a>]
-[<a href="https://arxiv.org/pdf/2212.00642.pdf">pdf</a>]
-</br>
-<div id="BKISZ23" style="display: none">
-<p id="abs">
-Kernel matrices, as well as weighted graphs represented by them, are ubiquitous objects in machine learning, statistics and other related fields. 
-The main drawback of using kernel methods (learning and inference using kernel matrices) is efficiency -- given $n$ input points, most 
-kernel-based algorithms need to materialize the full $n \times n$ kernel matrix before performing any subsequent computation, 
-thus incurring $\Omega(n^2)$ runtime. Breaking this quadratic barrier for various problems has therefore, been a subject of extensive research efforts. 
-
-We break the quadratic barrier and obtain \emph{subquadratic} time  algorithms for several fundamental linear-algebraic and 
-graph processing primitives, including approximating the top eigenvalue and eigenvector, spectral sparsification, solving linear systems, 
-local clustering, low-rank approximation, arboricity estimation and counting weighted triangles. We build on the recently developed 
-Kernel Density Estimation framework, which (after preprocessing in time subquadratic in $n$) can return estimates of row/column sums 
-of the kernel matrix. In particular, we develop efficient reductions from \emph{weighted vertex} and \emph{weighted edge sampling} on kernel graphs, 
-\emph{simulating random walks} on kernel graphs, and \emph{importance sampling} on matrices to Kernel Density Estimation and show that we can 
-generate samples from these distributions in \emph{sublinear} (in the support of the distribution) time. Our reductions are the central ingredient 
-in each of our applications and we believe they may be of independent interest. We empirically demonstrate the efficacy of our algorithms on 
-low-rank approximation (LRA) and spectral sparsification, where we observe a $\textbf{9x}$ decrease in the number of kernel evaluations 
-over baselines for LRA and a $\textbf{41x}$ reduction in the graph size for spectral sparsification.
-</div>
-</li>
-</br>
-
-
 
 
 
@@ -2206,6 +2290,8 @@ var info = new Array(  new Array('--jeremiahblocki--', 'Jeremiah Blocki', 'https
 					 , new Array('--yeshwanthcherapanamjeri--', 'Yeshwanth Cherapanamjeri', 'https://yeshwanth94.github.io/')
 					 , new Array('--praneethkacham--', 'Praneeth Kacham', 'https://www.praneethkacham.com/')
 					 , new Array('--piotrindyk--', 'Piotr Indyk', 'https://people.csail.mit.edu/indyk/')
+					 , new Array('--fredzhang--', 'Fred Zhang', 'https://fredzhang.me/')
+					 , new Array('--qiuyizhang--', 'Qiuyi Zhang', 'https://qiuyiz.github.io/')
 					 );
 
 					 
