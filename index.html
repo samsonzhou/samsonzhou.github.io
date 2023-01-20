@@ -221,37 +221,7 @@ over baselines for LRA and a $\textbf{41x}$ reduction in the graph size for spec
 
 
 
-<li>
-<b>
-Robust Algorithms on Adaptive Inputs from Bounded Adversaries
-</b>
-</br><i>
---yeshwanthcherapanamjeri--,
---sandeepsilwal--,
---davidwoodruff--,
---fredzhang--,
---qiuyizhang--,
-Samson Zhou</br></i>
-<a href="https://iclr.cc/Conferences/2023">ICLR 2023</a>
-[<a href="javascript:toggle('CSWZZZ23')">abstract</a>]
-<!--[<a href="https://arxiv.org/pdf/2212.00642.pdf">pdf</a>]-->
-</br>
-<div id="CSWZZZ" style="display: none">
-<p id="abs">
-We study dynamic algorithms robust to adaptive input generated from sources with bounded capabilities, such as sparsity or limited interaction. 
-For example, we consider robust linear algebraic algorithms when the updates to the input are sparse but given by an adversary with access 
-to a query oracle. We also study robust algorithms in the standard centralized setting, where an adversary queries an algorithm in an 
-adaptive manner, but the number of interactions between the adversary and the algorithm is bounded. Together, we provide a unified framework 
-for answering $Q$ adaptive queries that incurs $\widetilde{\mathcal{O}}(\sqrt{Q})$ overhead in space, which is roughly a quadratic improvement 
-over the na\"{i}ve implementation, and only incurs a logarithmic overhead in query time. Our general framework has diverse applications 
-in machine learning and data science, such as adaptive distance estimation, kernel density estimation, linear regression, range queries, 
-and point queries. Surprisingly, we show that these novel subroutines for each of these problems can be generally combined with the 
-elegant use of differential privacy to hide the internal randomness of various subroutines, leading to robust algorithms across these 
-different settings. In addition, we demonstrate even better algorithmic improvements for (1) reducing the pre-processing time for 
-adaptive distance estimation and (2) permitting an unlimited number of adaptive queries for kernel density estimation.
-</div>
-</li>
-</br>
+
 
 
 
@@ -291,6 +261,51 @@ algorithmic design in the sliding window model.
 </div>
 </li>
 </br>
+
+
+
+
+
+
+
+
+
+<li>
+<b>
+Robust Algorithms on Adaptive Inputs from Bounded Adversaries
+</b>
+</br><i>
+--yeshwanthcherapanamjeri--,
+--sandeepsilwal--,
+--davidwoodruff--,
+--fredzhang--,
+--qiuyizhang--,
+Samson Zhou</br></i>
+<a href="https://iclr.cc/Conferences/2023">ICLR 2023</a>
+[<a href="javascript:toggle('CSWZZZ23')">abstract</a>]
+<!--[<a href="https://arxiv.org/pdf/2212.00642.pdf">pdf</a>]-->
+</br>
+<div id="CSWZZZ" style="display: none">
+<p id="abs">
+We study dynamic algorithms robust to adaptive input generated from sources with bounded capabilities, such as sparsity or limited interaction. 
+For example, we consider robust linear algebraic algorithms when the updates to the input are sparse but given by an adversary with access 
+to a query oracle. We also study robust algorithms in the standard centralized setting, where an adversary queries an algorithm in an 
+adaptive manner, but the number of interactions between the adversary and the algorithm is bounded. Together, we provide a unified framework 
+for answering $Q$ adaptive queries that incurs $\widetilde{\mathcal{O}}(\sqrt{Q})$ overhead in space, which is roughly a quadratic improvement 
+over the na\"{i}ve implementation, and only incurs a logarithmic overhead in query time. Our general framework has diverse applications 
+in machine learning and data science, such as adaptive distance estimation, kernel density estimation, linear regression, range queries, 
+and point queries. Surprisingly, we show that these novel subroutines for each of these problems can be generally combined with the 
+elegant use of differential privacy to hide the internal randomness of various subroutines, leading to robust algorithms across these 
+different settings. In addition, we demonstrate even better algorithmic improvements for (1) reducing the pre-processing time for 
+adaptive distance estimation and (2) permitting an unlimited number of adaptive queries for kernel density estimation.
+</div>
+</li>
+</br>
+
+
+
+
+
 
 
 
