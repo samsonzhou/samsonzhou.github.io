@@ -2153,6 +2153,40 @@ effect of unreliability/noise in test outcomes.
 <h3>Other Writings</h3>
 <ul>
 
+<li>
+<b>
+Streaming Algorithms for Learning with Experts: Deterministic Versus Robust
+</b>
+</br><i>
+--davidwoodruff--,
+--fredzhang--,
+Samson Zhou</br></i>
+[<a href="javascript:toggle('BWZZ23')">abstract</a>]
+[<a href="https://arxiv.org/pdf/2303.01709.pdf">pdf</a>]
+</br>
+<div id="WZZ23" style="display: none">
+<p id="abs">
+In the online learning with experts problem, an algorithm must make a prediction about an outcome on each of $T$ days (or times), given a set of $n$ experts who 
+make predictions on each day (or time). The algorithm is given feedback on the outcomes of each day, including the cost of its prediction and the cost of the 
+expert predictions, and the goal is to make a prediction with the minimum cost, specifically compared to the best expert in the set. Recent work by 
+Srinivas, Woodruff, Xu, and Zhou (STOC 2022) introduced the study of the online learning with experts problem under memory constraints. 
+
+However, often the predictions made by experts or algorithms at some time influence future outcomes, so that the input is adaptively chosen. 
+Whereas deterministic algorithms would be robust to adaptive inputs, existing algorithms all crucially use randomization to sample a small number of experts. 
+
+In this paper, we study deterministic and robust algorithms for the experts problem. We first show a space lower bound of 
+$\widetilde{\Omega}\left(\frac{nM}{RT}\right)$ for any deterministic algorithm that achieves regret $R$ when the best expert makes $M$ mistakes. 
+Our result shows that the natural deterministic algorithm, which iterates through pools of experts until each expert in the pool has erred, 
+is optimal up to polylogarithmic factors. On the positive side, we give a randomized algorithm that is robust to adaptive inputs that uses 
+$\widetilde{O}\left(\frac{n}{R\sqrt{T}}\right)$ space for  $M=O\left(\frac{R^2 T}{\log^2 n}\right)$, thereby showing a smooth space-regret trade-off. 
+</div>
+</li>
+</br>
+
+
+
+
+
 
 
 
