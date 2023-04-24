@@ -191,6 +191,88 @@ Publications
 </h3>
 
 <ol reversed>
+
+
+
+
+<li>
+<b>
+Fast (1+&#x3B5;)-Approximation Algorithms for Binary Matrix Factorization
+</b>
+</br><i>
+--ameyavelingker--,
+--maximilianvotsch--,
+--davidwoodruff--,
+Samson Zhou</br></i>
+<a href="https://icml.cc/Conferences/2023">ICML 2023</a>
+[<a href="javascript:toggle('VVWZ23')">abstract</a>]
+<!--[<a href="https://arxiv.org/pdf/2303.01709.pdf">pdf</a>]-->
+</br>
+<div id="VVWZ23" style="display: none">
+<p id="abs">
+We introduce efficient $(1+\varepsilon)$-approximation algorithms for the binary matrix factorization (BMF) problem, where the inputs are a 
+matrix $\mathbf{A}\in\{0,1\}^{n\times d}$, a rank parameter $k>0$, and an accuracy parameter $\varepsilon>0$, and the goal is to approximate 
+$\mathbf{A}$ by outputting factors $\mathbf{U}\in\{0,1\}^{n\times k}$ and $\mathbf{V}\in\{0,1\}^{k\times d}$ that minimize the Frobenius loss 
+$\|\mathbf{A}-\mathbf{U}\mathbf{V}\|_F$. Currently, the state-of-the-art for this problem is the approximation algorithm of Kumar \etal~[ICML 2019], 
+which achieves a $C$-approximation for some constant $C\ge 576$. We give the first $(1+\varepsilon)$-approximation algorithm using runtime singly 
+exponential in $k$, which is typically a small integer. Our techniques generalize to other common variants of the BMF problem, admitting bicriteria 
+$(1+\varepsilon)$-approximation algorithms for $L_p$ loss functions, as well as the setting where matrix operations are performed in $\mathbb{F}_2$. 
+Our approach can be implemented in standard big data models, such as the streaming model or the distributed model.
+</div>
+</li>
+</br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li>
+<b>
+Streaming Algorithms for Learning with Experts: Deterministic Versus Robust
+</b>
+</br><i>
+--muradtukan--,
+Samson Zhou,
+--alaamaalouf--,
+--danielarus--,
+--vladimirbraverman--,
+--danfeldman--</br></i>
+<a href="https://icml.cc/Conferences/2023">ICML 2023</a>
+[<a href="javascript:toggle('TZMRBF3')">abstract</a>]
+[<a href="https://arxiv.org/pdf/2303.05151.pdf">pdf</a>]
+</br>
+<div id="TZMRBF" style="display: none">
+<p id="abs">
+Radial basis function neural networks (\emph{RBFNN}) are {well-known} for their capability to approximate any continuous function on a closed bounded 
+set with arbitrary precision given enough hidden neurons. In this paper, we introduce the first algorithm to construct coresets for \emph{RBFNNs}, 
+i.e., small weighted subsets that approximate the loss of the input data on any radial basis function network and thus approximate any function 
+defined by an \emph{RBFNN} on the larger input data. In particular, we construct coresets for radial basis and Laplacian loss functions. We then use 
+our coresets to obtain a provable data subset selection algorithm for training deep neural networks. Since our coresets approximate every function, 
+they also approximate the gradient of each weight in a neural network, which is a particular function on the input. We then perform empirical evaluations 
+on function approximation and dataset subset selection on popular network architectures and data sets, demonstrating the efficacy and 
+accuracy of our coreset construction.
+</div>
+</li>
+</br>
+
+
+
+
+
+
+
+
+
+
+
 <li>
 <b>
 Differentially Private Aggregation via Imperfect Shuffling
@@ -2471,7 +2553,11 @@ var info = new Array(  new Array('--jeremiahblocki--', 'Jeremiah Blocki', 'https
 					 , new Array('--guangyaozheng--', 'Guangyao Zheng', 'https://www.linkedin.com/in/guangyao-zheng-a5878117a')
 					 , new Array('--badihghazi--', 'Badih Ghazi', 'https://sites.google.com/view/badihghazi/home')
 					 , new Array('--ravikumar--', 'Ravi Kumar', 'https://sites.google.com/site/ravik53/')
-					 , new Array('--pasinmanurangsi--', 'Pasin Manurangsi', 'https://pasin30055.github.io/')				 
+					 , new Array('--pasinmanurangsi--', 'Pasin Manurangsi', 'https://pasin30055.github.io/')
+					 , new Array('--alaamaalouf--', 'Alaa Maalouf', 'https://scholar.google.com/citations?user=6r72e-MAAAAJ')
+					 , new Array('--danielarus--', 'Daniela Rus', 'https://danielarus.csail.mit.edu/')
+					 , new Array('--ameyavelingker--', 'Ameya Velingker', 'https://www.ameyavelingker.com/')	
+					 , new Array('--maximilianvotsch--', 'Maximilian V&#246;tsch', 'https://dblp.org/pid/335/2264.html')					 
 					 );
 
 					 
