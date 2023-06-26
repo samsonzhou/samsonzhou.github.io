@@ -194,6 +194,89 @@ Publications
 
 
 
+
+<li>
+<b>
+How to Make Your Approximation Algorithm Private: A Black-Box Differentially-Private Transformation for Tunable Approximation Algorithms of Functions with Low Sensitivity 
+</b>
+</br><i>
+--jeremiahblocki--,
+--elenagrigorescu--,
+--tamalikamukherjee--,
+Samson Zhou</br></i>
+<a href="https://randomconference.com/random-2023-home/">RANDOM 2023</a>
+[<a href="javascript:toggle('BGMZ22')">abstract</a>]
+[<a href="https://arxiv.org/pdf/2210.03831.pdf">pdf</a>]
+</br>
+<div id="BGMZ22" style="display: none">
+<p id="abs">
+We develop a framework for efficiently transforming certain approximation algorithms into differentially-private variants, in a black-box manner. 
+Specifically, our results focus on algorithms $A$ that output an approximation to a function $f$ of the form $(1-\alpha)f(x)-\kappa\leq A(x) \leq (1+\alpha)f(x)+\kappa$, 
+where $\alpha\in [0,1)$ is a parameter that can be``tuned" to small-enough values while incurring only a polynomial blowup in the running time/space. 
+We show that such algorithms can be made differentially private without sacrificing accuracy, as long as the function $f$ has small ``global sensitivity''. 
+We achieve these results by applying the ``smooth sensitivity'' framework developed by Nissim, Raskhodnikova, and Smith (STOC 2007). 
+
+Our framework naturally applies to transform non-private FPRAS (resp. FPTAS) algorithms into $(\varepsilon,\delta)$-differentially private 
+(resp. $\varepsilon$-differentially private) approximation algorithms. We apply our framework in the context of sublinear-time and sublinear-space algorithms, 
+while preserving the nature of the algorithm in meaningful ranges of the parameters. Our results include the first (to the best of our knowledge) 
+$(\eps,\delta)$-edge differentially-private sublinear-time algorithm for estimating the number of triangles, the number of connected components, 
+and the weight of a minimum spanning tree of a graph, as well as a more efficient algorithm (while sacrificing pure DP in contrast to previous results) 
+for estimating the average degree of a graph. In the area of streaming algorithms, our results include $(\eps,\delta)$-DP algorithms for 
+estimating $L_p$-norms, distinct elements, and weighted minimum spanning tree for both insertion-only and turnstile streams. Our transformation 
+also provides a private version of the smooth histogram framework, which is commonly used for converting streaming algorithms into sliding window variants, 
+and achieves a multiplicative approximation to many problems, such as estimating $L_p$-norms, distinct elements, and the length of the longest increasing subsequence. 
+</div>
+</li>
+</br>
+
+
+
+
+
+
+
+
+
+
+<li>
+<b>
+Private Data Stream Analysis for Universal Symmetric Norm Estimation
+</b>
+</br><i>
+--vladimirbraverman--,
+--joelmanning--,
+--zhiweistevenwu--,
+Samson Zhou</br></i>
+<a href="https://randomconference.com/random-2023-home/">RANDOM 2023</a>
+[<a href="javascript:toggle('BMWZ22')">abstract</a>]
+<!--[<a href="https://arxiv.org/pdf/2110.14094.pdf">pdf</a>]-->
+</br>
+<a href="https://responsiblecomputing.org/forc-2022/">FORC 2022</a> (non-archival track)
+</br>
+<div id="BMWZ22" style="display: none">
+<p id="abs">
+We study how to release summary statistics on a data stream subject to the constraint of differential privacy. In particular, we focus on releasing the 
+family of \emph{symmetric norms, which are invariant under sign-flips and coordinate-wise permutations on an input data stream and include $L_p$ norms, 
+$k$-support norms, top-$k$ norms, and the box norm as special cases}. Although it may be possible to design and analyze a separate mechanism for each 
+symmetric norm, we propose a general parametrizable framework that differentially privately releases a number of sufficient statistics from which the 
+approximation of all symmetric norms can be simultaneously computed. Our framework partitions the coordinates of the underlying frequency vector into 
+different levels based on their magnitude and releases approximate frequencies for the ``heavy'' coordinates in important levels and releases approximate 
+level sizes for the ``light'' coordinates in important levels.  Surprisingly, our mechanism allows for the release of an \emph{arbitrary} number of 
+symmetric norm approximations without any overhead or additional loss in privacy. Moreover, our mechanism permits $(1+\alpha)$-approximation to each 
+of the symmetric norms and can be implemented using sublinear space in the streaming model for many regimes of the accuracy and privacy parameters.
+</div>
+</li>
+</br>
+
+
+
+
+
+
+
+
+
+
 <li>
 <b>
 Fast (1+&#x3B5;)-Approximation Algorithms for Binary Matrix Factorization
@@ -702,35 +785,6 @@ for the well-studied sparse PCA problem.
 </br>
 
 
-
-
-<li>
-<b>
-Private Data Stream Analysis for Universal Symmetric Norm Estimation
-</b>
-</br><i>
---vladimirbraverman--,
---joelmanning--,
---zhiweistevenwu--,
-Samson Zhou</br></i>
-<a href="https://responsiblecomputing.org/forc-2022/">FORC 2022</a> (non-archival track)
-[<a href="javascript:toggle('BMWZ22')">abstract</a>]
-<!--[<a href="https://arxiv.org/pdf/2110.14094.pdf">pdf</a>]-->
-</br>
-<div id="BMWZ22" style="display: none">
-<p id="abs">
-We study how to release summary statistics on a data stream subject to the constraint of differential privacy. In particular, we focus on releasing the 
-family of \emph{symmetric norms, which are invariant under sign-flips and coordinate-wise permutations on an input data stream and include $L_p$ norms, 
-$k$-support norms, top-$k$ norms, and the box norm as special cases}. Although it may be possible to design and analyze a separate mechanism for each 
-symmetric norm, we propose a general parametrizable framework that differentially privately releases a number of sufficient statistics from which the 
-approximation of all symmetric norms can be simultaneously computed. Our framework partitions the coordinates of the underlying frequency vector into 
-different levels based on their magnitude and releases approximate frequencies for the ``heavy'' coordinates in important levels and releases approximate 
-level sizes for the ``light'' coordinates in important levels.  Surprisingly, our mechanism allows for the release of an \emph{arbitrary} number of 
-symmetric norm approximations without any overhead or additional loss in privacy. Moreover, our mechanism permits $(1+\alpha)$-approximation to each 
-of the symmetric norms and can be implemented using sublinear space in the streaming model for many regimes of the accuracy and privacy parameters.
-</div>
-</li>
-</br>
 
 
 
@@ -2305,42 +2359,6 @@ $\widetilde{O}\left(\frac{n}{R\sqrt{T}}\right)$ space for  $M=O\left(\frac{R^2 T
 
 
 
-
-
-
-
-<li>
-<b>
-How to Make Your Approximation Algorithm Private: A Black-Box Differentially-Private Transformation for Tunable Approximation Algorithms of Functions with Low Sensitivity 
-</b>
-</br><i>
---jeremiahblocki--,
---elenagrigorescu--,
---tamalikamukherjee--,
-Samson Zhou</br></i>
-[<a href="javascript:toggle('BGMZ22')">abstract</a>]
-[<a href="https://arxiv.org/pdf/2210.03831.pdf">pdf</a>]
-</br>
-<div id="BGMZ22" style="display: none">
-<p id="abs">
-We develop a framework for efficiently transforming certain approximation algorithms into differentially-private variants, in a black-box manner. 
-Specifically, our results focus on algorithms $A$ that output an approximation to a function $f$ of the form $(1-\alpha)f(x)-\kappa\leq A(x) \leq (1+\alpha)f(x)+\kappa$, 
-where $\alpha\in [0,1)$ is a parameter that can be``tuned" to small-enough values while incurring only a polynomial blowup in the running time/space. 
-We show that such algorithms can be made differentially private without sacrificing accuracy, as long as the function $f$ has small ``global sensitivity''. 
-We achieve these results by applying the ``smooth sensitivity'' framework developed by Nissim, Raskhodnikova, and Smith (STOC 2007). 
-
-Our framework naturally applies to transform non-private FPRAS (resp. FPTAS) algorithms into $(\varepsilon,\delta)$-differentially private 
-(resp. $\varepsilon$-differentially private) approximation algorithms. We apply our framework in the context of sublinear-time and sublinear-space algorithms, 
-while preserving the nature of the algorithm in meaningful ranges of the parameters. Our results include the first (to the best of our knowledge) 
-$(\eps,\delta)$-edge differentially-private sublinear-time algorithm for estimating the number of triangles, the number of connected components, 
-and the weight of a minimum spanning tree of a graph, as well as a more efficient algorithm (while sacrificing pure DP in contrast to previous results) 
-for estimating the average degree of a graph. In the area of streaming algorithms, our results include $(\eps,\delta)$-DP algorithms for 
-estimating $L_p$-norms, distinct elements, and weighted minimum spanning tree for both insertion-only and turnstile streams. Our transformation 
-also provides a private version of the smooth histogram framework, which is commonly used for converting streaming algorithms into sliding window variants, 
-and achieves a multiplicative approximation to many problems, such as estimating $L_p$-norms, distinct elements, and the length of the longest increasing subsequence. 
-</div>
-</li>
-</br>
 
 
 
