@@ -193,6 +193,36 @@ Publications
 
 
 
+<li>
+<b>
+Streaming Euclidean <i>k</i>-median and <i>k</i>-means with o(log n) Space
+</b>
+</br><i>
+--vincentcohenaddad--,
+--davidwoodruff--,
+Samson Zhou</br></i>
+<a href="https://focs.computer.org/2023/">FOCS 2023</a>
+[<a href="javascript:toggle('CWZ23')">abstract</a>]
+<!--[<a href="https://arxiv.org/pdf/2210.03831.pdf">pdf</a>]-->
+</br>
+<div id="CWZ23" style="display: none">
+<p id="abs">
+We consider the classic Euclidean $k$-median and $k$-means objective on insertion-only streams, where the goal is to maintain a $(1+\varepsilon)$-approximation 
+to the $k$-median or $k$-means, while using as little memory as possible. Over the last 20 years, clustering in data streams has received a tremendous amount of 
+attention and has been the test-bed for a large variety of new techniques, including coresets, the merge-and-reduce framework, bicriteria approximation, 
+sensitivity sampling, and so on. Despite this intense effort to obtain smaller sketches for these problems, all known techniques require storing 
+at least $\Omega(\log(n\Delta))$ words of memory, where $n$ is size of the input and $\Delta$ is the aspect ratio. A natural question is if one can beat this 
+logarithmic dependence on $n$ and $\Delta$. In this paper, we break this barrier by giving the first algorithm that achieves a $(1+\varepsilon)$-approximation 
+to the more general $(k,z)$-clustering problem, using only 
+$\tilde{\mathcal{O}}\left(\frac{dk}{\varepsilon^2}\right)\cdot(2^{z\log z})\cdot\min\left(\frac{1}{\varepsilon^z},k\right)\cdot\text{poly}(\log\log(n\Delta))$ words of memory. 
+</div>
+</li>
+</br>
+
+
+
+
+
 
 
 <li>
