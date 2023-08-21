@@ -1,0 +1,134 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath,amssymb,amsthm}
+
+\DeclareMathOperator*{\E}{\mathbb{E}}
+\let\Pr\relax
+\DeclareMathOperator*{\Pr}{\mathbb{P}}
+
+\newcommand{\eps}{\varepsilon}
+\newcommand{\inprod}[1]{\left\langle #1 \right\rangle}
+
+
+\newcommand{\handout}[5]{
+	\noindent
+	\begin{center}
+		\framebox{
+			\vbox{
+				\hbox to 5.78in { {\bf CSCE 689: Special Topics in Modern Algorithms for Data Science } \hfill #2 }
+				\vspace{4mm}
+				\hbox to 5.78in { {\Large \hfill #5  \hfill} }
+				\vspace{2mm}
+				\hbox to 5.78in { {\em #3 \hfill #4} }
+			}
+		}
+	\end{center}
+	\vspace*{4mm}
+}
+
+
+\topmargin 0pt
+\advance \topmargin by -\headheight
+\advance \topmargin by -\headsep
+\textheight 8.9in
+\oddsidemargin 0pt
+\evensidemargin \oddsidemargin
+\marginparwidth 0.5in
+\textwidth 6.5in
+\parindent 0in
+\parskip 1.5ex
+
+
+\newcommand{\lecture}[4]{\handout{#1}{#2}{#3}{Scribe: #4}{Lecture #1}}
+
+
+
+\usepackage[ruled,vlined,linesnumbered]{algorithm2e}
+\usepackage{lmodern}        % Latin Modern family of fonts
+\usepackage[T1]{fontenc}
+\usepackage[latin9]{inputenc}
+\usepackage{titlesec}
+\usepackage{titling}
+\usepackage{verbatim}
+\usepackage{float}
+\usepackage{amssymb,amsfonts,amsmath}
+\usepackage{enumerate}
+\usepackage{enumitem}
+\usepackage{amsthm}
+\usepackage{graphicx,wrapfig,lipsum}
+\usepackage{algpseudocode}
+\usepackage{color}
+\usepackage{graphicx}
+\usepackage{tikz}
+\usepackage{amsthm}
+\usepackage{hyperref}
+\usepackage{caption}
+\usepackage{subfigure}
+\usepackage{microtype}
+
+
+
+\bibliographystyle{plainurl}
+\newfloat{Figure}{tbp}{loa}
+\floatname{Figure}{Figure}
+\setlength{\droptitle}{-10em}
+
+
+\renewcommand\qedsymbol{$\blacksquare$}
+
+\newcommand{\problem}[1]{\section{#1}}		% Problem.
+\newcommand{\new}[1]{{\em #1\/}}		% New term (set in italics).
+\newcommand{\set}[1]{\{#1\}}			% Set (as in \set{1,2,3})
+\newcommand{\setof}[2]{\{\,{#1}|~{#2}\,\}}	% Set (as in \setof{x}{x > 0})
+\newcommand{\C}{\mathbb{C}}	                % Complex numbers.
+\newcommand{\N}{\mathbb{N}}                     % Positive integers.
+\newcommand{\Q}{\mathbb{Q}}                     % Rationals.
+\newcommand{\R}{\mathbb{R}}                     % Reals.
+\newcommand{\Z}{\mathbb{Z}}  			  	 % Integers.
+\newcommand{\LL}{\mathcal{L}}               
+
+\newcommand{\compl}[1]{\overline{#1}}	
+
+
+\newcommand{\pr}[1]{\text{\bf Pr}\normalfont\lbrack #1 \rbrack} %probability
+\newcommand{\ex}[1]{\mathbb{E}\normalfont\lbrack #1 \rbrack}%expectation
+\newcommand{\bpr}[1]{\text{\bf Pr}\normalfont \Big[#1 \Big]} %probability
+\newcommand{\bex}[1]{\mathbb{E}\normalfont \Big[#1 \Big]}
+\newcommand{\ang}[1]{\langle #1 \rangle }
+
+
+\newcommand{\m}{\mathfrak{m}}
+\newcommand{\p}{\mathfrak{p}} 
+\newcommand{\PP}{\mathbb{P}} 
+\newcommand{\G}{\mathcal{G}}
+\newcommand{\tx}[1]{\text{#1}}
+\newcommand{\ttx}[1]{\texttt{#1}}
+
+
+
+\theoremstyle{theorem}
+\newtheorem{theorem}{Theorem}
+
+\theoremstyle{lemma}
+\newtheorem{lemma}{Lemma}
+
+\theoremstyle{corollary}
+\newtheorem{corollary}{Corollary}
+
+
+\theoremstyle{definition}
+\newtheorem*{definition}{Definition}
+
+\newtheorem{proposition}{Proposition}
+\newtheorem{example}{Example}
+\newtheorem{remark}{Remark}
+\newtheorem{fact}{Fact}
+\newtheorem{claim}{Claim}
+
+
+
+\begin{document}
+
+\lecture{lecture number --- date here}{Fall 2023}{Prof.\ Samson Zhou}{your name here}
+
+\end{document}
+
