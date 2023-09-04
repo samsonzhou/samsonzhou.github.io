@@ -208,6 +208,52 @@ Publications
 <ol reversed>
 
 
+<li>
+<b>
+Streaming Algorithms with Few State Changes
+</b>
+</br><i>
+--rajeshjayaram--,
+--davidwoodruff--,
+Samson Zhou</br></i>
+<a href="https://2024.sigmod.org/">PODS 2024</a>
+[<a href="javascript:toggle('JWZ24')">abstract</a>]
+<!--[<a href="https://arxiv.org/pdf/2108.12017.pdf">pdf</a>]-->
+<div id="JWZ24" style="display: none">
+<p id="abs">
+In this paper, we study streaming algorithms that minimize the number of changes made to their internal state (i.e., memory contents). 
+While the design of streaming algorithms typically focuses on minimizing space and update time, these metrics fail to capture the asymmetric costs, 
+inherent in modern hardware and database systems, of reading versus writing to memory. In fact, most streaming algorithms write to their memory on 
+\emph{every update}, which is undesirable when writing is significantly more expensive than reading. This raises the question of whether streaming 
+algorithms with small space \emph{and} number of memory writes are possible. 
+</br>
+</br>
+We first demonstrate that, for the fundamental $F_p$ moment estimation problem with $p\ge 1$, any streaming algorithm that achieves a constant factor 
+approximation must make $\Omega(n^{1-1/p})$ internal state changes, regardless of how much space it uses. Perhaps surprisingly, we show that this lower bound 
+can be matched by an algorithm which also has near-optimal space complexity. Specifically, we give a $(1+\varepsilon)$-approximation algorithm for 
+$F_p$ moment estimation that use a near-optimal $\widetilde{\mathcal{O}}_\varepsilon(n^{1-1/p})$ number of state changes, while simultaneously achieving 
+near-optimal space, i.e., for $p\in[1,2)$, our algorithm uses $\text{poly}\left(\log n,\frac{1}{\varepsilon}\right)$ bits of space for, while for $p>2$, 
+the algorithm uses $\widetilde{\mathcal{O}}_\varepsilon(n^{1-1/p})$ space. We similarly design streaming algorithms that are simultaneously near-optimal 
+in both space complexity and the number of state changes for the heavy-hitters problem, sparse support recovery, and entropy estimation. 
+Our results demonstrate that an optimal number of state changes can be achieved without sacrificing space complexity. 
+</div>
+</li>
+</br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 <li>
 <b>
