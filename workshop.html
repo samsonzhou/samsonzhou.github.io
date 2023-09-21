@@ -1,0 +1,492 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab&display=swap" rel="stylesheet">
+
+    <style>
+      html {
+      scroll-behavior: smooth;
+      padding-top: 4rem;
+      }
+
+      a {
+      text-decoration: none;
+      color: #3498db;
+      }
+
+      h3 {
+      margin-top: 40px;
+      }
+
+      .h-title {
+      font-variant: small-caps;
+      margin-bottom: 0;
+      }
+
+      .h-line {
+      visibility: hidden;
+      }
+      
+      .h-line::after {
+      visibility: visible;
+      content: "";
+      width: 120px;
+      height: 1px;
+      display: inline-block;
+      background: #0d6efd;
+      margin: 10px 10px;
+      margin-top: 0px;
+      }
+
+      .talk-title {
+      font-family: 'Roboto Slab', serif;
+      }
+    </style>
+
+    <title>FOCS'23 Workshop: Exploring the Frontiers of Adaptive Robustness</title>
+	
+	<script language="JavaScript" type="text/JavaScript">
+	function toggle(id) {
+	if (document.getElementById){
+		if (document.getElementById(id).style.display == "none"){
+			document.getElementById(id).style.display = "flex";
+			}
+		else{
+			document.getElementById(id).style.display = "none";
+			}
+		}
+	}
+	</script>
+  </head>
+  <body>
+      <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+      <div class="container">
+        <a class="navbar-brand" href="#">FOCS'23</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item"><a class="nav-link" href="#lk-info">Info</a></li>
+            <li class="nav-item"><a class="nav-link" href="#lk-schedule">Schedule</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+	
+	<div class="container">
+		
+    <h1 class="text-center py-3 text-light" style="background-color: #35495e">FOCS'23 Workshop: Exploring the Frontiers of Adaptive Robustness</h1>
+	
+    <div class="container">
+      <div class="row justify-content-md-center">
+        <div class="col-12" id="main">
+          <p id="lk-info">
+            Randomized algorithms are often designed and analyzed under the assumption that their internal randomness is independent of their fixed inputs. 
+			However, for complex and evolving datasets, repeated interactions with the dataset may affect the distributions of the future dataset updates or 
+			future interactions with the dataset. Thus, there has recently been substantial interest in understanding the performance of algorithms when the 
+			inputs are chosen adaptively, possibly as a function of their previous outputs, and in designing robust algorithms which provide utility guarantees 
+			even when their inputs are chosen adaptively.
+			</br>
+			</br>
+			The goal of this proposed workshop is to provide exposure to this emerging area in a unified manner accessible to a general theoretical audience. 
+			We will highlight new algorithmic and analytic techniques, new computational models that have been proposed and intricately analyzed, and 
+			new connections to other areas of theoretical computer science that have been observed, including:
+			<ul>
+			<li> Data structures for adaptive robustness </li>
+			<li> Adversarially-robust streaming model </li>
+			<li> Differential privacy as a tool against black-box adversaries </li>
+			<li> Cryptography as a tool against white-box time-bounded adversaries </li>
+			</li>
+			</ul>
+			Due to both the nascent field of study and the connections to multiple areas of TCS, we hope this workshop is of interest to both newcomers and researchers to the areas of adaptive data analysis, cryptography, differential privacy, and streaming algorithms. 
+			</br>
+			</br>
+			The 5-hour proposed workshop will consist of tutorial talks on adaptive data analysis and the adversarially robust streaming model, followed by a number of research and survey talks on specific recent results in the area. 
+          </p>
+
+          <table class="table">
+            <tbody>
+              <tr>
+                <th scope="row">When</th>
+                <td>Monday, August 23 - Wednesday, August 25, 2021</td>
+              </tr>
+              <tr>
+                <th scope="row">Where</th>
+                <td>The workshop will be held at the Hotel Paradox, located at 611 Ocean St., Santa Cruz, CA 95060, as part of <a href="https://focs.computer.org/2023/">FOCS 2023</a>.</td>
+              </tr>
+            </tbody>
+          </table>
+		  <section>
+			<p align="center">
+			<iframe loading="lazy"
+					src="https://maps.google.com/maps?q=Hotel%20Paradox%2C%20Autograph%20Collection&#038;t=m&#038;z=14&#038;output=embed&#038;iwloc=near"
+					title="Hotel Paradox, Autograph Collection"
+					aria-label="Hotel Paradox, Autograph Collection"
+					style="width:70%; height:300px;overflow:auto;"
+			></iframe>
+			</p>
+		</section>
+
+          <!-- <p>INSERT LOGO HERE</p> -->
+
+          <h3>Organizers</h3>
+
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item"><i class="bi bi-person-fill"></i> <a href="https://people.eecs.berkeley.edu/~minilek/">Jelani Nelson</a> (UC Berkeley)</li>
+            <li class="list-group-item"><i class="bi bi-person-fill"></i> <a href="https://www.cs.cmu.edu/~dwoodruf/">David P. Woodruff</a> (Carnegie Mellon University)</li>
+            <li class="list-group-item"><i class="bi bi-person-fill"></i> <a href="http://samsonzhou.github.io">Samson Zhou</a> (Texas A&#38;M University)</li>
+          </ul>
+
+         
+         <!--h3>Recording and Open Problems</h3>
+           <p>
+          A full recording of the workshop can be found <a href="https://www.youtube.com/watch?v=svgv-xw9DZc">here</a>, and a collection of some open problems in the area can be found <a href="https://docs.google.com/document/d/1in6eyeRg29-yQ_Mq8LOGtSxY0dBGkbQGZGTen7817zo/edit?usp=sharing">here</a>.
+          </p>-->
+    
+          <h3 id="lk-schedule">Schedule</h3>
+
+          <div class="container-fluid">
+
+            <!-- Talk 1 -->
+            <div class="row my-3">
+              <div class="col-3 col-md-2">
+                <i class="bi bi-clock-fill"></i> 9:00-9:05
+              </div>
+              <div class="col-3 col-md-3">
+                <i class="bi bi-person-fill"></i> Organizers
+              </div>
+              <div class="col fw-bold">
+                <i class="bi bi-file-text-fill"></i> Opening Remarks
+              </div>
+            </div>
+
+
+            <!-- Talk 2 -->
+            <div class="row my-3">
+              <div class="col-3 col-md-2">
+                <i class="bi bi-clock-fill"></i> 9:05-9:50
+              </div>
+              <div class="col-3 col-md-3">
+                <i class="bi bi-person-fill"></i> <a href="http://www.thomas-steinke.net/">Thomas Steinke</a>
+              </div>
+              <div class="col fw-bold">
+                <i class="bi bi-file-text-fill"></i> TBD
+			</div>
+              <div class="col-2 text-end">
+                <a class="text-decoration-none" data-bs-toggle="collapse" href="#abstract2" aria-expanded="false" aria-controls="abstract2">
+                  <i class="bi bi-arrow-down-square-fill"></i> Abstract
+                </a>
+              </div>
+            </div>
+
+            <div class="collapse mb-4" id="abstract2">
+              <div class="card card-body">
+
+                <p>
+                A streaming algorithm is given a long sequence of items and seeks to compute or approximate some function of this sequence using a small amount of memory. A body of work has been developed over the last two decades, resulting in optimal streaming algorithms for a number of problems. I will start by surveying some of these problems. I will then investigate the adversarial robustness of streaming algorithms. An algorithm is considered robust if its performance guarantees hold even if the stream is chosen adaptively by an adversary that observes the outputs of the algorithm along the stream and can react in an online manner. While deterministic streaming algorithms are inherently robust, many central problems do not admit sublinear-space deterministic algorithms; on the other hand, space-efficient randomized algorithms for these problems are generally not adversarially robust. This raises the question of whether there exist efficient adversarially robust (randomized) streaming algorithms for these problems. I will discuss recent work showing for a number of streaming problems, one can obtain algorithms that are adversarially robust with a small overhead in their memory requirements. I will then discuss followup work achieving almost no overhead for a large number of problems in the streaming model, including any problem with a so-called efficient difference estimator.
+                </p>
+
+                <p>
+                Based on joint works with Omri Ben-Eliezer, Rajesh Jayaram, Eylon Yogev, and with Samson Zhou.
+                </p>
+
+              </div>
+            </div>
+
+
+
+             <!-- Talk 3 -->
+            <div class="row my-3">
+              <div class="col-3 col-md-2">
+                <i class="bi bi-clock-fill"></i> 9:50-10:35
+              </div>
+              <div class="col-3 col-md-3">
+                <i class="bi bi-person-fill"></i> <a href="https://rajeshjayaram.com/">Rajesh Jayaram</a>
+              </div>
+              <div class="col fw-bold">
+                <i class="bi bi-file-text-fill"></i> TBD
+              </div>
+              <div class="col-2 text-end">
+                <a class="text-decoration-none" data-bs-toggle="collapse" href="#abstract5" aria-expanded="false" aria-controls="abstract5">
+                  <i class="bi bi-arrow-down-square-fill"></i> Abstract
+                </a>
+              </div>
+            </div>
+
+            <div class="collapse mb-4" id="abstract5">
+              <div class="card card-body">
+                <p>
+                Laws of large numbers guarantee that given a large enough sample from some population, the expectation of any bounded function is well-estimated by its expectation in the sample. We discuss laws of large numbers in sequential sampling processes that can affect the environment they are acting upon and interact with it, according to the model by Ben-Eliezer and Yogev (2020). We characterize the function-classes which admit a uniform law of large numbers in this model: these are exactly the classes that are online learnable. This characterization may be interpreted as an online analogue to the equivalence between learnability and uniform convergence in statistical (PAC) learning. We further discuss the relationship with additional notions from learning theory such as the Rademacher complexity, covering numbers, Littlestone's dimension and shattering dimensions for real-valued functions classes. 
+                </p>
+
+              <p>
+              This is based on joint works with Noga Alon, Omri Ben-Eliezer, Adam Block, Shay Moran, Moni Naor, Alexander Rakhlin and Eylon Yogev.
+              </p>
+              </div>
+            </div>
+
+
+
+
+            <hr />
+            <p class="text-center fw-bold">Break (10 minutes)</p>
+            <hr />
+
+
+
+
+            <!-- Talk 4 -->
+            <div class="row my-3">
+              <div class="col-3 col-md-2">
+                <i class="bi bi-clock-fill"></i> 10:45-11:10
+              </div>
+              <div class="col-3 col-md-3">
+                <i class="bi bi-person-fill"></i> <a href="https://people.eecs.berkeley.edu/~minilek/">Jelani Nelson</a>
+              </div>
+              <div class="col fw-bold">
+                <i class="bi bi-file-text-fill"></i> TBD
+              </div>
+              <div class="col-2 text-end">
+                <a class="text-decoration-none" data-bs-toggle="collapse" href="#abstract3" aria-expanded="false" aria-controls="abstract3">
+                  <i class="bi bi-arrow-down-square-fill"></i> Abstract
+                </a>
+              </div>
+            </div>
+
+            <div class="collapse mb-4" id="abstract3">
+              <div class="card card-body">
+              <p>
+                 A streaming algorithm is said to be adversarially robust if its accuracy guarantees are maintained even when the data stream is chosen maliciously, by an adaptive adversary. We establish a connection between adversarial robustness of streaming algorithms and the notion of differential privacy. This connection allows us to design new adversarially robust streaming algorithms that outperform the current state-of-the-art constructions for many interesting regimes of parameters. 
+              </p>
+              <p>
+                Joint work with Avinatan Hassidim, Yishay Mansour, Yossi Matias, and Uri Stemmer.
+              </p>
+              </div>
+            </div>
+
+            
+
+            <!-- Talk 5 -->
+            <div class="row my-3">
+              <div class="col-3 col-md-2">
+                <i class="bi bi-clock-fill"></i> 11:10-11:35
+				</div>
+              <div class="col-3 col-md-3">
+                <i class="bi bi-person-fill"></i> <a href="www.cohenwang.com/edith/">Edith Cohen</a>
+              </div>
+              <div class="col fw-bold">
+                <i class="bi bi-file-text-fill"></i> TBD
+              </div>
+              <div class="col text-end">
+                <a class="text-decoration-none" data-bs-toggle="collapse" href="#abstract4" aria-expanded="false" aria-controls="abstract4">
+                  <i class="bi bi-arrow-down-square-fill"></i> Abstract
+                </a>
+              </div>
+            </div>
+
+            <div class="collapse mb-4" id="abstract4">
+              <div class="card card-body">
+              <p>
+                By combining  techniques from learning theory with cryptographic tools from the bounded storage model, we separate the oblivious streaming model from the adversarially-robust streaming model. Specifically, we present a streaming problem for which every adversarially-robust streaming algorithm must use polynomial space, while there exists a classical (oblivious) streaming algorithm that uses only polylogarithmic space. This is the first general separation between the capabilities of these two models, resolving one of the central open questions in adversarial robust streaming.
+               </p>              
+              <p>
+                 Joint work with Haim Kaplan, Yishay Mansour, Kobbi Nissim.
+              </p>     
+
+              </div>
+            </div>
+
+           
+
+            <!-- Talk 6 -->
+            <div class="row my-3">
+              <div class="col-3 col-md-2">
+                <i class="bi bi-clock-fill"></i> 11:35-12:00
+              </div>
+              <div class="col-3 col-md-3">
+                <i class="bi bi-person-fill"></i> TBD <!--<a href="https://web.stanford.edu/~gblanc/">Guy Blanc</a>-->
+              </div>
+              <div class="col fw-bold">
+                <i class="bi bi-file-text-fill"></i> TBD
+              </div>
+              <div class="col-2 text-end">
+                <a class="text-decoration-none" data-bs-toggle="collapse" href="#abstract6" aria-expanded="false" aria-controls="abstract6">
+                  <i class="bi bi-arrow-down-square-fill"></i> Abstract
+                </a>
+              </div>
+            </div>
+
+            <div class="collapse mb-4" id="abstract6">
+              <div class="card card-body">
+                <p>
+                 In this talk, we will overview a simple framework for constructing adaptive data structures from non-adaptive ones. Abstractly, given a randomized data structure providing a high probability accuracy guarantee for any fixed input, we produce a data structure with comparable accuracy and runtime guarantees for any (possibly adaptively) chosen input to the data structure. We consider the concrete setting of Distance Estimation where one is given a database of <i>n</i> vectors <i>{x_1,...,x_n}</i> and the goal is construct a data structure which when given a query point <i>q</i> outputs <i>{d_1,...,d_n}</i> satisfying <i>d_i ≈ ‖q - x_i‖</i>. We instantiate the framework for distance estimation in <i>ℓ_p</i> norms for <i>0 < p ≤ 2</i> where we recover near-optimal query times and space complexities. Finally, for the Euclidean setting (<i>p = 2</i>), we show how to improve upon the update times of the aforementioned data structure through the use of pseudorandom structured matrices.
+                </p>              
+                <p>
+                 Joint work with Jelani Nelson.
+               </p>
+              </div>
+            </div>
+
+<hr />
+            <p class="text-center fw-bold">Break for Lunch (60 minutes)</p>
+            <hr />
+
+
+
+
+            <!-- Talk 7 -->
+            <div class="row my-3">
+              <div class="col-3 col-md-2">
+                <i class="bi bi-clock-fill"></i> 13:00-13:30
+              </div>
+              <div class="col-3 col-md-3">
+                <i class="bi bi-person-fill"></i> <a href="https://www.cs.cmu.edu/~dwoodruf/">David P. Woodruff</a>
+              </div>
+              <div class="col fw-bold">
+                <i class="bi bi-file-text-fill"></i> TBD
+              </div>
+              <div class="col-2 text-end">
+                <a class="text-decoration-none" data-bs-toggle="collapse" href="#abstract3" aria-expanded="false" aria-controls="abstract3">
+                  <i class="bi bi-arrow-down-square-fill"></i> Abstract
+                </a>
+              </div>
+            </div>
+
+            <div class="collapse mb-4" id="abstract3">
+              <div class="card card-body">
+              <p>
+                 A streaming algorithm is said to be adversarially robust if its accuracy guarantees are maintained even when the data stream is chosen maliciously, by an adaptive adversary. We establish a connection between adversarial robustness of streaming algorithms and the notion of differential privacy. This connection allows us to design new adversarially robust streaming algorithms that outperform the current state-of-the-art constructions for many interesting regimes of parameters. 
+              </p>
+              <p>
+                Joint work with Avinatan Hassidim, Yishay Mansour, Yossi Matias, and Uri Stemmer.
+              </p>
+              </div>
+            </div>
+
+            
+
+            <!-- Talk 8 -->
+            <div class="row my-3">
+              <div class="col-3 col-md-2">
+                <i class="bi bi-clock-fill"></i> 13:30-14:00
+				</div>
+              <div class="col-3 col-md-3">
+                <i class="bi bi-person-fill"></i> <a href="https://web.stanford.edu/~gblanc/">Guy Blanc</a>
+              </div>
+              <div class="col fw-bold">
+                <i class="bi bi-file-text-fill"></i> TBD
+              </div>
+              <div class="col text-end">
+                <a class="text-decoration-none" data-bs-toggle="collapse" href="#abstract4" aria-expanded="false" aria-controls="abstract4">
+                  <i class="bi bi-arrow-down-square-fill"></i> Abstract
+                </a>
+              </div>
+            </div>
+
+            <div class="collapse mb-4" id="abstract4">
+              <div class="card card-body">
+              <p>
+                By combining  techniques from learning theory with cryptographic tools from the bounded storage model, we separate the oblivious streaming model from the adversarially-robust streaming model. Specifically, we present a streaming problem for which every adversarially-robust streaming algorithm must use polynomial space, while there exists a classical (oblivious) streaming algorithm that uses only polylogarithmic space. This is the first general separation between the capabilities of these two models, resolving one of the central open questions in adversarial robust streaming.
+               </p>              
+              <p>
+                 Joint work with Haim Kaplan, Yishay Mansour, Kobbi Nissim.
+              </p>     
+
+              </div>
+            </div>
+
+           
+
+            <!-- Talk 9 -->
+            <div class="row my-3">
+              <div class="col-3 col-md-2">
+                <i class="bi bi-clock-fill"></i> 14:00-14:25
+              </div>
+              <div class="col-3 col-md-3">
+                <i class="bi bi-person-fill"></i> <a class="sml-text" href="https://samsonzhou.github.io/">Samson Zhou</a>
+              </div>
+              <div class="col fw-bold">
+                <i class="bi bi-file-text-fill"></i> TBD
+              </div>
+              <div class="col-2 text-end">
+                <a class="text-decoration-none" data-bs-toggle="collapse" href="#abstract6" aria-expanded="false" aria-controls="abstract6">
+                  <i class="bi bi-arrow-down-square-fill"></i> Abstract
+                </a>
+              </div>
+            </div>
+
+            <div class="collapse mb-4" id="abstract6">
+              <div class="card card-body">
+                <p>
+                 In this talk, we will overview a simple framework for constructing adaptive data structures from non-adaptive ones. Abstractly, given a randomized data structure providing a high probability accuracy guarantee for any fixed input, we produce a data structure with comparable accuracy and runtime guarantees for any (possibly adaptively) chosen input to the data structure. We consider the concrete setting of Distance Estimation where one is given a database of <i>n</i> vectors <i>{x_1,...,x_n}</i> and the goal is construct a data structure which when given a query point <i>q</i> outputs <i>{d_1,...,d_n}</i> satisfying <i>d_i ≈ ‖q - x_i‖</i>. We instantiate the framework for distance estimation in <i>ℓ_p</i> norms for <i>0 < p ≤ 2</i> where we recover near-optimal query times and space complexities. Finally, for the Euclidean setting (<i>p = 2</i>), we show how to improve upon the update times of the aforementioned data structure through the use of pseudorandom structured matrices.
+                </p>              
+                <p>
+                 Joint work with Jelani Nelson.
+               </p>
+              </div>
+            </div>
+			
+			
+            <!-- Talk 10 -->
+            <div class="row my-3">
+              <div class="col-3 col-md-2">
+                <i class="bi bi-clock-fill"></i> 13:25-13:50
+				</div>
+              <div class="col-3 col-md-3">
+				<i class="bi bi-person-fill"></i> <a class="sml-text" href="https://cs.rice.edu/~vb21/">Vladimir Braverman</a>
+              </div>
+              <div class="col-3 col-md-6 fw-bold">
+                <i class="bi bi-file-text-fill"></i> TBD
+              </div>
+              <div class="col text-end">
+                <a class="text-decoration-none" data-bs-toggle="collapse" href="#abstract4" aria-expanded="false" aria-controls="abstract4">
+                  <i class="bi bi-arrow-down-square-fill"></i> Abstract
+                </a>
+              </div>
+            </div>
+
+            <div class="collapse mb-4" id="abstract4">
+              <div class="card card-body">
+              <p>
+                By combining  techniques from learning theory with cryptographic tools from the bounded storage model, we separate the oblivious streaming model from the adversarially-robust streaming model. Specifically, we present a streaming problem for which every adversarially-robust streaming algorithm must use polynomial space, while there exists a classical (oblivious) streaming algorithm that uses only polylogarithmic space. This is the first general separation between the capabilities of these two models, resolving one of the central open questions in adversarial robust streaming.
+               </p>              
+              <p>
+                 Joint work with Haim Kaplan, Yishay Mansour, Kobbi Nissim.
+              </p>     
+
+              </div>
+            </div>
+
+
+			<div class="row my-3">
+              <div class="col-3 col-md-2">
+                <i class="bi bi-clock-fill"></i> 13:50-14:00
+              </div>
+              <div class="col-3 col-md-3">
+                <i class="bi bi-person-fill"></i> Organizers
+              </div>
+              <div class="col fw-bold">
+                <i class="bi bi-file-text-fill"></i> Concluding Remarks 
+              </div>
+            </div>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
+  </body>
+</html>
