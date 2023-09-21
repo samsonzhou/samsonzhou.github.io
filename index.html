@@ -165,12 +165,16 @@ Service and Teaching
 
 <ul>
 <!--<li>I'm serving on the program committee of <a href="https://randomconference.com/random-2022-home/">RANDOM 2022</a>. Please consider sending your papers! </li>-->
-<li>August 23-25 2021: Co-organizer of the <a href="http://waldo2021.github.io/">Workshop on Algorithms for Large Data (Online)</a></li>
+<!--<li>November ?, 2023: Co-organizer of the <a href="https://samsonzhou.github.io/focs-2023-workshop-adaptive-robustness">Exploring the Frontiers of Adaptive Robustness</a></li>-->
+<li>Fall 2023: Problem-Solving Session Instructor at the <a href="https://sites.google.com/tamu.edu/tamu-math-circle">TAMU Math Circle</a></li>
+<li>Fall 2023: Organizer of the Algorithms and Data Science Reading Group at Texas A&#38;M</a></li>
+<li>August 23-25, 2021: Co-organizer of the <a href="http://waldo2021.github.io/">Workshop on Algorithms for Large Data (Online)</a></li>
 <li>Fall 2018: Organizer of Convex Optimization Reading Group at Indiana University</li>
 <li>Fall 2016-Fall 2017: Organizer of Theoretical CS Reading Group at Purdue University</li>
 </ul>
 
 <ul>
+<li>Spring 2024: CSCE 658: Randomized Algorithms
 <li>Fall 2023: CSCE 689: <a href="https://samsonzhou.github.io/csce689-2023">Special Topics in Modern Algorithms for Data Science</a></li>
 <li>Spring 2018: CS 584: Theory of Computation/Complexity Theory (Teaching Assistant) </li>
 <li>Spring 2016: CS 381: Introduction to the Analysis of Algorithms (Teaching Assistant) </li>
@@ -182,7 +186,7 @@ Service and Teaching
 </br>
 <li>Reviewer:
 <ul>
-<li>2024: AISTATS, ICDT, ICLR, INFOCOM, SODA </li>
+<li>2024: AISTATS, ICDT, ICLR, INFOCOM, ITCS, SODA </li>
 <li>2023: COLT, ESA, FOCS, ICALP, ICML, ITCS, NeurIPS, PODS, SIGMETRICS, SODA, STACS, STOC</li>
 <li>2022: AAAI, AISTATS, COLT, ICALP, ICLR, ICML, ITCS, NeurIPS, PODS, RANDOM, SODA, SPAA, STOC </li>
 <li>2021: AAAI, CPM, ESA, ICDT, ISAAC, NeurIPS, PODS, SODA, STOC </li>
@@ -247,6 +251,75 @@ Our results demonstrate that an optimal number of state changes can be achieved 
 
 
 
+<li>
+<b>
+Near-Optimal <i>k</i>-Clustering in the Sliding Window Model
+</b>
+</br><i>
+--davidwoodruff--,
+--peilinzhong--,
+Samson Zhou</br></i>
+<a href="https://nips.cc/Conferences/2023">NeurIPS 2023</a>
+[<a href="javascript:toggle('WZZ2b3')">abstract</a>]
+<!--[<a href="https://arxiv.org/pdf/2303.01709.pdf">pdf</a>]-->
+</br>
+<div id="WZZb23" style="display: none">
+<p id="abs">
+Clustering is an important technique for identifying structural information in large-scale data analysis, where the underlying dataset may be too large to store. 
+In many applications, recent data can provide more accurate information and thus older data past a certain time is expired. The sliding window model captures 
+these desired properties and thus there has been substantial interest in clustering in the sliding window model. 
+
+In this paper, we give the first algorithm that achieves near-optimal $(1+\varepsilon)$-approximation to $(k,z)$-clustering in the sliding window model. 
+Our algorithm uses $\frac{k}{\min(\varepsilon^4,\varepsilon^{2+z})}\,\text{polylog}\frac{n\Delta}{\varepsilon}$ words of space when the points are from $[\Delta]^d$, 
+thus significantly improving on works by Braverman et. al. (SODA 2016), Borassi et. al. (NeurIPS 2021), and Epasto et. al. (SODA 2022).
+
+Along the way, we develop a data structure for clustering called an online coreset, which outputs a coreset not only for the end of a stream, 
+but also for all prefixes of the stream. Our online coreset samples $\frac{k}{\min(\varepsilon^4,\varepsilon^{2+z})}\,\text{polylog}\frac{n\Delta}{\varepsilon}$ points 
+from the stream. We then show that any online coreset requires $\Omega\left(\frac{k}{\varepsilon^2}\log n\right)$ samples, which shows a separation between the problem 
+of constructing an offline coreset, i.e., constructing online coresets is strictly harder. Our results also extend to general metrics on $[\Delta]^d$ and are near-optimal 
+in light of a $\Omega\left(\frac{k}{\varepsilon^{2+z}}\right)$ lower bound for the size of an offline coreset. 
+</div>
+</li>
+</br>
+
+
+
+
+
+
+
+
+
+<li>
+<b>
+Streaming Algorithms for Learning with Experts: Deterministic Versus Robust
+</b>
+</br><i>
+--davidwoodruff--,
+--fredzhang--,
+Samson Zhou</br></i>
+<a href="https://nips.cc/Conferences/2023">NeurIPS 2023</a>
+[<a href="javascript:toggle('WZZ2a3')">abstract</a>]
+[<a href="https://arxiv.org/pdf/2303.01709.pdf">pdf</a>]
+</br>
+<div id="WZZa23" style="display: none">
+<p id="abs">
+In the online learning with experts problem, an algorithm must make a prediction about an outcome on each of $T$ days (or times), given a set of $n$ experts who 
+make predictions on each day (or time). The algorithm is given feedback on the outcomes of each day, including the cost of its prediction and the cost of the 
+expert predictions, and the goal is to make a prediction with the minimum cost, specifically compared to the best expert in the set. Recent work by 
+Srinivas, Woodruff, Xu, and Zhou (STOC 2022) introduced the study of the online learning with experts problem under memory constraints. 
+
+However, often the predictions made by experts or algorithms at some time influence future outcomes, so that the input is adaptively chosen. 
+Whereas deterministic algorithms would be robust to adaptive inputs, existing algorithms all crucially use randomization to sample a small number of experts. 
+
+In this paper, we study deterministic and robust algorithms for the experts problem. We first show a space lower bound of 
+$\widetilde{\Omega}\left(\frac{nM}{RT}\right)$ for any deterministic algorithm that achieves regret $R$ when the best expert makes $M$ mistakes. 
+Our result shows that the natural deterministic algorithm, which iterates through pools of experts until each expert in the pool has erred, 
+is optimal up to polylogarithmic factors. On the positive side, we give a randomized algorithm that is robust to adaptive inputs that uses 
+$\widetilde{O}\left(\frac{n}{R\sqrt{T}}\right)$ space for  $M=O\left(\frac{R^2 T}{\log^2 n}\right)$, thereby showing a smooth space-regret trade-off. 
+</div>
+</li>
+</br>
 
 
 
@@ -2420,36 +2493,6 @@ effect of unreliability/noise in test outcomes.
 <h3>Other Writings</h3>
 <ul>
 
-<li>
-<b>
-Streaming Algorithms for Learning with Experts: Deterministic Versus Robust
-</b>
-</br><i>
---davidwoodruff--,
---fredzhang--,
-Samson Zhou</br></i>
-[<a href="javascript:toggle('WZZ23')">abstract</a>]
-[<a href="https://arxiv.org/pdf/2303.01709.pdf">pdf</a>]
-</br>
-<div id="WZZ23" style="display: none">
-<p id="abs">
-In the online learning with experts problem, an algorithm must make a prediction about an outcome on each of $T$ days (or times), given a set of $n$ experts who 
-make predictions on each day (or time). The algorithm is given feedback on the outcomes of each day, including the cost of its prediction and the cost of the 
-expert predictions, and the goal is to make a prediction with the minimum cost, specifically compared to the best expert in the set. Recent work by 
-Srinivas, Woodruff, Xu, and Zhou (STOC 2022) introduced the study of the online learning with experts problem under memory constraints. 
-
-However, often the predictions made by experts or algorithms at some time influence future outcomes, so that the input is adaptively chosen. 
-Whereas deterministic algorithms would be robust to adaptive inputs, existing algorithms all crucially use randomization to sample a small number of experts. 
-
-In this paper, we study deterministic and robust algorithms for the experts problem. We first show a space lower bound of 
-$\widetilde{\Omega}\left(\frac{nM}{RT}\right)$ for any deterministic algorithm that achieves regret $R$ when the best expert makes $M$ mistakes. 
-Our result shows that the natural deterministic algorithm, which iterates through pools of experts until each expert in the pool has erred, 
-is optimal up to polylogarithmic factors. On the positive side, we give a randomized algorithm that is robust to adaptive inputs that uses 
-$\widetilde{O}\left(\frac{n}{R\sqrt{T}}\right)$ space for  $M=O\left(\frac{R^2 T}{\log^2 n}\right)$, thereby showing a smooth space-regret trade-off. 
-</div>
-</li>
-</br>
-
 
 
 
@@ -2672,7 +2715,8 @@ var info = new Array(  new Array('--jeremiahblocki--', 'Jeremiah Blocki', 'https
 					 , new Array('--danielarus--', 'Daniela Rus', 'https://danielarus.csail.mit.edu/')
 					 , new Array('--ameyavelingker--', 'Ameya Velingker', 'https://www.ameyavelingker.com/')	
 					 , new Array('--maximilianvotsch--', 'Maximilian V&#246;tsch', 'https://dblp.org/pid/335/2264.html')
-					 , new Array('--vincentcohenaddad--', 'Vincent Cohen-Addad', 'https://www.di.ens.fr/~vcohen/')						 
+					 , new Array('--vincentcohenaddad--', 'Vincent Cohen-Addad', 'https://www.di.ens.fr/~vcohen/')
+					 , new Array('--peilinzhong--', 'Peilin Zhong', 'http://www.cs.columbia.edu/~peilin/')						 
 					 );
 
 					 
