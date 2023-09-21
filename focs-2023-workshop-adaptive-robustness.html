@@ -194,13 +194,7 @@
             <div class="collapse mb-4" id="abstract2">
               <div class="card card-body">
 
-                <p>
-                A streaming algorithm is given a long sequence of items and seeks to compute or approximate some function of this sequence using a small amount of memory. A body of work has been developed over the last two decades, resulting in optimal streaming algorithms for a number of problems. I will start by surveying some of these problems. I will then investigate the adversarial robustness of streaming algorithms. An algorithm is considered robust if its performance guarantees hold even if the stream is chosen adaptively by an adversary that observes the outputs of the algorithm along the stream and can react in an online manner. While deterministic streaming algorithms are inherently robust, many central problems do not admit sublinear-space deterministic algorithms; on the other hand, space-efficient randomized algorithms for these problems are generally not adversarially robust. This raises the question of whether there exist efficient adversarially robust (randomized) streaming algorithms for these problems. I will discuss recent work showing for a number of streaming problems, one can obtain algorithms that are adversarially robust with a small overhead in their memory requirements. I will then discuss followup work achieving almost no overhead for a large number of problems in the streaming model, including any problem with a so-called efficient difference estimator.
-                </p>
-
-                <p>
-                Based on joint works with Omri Ben-Eliezer, Rajesh Jayaram, Eylon Yogev, and with Samson Zhou.
-                </p>
+                
 
               </div>
             </div>
@@ -219,21 +213,17 @@
                 <i class="bi bi-file-text-fill"></i> TBD
               </div>
               <div class="col-2 text-end">
-                <a class="text-decoration-none" data-bs-toggle="collapse" href="#abstract5" aria-expanded="false" aria-controls="abstract5">
+                <a class="text-decoration-none" data-bs-toggle="collapse" href="#abstract5" aria-expanded="false" aria-controls="abstract3">
                   <i class="bi bi-arrow-down-square-fill"></i> Abstract
                 </a>
               </div>
             </div>
 
-            <div class="collapse mb-4" id="abstract5">
+            <div class="collapse mb-4" id="abstract3">
               <div class="card card-body">
-                <p>
-                Laws of large numbers guarantee that given a large enough sample from some population, the expectation of any bounded function is well-estimated by its expectation in the sample. We discuss laws of large numbers in sequential sampling processes that can affect the environment they are acting upon and interact with it, according to the model by Ben-Eliezer and Yogev (2020). We characterize the function-classes which admit a uniform law of large numbers in this model: these are exactly the classes that are online learnable. This characterization may be interpreted as an online analogue to the equivalence between learnability and uniform convergence in statistical (PAC) learning. We further discuss the relationship with additional notions from learning theory such as the Rademacher complexity, covering numbers, Littlestone's dimension and shattering dimensions for real-valued functions classes. 
-                </p>
-
-              <p>
-              This is based on joint works with Noga Alon, Omri Ben-Eliezer, Adam Block, Shay Moran, Moni Naor, Alexander Rakhlin and Eylon Yogev.
-              </p>
+                 
+				 
+				 
               </div>
             </div>
 
@@ -259,20 +249,17 @@
                 <i class="bi bi-file-text-fill"></i> TBD
               </div>
               <div class="col-2 text-end">
-                <a class="text-decoration-none" data-bs-toggle="collapse" href="#abstract3" aria-expanded="false" aria-controls="abstract3">
+                <a class="text-decoration-none" data-bs-toggle="collapse" href="#abstract3" aria-expanded="false" aria-controls="abstract4">
                   <i class="bi bi-arrow-down-square-fill"></i> Abstract
                 </a>
               </div>
             </div>
 
-            <div class="collapse mb-4" id="abstract3">
+            <div class="collapse mb-4" id="abstract4">
               <div class="card card-body">
-              <p>
-                 A streaming algorithm is said to be adversarially robust if its accuracy guarantees are maintained even when the data stream is chosen maliciously, by an adaptive adversary. We establish a connection between adversarial robustness of streaming algorithms and the notion of differential privacy. This connection allows us to design new adversarially robust streaming algorithms that outperform the current state-of-the-art constructions for many interesting regimes of parameters. 
-              </p>
-              <p>
-                Joint work with Avinatan Hassidim, Yishay Mansour, Yossi Matias, and Uri Stemmer.
-              </p>
+                 
+				 
+				 
               </div>
             </div>
 
@@ -290,21 +277,17 @@
                 <i class="bi bi-file-text-fill"></i> TBD
               </div>
               <div class="col text-end">
-                <a class="text-decoration-none" data-bs-toggle="collapse" href="#abstract4" aria-expanded="false" aria-controls="abstract4">
+                <a class="text-decoration-none" data-bs-toggle="collapse" href="#abstract4" aria-expanded="false" aria-controls="abstract5">
                   <i class="bi bi-arrow-down-square-fill"></i> Abstract
                 </a>
               </div>
             </div>
 
-            <div class="collapse mb-4" id="abstract4">
+            <div class="collapse mb-4" id="abstract5">
               <div class="card card-body">
-              <p>
-                By combining  techniques from learning theory with cryptographic tools from the bounded storage model, we separate the oblivious streaming model from the adversarially-robust streaming model. Specifically, we present a streaming problem for which every adversarially-robust streaming algorithm must use polynomial space, while there exists a classical (oblivious) streaming algorithm that uses only polylogarithmic space. This is the first general separation between the capabilities of these two models, resolving one of the central open questions in adversarial robust streaming.
-               </p>              
-              <p>
-                 Joint work with Haim Kaplan, Yishay Mansour, Kobbi Nissim.
-              </p>     
-
+                 
+				 
+				 
               </div>
             </div>
 
@@ -316,7 +299,7 @@
                 <i class="bi bi-clock-fill"></i> 11:35-12:00
               </div>
               <div class="col-3 col-md-3">
-                <i class="bi bi-person-fill"></i> TBD <!--<a href="https://web.stanford.edu/~gblanc/">Guy Blanc</a>-->
+              <i class="bi bi-person-fill"></i> <a href="https://web.stanford.edu/~gblanc/">Guy Blanc</a>
               </div>
               <div class="col fw-bold">
                 <i class="bi bi-file-text-fill"></i> TBD
@@ -330,11 +313,9 @@
 
             <div class="collapse mb-4" id="abstract6">
               <div class="card card-body">
-                <p>
-                 In this talk, we will overview a simple framework for constructing adaptive data structures from non-adaptive ones. Abstractly, given a randomized data structure providing a high probability accuracy guarantee for any fixed input, we produce a data structure with comparable accuracy and runtime guarantees for any (possibly adaptively) chosen input to the data structure. We consider the concrete setting of Distance Estimation where one is given a database of <i>n</i> vectors <i>{x_1,...,x_n}</i> and the goal is construct a data structure which when given a query point <i>q</i> outputs <i>{d_1,...,d_n}</i> satisfying <i>d_i ≈ ‖q - x_i‖</i>. We instantiate the framework for distance estimation in <i>ℓ_p</i> norms for <i>0 < p ≤ 2</i> where we recover near-optimal query times and space complexities. Finally, for the Euclidean setting (<i>p = 2</i>), we show how to improve upon the update times of the aforementioned data structure through the use of pseudorandom structured matrices.
-                </p>              
-                <p>
-                 Joint work with Jelani Nelson.
+                 
+				 
+				 
                </p>
               </div>
             </div>
@@ -358,20 +339,17 @@
                 <i class="bi bi-file-text-fill"></i> TBD
               </div>
               <div class="col-2 text-end">
-                <a class="text-decoration-none" data-bs-toggle="collapse" href="#abstract3" aria-expanded="false" aria-controls="abstract3">
+                <a class="text-decoration-none" data-bs-toggle="collapse" href="#abstract3" aria-expanded="false" aria-controls="abstract7">
                   <i class="bi bi-arrow-down-square-fill"></i> Abstract
                 </a>
               </div>
             </div>
 
-            <div class="collapse mb-4" id="abstract3">
+            <div class="collapse mb-4" id="abstract7">
               <div class="card card-body">
-              <p>
-                 A streaming algorithm is said to be adversarially robust if its accuracy guarantees are maintained even when the data stream is chosen maliciously, by an adaptive adversary. We establish a connection between adversarial robustness of streaming algorithms and the notion of differential privacy. This connection allows us to design new adversarially robust streaming algorithms that outperform the current state-of-the-art constructions for many interesting regimes of parameters. 
-              </p>
-              <p>
-                Joint work with Avinatan Hassidim, Yishay Mansour, Yossi Matias, and Uri Stemmer.
-              </p>
+                 
+				 
+				 
               </div>
             </div>
 
@@ -383,26 +361,23 @@
                 <i class="bi bi-clock-fill"></i> 13:30-14:00
 				</div>
               <div class="col-3 col-md-3">
-                <i class="bi bi-person-fill"></i> <a href="https://web.stanford.edu/~gblanc/">Guy Blanc</a>
+				<i class="bi bi-person-fill"></i> <a href="https://web.stanford.edu/~gblanc/">Sepehr Assadi</a>
               </div>
               <div class="col fw-bold">
                 <i class="bi bi-file-text-fill"></i> TBD
               </div>
               <div class="col text-end">
-                <a class="text-decoration-none" data-bs-toggle="collapse" href="#abstract4" aria-expanded="false" aria-controls="abstract4">
+                <a class="text-decoration-none" data-bs-toggle="collapse" href="#abstract4" aria-expanded="false" aria-controls="abstract8">
                   <i class="bi bi-arrow-down-square-fill"></i> Abstract
                 </a>
               </div>
             </div>
 
-            <div class="collapse mb-4" id="abstract4">
+            <div class="collapse mb-4" id="abstract8">
               <div class="card card-body">
-              <p>
-                By combining  techniques from learning theory with cryptographic tools from the bounded storage model, we separate the oblivious streaming model from the adversarially-robust streaming model. Specifically, we present a streaming problem for which every adversarially-robust streaming algorithm must use polynomial space, while there exists a classical (oblivious) streaming algorithm that uses only polylogarithmic space. This is the first general separation between the capabilities of these two models, resolving one of the central open questions in adversarial robust streaming.
-               </p>              
-              <p>
-                 Joint work with Haim Kaplan, Yishay Mansour, Kobbi Nissim.
-              </p>     
+                 
+				 
+				    
 
               </div>
             </div>
@@ -421,20 +396,17 @@
                 <i class="bi bi-file-text-fill"></i> TBD
               </div>
               <div class="col-2 text-end">
-                <a class="text-decoration-none" data-bs-toggle="collapse" href="#abstract6" aria-expanded="false" aria-controls="abstract6">
+                <a class="text-decoration-none" data-bs-toggle="collapse" href="#abstract6" aria-expanded="false" aria-controls="abstract9">
                   <i class="bi bi-arrow-down-square-fill"></i> Abstract
                 </a>
               </div>
             </div>
 
-            <div class="collapse mb-4" id="abstract6">
+            <div class="collapse mb-4" id="abstract9">
               <div class="card card-body">
-                <p>
-                 In this talk, we will overview a simple framework for constructing adaptive data structures from non-adaptive ones. Abstractly, given a randomized data structure providing a high probability accuracy guarantee for any fixed input, we produce a data structure with comparable accuracy and runtime guarantees for any (possibly adaptively) chosen input to the data structure. We consider the concrete setting of Distance Estimation where one is given a database of <i>n</i> vectors <i>{x_1,...,x_n}</i> and the goal is construct a data structure which when given a query point <i>q</i> outputs <i>{d_1,...,d_n}</i> satisfying <i>d_i ≈ ‖q - x_i‖</i>. We instantiate the framework for distance estimation in <i>ℓ_p</i> norms for <i>0 < p ≤ 2</i> where we recover near-optimal query times and space complexities. Finally, for the Euclidean setting (<i>p = 2</i>), we show how to improve upon the update times of the aforementioned data structure through the use of pseudorandom structured matrices.
-                </p>              
-                <p>
-                 Joint work with Jelani Nelson.
-               </p>
+                 
+				 
+				 
               </div>
             </div>
 			
@@ -451,20 +423,17 @@
                 <i class="bi bi-file-text-fill"></i> TBD
               </div>
               <div class="col text-end">
-                <a class="text-decoration-none" data-bs-toggle="collapse" href="#abstract4" aria-expanded="false" aria-controls="abstract4">
+                <a class="text-decoration-none" data-bs-toggle="collapse" href="#abstract4" aria-expanded="false" aria-controls="abstract10">
                   <i class="bi bi-arrow-down-square-fill"></i> Abstract
                 </a>
               </div>
             </div>
 
-            <div class="collapse mb-4" id="abstract4">
+            <div class="collapse mb-4" id="abstract10">
               <div class="card card-body">
-              <p>
-                By combining  techniques from learning theory with cryptographic tools from the bounded storage model, we separate the oblivious streaming model from the adversarially-robust streaming model. Specifically, we present a streaming problem for which every adversarially-robust streaming algorithm must use polynomial space, while there exists a classical (oblivious) streaming algorithm that uses only polylogarithmic space. This is the first general separation between the capabilities of these two models, resolving one of the central open questions in adversarial robust streaming.
-               </p>              
-              <p>
-                 Joint work with Haim Kaplan, Yishay Mansour, Kobbi Nissim.
-              </p>     
+                 
+				 
+				 
 
               </div>
             </div>
