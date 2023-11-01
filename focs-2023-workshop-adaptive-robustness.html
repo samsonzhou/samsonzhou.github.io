@@ -334,7 +334,7 @@
                 <i class="bi bi-person-fill"></i> <a href="https://web.stanford.edu/~gblanc/">Guy Blanc</a>
               </div>
               <div class="col fw-bold">
-                <i class="bi bi-file-text-fill"></i> TBD
+                <i class="bi bi-file-text-fill"></i> Subsampling Suffices for Adaptive Data Analysis
               </div>
               <div class="col-2 text-end">
                 <a class="text-decoration-none" data-bs-toggle="collapse" href="#abstract6" aria-expanded="false" aria-controls="abstract6">
@@ -345,9 +345,14 @@
 
             <div class="collapse mb-4" id="abstract6">
               <div class="card card-body">
-                 
-				 
-				 
+                Ensuring that analyses performed on a dataset are representative of the entire population is one of the central problems in statistics. 
+				Most classical techniques assume that the dataset is independent of the analyst's query and break down in the common setting where a dataset is reused for multiple, adaptively chosen, queries. 
+				This problem of adaptive data analysis was formalized in the seminal works of Dwork et al. (STOC, 2015) and Hardt and Ullman (FOCS, 2014).
+				</p>
+				We identify a remarkably simple set of assumptions under which the queries will continue to be representative even when chosen adaptively: 
+				The only requirements are that each query takes as input a random subsample and outputs few bits. This result shows that the noise inherent in subsampling is sufficient to guarantee that query responses generalize. 
+				The simplicity of this subsampling-based framework allows it to model a variety of real-world scenarios not covered by prior work. 
+				We furthermore demonstrate the utility of this framework by designing a state of the art and extremely simple mechanism for answering statistical queries.  
               </div>
             </div>
 
