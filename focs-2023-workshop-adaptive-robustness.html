@@ -246,7 +246,7 @@
                 <i class="bi bi-person-fill"></i> <a href="http://www.cohenwang.com/edith/">Edith Cohen</a>
               </div>
               <div class="col fw-bold">
-                <i class="bi bi-file-text-fill"></i> TBD
+                <i class="bi bi-file-text-fill"></i> On Robustness to Adaptive Inputs: A Case Study of CountSketch
 			</div>
               <div class="col-2 text-end">
                 <a class="text-decoration-none" data-bs-toggle="collapse" href="#abstract3" aria-expanded="false" aria-controls="abstract3">
@@ -257,7 +257,15 @@
 
             <div class="collapse mb-4" id="abstract3">
               <div class="card card-body">
-
+				The performance of randomized algorithms can be considered in both adaptive and non-adaptive settings. 
+				Adaptive settings come into play when the algorithm is part of a system with feedback or when an adversary 
+				attempts to construct an input that causes the algorithm to fail. 
+				Recent research in the past decade has led to a black-box reduction, allowing k replicas of an algorithm designed 
+				for non-adaptive inputs to handle a quadratic number of adaptive inputs. However, it is important to understand how 
+				robust common practical sketch structures are to adaptive inputs and whether we can improve upon the black-box method. 
+				We investigate these questions for CountSketch, a widely-used sketching method.
+				</p>
+				(Joint work with Xin Lyu,  Jelani  Nelson, Tamas Sarlos, Moshe Shechner, and Uri  Stemmer)
                 
 
               </div>
@@ -387,7 +395,9 @@
 				as well as for integers p>2. Using these, we resolve a number of central open questions in adversarial robust streaming and sliding window models.
 				</p>
 				For both models, we obtain algorithms for norm estimation whose dependence on epsilon is 1/epsilon^2, which shows, up to logarithmic factors, that there is no 
-				overhead over the standard insertion-only data stream model for these problems. 
+				overhead over the standard insertion-only data stream model for these problems.
+				</p>
+				(Joint work with David P. Woodruff)
               </div>
             </div>
 			
@@ -401,7 +411,7 @@
 				<i class="bi bi-person-fill"></i> <a href="https://web.stanford.edu/~gblanc/">Sepehr Assadi</a>
               </div>
               <div class="col fw-bold">
-                <i class="bi bi-file-text-fill"></i> TBD
+                <i class="bi bi-file-text-fill"></i> Coloring in Graph Streams via Deterministic and Adversarially Robust Algorithms
               </div>
               <div class="col text-end">
                 <a class="text-decoration-none" data-bs-toggle="collapse" href="#abstract8" aria-expanded="false" aria-controls="abstract8">
@@ -412,8 +422,11 @@
 
             <div class="collapse mb-4" id="abstract8">
               <div class="card card-body">
-                 
-				 
+                 In recent years, there has been a growing interest in solving various graph coloring problems in the streaming model. 
+				 The algorithms in this line of work are all crucially randomized, raising the natural question of how important a role randomization 
+				 plays in streaming graph coloring. In this talk, we review the recent progress on this question, including fully settling the 
+				 complexity of deterministic algorithms, and a three-way separation between power of randomized algorithms, 
+				 adversarially robust algorithms, and deterministic algorithms. 				 
 			   </div>
             </div>
 	 
