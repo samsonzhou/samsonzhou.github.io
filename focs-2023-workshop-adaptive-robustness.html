@@ -328,7 +328,16 @@
 
             <div class="collapse mb-4" id="abstract5">
               <div class="card card-body">
-                 
+				In the adversarial streaming model, an adversary gives an algorithm a sequence of adaptively chosen updates u_1,...,u_n as a data stream. 
+				The goal of the algorithm is to compute or approximate some predetermined function for every prefix of the adversarial stream, 
+				but the adversary may generate future updates based on previous outputs of the algorithm. 
+				In particular, the adversary may gradually learn the random bits internally used by an algorithm to manipulate dependencies in the input. 
+				We introduce adversarially robust streaming algorithms for central machine learning and algorithmic tasks, 
+				such as regression and clustering, as well as their more general counterparts, subspace embedding, low-rank approximation, and coreset construction. 
+				Our results are based on a simple, but powerful, observation that sampling based algorithms give rise to adversarial robustness 
+				which is in contrast to sketching based algorithms, which are very prevalent in the streaming literature but suffer from adversarial attacks. 
+				In addition, we show that the well-known merge and reduce paradigm in streaming is adversarially robust. 
+				Since the merge and reduce paradigm defines coreset constructions, we thus obtain robust algorithms for k-means, k-median, k-center, Bregman clustering, projective clustering, principal component analysis (PCA) and non-negative matrix factorization.
               </div>
             </div>
 
