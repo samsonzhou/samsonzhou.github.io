@@ -1,0 +1,119 @@
+<html>
+<head>
+<title>CSCE 658: Randomized Algorithms</title>
+<link rel="shortcut icon" href="favicon_tamu.ico">
+</head>
+
+<style type="text/css">
+\\body
+\\{
+\\background: url(background.jpg) no-repeat;
+\\background-size: 100% 100%;
+\\}
+
+h1 {
+font-family: times-roman
+}
+
+h3 {
+font-family: times-roman
+}
+
+p
+{
+font-family: times-roman}
+
+p#abs{
+font-family: times-roman;
+border:2px solid black
+}
+
+ul{font-family: times-roman}
+li{font-family: times-roman}
+
+
+\\a:link {color: crimson;
+\\	text-decoration: none;}
+\\a:visited {color: crimson;
+\\	text-decoration: none;}
+\\a:hover {color: midnightblue;
+\\	text-decoration: underline;}
+a:link {color: maroon;
+	text-decoration: none;}
+a:visited {color: maroon;
+	text-decoration: none;}
+a:hover {color: maroon;
+	text-decoration: underline;
+	text-decoration-style:dotted}
+</style>
+
+<img hr width = "10%" src="logo_tamu.png" align = "right">
+<h2>
+CSCE 689: Special Topics in Modern Algorithms for Data Science
+</h2>
+
+<dl>
+<dd><b>Instructor:</b> <a href="https://samsonzhou.github.io/">Samson Zhou</a><br></dd>
+<dd><b>Lectures:</b> MWF 08/21/2023-12/12/2023, 1:50-2:40 PM CT, <a href="https://aggiemap.tamu.edu/?ref=howdy&BldgAbbrv=HRBB">HRBB</a> 126<br></dd>
+<dd><b>Office hours:</b> Wednesday, 3:00-4:00 PM CT, PETR 424, or by appointment </dd>
+<!--<dd><b> Howdy site:</b>-->
+</dl>
+
+<h3>Course Description</h3>
+Algorithms for data science; sublinear algorithms; models of computation for big data; differential privacy. 
+Full syllabus <a href="https://samsonzhou.github.io/CSCE689-23/csce689-2023-syllabus.pdf">here</a>.
+
+<h3>Grading</h3>
+Scribe notes, i.e., succinct LaTeX summary of lectures 20%, midterm presentation 35%, final project 45%
+
+<h3>Course Schedule</h3>
+<ul>
+<li>Week 1: Probability basics (hashing, birthday paradox, balls-in-bins)</li>
+<li>Week 2: Probability basics continued (max load, coupon-collector), concentration inequalities (Markov, Chebyshev, Chernoff)</li>
+<li>Week 3: Dimensionality reduction (Johnson-Lindenstrauss)</li>
+<li>Week 4: Streaming model, reservoir sampling, heavy-hitters (Misra-Gries, CountMin)</li>
+<li>Week 5: Streaming model continued, heavy-hitters (CountSketch), norm estimation </li>
+<li>Week 6: Reading paper presentations </li>
+<li>Week 7: Streaming model continued, sparse recovery, distinct elements </li>
+<li>Week 8: Streaming model continued, distinct elements, L0 sampling</li>
+<li>Week 9: Graphs in the streaming model, matchings, connectivity, bipartiteness</li>
+<li>Week 10: Clustering in the streaming model, coresets</li>
+<li>Week 11: Sliding window model, adversarial robustness </li>
+<li>Week 12: Property testing, linear regression </li>
+<li>Week 13: Subspace embeddings, differential privacy </li>
+<li>Week 14: Learning-augmented algorithms </li>
+<li>Week 15: Project presentations </li>
+</ul>
+
+<h3>Additional Course Materials</h3>
+<a href="https://samsonzhou.github.io/csce689-2023-flyer.pdf">Flyer</a></br>
+<a href="https://samsonzhou.github.io/CSCE689-23/csce689-2023-syllabus.pdf">Full Syllabus</a></br>
+<a href="https://samsonzhou.github.io/CSCE689-23/csce689-2023-list.pdf">Project Reading List</a></br>
+<a href="https://samsonzhou.github.io/CSCE689-23/template.tex">LaTeX Template</a></br>
+</br>
+There is no textbook for this class. 
+However, the following materials may be useful as reference materials:
+<ul>
+<li>Course Notes and Videos:</li>
+<ul>
+<li><a href="https://www.cs.purdue.edu/homes/hmaji/teaching/Spring%202016/CS-59000-MTK-Spring-2016.html">Mathematical Toolkit in Computer Science</a>, under Hemanta Maji</li>
+<li><a href="https://people.cs.umass.edu/~cmusco/CS514F22/index.html">Algorithms for Data Science</a>, under Cameron Musco</li>
+<li><a href="http://web.stanford.edu/class/cs168/index.html">The Modern Algorithmic Toolbox</a>, under Gregory Valiant</li>
+<li><a href="https://www.cs.dartmouth.edu/~ac/Teach/CS49-Fall11/">Data Stream Algorithms</a>, under Amit Chakrabarti</li>
+<li><a href="https://dpcourse.github.io/2021-spring/schedule.html">Privacy in Statistics and Machine Learning</a>, under Adam Smith and Jonathan Ullman</li>
+<li><a href="https://www.sketchingbigdata.org/fall17/lec/">Sketching Algorithms for Big Data</a>, under Piotr Indyk and Jelani Nelson</li>
+<li><a href="http://www.cs.cmu.edu/~dwoodruf/teaching/15859-fall21/index.html">Algorithms for Big Data</a>, under David P. Woodruff</li>
+<li><a href="https://stellar.mit.edu/S/course/6/sp19/6.890/materials.html">Learning-Augmented Algorithms</a>, under Costis Daskalakis and Piotr Indyk</li>
+</ul>
+<li>Monographs:</li>
+<ul>
+<li><a href="http://www.cs.dartmouth.edu/~ac/Teach/data-streams-lecnotes.pdf">Data Stream Algorithms</a>, by Amit Chakrabarti</li>
+<li><a href="https://www.cis.upenn.edu/~aaroth/Papers/privacybook.pdf">The Algorithmic Foundations of Differential Privacy</a>, by Cynthia Dwork and Aaron Roth</li>
+<li><a href="https://www.nowpublishers.com/article/Details/TCS-060">Sketching as a Tool for Numerical Linear Algebra</a>, by David P. Woodruff</li>
+</ul>
+</ul>
+Extra Slides: <a href="https://samsonzhou.github.io/CSCE689-23/G1.pptx">Guest Slides 1 (ppt)</a>, 
+<a href="https://samsonzhou.github.io/CSCE689-23/G2.pptx">Guest Slides 2 (ppt)</a>, 
+<a href="https://samsonzhou.github.io/CSCE689-23/G3.pptx">Guest Slides 3 (ppt)</a>
+</body>
+</html>
