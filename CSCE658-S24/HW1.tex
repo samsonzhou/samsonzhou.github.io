@@ -41,7 +41,7 @@ Suppose we have a coin that lands heads with probability $\frac{1}{2}$ and tails
 Describe, with proof, a procedure that uses this coin to generate a random bit that is $0$ with probability $\frac{1}{3}$ and $1$ with probability $\frac{2}{3}$.
 
 \noindent
-HINT: The procedure is allowed to fail to generate an output bit, provided that 1) \emph{conditioned} on the event that a bit is output, the output bit is $0$ with probability $\frac{1}{2}$ and $1$ with probability $\frac{1}{2}$, and 2) the probability that a bit is output is positive.  
+HINT: The procedure is allowed to fail to generate an output bit, provided that 1) \emph{conditioned} on the event that a bit is output, the output bit is $0$ with probability $\frac{1}{3}$ and $1$ with probability $\frac{2}{3}$, and 2) the probability that a bit is output is positive.  
 \item (10 points)
 Unfortunately, now we only have a coin that lands heads with probability $\frac{1}{3}$ and tails with probability $\frac{2}{3}$. 
 Describe, with proof, a procedure that uses this coin to generate a random bit that is $0$ with probability $\frac{1}{2}$ and $1$ with probability $\frac{1}{2}$. 
@@ -57,7 +57,7 @@ Describe, with proof, a procedure that uses this coin to generate a random bit t
 Karger's min-cut algorithm
 \begin{enumerate}
 \item (10 points)
-Let $\mathcal{A}$ be an algorithm that prints ``SUCCESS'' with probability $p$ each time it is called. 
+Let $\mathcal{A}$ be an algorithm that prints ``SUCCESS'' with probability $p>0$ each time it is called. 
 Show that if we call the algorithm $\mathcal{A}$ independently a total of $m:=\mathcal{O}\left(\frac{1}{p}\right)$ times, then with probability at least $0.99$, it will print ``SUCCESS'' at least one of the $m$ times. 
 
 \noindent
