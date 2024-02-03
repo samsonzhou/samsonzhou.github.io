@@ -1,0 +1,112 @@
+\documentclass[11pt]{article}
+\pdfoutput=1
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage[protrusion=true,expansion=true]{microtype}
+\usepackage{amsmath,amssymb,amsfonts,amsthm}
+\usepackage{subcaption}
+\usepackage{graphicx}
+\usepackage{fullpage}
+\usepackage[backref=page]{hyperref}
+\usepackage{color}
+\usepackage{wrapfig}
+\usepackage{tikz}
+\usetikzlibrary{decorations.pathreplacing}
+\usepackage{setspace}
+\usepackage{algorithm}
+\usepackage[noend]{algpseudocode}
+\usepackage[framemethod=tikz]{mdframed}
+\usepackage{xspace}
+\usepackage{pgfplots}
+\usepackage{framed}
+
+\newcommand{\Ex}[1]{\ensuremath{\mathbb{E}\left[#1\right]}}
+\newcommand{\Var}[1]{\ensuremath{\text{Var}\left[#1\right]}}
+\newcommand{\PPr}[1]{\ensuremath{\mathbf{Pr}\left[#1\right]}}
+
+\allowdisplaybreaks
+
+\begin{document}
+\begin{center}
+{\Large\textsc{CSCE 658: Randomized Algorithms -- Spring 2024 \\ 
+Problem Set 2}}
+\vskip 0.1in
+Due: Thursday, February 15, 2024, 5:00 pm CT
+\end{center}
+\textbf{Problem 1.} (30 points total)
+Concentration inequalities. 
+\begin{enumerate}
+\item
+Let $\alpha>1$ be any fixed constant. 
+Prove that Markov's inequality is tight by describing the distribution of a random variable $X$ such that $\PPr{X\ge\alpha\cdot\Ex{X}}=\frac{1}{\alpha}$. 
+\item
+Let $\alpha>1$ be any fixed constant. 
+Prove that Chebyshev's inequality is tight by describing the distribution of a random variable $X$ such that $\Ex{X}=0$, $\Var{X}=1$, and $\PPr{|X-\Ex{X}|\ge\alpha}=\frac{\Var{X}}{\alpha^2}$. 
+\item
+Prove that for any random variable $X$, we have $\Ex{X^2}\ge\Ex{X}^2$. 
+\item
+Let $X$ be a non-negative random variable with $\Ex{X}>0$. 
+Prove that $\PPr{X=0}\le\frac{\Ex{X^2}-\Ex{X}^2}{\Ex{X}^2}$. 
+\item 
+Let $X$ be a non-negative integer-valued random variable with $\Ex{X}>0$. 
+Prove that
+\[\frac{\Ex{X}^2}{\Ex{X^2}}\le\PPr{X\neq 0}\le\Ex{X}.\]
+\end{enumerate}
+
+\vskip 0.2in\noindent
+\textbf{Problem 2.} (30 points total)
+Karger's min-cut algorithm
+\begin{enumerate}
+\item (10 points)
+Let $\mathcal{A}$ be an algorithm that prints ``SUCCESS'' with probability $p>0$ each time it is called. 
+Show that if we call the algorithm $\mathcal{A}$ independently a total of $m:=\mathcal{O}\left(\frac{1}{p}\right)$ times, then with probability at least $0.99$, it will print ``SUCCESS'' at least one of the $m$ times. 
+
+\noindent
+HINT: You may use the fact that $1-x\le e^{-x}$ for all real numbers $x$. 
+\item (10 points)
+Recall that in class, we showed that Karger's min-cut algorithm succeeds with probability at least $\frac{2}{n(n-1)}$. 
+Describe with proof, an algorithm that uses Karger's min-cut algorithm as a black-box subroutine, i.e., it cannot change any algorithmic aspects of Karger and finds the min-cut with probability at least $0.99$. 
+Your algorithm must use a total of $\mathcal{O}(n^3)$ edge contractions. 
+\item (10 points)
+A graph $G$ can have many different min cuts. 
+Use the analysis of Karger's min-cut algorithm to show that a connected graph $G$ on $n$ vertices has at most $\frac{n(n-1)}{2}$ different min cuts. 
+\end{enumerate}
+\vskip 0.5in\noindent
+\begin{center}
+(Continued on next page)
+\end{center}
+\newpage
+\noindent
+\textbf{Problem 3.} (30 points total)
+Suppose that we improve Karger's min-cut algorithm in the following manner. 
+We first run Karger's algorithm and contract edges until there is a graph $G$' that consists of $k$ vertices and super-vertices. 
+We then independently run Karger's algorithm $m$ times in parallel on $G'$ and report the minimum of the outputs of the $m$ independent instances. 
+
+\vskip 0.1in\noindent
+Show that if $k=\sqrt{n}$ and $m=4n\log n$, then there exists a constant $C$ such that we output the min-cut with probability at least $\frac{C}{n}$. 
+
+\vskip 0.1in\noindent
+HINT: First analyze the probability that $G'$ preserves a fixed min-cut of $G$. 
+
+\vskip 0.1in\noindent
+NOTE: The goal in Problem 2 was to find the min-cut with probability $0.99$, using $\mathcal{O}(n^3)$ edge contractions. 
+This improved version of Karger's algorithm uses $\mathcal{O}(n^{2.5})$ edge contractions. 
+
+\vskip 0.2in\noindent
+\textbf{Problem 4.} (30 points total)
+Random variables and probability distributions. 
+\begin{enumerate}
+\item (10 points)
+Let $X$ and $Y$ be random real-valued variables with probability distributions $p$ and $q$ respectively. 
+Suppose that we have $\Ex{X}=\Ex{Y}$. 
+Either prove that $p\equiv q$, i.e., $p(x)=q(x)$ for all $x\in\mathbb{R}$, or give a counterexample, with justification. 
+\item (10 points)
+Let $X$ and $Y$ be random real-valued variables with probability distributions $p$ and $q$ respectively. 
+Suppose that $p(x)=q(-x)$ for all $x\in\mathbb{R}$. 
+Show that $\Ex{X^2}=\Ex{Y^2}$. 
+\item (10 points)
+Let $X$ and $Y$ be random real-valued variables with probability distributions $p$ and $q$ respectively. 
+Suppose that we have $\Ex{X}=\Ex{Y}$ and $\Var{X}=\Var{Y}$. 
+Either prove that $p\equiv q$, i.e., $p(x)=q(x)$ for all $x\in\mathbb{R}$, or give a counterexample, with justification. 
+\end{enumerate}
+\end{document}
