@@ -1,0 +1,189 @@
+<html>
+<head>
+<title>Algorithms and Data Science Reading Group</title>
+<link rel="shortcut icon" href="favicon_tamu.ico">
+<script language="JavaScript" type="text/JavaScript">
+
+function toggle(id) {
+if (document.getElementById){
+	if (document.getElementById(id).style.display == "none"){
+		document.getElementById(id).style.display = "flex";
+		}
+	else{
+		document.getElementById(id).style.display = "none";
+		}
+	}
+}
+</script>
+</head>
+
+<style type="text/css">
+h1 {
+font-family: times-roman
+}
+
+h3 {
+font-family: times-roman
+}
+
+p
+{
+font-family: times-roman}
+
+p#abs{
+font-family: times-roman;
+border:2px solid black
+}
+
+ul{font-family: times-roman}
+li{font-family: times-roman}
+
+a:link {color: maroon;
+	text-decoration: none;}
+a:visited {color: maroon;
+	text-decoration: none;}
+a:hover {color: teal;
+	text-decoration: underline;
+	text-decoration-style:dotted}
+}
+
+
+</style>
+
+
+
+<center>
+<table border="0" cellpadding="5" cellspacing="5">
+<tr>
+<td width = "20%"><img hr width = "50%" src="logo_tamu.png" align = "left">
+</td>
+<td width = "70%">
+<h1>
+Algorithms and Data Science Reading Group
+</h1>
+</td>
+<td width = "40%" colspan="2">
+<script type="text/javascript">
+</script>
+</td>
+</tr>
+</table>
+</center>
+
+<p id="intro">
+Welcome to the Algorithms and Data Science Reading Group at Texas A&#38;M University. 
+</p>
+
+<hr>
+<h3>
+Spring 2024
+</h3>
+<ul>
+<li>Wedneday, Feburary 7, 2024: <a href="https://veldt.engr.tamu.edu/">Nate Veldt</a> on <a href="javascript:toggle('NV-S24')">Growing a Random Maximal Independent Set Produces a 2-approximate Vertex Cover </a>
+<div id="NV-S24" style="display: none">
+<p id="abs">
+In this talk I'll present a proof that a simple greedy algorithm for finding a maximal independent set in a graph is also a randomized 2-approximation algorithm for weighted vertex cover. 
+The unweighted version of the algorithm has existed for decades as a maximal independent set algorithm, but was not previously known to approximate vertex cover. 
+This result leads to several new insights and simplified algorithms for different graph problems as corollaries. This includes a simple O(log n)-round parallel algorithm for vertex cover, 
+simplified approximation algorithms for certain edge deletion problems, connections to a problem called correlation clustering, and insights for list heuristic algorithms for vertex cover. 
+This will be a more detailed version of a talk recently presented at the Symposium on Simplicity in Algorithms (SOSA '24) (<a href="https://epubs.siam.org/doi/pdf/10.1137/1.9781611977936.32">https://epubs.siam.org/doi/pdf/10.1137/1.9781611977936.32</a>
+</p>
+</div>
+</li>
+<li>Organized by <a href="https://veldt.engr.tamu.edu/">Nate Veldt</a> and <a href="https://samsonzhou.github.io/">Samson Zhou</a></li>
+</ul>
+
+<hr>
+<h3>
+Fall 2023
+</h3>
+
+<ul>
+<li>Friday, October 27, 2023: <a href="https://ericbalkanski.com/">Eric Balkanski</a> on <a href="javascript:toggle('EB-F23')">Learning-Augmented Mechanism Design</a>
+<div id="EB-F23" style="display: none">
+<p id="abs">
+We introduce an alternative model for the design and analysis of strategyproof mechanisms that is motivated by the recent surge of work in "learning-augmented algorithms". 
+Aiming to complement the traditional approach in computer science, which analyzes the performance of algorithms based on worst-case instances, this line of work has focused 
+on the design and analysis of algorithms that are enhanced with machine-learned predictions regarding the optimal solution. The algorithms can use the predictions as a guide 
+to inform their decisions, and the goal is to achieve much stronger performance guarantees when these predictions are accurate (consistency), while also maintaining 
+near-optimal worst-case guarantees, even if these predictions are very inaccurate (robustness). So far, these results have been limited to algorithms.
+<br>
+<br>
+We initiate the design and analysis of strategyproof mechanisms that are augmented with predictions regarding the private information of the participating agents. 
+To exhibit the important benefits of this approach, we revisit the canonical problem of strategic facility location. We propose new strategyproof mechanisms that leverage 
+predictions to guarantee an optimal trade-off between consistency and robustness guarantees. Furthermore, we also prove parameterized approximation results as a function of 
+the prediction error, showing that our mechanisms perform well even when the predictions are not fully accurate.
+<br>
+<br>
+Joint work with Priyank Agrawal, Vasilis Gkatzelis, Tingting Ou, and Xizhi Tan 
+</p>
+</div>
+</li>
+
+
+<li>Tuesday, October 17, 2023: <a href="https://scholar.google.com/citations?user=qVuN4MIAAAAJ">Tony Wirth</a> on <a href="javascript:toggle('TW-F23')">Maximum Coverage in Sublinear Space, Faster</a>
+<div id="TW-F23" style="display: none">
+<p id="abs">
+Given a collection of m sets from a universe U, the Maximum Set Coverage problem consists of finding k sets whose union has largest cardinality. 
+This problem is NP-Hard, but the solution can be approximated by a polynomial time algorithm up to a factor 1-1/e. 
+However, this algorithm does not scale well with the input size.
+<br>
+<br>
+In a streaming context, practical high-quality solutions are found, but with space complexity that scales linearly with respect to the size of the universe n = |U|. 
+However, one randomized streaming algorithm has been shown to produce a 1-1/e-&#x3B5; approximation of the optimal solution with a space complexity that scales 
+only poly-logarithmically with respect to m and n. In order to achieve such a low space complexity, the authors used two techniques in their multi-pass approach:
+<br>
+F0-sketching, allows to determine with great accuracy the number of distinct elements in a set using less space than the set itself.
+<br>
+Subsampling, consists of only solving the problem on a subspace of the universe. It is implemented using &#947;-independent hash functions.
+<br>
+<br>
+This article focuses on the sublinear-space algorithm and highlights the time cost of these two techniques, especially subsampling. We present optimizations that 
+significantly reduce the time complexity of the algorithm. Firstly, we give some optimizations that do not alter the space complexity, number of passes and approximation 
+quality of the original algorithm. In particular, we reanalyze the error bounds to show that the original independence factor of &#937;(&#x3B5;^{-2} k log m) can be fine-tuned to &#937;(k log m); 
+we also show how F0-sketching can be removed. Secondly, we derive a new lower bound for the probability of producing a 1-1/e-&#x3B5; approximation using only pairwise independence: 
+1- (4/(c k log m)) compared to 1-(2e/(m^{ck/6})) with &#937;(k log m)-independence. Although the theoretical guarantees are weaker, suggesting the approximation quality would suffer, 
+for large streams, our algorithms perform well in practice. Finally, our experimental results show that even a pairwise-independent hash-function sampler does not produce 
+worse solution than the original algorithm, while running significantly faster by several orders of magnitude.
+</p>
+</div>
+</li>
+
+<li>Tuesday, September 26, 2023: <a href="https://veldt.engr.tamu.edu/">Nate Veldt</a> on <a href="javascript:toggle('NV-F23')">Generalized Hypergraph Cut Problems: Algorithms and Applications</a>
+<div id="NV-F23" style="display: none">
+<p id="abs">
+In graph clustering and hypergraph clustering, the goal is to partition a set of nodes into well-connected clusters in such a way that few edges (or hyperedges) are "cut", 
+i.e., separated between clusters. Although graph models are more common, hypergraphs can directly encode multiway relationships like group social interactions, multiway biological interactions, 
+or chemical reactions involving multiple substances. As a result, hypergraph clustering is more natural for many applications. However, this generalized problem is more nuanced since there 
+are many different ways to partition a single hyperedge among clusters. Different ways of penalizing cut hyperedges may be more or less useful depending on the application, and this 
+also leads to significant differences in computational complexity results when solving hypergraph clustering problems. This talk will introduce a generalized notion of the minimum hypergraph cut problem, 
+along with efficient algorithms for certain variants and NP-hardness results for others. I'll then show how new algorithmic techniques for hypergraph cut problems can be incorporated into 
+more sophisticated pipelines for hypergraph clustering. This leads to improved results in several different types of downstream data analysis tasks, such as finding related retail products 
+in large e-commerce datasets, detecting groups of students from the same classroom based on group interaction data, and identifying related posts in large online Q&A forums.
+</p>
+</div>
+</li>
+
+<li>Tuesday, Septebmer 19, 2023: <a href="https://samsonzhou.github.io/">Samson Zhou</a> on <a href="javascript:toggle('SZ-F23')">Learning-Augmented Algorithms for k-means Clustering</a>
+<div id="SZ-F23" style="display: none">
+<p id="abs">
+Although k-means clustering is a well-studied problem, there exist strong theoretical limits on worst-case inputs. To overcome this barrier, we consider a scenario where “advice” 
+is provided to help perform clustering. We consider the k-means problem augmented with a predictor that, given any point, returns its cluster label in an approximately optimal 
+clustering up to some error. We present an algorithm whose performance improves along with the accuracy of the predictor, even though naively following the accurate predictor can 
+still lead to a high clustering cost. Thus if the predictor is sufficiently accurate, we can retrieve a close to optimal clustering with nearly optimal runtime, breaking known 
+computational barriers for algorithms that do not have access to such advice. 
+<br>
+<br>
+Based on joint work with Jon Ergun, Zhili Feng, Sandeep Silwal, and David P. Woodruff
+</p>
+</div>
+</li>
+<li>Organized by <a href="https://samsonzhou.github.io/">Samson Zhou</a></li>
+</ul>
+
+
+
+
+
+</html>
+
