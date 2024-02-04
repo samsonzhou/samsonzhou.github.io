@@ -124,7 +124,7 @@ In class, we saw there are settings where Chebyshev's inequality gives sharper t
 Let $X$ and $Y$ be Gaussian random variables with expectation $0$ and variance $1$, i.e., normal random variables. Have you ever wondered what the distribution of $Z:=X/Y$ looks like? Probably not, but it turns out that the distribution of $Z$ has a name and is well-studied. $Z$ is a standard Cauchy random variable and follows the standard Cauchy distribution, which has probability density function $p(x)=\frac{1}{\pi}\frac{1}{(1+x)^2}$ for all $x\in\mathbb{R}$. 
 \begin{enumerate}
 \item (5 points)
-Let $X$ a standard Cauchy random variable and let $Y=X+1$. 
+Let $X$ be a standard Cauchy random variable and let $Y=X+1$. 
 Prove using Markov's inequality that $\PPr{Y\ge 4}\le\frac{1}{4}$. 
 \end{enumerate}
 
@@ -185,10 +185,16 @@ Exponential tail bounds.
 Let $X_1,\ldots,X_n\in\{0,1\}$ be independent random variables, not necessarily identically distributed, and let $X=X_1+\ldots+X_n$ and $\mu=\Ex{X}$. 
 \begin{enumerate}
 \item (5 points)
-Use the inequality $1+x\le e^x$ for all $x\in\mathbb{R}$ to show that $\Ex{e^{\lambda X_i}}\le e^{\Ex{X_i}\cdot(e^\lambda-1)}$ for all $i$. 
+Use the inequality $1+x\le e^x$ for all $x\in\mathbb{R}$ to show that $\Ex{e^{\lambda X_i}}\le e^{\Ex{X_i}\cdot(e^\lambda-1)}$ for all $i\in\{1,\ldots,n\}$ and all $\lambda\in\mathbb{R}$. 
 \end{enumerate}
 
 \noindent\textbf{Solution:}
+
+
+
+
+
+
 
 \begin{enumerate}
 \setcounter{enumi}{1}
@@ -230,7 +236,7 @@ Find, with proof, the value of $\lambda$ for which the inequality is sharpest by
 \setcounter{enumi}{4}
 \item (5 points)
 Conclude that
-\[\PPr{X\ge(1+\delta)\cdot\mu}\le\left(\frac{e^\delta}{(1+\delta)^{1+\delta}}\right)^\mu.\]
+\[\PPr{X\ge(1+\delta)\cdot\mu}\le\left(\frac{e^{-\delta}}{(1+\delta)^{1+\delta}}\right)^\mu.\]
 \end{enumerate}
 
 \noindent\textbf{Solution:}
@@ -263,7 +269,7 @@ Pairwise independence.
 Often, generating and storing a large collection of independent random variables is expensive. Sometimes, our analysis does not require random variables to be fully independent, but only $k$-wise independent, in which case we can efficiently store realizations of these random variables. In this problem, we will study the case $k=2$ and how such random variables might be generated.
 \vskip 0.1in\noindent
 A collection $X_1,\ldots,X_n$ of random variables is \emph{pairwise independent} if for all $i\neq j$ and all $a,b\in\mathbb{R}$, we have
-\[\PPr{X_i=a\,\mid\,X_j=b}=\PPr{X_i=b}.\]
+\[\PPr{X_i=a\,\mid\,X_j=b}=\PPr{X_i=a}.\]
 \begin{enumerate}
 \item (5 points)
 Let $p$ be a prime number and $\mathbb{Z}_p$ denote the integers mod $p$. 
@@ -288,7 +294,7 @@ Prove that for fixed $A$ and $B$, we can solve the system of equations $A\equiv 
 \setcounter{enumi}{1}
 \item (10 points)
 Let $p\gg n$ be a prime number and $\mathbb{Z}_p$ denote the integers mod $p$. 
-Let $r$ and $s$ be chosen independently and uniformly at random from $\mathbb{Z}_p$ and for each $i$, let $X_i=ri+s\pmod{p}$. 
+Let $r$ and $s$ be chosen independently and uniformly at random from $\mathbb{Z}_p$ and for each $i\in\{1,\ldots,n\}$, let $X_i=ri+s\pmod{p}$. 
 Show that for $i\neq j$, $X_i$ and $X_j$ are uniformly distributed on $\mathbb{Z}_p$ and pairwise independent. 
 \end{enumerate}
 
@@ -308,7 +314,7 @@ Show that for $i\neq j$, $X_i$ and $X_j$ are uniformly distributed on $\mathbb{Z
 \begin{enumerate}
 \setcounter{enumi}{2}
 \item (5 points)
-Storing $n$ fully independent random variables requires $n$ words of space. Describe how we can use two words of space to generate $n$ pairwise random variables. 
+Storing $n$ fully independent random variables requires $n$ words of space. Describe how we can use two words of space to generate $n$ random variables that are pairwise independent. 
 \end{enumerate}
 
 \noindent\textbf{Solution:}
