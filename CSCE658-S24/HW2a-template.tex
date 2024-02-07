@@ -31,9 +31,17 @@
 {\Large\textsc{CSCE 658: Randomized Algorithms -- Spring 2024 \\ 
 Problem Set 2}}
 \vskip 0.1in
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%        Toggle the next two lines      %%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+%YOUR NAME(S) HERE
 Due: Tuesday, February 20, 2024, 5:00 pm CT
 \end{center}
 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%            Problem 1 Begins Here      %%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \noindent
 \textbf{Problem 1.} (30 points total)
 Concentration and anti-concentration.
@@ -42,9 +50,33 @@ Let $p\in(0,1)$ be a fixed constant and suppose a coin that lands HEADS with pro
 \begin{enumerate}
 \item (5 points)
 What is $\Ex{X}$? What is $\Ex{X^2}$? What is $\Var{X}$?
+\end{enumerate}
+
+\noindent\textbf{Solution:}
+
+
+
+
+
+
+
+
+\begin{enumerate}
+\setcounter{enumi}{1}
 \item (10 points)
 Show that for any constant $C>0$, there exists a constant $\gamma>0$ such that 
 \[\PPr{|X-\Ex{X}|\ge\gamma\sqrt{pn\log n}}\le\frac{1}{n^C}.\]
+\end{enumerate}
+
+\noindent\textbf{Solution:}
+
+
+
+
+
+
+\begin{enumerate}
+\setcounter{enumi}{2}
 \item
 STOP AND THINK: Before doing the next problem, suppose $p=\frac{1}{2}$. What do you think $\PPr{X=\frac{n}{2}}$ is? Did the subsequent bounds match your intuition?
 \vskip 0.1in\noindent (10 points)
@@ -53,50 +85,100 @@ Show that for even $n$ and $p=\frac{1}{2}$, there exist constants $C_1,C_2>0$ su
 \vskip 0.1in\noindent
 HINT: For the following problem, use Stirling's formula, so that for all $n\ge 1$,
 \[\sqrt{2\pi n}\left(\frac{n}{e}\right)^n e^{\frac{1}{12n+1}}<n!<\sqrt{2\pi n}\left(\frac{n}{e}\right)^n e^{\frac{1}{12n}}.\]
+\end{enumerate}
+
+\noindent\textbf{Solution:}
+
+
+
+
+
+
+
+
+\begin{enumerate}
+\setcounter{enumi}{3}
 \item (5 points)
 Conclude that for $p=\frac{n}{2}$ and for any constant $C\le 1$, there exists a constant $\alpha>0$ such that
 \[\PPr{\frac{n}{2}-\alpha\cdot\sqrt{n}<X<\frac{n}{2}+\alpha\cdot\sqrt{n}}\le C.\]
 Note that as opposed to concentration inequalities, which upper bound the probability that $X$ deviates from its mean, the above result upper bounds the probability that $X$ is close to its mean. These inequalities are known as \emph{anti-concentration} inequalities. 
 \end{enumerate}
 
+\noindent\textbf{Solution:}
 
 
 
-\vskip 0.2in\noindent
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%            Problem 2 Begins Here      %%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newpage\noindent
 \textbf{Problem 2.} (30 points total)
 Markov and Chebyshev.
 \vskip 0.1in\noindent
 In class, we saw there are settings where Chebyshev's inequality gives sharper tail bounds than Markov's inequality. In this problem we show that 1) there are settings where Markov's inequality can be more informative than Chebyshev's inequality and 2) there are settings where either inequality is tight. 
-%\vskip 0.1in\noindent
-%Let $X$ and $Y$ be Gaussian random variables with expectation $0$ and variance $1$, i.e., normal random variables. Have you ever wondered what the distribution of $Z:=X/Y$ looks like? Probably not, but it turns out that the distribution of $Z$ has a name and is well-studied. $Z$ is a standard Cauchy random variable and follows the standard Cauchy distribution, which has probability density function $p(x)=\frac{1}{\pi}\frac{1}{(1+x)^2}$ for all $x\in\mathbb{R}$. 
+\vskip 0.1in\noindent
+Let $X$ and $Y$ be Gaussian random variables with expectation $0$ and variance $1$, i.e., normal random variables. Have you ever wondered what the distribution of $Z:=X/Y$ looks like? Probably not, but it turns out that the distribution of $Z$ has a name and is well-studied. $Z$ is a standard Cauchy random variable and follows the standard Cauchy distribution, which has probability density function $p(x)=\frac{1}{\pi}\frac{1}{(1+x)^2}$ for all $x\in\mathbb{R}$. 
 \begin{enumerate}
 \item (5 points)
-Define $p(x)=\begin{cases}\frac{1}{x^3}\qquad&|x|\ge 1\\
-0\qquad&\text{otherwise}\end{cases}$. 
-\vskip 0.1in\noindent
-Show that $p(x)$ is a valid probability density function. 
-%Let $X$ be a standard Cauchy random variable and let $Y=X+1$. 
-%Prove using Markov's inequality that $\PPr{Y\ge 4}\le\frac{1}{4}$. 
-\item (10 points)
-Let $p(x)$ be defined as in the previous problem describe the distribution of a random variable $X$ and let $Y=X+1$. 
+Let $X$ be a standard Cauchy random variable and let $Y=X+1$. 
 Prove using Markov's inequality that $\PPr{Y\ge 4}\le\frac{1}{4}$. 
-Then prove that $Y$ does not have finite variance. 
+\end{enumerate}
+
+\noindent\textbf{Solution:}
+
+
+\begin{enumerate}
+\setcounter{enumi}{1}
+\item (10 points)
+Prove that $Y$ does not have finite variance. 
 \vskip 0.1in\noindent
 NOTE: As a result of your proof, it follows that we cannot apply Chebyshev's inequality to upper bound $\PPr{Y\ge 4}\le t$ for any $t<1$. Hence we can acquire tail bounds using Markov's inequality that do not immediately follow from Chebyshev's inequality.
+\end{enumerate}
+
+\noindent\textbf{Solution:}
+
+
+
+
+\begin{enumerate}
+\setcounter{enumi}{2}
 \item (5 points)
 Let $\alpha>1$ be any fixed constant. 
 Prove that Markov's inequality is tight by describing the distribution of a random variable $X$ such that $\PPr{X\ge\alpha\cdot\Ex{X}}=\frac{1}{\alpha}$. 
+\end{enumerate}
+
+\noindent\textbf{Solution:}
+
+
+
+
+
+\begin{enumerate}
+\setcounter{enumi}{3}
 \item (10 points)
 Let $\alpha>1$ be any fixed constant. 
 Prove that Chebyshev's inequality is tight by describing the distribution of a random variable $X$ such that $\Ex{X}=0$, $\Var{X}=1$, and $\PPr{|X-\Ex{X}|\ge\alpha}=\frac{\Var{X}}{\alpha^2}$. 
 \end{enumerate}
 
-%\vskip 0.1in\noindent
-%\begin{center}
-%(Continued on next page)
-%\end{center}
-%\newpage
-\vskip 0.2in\noindent
+\noindent\textbf{Solution:}
+
+
+
+
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%            Problem 3 Begins Here      %%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newpage\noindent
 \textbf{Problem 3.} (30 points total)
 Exponential tail bounds.
 \vskip 0.1in\noindent
@@ -104,24 +186,83 @@ Let $X_1,\ldots,X_n\in\{0,1\}$ be independent random variables, not necessarily 
 \begin{enumerate}
 \item (5 points)
 Use the inequality $1+x\le e^x$ for all $x\in\mathbb{R}$ to show that $\Ex{e^{\lambda X_i}}\le e^{\Ex{X_i}\cdot(e^\lambda-1)}$ for all $i\in\{1,\ldots,n\}$ and all $\lambda\in\mathbb{R}$. 
+\end{enumerate}
+
+\noindent\textbf{Solution:}
+
+
+
+
+
+
+
+\begin{enumerate}
+\setcounter{enumi}{1}
 \item (5 points)
 Show that for all $\lambda\in\mathbb{R}$, we have 
 \[\Ex{e^{\lambda X}}\le e^{e^\lambda-1)\cdot\mu}.\]
+\end{enumerate}
+
+\noindent\textbf{Solution:}
+
+
+
+
+\begin{enumerate}
+\setcounter{enumi}{2}
 \item (5 points)
 Use Markov's inequality appropriately to prove that:
 \[\PPr{X\ge(1+\delta)\cdot\mu}\le\frac{e^{(e^\lambda-1)\mu}}{e^{\lambda(1+\delta)\mu}}.\]
+\end{enumerate}
+
+\noindent\textbf{Solution:}
+
+
+
+
+
+\begin{enumerate}
+\setcounter{enumi}{3}
 \item (5 points)
 Find, with proof, the value of $\lambda$ for which the inequality is sharpest by minimizing the right hand side of the previous inequality. 
+\end{enumerate}
+
+\noindent\textbf{Solution:}
+
+
+
+
+\begin{enumerate}
+\setcounter{enumi}{4}
 \item (5 points)
 Conclude that
 \[\PPr{X\ge(1+\delta)\cdot\mu}\le\left(\frac{e^{-\delta}}{(1+\delta)^{1+\delta}}\right)^\mu.\]
+\end{enumerate}
+
+\noindent\textbf{Solution:}
+
+
+
+
+
+\begin{enumerate}
+\setcounter{enumi}{5}
 \item (5 points)
 Use Markov's inequality appropriately with $\lambda=\ln\frac{1}{1-\delta}$ to prove that for any $\delta\in(0,1)$:
 \[\PPr{X\le(1-\delta)\cdot\mu}\le\left(\frac{e^{-\delta}}{(1-\delta)^{1-\delta}}\right)^\mu.\]
 \end{enumerate}
 
-\vskip 0.2in\noindent
-\noindent
+\noindent\textbf{Solution:}
+
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%            Problem 4 Begins Here      %%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newpage\noindent
 \textbf{Problem 4.} (30 points total)
 Pairwise independence.
 \vskip 0.1in\noindent
@@ -134,14 +275,75 @@ A collection $X_1,\ldots,X_n$ of random variables is \emph{pairwise independent}
 Let $p$ be a prime number and $\mathbb{Z}_p$ denote the integers mod $p$. 
 Let $r$ and $s$ be chosen independently and uniformly at random from $\mathbb{Z}_p$.  
 Prove that for fixed $A$ and $B$, we can solve the system of equations $A\equiv ri+s\pmod{p}$ and $B\equiv rj+s\pmod{p}$ uniquely for $r$ and $s$. 
+\end{enumerate}
+
+\noindent\textbf{Solution:}
+
+
+
+
+
+
+
+
+
+
+
+
+\begin{enumerate}
+\setcounter{enumi}{1}
 \item (10 points)
 Let $p\gg n$ be a prime number and $\mathbb{Z}_p$ denote the integers mod $p$. 
 Let $r$ and $s$ be chosen independently and uniformly at random from $\mathbb{Z}_p$ and for each $i\in\{1,\ldots,n\}$, let $X_i=ri+s\pmod{p}$. 
 Show that for $i\neq j$, $X_i$ and $X_j$ are uniformly distributed on $\mathbb{Z}_p$ and pairwise independent. 
+\end{enumerate}
+
+\noindent\textbf{Solution:}
+
+
+
+
+
+
+
+
+
+
+
+
+\begin{enumerate}
+\setcounter{enumi}{2}
 \item (5 points)
 Storing $n$ fully independent random variables requires $n$ words of space. Describe how we can use two words of space to generate $n$ random variables that are pairwise independent. 
+\end{enumerate}
+
+\noindent\textbf{Solution:}
+
+
+
+
+
+
+
+
+
+
+
+\begin{enumerate}
+\setcounter{enumi}{3}
 \item (10 points)
 Show that if $X_1,\ldots,X_n$ are pairwise independent random variables and $X=X_1+\ldots+X_n$, then
 \[\Var{X}=\Var{X_1}+\ldots+\Var{X_n}.\]
 \end{enumerate}
+
+\noindent\textbf{Solution:}
+
+
+
+
+
+
+
+
+
 \end{document}

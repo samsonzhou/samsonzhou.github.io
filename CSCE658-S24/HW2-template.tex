@@ -120,12 +120,12 @@ Note that as opposed to concentration inequalities, which upper bound the probab
 Markov and Chebyshev.
 \vskip 0.1in\noindent
 In class, we saw there are settings where Chebyshev's inequality gives sharper tail bounds than Markov's inequality. In this problem we show that 1) there are settings where Markov's inequality can be more informative than Chebyshev's inequality and 2) there are settings where either inequality is tight. 
-\vskip 0.1in\noindent
-Let $X$ and $Y$ be Gaussian random variables with expectation $0$ and variance $1$, i.e., normal random variables. Have you ever wondered what the distribution of $Z:=X/Y$ looks like? Probably not, but it turns out that the distribution of $Z$ has a name and is well-studied. $Z$ is a standard Cauchy random variable and follows the standard Cauchy distribution, which has probability density function $p(x)=\frac{1}{\pi}\frac{1}{(1+x)^2}$ for all $x\in\mathbb{R}$. 
 \begin{enumerate}
 \item (5 points)
-Let $X$ be a standard Cauchy random variable and let $Y=X+1$. 
-Prove using Markov's inequality that $\PPr{Y\ge 4}\le\frac{1}{4}$. 
+Define $p(x)=\begin{cases}\frac{1}{x^3}\qquad&|x|\ge 1\\
+0\qquad&\text{otherwise}\end{cases}$. 
+\vskip 0.1in\noindent
+Show that $p(x)$ is a valid probability density function. 
 \end{enumerate}
 
 \noindent\textbf{Solution:}
@@ -134,7 +134,9 @@ Prove using Markov's inequality that $\PPr{Y\ge 4}\le\frac{1}{4}$.
 \begin{enumerate}
 \setcounter{enumi}{1}
 \item (10 points)
-Prove that $Y$ does not have finite variance. 
+Let $p(x)$ be defined as in the previous problem describe the distribution of a random variable $X$ and let $Y=X+1$. 
+Prove using Markov's inequality that $\PPr{Y\ge 4}\le\frac{1}{4}$. 
+Then prove that $Y$ does not have finite variance. 
 \vskip 0.1in\noindent
 NOTE: As a result of your proof, it follows that we cannot apply Chebyshev's inequality to upper bound $\PPr{Y\ge 4}\le t$ for any $t<1$. Hence we can acquire tail bounds using Markov's inequality that do not immediately follow from Chebyshev's inequality.
 \end{enumerate}
