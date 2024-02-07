@@ -68,10 +68,11 @@ Markov and Chebyshev.
 \vskip 0.1in\noindent
 In class, we saw there are settings where Chebyshev's inequality gives sharper tail bounds than Markov's inequality. In this problem we show that 1) there are settings where Markov's inequality can be more informative than Chebyshev's inequality and 2) there are settings where either inequality is tight. 
 %\vskip 0.1in\noindent
+%NOTE: Thanks to Ori Yonay for pointing out an issue in the previous version of the problem. 
 %Let $X$ and $Y$ be Gaussian random variables with expectation $0$ and variance $1$, i.e., normal random variables. Have you ever wondered what the distribution of $Z:=X/Y$ looks like? Probably not, but it turns out that the distribution of $Z$ has a name and is well-studied. $Z$ is a standard Cauchy random variable and follows the standard Cauchy distribution, which has probability density function $p(x)=\frac{1}{\pi}\frac{1}{(1+x)^2}$ for all $x\in\mathbb{R}$. 
 \begin{enumerate}
 \item (5 points)
-Define $p(x)=\begin{cases}\frac{1}{x^3}\qquad&|x|\ge 1\\
+Define $p(x)=\begin{cases}\frac{1}{|x|^3}\qquad&|x|\ge 1\\
 0\qquad&\text{otherwise}\end{cases}$. 
 \vskip 0.1in\noindent
 Show that $p(x)$ is a valid probability density function. 
