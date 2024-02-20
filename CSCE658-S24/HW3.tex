@@ -39,7 +39,7 @@ Due: Tuesday, February 20, 2024, 5:00 pm CT
 
 \noindent
 \textbf{Problem 1.} (30 points total)
-CountSketch tail bounds. 
+$\CountSketch$ tail bounds. 
 \vskip 0.1in\noindent
 For any vector $x\in\mathbb{R}^n$ and any integer $k\ge 0$, we define $\tail_k(x)$ to be the vector $x$, but with the $k$ entries of largest magnitude to be set to $0$, breaking ties arbitrarily. 
 For example if $x=(-100, 40, 40, 1)$, then $\tail_2(x)$ can be either $(0, 0, 40, 1)$ or $(0, 40, 0, 1)$.
@@ -83,6 +83,7 @@ HINT: You may use the fact that for all $x\ge 1$ and $p\ge 1$, we have $x^p-(x-1
 \item (10 points)
 Given an algorithm that uses $O\left(\frac{1}{\eps^2}n^{1-1/p}\right)\cdot\log(nm)$ bits of space and with probability at least $\frac{2}{3}$, outputs an estimate $\widehat{F}$ such that
 \[(1-\eps)\|f\|_p^p\le\widehat{F}\le(1+\eps)\|f\|_p^p.\]
+Justify both its correctness-of-approximation and space complexity. 
 \vskip 0.1in\noindent
 HINT: You may use the fact that for all $\|f\|_1\cdot\|f\|_{2p-1}^{2p-1}\le n^{1-1/p}\|f\|_p^{2p}$. 
 \end{enumerate}
@@ -93,15 +94,50 @@ HINT: You may use the fact that for all $\|f\|_1\cdot\|f\|_{2p-1}^{2p-1}\le n^{1
 %\newpage
 \vskip 0.2in\noindent
 \textbf{Problem 3.} (30 points total)
-Oblivious routing
+Easy as 123.
+\begin{enumerate}
+\item (2 points)
+Suppose we want to count the number of updates, i.e., the length of a data stream. 
+Describe a na\"{i}ve streaming algorithm that uses $\mathcal{O}(\log m)$ bits of space if the stream has length $m$, where $m$ is not known in advance. 
+\end{enumerate}
+Consider the following algorithm:
+\begin{algorithm}[!htb]
+\caption{Approximate counting}
+\begin{algorithmic}[1]
+\State{$C\gets 0$}
+\For{each stream update}
+\State{Flip a coin that is HEADS with probability $\frac{1}{2^Z}$}
+\If{the coin is HEADS}
+\State{$C\gets C+1$}
+\EndIf
+\EndFor
+\State{\Return $Z=2^X-1$}
+\end{algorithmic}
+\end{algorithm}
 
-
+\begin{enumerate}
+\setcounter{enumi}{1}
+\item (10 points)
+Compute, with proof, $\Ex{Z}$. 
+\item (10 points)
+Compute, with proof, $\Var{Z}$. 
+\item (5 points)
+Given an algorithm that uses $\mathcal{O}(\log\log m)$ bits of space and with probability at least $\frac{2}{3}$, outputs an estimate $\widehat{M}$ such that
+\[\frac{m}{2}\le\widehat{M}\le 2m,\]
+where $m$ is the length of the stream, but is not known in advance. 
+Justify both its correctness-of-approximation and space complexity. 
+\end{enumerate}
 
 \vskip 0.2in\noindent
-\noindent
 \textbf{Problem 4.} (30 points total)
-Matrix multiplication sketching
+Approximate matrix multiplication
+\vskip 0.1in\noindent
+Let $A\in\mathbb{R}^{n\times m}$ and $B\in\mathbb{R}^{m\times d}$ be matrices. 
+We will show there exists an algorithm that samples $s=\mathcal{O}\left(\frac{1}{\eps^2}\right)$ columns of $A$ to form a matrix $X\in\mathbb{R}^{n\times s}$ and $s$ rows of $B$ to form a matrix $Y\in\mathbb{R}^{s\times d}$ such that with probability at least $\frac{2}{3}$,
+\[\|AB-XY\|_F\le\eps\|A\|_F\cdot\|B\|_F.\]
+\vskip 0.1in\noindent
+For each $i\in[m]$, let $C_i$ denote the $i$-th column of $A$ and $R_i$ denote the $i$-th row of $B$, so that $C_iR_i\in\mathbb{R}^{n\times d}$ is a matrix with the same dimension as $AB$. 
+\begin{enumerate}
 
-
-
+\end{enumerate}
 \end{document}
