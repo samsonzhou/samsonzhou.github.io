@@ -34,7 +34,7 @@
 {\Large\textsc{CSCE 658: Randomized Algorithms -- Spring 2024 \\ 
 Problem Set 3}}
 \vskip 0.1in
-Due: Tuesday, February 20, 2024, 5:00 pm CT
+Due: Thursday, March 7, 2024, 5:00 pm CT
 \end{center}
 
 \noindent
@@ -96,7 +96,7 @@ HINT: You may use the fact that for all $\|f\|_1\cdot\|f\|_{2p-1}^{2p-1}\le n^{1
 \textbf{Problem 3.} (30 points total)
 Easy as 123.
 \begin{enumerate}
-\item (2 points)
+\item (3 points)
 Suppose we want to count the number of updates, i.e., the length of a data stream. 
 Describe a na\"{i}ve streaming algorithm that uses $\mathcal{O}(\log m)$ bits of space if the stream has length $m$, where $m$ is not known in advance. 
 \end{enumerate}
@@ -117,12 +117,16 @@ Consider the following algorithm:
 
 \begin{enumerate}
 \setcounter{enumi}{1}
-\item (10 points)
+\item (9 points)
 Compute, with proof, $\Ex{Z}$. 
-\item (10 points)
+\vskip 0.1in\noindent
+HINT: Use induction on the length $m$ of the stream. 
+\item (9 points)
 Compute, with proof, $\Var{Z}$. 
-\item (5 points)
-Given an algorithm that uses $\mathcal{O}(\log\log m)$ bits of space and with probability at least $\frac{2}{3}$, outputs an estimate $\widehat{M}$ such that
+\vskip 0.1in\noindent
+HINT: Use induction on the length $m$ of the stream. 
+\item (9 points)
+Give an algorithm that uses $\mathcal{O}(\log\log m)$ bits of space and with probability at least $\frac{2}{3}$, outputs an estimate $\widehat{M}$ such that
 \[\frac{m}{2}\le\widehat{M}\le 2m,\]
 where $m$ is the length of the stream, but is not known in advance. 
 Justify both its correctness-of-approximation and space complexity. 
@@ -130,14 +134,41 @@ Justify both its correctness-of-approximation and space complexity.
 
 \vskip 0.2in\noindent
 \textbf{Problem 4.} (30 points total)
-Approximate matrix multiplication
+Communication complexity.
 \vskip 0.1in\noindent
-Let $A\in\mathbb{R}^{n\times m}$ and $B\in\mathbb{R}^{m\times d}$ be matrices. 
-We will show there exists an algorithm that samples $s=\mathcal{O}\left(\frac{1}{\eps^2}\right)$ columns of $A$ to form a matrix $X\in\mathbb{R}^{n\times s}$ and $s$ rows of $B$ to form a matrix $Y\in\mathbb{R}^{s\times d}$ such that with probability at least $\frac{2}{3}$,
-\[\|AB-XY\|_F\le\eps\|A\|_F\cdot\|B\|_F.\]
-\vskip 0.1in\noindent
-For each $i\in[m]$, let $C_i$ denote the $i$-th column of $A$ and $R_i$ denote the $i$-th row of $B$, so that $C_iR_i\in\mathbb{R}^{n\times d}$ is a matrix with the same dimension as $AB$. 
+In the index problem, Alice has a vector $x\in\{0,1\}^n$ and Bob has a position $i\in[n]$ and their goal is for Bob to determine whether $x_i=0$ or $x_i=1$ after receiving a message from Alice. 
+It is known that any protocol for indexing that succeeds with probability at least $\frac{2}{3}$ requires $\Omega(n)$ communication from Alice and Bob.
 \begin{enumerate}
-
+\item (10 points)
+Suppose a frequency vector $x\in\mathbb{R}^n$ is implicitly defined through a insertion-only data stream requires $\Omega(n)$ space. 
+Let $\mathcal{A}$ be a streaming algorithm that processes $x$, receives a query $i\in[n]$ \emph{after the data stream}, and outputs $x_i$ with probability at least $\frac{2}{3}$. 
+Show by a reduction from indexing that $\mathcal{A}$ must use $\Omega(n)$ bits of space. 
+\end{enumerate}
+\vskip 0.1in\noindent
+In the set-disjointness communication, Alice has a vector $x\in\{0,1\}^n$ and Bob has a vector $y\in\{0,1\}^n$ and their goal is to determine whether there exists an index $i\in[n]$ such that $x_i=y_i=1$. 
+It is known that any protocol for set-disjointness that succeeds with probability at least $\frac{2}{3}$ requires $\Omega(n)$ communication between Alice and Bob.
+\vskip 0.1in\noindent
+\begin{enumerate}
+\setcounter{enumi}{1}
+\item (10 points)
+Show that any streaming algorithm that with probability at least $\frac{2}{3}$, outputs the largest coordinate $i\in[n]$ of a frequency vector $x\in\mathbb{R}^n$ that is implicitly defined through a insertion-only data stream requires $\Omega(n)$ space. 
+\item (10 points)
+Consider an insertion-only data stream consisting of edges of a graph $G$ with $n$ vertices. 
+Show that any streaming algorithm that with probability at least $\frac{2}{3}$, detects whether a graph contains a triangle requires $\Omega(n^2)$ space.
 \end{enumerate}
 \end{document}
+
+
+
+
+%\vskip 0.1in\noindent
+%Let $A\in\mathbb{R}^{n\times m}$ and $B\in\mathbb{R}^{m\times d}$ be matrices. 
+%We will show there exists an algorithm that samples $s=\mathcal{O}\left(\frac{1}{\eps^2}\right)$ columns of $A$ to form a matrix $X\in\mathbb{R}^{n\times s}$ and $s$ rows of $B$ to form a matrix $Y\in\mathbb{R}^{s\times d}$ such that with probability at least $\frac{2}{3}$,
+%\[\|AB-XY\|_F\le\eps\|A\|_F\cdot\|B\|_F.\]
+%\vskip 0.1in\noindent
+%For each $i\in[m]$, let $C_i$ denote the $i$-th column of $A$ and $R_i$ denote the $i$-th row of $B$, so that $C_iR_i\in\mathbb{R}^{n\times d}$ is a matrix with the same dimension as $AB$. 
+%Let $Z_i=\|C_i\|_2\cdot\|R_i\|_2$ and suppose that for each $j\in[s]$, we choose a random index $i\in[n]$ with probability $p_i=\frac{Z_i}{Z_1+\ldots+Z_n}$. 
+%\begin{enumerate}
+%\item
+%
+%\end{enumerate}
