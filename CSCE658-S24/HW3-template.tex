@@ -34,9 +34,17 @@
 {\Large\textsc{CSCE 658: Randomized Algorithms -- Spring 2024 \\ 
 Problem Set 3}}
 \vskip 0.1in
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%        Toggle the next two lines      %%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+%YOUR NAME(S) HERE
 Due: Thursday, March 7, 2024, 5:00 pm CT
 \end{center}
 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%            Problem 1 Begins Here      %%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \noindent
 \textbf{Problem 1.} (30 points total)
 $\CountSketch$ tail bounds. 
@@ -47,7 +55,20 @@ For example if $x=(-100, 40, 40, 1)$, then $\tail_2(x)$ can be either $(0, 0, 40
 \item (5 points)
 Show that for any parameter $\alpha\ge 1$ and $k\le n-1$, there exists $x\in\mathbb{R}^n$ such that
 \[\alpha\cdot\|\tail_k(x)\|_2<\|x\|_2.\]
-That is, the length of a tail vector of $x$ can be arbitrarily smaller than the length of the vector $x$. 
+That is, the length of a tail vector of $x$ can be arbitrarily smaller than the length of the vector $x$.
+\end{enumerate}
+
+\noindent\textbf{Solution:}
+
+
+
+
+
+
+
+
+\begin{enumerate}
+\setcounter{enumi}{1}
 \item (20 points)
 Show that $\CountSketch$ actually provides an $L_2$ tail guarantee. 
 More specifically, for $\eps\in(0,1)$, suppose we use $\CountSketch$ with $\mathcal{O}\left(\frac{1}{\eps^2}\cdot\log n\right)$ buckets to extract estimates $\widehat{x_i}$ for the value of each coordinate $x_i$. 
@@ -56,12 +77,40 @@ Show that with probability $1-\frac{1}{n^2}$, we simultaneously have that for al
 where $k=\frac{1}{\eps^2}$. 
 \vskip 0.1in\noindent
 HINT: The analysis in class demonstrated an error of $\eps\cdot\|x\|_2$. For each $i\in[n]$, what event needs to occur for the top $k$ coordinates to not affect the estimate $\widehat{x_i}$ of $x_i$?
-\item (5 points)
+\end{enumerate}
+
+\noindent\textbf{Solution:}
+
+
+
+
+
+
+\begin{enumerate}
+\setcounter{enumi}{2}
+\item
 Conclude that at the end of an insertion-deletion stream, $\CountSketch$ with $\mathcal{O}(k\log n)$ buckets can with high probability, recover the exact coordinates of a vector that is $k$-sparse, even if at intermediate times in the stream, the underlying frequency is not $k$-sparse.
 \end{enumerate}
 
-\vskip 0.2in\noindent
-\textbf{Problem 2.} (30 points total)
+\noindent\textbf{Solution:}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%            Problem 2 Begins Here      %%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newpage\noindent
 $F_p$ moment estimation. 
 \vskip 0.1in\noindent
 Let $p\ge 1$. 
@@ -75,13 +124,39 @@ For $p=3$ then, we would have $Z=27-8=19$.
 \begin{enumerate}
 \item (5 points)
 Show that $\Ex{Z}=f_j^p$, \emph{conditioned} on sampling $j\in[n]$.
+\end{enumerate}
+
+\noindent\textbf{Solution:}
+
+
+\begin{enumerate}
+\setcounter{enumi}{1}
 \item (5 points)
 Let $F=m\cdot Z$. 
 Show that $\Ex{F}=\|f\|_p^p$. 
+\end{enumerate}
+
+\noindent\textbf{Solution:}
+
+
+
+
+\begin{enumerate}
+\setcounter{enumi}{2}
 \item (10 points)
 Show that $\Var{F}\le p\cdot\|f\|_1\cdot\|f\|_{2p-1}^{2p-1}$. 
 \vskip 0.1in\noindent
 HINT: You may use the fact that for all $x\ge 1$ and $p\ge 1$, we have $x^p-(x-1)^p\le px^{p-1}$. 
+\end{enumerate}
+
+\noindent\textbf{Solution:}
+
+
+
+
+
+\begin{enumerate}
+\setcounter{enumi}{3}
 \item (10 points)
 Given an algorithm that uses $O\left(\frac{1}{\eps^2}n^{1-1/p}\right)\cdot\log(nm)$ bits of space and with probability at least $\frac{2}{3}$, outputs an estimate $\widehat{F}$ such that
 \[(1-\eps)\|f\|_p^p\le\widehat{F}\le(1+\eps)\|f\|_p^p.\]
@@ -89,12 +164,22 @@ Justify both its correctness-of-approximation and space complexity.
 \vskip 0.1in\noindent
 HINT: You may use the fact that for all $\|f\|_1\cdot\|f\|_{2p-1}^{2p-1}\le n^{1-1/p}\|f\|_p^{2p}$. 
 \end{enumerate}
-%\vskip 0.1in\noindent
-%\begin{center}
-%(Continued on next page)
-%\end{center}
-%\newpage
-\vskip 0.2in\noindent
+
+\noindent\textbf{Solution:}
+
+
+
+
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%            Problem 3 Begins Here      %%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newpage\noindent
 \textbf{Problem 3.} (30 points total)
 Easy as 123 (approximate counting).
 \begin{enumerate}
@@ -102,6 +187,12 @@ Easy as 123 (approximate counting).
 Suppose we want to count the number of updates, i.e., the length of a data stream. 
 Describe a na\"{i}ve streaming algorithm that uses $\mathcal{O}(\log m)$ bits of space if the stream has length $m$, where $m$ is not known in advance. 
 \end{enumerate}
+
+\noindent\textbf{Solution:}
+
+
+
+\vskip 0.1in\noindent
 Consider the following algorithm:
 \begin{algorithm}[!htb]
 \caption{Approximate counting}
@@ -123,10 +214,30 @@ Consider the following algorithm:
 Compute, with proof, $\Ex{Z}$. 
 \vskip 0.1in\noindent
 HINT: Use induction on the length $m$ of the stream. 
+\end{enumerate}
+
+\noindent\textbf{Solution:}
+
+
+
+
+
+\begin{enumerate}
+\setcounter{enumi}{2}
 \item (9 points)
 Compute, with proof, $\Var{Z}$. 
 \vskip 0.1in\noindent
 HINT: Use induction on the length $m$ of the stream. 
+\end{enumerate}
+
+\noindent\textbf{Solution:}
+
+
+
+
+
+\begin{enumerate}
+\setcounter{enumi}{3}
 \item (9 points)
 Give an algorithm that uses $\mathcal{O}(\log\log m)$ bits of space and with probability at least $\frac{2}{3}$, outputs an estimate $\widehat{M}$ such that
 \[\frac{m}{2}\le\widehat{M}\le 2m,\]
@@ -134,7 +245,15 @@ where $m$ is the length of the stream, but is not known in advance.
 Justify both its correctness-of-approximation and space complexity. 
 \end{enumerate}
 
-\vskip 0.2in\noindent
+\noindent\textbf{Solution:}
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%            Problem 4 Begins Here      %%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newpage\noindent
 \textbf{Problem 4.} (30 points total)
 Communication complexity.
 \vskip 0.1in\noindent
@@ -146,6 +265,12 @@ Suppose a frequency vector $x\in\mathbb{R}^n$ is implicitly defined through a in
 Let $\mathcal{A}$ be a streaming algorithm that processes $x$, receives a query $i\in[n]$ \emph{after the data stream}, and outputs $x_i$ with probability at least $\frac{2}{3}$. 
 Show by a reduction from indexing that $\mathcal{A}$ must use $\Omega(n)$ bits of space. 
 \end{enumerate}
+
+\noindent\textbf{Solution:}
+
+
+
+
 \vskip 0.1in\noindent
 In the set-disjointness communication, Alice has a vector $x\in\{0,1\}^n$ and Bob has a vector $y\in\{0,1\}^n$ and their goal is to determine whether there exists an index $i\in[n]$ such that $x_i=y_i=1$. 
 It is known that any protocol for set-disjointness that succeeds with probability at least $\frac{2}{3}$ requires $\Omega(n)$ communication between Alice and Bob.
@@ -154,23 +279,38 @@ It is known that any protocol for set-disjointness that succeeds with probabilit
 \setcounter{enumi}{1}
 \item (10 points)
 Show that any streaming algorithm that with probability at least $\frac{2}{3}$, outputs the largest coordinate $i\in[n]$ of a frequency vector $x\in\mathbb{R}^n$ that is implicitly defined through a insertion-only data stream requires $\Omega(n)$ space. 
+\end{enumerate}
+
+
+\noindent\textbf{Solution:}
+
+
+
+
+
+
+
+
+
+
+
+
+\begin{enumerate}
+\setcounter{enumi}{2}
 \item (10 points)
 Consider an insertion-only data stream consisting of edges of a graph $G$ with $n$ vertices. 
 Show that any streaming algorithm that with probability at least $\frac{2}{3}$, detects whether a graph contains a triangle requires $\Omega(n^2)$ space.
 \end{enumerate}
+
+\noindent\textbf{Solution:}
+
+
+
+
+
+
+
+
+
+
 \end{document}
-
-
-
-
-%\vskip 0.1in\noindent
-%Let $A\in\mathbb{R}^{n\times m}$ and $B\in\mathbb{R}^{m\times d}$ be matrices. 
-%We will show there exists an algorithm that samples $s=\mathcal{O}\left(\frac{1}{\eps^2}\right)$ columns of $A$ to form a matrix $X\in\mathbb{R}^{n\times s}$ and $s$ rows of $B$ to form a matrix $Y\in\mathbb{R}^{s\times d}$ such that with probability at least $\frac{2}{3}$,
-%\[\|AB-XY\|_F\le\eps\|A\|_F\cdot\|B\|_F.\]
-%\vskip 0.1in\noindent
-%For each $i\in[m]$, let $C_i$ denote the $i$-th column of $A$ and $R_i$ denote the $i$-th row of $B$, so that $C_iR_i\in\mathbb{R}^{n\times d}$ is a matrix with the same dimension as $AB$. 
-%Let $Z_i=\|C_i\|_2\cdot\|R_i\|_2$ and suppose that for each $j\in[s]$, we choose a random index $i\in[n]$ with probability $p_i=\frac{Z_i}{Z_1+\ldots+Z_n}$. 
-%\begin{enumerate}
-%\item
-%
-%\end{enumerate}
