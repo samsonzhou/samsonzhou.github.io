@@ -2507,6 +2507,31 @@ effect of unreliability/noise in test outcomes.
 <ul>
 
 
+<li>
+<b>
+Learning-Augmented Skip Lists
+</b>
+</br><i>
+--chunkaifu--,
+--jungseo--,
+Samson Zhou</br></i>
+[<a href="javascript:toggle('FSZ24')">abstract</a>]
+[<a href="https://arxiv.org/pdf/2402.10457.pdf">pdf</a>]
+</br>
+<div id="FSZ24" style="display: none">
+<p id="abs">
+We study the integration of machine learning advice into the design of skip lists to improve upon traditional data structure design. 
+Given access to a possibly erroneous oracle that outputs estimated fractional frequencies for search queries on a set of items, 
+we construct a skip list that provably provides the optimal expected search time, within nearly a factor of two. 
+In fact, our learning-augmented skip list is still optimal up to a constant factor, even if the oracle is only accurate within a constant factor. 
+We show that if the search queries follow the ubiquitous Zipfian distribution, then the expected search time for an item by our skip list 
+is only a constant, independent of the total number $n$ of items, i.e., $\mathcal{O}(1)$, whereas a traditional skip list will have an 
+expected search time of $\mathcal{O}(\log n)$. We also demonstrate robustness by showing that our data structure achieves an expected search time 
+that is within a constant factor of an oblivious skip list construction even when the predictions are arbitrarily incorrect. 
+Finally, we empirically show that our learning-augmented skip list outperforms traditional skip lists on both synthetic and real-world datasets.
+</div>
+</li>
+</br>
 
 
 
