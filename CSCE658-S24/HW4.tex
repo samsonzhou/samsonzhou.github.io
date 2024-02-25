@@ -1,0 +1,75 @@
+\documentclass[11pt]{article}
+\pdfoutput=1
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage[protrusion=true,expansion=true]{microtype}
+\usepackage{amsmath,amssymb,amsfonts,amsthm}
+\usepackage{subcaption}
+\usepackage{graphicx}
+\usepackage{fullpage}
+\usepackage{setspace}
+\usepackage[backref=page]{hyperref}
+\usepackage{color}
+\usepackage{wrapfig}
+\usepackage{tikz}
+\usetikzlibrary{decorations.pathreplacing}
+\usepackage{algorithm}
+\usepackage[noend]{algpseudocode}
+\usepackage[framemethod=tikz]{mdframed}
+\usepackage{xspace}
+\usepackage{pgfplots}
+\usepackage{framed}
+
+\newcommand{\Ex}[1]{\ensuremath{\mathbb{E}\left[#1\right]}}
+\newcommand{\Var}[1]{\ensuremath{\text{Var}\left[#1\right]}}
+\newcommand{\PPr}[1]{\ensuremath{\mathbf{Pr}\left[#1\right]}}
+\newcommand{\eps}{\varepsilon}
+\newcommand{\tail}{\textsc{Tail}}
+\newcommand{\CountSketch}{\textsc{CountSketch}}
+
+\allowdisplaybreaks
+
+\begin{document}
+\begin{center}
+{\Large\textsc{CSCE 658: Randomized Algorithms -- Spring 2024 \\ 
+Problem Set 4}}
+\vskip 0.1in
+Due: Thursday, April 4, 2024, 5:00 pm CT
+\end{center}
+
+\noindent
+\textbf{Problem 1.} (30 points total)
+Matrix discrepancy.
+\vskip 0.1in\noindent
+Suppose...
+
+\vskip 0.2in\noindent
+\textbf{Problem 2.} (30 points total)
+%\vskip 0.1in\noindent
+%\begin{center}
+%(Continued on next page)
+%\end{center}
+%\newpage
+
+\vskip 0.2in\noindent
+\textbf{Problem 3.} (30 points total)
+
+\vskip 0.2in\noindent
+\textbf{Problem 4.} (30 points total)
+
+\end{document}
+
+
+
+
+%\vskip 0.1in\noindent
+%Let $A\in\mathbb{R}^{n\times m}$ and $B\in\mathbb{R}^{m\times d}$ be matrices. 
+%We will show there exists an algorithm that samples $s=\mathcal{O}\left(\frac{1}{\eps^2}\right)$ columns of $A$ to form a matrix $X\in\mathbb{R}^{n\times s}$ and $s$ rows of $B$ to form a matrix $Y\in\mathbb{R}^{s\times d}$ such that with probability at least $\frac{2}{3}$,
+%\[\|AB-XY\|_F\le\eps\|A\|_F\cdot\|B\|_F.\]
+%\vskip 0.1in\noindent
+%For each $i\in[m]$, let $C_i$ denote the $i$-th column of $A$ and $R_i$ denote the $i$-th row of $B$, so that $C_iR_i\in\mathbb{R}^{n\times d}$ is a matrix with the same dimension as $AB$. 
+%Let $Z_i=\|C_i\|_2\cdot\|R_i\|_2$ and suppose that for each $j\in[s]$, we choose a random index $i\in[n]$ with probability $p_i=\frac{Z_i}{Z_1+\ldots+Z_n}$. 
+%\begin{enumerate}
+%\item
+%
+%\end{enumerate}
