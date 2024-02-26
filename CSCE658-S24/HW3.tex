@@ -64,7 +64,7 @@ Conclude that at the end of an insertion-deletion stream, $\CountSketch$ with $\
 \textbf{Problem 2.} (30 points total)
 $F_p$ moment estimation. 
 \vskip 0.1in\noindent
-Let $p\ge 1$. 
+Let $p\ge 1$ be a fixed constant. 
 Suppose $f\in\mathbb{R}^n$ is defined by an insertion-only stream of length $m$, where each update increments a coordinate of $f$. 
 Suppose we sample an update $t\in[m]$ in the stream, uniformly at random, and set a counter $c$ to be the number of times the item appears in the stream after time $t$ (including time $t$). 
 After the stream ends, we set $Z=c^p-(c-1)^p$. 
@@ -83,7 +83,7 @@ Show that $\Var{F}\le p\cdot\|f\|_1\cdot\|f\|_{2p-1}^{2p-1}$.
 \vskip 0.1in\noindent
 HINT: You may use the fact that for all $x\ge 1$ and $p\ge 1$, we have $x^p-(x-1)^p\le px^{p-1}$. 
 \item (10 points)
-Given an algorithm that uses $O\left(\frac{1}{\eps^2}n^{1-1/p}\right)\cdot\log(nm)$ bits of space and with probability at least $\frac{2}{3}$, outputs an estimate $\widehat{F}$ such that
+Give an algorithm that uses $\mathcal{O}\left(\frac{1}{\eps^2}n^{1-1/p}\right)\cdot\log(nm)$ bits of space and with probability at least $\frac{2}{3}$, outputs an estimate $\widehat{F}$ such that
 \[(1-\eps)\|f\|_p^p\le\widehat{F}\le(1+\eps)\|f\|_p^p.\]
 Justify both its correctness-of-approximation and space complexity. 
 \vskip 0.1in\noindent
