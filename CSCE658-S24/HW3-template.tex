@@ -199,12 +199,12 @@ Consider the following algorithm:
 \begin{algorithmic}[1]
 \State{$C\gets 0$}
 \For{each stream update}
-\State{Flip a coin that is HEADS with probability $\frac{1}{2^Z}$}
+\State{Flip a coin that is HEADS with probability $\frac{1}{2^C}$}
 \If{the coin is HEADS}
 \State{$C\gets C+1$}
 \EndIf
 \EndFor
-\State{\Return $Z=2^X-1$}
+\State{\Return $Z=2^C-1$}
 \end{algorithmic}
 \end{algorithm}
 
@@ -225,7 +225,7 @@ HINT: Use induction on the length $m$ of the stream.
 \begin{enumerate}
 \setcounter{enumi}{2}
 \item (9 points)
-Compute, with proof, $\Var{Z}$. 
+Compute $\Var{Z}$ by showing, with proof, that $\Ex{2^{2C}}=\frac{3}{2}m^2+\frac{3}{2}m+1$. 
 \vskip 0.1in\noindent
 HINT: Use induction on the length $m$ of the stream. 
 \end{enumerate}
@@ -239,7 +239,7 @@ HINT: Use induction on the length $m$ of the stream.
 \begin{enumerate}
 \setcounter{enumi}{3}
 \item (9 points)
-Give an algorithm that uses $\mathcal{O}(\log\log m)$ bits of space and with probability at least $\frac{2}{3}$, outputs an estimate $\widehat{M}$ such that
+Give an algorithm that with probability at least $\frac{2}{3}$, uses $\mathcal{O}(\log\log m)$ bits of space and outputs an estimate $\widehat{M}$ such that
 \[\frac{m}{2}\le\widehat{M}\le 2m,\]
 where $m$ is the length of the stream, but is not known in advance. 
 Justify both its correctness-of-approximation and space complexity. 
