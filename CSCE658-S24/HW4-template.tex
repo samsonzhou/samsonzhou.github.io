@@ -34,23 +34,51 @@
 {\Large\textsc{CSCE 658: Randomized Algorithms -- Spring 2024 \\ 
 Problem Set 4}}
 \vskip 0.1in
-Due: Thursday, April 4, 2024, 5:00 pm CT
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%        Toggle the next two lines      %%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+%YOUR NAME(S) HERE
+Due: Tuesday, April 23, 2024, 5:00 pm CT
 \end{center}
 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%            Problem 1 Begins Here      %%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \noindent
 \textbf{Problem 1.} (30 points total)
 \begin{enumerate}
 \item (10 points)
 Prove that every graph on $m$ edges has a subgraph on at least $\frac{m}{2}$ edges that is bipartite.
+\end{enumerate}
+
+\noindent\textbf{Solution:}
+
+\begin{enumerate}
+\setcounter{enumi}{1}
 \item (10 points)
 An independent set of a graph is a subset of vertices that are not connected by an edge in the graph. 
 Prove that for any graph with $n$ vertices, and $m\ge\frac{n}{2}$ edges, there exists an independent set of
 size at least $\frac{n^2}{4m}$. 
+\end{enumerate}
+
+\noindent\textbf{Solution:}
+
+\begin{enumerate}
+\setcounter{enumi}{2}
 \item (10 points)
 Prove that for every matrix $A\in\{0,1\}^{n\times n}$, there exists a vector $b\in\{-1,+1\}^n$ such that there is some entry of $Ab\in\mathbb{R}^n$ with magnitude at least $2\sqrt{n\log n}$. 
 \end{enumerate}
 
-\vskip 0.2in\noindent
+\noindent\textbf{Solution:}
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%            Problem 2 Begins Here      %%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newpage\noindent
 \textbf{Problem 2.} (30 points total)
 \begin{enumerate}
 \item (15 points)
@@ -59,6 +87,12 @@ Each packet $i\in[p]$ must pick a route from a set $R_i$ of $r$ different possib
 Multiple routes can share the same link, but a link only has capacity to support the routing of a single packet. 
 Suppose that for all $i\neq j$ and any route $R\in R_i$, there are at most $c$ other routes $R'\in R_j$ that share a link with $R$. 
 Prove that if $r\ge 8pc$, then there exists a possible routing of all $p$ packets where no link exceeds its capacity.
+\end{enumerate}
+
+\noindent\textbf{Solution:}
+
+\begin{enumerate}
+\setcounter{enumi}{1}
 \item (15 points)
 Let $G$ be an undirected graph and suppose each vertex $v$ has a set $C(v)$ of colors. 
 A proper list coloring of of the graph assigns each vertex $v\in V$ a color from its set $C(v)$ while ensuring that no edges have two vertices with the same color. 
@@ -66,33 +100,76 @@ Suppose $|C(v)|\ge 10q$ and for all $v\in V$ and $c\in S(v)$, there are most $q$
 Prove that there exists a proper list coloring of the graph. 
 \end{enumerate}
 
-\vskip 0.2in\noindent
+\noindent\textbf{Solution:}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%            Problem 3 Begins Here      %%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newpage\noindent
 \textbf{Problem 3.} (30 points total)
 \begin{enumerate}
 \item (10 points)
 Give an example, with proof, of a primal-dual pair of linear programs, each with at most three variables and three constraints in addition to the non-negativity constraints, such that neither program is feasible. 
+\end{enumerate}
+
+\noindent\textbf{Solution:}
+
+\begin{enumerate}
+\setcounter{enumi}{1}
 \item (10 points)
 Write the linear program for the best fit line with $L_1$ error, i.e., values $(a,b,c)$ that minimizes 
 \[\sum_{i=1}^n|ax_i+by_i-c|.\]
+\end{enumerate}
+
+\noindent\textbf{Solution:}
+
+\begin{enumerate}
+\setcounter{enumi}{2}
 \item (10 points)
 Write the linear program for the best fit line with $L_\infty$ error, i.e., values $(a,b,c)$ that minimizes 
 \[\max_{i\in[n]}|ax_i+by_i-c|.\] 
 \end{enumerate}
 
-\vskip 0.2in\noindent
+\noindent\textbf{Solution:}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%            Problem 4 Begins Here      %%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newpage\noindent
 \textbf{Problem 4.} (30 points total)
 \begin{enumerate}
 \item (5 points)
 Describe the implementation of randomized response for $\eps$-differential privacy. 
 Prove its correctness.
+\end{enumerate}
+
+\noindent\textbf{Solution:}
+
+\begin{enumerate}
+\setcounter{enumi}{1}
 \item (5 points)
 Use the probability density function of the Laplace distribution to prove that if $X\sim\text{Lap}(b)$, then $\PPr{|X|>4Cb\log n}\le\frac{1}{n^C}$ for any constant $C>0$.  
+\end{enumerate}
+
+\noindent\textbf{Solution:}
+
+\begin{enumerate}
+\setcounter{enumi}{2}
 \item (10 points)
 Suppose that are given a database $x_1,\ldots,x_n$ of counts, so that $x_i\in\mathbb{Z}$ for all $i\in[n]$. 
 To privately release the index of the item with the largest value, i.e., $\text{argmax}_{i\in[n]} x_i$, we first add independent Laplace noise $\text{Lap}\left(\frac{1}{\eps}\right)$ to each value $x_i$ to acquire a value $y_i$. 
 We then output the index of the noisy item with the largest value, i.e., $\text{argmax}_{i\in[n]} y_i$. 
 Show with proof that the resulting protocol is $\eps$-differentially private. 
 Analyze the correctness/error of the protocol. 
+\end{enumerate}
+
+\noindent\textbf{Solution:}
+
+\begin{enumerate}
+\setcounter{enumi}{3}
 \item (10 points)
 Suppose that are given a database $x_1,\ldots,x_n$ of counts, so that $x_i\in\mathbb{Z}$ for all $i\in[n]$. 
 Suppose that we release $i\in[n]$ with probability proportional to $\exp(s(x_i))$, where $s(x_i)=x_i-\max_{j\in[n]} x_j$. 
@@ -100,19 +177,5 @@ Show with proof that the resulting protocol is $\eps$-differentially private.
 Analyze the correctness/error of the protocol. 
 \end{enumerate}
 
+\noindent\textbf{Solution:}
 \end{document}
-
-
-
-
-%\vskip 0.1in\noindent
-%Let $A\in\mathbb{R}^{n\times m}$ and $B\in\mathbb{R}^{m\times d}$ be matrices. 
-%We will show there exists an algorithm that samples $s=\mathcal{O}\left(\frac{1}{\eps^2}\right)$ columns of $A$ to form a matrix $X\in\mathbb{R}^{n\times s}$ and $s$ rows of $B$ to form a matrix $Y\in\mathbb{R}^{s\times d}$ such that with probability at least $\frac{2}{3}$,
-%\[\|AB-XY\|_F\le\eps\|A\|_F\cdot\|B\|_F.\]
-%\vskip 0.1in\noindent
-%For each $i\in[m]$, let $C_i$ denote the $i$-th column of $A$ and $R_i$ denote the $i$-th row of $B$, so that $C_iR_i\in\mathbb{R}^{n\times d}$ is a matrix with the same dimension as $AB$. 
-%Let $Z_i=\|C_i\|_2\cdot\|R_i\|_2$ and suppose that for each $j\in[s]$, we choose a random index $i\in[n]$ with probability $p_i=\frac{Z_i}{Z_1+\ldots+Z_n}$. 
-%\begin{enumerate}
-%\item
-%
-%\end{enumerate}
