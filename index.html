@@ -2507,6 +2507,39 @@ effect of unreliability/noise in test outcomes.
 <ul>
 
 
+
+
+<li>
+<b>
+Private Vector Mean Estimation in the Shuffle Model: Optimal Rates Require Many Messages
+</b>
+</br><i>
+--hilalasi--,
+--vitalyfeldman--,
+--jelaninelson--,
+--huynguyen--,
+Samson Zhou,
+--kunaltalwar--</br></i>
+[<a href="javascript:toggle('AFNNZT24')">abstract</a>]
+[<a href="https://arxiv.org/pdf/2404.10201.pdf">pdf</a>]
+</br>
+<div id="AFNNZT24" style="display: none">
+<p id="abs">
+We study the problem of private vector mean estimation in the shuffle model of privacy where $n$ users each have a unit vector $v^{(i)} \in\mathbb{R}^d$. 
+We propose a new  multi-message protocol that achieves the optimal error using $\tilde{\mathcal{O}}\left(\min(n\varepsilon^2,d)\right)$ messages per user. 
+Moreover, we show that any (unbiased) protocol that achieves optimal error requires each user to send $\Omega(\min(n\varepsilon^2,d)/\log(n))$ messages, 
+demonstrating the optimality of our message complexity up to logarithmic factors.
+
+Additionally, we study the single-message setting and design a protocol that achieves mean squared error $\mathcal{O}(dn^{d/(d+2)}\varepsilon^{-4/(d+2)})$. 
+Moreover, we show that \emph{any} single-message protocol must incur mean squared error $\Omega(dn^{d/(d+2)})$, showing that our protocol is optimal in the 
+standard setting where $\varepsilon = \Theta(1)$. Finally, we study robustness to malicious users and show that malicious users can incur large additive error with a single shuffler. 
+</div>
+</li>
+</br>
+
+
+
+
 <li>
 <b>
 Learning-Augmented Skip Lists
@@ -2757,7 +2790,10 @@ var info = new Array(  new Array('--jeremiahblocki--', 'Jeremiah Blocki', 'https
 					 , new Array('--peilinzhong--', 'Peilin Zhong', 'http://www.cs.columbia.edu/~peilin/')
 					 , new Array('--chunkaifu--', 'Chunkai Fu', 'https://scholar.google.com/citations?user=kbuMo1QAAAAJ')
 					 , new Array('--jungseo--', 'Jung Hoon Seo', 'https://jseo0917.com/')					 
-				 
+					 , new Array('--hilalasi--', 'Hilal Asi', 'https://web.stanford.edu/~asi/')	
+					 , new Array('--vitalyfeldman--', 'Vitaly Feldman', 'http://vtaly.net/')
+					 , new Array('--huynguyen--', 'Huy L. Nguy&#x1EC5;n', 'https://www.khoury.northeastern.edu/home/hlnguyen/')
+					 , new Array('--kunaltalwar--', 'Kunal Talwar', 'http://kunaltalwar.org/')	
 					 );
 
 					 
