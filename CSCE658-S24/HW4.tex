@@ -47,6 +47,7 @@ An independent set of a graph is a subset of vertices that are not connected by 
 Prove that for any graph with $n$ vertices, and $m\ge\frac{n}{2}$ edges, there exists an independent set of
 size at least $\frac{n^2}{4m}$. 
 \item (10 points)
+Let $n$ be a sufficiently large parameter. 
 Prove that for every matrix $A\in\{0,1\}^{n\times n}$, there exists a vector $b\in\{-1,+1\}^n$ such that all entries of $Ab\in\mathbb{R}^n$ have magnitude at most $8\sqrt{n\log n}$. 
 \end{enumerate}
 
@@ -60,7 +61,7 @@ Multiple routes can share the same link, but a link only has capacity to support
 Suppose that for all $i\neq j$ and any route $R\in R_i$, there are at most $c$ other routes $R'\in R_j$ that share a link with $R$. 
 Prove that if $r\ge 8pc$, then there exists a possible routing of all $p$ packets where no link exceeds its capacity.
 \item (15 points)
-Let $G$ be an undirected graph and suppose each vertex $v$ has a set $C(v)$ of colors. 
+Let $G$ be an undirected graph and suppose each vertex $v$ has a set $C(v)$ of colors and let $q$ be a fixed parameter.  
 A proper list coloring of of the graph assigns each vertex $v\in V$ a color from its set $C(v)$ while ensuring that no edges have two vertices with the same color. 
 Suppose $|C(v)|\ge 10q$ and for all $v\in V$ and $c\in C(v)$, there are most $q$ neighbors $u$ of $v$ that contain $c$ in $C(u)$. 
 Prove that there exists a proper list coloring of the graph. 
