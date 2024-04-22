@@ -173,7 +173,7 @@ Analyze the correctness/error of the protocol.
 \setcounter{enumi}{3}
 \item (10 points)
 Suppose that are given a database $x_1,\ldots,x_n$ of counts, so that $x_i\in\mathbb{Z}$ for all $i\in[n]$. 
-Suppose that we release $i\in[n]$ with probability proportional to $\exp(s(x_i))$, where $s(x_i)=x_i-\max_{j\in[n]} x_j$. 
+Suppose that we release $i\in[n]$ with probability proportional to $\exp\left(\frac{\eps}{2}\cdot s(x_i)\right)$, where $s(x_i)=x_i-\max_{j\in[n]} x_j$. 
 Show with proof that the resulting protocol is $\eps$-differentially private. 
 Analyze the correctness/error of the protocol. 
 \end{enumerate}
