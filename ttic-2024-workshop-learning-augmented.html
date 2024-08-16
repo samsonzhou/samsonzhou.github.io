@@ -99,8 +99,8 @@ Schedule (Tentative):
 <u>Monday:</u> <a href="https://uchicago.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=96281c01-9be9-4473-a424-b1cd0043a372">Day 1 Link</a></br>
 9:30-9:50 Breakfast</br>
 9:50-10 Opening Remarks</br>
-10-10:30 <b>Michael Mitzenmacher</b>: SkipPredict: When to Invest in Predictions for Scheduling [<a href="javascript:toggle('Gupta')">abstract</a>]
-<div id="Gupta" style="display: none">
+10-10:30 <b>Michael Mitzenmacher</b>: SkipPredict: When to Invest in Predictions for Scheduling [<a href="javascript:toggle('Mitzenmacher')">abstract</a>]
+<div id="Mitzenmacher" style="display: none">
 <p id="abs">
 In light of recent work on scheduling with predicted job sizes, we consider the effect of the cost of predictions
 in queueing systems, removing the assumption in prior research that predictions are external to the system’s
@@ -147,11 +147,39 @@ Pooja Kulkarni (UIUC)
 </li>
 </ul>
 1-2 Lunch</br>
-2-2:30 <b>Ben Moseley</b>:</br>
+2-2:30 <b>Ben Moseley</b>: Incremental Topological Ordering and Cycle Detection with Predictions [<a href="javascript:toggle('Moseley')">abstract</a>]
+<div id="Moseley" style="display: none">
+<p id="abs">
+This talk discusses how to leverage the framework of algorithms-with-predictions to design data structures for two fundamental dynamic graph problems: 
+incremental topological ordering and cycle detection. In these problems, the input is a directed graph on n nodes, and the m edges arrive one by one. 
+The data structure must maintain a topological ordering of the vertices at all times and detect if the newly inserted edge creates a cycle. 
+The theoretically best worst-case algorithms for these problems have high update cost (polynomial in n and m). In practice, greedy heuristics 
+(that recompute the solution from scratch each time) perform well but can have high update cost in the worst case.
+</br>
+</br>
+We bridge this gap by leveraging predictions to design a learned new data structure for the problems. Our data structure guarantees consistency, 
+robustness, and smoothness with respect to predictions -- that is, it has the best possible running time under perfect predictions, 
+never performs worse than the best-known worst-case methods, and its running time degrades smoothly with the prediction error. 
+Moreover, we demonstrate empirically that predictions, learned from a very small training dataset, are sufficient to provide significant speed-ups on real datasets.
+</div>
+</br>
 2:30-3 <b>Sergei Vassilvitskii</b>:</br>
 3-3:30 Discussion/break</br>
 3:30-4 <b>Sami Davies</b>:</br>
-4-4:30 <b>Huy L. Nguyen</b>:</br>
+4-4:30 <b>Huy L. Nguyen</b>: Improved Frequency Estimation Algorithms with and without Predictions [<a href="javascript:toggle('Nguyen')">abstract</a>]
+<div id="Nguyen" style="display: none">
+<p id="abs">
+Estimating frequencies of elements appearing in a data stream is a key task in large-scale data analysis. 
+Popular sketching approaches to this problem (e.g., CountMin and CountSketch) come with worst-case guarantees that 
+probabilistically bound the error of the estimated frequencies for any possible input. The work of Hsu et al. (2019) 
+introduced the idea of using machine learning to tailor sketching algorithms to the specific data distribution they are being run on. 
+In particular, their learning-augmented frequency estimation algorithm uses a learned heavy-hitter oracle which predicts which elements 
+will appear many times in the stream. We give a novel algorithm, which in some parameter regimes, already theoretically outperforms 
+the learning based algorithm of Hsu et al. without the use of any predictions. Augmenting our algorithm with heavy-hitter predictions 
+further reduces the error and improves upon the state of the art. Empirically, our algorithms achieve superior performance in all 
+experiments compared to prior approaches. This is joint work with Anders Aamand, Justin Y. Chen, Sandeep Silwal, and Ali Vakilian.
+</div>
+</br>
 4:30-5:30 Poster session</br>
 </br>
 
@@ -188,7 +216,25 @@ Omer Wasim (Northeastern)
 2:30-3 <b>Barna Saha</b>:</br>
 3-3:30 Discussion/break</br>
 3:30-4 <b>Adam Wierman</b>:</br>
-4-4:30 <b>Yossi Azar</b>:</br>
+4-4:30 <b>Yossi Azar</b>: Online predictions and close to 1-smoothness [<a href="javascript:toggle('Azar')">abstract</a>]
+<div id="Azar" style="display: none">
+<p id="abs">
+We consider learning augmented problems, where our goal is to be within 1% of an algorithm that "follows the prediction". 
+Our prediction is provided at any step of an online algorithm and hence may be adaptive and based possibly upon all previous history. 
+Specifically, the prediction may be any information that yields an action to be taken by an online algorithm at the current step. 
+An algorithm is called 1-smooth if its cost (value) is as low (high) as the algorithm that follows the prediction.
+For the packet scheduling with deadlines problem (where the goal is to maximize the total value of transmitted packets), 
+we provide 1-smooth and 3-robust algorithm. That means an algorithm that always achieves a value which is as large as 
+"following the prediction" but never worse than 3 times the optimal solution for every possible sequence and prediction.
+For the list update problem (where the goal is to minimize the access cost plus the movement cost), 
+we provide (1+\epsilon)-smooth randomized algorithm, offering robustness of O(1/\epsilon^4). 
+That means an algorithm that always pays a cost which is within (1+\epsilon) of the cost incurred by 
+"following the prediction" but never worse than O(1/\epsilon^4) times the optimal solution for every possible sequence and prediction.
+</br>
+</br>
+Joint work with Shahar Lewkowicz, Varun Suriyanarayana and Or Vardi
+</div>
+</br>
 4:30-5:30 Open problem session</br>
 </br>
 
