@@ -212,7 +212,24 @@ which give bounds on the cost of an agent exploring the graph in terms of the qu
 This is based on joint work with Siddhartha Banerjee, Vincent Cohen-Addad, and Zhouzi Li. 
 </div>
 </br>
-10:30-11 <b>Quanquan Liu</b>:</br>
+10:30-11 <b>Quanquan Liu</b>: The Predicted-Updates Dynamic Model: Offline, Incremental, and Decremental to Fully Dynamic Transformations [<a href="javascript:toggle('Liu')">abstract</a>]
+<div id="Liu" style="display: none">
+<p id="abs">
+The main bottleneck in designing efficient dynamic algorithms is the unknown nature of the update sequence. In particular, there are some problems, 
+like triconnectivity, planar digraph all pairs shortest paths, k-edge connectivity, and others, where the separation in runtime between the best 
+offline or partially dynamic solutions and the best fully dynamic solutions is polynomial, sometimes even exponential.
+</br></br>
+In this talk, we introduce the predicted-updates dynamic model, one of the first beyond-worst-case models for dynamic algorithms, 
+which generalizes a large set of well-studied dynamic models including the offline dynamic, incremental, and decremental models to the 
+fully dynamic setting when given predictions about the update times of the elements. In the most basic form of our model, we 
+receive a set of predicted update times for all of the updates that occur over the event horizon. We give a novel framework that 
+“lifts” offline divide-and-conquer algorithms into the fully dynamic setting with little overhead. Using this, we are able to 
+interpolate between the offline and fully dynamic settings; when the $\ell_1$ error of the prediction is linear in the number of 
+updates, we achieve the offline runtime of the algorithm (up to poly log n factors).
+</br></br>
+Joint work with Vaidehi Srinivas, appeared in COLT 2024.
+</div>
+</br>
 11-11:30 Discussion/break</br>
 11:30-12 <b>Ravi Kumar</b>:</br>
 12-1 Lightning Talks</br>
@@ -282,7 +299,29 @@ Joint work with Shahar Lewkowicz, Varun Suriyanarayana and Or Vardi
 <u>Wednesday:</u> <a href="https://uchicago.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=f4895fa9-e6e2-4430-8f65-b1cd0043a3db">Day 3 Link</a></br>
 9:30-10 Breakfast</br>
 10-10:30 <b>Tim Kraska</b>:</br>
-10:30-11 <b>Negin Golrezaei</b>:</br>
+10:30-11 <b>Negin Golrezaei</b>: Online Resource Allocation with Convex-set Machine-Learned Advice [<a href="javascript:toggle('Golrezaei')">abstract</a>]
+<div id="Golrezaei" style="display: none">
+<p id="abs">
+Decision-makers often have access to a machine-learned prediction about demand, referred to as advice, 
+which can potentially be utilized in online decision-making processes for resource allocation. However, 
+exploiting such advice poses challenges due to its potential inaccuracy. To address this issue, we propose 
+a framework that enhances online resource allocation decisions with potentially unreliable machine-learned 
+(ML) advice. We assume here that this advice is represented by a general convex uncertainty set for the demand vector.
+</br></br>
+We introduce a parameterized class of Pareto optimal online resource allocation algorithms that strike a balance between 
+consistent and robust ratios. The consistent ratio measures the algorithm's performance (compared to the optimal hindsight 
+solution) when the ML advice is accurate, while the robust ratio captures performance under an adversarial demand process 
+when the advice is inaccurate. Specifically, in a C-Pareto optimal setting, we maximize the robust ratio while ensuring 
+that the consistent ratio is at least C. Our proposed C-Pareto optimal algorithm is an adaptive protection level algorithm, 
+which extends the classical fixed protection level algorithm introduced in Littlewood (2005) and Ball and Queyranne (2009). 
+Solving a complex non-convex continuous optimization problem characterizes the adaptive protection level algorithm. 
+To complement our algorithms, we present a simple method for computing the maximum achievable consistent ratio, 
+which serves as an estimate for the maximum value of the ML advice. Additionally, we present numerical studies 
+to evaluate the performance of our algorithm in comparison to benchmark algorithms. The results demonstrate that 
+by adjusting the parameter C, our algorithms effectively strike a balance between worst-case and average performance, 
+outperforming the benchmark algorithms.
+</div>
+</br>
 11-11:30 Discussion/break</br>
 11:30-12 <b>Adam Polak</b>: Approximation Algorithms with Predictions [<a href="javascript:toggle('Polak')">abstract</a>]
 <div id="Polak" style="display: none">
