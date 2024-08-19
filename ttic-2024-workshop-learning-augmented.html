@@ -228,7 +228,26 @@ experiments compared to prior approaches. This is joint work with Anders Aamand,
 
 <u>Tuesday:</u> <a href="https://uchicago.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=b9e4facf-8fc9-4a56-a2f6-b1cd0043a3bd">Day 2 Link</a></br>
 9:30-10 Breakfast</br>
-10-10:30 <b>Sergei Vassilvitskii</b>: Binary Search with Distributional Predictions [<a href="javascript:toggle('Vassilvitskii')">abstract</a>]
+10-10:30 <b>Yossi Azar</b>: Online Predictions and Close to 1-Smoothness [<a href="javascript:toggle('Azar')">abstract</a>]
+<div id="Azar" style="display: none">
+<p id="abs">
+We consider learning augmented problems, where our goal is to be within 1% of an algorithm that "follows the prediction". 
+Our prediction is provided at any step of an online algorithm and hence may be adaptive and based possibly upon all previous history. 
+Specifically, the prediction may be any information that yields an action to be taken by an online algorithm at the current step. 
+An algorithm is called 1-smooth if its cost (value) is as low (high) as the algorithm that follows the prediction.
+For the packet scheduling with deadlines problem (where the goal is to maximize the total value of transmitted packets), 
+we provide 1-smooth and 3-robust algorithm. That means an algorithm that always achieves a value which is as large as 
+"following the prediction" but never worse than 3 times the optimal solution for every possible sequence and prediction.
+For the list update problem (where the goal is to minimize the access cost plus the movement cost), 
+we provide (1+\epsilon)-smooth randomized algorithm, offering robustness of O(1/\epsilon^4). 
+That means an algorithm that always pays a cost which is within (1+\epsilon) of the cost incurred by 
+"following the prediction" but never worse than O(1/\epsilon^4) times the optimal solution for every possible sequence and prediction.
+</br>
+</br>
+Joint work with Shahar Lewkowicz, Varun Suriyanarayana and Or Vardi
+</div>
+</br>
+<!--10-10:30 <b>Sergei Vassilvitskii</b>: Binary Search with Distributional Predictions [<a href="javascript:toggle('Vassilvitskii')">abstract</a>]
 <div id="Vassilvitskii" style="display: none">
 <p id="abs">
 Algorithms with (machine-learned) predictions is a powerful framework for combining traditional worst-case algorithms with modern machine learning. 
@@ -242,7 +261,7 @@ query complexity of $O(H(p) + \log \eta)$, where $H(p)$ is the entropy of the tr
 between $p$ and the predicted distribution $\hat p$.  We complement this with a lower bound showing that this running time is essentially optimal 
 (up to constants), and experiments validating our approach. 
 </div>
-</br>
+</br>-->
 10:30-11 <b>Quanquan Liu</b>: The Predicted-Updates Dynamic Model: Offline, Incremental, and Decremental to Fully Dynamic Transformations [<a href="javascript:toggle('Liu')">abstract</a>]
 <div id="Liu" style="display: none">
 <p id="abs">
@@ -325,23 +344,13 @@ discuss is learning decision tree learning algorithms, a class of machine learni
 high degree of interpretability.
 </div>
 </br>
-4-4:30 <b>Yossi Azar</b>: Online Predictions and Close to 1-Smoothness [<a href="javascript:toggle('Azar')">abstract</a>]
-<div id="Azar" style="display: none">
+4-4:30 <b>Anupam Gupta</b>: Graph Exploration with Predictions [<a href="javascript:toggle('Gupta')">abstract</a>]
+<div id="Gupta" style="display: none">
 <p id="abs">
-We consider learning augmented problems, where our goal is to be within 1% of an algorithm that "follows the prediction". 
-Our prediction is provided at any step of an online algorithm and hence may be adaptive and based possibly upon all previous history. 
-Specifically, the prediction may be any information that yields an action to be taken by an online algorithm at the current step. 
-An algorithm is called 1-smooth if its cost (value) is as low (high) as the algorithm that follows the prediction.
-For the packet scheduling with deadlines problem (where the goal is to maximize the total value of transmitted packets), 
-we provide 1-smooth and 3-robust algorithm. That means an algorithm that always achieves a value which is as large as 
-"following the prediction" but never worse than 3 times the optimal solution for every possible sequence and prediction.
-For the list update problem (where the goal is to minimize the access cost plus the movement cost), 
-we provide (1+\epsilon)-smooth randomized algorithm, offering robustness of O(1/\epsilon^4). 
-That means an algorithm that always pays a cost which is within (1+\epsilon) of the cost incurred by 
-"following the prediction" but never worse than O(1/\epsilon^4) times the optimal solution for every possible sequence and prediction.
-</br>
-</br>
-Joint work with Shahar Lewkowicz, Varun Suriyanarayana and Or Vardi
+The problem of exploring an unknown graph using predictions is a classical one, and strategies like Astar have 
+long been studied for it. I will discuss some recent quantitative results about this problem, 
+which give bounds on the cost of an agent exploring the graph in terms of the quality of the predictions. 
+This is based on joint work with Siddhartha Banerjee, Vincent Cohen-Addad, and Zhouzi Li. 
 </div>
 </br>
 4:30-5:30 Open problem session</br>
@@ -375,15 +384,7 @@ outperforming the benchmark algorithms.
 </div>
 </br>
 11-11:30 Discussion/break</br>
-11:30-12 <b>Anupam Gupta</b>: Graph Exploration with Predictions [<a href="javascript:toggle('Gupta')">abstract</a>]
-<div id="Gupta" style="display: none">
-<p id="abs">
-The problem of exploring an unknown graph using predictions is a classical one, and strategies like Astar have 
-long been studied for it. I will discuss some recent quantitative results about this problem, 
-which give bounds on the cost of an agent exploring the graph in terms of the quality of the predictions. 
-This is based on joint work with Siddhartha Banerjee, Vincent Cohen-Addad, and Zhouzi Li. 
-</div>
-</br>
+11:30-12 <b>Rad Niazedeh</b> 
 12-12:30 <b>Debmalya Panigrahi</b>: Learning-augmented Assignment: Santa Claus does Load Balancing [<a href="javascript:toggle('Panigrahi')">abstract</a>]
 <div id="Panigrahi" style="display: none">
 <p id="abs">
