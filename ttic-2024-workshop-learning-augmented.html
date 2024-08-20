@@ -82,6 +82,7 @@ Participants:
 <li><a href="https://quanquancliu.com/">Quanquan C. Liu</a> (Yale)</li>
 <li><a href="https://www.eecs.harvard.edu/~michaelm/">Michael Mitzenmacher</a> (Harvard)</li>
 <li><a href="https://www.andrew.cmu.edu/user/moseleyb/">Ben Moseley</a> (CMU)</li>
+<li><a href="https://faculty.chicagobooth.edu/rad-niazadeh">Rad Niazedeh</a> (UChicago)</li>
 <li><a href="https://www.ccs.neu.edu/home/hlnguyen/">Huy L. Nguyen</a> (Northeastern)</li>
 <li><a href="https://www.debmalyapanigrahi.org/">Debmalya Panigrahi</a> (Duke)</li>
 <li><a href="https://adampolak.github.io/">Adam Polak</a> (Bocconi)</li>
@@ -384,7 +385,24 @@ outperforming the benchmark algorithms.
 </div>
 </br>
 11-11:30 Discussion/break</br>
-11:30-12 <b>Rad Niazedeh</b>: TBD </br>
+11:30-12 <b>Rad Niazedeh</b>: Robust Dynamic Staffing with Predictions [<a href="javascript:toggle('Niazedeh')">abstract</a>]
+<div id="Niazaedeh" style="display: none">
+<p id="abs">
+Assignment problems are among the most well-studied in online algorithms. 
+In these problems, a sequence of items arriving online must be assigned among a set of 
+agents so as to optimize a given objective. This encompasses scheduling problems for minimizing makespan, 
+p-norms, and other objectives, as well as fair division problems such as the Santa Claus problem and 
+Nash welfare maximization. One common feature is that many of these problems are characterized by 
+strong worst-case lower bounds in the online setting. To circumvent these impossibility results, 
+recent research has focused on using additional (learned) information about the problem instance 
+and this has led to dramatic improvements in the competitive ratio over the worst case. 
+In this talk, I will first survey some of this literature (Lattanzi et al., SODA 20; Li and Xian, ICML 21; 
+Banerjee et al., SODA 22; Barman et al., AAAI 22) that addresses specific problems in this domain. 
+I will then proceed to describe joint work with Ilan Cohen that brings these problems under one umbrella: 
+we give a single algorithmic framework for near-optimal learning-augmented online assignment for a 
+large class of maximization and minimization objectives, including all the problems mentioned above. 
+</div>
+</br>
 12-12:30 <b>Debmalya Panigrahi</b>: Learning-augmented Assignment: Santa Claus does Load Balancing [<a href="javascript:toggle('Panigrahi')">abstract</a>]
 <div id="Panigrahi" style="display: none">
 <p id="abs">
@@ -434,26 +452,21 @@ This structure matches the local behavior of GNNs, providing theoretical justifi
 This is joint work with Alexandre Hayderi, Amin Saberi, and Anders Wikum.
 </div>
 </br>
-2:30-3 <b>Eric Balkanski</b>: Online Mechanism Design with Predictions [<a href="javascript:toggle('Balkanski')">abstract</a>]
+2:30-3 <b>Eric Balkanski</b>: Fair Secretaries with Unfair Predictions [<a href="javascript:toggle('Balkanski')">abstract</a>]
 <div id="Balkanski" style="display: none">
 <p id="abs">
-Aiming to overcome some of the limitations of worst-case analysis, the recently proposed framework of ``algorithms with predictions'' 
-allows algorithms to be augmented with a (possibly erroneous) machine-learned prediction that they can use as a guide. In this framework, 
-the goal is to obtain improved guarantees when the prediction is correct, which is called consistency, while simultaneously guaranteeing 
-some worst-case bounds even when the prediction is arbitrarily wrong, which is called robustness. The vast majority of the work on this framework has 
-focused on a refined analysis of online algorithms augmented with predictions regarding the future input. A subsequent line of work has also 
-successfully adapted this framework to mechanism design, where the prediction is regarding the private information of strategic agents. 
-In this paper, we initiate the study of online mechanism design with predictions, which combines the challenges of online algorithms with 
-predictions and mechanism design with predictions.
-</br>
-</br>
-We consider the well-studied problem of designing a revenue-maximizing auction to sell a single item to strategic bidders who arrive and 
-depart over time, each with an unknown, private, value for the item. We study the learning-augmented version of this problem where the 
-auction designer is given a prediction regarding the maximum value over all agents. Our main result is a strategyproof mechanism whose 
-revenue guarantees are alpha-consistent with respect to the highest value and (1-alpha^2)/4-robust with respect to the second-highest value, 
-for alpha in [0,1]. We show that this trade-off is optimal within a broad and natural family of auctions, meaning that any $\alpha$-consistent 
-mechanism in that family has robustness at most (1-alpha^2)/4. Finally, we extend our mechanism to also obtain expected revenue 
-that is proportional to the prediction quality.
+Algorithms with predictions is a recent framework for decision-making under uncertainty that leverages the power of machine-learned predictions 
+without making any assumption about their quality. The goal in this framework is for algorithms to achieve an improved performance when the 
+predictions are accurate while maintaining acceptable guarantees when the predictions are erroneous. A serious concern with algorithms that 
+use predictions is that these predictions can be biased and, as a result, cause the algorithm to make decisions that are deemed unfair. 
+We show that this concern manifests itself in the classical secretary problem in the learning-augmented setting---the state-of-the-art 
+algorithm can have zero probability of accepting the best candidate, which we deem unfair, despite promising to accept a candidate 
+whose expected value is at least max{Omega(1), 1 - O(ε)} times the optimal value, where ε is the prediction error. We show how to 
+preserve this promise while also guaranteeing to accept the best candidate with probability Omega(1). Our algorithm and analysis are 
+based on a new ``pegging'' idea that diverges from existing works and simplifies/unifies some of their results. Finally, 
+we extend to the k-secretary problem and complement our theoretical analysis with experiments.
+</br></br>
+Joint work with Will Ma and Andreas Maggiori
 </div>
 </br>
 
