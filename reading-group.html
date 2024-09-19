@@ -79,7 +79,97 @@ Welcome to the Algorithms and Data Science Reading Group at Texas A&#38;M Univer
 Spring 2024
 </h3>
 <ul>
-<li>Wedneday, Feburary 7, 2024: <a href="https://veldt.engr.tamu.edu/">Nate Veldt</a> on <a href="javascript:toggle('NV-S24')">Growing a Random Maximal Independent Set Produces a 2-approximate Vertex Cover </a>
+<li>Wedneday, March 27, 2024: <a href="https://shuoxing98.github.io/">Shuo Xing</a> on <a href="javascript:toggle('SX-S24')">A Distributed Algorithm with Low Adaptivity for Monotone Submodular Maximization under Matroid Constraints</a>
+<div id="SX-S24" style="display: none">
+<p id="abs">
+We consider the optimization problem of matroid constrained maximization of a 
+monotone submodular set function f:2^N --> R^+ (SMMC) in a distributed setting. 
+We introduce the algorithm Low-Adaptive Greedy (LAGreedy), which is the first 
+low-adaptivity algorithm with an almost linear number of queries to f for SMMC. 
+We prove that \textsc{LAGreedy} achieves an approximation ratio arbitrarily close 
+to 1/2 in O(\log n \log k) adaptive rounds and O(n \log k) queries to f. In addition, 
+we propose the algorithm Accelerated Continuous Threshold (AccThres) to 
+construct a fractional solution for the multilinear extension $F$ of the function $f$, 
+guaranteeing a near-optimal 1- 1/e - O(\epsilon) approximation in O(\log n \log k) 
+adaptive rounds and O(n \log k) queries to f. We provide an extensive experimental evaluation 
+on real centralized and distributed instances of SMMC in order to demonstrate the 
+effectiveness, efficiency, and parallelizability of our proposed algorithms.
+ </p>
+</div>
+</li>
+
+
+<li>Wedneday, March 27, 2024: <a href="https://people.engr.tamu.edu/j-chen3/index.html">Jianer Chen</a> on <a href="javascript:toggle('JC-S24')">Streaming Algorithms for Graph k-Matching with (Nearly) Optimal Update Time</a>
+<div id="JC-S24" style="display: none">
+<p id="abs">
+We present streaming algorithms for Graph k-Matching in the insert-only and dynamic models. 
+Our algorithms, with space complexity matching the best upper bounds, 
+have optimal or near-optimal update time, significantly improving previous results. 
+More specifically, for the insert-only streaming model, we present a one-pass algorithm 
+with optimal space complexity O(k^2) and optimal update time O(1), that computes a 
+maximum weighted k-matching of a  weighted graph. For the dynamic streaming model, 
+we present a one-pass algorithm that computes a maximum weighted k-matching in 
+O(Wk^2 ·polylog(n)) space and O(polylog(n)) update time, 
+where W is the number of distinct edge weights. 
+The update time of our algorithm improves the previous upper bound of O(k2 polylog(n)).
+ </p>
+</div>
+</li>
+
+
+<li>Wedneday, Feburary 28, 2024: <a href="https://samsonzhou.github.io">Samson Zhou</a> on <a href="javascript:toggle('SZ-S24')">Near-Optimal k-Clustering in the Sliding Window Model</a>
+<div id="SZ-S24" style="display: none">
+<p id="abs">
+We give the first algorithm that achieves near-optimal (1+eps)-approximation to 
+(k,z)-clustering in the sliding window model, thus significantly improving on works 
+by Braverman et. al. (SODA 2016), Borassi et. al. (NeurIPS 2021), and Epasto et. al. (SODA 2022). 
+Along the way, we develop a data structure for clustering called an online coreset, 
+which outputs a coreset not only for the end of a stream, but also for 
+all prefixes of the stream. We show a separation from the problem of constructing 
+an offline coreset, i.e., constructing online coresets is strictly harder.
+ </p>
+</div>
+</li>
+
+
+<li>Wedneday, Feburary 21, 2024: <a href="https://www.alankuhnle.com/">Alan Kuhnle</a> on <a href="javascript:toggle('AK-S24')">Guided Combinatorial Algorithms for Submodular Maximization</a>
+<div id="AK-S24" style="display: none">
+<p id="abs">
+For constrained, not necessarily monotone submodular maximization, 
+guiding the measured continuous greedy algorithm with a local search algorithm 
+currently obtains the state-of-the-art approximation factor of 0.401 (Buchbinder and Feldman, 2023). 
+These algorithms rely upon the multilinear extension and the Lovasz extension of a 
+submodular set function. However, the state-of-the-art approximation factor of 
+combinatorial algorithms has remained 1/e ≈ 0.367 (Buchbinder et al., 2014). 
+In this work, we develop combinatorial analogues of the guided measured 
+continuous greedy algorithm and obtain approximation ratio of 0.385 in O(kn) 
+queries to the submodular set function for size constraint, and 
+0.305 for a general matroid constraint. Further, we derandomize these algorithms, 
+maintaining the same ratio and asymptotic time complexity. 
+Finally, we develop a deterministic, nearly linear time algorithm with ratio 0.377.
+ </p>
+</div>
+</li>
+
+
+<li>Wedneday, Feburary 14, 2024: <a href="https://people.tamu.edu/~vcrawford/">Victoria Crawford</a> on <a href="javascript:toggle('VC-S24')">Approximation Algorithms for the Submodular Cover Problem</a>
+<div id="VC-S24" style="display: none">
+<p id="abs">
+ In this talk, we consider the combinatorial optimization problem Submodular Cover (SCP), 
+ which is to find a minimum cardinality subset of a finite universe U such that 
+ the value of a submodular function f is above an input threshold \tau. 
+ SCP is NP-hard, and therefore the focus is on developing approximation algorithms 
+ to efficiently find an approximate solution. SCP can be viewed as the dual of the 
+ relatively more widely considered submodular maximization with a 
+ cardinality constraint problem. I will cover a survey of some existing 
+ approximation algorithms for SCP, and then describe some of my own papers on 
+ SCP including SCP where queries to f are inexact, where f is not assumed to be monotone, 
+ and a number of other variants of SCP.</p>
+</div>
+</li>
+
+
+<li>Wedneday, Feburary 7, 2024: <a href="https://veldt.engr.tamu.edu/">Nate Veldt</a> on <a href="javascript:toggle('NV-S24')">Growing a Random Maximal Independent Set Produces a 2-approximate Vertex Cover</a>
 <div id="NV-S24" style="display: none">
 <p id="abs">
 In this talk I'll present a proof that a simple greedy algorithm for finding a maximal independent set in a graph is also a randomized 2-approximation algorithm for weighted vertex cover. 
