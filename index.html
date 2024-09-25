@@ -225,6 +225,74 @@ Publications
 
 
 
+
+
+<li>
+<b>
+Adversarially Robust Dense-Sparse Tradeoffs via Heavy-Hitters
+</b>
+</br><i>
+--davidwoodruff--,
+Samson Zhou</br></i>
+<a href="https://neurips.cc/Conferences/2024">NeurIPS 2024</a>
+[<a href="javascript:toggle('WZ24')">abstract</a>]
+<!--[<a href="https://arxiv.org/pdf/2409.16153">pdf</a>]-->
+<div id="WZ24" style="display: none">
+<p id="abs">
+In the adversarial streaming model, the input is a sequence of adaptive updates that defines an underlying dataset and 
+the goal is to approximate, collect, or compute some statistic while using space sublinear in the size of the dataset. 
+In 2022, Ben-Eliezer, Eden, and Onak showed a dense-sparse trade-off technique that elegantly combined sparse recovery 
+with known techniques using differential privacy and sketch switching to achieve adversarially robust algorithms for 
+$L_p$ estimation and other algorithms on turnstile streams. However, there has been no progress since, either in 
+terms of achievability or impossibility. In this work, we first give improved algorithms for adversarially robust 
+$L_p$-heavy hitters, utilizing deterministic turnstile heavy-hitter algorithms with better tradeoffs. 
+We then utilize our heavy-hitter algorithm to reduce the problem to estimating the frequency moment of the tail vector. 
+We give a new algorithm for this problem in the classical streaming setting, which achieves additive error and 
+uses space independent in the size of the tail. We then leverage these ingredients to give an improved algorithm for 
+adversarially robust $L_p$ estimation on turnstile streams. We believe that our results serve as an 
+important conceptual breakthrough, demonstrating that there is no inherent barrier at the previous state-of-the-art.
+</div>
+</li>
+</br>
+
+
+
+
+
+
+<li>
+<b>
+On Socially Fair Low-Rank Approximation and Column Subset Selection
+</b>
+</br><i>
+--zhaosong--,
+--alivakilian--,
+--davidwoodruff--,
+Samson Zhou</br></i>
+<a href="https://neurips.cc/Conferences/2024">NeurIPS 2024</a>
+[<a href="javascript:toggle('SVWZ24')">abstract</a>]
+<!--[<a href="https://arxiv.org/pdf/2409.16153">pdf</a>]-->
+<div id="SVWZ24" style="display: none">
+<p id="abs">
+Low-rank approximation and column subset selection are two fundamental and related problems that are applied across a 
+wealth of machine learning applications. In this paper, we study the question of socially fair low-rank approximation 
+and socially fair column subset selection, where the goal is to minimize the loss over all sub-populations of the data. 
+We show that surprisingly, even constant-factor approximation to fair low-rank approximation requires exponential time 
+under certain standard complexity hypotheses. On the positive side, we give an algorithm for fair low-rank approximation that, 
+for a constant number of groups and constant-factor accuracy, runs in $2^{\text{poly}(k)}$ time rather than the 
+na\"{i}ve $n^{\text{poly}(k)}$, which is a substantial improvement when the dataset has a large number $n$ of observations. 
+We then show that there exist bicriteria approximation algorithms for fair low-rank approximation and 
+fair column subset selection that run in polynomial time.
+</div>
+</li>
+</br>
+
+
+
+
+
+
+
 <li>
 <b>
 A Strong Separation for Adversarially Robust &#8467;<sub>0</sub> Estimation for Linear Sketches
@@ -2851,7 +2919,10 @@ var info = new Array(  new Array('--jeremiahblocki--', 'Jeremiah Blocki', 'https
 					 , new Array('--kunaltalwar--', 'Kunal Talwar', 'http://kunaltalwar.org/')
 					 , new Array('--elenagribelyuk--', 'Elena Gribelyuk', 'https://eg314159.github.io/')	
 					 , new Array('--honghaolin--', 'Honghao Lin', 'https://honghlin.github.io/')	
-					 , new Array('--huachengyu--', 'Huacheng Yu', 'https://www.cs.princeton.edu/~hy2/')						 
+					 , new Array('--huachengyu--', 'Huacheng Yu', 'https://www.cs.princeton.edu/~hy2/')		
+					 , new Array('--zhaosong--', 'Zhao Song', 'https://scholar.google.com/citations?user=yDZct7UAAAAJ&hl=en')	
+					 , new Array('--huachengyu--', 'Huacheng Yu', 'https://www.cs.princeton.edu/~hy2/')		
+					 
 					 );
 
 					 
