@@ -1,0 +1,87 @@
+\documentclass[11  pt]{article} 
+\usepackage[lmargin=1in,rmargin=1.75in,bmargin=1in,tmargin=1in]{geometry}  
+
+
+
+\input{preamble}
+
+\begin{document}
+
+
+\lecture{0: Lecture Title}{Lecture date}
+
+\section{Section}
+
+
+\subsection{Subsection}
+
+Some standard terminology for you to use:
+\begin{itemize}
+\item Undirected graph: $G = (V,E)$
+\item  Use bold capital letters for matrices, like this $\mA$ or $\textbf{Q}$. 
+\item Bold letters for vectors: $\vx$. 
+\item Use the \verb|bmatrix| command for matrices.
+\end{itemize}
+
+\paragraph{Figures}
+Figure~\ref{fig:1} is a triangle. When scribing, you do not need to figures for every picture drawn in class, but if you want to include figures, even if just simple ones, that's great! To do so, put all of your figures in a ``Figures'' file, and zip them up and send them along with the tex file and pdf. 
+Call them in the text as follows
+
+\begin{verbatim}
+\begin{figure}[h!]
+\centering
+\includegraphics[width=0.25\textwidth]{Figures/triangle}
+\caption{A figure}
+\label{fig:1}
+\end{figure}
+\end{verbatim}
+
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.25\textwidth]{triangle}
+	\caption{A figure}
+	\label{fig:1}
+\end{figure}
+
+\section{Some other general tips}
+
+\begin{itemize}
+	\item Always use math mode for mathematical objects, e.g. \verb|$V$| for node sets, and not just the letter V. 
+	\item Don't put full words in math mode. If you have math and text mixed, use the \verb|\text{}| command. For example, to show ``$\vx \text{ and } \mA$'', use \verb|$\vx \text{ and } \mA$| and don't do \verb|$\vx and \mA$|. The latter looks bad: $\vx and \mA$.
+	\item Pay close attention to spacing. If things look smashed together in math mode, in some cases it helps to add a space with the \verb|\,| command.
+\end{itemize}
+
+\section{Theorems, definitions, observations, etc.}
+
+Professor Veldt will often label something as a ``definition'', ``theorem'', ``observation'', ``statement'', etc. In these cases, you the following environments (see .tex file).
+
+\begin{definition}
+	This is a definition. The sky is the blue thing above your head.
+\end{definition}
+
+\begin{observation}
+	The sky is blue.
+\end{observation}
+
+\begin{fact}
+	$L = \mB \mB^T$. (I'll use ``fact'' to denote a handy to know, that may require a proof in many cases, but is either too small or too informal a statement to be classified as a ``theorem'').
+\end{fact}
+
+\begin{theorem}
+	This is a theorem. A big result that you will want to know. 
+\end{theorem}
+
+\begin{theorem}
+	If I have another theorem in the same set of notes, the counter automatically gets updated so that this is Theorem 2.
+\end{theorem}
+
+\section{Submission}
+
+If you are scribing for a lecture:
+\begin{itemize}
+	\item Scribe notes are due one week after lecture date.
+	\item Simply email the .tex file, the .pdf file, and a zipped Figures folder (if you have any figures) directly to Professor Veldt.
+\end{itemize}
+
+\end{document}
