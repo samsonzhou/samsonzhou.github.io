@@ -238,6 +238,138 @@ Publications
 
 <ol reversed>
 
+<li>
+<b>
+Learning-Augmented Search Data Structures
+</b>
+</br><i>
+--chunkaifu--,
+--brandonnguyen--,
+--junghoonseo--,
+--ryanzesch--,
+Samson Zhou
+</br></i>
+<a href="https://iclr.cc/Conferences/2025">ICLR 2025</a>
+[<a href="javascript:toggle('FNSZZ25')">abstract</a>]
+<!--[<a href="https://arxiv.org/pdf/2412.05807">pdf</a>]-->
+<div id="FNSZZ25" style="display: none">
+<p id="abs">
+We study the integration of machine learning advice to improve upon traditional data structure designed for efficient search queries. 
+Although there has been recent effort in improving the performance of binary search trees using machine learning advice, e.g., Lin et. al.  (ICML 2022), 
+the resulting constructions nevertheless suffer from inherent weaknesses of binary search trees, such as complexity of maintaining balance 
+across multiple updates and the inability to handle partially-ordered or high-dimensional datasets. For these reasons, we focus on skip lists and KD trees in this work. 
+Given access to a possibly erroneous oracle that outputs estimated fractional frequencies for search queries on a set of items, 
+we construct skip lists and KD trees that provably provides the optimal expected search time, within nearly a factor of two. 
+In fact, our learning-augmented skip lists and KD trees are still optimal up to a constant factor, even if the oracle is only accurate within a constant factor. 
+We also demonstrate robustness by showing that our data structures achieves an expected search time that is within a constant factor of an 
+oblivious skip list/KD tree construction even when the predictions are arbitrarily incorrect. Finally, we empirically show that our 
+learning-augmented search data structures outperforms their corresponding traditional analogs on both synthetic and real-world datasets.
+</div>
+</li>
+</br>
+
+
+
+
+
+
+
+
+
+
+
+<li>
+<b>
+Fair Submodular Cover
+</b>
+</br><i>
+--wenjingchen--,
+--shuoxing--,
+Samson Zhou,
+--victoriacrawford--</br></i>
+<a href="https://iclr.cc/Conferences/2025">ICLR 2025</a>
+[<a href="javascript:toggle('CXZC25')">abstract</a>]
+<!--[<a href="https://arxiv.org/pdf/2412.05807">pdf</a>]-->
+<div id="CXZC25" style="display: none">
+<p id="abs">
+Machine learning algorithms are becoming increasing prevalent in the modern world, and as a result there has been significant recent study 
+into algorithmic fairness in order to minimize the possibility of unintentional bias or discrimination in these algorithms. 
+Submodular optimization problems also arise in many machine learning applications, including those such as data summarization and 
+clustering where fairness is an important concern. In this paper, we initiate the study of the Fair Submodular Cover Problem (FSC). 
+Given a ground set $U$, a monotone submodular function $f:2^U\to\mathbb{R}_{\ge 0}$, and a threshold $\tau$, the goal of FSC is to find a 
+balanced subset of $U$ with minimum cardinality such that $f(S)\ge\tau$. We first introduce discrete algorithms for FSC that achieve a 
+bicriteria approximation ratio of $(\frac{1}{\varepsilon}, 1-O(\varepsilon))$. We then present a continuous algorithm that achieves a 
+$(\ln\frac{1}{\varepsilon}, 1-O(\varepsilon))$-bicriteria approximation ratio, which matches the best approximation guarantee of 
+submodular cover without a fairness constraint. Finally, we complement our theoretical results with a number of empirical evaluations 
+that demonstrate the efficiency of our algorithms on instances of maximum coverage.
+</div>
+</li>
+</br>
+
+
+
+
+
+<li>
+<b>
+On the Price of Differential Privacy for Hierarchical Clustering
+</b>
+</br><i>
+--chenyuandeng--,
+--jiegao--,
+--jalajupadhyay--,
+--chenwang--,
+Samson Zhou</br></i>
+<a href="https://iclr.cc/Conferences/2025">ICLR 2025</a>
+[<a href="javascript:toggle('DGUWZ25')">abstract</a>]
+<!--[<a href="https://arxiv.org/pdf/2412.05807">pdf</a>]-->
+<div id="DGUWZ25" style="display: none">
+<p id="abs">
+Hierarchical clustering is a fundamental unsupervised machine learning task with the aim of organizing data by a hierarchy of clusters. 
+Unfortunately, many applications of hierarchical clustering involve sensitive user information, but recent results show that any privacy-preserving algorithm 
+under the edge-level differential privacy necessarily suffers a large error. Thus we consider a weight privacy model where each edge of the input graph 
+is at least unit weight. We present a novel algorithm in the weight privacy model that shows significantly better error than known impossibility results 
+in the edge-level DP setting. In particular, our algorithm achieves $O(\log^{1.5}n/\eps)$ multiplicative error for $\eps$-DP and runs in polynomial time, 
+where $n$ is the size of the input graph. We complement our algorithm by showing if we are not given the unit-weight constraint, the lower bound 
+for weight-level DP hierarchical clustering is essentially the same as the edge-level DP, i.e. $\Omega(n^2/\varepsilon)$ additive error. 
+As a result, we also obtain a new lower bound of $\tilde{\Omega}(1/\eps)$ additive error for balanced sparsest cuts in the weight-level DP model, which may be of independent interest.
+</div>
+</li>
+</br>
+
+
+
+
+
+
+
+
+
+<li>
+<b>
+Fair Clustering in the Sliding Window Model
+</b>
+</br><i>
+--vincentcohenaddad--,
+--shaofengjiang--,
+--qiaoyuanyang--,
+--yubozhang--,
+Samson Zhou</br></i>
+<a href="https://iclr.cc/Conferences/2025">ICLR 2025</a>
+[<a href="javascript:toggle('CJYZZ25')">abstract</a>]
+<!--[<a href="https://arxiv.org/pdf/2412.05807">pdf</a>]-->
+<div id="CJYZZ25" style="display: none">
+<p id="abs">
+We study streaming algorithms for proportionally fair clustering (a notion originally suggested by Chierichetti et al. (2017) in the sliding window model. 
+We show that although there exist efficient streaming algorithms exist in the insertion-only model, surprisingly no algorithm can achieve finite ratio without 
+violating the fairness constraint in sliding window. Hence, the problem of fair clustering is a rare separation between the insertion-only streaming model and 
+the sliding window model. On the other hand, we show that if the fairness constraint \textcolor{blue}{is relaxed} by a multiplicative $\varepsilon$ factor, 
+there exists a $(1 + \varepsilon)$-approximate sliding window algorithm that uses $\text{poly}(k\varepsilon^{-1}\log n)$ space. This achieves essentially the 
+best parameters (up to degree in the polynomial) provided the aforementioned lower bound. We also implement a number of empirical evaluations on real datasets 
+to complement our theoretical results. 
+</div>
+</li>
+</br>
 
 
 
@@ -2939,7 +3071,19 @@ var info = new Array(  new Array('--jeremiahblocki--', 'Jeremiah Blocki', 'https
 					 , new Array('--alivakilian--', 'Ali Vakilian', 'http://www.mit.edu/~vakilian/')		
 					 , new Array('--chenwang--', 'Chen Wang', 'https://sites.google.com/view/chen-wang/home')		
 					 , new Array('--liudengwang--', 'Liudeng Wang', 'https://sites.google.com/view/liudeng-wang-profile/home')		
-					 , new Array('--shenghaoxie--', 'Shenghao Xie', 'https://sites.google.com/view/shenghaoxie/')		
+					 , new Array('--shenghaoxie--', 'Shenghao Xie', 'https://sites.google.com/view/shenghaoxie/')
+					 , new Array('--shaofengjiang--', 'Shaofeng Jiang', 'https://www.shaofengjiang.cn/')
+					 , new Array('--qiaoyuanyang--', 'Qiaoyuan Yang', '')
+					 , new Array('--yubozhang--', 'Yubo Zhang', 'https://falsytaz.github.io/')
+					 , new Array('--chenyuandeng--', 'Chenyuan Deng', 'https://scholar.google.com/citations?user=QPaVr9QAAAAJ')
+					 , new Array('--jiegao--', 'Jie Gao', 'https://sites.rutgers.edu/jie-gao/about/')
+					 , new Array('--wenjingchen--', 'Wenjing Chen', 'https://momofodr.github.io/')
+					 , new Array('--victoriacrawford--', 'Victoria G. Crawford', 'https://people.tamu.edu/~vcrawford/')
+					 , new Array('--shuoxing--', 'Shuo Xing', 'https://shuoxing98.github.io/')
+					 , new Array('--chunkaifu--', 'Chunkai Fu', 'https://scholar.google.com/citations?user=kbuMo1QAAAAJ')
+					 , new Array('--brandonnguyen--', 'Brandon G. Nguyen', 'https://brandon.nguyen.vc/')
+					 , new Array('--junghoonseo--', 'Jung Hoon Seo', 'https://jseo0917.com/')
+					 , new Array('--ryanzesch--', 'Ryan Zesch', 'https://zesch.dev/')
 					 );
 
 					 
