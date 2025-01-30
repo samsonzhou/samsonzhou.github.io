@@ -1,0 +1,258 @@
+\documentclass[11  pt]{article} 
+\usepackage[lmargin=1in,rmargin=1.75in,bmargin=1in,tmargin=1in]{geometry}  
+
+
+\input{preamble}
+
+\begin{document}
+	
+	
+	\lecture{4: More Dynamic Programming: LCS}{January 28, 2025}
+	
+	\paragraph{Course Logistics}
+	
+	\begin{itemize}
+		\item Read chapter 15 over the course of the next few lectures (focus: 15.1, 15.2, 15.3).
+		\item Homework 2 due this Friday
+	\end{itemize}
+
+\section{The Longest Common Subsequence Problem}
+
+\paragraph{Preliminaries} A sequence is an ordered list of elements:\\
+\begin{equation*}
+	X = \langle x_1, x_2, \hdots ,x_m \rangle
+\end{equation*}
+
+A subsequence of $X$ is a sequence you obtain by deleting elements of $X$. \\
+
+A sequence $Z = \langle z_1, z_2, \hdots , z_k \rangle$ is a subsequence of $X$ if there are indices $i_1 < i_2 < \cdots < i_k$ such that:
+\begin{equation*}
+	z_1 = x_{i_1}, z_2 = x_{i_2}, \hdots, z_k = x_{i_k}.
+\end{equation*}
+
+\paragraph{Example}
+
+
+\newpage
+
+\subsection{Defining the LCS Problem}
+Given two sequences 
+\begin{align*}
+	X = \langle x_1, x_2, \hdots ,x_m \rangle \\
+	Y = \langle y_1, y_2, \hdots ,y_n \rangle
+\end{align*}
+A \emph{longest common subsequence} (LCS) of $(X,Y)$ is a \\
+
+%	seeks a maximum length-sequence $Z = \langle z_1, z_2, \hdots , z_k \rangle$ that is a subsequence of both $X$ and $Y$.
+
+\vs{1cm}
+
+%\QU 
+%A brute force algorithm for the LCS problem would be to consider every subsequence of $X$ and check if it's a subsequence of $Y$. Define:
+%\begin{center}
+%	$N = $ be the number of subsequences of $X$,
+%\end{center} and let $T$ be the time it takes to check whether a sequence $Z$ is a subsequence of $Y$. What are $N$ and $T$ respectively?
+%\begin{itemize}
+%	\aitem $N = \Theta(m)$ and $T = \Theta(n)$
+%	\bitem $N = \Theta(2^m)$ and $T = \Theta(n)$ 
+%	\citem $N = \Theta(2^m)$ and $T = \Theta(2^n)$ 
+%	\ditem $N = \Theta(m)$ and $T = \Theta(2^n)$ 
+%	\eitem $N = \Theta(m)$ and $T = \Theta(1)$ 
+%\end{itemize}
+%\end{Qu}
+
+\paragraph{Brute Force Algorithm:} Consider every subsequence of $X$ and check if it's a subsequence of $Y$. Return the longest sequence of $X$ where the answer is ``yes".
+
+\QU 
+How many subsequences of $X$ are there?
+\begin{itemize}
+	\aitem $\Theta(m)$
+	\bitem $\Theta(m^2)$ 
+	\citem $\Theta(2^m)$
+\end{itemize}
+\end{Qu}
+
+\vs{2cm} 
+
+\QU 
+How long does it take to check whether a sequence $Z$ of length $k < n$ is a subsequence of $Y = \langle y_1, y_2, \hdots ,y_n \rangle$
+\begin{itemize}
+\aitem $\Theta (1)$
+\bitem $\Theta (k)$
+\citem $\Theta (n)$
+\ditem $\Theta (nk)$
+\eitem $\Theta (2^n)$
+\end{itemize}
+\end{Qu}
+
+
+
+\pagebreak
+
+\subsection{LCS subproblems}
+Given an instance of LCS $(X,Y)$ with sequences 
+\begin{align*}
+X = \langle x_1, x_2, \hdots ,x_m \rangle \\
+Y = \langle y_1, y_2, \hdots ,y_n \rangle 
+\end{align*}
+Define
+\begin{align*}
+X_i = \langle x_1, x_2, \hdots ,x_i \rangle \\
+Y_j = \langle y_1, y_2, \hdots ,y_j \rangle 
+\end{align*}
+
+The subproblems of $(X,Y)$ we will consider are of the form:\\
+%\begin{center}
+%Find the LCS of $(X_i, Y_j)$ where $1 \leq i \leq m$, and $1 \leq j \leq n$.
+%\end{center}
+%\begin{itemize}
+%	\item Find the LCS of $X_{m-1}$ and $Y_{n-1}$
+%	\item Find the LCS of $X_{m-1}$ and $Y$
+%	\item Find the LCS of $X$ and $Y_{n-1}$. 
+%\end{itemize}
+
+\vs{2cm} 
+
+\QU 
+How many different subproblems of this form are there?
+\begin{itemize}
+\aitem $\Theta(n + m)$
+\bitem $\Theta(nm)$
+\citem $\Theta(2^{n} + 2^m)$
+\ditem $\Theta(2^{n+m})$
+\end{itemize}
+\end{Qu}
+
+\newpage
+
+\subsection{Proving optimal substructure}
+\begin{theorem}
+	Let $Z = \langle z_1, z_2, \hdots , z_k \rangle$ be an LCS of $(X,Y)$.
+	\begin{enumerate}
+		\item If $x_m = y_n$, then $z_k = x_m = y_n$ and $Z_{k-1}$ is an LCS of $(X_{m-1},Y_{n-1})$
+		%\vs{3cm}
+		\item If $x_m \neq y_n$ and $z_k \neq x_m$, then $Z$ is an LCS of $(X_{m-1}, Y)$
+		%\vs{3cm}
+		\item If $x_m \neq y_n$ and $z_k \neq y_n$, then $Z$ is an LCS of $(X, Y_{n-1})$.\\
+	\end{enumerate}
+	
+	%\vs{.5cm}
+	
+	\textbf{This means:} if $x_m \neq y_n$, the LCS of $(X,Y)$ is contained within $(X, Y_{n-1})$ \emph{or} $(X_{m-1}, Y)$. 
+\end{theorem}
+
+\textit{Proof.} See textbook. You will prove a small part of it for homework. 
+
+\textit{Illustration.}
+
+\newpage  
+\subsection{Defining a recursive approach}
+The theorem gives the following strategy for recursively finding the LCS of $(X,Y)$
+\begin{itemize}
+	\item 	If $x_m = y_n$, 
+	
+	\vs{2cm} % find the LCS of $(X_{m-1}, Y_{n-1})$, then add $x_m$ to the end of it to get the LCS of $(X,Y)$.
+	\item If $x_{m} \neq y_n$,
+	
+	\vs{4cm}
+	
+\end{itemize}
+
+\vs{1cm}
+
+\paragraph{Recurrence relations}
+\begin{equation*}
+	c[i,j] =  {\text{ the length of an LCS of $(X_i, Y_j)$}}
+\end{equation*}
+This satisfies the following recurrence:
+%\begin{equation*}
+%c[i,j] =\begin{cases}
+%0 & \text{ if $i = 0$ or $j = 0$} \\
+%c[i-1, j-1] + 1 & \text{ if $i,j > 0$ and $x_{i} = y_j$}\\
+%\max \{ c[i,j-1], c[i-1,j]\} & \text{ if $i,j > 0$ and $x_i \neq y_j$}.
+%\end{cases}
+%\end{equation*}
+
+\pagebreak
+
+\paragraph{Are subproblems overlapping?}
+
+
+\newpage
+
+\section{Runtime Analysis}
+Recall that we have
+\begin{equation*}
+	c[i,j] = \text{ the length of an LCS of $(X_i, Y_j)$}
+\end{equation*}
+This satisfies the following recurrence:
+\begin{equation*}
+	c[i,j] =\begin{cases}
+		0 & \text{ if $i = 0$ or $j = 0$} \\
+		c[i-1, j-1] + 1 & \text{ if $i,j > 0$ and $x_{i} = y_j$}\\
+		\max \{ c[i,j-1], c[i-1,j]\} & \text{ if $i,j > 0$ and $x_i \neq y_j$}.
+	\end{cases}
+\end{equation*}
+
+\begin{Qu}
+	%	Recall that there are $\Theta (mn)$ different subproblems of the form $(X_i, Y_j)$. 
+	Assuming we carefully solve subproblems only once, what should be the overall runtime of finding the LCS of $(X,Y)$ using dynamic programming? Hint: how many different subproblems are there?
+	\begin{itemize}
+		\aitem $\Theta (mn)$ 
+		\bitem $\Theta (m n^2)$
+		\citem $\Theta (m^2 n )$
+		\ditem $\Theta (m^2 n^2)$
+	\end{itemize}
+\end{Qu}
+
+\pagebreak
+
+\subsection{Presenting an Actual Algorithm}
+Think of the $c[i,j]$ values as being entries of a table or matrix.
+
+\vspace{10cm}
+
+%From the recurrence relationship, we can see that to compute $c[i,j]$, we just need to know the entries that are directly left and directly above, and diagonally to the left and above. \\
+%
+%Thus, we can find $c[m,n]$ by filling in the entries one row at a time. 
+
+\begin{algorithm}
+	\textsc{LCS-Length}($X,Y$)
+	\begin{algorithmic}
+		\State $m = \text{length}(X)$
+		\State $n = \text{length}(Y)$
+		\State Let $c[0..m, 0..n]$ be a new table
+		\For{$i = 1$ to $m$}
+		\State $c[i,0] = 0$
+		\EndFor
+		\For{$j = 1$ to $n$}
+		\State $c[0,j] = 0$
+		\EndFor
+		\For{$i = 1$ to $m$}
+		\For{$j = 1$ to $n$}
+		\If{$x_i == y_j$}
+		\State 
+		\State
+		\Else 
+		\State 
+		\State
+		\EndIf
+		\EndFor
+		\EndFor
+		\State Return $c[m,n]$
+	\end{algorithmic}
+\end{algorithm}
+
+\newpage
+
+
+\subsection{Finding the longest common subsequence}
+The algorithm on the previous page gives the length of the longest possible subsequence, but not the subsequence itself. We can obtain the subsequence by inspecting the entries of $c$, starting with $c[m,n]$.\\
+
+The textbook solution suggests storing arrows to tell you how to build up the subsequence.
+
+\vs{2cm}
+
+\includegraphics[width=.75\linewidth]{table}\\
+
+\end{document}
