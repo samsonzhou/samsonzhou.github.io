@@ -5,7 +5,7 @@ import hashlib
 filename = "130900_ip_timestamps.csv"
 m = 100000
 n = 100*m
-probs = [1/4]
+probs = [i+2 for i in range(10)]
 data = dict()
 receivers = set()
 senders = set()
@@ -77,12 +77,40 @@ print(f"Histogram Distribution for '{longest_key}':")
 for value, count in sorted(value_counts.items()):
     print(f"{value}: ({count} occurrences)")
 
-for prob in probs:
+all_naive = []
+all_ours = []
+
+for denom in probs:
+    prob = 1/denom
     p = 1/prob**2 * 1/len(senders)
     naive = count_hashed_ones(senders, p) * len(receivers)
     ours = 0
+    all_naive.append(naive)
     for receiver in data.keys():
         ours += sum(int_to_binary(sender, p) for sender in data[receiver].keys())    
+    all_ours.append(ours)
+
+# Create the plot
+plt.figure(figsize=(8, 5))  # Set figure size
+
+# Set y-axis to logarithmic scale
+plt.yscale("log")
+
+# Plot each line
+plt.plot(probs, all_naive, marker='o', linestyle='-', label="Naive", color='blue')
+plt.plot(probs, all_ours, marker='s', linestyle='--', label="Ours", color='red')
+
+# Add labels and title
+plt.xlabel("p")
+plt.ylabel("Samples")
+plt.title("Probability vs. Samples")
+
+# Add legend and grid
+plt.legend()
+plt.grid(True)
+
+# Show the plot
+plt.show()
 
 ### Plot the histogram
 ##plt.hist(lengths, bins=range(1, max(lengths) + 2), edgecolor='black', alpha=0.7)
