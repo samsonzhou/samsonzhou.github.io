@@ -91,48 +91,30 @@ for denom in probs:
         ours += sum(int_to_binary(sender, p) for sender in data[receiver].keys())    
     all_ours.append(ours)
 
-# Create the plot
-plt.figure(figsize=(8, 5))  # Set figure size
+# Plot the histogram
+plt.hist(values, bins=range(1, max(lengths) + 2), edgecolor='black', alpha=0.7)
 
-# Set y-axis to logarithmic scale
-plt.yscale("log")
+# Plot the distribution
+plt.hist(values, bins=range(1, max(lengths) + 2), edgecolor='black', alpha=0.7)
 
-# Plot each line
-plt.plot(probs, all_naive, marker='o', linestyle='-', label="Naive", color='blue')
-plt.plot(probs, all_ours, marker='s', linestyle='--', label="Ours", color='red')
+# Set y-axis to log scale
+#plt.yscale("log")
+plt.xscale("log")
 
-# Add labels and title
-plt.xlabel("p")
-plt.ylabel("Samples")
-plt.title("Probability vs. Samples")
+# Labels and title
+plt.xlabel("# of Interactions")
+plt.ylabel("Number of Senders")
+plt.title("Histogram of Interactions on Active Receiver")
 
-# Add legend and grid
-plt.legend()
-plt.grid(True)
-
-# Show the plot
+# Show plot
 plt.show()
 
-### Plot the histogram
-##plt.hist(lengths, bins=range(1, max(lengths) + 2), edgecolor='black', alpha=0.7)
-##
-### Plot the distribution
-##plt.hist(lengths, bins=range(1, max(lengths) + 2), edgecolor='black', alpha=0.7)
-##
-### Labels and title
-##plt.xlabel("Number of Keys in Nested Dictionaries")
-##plt.ylabel("Frequency")
-##plt.title("Distribution of Dictionary Lengths")
-##
-### Show plot
-##plt.show()
 
+print("-" * 40)  # Separator for clarity
 
-#print("-" * 40)  # Separator for clarity
+# Task 2: Count and print the total number of lines
+with open(filename, "r") as file:
+    total_lines = sum(1 for _ in file)
 
-### Task 2: Count and print the total number of lines
-##with open(filename, "r") as file:
-##    total_lines = sum(1 for _ in file)
-##
-##print("Total number of lines:", total_lines)
-#39900564
+print("Total number of lines:", total_lines)
+39900564
