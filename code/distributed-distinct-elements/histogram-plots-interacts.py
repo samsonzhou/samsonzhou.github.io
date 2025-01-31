@@ -1,6 +1,8 @@
 import matplotlib.pyplot as plt
 from collections import Counter
 import hashlib
+import numpy as np
+from scipy.optimize import curve_fit
 
 filename = "130900_ip_timestamps.csv"
 m = 1000000
@@ -112,9 +114,26 @@ plt.show()
 
 print("-" * 40)  # Separator for clarity
 
-# Task 2: Count and print the total number of lines
-with open(filename, "r") as file:
-    total_lines = sum(1 for _ in file)
+# Define Zipf's law function for fitting
+def zipf_rank_function(rank, s, C):
+    """Zipf's law: frequency ~ C * rank^(-s)"""
+    return C * rank**(-s)
 
-print("Total number of lines:", total_lines)
-39900564
+# Function to estimate Zipf parameters
+def estimate_zipf_parameters(lengths):
+    # Sort the list (if not already sorted)
+    lengths = sorted(lengths, reverse=True)
+
+    # Generate ranks (1, 2, 3, ..., N)
+    ranks = np.arange(1, len(lengths) + 1)
+
+    # Perform a least squares fit to estimate 's' and 'C'
+    params, _ = curve_fit(zipf_rank_function, ranks, lengths, p0=[1, max(lengths)])
+
+    # Return the estimated parameters
+    return {"s": params[0], "C": params[1]}
+
+# Example usage
+values = sorted(values,reverse=True)
+zipf_params = estimate_zipf_parameters(values)
+print(zipf_params)
