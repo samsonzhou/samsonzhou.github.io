@@ -294,6 +294,49 @@ better than the NP-hard barriers for sufficiently accurate oracles.
 
 <li>
 <b>
+Lifting Linear Sketches: Optimal Bounds and Adversarial Robustness
+</b>
+</br><i>
+--elenagribelyuk--,
+--honghaolin--,
+--davidwoodruff--,
+--huachengyu--,
+Samson Zhou</br></i>
+<a href="https://acm-stoc.org/stoc2025/">STOC 2025</a>
+[<a href="javascript:toggle('GLWYZ25')">abstract</a>]
+<!--[<a href="https://arxiv.org/pdf/2409.16153">pdf</a>]-->
+<div id="GLWYZ25" style="display: none">
+<p id="abs">
+We introduce a novel technique for ``lifting'' dimension lower bounds for linear sketches in the continuous setting to dimension lower bounds for 
+linear sketches with polynomially-bounded integer entries when the input is a polynomially-bounded integer vector. Using this technique, 
+we obtain the first optimal sketching lower bounds for discrete inputs in a data stream, for classical problems such as approximating the 
+frequency moments, estimating the operator norm, and compressed sensing. Additionally, we lift the adaptive attack of Hardt and Woodruff (STOC, 2013) 
+for breaking any real-valued linear sketch via a sequence of real-valued queries, and show how to obtain an attack on any integer-valued 
+linear sketch using integer-valued queries. This shows that there is no linear sketch in a data stream with insertions and deletions that is 
+adversarially robust for approximating any $L_p$ norm of the input. This resolves a central open question for adversarially robust streaming algorithms. 
+To do so, we introduce a new pre-processing technique of independent interest which, given an integer-valued linear sketch, increases the 
+dimension of the sketch by only a constant factor in order to make the orthogonal lattice to its row span smooth, enabling us to leverage results 
+in lattice theory on discrete Gaussian distributions and reason that efficient discrete sketches imply efficient continuous sketches. 
+Our work resolves open questions from the Banff '14 and '17 workshops on Communication Complexity and Applications, as well as the 
+STOC '21 and FOCS '23 workshops on adaptivity and robustness. 
+</div>
+</li>
+</br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li>
+<b>
 Learning-Augmented Search Data Structures
 </b>
 </br><i>
@@ -2855,6 +2898,8 @@ effect of unreliability/noise in test outcomes.
 </ol>
 
 
+
+<!--
 <h3>Other Writings</h3>
 <ul>
 
@@ -2946,8 +2991,6 @@ For tree-partitioning, our dual-pronged strategy makes progress no matter what t
 
 
 
-
-<!--
 <li>
 <b>
 Streaming Weighted Matchings: Optimal Meets Greedy
@@ -2975,7 +3018,7 @@ of the matching output by our algorithm.
 </div>
 </li>
 </br>
--->
+
 
 <li>
 <b>
@@ -3008,7 +3051,7 @@ a maximum weighted matching in planar graphs.
 </li>
 </ul>
 
-
+-->
 
 
 </body>

@@ -1,5 +1,5 @@
 import matplotlib.pyplot as plt
-from kneed import KneeLocator
+#from kneed import KneeLocator
 from sklearn import preprocessing
 from sklearn.datasets import make_blobs
 from sklearn.cluster import KMeans
@@ -65,8 +65,8 @@ d=len(dataset[0])
 start_time=time.time()
 k = 1
 #c = 10
-#c_list = [1.1, 2, 5, 10, 100]
-c_list=[10]
+c_list = [1.1, 2, 5, 10, 100]
+#c_list=[10]
 count = -1
 factors = []
 our_costs = []
@@ -77,8 +77,10 @@ old_r = 0
 kcurr = 0
 runtimes = []
 i = 0
+all_recourse = []
 for c in c_list:
     count = -1
+    recourse = 0
     for t in range(n):
         At = dataset_normalized[0:t]
         sq_norm_At = np.linalg.norm(At)**2
@@ -91,7 +93,8 @@ for c in c_list:
     ##        factors = V[0:kcurr] 
         if(sq_norm_At>c*count):
             count = sq_norm_At
-            factors = V[0:kcurr]  
+            factors = V[0:kcurr]
+            recourse += k
         #old_r = r
         our_cost = frob_cost_of_proj(At, factors)
         if(our_cost < 10**-15):
@@ -112,16 +115,21 @@ for c in c_list:
             print(t)
         runtimes.append(time.time()-start_time)
     i = i+1
+    all_recourse.append(recourse)
 # Generate x-axis values (assuming uniform spacing)
 x_values = range(1, len(runtimes) + 1)
 
 # Plotting runtime
-plt.plot(x_values, runtimes, marker='o', linestyle='-')
+#plt.plot(x_values, runtimes, marker='o', linestyle='-')
+
+# Plotting recourse
+#plt.plot(x_values, all_recourse, marker='o', linestyle='-')
+plt.plot(c_list, all_recourse, marker='o', linestyle='-')
 
 # Adding labels and title for runtime
 plt.xlabel('Number of rows')
-plt.ylabel('Total runtime (s)')
-plt.title('Total runtime for RICE dataset')
+plt.ylabel('Total recourse')
+plt.title('Total recourse for RICE dataset')
 
 ### Generate x-axis values (assuming uniform spacing)
 ##x_values = range(1, len(ratios[0]) + 1)
