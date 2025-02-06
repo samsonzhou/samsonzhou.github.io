@@ -238,6 +238,60 @@ Publications
 
 <ol reversed>
 
+
+
+<li>
+<b>
+On Approximability of &#8467;<sub>2</sub><sup>2</sup> Min-Sum Clustering
+</b>
+</br><i>
+--karthikcs--,
+--euiwoonglee--,
+--yuvalrabani--,
+--chrisschwiegelshohn--,
+Samson Zhou
+</br></i>
+<a href="https://socg25.github.io/socg.html">SoCG 2025</a>
+[<a href="javascript:toggle('CLRSZ25')">abstract</a>]
+[<a href="https://arxiv.org/pdf/2412.03332">pdf</a>]
+<div id="CLRSZ25" style="display: none">
+<p id="abs">
+The $\ell_2^2$ min-sum $k$-clustering problem is to partition an input set into clusters $C_1,\ldots,C_k$ to minimize $\sum_{i=1}^k\sum_{p,q\in C_i}\|p-q\|_2^2$. 
+The objective is a density-based clustering and can be more effective than the traditional centroid-based clustering like $k$-median and $k$-means in capturing 
+complex structures in data that may not be linearly separable, such as when the clusters have irregular, non-convex shapes or are overlapping. 
+Although $\ell_2^2$ min-sum $k$-clustering is NP-hard, it is not known whether it is NP-hard to approximate $\ell_2^2$ min-sum $k$-clustering beyond a certain factor. 
+<p>
+In this paper, we give the first hardness-of-approximation result for the $\ell_2^2$ min-sum $k$-clustering problem. 
+We show that it is NP-hard to approximate the objective to a factor better than $1.056$ and moreover, 
+assuming a balanced variant of the Johnson Coverage Hypothesis, it is  NP-hard to approximate the objective to a factor better than $1.327$. 
+<p>
+We then complement our hardness result by giving the first $(1+\varepsilon)$-coreset construction for $\ell_2^2$ min-sum $k$-clustering. 
+Our coreset uses $\mathcal{O}\left(k^{\varepsilon^{-4}}\right)$ space and can be leveraged to achieve a polynomial-time approximation scheme 
+with runtime $nd\cdot f(k,\varepsilon^{-1})$, where $d$ is the underlying dimension of the input dataset and $f$ is a fixed function. 
+Our algorithm is faster than the previous PTAS and uses runtime linear in the size $n$ of the input. 
+<p>
+Finally, we consider a learning-augmented setting, where the algorithm has access to an oracle that outputs a label $i\in[k]$ for input point, 
+thereby implicitly partitioning the input dataset into $k$ clusters that induce an approximately optimal solution, 
+up to some amount of adversarial error $\alpha\in\left[0,\frac{1}{2}\right)$. We give a polynomial-time algorithm that outputs a 
+$\frac{1+\gamma\alpha}{(1-\alpha)^2}$-approximation to $\ell_2^2$ min-sum $k$-clustering, for a fixed constant $\gamma>0$. 
+Therefore, our algorithm improves smoothly with the performance of the oracle and can be used to achieve approximation guarantees 
+better than the NP-hard barriers for sufficiently accurate oracles. 
+</div>
+</li>
+</br>
+
+
+
+
+
+
+
+
+
+
+
+
+
 <li>
 <b>
 Learning-Augmented Search Data Structures
@@ -3084,6 +3138,9 @@ var info = new Array(  new Array('--jeremiahblocki--', 'Jeremiah Blocki', 'https
 					 , new Array('--brandonnguyen--', 'Brandon G. Nguyen', 'https://brandon.nguyen.vc/')
 					 , new Array('--junghoonseo--', 'Jung Hoon Seo', 'https://jseo0917.com/')
 					 , new Array('--ryanzesch--', 'Ryan Zesch', 'https://zesch.dev/')
+					 , new Array('--karthikcs--', 'Karthik C.S.', 'https://cskarthikcs.github.io/index.html')
+					 , new Array('--euiwoonglee--', 'Euiwoong Lee', 'https://web.eecs.umich.edu/~euiwoong/')
+					 , new Array('--yuvalrabani--', 'Yuval Rabani', 'https://www.cs.huji.ac.il/w~yrabani/')
 					 );
 
 					 
