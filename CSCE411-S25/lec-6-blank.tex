@@ -1,0 +1,295 @@
+\documentclass[11  pt]{article} 
+\usepackage[lmargin=1in,rmargin=1.75in,bmargin=1in,tmargin=1in]{geometry}  
+
+
+\input{preamble}
+\newcommand{\tta}{\tt{a}}
+\newcommand{\ttb}{\tt{b}}
+\newcommand{\ttc}{\tt{c}}
+\newcommand{\tte}{\tt{e}}
+\newcommand{\ttd}{\tt{d}}
+\newcommand{\ttf}{\tt{f}}
+\begin{document}
+	
+	
+	\lecture{6: Greedy Algorithms}{February 5, 2025}
+	
+	\paragraph{Course Logistics}
+	
+	\begin{itemize}
+		\item Greedy algorithms and amortized analysis this week: Chapter 16
+		\item Homework 3 is posted, due this Friday
+	\end{itemize}
+	
+
+\section{Binary Codes}
+
+%	In binary code compression, the goal is to compress a string of characters efficiently using 0's and 1's.
+\begin{itemize}
+	\item An \hide{alphabet  } is a set of characters, e.g., $C = \{\tt{a},\tt{b}, \tt{c},\tt{d} ,\tt{e}, \ttf\}$ \\
+	\item A \emph{binary code} for $C$ is\\ %a way to represent each $c \in C$ using a binary string.
+\end{itemize}
+
+Consider three possible codes for $C = \{\tt{a},\tt{b}, \tt{c},\tt{d} ,\tt{e}, \ttf\}$.
+\begin{equation}
+	\label{tab1}
+	\begin{tabular}{c c c c c c c}
+		Character: &  \tta & \ttb & \ttc & \ttd & \tte & \ttf \\
+		\hline
+		example code 1: & 000 & 001 & 010 &  011 & 100 & 101 \\
+		example code 2: &0 & 101 & 100 & 111 & 1101 & 1100 \\
+		example code 3: &0 & 1 & 10 & 01 & 11 & 00 \\
+		\hline
+	\end{tabular} \\
+\end{equation}
+
+Types of codes:
+\begin{itemize}
+	\item \textbf{Fixed length code}: %all codes have the same length
+	\item \textbf{Variable-length code}: %codes can have different lengths (but are still unique)
+	\item \textbf{Prefix code}: the codeword for every $c \in C$ is % \emph{not} the start of any other codeword
+\end{itemize}
+
+\QU 
+Which of the codes in Table~\ref{tab1} is a prefix code?
+\begin{itemize}
+	\aitem Example code 1
+	\bitem Example code 2
+	\citem Example code 3
+	\ditem Example codes 1 and 2
+	\eitem Example codes 1, 2, and 3
+\end{itemize}
+\end{Qu}
+
+\newpage 
+
+\subsection{Encoding and Decoding}
+Consider a string of characters from the alphabet $C = \{\tt{a},\tt{b}, \tt{c},\tt{d} ,\tt{e}, \ttf\}$ where the frequency of each character is given in the following table and we have two codes.
+\begin{equation}
+\begin{tabular}{c c c c c c c}
+	Character: &  \tta & \ttb & \ttc & \ttd & \tte & \ttf \\
+	\hline
+	Frequency & 0.45 & 0.13 & 0.12 & 0.16 & 0.09 & 0.05 \\
+	FLC: & 000 & 001 & 010 &  011 & 100 & 101 \\
+	VLC: &0 & 101 & 100 & 111 & 1101 & 1100 \\
+	\hline
+\end{tabular} 
+\end{equation}
+\newpage
+
+
+\subsection{The Optimal Prefix Code Problem}
+
+\paragraph{The optimal prefix code problem} Given an alphabet $C$ and a frequency $\mathit{c.freq}$ for each $c \in C$ in a given string $s$,  \\ \\ %find the prefix code that represents $s$ using a minimum number of bits. \\
+
+
+\paragraph{Representing a prefix code as a tree}
+Every prefix code for a string $s$ can be represented as a binary tree $T$ where 
+\begin{itemize}
+\item Left branches are associated with %`0'
+\item Right branches are associated with %`1'
+\item Each leaf corresponds to a character $c \in C$, whose binary code is given by \\
+%the bits in the path from the root to the leaf
+\item Each node is associated with the frequency of characters in its subtree
+\end{itemize}
+
+\paragraph{Example}
+\begin{tabular}{c c c c c c c}
+Character: &  \tta & \ttb & \ttc & \ttd & \tte & \ttf \\
+\hline
+Frequency & 0.45 & 0.13 & 0.12 & 0.16 & 0.09 & 0.05 \\
+VLC: &0 & 101 & 100 & 111 & 1101 & 1100 \\
+\hline
+\end{tabular} 
+
+\newpage
+
+The cost of the tree is give by \\
+\begin{equation*}
+B(T) = \sum_{c \in C} \\%\mathit{c.freq} \cdot d_T(c)
+\end{equation*}
+where $d_T(c)$ is the depth of $c$ in the tree $T$. 
+
+\QU
+True or false: every binary tree (with $\ell$ leaves) gives a valid prefix code (for an alphabet with $\ell$ characters).
+\begin{itemize}
+\aitem True
+\bitem False
+\end{itemize}
+\end{Qu}
+
+
+\newpage
+
+\begin{theorem}
+%Any binary tree with $|C|$ leaves gives a valid prefix code for $C$.
+\end{theorem}
+\vs{1.5cm}
+\textit{Proof.}
+
+\vfill
+
+
+
+\paragraph{Optimal prefix code problem:} 
+
+\vs{1cm}
+%Find the binary tree representation %with minimum cost. 
+
+
+\paragraph{Nice properties about the optimal tree}
+In the optimal tree representation,
+\begin{itemize}
+\itemsep = 3em
+\item %There are $|C|$ leaves
+\item %Each node in the tree has a sibling
+\end{itemize}
+
+
+
+\newpage
+
+\subsection{Huffman Codes}
+Huffman Code: a prefix code obtained by greedily building a tree representation for $C$
+
+%\textbf{Input:} Alphabet $C$, for each $c \in C$, a frequency $c.freq$.\\
+%\textbf{Output:} A binary tree representing a prefix code
+
+\paragraph{Huffman Code Tree Process}
+\begin{itemize}
+	\item Associate each character in $C$ with a node, labeled by its frequency
+	\item Identify two nodes $x$ and $y$ in $C$ with the \hide{smallest frequencies}
+	\item Create new node $z$ with frequency \hide{$z.freq = x.freq + y.freq$.}
+	\item Make $z.left = x$, and $z.right = y$.
+	\item Repeat the above procedure on the alphabet obtained by \hide{replacing $x$ and }\\
+\end{itemize}
+Observe: $x$ and $y$ will be siblings in $T$ at \hide{a maximum depth.}
+\paragraph{Activity} Create a Huffman code for:
+\begin{tabular}{c c c c c c c}
+	Character: &  \tta & \ttb & \ttc & \ttd & \tte & \ttf \\
+	\hline
+	Frequency & 0.45 & 0.13 & 0.12 & 0.16 & 0.09 & 0.05 
+\end{tabular} 
+
+\newpage
+
+\subsection{Code and Illustration}
+\begin{algorithm}[t]
+	\textsc{HuffmanCode}($C$)
+	\begin{algorithmic}
+		\State $n =|C|$
+		\State $T \leftarrow$ empty graph 
+		\State $Q \leftarrow \emptyset$ 
+		\For{$c$ in $C$}
+		\State Insert $c$ with value $c.freq$ into $T$ and $Q$
+		\EndFor
+		\For{$i = 1$ to $n-1$}
+		\State $x = $ % \textsc{ExtractMin}(Q)$
+		\State $y = $ %\textsc{ExtractMin}(Q)$
+		\State create node $z$
+		\State 
+		\State 
+		\State 
+		\State
+		\State 
+		\State
+		\State 
+		%			\State Insert $z$ into $T$
+		%			\State Insert $z$ into $Q$ with frequency $z.val$
+		\EndFor
+		\State Return $T$
+	\end{algorithmic}
+\end{algorithm}
+\newpage
+
+\subsection{Runtime Analysis}
+Given a set of objects $C$, with values $c.val$ for $c \in C$ and $n = |C|$, a binary min-heap for $C$ is a binary tree such that
+\begin{itemize}
+	\item All levels %(except maybe the last) are complete
+	\item The value of a node is % $\leq$ the value of its descendants.
+\end{itemize}
+It has the following operations:
+\begin{itemize}
+	\item $\textsc{BuildBinMinHeap}(C)$:  \\% builds heap $Q$ from elements in $C$, takes $O(n)$ time.
+	\item $\textsc{ExtractMin}(Q)$: \\
+	
+	%removes minimum element. Takes $O(\log n)$ time.
+	\item $\textsc{Insert}(Q,z,z.freq)$: \\ %adds an element to $Q$. Takes $O(\log n)$ time.
+\end{itemize}
+
+\QU
+Assume we use a binary min heap to store and update $Q$ in the pseudocode above. Then what is the overall runtime of creating a Huffman code, in terms of $n = |C|$?
+\begin{itemize}
+	\aitem $O(\log n)$
+	\bitem $O(n)$
+	\citem $O(n \log n)$
+	\ditem $O(n^2)$
+\end{itemize}
+\end{Qu}
+
+
+\pagebreak
+
+\subsection{Optimality}
+It turns out that a Huffman code optimally solves the prefix code problem. The argument hinges on the following lemma.
+
+\begin{lemma}
+Let $C$ be an alphabet where $c.freq$ is the frequency of $c \in C$. Let $x$ and $y$ be the two characters in $C$ that have the lowest frequencies. \\
+
+Then, there exists an optimal prefix code for $C$ in which $x$ and $y$ have the same length code words and only differ in the last bit. \\
+
+Equivalently: \\% there exists a Huffman code tree in which $x$ and $y$ are sibling leaves at maximum depth.
+\end{lemma}
+
+
+
+\newpage 
+\paragraph{Why does this imply optimality?}
+Consider a slightly different (but equivalent) approach to defining a Huffman code:
+\begin{enumerate}
+\item Associate each character with a node, labeled by its frequency
+\item Identify the two nodes $x$ and $y$ with the smallest frequencies
+\item Create new node $z$ with frequency $z.freq = x.freq + y.freq$. 
+\item  %Let $T'$ be an optimal tree for alphabet $C'$ obtained by replacing $x$ and $y$ with $z$
+\item Create tree $T$ from $T'$ by making $z.left = x$, and $z.right = y$.
+\end{enumerate}
+
+\paragraph{Claim}
+This produces an optimal tree $T$. 
+
+\textit{Proof.}
+Note that the cost of the tree $T$ is 
+\begin{equation}
+\label{this}
+B(T) = B(T') + x.freq + y.freq
+\end{equation}
+
+\vs{2cm}
+
+%	Why? Because instead of a node $z$ of depth $d$, we have nodes $x$ and $y$ at depth $d+1$, so for two characters, the codeword is 1 longer. \\ 
+
+We prove the result by contradiction: suppose that $T$ is not optimal. Then %there exists some tree $R$ that is better,
+
+%$$B(R) < B(T)$$
+
+\vs{2cm}
+
+We can assume that $x$ and $y$ are at maximum depth in $R$. \\
+
+%	
+Let $R'$ be the tree obtained by taking $R$ and \\ %replacing $x$ and $y$ with a merged node $z$. 
+
+Similar to~\eqref{this} we have that:  \\
+
+
+We then get an impossible sequence of inequalities:
+\begin{align*}
+B(R') &= B(R) - x.freq - y.freq \\
+& < B(T) - x.freq - y.freq \\
+& = B(T') 
+\end{align*}
+
+%	This says that $R'$ is a strictly better tree for $C'$, but we said $T'$ was optimal for $C'$. Contradiction!
+
+
+\end{document}
