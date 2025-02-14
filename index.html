@@ -211,7 +211,7 @@ Service
 </br>
 <li>Reviewer:
 <ul>
-<li>2025: AISTATS, ICLR, IPCO, ITCS, PODS, SODA, STOC </li>
+<li>2025: AISTATS, ICLR, IPCO, ISIT, ITCS, PODS, SODA, STOC </li>
 <li>2024: AISTATS, COLT, ESA, FOCS, ICALP, ICDT, ICLR, ICML, INFOCOM, ISAAC, ISIT, ITCS, NeurIPS, PODS, RANDOM, SoCG, SODA, STACS, STOC </li>
 <li>2023: COLT, ESA, FOCS, ICALP, ICML, ITCS, NeurIPS, PODS, SIGMETRICS, SODA, STACS, STOC </li>
 <li>2022: AAAI, AISTATS, COLT, ICALP, ICLR, ICML, ITCS, NeurIPS, PODS, RANDOM, SODA, SPAA, STOC </li>
@@ -237,6 +237,45 @@ Publications
 </h3>
 
 <ol reversed>
+
+
+<li>
+<b>
+Perfect Sampling in Turnstile Streams Beyond Small Moments
+</b>
+</br><i>
+--davidwoodruff--,
+--shenghaoxie--,
+Samson Zhou
+</br></i>
+<a href="https://2025.sigmod.org/index.shtml">PODS 2025</a>
+[<a href="javascript:toggle('WXZ25')">abstract</a>]
+<!--[<a href="https://arxiv.org/pdf/2412.03332">pdf</a>]-->
+<div id="WXZ25" style="display: none">
+<p id="abs">
+Given a vector $x \in \mathbb{R}^n$ induced by a turnstile stream $S$, a function $G: \mathbb{R}_+ \to \mathbb{R}_+$, a perfect $G$-sampler outputs an index 
+$i$ with probability $\frac{G(x_i)}{\sum_{j\in[n]} G(x_j)}+\frac{1}{\text{poly}(n)}$. Jayaram and Woodruff (FOCS 2018) introduced a perfect $L_p$-sampler, 
+where $G(z)=z^p$, for $p\in(0,2]$. In this paper, we solve this problem for $p>2$ by a sampling-and-rejection method. Our algorithm runs in 
+$n^{1-2/p} \cdot \text{polylog}(n)$ bits of space, which is tight up to polylogarithmic factors in $n$. Our algorithm also provides a 
+$(1+\varepsilon)$-approximation to the sampled item $x_i$ with high probability using an additional $\varepsilon^{-2} n^{1-2/p} \cdot \text{polylog}(n)$ bits of space.
+<p>
+Interestingly, we show our techniques can be generalized to perfect polynomial samplers on turnstile streams, which is a class of functions 
+that is not scale-invariant, in contrast to the existing perfect $L_p$ samplers. We also achieve perfect samplers for the logarithmic function 
+$G(z)=\log(1+z)$ and the cap function $G(z)=\min(T,z^p)$. Finally, we give an application of our results to the problem of norm/moment estimation 
+for a subset $\mathcal{Q}$ of coordinates of a vector, revealed only after the data stream is processed, e.g., when the set $\mathcal{Q}$ represents 
+a range query, or the set $n\setminus\mathcal{Q}$ represents a collection of entities who wish for their information to be expunged from the dataset.
+</div>
+</li>
+</br>
+
+
+
+
+
+
+
+
+
 
 
 
