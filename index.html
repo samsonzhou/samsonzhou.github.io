@@ -258,7 +258,8 @@ $i$ with probability $\frac{G(x_i)}{\sum_{j\in[n]} G(x_j)}+\frac{1}{\text{poly}(
 where $G(z)=z^p$, for $p\in(0,2]$. In this paper, we solve this problem for $p>2$ by a sampling-and-rejection method. Our algorithm runs in 
 $n^{1-2/p} \cdot \text{polylog}(n)$ bits of space, which is tight up to polylogarithmic factors in $n$. Our algorithm also provides a 
 $(1+\varepsilon)$-approximation to the sampled item $x_i$ with high probability using an additional $\varepsilon^{-2} n^{1-2/p} \cdot \text{polylog}(n)$ bits of space.
-<p>
+</br>
+</br>
 Interestingly, we show our techniques can be generalized to perfect polynomial samplers on turnstile streams, which is a class of functions 
 that is not scale-invariant, in contrast to the existing perfect $L_p$ samplers. We also achieve perfect samplers for the logarithmic function 
 $G(z)=\log(1+z)$ and the cap function $G(z)=\min(T,z^p)$. Finally, we give an application of our results to the problem of norm/moment estimation 
@@ -299,16 +300,19 @@ The $\ell_2^2$ min-sum $k$-clustering problem is to partition an input set into 
 The objective is a density-based clustering and can be more effective than the traditional centroid-based clustering like $k$-median and $k$-means in capturing 
 complex structures in data that may not be linearly separable, such as when the clusters have irregular, non-convex shapes or are overlapping. 
 Although $\ell_2^2$ min-sum $k$-clustering is NP-hard, it is not known whether it is NP-hard to approximate $\ell_2^2$ min-sum $k$-clustering beyond a certain factor. 
-<p>
+</br>
+</br>
 In this paper, we give the first hardness-of-approximation result for the $\ell_2^2$ min-sum $k$-clustering problem. 
 We show that it is NP-hard to approximate the objective to a factor better than $1.056$ and moreover, 
 assuming a balanced variant of the Johnson Coverage Hypothesis, it is  NP-hard to approximate the objective to a factor better than $1.327$. 
-<p>
+</br>
+</br>
 We then complement our hardness result by giving the first $(1+\varepsilon)$-coreset construction for $\ell_2^2$ min-sum $k$-clustering. 
 Our coreset uses $\mathcal{O}\left(k^{\varepsilon^{-4}}\right)$ space and can be leveraged to achieve a polynomial-time approximation scheme 
 with runtime $nd\cdot f(k,\varepsilon^{-1})$, where $d$ is the underlying dimension of the input dataset and $f$ is a fixed function. 
 Our algorithm is faster than the previous PTAS and uses runtime linear in the size $n$ of the input. 
-<p>
+</br>
+</br>
 Finally, we consider a learning-augmented setting, where the algorithm has access to an oracle that outputs a label $i\in[k]$ for input point, 
 thereby implicitly partitioning the input dataset into $k$ clusters that induce an approximately optimal solution, 
 up to some amount of adversarial error $\alpha\in\left[0,\frac{1}{2}\right)$. We give a polynomial-time algorithm that outputs a 
@@ -637,7 +641,8 @@ We study the problem of private vector mean estimation in the shuffle model of p
 We propose a new  multi-message protocol that achieves the optimal error using $\tilde{\mathcal{O}}\left(\min(n\varepsilon^2,d)\right)$ messages per user. 
 Moreover, we show that any (unbiased) protocol that achieves optimal error requires each user to send $\Omega(\min(n\varepsilon^2,d)/\log(n))$ messages, 
 demonstrating the optimality of our message complexity up to logarithmic factors.
-
+</br>
+</br>
 Additionally, we study the single-message setting and design a protocol that achieves mean squared error $\mathcal{O}(dn^{d/(d+2)}\varepsilon^{-4/(d+2)})$. 
 Moreover, we show that \emph{any} single-message protocol must incur mean squared error $\Omega(dn^{d/(d+2)})$, showing that our protocol is optimal in the 
 standard setting where $\varepsilon = \Theta(1)$. Finally, we study robustness to malicious users and show that malicious users can incur large additive error with a single shuffler. 
@@ -711,11 +716,13 @@ Samson Zhou</br></i>
 Clustering is an important technique for identifying structural information in large-scale data analysis, where the underlying dataset may be too large to store. 
 In many applications, recent data can provide more accurate information and thus older data past a certain time is expired. The sliding window model captures 
 these desired properties and thus there has been substantial interest in clustering in the sliding window model. 
-
+</br>
+</br>
 In this paper, we give the first algorithm that achieves near-optimal $(1+\varepsilon)$-approximation to $(k,z)$-clustering in the sliding window model. 
 Our algorithm uses $\frac{k}{\min(\varepsilon^4,\varepsilon^{2+z})}\,\text{polylog}\frac{n\Delta}{\varepsilon}$ words of space when the points are from $[\Delta]^d$, 
 thus significantly improving on works by Braverman et. al. (SODA 2016), Borassi et. al. (NeurIPS 2021), and Epasto et. al. (SODA 2022).
-
+</br>
+</br>
 Along the way, we develop a data structure for clustering called an online coreset, which outputs a coreset not only for the end of a stream, 
 but also for all prefixes of the stream. Our online coreset samples $\frac{k}{\min(\varepsilon^4,\varepsilon^{2+z})}\,\text{polylog}\frac{n\Delta}{\varepsilon}$ points 
 from the stream. We then show that any online coreset requires $\Omega\left(\frac{k}{\varepsilon^2}\log n\right)$ samples, which shows a separation between the problem 
@@ -751,10 +758,12 @@ In the online learning with experts problem, an algorithm must make a prediction
 make predictions on each day (or time). The algorithm is given feedback on the outcomes of each day, including the cost of its prediction and the cost of the 
 expert predictions, and the goal is to make a prediction with the minimum cost, specifically compared to the best expert in the set. Recent work by 
 Srinivas, Woodruff, Xu, and Zhou (STOC 2022) introduced the study of the online learning with experts problem under memory constraints. 
-
+</br>
+</br>
 However, often the predictions made by experts or algorithms at some time influence future outcomes, so that the input is adaptively chosen. 
 Whereas deterministic algorithms would be robust to adaptive inputs, existing algorithms all crucially use randomization to sample a small number of experts. 
-
+</br>
+</br>
 In this paper, we study deterministic and robust algorithms for the experts problem. We first show a space lower bound of 
 $\widetilde{\Omega}\left(\frac{nM}{RT}\right)$ for any deterministic algorithm that achieves regret $R$ when the best expert makes $M$ mistakes. 
 Our result shows that the natural deterministic algorithm, which iterates through pools of experts until each expert in the pool has erred, 
