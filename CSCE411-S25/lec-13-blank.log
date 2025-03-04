@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (MiKTeX 24.4) (preloaded format=pdflatex 2025.1.14)  4 MAR 2025 12:36
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (MiKTeX 24.4) (preloaded format=pdflatex 2025.1.14)  4 MAR 2025 15:25
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -682,30 +682,30 @@ Overfull \hbox (16.26796pt too wide) in paragraph at lines 9--9
  []
 
 LaTeX Font Info:    Trying to load font information for OT1+lmss on input line 
-11.
+18.
 (C:\Users\Samson Zhou\AppData\Local\Programs\MiKTeX\tex/latex/lm\ot1lmss.fd
 File: ot1lmss.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
 LaTeX Font Info:    Font shape `OT1/lmss/b/n' in size <14> not available
-(Font)              Font shape `OT1/lmss/bx/n' tried instead on input line 11.
-LaTeX Font Info:    Trying to load font information for U+rsfs on input line 12
+(Font)              Font shape `OT1/lmss/bx/n' tried instead on input line 18.
+LaTeX Font Info:    Trying to load font information for U+rsfs on input line 19
 .
 
 (C:\Users\Samson Zhou\AppData\Local\Programs\MiKTeX\tex/latex/jknappen\ursfs.fd
 File: ursfs.fd 1998/03/24 rsfs font definition file (jk)
 )
-LaTeX Font Info:    Trying to load font information for U+msa on input line 12.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 19.
 
 
 (C:\Users\Samson Zhou\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 12.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 19.
 
 (C:\Users\Samson Zhou\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-Underfull \hbox (badness 10000) in paragraph at lines 12--13
+Underfull \hbox (badness 10000) in paragraph at lines 19--20
 
  []
 
@@ -719,67 +719,13 @@ s/Samson Zhou/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-rm.enc}]
 [2]
 
 [3]
-Underfull \hbox (badness 10000) in paragraph at lines 78--79
-
- []
-
-
-
-[4]
-Underfull \hbox (badness 10000) in paragraph at lines 93--94
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 94--95
-
- []
-
-
-LaTeX Font Warning: Font shape `OT1/cmr/m/scit' undefined
-(Font)              using `OT1/cmr/m/sc' instead on input line 98.
-
-
-
-[5]
-
-[6]
-<figures/A.pdf, id=78, 315.37228pt x 230.21338pt>
-File: figures/A.pdf Graphic file (type pdf)
-<use figures/A.pdf>
-Package pdftex.def Info: figures/A.pdf  used on input line 108.
-(pdftex.def)             Requested size: 22.76164pt x 14.22319pt.
-<figures/B.pdf, id=79, 314.21352pt x 229.77534pt>
-File: figures/B.pdf Graphic file (type pdf)
-<use figures/B.pdf>
-Package pdftex.def Info: figures/B.pdf  used on input line 109.
-(pdftex.def)             Requested size: 22.7595pt x 14.22418pt.
-<figures/C.pdf, id=80, 314.27463pt x 230.07079pt>
-File: figures/C.pdf Graphic file (type pdf)
-<use figures/C.pdf>
-Package pdftex.def Info: figures/C.pdf  used on input line 110.
-(pdftex.def)             Requested size: 22.75914pt x 14.22491pt.
-<figures/D.pdf, id=81, 313.57942pt x 227.58772pt>
-File: figures/D.pdf Graphic file (type pdf)
-<use figures/D.pdf>
-Package pdftex.def Info: figures/D.pdf  used on input line 111.
-(pdftex.def)             Requested size: 22.76143pt x 14.2242pt.
-<figures/E.pdf, id=82, 314.30771pt x 229.9817pt>
-File: figures/E.pdf Graphic file (type pdf)
-<use figures/E.pdf>
-Package pdftex.def Info: figures/E.pdf  used on input line 112.
-(pdftex.def)             Requested size: 22.76154pt x 14.22292pt.
-
-
-[7 <./figures/A.pdf> <./figures/B.pdf> <./figures/C.pdf> <./figures/D.pdf> <./f
-igures/E.pdf>]
-<mst-graph.png, id=239, 353.247pt x 206.736pt>
+<mst-graph.png, id=61, 353.247pt x 206.736pt>
 File: mst-graph.png Graphic file (type png)
 <use mst-graph.png>
-Package pdftex.def Info: mst-graph.png  used on input line 122.
+Package pdftex.def Info: mst-graph.png  used on input line 70.
 (pdftex.def)             Requested size: 207.77626pt x 121.60094pt.
 
-Overfull \hbox (35.40858pt too wide) in paragraph at lines 125--126
+Overfull \hbox (35.40858pt too wide) in paragraph at lines 73--74
 []\OT1/cmr/m/n/10.95 A \OT1/cmr/m/it/10.95 span-ning tree \OT1/cmr/m/n/10.95 of
  $\OML/cmm/m/it/10.95 G$ \OT1/cmr/m/n/10.95 is a sub-set of edges $\OML/cmm/m/i
 t/10.95 E[] \OMS/cmsy/m/n/10.95 ^^R \OML/cmm/m/it/10.95 E$ \OT1/cmr/m/n/10.95 s
@@ -789,35 +735,34 @@ uch that $\OML/cmm/m/it/10.95 T \OT1/cmr/m/n/10.95 = (\OML/cmm/m/it/10.95 V; E[
 
 File: mst-graph.png Graphic file (type png)
 <use mst-graph.png>
-Package pdftex.def Info: mst-graph.png  used on input line 128.
+Package pdftex.def Info: mst-graph.png  used on input line 76.
 (pdftex.def)             Requested size: 207.77626pt x 121.60094pt.
 File: mst-graph.png Graphic file (type png)
 <use mst-graph.png>
-Package pdftex.def Info: mst-graph.png  used on input line 137.
+Package pdftex.def Info: mst-graph.png  used on input line 85.
 (pdftex.def)             Requested size: 207.77626pt x 121.60094pt.
 
 
-[8 <./mst-graph.png>]
+[4 <./mst-graph.png>]
 LaTeX Font Info:    Font shape `OT1/lmss/b/n' in size <12> not available
-(Font)              Font shape `OT1/lmss/bx/n' tried instead on input line 141.
+(Font)              Font shape `OT1/lmss/bx/n' tried instead on input line 89.
 
-
-Underfull \hbox (badness 10000) in paragraph at lines 142--143
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 152--153
+Underfull \hbox (badness 10000) in paragraph at lines 90--91
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 157--158
+Underfull \hbox (badness 10000) in paragraph at lines 100--101
 
  []
 
 
-Overfull \hbox (47.72403pt too wide) in paragraph at lines 158--159
+Underfull \hbox (badness 10000) in paragraph at lines 105--106
+
+ []
+
+
+Overfull \hbox (47.72403pt too wide) in paragraph at lines 106--107
 []\OT1/cmr/m/n/10.95 An edge $(\OML/cmm/m/it/10.95 u; v\OT1/cmr/m/n/10.95 ) \OM
 S/cmsy/m/n/10.95 2 \OML/cmm/m/it/10.95 E$ $[]$ \OT1/cmr/m/n/10.95 the cut $(\OM
 L/cmm/m/it/10.95 S; V \OMS/cmsy/m/n/10.95 ^^@ \OML/cmm/m/it/10.95 S\OT1/cmr/m/n
@@ -825,90 +770,96 @@ L/cmm/m/it/10.95 S; V \OMS/cmsy/m/n/10.95 ^^@ \OML/cmm/m/it/10.95 S\OT1/cmr/m/n
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 158--159
+Underfull \hbox (badness 10000) in paragraph at lines 106--107
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 159--160
+Underfull \hbox (badness 10000) in paragraph at lines 107--108
 
  []
 
 
 
-[9]
+[5]
 
 LaTeX Font Warning: Font shape `OT1/cmr/m/scit' undefined
-(Font)              using `OT1/cmr/m/sc' instead on input line 174.
+(Font)              using `OT1/cmr/m/sc' instead on input line 122.
 
 
 
-[10]
-Underfull \hbox (badness 10000) in paragraph at lines 181--182
+[6]
+Underfull \hbox (badness 10000) in paragraph at lines 129--130
 
  []
 
 
-Overfull \hbox (18.12753pt too wide) in paragraph at lines 187--187
+Overfull \hbox (18.12753pt too wide) in paragraph at lines 135--135
 [][]| 
  []
 
 
-Overfull \hbox (46.58029pt too wide) in paragraph at lines 187--188
+Overfull \hbox (46.58029pt too wide) in paragraph at lines 135--136
 [][]
  []
 
 
-Overfull \hbox (183.2426pt too wide) in paragraph at lines 189--190
+Overfull \hbox (183.2426pt too wide) in paragraph at lines 137--138
 [][]
  []
 
 
-Overfull \hbox (37.31914pt too wide) in paragraph at lines 183--192
+Overfull \hbox (37.31914pt too wide) in paragraph at lines 131--140
 [][] 
  []
 
 File: mst-graph.png Graphic file (type png)
 <use mst-graph.png>
-Package pdftex.def Info: mst-graph.png  used on input line 194.
+Package pdftex.def Info: mst-graph.png  used on input line 142.
 (pdftex.def)             Requested size: 311.66438pt x 182.41402pt.
 File: mst-graph.png Graphic file (type png)
 <use mst-graph.png>
-Package pdftex.def Info: mst-graph.png  used on input line 200.
+Package pdftex.def Info: mst-graph.png  used on input line 148.
 (pdftex.def)             Requested size: 311.66438pt x 182.41402pt.
 
 
-[11]
+[7]
 File: mst-graph.png Graphic file (type png)
 <use mst-graph.png>
-Package pdftex.def Info: mst-graph.png  used on input line 239.
+Package pdftex.def Info: mst-graph.png  used on input line 187.
 (pdftex.def)             Requested size: 311.66438pt x 182.41402pt.
 
 
-[12]
+[8]
+<figures/A.pdf, id=95, 315.37228pt x 230.21338pt>
 File: figures/A.pdf Graphic file (type pdf)
 <use figures/A.pdf>
-Package pdftex.def Info: figures/A.pdf  used on input line 247.
+Package pdftex.def Info: figures/A.pdf  used on input line 195.
 (pdftex.def)             Requested size: 22.76164pt x 14.22319pt.
+<figures/B.pdf, id=96, 314.21352pt x 229.77534pt>
 File: figures/B.pdf Graphic file (type pdf)
 <use figures/B.pdf>
-Package pdftex.def Info: figures/B.pdf  used on input line 248.
+Package pdftex.def Info: figures/B.pdf  used on input line 196.
 (pdftex.def)             Requested size: 22.7595pt x 14.22418pt.
+<figures/C.pdf, id=97, 314.27463pt x 230.07079pt>
 File: figures/C.pdf Graphic file (type pdf)
 <use figures/C.pdf>
-Package pdftex.def Info: figures/C.pdf  used on input line 249.
+Package pdftex.def Info: figures/C.pdf  used on input line 197.
 (pdftex.def)             Requested size: 22.75914pt x 14.22491pt.
+<figures/D.pdf, id=98, 313.57942pt x 227.58772pt>
 File: figures/D.pdf Graphic file (type pdf)
 <use figures/D.pdf>
-Package pdftex.def Info: figures/D.pdf  used on input line 250.
+Package pdftex.def Info: figures/D.pdf  used on input line 198.
 (pdftex.def)             Requested size: 22.76143pt x 14.2242pt.
+<figures/E.pdf, id=99, 314.30771pt x 229.9817pt>
 File: figures/E.pdf Graphic file (type pdf)
 <use figures/E.pdf>
-Package pdftex.def Info: figures/E.pdf  used on input line 251.
+Package pdftex.def Info: figures/E.pdf  used on input line 199.
 (pdftex.def)             Requested size: 22.76154pt x 14.22292pt.
 
 
-[13]
+[9 <./figures/A.pdf> <./figures/B.pdf> <./figures/C.pdf> <./figures/D.pdf> <./f
+igures/E.pdf>]
 This exam contains 0 questions with 0 parts, 0 subparts, and 0 subsubparts.
 (lec-13-blank.aux)
  ***********
@@ -919,10 +870,10 @@ Package rerunfilecheck Info: File `lec-13-blank.out' has not changed.
 (rerunfilecheck)             Checksum: 8125C4A5960A3876685746243B451FB3;1506.
  ) 
 Here is how much of TeX's memory you used:
- 14823 strings out of 473898
- 237235 string characters out of 5723611
- 1936960 words of memory out of 5000000
- 37461 multiletter control sequences out of 15000+600000
+ 14812 strings out of 473898
+ 237104 string characters out of 5723611
+ 1937960 words of memory out of 5000000
+ 37458 multiletter control sequences out of 15000+600000
  570837 words of font info for 66 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  80i,10n,82p,551b,442s stack positions out of 10000i,1000n,20000p,200000b,200000s
@@ -942,9 +893,9 @@ on Zhou/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmti10.pfb
 ><C:/Users/Samson Zhou/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmss
 bx10.pfb><C:/Users/Samson Zhou/AppData/Local/Programs/MiKTeX/fonts/type1/public
 /amsfonts/symbols/msbm10.pfb>
-Output written on lec-13-blank.pdf (13 pages, 773363 bytes).
+Output written on lec-13-blank.pdf (9 pages, 762702 bytes).
 PDF statistics:
- 344 PDF objects out of 1000 (max. 8388607)
- 40 named destinations out of 1000 (max. 500000)
+ 319 PDF objects out of 1000 (max. 8388607)
+ 32 named destinations out of 1000 (max. 500000)
  87 words of extra memory for PDF output out of 10000 (max. 10000000)
 

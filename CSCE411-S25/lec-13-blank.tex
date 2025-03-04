@@ -8,6 +8,13 @@
 	
 	\lecture{13: Finishing DFS; Minimum Spanning Trees}{Week 9}
 	
+	\paragraph{Course Logistics}
+	
+	\begin{itemize}
+		\item Minimum Spanning Tree: Chapter 23
+		\item Homework 5 due Friday
+	\end{itemize}
+	
 	\section{The transpose graph and connected component graph}
 	If $G = (V,E)$ is a graph, a \emph{strongly connected component} is maximal subgraph $S \subseteq V$ in which every node is reachable from every other node by following paths in $S$. \\
 	
@@ -54,66 +61,7 @@
 	In the second DFS, we essentially visit all of the nodes in the connected components graph in topologically sorted order.
 	
 	
-	\vs{3cm}
-	\paragraph{Some definitions}
-	For the rest of the notes, we will use $u.F$ and $u.D$ to denote timestamps for nodes from the first DFS. We then define:
-	\begin{align*}
-		f(U) = \max_{u \in U} \; u.F \\
-		d(U) = \min_{u \in U} \; u.D
-	\end{align*}
-	We will use the following white-path theorem without proving it.
-	\begin{theorem}
-		In a depth first forest of $G$, vertex $v$ is a descendant of $u$ $\iff$ when $u$ is discovered (at $u.D$), there is a path from $u$ to $v$ consisting of white vertices.
-	\end{theorem}
-	\vs{2cm}
-	
-	\begin{lemma}
-		\label{lem:CC}
-		Let $C$ and $C'$ be distinct strongly connected components in $G$. If there is an edge $(u,v) \in E$ where $u \in C$ and $v \in C'$, then $f(C) > f(C')$.
-	\end{lemma}
-	
-	\newpage
-	\textbf{Proof of Lemma~\ref{lem:CC}}
-	
-	(If $C \rightarrow C'$, then $f(C) > f(C')$)\\
-	
-	
-	\textbf{Case 1: A node in $C$ is discovered first}
-	
-	\vfill
-	
-	\textbf{Case 2: A node in $C'$ is discovered first}
-	\vfill
-	\newpage
-	Notice that if you ``reverse'' the Lemma, it tells you something about $G^T$. 
-	
-	
-	Let $C$ and $C'$ be two strongly connected components in $G$, which are also the strongly connected components in $G^T$. The following two statements are equivalent:
-	\begin{itemize}
-		\item If there is an edge $(u,v) \in E$ where $u \in C$ and $v \in C'$, then $f(C) > f(C')$.\\
-		\item If there is an edge $(u,v) \in E^T$ where $u \in C$ and $v \in C'$, then $f(C) < f(C')$.\\
-	\end{itemize}
-	
-	\begin{theorem}
-		Each depth-first tree found in Line 3 of the \textsc{Strongly-Connected-Components} algorithm will be a strongly connected component of $G$.
-	\end{theorem}
-
 \newpage
-\phantom{.}
-
-\newpage
-\begin{Qu}
-	What is the runtime of finding strongly connected components of a graph $G$ using the above method?
-	\begin{itemize}
-		\aitem $\Theta(V)$
-		\bitem $\Theta(E)$
-		\citem $\Theta(V^2)$
-		\ditem $\Theta(E^2)$
-		\eitem I'm not sure how we can know that with what we've learned so far.
-	\end{itemize}
-\end{Qu}
-\newpage
-
 	\section{Minimum Spanning Trees}
 Let $G = (V,E,w)$ be an undirected, connected, weighted graph where $w \colon E \rightarrow \mathbb{R}^+$ maps each edge to a nonnegative weight.
 
