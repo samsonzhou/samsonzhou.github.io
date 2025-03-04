@@ -6,7 +6,7 @@
 
 \begin{document}
 	
-	\lecture{13: Finishing DFS; Minimum Spanning Trees}{Week 9}
+	\lecture{13: Finishing DFS; Minimum Spanning Trees}{March 4}
 	
 	\paragraph{Course Logistics}
 	
@@ -31,7 +31,7 @@
 	
 	\vs{5cm}
 	
-	The \emph{transpose graph} of $G$ is $G^T = (V^\text{scc}, E^T)$ where
+	The \emph{transpose graph} of $G$ is $G^T = (V, E^T)$ where
 	\begin{align*}
 		E^T = \{ (u,v) \colon (v,u) \in E\}
 	\end{align*}
@@ -87,7 +87,7 @@ over all spanning trees of $G$.
 
 \newpage
 \subsection{Minimum Spanning Tree Terminology}
-\textbf{Safe Edges.} Let $A$ be a subset of nodes that is guaranteed to be in some minimum spanning tree of $G = (V,E)$. An edge $(u,v) \in E$ is \emph{safe} for $A$ if $A\cup \{(u,v)\}$ is contained in some minimum spanning tree of $G$.\\
+\textbf{Safe Edges.} Let $A$ be a subset of edges that is guaranteed to be in some minimum spanning tree of $G = (V,E)$. An edge $(u,v) \in E$ is \emph{safe} for $A$ if $A\cup \{(u,v)\}$ is contained in some minimum spanning tree of $G$.\\
 
 \textsc{GenericMST}$(G,w)$
 \begin{enumerate}
