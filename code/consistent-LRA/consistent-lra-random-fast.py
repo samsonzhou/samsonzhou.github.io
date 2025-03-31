@@ -5,6 +5,7 @@ from sklearn.datasets import make_blobs
 from sklearn.cluster import KMeans
 from sklearn.metrics import silhouette_score
 from sklearn.preprocessing import StandardScaler
+from sklearn.utils.extmath import randomized_svd
 import random
 import numpy as np
 import matplotlib.pyplot as plt
@@ -43,8 +44,8 @@ def generate_random_matrix(n, d, min_value=0, max_value=100):
 n=3000
 ##d=len(dataset[0])
 ##n=10
-d=4
-#d=100
+#d=4
+d=100
 randA = generate_random_matrix(n, d)
 dataset_normalized=np.array(randA)
 ##
@@ -53,8 +54,8 @@ dataset_normalized = dataset_normalized[0:n]
 dataset = dataset_normalized
 
 start_time=time.time()
-k=1
-#k = 20
+#k=1
+k = 20
 #c = 10
 c_list = [1.1, 2, 5, 10, 100]
 #c_list=[10]
@@ -70,10 +71,11 @@ runtimes = []
 i = 0
 for c in c_list:
     count = -1
-    for t in range(n):
-        At = dataset_normalized[0:t]
+    for t in range(n-1):
+        At = dataset[0:t+1]
         sq_norm_At = np.linalg.norm(At)**2
-        U, S, V = np.linalg.svd(At, full_matrices=True)
+        #U, S, V = np.linalg.svd(At, full_matrices=True)
+        U, S, V = randomized_svd(At, n_components = k, n_iter=5, random_state=None)
         r = len(V)
         kcurr = min(r,k)
     ##    if(r > old_r and r <= k):
@@ -103,16 +105,6 @@ for c in c_list:
             print(t)
         runtimes.append(time.time()-start_time)
     i = i+1
-### Generate x-axis values (assuming uniform spacing)
-##x_values = range(1, len(runtimes) + 1)
-##
-### Plotting runtime
-##plt.plot(x_values, runtimes, marker='o', linestyle='-')
-##
-### Adding labels and title for runtime
-##plt.xlabel('Number of rows')
-##plt.ylabel('Total runtime (s)')
-##plt.title('Total runtime for RICE dataset')
 
 # Generate x-axis values (assuming uniform spacing)
 x_values = range(1, len(ratios[0]) + 1)
