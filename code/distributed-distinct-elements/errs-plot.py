@@ -32,7 +32,7 @@ def count_hashed_ones(senders, p):
     """Counts the number of items in senders that hash to 1."""
     return sum(int_to_binary(sender, p) for sender in senders)
 
-# Task 1: Read and print the first three lines
+# Read m lines
 with open(filename, "r") as file:
     file.readline()
     for _ in range(m):
