@@ -64,6 +64,7 @@ For all of these graph algorithms, here's the short answer on what you should kn
 		\item Representing a graph as a list or a matrix
 		\item Undirected and directed, weighted and unweighted (which of these can be viewed as special cases of others?)
 		\item Strongly connected and weakly connected components. What is their relation? How are they defined?
+		\item What is a bipartite graph?
 	\end{itemize}
 
 	\subsection{Breadth first search specifics}
@@ -85,13 +86,13 @@ For all of these graph algorithms, here's the short answer on what you should kn
 \begin{itemize}	
 	\item You should know the basic mechanism behind both Prim's and Kruskal's algorithm
 	\item You should know what a cut is, and what a ``safe'' edge is.
-	\item We did a mini runtime analysis for Prim's algorithm: you should know what the runtime is and how that basic argument worked (there are many other algorithms with similar types of runtime analyses).
+	%\item We did a mini runtime analysis for Prim's algorithm: you should know what the runtime is and how that basic argument worked (there are many other algorithms with similar types of runtime analyses).
 \end{itemize}
 
 	\subsection{Single source shortest paths algorithm}
 
 \begin{itemize}	
-	\item Three algorithms we saw: Bellman-Ford, Dijkstra's (and we talked about two ways to implement the min-priority queue).
+	\item Two algorithms we saw: Bellman-Ford, Dijkstra's %(and we talked about two ways to implement the min-priority queue).
 	\item You should understand the basic mechanism behind each, and different pros/cons of their runtimes
 \end{itemize}
 
@@ -121,7 +122,7 @@ For all of these graph algorithms, here's the short answer on what you should kn
 		
 		\question Consider the graph in Figure 2, but for this problem ignore the edge directions. Write down the minimum spanning tree that you would obtain from running Kruskal's algorithm, and the MST obtained by running Prim's algorithm starting from node 3.
 		
-		\question Let $G = (V,E)$ be a directed graph. If you assume that $|E| = \Theta(V^2)$, what data structure should you use to implement the min-priority queue in Dijkstra's algorithm, and why?
+		%\question Let $G = (V,E)$ be a directed graph. If you assume that $|E| = \Theta(V^2)$, what data structure should you use to implement the min-priority queue in Dijkstra's algorithm, and why?
 		
 		\question What are the weakly connected and strongly connected components of sample graph 1?
 		
