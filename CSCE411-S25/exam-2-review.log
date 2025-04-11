@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (MiKTeX 24.4) (preloaded format=pdflatex 2025.1.14)  30 MAR 2025 17:41
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (MiKTeX 24.4) (preloaded format=pdflatex 2025.1.14)  1 APR 2025 18:01
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -721,7 +721,7 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
 
 [2]
-Overfull \hbox (6.05345pt too wide) in paragraph at lines 122--123
+Overfull \hbox (6.05345pt too wide) in paragraph at lines 123--124
 \OT1/cmr/m/n/10.95 Write down the min-i-mum span-ning tree that you would ob-ta
 in from run-ning Kruskal's
  []
@@ -732,37 +732,41 @@ in from run-ning Kruskal's
 <dijkstrasalg.png, id=67, 247.908pt x 245.718pt>
 File: dijkstrasalg.png Graphic file (type png)
 <use dijkstrasalg.png>
-Package pdftex.def Info: dijkstrasalg.png  used on input line 147.
+Package pdftex.def Info: dijkstrasalg.png  used on input line 148.
 (pdftex.def)             Requested size: 207.77626pt x 205.94054pt.
 <flow1.png, id=69, 302.001pt x 188.559pt>
 File: flow1.png Graphic file (type png)
 <use flow1.png>
-Package pdftex.def Info: flow1.png  used on input line 154.
+Package pdftex.def Info: flow1.png  used on input line 155.
 (pdftex.def)             Requested size: 207.77626pt x 129.72606pt.
 <dag1.png, id=70, 265.866pt x 203.67pt>
 File: dag1.png Graphic file (type png)
 <use dag1.png>
-Package pdftex.def Info: dag1.png  used on input line 160.
+Package pdftex.def Info: dag1.png  used on input line 161.
 (pdftex.def)             Requested size: 207.77626pt x 159.17271pt.
 
 
 [4 <./dijkstrasalg.png>]
 
 [5 <./flow1.png> <./dag1.png>]
-This exam contains 13 questions with 0 parts, 0 subparts, and 0 subsubparts.
+This exam contains 12 questions with 0 parts, 0 subparts, and 0 subsubparts.
 (exam-2-review.aux)
  ***********
 LaTeX2e <2024-06-01> patch level 2
 L3 programming layer <2024-08-16>
  ***********
+
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
 Package rerunfilecheck Info: File `exam-2-review.out' has not changed.
 (rerunfilecheck)             Checksum: 96FECDA1899DBCFBE67246938F915BEA;1862.
  ) 
 Here is how much of TeX's memory you used:
- 14810 strings out of 473898
- 236488 string characters out of 5723611
+ 14804 strings out of 473898
+ 236400 string characters out of 5723611
  1936960 words of memory out of 5000000
- 37457 multiletter control sequences out of 15000+600000
+ 37452 multiletter control sequences out of 15000+600000
  569934 words of font info for 63 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  80i,10n,82p,552b,567s stack positions out of 10000i,1000n,20000p,200000b,200000s
@@ -772,14 +776,12 @@ ublic/amsfonts/cm/cmbx10.pfb><C:/Users/Samson Zhou/AppData/Local/Programs/MiKTe
 X/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Users/Samson Zhou/AppData/Local
 /Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/Samson Zhou
 /AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Use
-rs/Samson Zhou/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr
-8.pfb><C:/Users/Samson Zhou/AppData/Local/Programs/MiKTeX/fonts/type1/public/am
-sfonts/cm/cmsy10.pfb><C:/Users/Samson Zhou/AppData/Local/Programs/MiKTeX/fonts/
-type1/public/amsfonts/cm/cmti10.pfb><C:/Users/Samson Zhou/AppData/Local/Program
-s/MiKTeX/fonts/type1/public/lm/lmssbx10.pfb>
-Output written on exam-2-review.pdf (5 pages, 259113 bytes).
+rs/Samson Zhou/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmt
+i10.pfb><C:/Users/Samson Zhou/AppData/Local/Programs/MiKTeX/fonts/type1/public/
+lm/lmssbx10.pfb>
+Output written on exam-2-review.pdf (5 pages, 240829 bytes).
 PDF statistics:
- 143 PDF objects out of 1000 (max. 8388607)
- 32 named destinations out of 1000 (max. 500000)
+ 132 PDF objects out of 1000 (max. 8388607)
+ 31 named destinations out of 1000 (max. 500000)
  96 words of extra memory for PDF output out of 10000 (max. 10000000)
 
