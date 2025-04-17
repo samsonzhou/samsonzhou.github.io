@@ -1,0 +1,124 @@
+\documentclass[11  pt]{article} 
+\usepackage[lmargin=1in,rmargin=1.75in,bmargin=1in,tmargin=1in]{geometry}  
+
+
+\input{preamble}
+
+\begin{document}
+	
+	\lecture{: Approximation Algorithms and Optimization}{Week 14}
+	\textbf{Course Logistics}
+	\begin{itemize}
+		\item CLRS Chapter 34
+		\item Homework due Friday
+	\end{itemize}
+	
+	\section{Approximation Algorithms for Optimization Problems}
+There are so many hard problems out there without known polynomial time solutions! Is all hope lost? What do we do?
+
+\vs{1cm}
+\textbf{Approximation algorithms} ``quickly'' find an answer that is ``close'' to the solution.
+
+\vs{4cm}
+We are now focused on optimization problems, rather than just their decision versions.
+
+\vs{1cm}
+\textbf{Definition.} Let $Q$ be a computational minimization problem (e.g., find a minimum vertex cover, find a minimum s-t cut) and assume that $C^*$ is the optimal (minimum) solution to the problem. An \hide{approximation algorithm} for $Q$ with approximation factor $p$ is an algorithm that:
+\begin{itemize}
+    \item Runs in 
+    \item Outputs a solution value $C$ that is guaranteed to satisfy
+
+\vs{4cm}
+\end{itemize}
+
+\QU
+What is a lower bound we must assume holds for the value of $p$ when defining an approximation algorithm?
+\begin{enumerate}
+	\aitem No lower bound is needed, $p$ can be any real number.
+	\bitem $p \geq -1$.
+	\citem $p \geq 0$.
+	\ditem $p \geq 1$.
+	\eitem $p \geq C^*$.
+\end{enumerate}
+\end{Qu}
+
+\vs{1cm}
+We can also have approximation algorithms for maximization problems, but in this case $C^*$ represents the maximum value (i.e., the solution) for the problem and \hide{$p\le 1$}
+
+\vs{1cm}
+\textbf{Wait, is this even possible?} We want to guarantee that $\frac{C}{C^*}$ is small in polynomial time, but finding $C^*$ is NP-hard. How can we do that?
+
+\vs{1cm}
+To design an approximation algorithm, we need two pieces:
+
+\begin{enumerate}
+    \item \hide{Lower bound} A procedure for finding a value $\hat{C}$ that satisfies \hide{$\hat{C}\le C^*$}
+    \begin{itemize}
+        \item It should take polynomial time.
+				
+				\vs{0.5cm}
+        \item This method \hide{does not} solve the original problem, but is often related.
+    \end{itemize}
+    \item \hide{Upper bound} An algorithm for the original problem that returns a suboptimal solution \hide{$C\ge C^*$}
+    \begin{itemize}
+        \item It should take polynomial time.
+				
+				\vs{0.5cm}
+        \item This method often: %leverages $\hat{C}$ or problem structure.
+    \end{itemize}
+\end{enumerate}
+
+We then must prove that \hide{$\frac{C}{C^*} \leq p$} and this provides a $p$-approximation!
+
+\vs{4cm}
+\textbf{Caveat.} Often, the lower bounding procedure is \emph{explicit}: there is an actual algorithm that computes the lower bound, and then the upper bounding algorithm explicitly uses the lower bound. However, in some cases no explicit lower bound is computed, and instead one shows implicitly that the upper bounding algorithm must provide a solution that is better than some lower bound, even though the lower bound isn't computed explicitly. This can be tricky, but it is often possible!
+
+
+\section{Matchings and Vertex Covers}
+Let $G = (V, E)$ be an undirected and unweighted graph.
+
+
+\vs{1cm}
+A \textbf{matching} $M \subseteq E$ is a set of edges such that no two edges share the same node.
+
+
+\vs{1cm}
+A \textbf{vertex cover} $C \subseteq V$ is a set of nodes such that each edge $(u, v) \in E$ has at least one node in $C$.
+
+\vs{5cm}
+\begin{lemma}
+Let $M$ be a matching of $G$ and $C$ be a vertex cover. Then $|M| \leq |C|$.
+\end{lemma}
+
+\vfill
+
+\section{The approximation algorithm for vertex cover}
+A matching $M \subseteq E$ is a \textbf{maximal matching} if for every edge $e \in E \setminus M$, $M \cup \{e\}$ is no longer a matching.
+
+\vs{8cm}
+\textbf{The algorithm} \\
+\texttt{VertexCoverApprox}($G = (V, E)$)
+\begin{enumerate}
+    \item Compute a maximal matching $M$ of $G$:
+    \begin{itemize}
+        \item Set $F = E$, $M = \emptyset$.
+        \item While $|F| > 0$:
+        \begin{itemize}
+            \item Add any edge $e \in F$ to $M$.
+            \item For each remaining $f \in F$, if $|e \cap f| > 0$, remove $f$ from $F$.
+        \end{itemize}
+    \end{itemize}
+    \item Let $S$ be the set of nodes adjacent to an edge in $M$.
+    \item Return $S$.
+\end{enumerate}
+
+\newpage
+\begin{theorem}
+Let $C^*$ be the minimum sized vertex cover of $G$. The algorithm \texttt{VertexCoverApprox} runs in polynomial time in terms of the size of $G$ and outputs a vertex cover $S \subseteq V$ satisfying $|S| \leq 2C^*$. Thus, this is a 2-approximation algorithm for vertex cover.
+\end{theorem}
+
+\newpage
+\phantom{Invisible space}
+\end{document}
+	
+\end{document}
