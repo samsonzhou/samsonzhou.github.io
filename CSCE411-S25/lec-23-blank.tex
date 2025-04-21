@@ -117,8 +117,105 @@ A matching $M \subseteq E$ is a \textbf{maximal matching} if for every edge $e \
 Let $C^*$ be the minimum sized vertex cover of $G$. The algorithm \texttt{VertexCoverApprox} runs in polynomial time in terms of the size of $G$ and outputs a vertex cover $S \subseteq V$ satisfying $|S| \leq 2C^*$. Thus, this is a 2-approximation algorithm for vertex cover.
 \end{theorem}
 
+\section{Linear Programming}
+
+A \textbf{linear program} is a mathematical optimization problem with:
+\begin{itemize}
+    \item A linear objective function
+    \item Linear constraints
+\end{itemize}
+
+We will use $x_i$ to denote variables---unknowns that we need to find---to make the objective function as large as possible, and such that the constraints hold.
+
+\vs{2cm}
+\textbf{Examples}
+
+\vs{5cm}
+
+\section{Types of Linear Programs}
+
+Linear programs have many variations:
+\begin{itemize}
+    \item The objective function can be a maximization or a minimization problem.
+    \item The constraints can be equalities or inequalities.
+    \item Often, the variables will be constrained to be greater than or equal to zero.
+\end{itemize}
+
+\vs{0.5cm}
+Actually, we can perform different conversions to:
+\begin{itemize}
+    \item Turn a maximization problem into a minimization problem.
+    \item Turn an equality constraint into inequality constraints.
+    \item Turn an inequality constraint into an equality constraint.
+    \item Turn an unconstrained variable into a pair of positive variables.
+\end{itemize}
+
+\vs{1cm}
+\textbf{Important Fact:} A linear program can be solved in polynomial time.
+
+\newpage
+\section{Graph Problems as Mathematical Optimization Problems}
+
+We can write the maximum s-t flow problem as the following optimization problem:
+
+\vs{3cm}
+
+The weighted vertex cover problem can be written as the following optimization problem:
+
+\vs{3cm}
+
+\QU
+Which of the above two problems is a linear program?
+\begin{enumerate}
+    \aitem The first.
+    \bitem The second.
+    \citem Both.
+    \ditem Neither.
+\end{enumerate}
+\end{Qu}
+
+\newpage
+\section{Linear Programming Relaxation for Weighted Vertex Cover}
+
+This is the integer program for the weighted vertex cover problem:
+
+\vs{4cm}
+
+\QU
+Let $\hat{C}$ be the solution to the linear programming relaxation of the weighted vertex cover integer program, and let $C^*$ be the minimum weighted vertex cover solution. Which of the following is always true?
+\begin{enumerate}
+    \aitem $\hat{C} \leq C^*$
+    \bitem $\hat{C} \geq C^*$
+    \citem $\hat{C} < C^*$
+    \ditem $\hat{C} > C^*$
+    \eitem $\hat{C} = C^*$
+\end{enumerate}
+\end{Qu}
+
+\newpage
+\section{The Algorithm}
+
+\texttt{WeightedVertexCoverApprox}($G = (V, E)$)
+\begin{enumerate}
+    \item Solve the linear programming relaxation of the weighted vertex cover problem.
+    \item For each node $v \in V$, if $x_v \geq \frac{1}{2}$, add $v$ to a node set $S$.\\
+    In other words, define:
+    \[
+    S = \{ v \in V : x_v \geq \frac{1}{2} \}
+    \]
+    \item Return $S$ as a vertex cover.
+\end{enumerate}
+
+\vs{2cm}
+
+\begin{theorem}
+Let $C^*$ be the minimum weighted vertex cover of $G$. The algorithm \texttt{WeightedVertexCoverApprox} runs in polynomial time in terms of the size of $G$ and outputs a vertex cover $S \subseteq V$ satisfying:
+\[
+\sum_{v \in S} w_v x_v \leq 2 C^*.
+\]
+Thus, this is a 2-approximation algorithm for weighted vertex cover.
+\end{theorem}
+
 \newpage
 \phantom{Invisible space}
-\end{document}
-	
 \end{document}
