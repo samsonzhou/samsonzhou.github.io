@@ -145,6 +145,10 @@ Linear programs have many variations:
 	\item Often times, the variables will be greater than or equal to zero
 \end{itemize}
 
+If a particular solution $\overline{x}$ satisfies all of the constraints, we call it a \hide{feasible solution}. 
+Otherwise, we call it an \hide{infeasible solution}.
+The set of solutions that are feasible is called the \hide{feasible region}.
+
 Actually, we can perform different conversions to
 
 \begin{itemize}
@@ -167,10 +171,123 @@ Actually, we can perform different conversions to
 
 \vfill
 
-\textbf{Important Fact:} A linear program can be solved in polynomial time.
+
+
+\newpage
+\section{Solving a Linear Program}
+\textbf{Important Fact:} A linear program can be solved in polynomial time, e.g., the ellipsoid algorithm. 
+There are other practical implementations, e.g., the simplex algorithm, that can run in exponential-time in the worst case. 
+
+\vs{1cm}
+Consider the linear program:
+
+\[
+\begin{aligned}
+\text{Minimize:} \quad & x_1 + x_2 \\
+\text{Subject to:} \quad & 4x_1 - x_2 \leq 8 \\
+& 2x_1 + x_2 \leq 10 \\
+& 5x_1 - 2x_2 \leq -2 \\
+& x_1, x_2 \geq 0 \quad (\text{Non-negativity})
+\end{aligned}
+\]
+
+\vs{1cm}
+Intuition: The optimal solution must occur at a \hide{vertex} of the feasible region. 
+\vfill
+\includegraphics{lp-vertex.png}
 
 \newpage
 
+\section{Duality}
+
+\QU
+Consider the linear program:
+
+\[
+\begin{aligned}
+\text{Maximize:} \quad & x_1 + 2x_2 + 3x_3 + 4x_4\\
+\text{Subject to:} \quad & 10x_1 \leq 10 \\
+& x_2 \leq 200 \\
+& 5x_1 + 10x_2 + 15x_3 + 20x_4 \leq 15 \\
+& x_1, x_2, x_3, x_4 \geq 0 \quad (\text{Non-negativity})
+\end{aligned}
+\]
+What can we say about the optimal value? 
+	\begin{itemize}
+		\aitem $1$
+		\bitem $3$ 
+		\citem $10$
+		\ditem $15$
+		\eitem $200$
+		\fitem The limit does not exist
+	\end{itemize}
+\end{Qu}
+
+\newpage
+Consider the linear program:
+
+\[
+\begin{aligned}
+\text{Maximize:} \quad & 3x_1 + x_2 + 4x_3 \\
+\text{Subject to:} \quad & x_1 + x_2 + 3x_3 \leq 30 \\
+& 2x_1 + 2x_2 + 5x_3 \leq 24 \\
+& 4x_1 + x_2 + x_3 \leq 36 \\
+& x_1, x_2, x_3 \geq 0 \quad (\text{Non-negativity})
+\end{aligned}
+\]
+What can we say about the optimal value? 
+
+\vs{2cm}
+What if we take the original constraints and add
+the first two constraints?
+
+\vs{2cm}
+The primal solution must be at most \hide{54}
+
+\vs{2cm}
+Can we find a linear combination of the equations that exactly matches the objective?
+
+Create variables:
+\begin{itemize}
+\item
+Let \hide{$y_1$} be the \hide{amount we multiply the first constraint}
+\item
+Let \hide{$y_2$} be the \hide{amount we multiply the second constraint}
+\item
+Let \hide{$y_3$} be the \hide{amount we multiply the third constraint}
+\end{itemize}
+
+\vs{1cm}
+What should be the objective?
+
+\vfill
+\newpage
+
+The \hide{dual program} of a linear program is an associated optimization problem where \hide{constraints become variables} and \hide{vice versa}, providing bounds on the \hide{primal objective}
+
+\vs{1cm}
+In general, for a primal LP
+
+\vs{6cm}
+the corresponding dual LP is
+
+\vs{6cm}
+\begin{theorem}[Weak duality]
+Let the primal linear program be a minimization problem and its dual be a maximization problem. If \( x \) is a feasible solution to the primal and \( y \) is a feasible solution to the dual, then
+\[
+c^\top x \geq b^\top y.
+\]
+\end{theorem}
+
+\begin{theorem}[Strong Duality]
+If the primal linear program has an optimal solution over a feasible region $\mathcal{P}$ and satisfies the necessary regularity conditions (e.g., feasibility), then the dual also has an optimal solution over the feasible region $\mathcal{D}$, and the optimal values of the primal and dual objectives are equal. That is,
+\[
+\min_{x \in \mathcal{P}} c^\top x = \max_{y \in \mathcal{D}} b^\top y.
+\]
+\end{theorem}
+
+
+\newpage
 \section{Graph problems as mathematical optimization problem}
 We can write the maximum $s$-$t$ flow problem as the following optimization problem:
 
@@ -189,9 +306,6 @@ The weighted vertex cover problem can be written as the following optimization p
 		\ditem Neither
 	\end{itemize}
 \end{Qu}
-
-\newpage
-
 
 
 \section{Linear Programming Relaxation for Weighted Vertex Cover}

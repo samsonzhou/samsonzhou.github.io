@@ -2,10 +2,13 @@
 \providecommand\hyper@newdestlabel[2]{}
 \providecommand\HyperFirstAtBeginDocument{\AtBeginDocument}
 \HyperFirstAtBeginDocument{\ifx\hyper@anchor\@undefined
+\global\let\oldcontentsline\contentsline
+\gdef\contentsline#1#2#3#4{\oldcontentsline{#1}{#2}{#3}}
 \global\let\oldnewlabel\newlabel
 \gdef\newlabel#1#2{\newlabelxx{#1}#2}
 \gdef\newlabelxx#1#2#3#4#5#6{\oldnewlabel{#1}{{#2}{#3}}}
 \AtEndDocument{\ifx\hyper@anchor\@undefined
+\let\contentsline\oldcontentsline
 \let\newlabel\oldnewlabel
 \fi}
 \fi}
@@ -13,12 +16,11 @@
 \gdef\HyperFirstAtBeginDocument#1{#1}
 \providecommand\HyField@AuxAddToFields[1]{}
 \providecommand\HyField@AuxAddToCoFields[2]{}
-\@writefile{toc}{\contentsline {section}{\numberline {1}Approximation Algorithms for Optimization Problems}{1}{section.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {2}Matchings and Vertex Covers}{3}{section.2}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {3}The approximation algorithm for vertex cover}{4}{section.3}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {4}Linear Programming}{5}{section.4}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {5}Types of Linear Programs}{5}{section.5}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {6}Graph Problems as Mathematical Optimization Problems}{7}{section.6}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {7}Linear Programming Relaxation for Weighted Vertex Cover}{8}{section.7}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {8}The Algorithm}{9}{section.8}\protected@file@percent }
-\gdef \@abspage@last{10}
+\@writefile{toc}{\contentsline {section}{\numberline {1}Linear programming}{1}{section.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Examples}{1}{section.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Warm-up problem (from CLRS).}{2}{section.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Another example problem.}{3}{section.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {2}Types of Linear Programs}{4}{section.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {3}Solving a Linear Program}{5}{section.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {4}Duality}{6}{section.4}\protected@file@percent }
+\gdef \@abspage@last{8}

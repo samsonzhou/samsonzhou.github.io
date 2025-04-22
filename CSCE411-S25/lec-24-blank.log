@@ -1,7 +1,7 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.23 (MiKTeX 21.8) (preloaded format=pdflatex 2023.8.21)  22 APR 2025 14:48
+This is pdfTeX, Version 3.141592653-2.6-1.40.23 (MiKTeX 21.8) (preloaded format=pdflatex 2023.8.21)  22 APR 2025 14:47
 entering extended mode
-**./lec-23-blank.tex
-(lec-23-blank.tex
+**./lec-24-blank.tex
+(lec-24-blank.tex
 LaTeX2e <2021-06-01> patch level 1
 L3 programming layer <2021-08-27>
 (C:\Program Files (x86)\MiKTeX\tex/latex/base\article.cls
@@ -431,8 +431,8 @@ File: l3backend-pdftex.def 2021-08-04 L3 backend support: PDF output (pdfTeX)
 \l__color_backend_stack_int=\count311
 \l__pdf_internal_box=\box56
 )
-(lec-23-blank.aux)
-\openout1 = `lec-23-blank.aux'.
+(lec-24-blank.aux)
+\openout1 = `lec-24-blank.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 7.
 LaTeX Font Info:    ... okay on input line 7.
@@ -512,9 +512,9 @@ LaTeX Info: Redefining \ref on input line 7.
 LaTeX Info: Redefining \pageref on input line 7.
 LaTeX Info: Redefining \nameref on input line 7.
 
-(lec-23-blank.out) (lec-23-blank.out)
+(lec-24-blank.out) (lec-24-blank.out)
 \@outlinefile=\write3
-\openout3 = `lec-23-blank.out'.
+\openout3 = `lec-24-blank.out'.
 
 
 (C:\Program Files (x86)\MiKTeX\tex/context/base/mkii\supp-pdf.mkii
@@ -548,163 +548,212 @@ Overfull \hbox (16.26796pt too wide) in paragraph at lines 9--9
  []
 
 LaTeX Font Info:    Trying to load font information for OT1+lmss on input line 
-17.
+18.
 (C:\Program Files (x86)\MiKTeX\tex/latex/lm\ot1lmss.fd
 File: ot1lmss.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
 LaTeX Font Info:    Font shape `OT1/lmss/b/n' in size <14> not available
-(Font)              Font shape `OT1/lmss/bx/n' tried instead on input line 17.
-LaTeX Font Info:    Trying to load font information for U+rsfs on input line 25
-.
+(Font)              Font shape `OT1/lmss/bx/n' tried instead on input line 18.
 
+Underfull \hbox (badness 10000) in paragraph at lines 19--20
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 21--22
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 21--22
+
+ []
+
+LaTeX Font Info:    Trying to load font information for U+rsfs on input line 27
+.
 (C:\Program Files (x86)\MiKTeX\tex/latex/jknappen\ursfs.fd
 File: ursfs.fd 1998/03/24 rsfs font definition file (jk)
 )
-LaTeX Font Info:    Trying to load font information for U+msa on input line 25.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 27.
 
 
 (C:\Program Files (x86)\MiKTeX\tex/latex/amsfonts\umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 25.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 27.
 
 
 (C:\Program Files (x86)\MiKTeX\tex/latex/amsfonts\umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-Underfull \hbox (badness 10000) in paragraph at lines 25--26
+<figures/A.pdf, id=27, 315.37228pt x 230.21338pt>
+File: figures/A.pdf Graphic file (type pdf)
+<use figures/A.pdf>
+Package pdftex.def Info: figures/A.pdf  used on input line 38.
+(pdftex.def)             Requested size: 22.76164pt x 14.22319pt.
+<figures/B.pdf, id=28, 314.21352pt x 229.77534pt>
+File: figures/B.pdf Graphic file (type pdf)
+<use figures/B.pdf>
+Package pdftex.def Info: figures/B.pdf  used on input line 39.
+(pdftex.def)             Requested size: 22.7595pt x 14.22418pt.
+<figures/C.pdf, id=29, 314.27463pt x 230.07079pt>
+File: figures/C.pdf Graphic file (type pdf)
+<use figures/C.pdf>
+Package pdftex.def Info: figures/C.pdf  used on input line 40.
+(pdftex.def)             Requested size: 22.75914pt x 14.22491pt.
+<figures/D.pdf, id=30, 313.57942pt x 227.58772pt>
+File: figures/D.pdf Graphic file (type pdf)
+<use figures/D.pdf>
+Package pdftex.def Info: figures/D.pdf  used on input line 41.
+(pdftex.def)             Requested size: 22.76143pt x 14.2242pt.
+<figures/E.pdf, id=31, 314.30771pt x 229.9817pt>
+File: figures/E.pdf Graphic file (type pdf)
+<use figures/E.pdf>
+Package pdftex.def Info: figures/E.pdf  used on input line 42.
+(pdftex.def)             Requested size: 22.76154pt x 14.22292pt.
+ [1
+
+{C:/Users/samso/AppData/Local/MiKTeX/pdftex/config/pdftex.map} <./figures/A.pdf
+> <./figures/B.pdf>] [2 <./figures/C.pdf> <./figures/D.pdf> <./figures/E.pdf>]
+Underfull \hbox (badness 10000) in paragraph at lines 54--55
 
  []
 
-[1
 
-{C:/Users/samso/AppData/Local/MiKTeX/pdftex/config/pdftex.map}] [2]
-Overfull \hbox (5.67787pt too wide) in paragraph at lines 80--81
-[] []\OT1/cmr/bx/n/10.95 An-other ex-am-ple prob-lem.[] \OT1/cmr/m/n/10.95 The 
-stu-dents of \OT1/cmr/bx/n/10.95 CSCE 411 \OT1/cmr/m/n/10.95 are man-ag-ing the
-ir semester
+Overfull \hbox (45.8241pt too wide) in paragraph at lines 58--59
+[]$[]$ \OT1/cmr/m/n/10.95 A pro-ce-dure for find-ing a value $[]$ that sat-is-f
+ies $[]$ 
  []
 
 
-Overfull \hbox (18.1671pt too wide) in paragraph at lines 91--100
- [] 
+Underfull \hbox (badness 10000) in paragraph at lines 60--61
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 63--64
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 65--66
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 65--66
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 67--68
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 68--69
+
  []
 
 [3]
-Overfull \hbox (51.24498pt too wide) in paragraph at lines 148--151
-[]\OT1/cmr/m/n/10.95 If a par-tic-u-lar so-lu-tion $[]$ sat-is-fies all of the 
-con-straints, we call it a $[]$.
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 155--156
+Underfull \hbox (badness 10000) in paragraph at lines 81--82
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 159--160
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 164--165
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 168--169
+Underfull \hbox (badness 10000) in paragraph at lines 83--84
 
  []
 
 [4]
-<lp-vertex.png, id=44, 475.7775pt x 328.8285pt>
-File: lp-vertex.png Graphic file (type png)
-<use lp-vertex.png>
-Package pdftex.def Info: lp-vertex.png  used on input line 197.
-(pdftex.def)             Requested size: 475.77632pt x 328.8277pt.
+Underfull \hbox (badness 10000) in paragraph at lines 102--103
 
-Overfull \hbox (60.2238pt too wide) in paragraph at lines 197--198
-[][] 
  []
 
-[5 <./lp-vertex.png>]
-<figures/A.pdf, id=53, 315.37228pt x 230.21338pt>
+
+Underfull \hbox (badness 10000) in paragraph at lines 108--109
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 122--123
+
+ []
+
+[5]
+
+LaTeX Font Warning: Font shape `OT1/cmr/m/scit' undefined
+(Font)              using `OT1/cmr/m/sc' instead on input line 127.
+
 File: figures/A.pdf Graphic file (type pdf)
 <use figures/A.pdf>
-Package pdftex.def Info: figures/A.pdf  used on input line 217.
+Package pdftex.def Info: figures/A.pdf  used on input line 148.
 (pdftex.def)             Requested size: 22.76164pt x 14.22319pt.
-<figures/B.pdf, id=54, 314.21352pt x 229.77534pt>
 File: figures/B.pdf Graphic file (type pdf)
 <use figures/B.pdf>
-Package pdftex.def Info: figures/B.pdf  used on input line 218.
+Package pdftex.def Info: figures/B.pdf  used on input line 149.
 (pdftex.def)             Requested size: 22.7595pt x 14.22418pt.
-<figures/C.pdf, id=55, 314.27463pt x 230.07079pt>
 File: figures/C.pdf Graphic file (type pdf)
 <use figures/C.pdf>
-Package pdftex.def Info: figures/C.pdf  used on input line 219.
+Package pdftex.def Info: figures/C.pdf  used on input line 150.
 (pdftex.def)             Requested size: 22.75914pt x 14.22491pt.
-<figures/D.pdf, id=56, 313.57942pt x 227.58772pt>
 File: figures/D.pdf Graphic file (type pdf)
 <use figures/D.pdf>
-Package pdftex.def Info: figures/D.pdf  used on input line 220.
+Package pdftex.def Info: figures/D.pdf  used on input line 151.
 (pdftex.def)             Requested size: 22.76143pt x 14.2242pt.
-<figures/E.pdf, id=57, 314.30771pt x 229.9817pt>
+File: figures/A.pdf Graphic file (type pdf)
+<use figures/A.pdf>
+Package pdftex.def Info: figures/A.pdf  used on input line 166.
+(pdftex.def)             Requested size: 22.76164pt x 14.22319pt.
+File: figures/B.pdf Graphic file (type pdf)
+<use figures/B.pdf>
+Package pdftex.def Info: figures/B.pdf  used on input line 167.
+(pdftex.def)             Requested size: 22.7595pt x 14.22418pt.
+File: figures/C.pdf Graphic file (type pdf)
+<use figures/C.pdf>
+Package pdftex.def Info: figures/C.pdf  used on input line 168.
+(pdftex.def)             Requested size: 22.75914pt x 14.22491pt.
+File: figures/D.pdf Graphic file (type pdf)
+<use figures/D.pdf>
+Package pdftex.def Info: figures/D.pdf  used on input line 169.
+(pdftex.def)             Requested size: 22.76143pt x 14.2242pt.
 File: figures/E.pdf Graphic file (type pdf)
 <use figures/E.pdf>
-Package pdftex.def Info: figures/E.pdf  used on input line 221.
+Package pdftex.def Info: figures/E.pdf  used on input line 170.
 (pdftex.def)             Requested size: 22.76154pt x 14.22292pt.
-<figures/F.pdf, id=58, 313.4928pt x 228.73375pt>
-File: figures/F.pdf Graphic file (type pdf)
-<use figures/F.pdf>
-Package pdftex.def Info: figures/F.pdf  used on input line 222.
-(pdftex.def)             Requested size: 22.75993pt x 14.22601pt.
- [6 <./figures/A.pdf> <./figures/B.pdf> <./figures/C.pdf> <./figures/D.pdf> <./
-figures/E.pdf> <./figures/F.pdf>]
-Overfull \hbox (69.66484pt too wide) in paragraph at lines 253--255
-[]\OT1/cmr/m/n/10.95 Let $[]$ be the $[]$ 
- []
+[6]
 
+LaTeX Font Warning: Font shape `OT1/cmr/m/scit' undefined
+(Font)              using `OT1/cmr/m/sc' instead on input line 186.
 
-Overfull \hbox (95.154pt too wide) in paragraph at lines 255--257
-[]\OT1/cmr/m/n/10.95 Let $[]$ be the $[]$ 
- []
-
-
-Overfull \hbox (79.27654pt too wide) in paragraph at lines 257--258
-[]\OT1/cmr/m/n/10.95 Let $[]$ be the $[]$ 
- []
-
-[7]
-Overfull \hbox (34.09753pt too wide) in paragraph at lines 266--267
-\OT1/cmr/m/n/10.95 lem where $[]$ and $[]$,
- []
-
-[8] (lec-23-blank.aux)
-Package rerunfilecheck Info: File `lec-23-blank.out' has not changed.
-(rerunfilecheck)             Checksum: B7B0E18947799E5F4DD2B1710F548A84;558.
+[7] (lec-24-blank.aux)
+Package rerunfilecheck Info: File `lec-24-blank.out' has not changed.
+(rerunfilecheck)             Checksum: 6F43B7332EA5758514F6C9C23D8097DB;1530.
  ) 
 Here is how much of TeX's memory you used:
- 12681 strings out of 478927
- 192670 string characters out of 2859566
- 507254 words of memory out of 3000000
- 30323 multiletter control sequences out of 15000+600000
- 412580 words of font info for 53 fonts, out of 8000000 for 9000
+ 12682 strings out of 478927
+ 192529 string characters out of 2859566
+ 510255 words of memory out of 3000000
+ 30314 multiletter control sequences out of 15000+600000
+ 413483 words of font info for 56 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 74i,9n,82p,360b,326s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 74i,8n,82p,545b,480s stack positions out of 5000i,500n,10000p,200000b,80000s
 {C:/Program Files (x86)/MiKTeX/fonts/enc/dvips/lm/lm-rm.enc} <C:\Users\samso\
 AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\tcrm1095.pk><C:/Program
  Files (x86)/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C:/Program Files
- (x86)/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Program Files (x86)
-/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi8.pfb><C:/Program Files (x86)/MiKTeX
-/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Program Files (x86)/MiKTeX/fonts/
-type1/public/amsfonts/cm/cmr12.pfb><C:/Program Files (x86)/MiKTeX/fonts/type1/p
-ublic/amsfonts/cm/cmr8.pfb><C:/Program Files (x86)/MiKTeX/fonts/type1/public/am
-sfonts/cm/cmsy10.pfb><C:/Program Files (x86)/MiKTeX/fonts/type1/public/amsfonts
-/cm/cmsy8.pfb><C:/Program Files (x86)/MiKTeX/fonts/type1/public/amsfonts/cm/cmt
-i10.pfb><C:/Program Files (x86)/MiKTeX/fonts/type1/public/lm/lmssbx10.pfb>
-Output written on lec-23-blank.pdf (8 pages, 867879 bytes).
+ (x86)/MiKTeX/fonts/type1/public/amsfonts/cm/cmcsc10.pfb><C:/Program Files (x86
+)/MiKTeX/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Program Files (x86)/MiKT
+eX/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Program Files (x86)/MiKTeX/fon
+ts/type1/public/amsfonts/cm/cmmi8.pfb><C:/Program Files (x86)/MiKTeX/fonts/type
+1/public/amsfonts/cm/cmr10.pfb><C:/Program Files (x86)/MiKTeX/fonts/type1/publi
+c/amsfonts/cm/cmr12.pfb><C:/Program Files (x86)/MiKTeX/fonts/type1/public/amsfo
+nts/cm/cmsy10.pfb><C:/Program Files (x86)/MiKTeX/fonts/type1/public/amsfonts/cm
+/cmsy6.pfb><C:/Program Files (x86)/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy8.
+pfb><C:/Program Files (x86)/MiKTeX/fonts/type1/public/amsfonts/cm/cmti10.pfb><C
+:/Program Files (x86)/MiKTeX/fonts/type1/public/lm/lmssbx10.pfb>
+Output written on lec-24-blank.pdf (7 pages, 725652 bytes).
 PDF statistics:
- 309 PDF objects out of 1000 (max. 8388607)
- 16 named destinations out of 1000 (max. 500000)
- 68 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 302 PDF objects out of 1000 (max. 8388607)
+ 28 named destinations out of 1000 (max. 500000)
+ 74 words of extra memory for PDF output out of 10000 (max. 10000000)
 
