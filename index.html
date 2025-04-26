@@ -2946,7 +2946,45 @@ effect of unreliability/noise in test outcomes.
 </br>
 </ol>
 
+<h3>
+Preprints
+</h3>
 
+<ul>
+
+<li>
+<b>
+Fast, Space-Optimal Streaming Algorithms for Clustering and Subspace Embeddings
+</b>
+</br><i>
+--vincentcohenaddad--,
+--liudengwang--,
+--davidwoodruff--,
+Samson Zhou</br></i>
+[<a href="javascript:toggle('CWWZ25')">abstract</a>]
+[<a href="https://arxiv.org/pdf/2504.16229">pdf</a>]
+</br>
+<div id="CWWZ25" style="display: none">
+<p id="abs">
+We show that both clustering and subspace embeddings can be performed in the streaming model with the same asymptotic 
+efficiency as in the central/offline setting.
+
+For $(k, z)$-clustering in the streaming model, we achieve a number of words of memory which is independent of the 
+number $n$ of input points and the aspect ratio $\Delta$, yielding an optimal bound of 
+$\tilde{\mathcal{O}}\left(\frac{dk}{\min(\varepsilon^4,\varepsilon^{z+2})}\right)$ words for accuracy parameter $\varepsilon$ on 
+$d$-dimensional points. Additionally, we obtain amortized update time of $d\,\log(k)\cdot\text{polylog}(\log(n\Delta))$, 
+which is an exponential improvement over the previous $d\,\text{poly}(k,\log(n\Delta))$. Our method also gives the 
+fastest runtime for $(k,z)$-clustering even in the offline setting. 
+
+For subspace embeddings in the streaming model, we achieve $\mathcal{O}(d)$ update time and space-optimal constructions,  
+using $\tilde{\mathcal{O}}\left(\frac{d^2}{\varepsilon^2}\right)$ words for $p\le 2$ and 
+$\tilde{\mathcal{O}}\left(\frac{d^{p/2+1}}{\varepsilon^2}\right)$ words for $p>2$, 
+showing that streaming algorithms can match offline algorithms in both space and time complexity. 
+</div>
+</li>
+</br>
+
+</ul>
 
 <!--
 <h3>Other Writings</h3>
