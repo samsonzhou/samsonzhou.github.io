@@ -196,8 +196,8 @@ Service
 </h3>
 
 <ul>
-<li>April 14-16, 2025: Co-organizer of the <a href="https://waldo-workshop.github.io/2025.html">Workshop on Algorithms for Large Data (Online)</a>, i.e., WALDO 2025</li>
 <li>I have the privilege of serving on the program committees of SOSA 2026, <a href="https://approxconference.com/">APPROX 2025</a>, and <a href="https://randomconference.com/">RANDOM 2025</a>. Please consider sending your papers!</li>
+<li>April 14-16, 2025: Co-organizer of the <a href="https://waldo-workshop.github.io/2025.html">Workshop on Algorithms for Large Data (Online)</a>, i.e., WALDO 2025</li>
 <li>Fall 2023-Present: Problem-Solving Session Instructor at the <a href="https://sites.google.com/tamu.edu/tamu-math-circle">TAMU Math Circle</a></li>
 <li>Fall 2023-Present: Co-organizer of the <a href="reading-group.html">Algorithms and Data Science Reading Group</a> at Texas A&#38;M University</li>
 <li>August 19-21, 2024: Co-organizer of the TTIC Workshop: <a href="https://samsonzhou.github.io/ttic-2024-workshop-learning-augmented.html">Learning-Augmented Algorithms</a></li>
@@ -238,6 +238,108 @@ Publications
 </h3>
 
 <ol reversed>
+
+<li>
+<b>
+On Fine-Grained Distinct Element Estimation
+</b>
+</br><i>
+--iliasdiakonikolas--,
+--danielkane--,
+--jasperlee--,
+--thansispittas--,
+--davidwoodruff--,
+Samson Zhou
+</br></i>
+<a href="https://icml.cc/Conferences/2025">ICML 2025</a>
+[<a href="javascript:toggle('DKLPWZ25')">abstract</a>]
+<!--[<a href="https://arxiv.org/pdf/2504.07237">pdf</a>]-->
+<div id="DKLPWZ25" style="display: none">
+<p id="abs">
+We study the problem of distributed distinct element estimation, 
+where $\alpha$ servers each receive a subset of a universe $[n]$ 
+and aim to compute a $(1+\varepsilon)$-approximation to the number 
+of distinct elements using minimal communication. While prior work 
+establishes a worst-case bound of $\Theta\left(\alpha\log n+\frac{\alpha}{\varepsilon^2}\right)$ bits, 
+these results rely on assumptions that may not hold in practice. We introduce a new parameterization 
+based on the number $C = \frac{\beta}{\varepsilon^2}$ of pairwise collisions, i.e., instances where 
+the same element appears on multiple servers, and design a protocol that uses only 
+$O\left(\alpha\log n\log\log n+\frac{\sqrt{\beta}}{\varepsilon^2} \log n\right)$ bits, 
+breaking previous lower bounds when $C$ is small. We further improve our algorithm under 
+assumptions on the number of distinct elements or collisions and provide matching 
+lower bounds in all regimes, establishing $C$ as a tight complexity measure for the problem. 
+Finally, we consider streaming algorithms for distinct element estimation parameterized by 
+the number of items with frequency larger than $1$. Overall, our results offer insight into 
+why statistical problems with known hardness results can be efficiently solved in practice.
+</div>
+</li>
+</br>
+
+
+
+
+<li>
+<b>
+Relative Error Fair Clustering in the Weak-Strong Oracle Model
+</b>
+</br><i>
+--vladimirbraverman--,
+--prathameshdharangutte--,
+--shaofengjiang--,
+--hoaiannguyen--,
+--chenwang--,
+--yubozhang--,
+Samson Zhou
+</br></i>
+<a href="https://icml.cc/Conferences/2025">ICML 2025</a>
+[<a href="javascript:toggle('BDJNWZZ25')">abstract</a>]
+<!--[<a href="https://arxiv.org/pdf/2504.07237">pdf</a>]-->
+<div id="BDJNWZZ25" style="display: none">
+<p id="abs">
+We study fair clustering problems in a setting where distance information is obtained from two sources: a strong oracle providing exact distances, 
+but at a high cost, and a weak oracle providing potentially inaccurate distance estimates at a low cost. The goal is to produce a near-optimal 
+\emph{fair} clustering on $n$ input points with a minimum number of strong oracle queries. This models the increasingly common trade-off between 
+accurate but expensive similarity measures (e.g., large-scale embeddings) and cheaper but inaccurate alternatives. The study of fair clustering 
+in the model is motivated by the important quest of achieving fairness with the presence of inaccurate information.
+We achieve the first $(1+\varepsilon)$-coresets for fair $k$-median clustering using 
+$\text{poly}\left(\frac{k}{\varepsilon}\cdot\log n\right)$ queries to the strong oracle. 
+Furthermore, our results imply coresets for the standard setting (without fairness constraints), and 
+we could in fact obtain $(1+\varepsilon)$-coresets for $(k,z)$-clustering for general $z=O(1)$ with a 
+similar number of strong oracle queries. By contrast, previous results achieved a constant-factor $(>10)$ 
+approximation for the standard $k$-clustering problems, and no previous work considered the fair $k$-median clustering problem.
+</div>
+</li>
+</br>
+
+
+
+
+<li>
+<b>
+Learning-Augmented Hierarchical Clustering
+</b>
+</br><i>
+--vladimirbraverman--,
+--jonergun--,
+--chenwang--,
+Samson Zhou
+</br></i>
+<a href="https://icml.cc/Conferences/2025">ICML 2025</a>
+[<a href="javascript:toggle('BEWZ25')">abstract</a>]
+<!--[<a href="https://arxiv.org/pdf/2504.07237">pdf</a>]-->
+<div id="BEWZ25" style="display: none">
+<p id="abs">
+Hierarchical clustering (HC) is an important data analysis technique in which the goal is to recursively partition a dataset 
+into a tree-like structure while grouping together similar data points at each level of granularity. Unfortunately, 
+for many of the proposed HC objectives, there exist strong barriers to approximation algorithms with the hardness of 
+approximation. We consider the problem of hierarchical clustering given auxiliary information from natural oracles in the learning-augmented framework. 
+Our main results are algorithms that given learning-augmented oracles, compute efficient approximate HC trees for the celebrated Dasgupta's 
+and Moseley-Wang objectives that overcome known hardness barriers.
+</div>
+</li>
+</br>
+
+
 
 
 <li>
@@ -2946,7 +3048,45 @@ effect of unreliability/noise in test outcomes.
 </br>
 </ol>
 
+<h3>
+Preprints
+</h3>
 
+<ul>
+
+<li>
+<b>
+Fast, Space-Optimal Streaming Algorithms for Clustering and Subspace Embeddings
+</b>
+</br><i>
+--vincentcohenaddad--,
+--liudengwang--,
+--davidwoodruff--,
+Samson Zhou</br></i>
+[<a href="javascript:toggle('CWWZ25')">abstract</a>]
+[<a href="https://arxiv.org/pdf/2504.16229">pdf</a>]
+</br>
+<div id="CWWZ25" style="display: none">
+<p id="abs">
+We show that both clustering and subspace embeddings can be performed in the streaming model with the same asymptotic 
+efficiency as in the central/offline setting.
+
+For $(k, z)$-clustering in the streaming model, we achieve a number of words of memory which is independent of the 
+number $n$ of input points and the aspect ratio $\Delta$, yielding an optimal bound of 
+$\tilde{\mathcal{O}}\left(\frac{dk}{\min(\varepsilon^4,\varepsilon^{z+2})}\right)$ words for accuracy parameter $\varepsilon$ on 
+$d$-dimensional points. Additionally, we obtain amortized update time of $d\,\log(k)\cdot\text{polylog}(\log(n\Delta))$, 
+which is an exponential improvement over the previous $d\,\text{poly}(k,\log(n\Delta))$. Our method also gives the 
+fastest runtime for $(k,z)$-clustering even in the offline setting. 
+
+For subspace embeddings in the streaming model, we achieve $\mathcal{O}(d)$ update time and space-optimal constructions,  
+using $\tilde{\mathcal{O}}\left(\frac{d^2}{\varepsilon^2}\right)$ words for $p\le 2$ and 
+$\tilde{\mathcal{O}}\left(\frac{d^{p/2+1}}{\varepsilon^2}\right)$ words for $p>2$, 
+showing that streaming algorithms can match offline algorithms in both space and time complexity. 
+</div>
+</li>
+</br>
+
+</ul>
 
 <!--
 <h3>Other Writings</h3>
@@ -3234,6 +3374,12 @@ var info = new Array(  new Array('--jeremiahblocki--', 'Jeremiah Blocki', 'https
 					 , new Array('--karthikcs--', 'Karthik C.S.', 'https://cskarthikcs.github.io/index.html')
 					 , new Array('--euiwoonglee--', 'Euiwoong Lee', 'https://web.eecs.umich.edu/~euiwoong/')
 					 , new Array('--yuvalrabani--', 'Yuval Rabani', 'https://www.cs.huji.ac.il/w~yrabani/')
+					 , new Array('--prathameshdharangutte--', 'Prathamesh Dharangutte', 'https://prathameshd.com/')
+					 , new Array('--hoaiannguyen--', 'Hoai-An Nguyen', 'https://hoaiannguyen.com/')
+					 , new Array('--danielkane--', 'Daniel M. Kane', 'https://cseweb.ucsd.edu/~dakane/')
+					 , new Array('--iliasdiakonikolas--', 'Ilias Diakonikolas', 'http://www.iliasdiakonikolas.org/')
+					 , new Array('--thansispittas--', 'Thanasis Pittas', 'https://thanasispittas.github.io/')
+					 , new Array('--jasperlee--', 'Jasper C.H. Lee', 'https://jasperchlee.github.io/')
 					 );
 
 					 
