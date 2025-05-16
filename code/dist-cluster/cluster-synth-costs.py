@@ -4,7 +4,7 @@ from sklearn.cluster import KMeans
 from sklearn.datasets import load_digits
 import random
 
-seed = 28
+seed = 42
 #22 is great
 
 random.seed(seed)  # Set seed to any integer
@@ -267,7 +267,8 @@ def plot_clusters(S, C, labels):
     base_cmap = plt.colormaps.get_cmap('tab10')
     color_list = [base_cmap(i % 10) for i in range(k)]  # tab10 has only 10 unique colors
 
-    plt.figure(figsize=(8, 6))
+    plt.figure()
+    #plt.figure(figsize=(8, 6))
 
     for j in range(k):
         cluster_points = S[labels == j]
