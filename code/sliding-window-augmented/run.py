@@ -72,7 +72,7 @@ for i, item in enumerate(items):
     # evaluation
     if eval:
         if (i + 1) % eval_interval == 0:
-            print(f"\nAfter {i+1} items:")
+            #print(f"\nAfter {i+1} items:")
             true_top = true_counts.most_common(k)
             wcss_top = wcss_model.get_top_k()
             lstm_top = lstm_model.get_top_k()
