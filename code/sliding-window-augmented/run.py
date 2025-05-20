@@ -78,16 +78,16 @@ for i, item in enumerate(items):
             lstm_top = lstm_model.get_top_k()
             transformer_top = transformer_model.get_top_k()
 
-            print("True top-k:        ", true_top)
-            print("Baseline WCSS top: ", wcss_top)
-            print("LSTM model top:    ", lstm_top)
-            print("Transformer top:   ", transformer_top)
+            #print("True top-k:        ", true_top)
+            #print("Baseline WCSS top: ", wcss_top)
+            #print("LSTM model top:    ", lstm_top)
+            #print("Transformer top:   ", transformer_top)
 
             for model_name, top_k in [('WCSS', wcss_top), ('LSTM', lstm_top), ('Transformer', transformer_top)]:
             # for model_name, top_k in [('WCSS', wcss_top), ('LSTM', lstm_top)]:
                 for est_item, est_count in top_k:
                     true_count = true_counts.get(est_item, 0)
-                    print(f"  {model_name} - Item {est_item}: Estimated={est_count}, True={true_count}")
+                    #print(f"  {model_name} - Item {est_item}: Estimated={est_count}, True={true_count}")
 
 print("\n=== Final Results ===")
 print("True top-k:        ", true_counts.most_common(k))

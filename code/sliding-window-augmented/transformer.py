@@ -34,7 +34,7 @@ class SimpleTransformer(nn.Module):
     def predict(self, item_idx_tensor):
         with torch.no_grad():
             prob = self.forward(item_idx_tensor).item()
-            print(item_idx_tensor, prob)
+            #print(item_idx_tensor, prob)
             return prob >= 0.67
 
     def update(self, item_idx_tensor, item_label):
@@ -107,7 +107,7 @@ def train_predictor(model, X_train, y_train, epochs=10, batch_size=64, lr=0.001,
             loss.backward()
             optimizer.step()
             total_loss += loss.item()
-        print(f"Epoch {epoch+1}/{epochs} - Loss: {total_loss/len(loader):.4f}")
+        #print(f"Epoch {epoch+1}/{epochs} - Loss: {total_loss/len(loader):.4f}")
 
     model.eval()
 
