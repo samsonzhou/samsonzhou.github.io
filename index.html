@@ -3057,6 +3057,38 @@ Preprints
 
 <li>
 <b>
+Private Training &#38; Data Generation by Clustering Embeddings
+</b>
+</br><i>
+--felixzhou--,
+Samson Zhou,
+--alessandroepasto--,
+--vincentcohenaddad--
+</br></i>
+[<a href="javascript:toggle('ZZEC25')">abstract</a>]
+[<a href="https://arxiv.org/pdf/2506.16661">pdf</a>]
+</br>
+<div id="ZZEC25" style="display: none">
+<p id="abs">
+Deep neural networks often use large, high-quality datasets to achieve high performance on many machine learning tasks. 
+When training involves potentially sensitive data, this process can raise privacy concerns, as large models have been shown to 
+unintentionally memorize and reveal sensitive information, including reconstructing entire training samples. Differential privacy (DP) 
+provides a robust framework for protecting individual data and in particular, a new approach to privately training deep neural networks 
+is to approximate the input dataset with a privately generated synthetic dataset, before any subsequent training algorithm. 
+We introduce a novel principled method for DP synthetic image embedding generation, based on fitting a Gaussian Mixture Model (GMM) 
+in an appropriate embedding space using DP clustering. Our method provably learns a GMM under separation conditions. 
+Empirically, a simple two-layer neural network trained on synthetically generated embeddings achieves state-of-the-art (SOTA) 
+classification accuracy on standard benchmark datasets. Additionally, we demonstrate that our method can generate 
+realistic synthetic images that achieve downstream classification accuracy comparable to SOTA methods. 
+Our method is quite general, as the encoder and decoder modules can be freely substituted to suit different tasks. 
+It is also highly scalable, consisting only of subroutines that scale linearly with the number of samples and/or can be implemented efficiently in distributed systems. 
+</div>
+</li>
+</br>
+
+
+<li>
+<b>
 Fast, Space-Optimal Streaming Algorithms for Clustering and Subspace Embeddings
 </b>
 </br><i>
@@ -3381,6 +3413,8 @@ var info = new Array(  new Array('--jeremiahblocki--', 'Jeremiah Blocki', 'https
 					 , new Array('--iliasdiakonikolas--', 'Ilias Diakonikolas', 'http://www.iliasdiakonikolas.org/')
 					 , new Array('--thansispittas--', 'Thanasis Pittas', 'https://thanasispittas.github.io/')
 					 , new Array('--jasperlee--', 'Jasper C.H. Lee', 'https://jasperchlee.github.io/')
+					 , new Array('--felixzhou--', 'Felix Zhou', 'https://felix-zhou.com/')
+					 , new Array('--alessandroepasto--', 'Alessandro Epasto', 'https://www.epasto.org/')
 					 );
 
 					 
