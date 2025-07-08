@@ -240,6 +240,33 @@ Publications
 
 <ol reversed>
 
+
+<li>
+<b>
+Perfect L<sub>p</sub> Sampling with Polylogarithmic Update Time
+</b>
+</br><i>
+--williamswartworth--
+--davidwoodruff--,
+Samson Zhou
+</br></i>
+<a href="https://focs.computer.org/2025/">FOCS 2025</a>
+[<a href="javascript:toggle('SWZ25')">abstract</a>]
+<!--[<a href="https://arxiv.org/pdf/2506.22608">pdf</a>]-->
+<div id="SWZ25" style="display: none">
+<p id="abs">
+Perfect $L_p$ sampling in a stream was introduced by Jayaram and Woodruff (FOCS, 2018) as a streaming primitive which, given turnstile updates to a vector 
+$x \in \{-\poly(n), \ldots, \poly(n)\}^n$, outputs an index $i \in \{1, 2, \ldots, n\}$ such that the probability of returning index $i$ is exactly 
+\[\frac{|x_i|^p}{\|x\|_p^p} \pm \frac{1}{n^C},\] where $C > 0$ is an arbitrarily large constant. They achieve the optimal $\tilde{O}(\log^2 n)$ 
+bits of memory for $0 &lt; p &lt; 2$. An important question left open by that work is to improve the time needed to process each new stream update, 
+which is at least $n^C$ on every single update. For $0 &lt; p &lt; 2$, we give the first perfect $L_p$-sampler with the same optimal amount of memory 
+but with only $\poly(\log n)$ update time. Crucial to our result is an efficient simulation of a sum of reciprocals of powers of truncated 
+exponential random variables by approximating its characteristic function, using the Gil-Paelez inversion formula, and applying variants 
+of the trapezoid formula to quickly approximate it. 
+</div>
+</li>
+</br>
+
 <li>
 <b>
 On Fine-Grained Distinct Element Estimation
@@ -3426,6 +3453,7 @@ var info = new Array(  new Array('--jeremiahblocki--', 'Jeremiah Blocki', 'https
 					 , new Array('--felixzhou--', 'Felix Zhou', 'https://felix-zhou.com/')
 					 , new Array('--alessandroepasto--', 'Alessandro Epasto', 'https://www.epasto.org/')
 					 , new Array('--vahabmirrokni--', 'Vahab Mirrokni', 'https://research.google/people/mirrokni/')
+					 , new Array('--williamswartworth--', 'William Swartworth', 'https://wswartworth.github.io/')
 					 );
 
 					 
