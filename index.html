@@ -210,11 +210,11 @@ Service
 </ul>
 
 <ul>
-<li>Program committee/area chair: SOSA 2026, <a href="https://neurips.cc/Conferences/2025">NeurIPS 2025</a>, <a href="https://approxconference.com/">APPROX 2025</a>, <a href="https://randomconference.com/">RANDOM 2025</a>, <a href="https://icml.cc/Conferences/2025">ICML 2025</a>, <a href="https://neurips.cc/Conferences/2024">NeurIPS 2024</a>, <a href="https://algo-conference.org/2024/esa/">ESA 2024</a>, <a href="https://sites.google.com/view/isaac2024/">ISAAC 2024</a>, <a href="https://learningtheory.org/colt2024/">COLT 2024</a>, <a href="https://learningtheory.org/colt2023/index.html">COLT 2023</a>, <a href="https://learningtheory.org/colt2022/index.html">COLT 2022</a>, <a href="https://randomconference.com/random-2022-home/">RANDOM 2022</a>
+<li>Program committee/area chair: <a href="https://www.siam.org/conferences-events/siam-conferences/sosa26/">SOSA 2026</a>, <a href="https://neurips.cc/Conferences/2025">NeurIPS 2025</a>, <a href="https://approxconference.com/">APPROX 2025</a>, <a href="https://randomconference.com/">RANDOM 2025</a>, <a href="https://icml.cc/Conferences/2025">ICML 2025</a>, <a href="https://neurips.cc/Conferences/2024">NeurIPS 2024</a>, <a href="https://algo-conference.org/2024/esa/">ESA 2024</a>, <a href="https://sites.google.com/view/isaac2024/">ISAAC 2024</a>, <a href="https://learningtheory.org/colt2024/">COLT 2024</a>, <a href="https://learningtheory.org/colt2023/index.html">COLT 2023</a>, <a href="https://learningtheory.org/colt2022/index.html">COLT 2022</a>, <a href="https://randomconference.com/random-2022-home/">RANDOM 2022</a>
 </br>
 <li>Reviewer:
 <ul>
-<li>2025: AISTATS, ESA, FOCS, ICALP, ICLR, IPCO, ISIT, ITCS, PODS, SODA, STOC </li>
+<li>2025: AISTATS, APPROX, ESA, FOCS, ICALP, ICLR, IPCO, ISIT, ITCS, PODS, RANDOM, SODA, STOC </li>
 <li>2024: AISTATS, COLT, ESA, FOCS, ICALP, ICDT, ICLR, ICML, INFOCOM, ISAAC, ISIT, ITCS, NeurIPS, PODS, RANDOM, SoCG, SODA, STACS, STOC </li>
 <li>2023: COLT, ESA, FOCS, ICALP, ICML, ITCS, NeurIPS, PODS, SIGMETRICS, SODA, STACS, STOC </li>
 <li>2022: AAAI, AISTATS, COLT, ICALP, ICLR, ICML, ITCS, NeurIPS, PODS, RANDOM, SODA, SPAA, STOC </li>
@@ -241,6 +241,36 @@ Publications
 
 <ol reversed>
 
+
+<li>
+<b>
+Perfect L<sub>p</sub> Sampling with Polylogarithmic Update Time
+</b>
+</br><i>
+--williamswartworth--, 
+--davidwoodruff--, 
+Samson Zhou
+</br></i>
+<a href="https://focs.computer.org/2025/">FOCS 2025</a>
+[<a href="javascript:toggle('SWZ25')">abstract</a>]
+<!--[<a href="https://arxiv.org/pdf/2506.22608">pdf</a>]-->
+<div id="SWZ25" style="display: none">
+<p id="abs">
+Perfect $L_p$ sampling in a stream was introduced by Jayaram and Woodruff (FOCS, 2018) as a streaming primitive which, given turnstile updates to a vector 
+$x \in \{-\poly(n), \ldots, \poly(n)\}^n$, outputs an index $i \in \{1, 2, \ldots, n\}$ such that the probability of returning index $i$ is exactly 
+\[\frac{|x_i|^p}{\|x\|_p^p} \pm \frac{1}{n^C},\] where $C > 0$ is an arbitrarily large constant. They achieve the optimal $\tilde{O}(\log^2 n)$ 
+bits of memory for $0 &lt; p &lt; 2$. An important question left open by that work is to improve the time needed to process each new stream update, 
+which is at least $n^C$ on every single update. For $0 &lt; p &lt; 2$, we give the first perfect $L_p$-sampler with the same optimal amount of memory 
+but with only $\poly(\log n)$ update time. Crucial to our result is an efficient simulation of a sum of reciprocals of powers of truncated 
+exponential random variables by approximating its characteristic function, using the Gil-Paelez inversion formula, and applying variants 
+of the trapezoid formula to quickly approximate it. 
+</div>
+</li>
+</br>
+
+
+
+
 <li>
 <b>
 On Fine-Grained Distinct Element Estimation
@@ -255,6 +285,7 @@ Samson Zhou
 </br></i>
 <a href="https://icml.cc/Conferences/2025">ICML 2025</a>
 [<a href="javascript:toggle('DKLPWZ25')">abstract</a>]
+[<a href="/Talks/DKLPWZ25-poster.pdf">poster</a>]
 [<a href="https://arxiv.org/pdf/2506.22608">pdf</a>]
 <div id="DKLPWZ25" style="display: none">
 <p id="abs">
@@ -355,6 +386,7 @@ Samson Zhou
 </br></i>
 <a href="https://2025.sigmod.org/index.shtml">PODS 2025</a>
 [<a href="javascript:toggle('WXZ25')">abstract</a>]
+[<a href="/Talks/WXZ25-poster.pdf">Shenghao's poster</a>]
 [<a href="https://arxiv.org/pdf/2504.07237">pdf</a>]
 <div id="WXZ25" style="display: none">
 <p id="abs">
@@ -452,6 +484,8 @@ Lifting Linear Sketches: Optimal Bounds and Adversarial Robustness
 Samson Zhou</br></i>
 <a href="https://acm-stoc.org/stoc2025/">STOC 2025</a>
 [<a href="javascript:toggle('GLWYZ25')">abstract</a>]
+[<a href="/Talks/GLWYZ25-poster.pdf">Elena's poster</a>]
+[<a href="/Talks/GLWYZ25-slides.pdf">slides</a>]
 [<a href="https://arxiv.org/pdf/2503.19629">pdf</a>]
 <div id="GLWYZ25" style="display: none">
 <p id="abs">
@@ -699,6 +733,10 @@ A Strong Separation for Adversarially Robust &#8467;<sub>0</sub> Estimation for 
 Samson Zhou</br></i>
 <a href="https://focs.computer.org/2024/">FOCS 2024</a>
 [<a href="javascript:toggle('GLWYZ24')">abstract</a>]
+[<a href="/Talks/GLWYZ24-poster.pdf">Honghao's poster</a>]
+[<a href="/Talks/GLWYZ24-slides.pdf">slides</a>]
+[<a href="https://www.youtube.com/watch?v=zI0FPRUaGt8">video</a>]
+[<a href="https://www.youtube.com/watch?v=-oSz__NbblU">Elena's video</a>]
 [<a href="https://arxiv.org/pdf/2409.16153">pdf</a>]
 <div id="GLWYZ24" style="display: none">
 <p id="abs">
@@ -898,8 +936,8 @@ Streaming Euclidean <i>k</i>-median and <i>k</i>-means with <i>o</i>(log <i>n</i
 Samson Zhou</br></i>
 <a href="https://focs.computer.org/2023/">FOCS 2023</a>
 [<a href="javascript:toggle('CWZ23')">abstract</a>]
-[<a href="https://www.youtube.com/watch?v=N3Mfo880K54">video</a>]
 [<a href="/Talks/CWZ23.pdf">slides</a>]
+[<a href="https://www.youtube.com/watch?v=N3Mfo880K54">video</a>]
 [<a href="https://arxiv.org/pdf/2310.02882.pdf">pdf</a>]
 </br>
 <div id="CWZ23" style="display: none">
@@ -3420,6 +3458,7 @@ var info = new Array(  new Array('--jeremiahblocki--', 'Jeremiah Blocki', 'https
 					 , new Array('--felixzhou--', 'Felix Zhou', 'https://felix-zhou.com/')
 					 , new Array('--alessandroepasto--', 'Alessandro Epasto', 'https://www.epasto.org/')
 					 , new Array('--vahabmirrokni--', 'Vahab Mirrokni', 'https://research.google/people/mirrokni/')
+					 , new Array('--williamswartworth--', 'William Swartworth', 'https://wswartworth.github.io/')
 					 );
 
 					 
