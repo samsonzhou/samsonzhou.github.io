@@ -1,0 +1,90 @@
+\documentclass[12pt]{article}  % This is an article with font size 12-point
+
+% Packages add features
+%\usepackage{times}     % font choice
+\usepackage{amsmath}   % American Mathematical Association math formatting
+\usepackage{amsthm}    % nice formatting of theorems
+\usepackage{amssymb}    % provides some symbols
+\usepackage{latexsym}  % provides some more symbols
+\usepackage{fullpage}  % uses most of the page (1-inch margins)
+\usepackage{graphicx}
+\usepackage{enumitem}
+\usepackage{titlesec}
+\titleformat{\section}{\fontfamily{lmss}\fontsize{14}{15}\bfseries}{\thesection}{1em}{}
+\titleformat{\subsection}{\fontfamily{lmss}\fontsize{12}{15}\bfseries}{\thesubsection}{1em}{}
+
+
+\setlength{\parskip}{.1in}  % increase the space between paragraphs
+\setlength{\parindent}{0pt}
+%\renewcommand{\baselinestretch}{1.5}  % increase the space between lines
+
+
+% Preamble
+\input{hw-preamble}
+
+
+\usepackage{setspace}
+ \onehalfspacing
+
+\titleheader{CSCE 411, Fall 2025: Homework 1}{}{}
+\begin{document}
+
+%\maketitle
+\section*{CSCE 411, Fall 2025: Homework 1}
+\rule{\textwidth}{0.4pt}
+
+\textbf{Problem 0.} (-5 for leaving blank.) Write down all outside resources you consulted, and the names of any other students that you worked with in any way. By turning in this homework, you acknowledge that you have read and abide by all course policies on outside resources and collaboration as stated in the course syllabus. Use of Generative AI tools must be explicitly noted. \textit{If you did not use outside resources, AI tools, or collaborators, state that explicitly.}\\
+
+\textbf{Problem 1.} Let \textsc{BinSearch}$(A,k)$ be a standard binary search algorithm that takes in a {sorted} array $A$ of integers, and an integer $k$ that is guaranteed to be contained somewhere in $A$, and returns an index $j$ such that $A[j] = k$. 
+
+(a) Write pseudocode to implement this method. You may assume that $|A|$ is a power of 2. For your code, assume $A$ is 1-indexed (i.e., $A[1]$ is the first element).
+
+(b) Write down a recurrence relation for this algorithm.
+
+\textbf{Problem 2.} Consider the recurrence relations below. For each, there is some text that attempts to apply the Master Theorem (as shown at the end of the homework) to determine the runtime. In each case, state whether the analysis is correct, or whether there is an error in the application of the Master Theorem. If there is an error, state what the error is and what the correct answer should be.
+
+(a) Recurrence: $T(n) = 2T(n/4)+ \sqrt{n}$.
+
+Candidate explanation: In this case, $g(n) = n^{\log_b a} = n^{\log_4 2} = n^{\frac{1}{2}}$. Hence, $f(n) = \sqrt{n} = O(n^{\log_b a - \varepsilon})$ for a sufficiently small $\varepsilon$, and therefore Case 1 applies and we know $T(n) = \Theta(n^{1/2})$. 
+
+(b) Recurrence: $T(n) = 2T(n/4)+ \sqrt{n} \log^2 n$.
+
+Candidate explanation: In this case, $g(n) = n^{\log_b a} = n^{\log_4 2} = n^{\frac{1}{2}}$. Meanwhile, $f(n) = \sqrt{n} \log^2 n$. Hence, $f(n)$ is polynomially larger than $g(n)$ and we apply Case 3. The runtime is therefore $T(n) = \Theta(f(n)) = \Theta(\sqrt{n} \log^2 n)$.
+
+(c) Recurrence: $T(n) = 17T(n/4)+ O(n^2 \log n)$.
+
+Candidate explanation: In this case, $g(n) = n^{\log_b a} = n^{\log_4 17} \approx  n^{2.04}$. Meanwhile, $f(n) = O(n^2 \log n)$, which does not grow like a polynomial and is therefore neither polynomially larger nor polynomially smaller than $g(n)$. For this reason, the Master Theorem does not apply.
+
+(d)  $T(n) = 4T(n/4)+ n \log n$.
+
+Candidate explanation: In this case, $g(n) = n^{\log_b a} = n^{\log_4 4} = n$. Meanwhile, $f(n) = n \log n$. The comparison between $f(n)$ and $g(n)$ does not fit into any cases of the Master Theorem, so the theorem does not apply here.
+
+
+
+\textbf{Problem 3.} Say you have discovered a way to multiply $7 \times 7$ matrices using $c > 50$ multiplications and 30 additions.\footnote{Assume that this works without relying on the fact that $ab = ba$ for $a,b \in \mathbb{R}$. This must be assumed because matrix multiplication is not commutative, so if the strategy for $7 \times 7$ matrix multiplication relied somehow on commutativity, it would not apply when multiplying \emph{blocks} of matrices.}
+
+(a) Write down the recurrence relation you could get for a new recursive matrix-matrix multiplication algorithm you could design by breaking up an $n \times n$ matrix into blocks of size $n/7 \times n/7$ and using your approach for multiplying $7 \times 7$ matrices. You may assume $n = 7^m$ where $m > 1$ is an integer.
+
+
+(b) Write down an expression for the asymptotic runtime of this method in terms of $c$ and $n$.
+
+(c) What is the largest value for $c$ such that the asymptotic runtime of your new method is better than the runtime you get from Strassen's algorithm. 
+
+
+
+
+
+\rule{\textwidth}{0.4pt}
+\textbf{Master Theorem.} Let $a \geq 1$ and $b > 1$ be constants, let $f(n)$ be a function, and let $T(n)$ be defined on the nonnegative integers by the relation:
+\begin{equation*}
+T(n) = aT(n/b) + f(n).
+\end{equation*}
+
+
+\begin{enumerate}
+	\item If $f(n) = O(n^{\log_b a - \epsilon})$ for some constant $\epsilon > 0$, then $T(n) = \Theta (n^{\log_b a })$.
+	\item If $f(n) = \Theta(n^{\log_b a})$, then $T(n) = \Theta (n^{\log_b a } \log n)$.
+	\item If $f(n) = \Omega(n^{\log_b a + \epsilon})$ for some constant $\epsilon > 0$, and if $a f(n/b) \leq c f(n)$ for some constant $c < 1$ and all sufficiently large $n$, then $T(n) = \Theta (f(n))$.
+\end{enumerate}
+\rule{\textwidth}{0.4pt}
+\end{document}
