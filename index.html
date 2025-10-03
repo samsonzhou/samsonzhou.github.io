@@ -247,6 +247,86 @@ Publications
 
 <ol reversed>
 
+<li>
+<b>
+L<sub>p</sub> Sampling in Distributed Data Streams with Applications to Adversarial Robustness
+</b>
+</br><i>
+--honghaolin--,
+--zhaosong--,
+--davidwoodruff--, 
+--shenghaoxie--,
+Samson Zhou
+</br></i>
+<a href="https://www.siam.org/conferences-events/siam-conferences/soda26/">SODA 2026</a>
+[<a href="javascript:toggle('LSWXZ26')">abstract</a>]
+<!--[<a href="https://arxiv.org/pdf/2506.22608">pdf</a>]-->
+<div id="LSWXZ26" style="display: none">
+<p id="abs">
+In the distributed monitoring model, a data stream over a universe of size $n$ is distributed over $k$ servers, 
+who must continuously provide certain statistics of the overall dataset, while minimizing communication with a 
+central coordinator. In such settings, the ability to efficiently collect a random sample from the global stream 
+is a powerful primitive, enabling a wide array of downstream tasks such as estimating frequency moments, 
+detecting heavy hitters, or performing sparse recovery. Of particular interest is the task of producing a 
+perfect $L_p$ sample, which given a frequency vector $f \in \mathbb{R}^n$, outputs an index $i$ with 
+probability $\frac{f_i^p}{\|f\|_p^p}+\frac{1}{\mathrm{poly}(n)}$. In this paper, we resolve the problem 
+of perfect $L_p$ sampling for all $p\ge 2$ in the distributed monitoring model. Specifically, our algorithm 
+runs in $k^{p-1} \cdot \mathrm{polylog}(n)$ bits of communication, which is optimal up to polylogarithmic factors. 
+<p>
+Utilizing our perfect $L_p$ sampler, we achieve adversarially-robust distributed monitoring protocols for the 
+$F_p$ moment estimation problem, where the goal is to provide a $(1+\varepsilon)$-approximation to $f_1^p+\ldots+f_n^p$. 
+Our algorithm uses $\frac{k^{p-1}}{\varepsilon^2}\cdot\mathrm{polylog}(n)$ bits of communication and achieves 
+optimal bounds up to polylogarithmic factors, matching long-standing lower bounds by Woodruff and Zhang (STOC 2012). 
+Crucially, we use our perfect $L_p$ sampler in conjunction with a novel bivariate Taylor series expansion to 
+construct a difference estimator, which approximates the growth of a function between two different times and 
+may be of independent interest. Finally, we apply our framework to achieve near-optimal 
+adversarially robust distributed protocols for central problems such as counting, frequency estimation, 
+heavy-hitters, and distinct element estimation. 
+</div>
+</li>
+</br>
+
+
+
+<li>
+<b>
+Online Learning with Limited Information in the Sliding Window Model
+</b>
+</br><i>
+--vladimirbraverman--,
+--sumeghagarg--,
+--chenwang--,
+--davidwoodruff--, 
+Samson Zhou
+</br></i>
+<a href="https://www.siam.org/conferences-events/siam-conferences/soda26/">SODA 2026</a>
+[<a href="javascript:toggle('BGWWZ26')">abstract</a>]
+<!--[<a href="https://arxiv.org/pdf/2506.22608">pdf</a>]-->
+<div id="BGWWZ26" style="display: none">
+<p id="abs">
+Motivated by recent work on the experts problem in the streaming model, 
+we consider the experts problem in the sliding window model. 
+The sliding window model is a well-studied model that captures applications such 
+as traffic monitoring, epidemic tracking, and automated trading, where recent information 
+is more valuable than older data. Formally, we have $n$ experts, $T$ days, the ability to 
+query the predictions of $q$ experts on each day, a limited amount of memory, and should 
+achieve the optimal regret $\sqrt{W}\text{polylog}(nT)$ regret over a window of the last 
+$W$ days at any time. While it is impossible to achieve such regret with $1$ query, 
+we show that with $2$ queries we can achieve such regret and with only $\text{polylog}(nT)$ 
+bits of memory. Not only are our algorithms optimal for sliding windows, but we also show 
+for every interval $\mathcal{I}$ of days that we achieve $\sqrt{|\mathcal{I}|}\text{polylog}(nT)$ 
+regret with $2$ queries and only $\text{polylog}(nT)$ bits of memory, providing an exponential 
+improvement on the memory of previous interval regret algorithms. Building upon these techniques, 
+we address the bandit problem in data streams, where $q=1$, achieving $n T^{2/3}\text{polylog}(T)$ 
+regret with $\text{polylog}(nT)$ memory, which is the first sublinear regret in the streaming model 
+in the bandit setting with polylogarithmic memory; this can be further improved to the optimal 
+$\mathcal{O}(\sqrt{T n})$ regret if the best expert's losses are in a random order.
+</div>
+</li>
+</br>
+
+
+
 
 <li>
 <b>
@@ -3464,6 +3544,8 @@ var info = new Array(  new Array('--jeremiahblocki--', 'Jeremiah Blocki', 'https
 					 , new Array('--alessandroepasto--', 'Alessandro Epasto', 'https://www.epasto.org/')
 					 , new Array('--vahabmirrokni--', 'Vahab Mirrokni', 'https://research.google/people/mirrokni/')
 					 , new Array('--williamswartworth--', 'William Swartworth', 'https://wswartworth.github.io/')
+					 , new Array('--sumeghagarg--', 'Sumegha Garg', 'https://sites.google.com/view/sumegha-garg/home')
+					 
 					 );
 
 					 
