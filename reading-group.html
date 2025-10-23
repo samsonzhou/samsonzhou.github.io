@@ -151,9 +151,28 @@ single attention layer.
 </p>
 </div>
 </li>
+
+<li>Tuesday, September 2, 2025: <a href="https://scholar.google.com/citations?user=dF9fPRkAAAAJ&hl=en">Venangi Bengali</a> on 
+<a href="javascript:toggle('VB-F25')">The Densest SWAMP Problem: Subhypergraphs with Arbitrary Monotonic Partial Edge Rewards</a>
+<div id="VB-F25" style="display: none">
+<p id="abs">
+We consider a generalization of the densest subhypergraph problem where nonnegative rewards are given for 
+including partial hyperedges in a dense subhypergraph. Prior work addressed this problem only in cases where 
+reward functions are convex, in which case the problem is poly-time solvable. We consider a broader setting 
+where rewards are monotonic but otherwise arbitrary. We first prove hardness results for a wide class of 
+non-convex rewards, then design a 1/k-approximation by projecting to the nearest set of convex rewards, 
+where k is the maximum hyperedge size. We also design another 1/k-approximation using a faster peeling algorithm, 
+which (somewhat surprisingly) differs from the standard greedy peeling algorithm used to approximate 
+other variants of the densest subgraph problem. Our results include an empirical analysis of our algorithm 
+across several real-world hypergraphs.
+</p>
+</div>
+</li>
+
 <li>Organized by Soham Nagawanshi, <a href="https://veldt.engr.tamu.edu/">Nate Veldt</a>, <a href="https://sites.google.com/view/shenghaoxie/">Shenghao Xie</a>, and <a href="https://samsonzhou.github.io/">Samson Zhou</a></li>
 </ul>
 
+<hr>
 <h3>
 Spring 2025
 </h3>
@@ -179,6 +198,7 @@ Based on joint works with Amir Abboud, Nick Fischer, Zander Kelley and Raghu Mek
 <li>Organized by <a href="https://veldt.engr.tamu.edu/">Nate Veldt</a> and <a href="https://samsonzhou.github.io/">Samson Zhou</a></li>
 </ul>
 
+<hr>
 <h3>
 Fall 2024
 </h3>
@@ -355,7 +375,7 @@ Finally, we develop a deterministic, nearly linear time algorithm with ratio 0.3
 </li>
 
 
-<li>Wedneday, Feburary 7, 2024: <a href="https://veldt.engr.tamu.edu/">Nate Veldt</a> on <a href="javascript:toggle('NV-S24')">Growing a Random Maximal Independent Set Produces a 2-approximate Vertex Cover</a>
+<li>Wedneday, Feburary 7, 2024: <a href="https://veldt.engr.tamu.edu/">Nate Veldt</a> on <a href="javascript:toggle('NV-S24')">Growing a Random Maximal Independent Set Produces a 2-Approximate Vertex Cover</a>
 <div id="NV-S24" style="display: none">
 <p id="abs">
 In this talk I'll present a proof that a simple greedy algorithm for finding a maximal independent set in a graph is also a randomized 2-approximation algorithm for weighted vertex cover. 
@@ -422,6 +442,26 @@ we also show how F0-sketching can be removed. Secondly, we derive a new lower bo
 1- (4/(c k log m)) compared to 1-(2e/(m^{ck/6})) with &#937;(k log m)-independence. Although the theoretical guarantees are weaker, suggesting the approximation quality would suffer, 
 for large streams, our algorithms perform well in practice. Finally, our experimental results show that even a pairwise-independent hash-function sampler does not produce 
 worse solution than the original algorithm, while running significantly faster by several orders of magnitude.
+</p>
+</div>
+</li>
+
+<li>Wednesday, October 4, 2023: <a href="https://scholar.google.com/citations?user=dF9fPRkAAAAJ&hl=en">Venangi Bengali</a> on 
+<a href="javascript:toggle('VB-F23')">Faster Approximation Algorithms for Parameterized Graph Clustering and Edge Labeling</a>
+<div id="VB-F23" style="display: none">
+<p id="abs">
+Graph clustering is a fundamental task in network analysis where the goal is to detect sets of nodes 
+that are well-connected to each other but sparsely connected to the rest of the graph. 
+We present faster approximation algorithms for an NP-hard parameterized clustering framework called LambdaCC, 
+which is governed by a tunable resolution parameter and generalizes many other clustering objectives such as 
+modularity, sparsest cut, and cluster deletion. Previous LambdaCC algorithms are either heuristics with 
+no approximation guarantees, or computationally expensive approximation algorithms. 
+We provide fast new approximation algorithms that can be made purely combinatorial. 
+These rely on a new parameterized edge labeling problem we introduce that generalizes previous 
+edge labeling problems that are based on the principle of strong triadic closure and are of 
+independent interest in social network analysis. Our methods are orders of magnitude more scalable 
+than previous approximation algorithms and our lower bounds allow us to obtain a posteriori 
+approximation guarantees for previous heuristics that have no approximation guarantees of their own.
 </p>
 </div>
 </li>
