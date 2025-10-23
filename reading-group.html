@@ -74,6 +74,189 @@ Algorithms and Data Science Reading Group
 Welcome to the Algorithms and Data Science Reading Group at Texas A&#38;M University. 
 </p>
 
+<h3>
+Fall 2025
+</h3>
+<ul>
+<li>Tuesday, October 21, 2025: Alisa Lu on 
+<a href="javascript:toggle('AL-F25')">Clustering I</a>
+<div id="AL-F25" style="display: none">
+<p id="abs">
+Clustering is a fundamental problem in unsupervised machine learning, aiming to group similar data points 
+together without predefined labels. This talk explores clustering and its various algorithmic approaches. 
+Brief outline: I'll begin with an overview of what clustering is and its applications, followed by a 
+quick recap of k-means clustering and its potential issues and shortcomings. I'll then go over spectral clustering, 
+a technique that uses graph theory and eigenvalue decomposition to identify clusters, and how it solves 
+potential issues with non-convex cluster shapes. I'll also briefly cover some recent developments and algorithms 
+in clustering within the last year, including deep clustering, clustering with transformers, and TeraHAC.
+</p>
+</div>
+</li>
+
+<li>Tuesday, October 7, 2025: <a href="https://samsonzhou.github.io/">Samson Zhou</a> on 
+<a href="javascript:toggle('SZ-F25')">Nearest Neighbor Search and Locality Sensitive Hashing II</a>
+<div id="SZ-F25" style="display: none">
+<p id="abs">
+LSH for the Hamming distance, and introduce the LSH for the Manhattan (L1) distance and the Euclidean (L2) distance.
+</p>
+</div>
+</li>
+
+<li>Tuesday, Septebmer 30, 2025: <a href="https://sites.google.com/view/shenghaoxie/">Shenghao Xie</a> on 
+<a href="javascript:toggle('SX-F25')">Nearest Neighbor Search and Locality Sensitive Hashing I</a>
+<div id="SX-F25" style="display: none">
+<p id="abs">
+Nearest Neighbor Search (NNS) is a fundamental problem in computational geometry and machine learning, 
+aiming to find the closest point to a query in a high-dimensional space. This talk explores NNS and 
+its efficient approximation through Locality Sensitive Hashing (LSH). LSH is a powerful technique that 
+applies hash functions to group similar items together, enabling sublinear-time approximate nearest neighbor queries. 
+I'll go over a simple formulation for LSH under the Hamming distance, and an efficient algorithm for NNS by LSH. 
+I'll also cover a sub-optimal formulation for the Euclidean distance if time allows. 
+The contents mainly follow from the lecture notes from https://www.cs.cmu.edu/~15451-s19/lectures/lec22-nearest-neighbor.pdf.
+</p>
+</div>
+</li>
+
+
+<li>Friday, Septebmer 12, 2025: <a href="https://www.cs.cmu.edu/~dwoodruf/">David P. Woodruff</a> on 
+<a href="javascript:toggle('DW-F25')">HyperAttention: Long-context
+Attention in Near-Linear Time</a>
+<div id="DW-F25" style="display: none">
+<p id="abs">
+We present an approximate attention mechanism named
+HyperAttention to address the computational challenges posed by the
+growing complexity of long contexts used in Large Language Models
+(LLMs). Recent work suggests that in the worst-case scenario,
+quadratic time is necessary unless the entries of the attention matrix
+are bounded or the matrix has low stable rank. We introduce two
+parameters which measure: (1) the max column norm in the normalized
+attention matrix, and (2) the ratio of row norms in the unnormalized
+attention matrix after detecting and removing large entries. We use
+these fine-grained parameters to capture the hardness of the problem.
+Despite previous lower bounds, we are able to achieve a linear time
+sampling algorithm even when the matrix has unbounded entries or a
+large stable rank, provided the above parameters are small.
+HyperAttention features a modular design that easily accommodates
+integration of other fast low-level implementations, particularly
+FlashAttention. Empirically, employing Locality Sensitive Hashing
+(LSH) to identify large entries, HyperAttention outperforms existing
+methods, giving significant speed improvements compared to
+state-of-the-art solutions like FlashAttention. We validate the
+empirical performance of HyperAttention on a variety of different
+long-context length datasets. For example, HyperAttention makes the
+inference time of ChatGLM2 50\% faster on 32k context length while
+perplexity increases from 5.6 to 6.3. On larger context length, e.g.,
+131k, with causal masking, HyperAttention offers 5-fold speedup on a
+single attention layer. 
+</p>
+</div>
+</li>
+</ul>
+
+<h3>
+Spring 2025
+</h3>
+<ul>
+<li>Tuesday, February 11, 2025: <a href="https://cseweb.ucsd.edu/~slovett/home.html">Shachar Lovett</a> on 
+<a href="javascript:toggle('SL-S25')">Spread Regularity - A Combinatorial Extension of Kelley-Meka, and Applications</a>
+<div id="SL-S25" style="display: none">
+<p id="abs">
+Regularity lemmas are a cornerstone of combinatorics, with many applications in math and CS.  
+The most famous one is Szemeredi's regularity lemma, which states that any graph can be partitioned 
+into a "few" parts that mostly "look random". However, there is a caveat - "few" is really a huge number, 
+a tower of exponentials in the error parameter. A weaker notion of regularity, defined in Frieze and Kannan, 
+gives an improved bound, where the number of parts is "merely" exponential in the error parameter. 
+Still, for many applications one would hope for an even better bound - polynomial or quasi-polynomial in the error parameter.
+In this talk, I will describe such a notion called "spread regularity". 
+It is based on a combinatorial analog of a recent breakthrough of Kelley and Meka in additive combinatorics. 
+I will also describe two CS applications of it, one in communication complexity and the other in 
+combinatorial algorithms for matrix multiplication.
+Based on joint works with Amir Abboud, Nick Fischer, Zander Kelley and Raghu Meka
+</p>
+</div>
+</li>
+</ul>
+
+<h3>
+Fall 2024
+</h3>
+<ul>
+<li>Wednesday, October 30, 2024: <a href="https://people.engr.tamu.edu/j-chen3/index.html">Jianer Chen</a> on 
+<a href="javascript:toggle('JC-F24')">On Optimal Streaming Kernelization Algorithms for the Vertex Cover Problem</a>
+<div id="JC-F24" style="display: none">
+<p id="abs">
+Streaming algorithms have become popular in recent research in massive data processing. 
+This work studies streaming algorithms for kernelization of the famous NP-hard problem (weighted) 
+Vertex Cover, which not only consider space complexity and update-time of streaming algorithms, 
+but also quantitatively measure the quality of data compression. We first develop a space lower bound 
+Ω(n) for streaming algorithms, which shows that a well-known technique in kernelization algorithms 
+for Vertex Cover would not be suitable for space-limited streaming models. We also prove a lower bound 
+Ω(k^2) on both space complexity and kernel size for streaming kernelization algorithms for Vertex Cover. 
+We then develop a new streaming kernelization algorithm for Vertex Cover that runs in O(k^2) space and O(1) 
+update-time and produces a kernel of size O(k^2). According to the lower bounds we proved, 
+this algorithm is optimal in all these three complexity measures. Our algorithm also improves previous 
+known algorithms for the problem. 
+Joint work with H. Feng, W. Yang, and S. J. John Stella
+</p>
+</div>
+</li>
+
+<li>Wednesday, October 23, 2024: <a href="https://people.tamu.edu/~vcrawford/">Victoria Crawford</a> on 
+<a href="javascript:toggle('VC-F24')">Submodular Optimization under Noise</a>
+<div id="VC-F24" style="display: none">
+<p id="abs">
+Submodularity is a property of set functions that arises in many applications such as data summarization, 
+recommendation systems, and viral marketing in social networks. Most existing algorithms for the 
+maximization of a submodular objective assume value oracle access. That is, the submodular function 
+is a black box that can be queried for any set, and its value returned. However, this is not always 
+a realistic assumption, instead we may only be able to make noisy queries to some underlying submodular objective. 
+In this talk, I will: (i) Discuss a few applications of the noisy submodular maximization setting, 
+(ii) Talk about different models of noise, and finally (iii) Present and analyze algorithms that 
+find approximate solutions in as few noisy queries as possible.
+</p>
+</div>
+</li>
+
+
+
+<li>Wednesday, October 9, 2024: <a href="https://sites.google.com/view/chen-wang/home">Chen Wang</a> on 
+<a href="javascript:toggle('CW-F24')">Sparse-Dense Decomposition for Correlation Clustering</a>
+<div id="CW-F24" style="display: none">
+<p id="abs">
+Correlation clustering is a classical problem in the intersection of machine learning and theoretical computer science, 
+and it has broad applications in various areas, including document categorization, community detection, and 
+financial network analysis. The problem is known to be NP-hard, and we can obtain a 1.437 approximation using 
+linear programming-based techniques. For combinatorial algorithms, it is possible to achieve a 3-approximation 
+with the simple pivot-based algorithm, and a very recent work achieves a 1.846-approximation via local search.
+In this talk, I will discuss the correlation clustering problem via the lens of the sparse-dense decomposition technique. 
+In particular, I will discuss sublinear algorithms that achieve $O(1)$ approximation in $O(n log^2 {n})$ time 
+in the adjacency list model and $O(n log{n})$ space in the single-pass streaming model. Furthermore, 
+I will discuss extensions of our algorithm to the truly streaming setting, where we aim to estimate 
+the cost of correlation clustering with polylog(n) space, and to the adversarial dynamic setting, 
+where we aim to maintain correlation clustering solution with polylog (n) update time against 
+an adaptive adversary. In addition to the asymptotically optimal approximation guarantees, 
+these algorithms are simple to implement, converge with high efficiency, and offer very competitive empirical performances. 
+The talk is based on two published papers (AW [ITCS’22]; ASW [NeurIPS’23]) and an ongoing work.
+ </p>
+</div>
+</li>
+
+
+<li>Wednesday, October 2, 2024: <a href="https://samsonzhou.github.io/">Samson Zhou</a> on <a href="javascript:toggle('SZ-F24')">A Strong Separation for Adversarially Robust &#8467;<sub>0</sub> Estimation for Linear Sketches</a>
+<div id="SZ-F24" style="display: none">
+<p id="abs">
+In this work, we give the first known adaptive attack against linear sketches for the well-studied L_0-estimation problem over 
+turnstile, integer streams. For any linear streaming algorithm A which uses sketching matrix A in R^{r times n}, 
+this attack makes ~O(r^8) queries and succeeds with high constant probability in breaking the sketch. 
+Additionally, we give an adaptive attack against linear sketches for the L_0-estimation problem over 
+finite fields F_p, which requires a smaller number of ~O(r^3) queries. Our results provide an 
+exponential improvement over the previous number of queries known to break an L_0-estimation sketch.
+Joint work with Elena Gribelyuk, Honghao Lin, David P. Woodruff, and Huacheng Yu
+ </p>
+</div>
+</li>
+</ul>
+
 <hr>
 <h3>
 Spring 2024
