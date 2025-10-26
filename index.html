@@ -2,60 +2,33 @@
 <head>
 <title>Samson Zhou</title>
 <link rel="shortcut icon" href="favicon_tamu.ico">
-<script language="JavaScript" type="text/JavaScript">
-var imageURLS = ["zhou230.jpg","samson2.jpg"];
-
-function randomimage() {
-  var randomIndex = Math.floor(Math.random() * imageURLs.length);
-  return imageURLs[randomIndex];
-}
-
-function toggle(id) {
-if (document.getElementById){
-	if (document.getElementById(id).style.display == "none"){
-		document.getElementById(id).style.display = "flex";
-		}
-	else{
-		document.getElementById(id).style.display = "none";
-		}
-	}
-}
-
-
-
-
-
-
-</script>
 </head>
 
-<style type="text/css">
-\\body
+<style>
+  /* --- Light Mode --- */
+  \\body
 \\{
 \\background: url(background.jpg) no-repeat;
 \\background-size: 100% 100%;
 \\}
+  body {
+    background-color: white;
+    color: black;
+    font-family: "Times New Roman", Times, serif;
+    transition: background-color 0.3s, color 0.3s;
+    padding: 20px;
+	margin-left: 0.2rem;
+  }
 
-h1 {
-font-family: times-roman
-}
+  h1, h3, p, ul, li {
+    font-family: "Times New Roman", Times, serif;
+  }
 
-h3 {
-font-family: times-roman
-}
-
-p
-{
-font-family: times-roman}
-
-p#abs{
-font-family: times-roman;
-border:2px solid black
-}
-
-ul{font-family: times-roman}
-li{font-family: times-roman}
-
+  p#abs {
+    font-family: "Times New Roman", Times, serif;
+    border: 2px solid black;
+    padding: 5px;
+  }
 
 \\a:link {color: crimson;
 \\	text-decoration: none;}
@@ -63,44 +36,153 @@ li{font-family: times-roman}
 \\	text-decoration: none;}
 \\a:hover {color: midnightblue;
 \\	text-decoration: underline;}
-a:link {color: teal;
-	text-decoration: none;}
-a:visited {color: teal;
-	text-decoration: none;}
-a:hover {color: crimson;
-	text-decoration: underline;
-	text-decoration-style:dotted}
-}
+  a:link, a:visited {
+    color: teal;
+    text-decoration: none;
+  }
 
+  a:hover {
+    color: crimson;
+    text-decoration: underline dotted;
+  }
 
+  /* --- Dark Mode --- */
+  body.dark-mode {
+    background-color: #121212;
+    color: #f0f0f0;
+  }
+
+  body.dark-mode p#abs {
+    border-color: #f0f0f0;
+  }
+
+  body.dark-mode a:link,
+  body.dark-mode a:visited {
+    color: lightblue;
+  }
+
+  body.dark-mode a:hover {
+    color: #ff8c00;
+    text-decoration: underline dotted;
+  }
+  
+    /* Toggle container */
+  .dark-mode-toggle {
+    display: flex;
+    align-items: center;
+    font-weight: bold;
+    margin-bottom: 20px;
+    gap: 10px;
+  }
+
+  .dark-mode-toggle span {
+    font-size: 24px; /* make icons bigger */
+    user-select: none;
+  }
+
+  /* Switch styling */
+  .switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+  }
+
+  .switch input { display: none; }
+
+  .slider {
+    position: absolute;
+    cursor: pointer;
+    background-color: #ccc;
+    border-radius: 34px;
+    top: 0; left: 0; right: 0; bottom: 0;
+    transition: 0.4s;
+  }
+
+  .slider:before {
+    position: absolute;
+    content: "";
+    height: 26px; width: 26px;
+    left: 4px; bottom: 4px;
+    background-color: white;
+    border-radius: 50%;
+    transition: 0.4s;
+  }
+
+  input:checked + .slider {
+    background-color: #2196F3;
+  }
+
+  input:checked + .slider:before {
+    transform: translateX(26px);
+  }
 </style>
+
 
 
 <center>
 <table border="0" cellpadding="5" cellspacing="5">
 <tr>
-<td width = "40%" colspan="2">
-<!--<img hr width = "20%" src="samson2.jpg" align = "left">-->
-<!--<img hr width = "20%" src="zhou230.jpg" align = "left">-->
-<img hr width = "35%" src="szhou-small.jpg" align = "left">
-<script type="text/javascript">
-  document.write("<img hr width = "20%" src="randomimage()" align = "left">");
-</script>
+<td width="30%" colspan="2">
+  <div class="profile-img-container">
+    <img id="profile-img" alt="Samson Zhou">
+  </div>
 </td>
-<td width = "50%">
-<h1>
-Samson Zhou
-</h1>
 
-</td>
-<!--<td width = "20%"><img hr width = "100%" src="logo_CMU.jpg" align = "right">-->
-<!--<td width = "20%"><img hr width = "300%" src="logo_cal.png" align = "right">
-<td width = "20%"><img hr width = "3000%" src="logo_rice.png" align = "right">-->
-<td width = "20%"><img hr width = "100%" src="logo_tamu.png" align = "right">
-</td>
-</tr>
-<tr>
-<td width = "40%"><p> <!--<a href="/Samson-Zhou-CV.pdf">CV</a></p>--> </td>
+<style>
+/* Fixed-size container for consistent image size */
+.profile-img-container {
+  width: 150px;       /* fixed width */
+  height: 150px;      /* fixed height */
+  border-radius: 12px; /* rounded corners */
+  overflow: hidden;    /* ensures rounding works */
+}
+
+/* Image fills container and is cropped if needed */
+.profile-img-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;  /* crop and scale */
+  display: block;
+}
+</style>
+
+<script>
+// List of images to choose from
+const images = [
+  "szhou-small-1.jpg",
+  "szhou-small-2.jpg"
+];
+
+// Pick a random image
+const randomImage = images[Math.floor(Math.random() * images.length)];
+
+// Set it as the source
+document.getElementById("profile-img").src = randomImage;
+</script>
+
+
+
+
+<td width="40%" style="text-align: center; vertical-align: middle;">
+      <h1>Samson Zhou</h1>
+    </td>
+
+    <!-- Third column: logo and slider -->
+    <td width="30%" style="text-align: center; vertical-align: top;">
+      <!-- Logo on top -->
+      <img src="logo_tamu.png" style="width: 20%; margin-bottom: 10px;" alt="TAMU Logo">
+
+      <!-- Dark mode slider below -->
+      <div class="dark-mode-toggle" style="display: flex; justify-content: center; align-items: center; gap: 10px;">
+        <span>☀️</span>
+        <label class="switch">
+          <input type="checkbox" id="darkModeToggle">
+          <span class="slider"></span>
+        </label>
+        <span>🌙</span>
+      </div>
+    </td>
 </tr>
 </table>
 </center>
@@ -116,23 +198,63 @@ My research lies at the intersections of theoretical computer science, data scie
 In particular, I am currently interested in numerical linear algebra, streaming algorithms, and differential privacy. 
 Here are some of my favorite <a href="links.html">links</a>.
 
-</br>
-</br>
-<b style="color:maroon;">
-I'm looking for PhD students and postdocs interested in broadly working in sublinear algorithms, differential privacy, or the theoretical foundations of machine learning. 
-Please contact me directly if interested!
-<!--If interested, please apply to our PhD program (deadline December 15) and contact me directly!-->
-</b>
+<div class="research-box">
+  <b class="research-blue">
+    I'm looking for PhD students and postdocs interested in broadly working in sublinear algorithms, differential privacy, 
+    or the theoretical foundations of machine learning, for the Fall 2026 cycle. 
+    Please contact me directly if interested!
+  </b>
+  <br>
+  <b class="research-maroon">
+    For Texas A&amp;M University undergraduate students: If you are interested in research and have a solid background in computer science 
+    and/or mathematics, feel free to reach out anytime to explore opportunities.
+  </b>
+</div>
 
-<!--</br>  
-</br>
-<b style="color:maroon;">
-I'm looking for a postdoc broadly working in sublinear algorithms, machine learning, or differential privacy. 
-Please contact me directly if interested!
-</b>--> 
+<style>
+.research-box {
+  width: 100%;
+  box-sizing: border-box;
+  margin: 0.5rem 0;
+  padding: 0.4rem 0.8rem;
+  margin-top: -0.5rem;
+  border-radius: 12px;
+  background: #f7f9fb;  /* light mode */
+  border: 1px solid #ccc;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.06);
+  font-family: "Times New Roman", Times, serif;
+  font-size: 1rem;
+  line-height: 1.4;
+  color: black;
+  text-align: left;
+  transition: background 0.3s, color 0.3s, box-shadow 0.2s ease;
+}
 
-</br>
-</br>
+/* Hover pop-up effect */
+.research-box:hover {
+  transform: translateY(-5px) scale(1.02);  /* slightly lift and enlarge */
+  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+}
+
+/* Text colors for light mode */
+.research-blue { color: blue; }
+.research-maroon { color: maroon; }
+
+/* Dark mode overrides */
+body.dark-mode .research-box {
+  background: #1e1e1e;
+  color: #f0f0f0;
+  border: 1px solid #333;
+  box-shadow: 0 2px 5px rgba(255,255,255,0.05);
+}
+
+/* Text colors in dark mode */
+body.dark-mode .research-blue { color: #4aa3ff; }   /* lighter blue for dark bg */
+body.dark-mode .research-maroon { color: #ff9999; } /* lighter maroon/pink for dark bg */
+</style>
+
+
+
 <!--
 I am co-organizing the <a href="http://waldo2021.github.io/">Workshop on Algorithms for Large Data (Online) 2021</a>, running from Monday, August 23 to Wednesday, August 25.
 </br>
@@ -142,11 +264,20 @@ Profiles:
 [<a href="https://dblp.uni-trier.de/pers/hd/z/Zhou:Samson">dblp</a>]
 [<a href="https://scholar.google.com/citations?user=NpjsgocAAAAJ">Scholar</a>]
 </br>
-Feel free to reach me at:</br>
-samsonzhou AT gmail DOT com</br>
+<b class="email-text">
+  E-mail: samsonzhou AT gmail DOT com
+</b>
+<style>
+/* Light mode */
+.email-text { color: purple; }
+
+/* Dark mode */
+body.dark-mode .email-text { color: #d4a0ff; } /* lighter purple for dark background */
+</style>
+
 </p>
 
-
+<div id="content">
 
 <hr>
 <h3>
@@ -3500,7 +3631,7 @@ a maximum weighted matching in planar graphs.
 
 -->
 
-
+</div> <!--content div, for replacement of names with links-->
 </body>
 
 
@@ -3656,13 +3787,28 @@ for (i = 0; i < info.length; i++) {
 					 
 </script>
 
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const toggle = document.getElementById('darkModeToggle');
 
+  // Apply saved theme
+  if (localStorage.getItem('theme') === 'dark') {
+    document.body.classList.add('dark-mode');
+    toggle.checked = true;
+  }
 
-
-
-
-
-
+  // Toggle dark mode
+  toggle.addEventListener('change', () => {
+    if (toggle.checked) {
+      document.body.classList.add('dark-mode');
+      localStorage.setItem('theme', 'dark');
+    } else {
+      document.body.classList.remove('dark-mode');
+      localStorage.setItem('theme', 'light');
+    }
+  });
+});
+</script>
 
 
 </html>
