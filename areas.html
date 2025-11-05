@@ -1,0 +1,166 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Samson Zhou — Research Highlights</title>
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      margin: 0;
+      background: #f8fafc;
+      color: #1e293b;
+      padding: 40px 20px;
+    }
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    h1 {
+      font-size: 28px;
+      margin-bottom: 40px;
+      color: #0f172a;
+      text-align: center;
+    }
+    .card {
+      background: white;
+      border-radius: 16px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+      padding: 24px;
+      margin-bottom: 24px;
+      transition: transform 0.2s, box-shadow 0.2s;
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+    }
+    .card img {
+      width: 80px;
+      height: 80px;
+      flex-shrink: 0;
+    }
+    .card-content {
+      text-align: left;
+    }
+    .card-content h2 {
+      font-size: 20px;
+      margin: 0 0 8px;
+      color: #0f172a;
+    }
+    .card-content p {
+      font-size: 15px;
+      color: #334155;
+      line-height: 1.6;
+      margin: 0;
+    }
+    .section-title {
+      font-size: 24px;
+      color: #0f172a;
+      margin: 40px 0 24px;
+      text-align: center;
+    }
+    .project-card, .publication-card {
+      background: white;
+      border-radius: 16px;
+      padding: 20px;
+      margin-bottom: 20px;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .project-card:hover, .publication-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+    }
+    .project-card h3, .publication-card h3 {
+      margin: 0 0 8px;
+      font-size: 18px;
+      color: #0f172a;
+    }
+    .project-card p, .publication-card p {
+      margin: 0;
+      color: #334155;
+      font-size: 14px;
+      line-height: 1.5;
+    }
+    a {
+      color: #7dd3fc;
+      text-decoration: none;
+    }
+    a:hover { text-decoration: underline; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Samson Zhou — Research Highlights</h1>
+
+    <!-- Research Areas -->
+    <div class="card">
+      <img src="https://cdn-icons-png.flaticon.com/512/3081/3081652.png" alt="Data Stream Icon">
+      <div class="card-content">
+        <h2>Sublinear Algorithms</h2>
+		<p>How can you understand a dataset too big to store -- or even read -- completely? Sublinear algorithms efficiently find meaningful results 
+		from massive data, built on beautiful mathematics for tackling problems that seem too big to handle head-on.</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <img src="https://cdn-icons-png.flaticon.com/512/3062/3062634.png" alt="Differential Privacy Icon">
+      <div class="card-content">
+        <h2>Differential Privacy</h2>
+        <p>How can you learn from sensitive data without revealing too much about any individual? Differential privacy enables meaningful analysis while protecting each user’s information, 
+		increasingly recognized as a vital tool for responsible, ethical use of data.</p>
+      </div>
+    </div>
+
+	<div class="card">
+		<img src="https://cdn-icons-png.flaticon.com/512/414/414927.png" alt="Foundations of Data Science Icon">
+		<div class="card-content">
+		<h2>Foundations of Data Science</h2>
+		<p>How can you harness data to solve real problems? Foundations of data science equips you with 
+		techniques that are both reliable and implementable, helping ideas move from concept to application and 
+		turning insights into actionable results.</p>
+	</div>
+	</div>
+
+    <!-- Projects Section -->
+    <div class="section-title">Recent Projects</div>
+
+    <div class="project-card">
+      <h3>Streaming Graph Sketches</h3>
+      <p>Developed compact sketches for massive graph streams enabling near-real-time analysis with provable accuracy guarantees. <a href="#">View project</a></p>
+    </div>
+
+    <div class="project-card">
+      <h3>CostDP Mechanism for Adaptive Queries</h3>
+      <p>Designed an efficient differentially private framework that tracks query costs and maintains utility under adaptive adversaries. <a href="#">View project</a></p>
+    </div>
+
+    <div class="project-card">
+      <h3>Scalable Clustering Pipeline</h3>
+      <p>Implemented a robust, scalable clustering framework for noisy high-dimensional datasets, integrating k-means, spectral methods, and visualizations. <a href="#">View project</a></p>
+    </div>
+
+    <!-- Featured Publications Section -->
+    <div class="section-title">Featured Publications</div>
+
+    <div class="publication-card">
+      <h3>Sublinear Time Graph Summaries</h3>
+      <p>Samson Zhou et al., <em>Journal of Algorithms</em>, 2025. <a href="#">Read PDF</a></p>
+    </div>
+
+    <div class="publication-card">
+      <h3>Cost-aware Differential Privacy for Streaming Queries</h3>
+      <p>Samson Zhou et al., <em>ITCS</em>, 2025. <a href="#">Read PDF</a></p>
+    </div>
+
+    <div class="publication-card">
+      <h3>Robust Clustering in High Dimensions</h3>
+      <p>Samson Zhou et al., <em>NeurIPS</em>, 2024. <a href="#">Read PDF</a></p>
+    </div>
+
+  </div>
+</body>
+</html>
