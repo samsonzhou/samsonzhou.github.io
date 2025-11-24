@@ -30,6 +30,57 @@ def sample_uniform(S, k):
     indices = np.random.choice(len(S), size=k, replace=True, p=probs)
     return S[indices].tolist()
 
+def random_jl(d, d_prime, seed=0):
+    rng = np.random.default_rng(seed)
+    # Gaussian JL: entries ~ N(0, 1/d')
+    return rng.normal(0, 1/np.sqrt(d_prime), size=(d_prime, d))
+
+def sample_by_jl_distance(S, C, k):
+    """
+    Sample k points from S with probability proportional to distance from C.
+    
+    Parameters:
+        S (list or np.ndarray): Candidate points, shape (n, d)
+        C (list or np.ndarray): Center points, shape (m, d)
+        k (int): Number of points to sample
+
+    Returns:
+        list: k sampled points from S
+    """
+    S = np.array(S)
+    C = np.array(C)
+    
+
+    if len(S) == 0 or k == 0:
+        return []
+
+    if len(C) == 0:
+        # If no centers, sample uniformly
+        probs = np.ones(len(S))
+    else:
+        # Compute distance from each point in S to its nearest center in C
+        d = S.shape[1]
+        d_prime = d // 4
+        R = random_jl(d=64, d_prime=64//4, seed=1)
+    
+        S_proj = S @ R.T   # (n, d')
+        C_proj = C @ R.T   # (m, d')
+        dists = np.min(np.linalg.norm(S_proj[:, np.newaxis] - C_proj, axis=2),
+                       axis=1)
+        #dists = np.min(np.linalg.norm(S[:, np.newaxis] - C, axis=2), axis=1)
+        probs = dists
+
+    # Normalize to get probabilities
+    total = np.sum(probs)
+    if total == 0:
+        probs = np.ones(len(S)) / len(S)  # fallback to uniform
+    else:
+        probs = probs / total
+
+    # Sample k points from S with replacement according to probs
+    indices = np.random.choice(len(S), size=k, replace=True, p=probs)
+    return S[indices].tolist()
+
 def sample_by_distance(S, C, k):
     """
     Sample k points from S with probability proportional to distance from C.
@@ -168,7 +219,7 @@ def mettu_plaxton(points, k, c):
 def adaptive_sampling(points, k, c):
     """
     Adaptive sampling algorithm:
-    - Runs O(k) rounds
+    - Runs k*c rounds
     - Samples 1 points per round using sample_by_distance
 
     Parameters:
@@ -185,6 +236,29 @@ def adaptive_sampling(points, k, c):
 
     for _ in range(k*c):
         new_samples = sample_by_distance(candidates, centers, 1)
+        centers.extend(new_samples)
+    return np.array(centers)
+
+def adaptive_jl_sampling(points, k, c):
+    """
+    Adaptive sampling algorithm:
+    - Runs O(k) rounds
+    - Samples 1 points per round using sample_by_distance
+
+    Parameters:
+        points (np.ndarray): Array of shape (n, d)
+        k (int): Number of samples per round
+        constant c
+
+    Returns:
+        np.ndarray: Array of shape (k * log n, d) with sampled candidates
+    """
+    n = len(points)
+    candidates = points.copy()
+    centers = []
+
+    for _ in range(k*c):
+        new_samples = sample_by_jl_distance(candidates, centers, 1)
         centers.extend(new_samples)
     return np.array(centers)
 
@@ -265,44 +339,53 @@ d = len(digits.data[0])
 k = 10
 c = 2
 
-all_mp_costs = []
+#all_mp_costs = []
 all_as_costs = []
-all_rounded_as_costs = []
-all_mp_comms = []
+all_as_jl_costs = []
+all_rounded_as_jl_costs = []
+#all_mp_comms = []
 all_as_comms = []
-all_rounded_as_comms = []
+all_as_jl_comms = []
+all_rounded_as_jl_comms = []
 
 for c in range(11,21):
-    mp_centers = mettu_plaxton(digits.data, k, c)
-    as_centers = adaptive_sampling(digits.data, k, c)
-    q = 2
+    #mp_centers = mettu_plaxton(digits.data, k, c)
+    as_jl_centers = adaptive_jl_sampling(digits.data, k, c)
+    as_centers = adaptive_jl_sampling(digits.data, k, c)
+    rounding = 2
+    q = 2**(1/rounding)
 
-    rounded_as_centers = round_vector_to_nearest_power(as_centers, q)
+    rounded_as_jl_centers = round_vector_to_nearest_power(as_jl_centers, q)
 
-    mp_labels = assign_labels(digits.data, mp_centers)
+    #mp_labels = assign_labels(digits.data, mp_centers)
     as_labels = assign_labels(digits.data, as_centers)
-    rounded_as_labels = assign_labels(digits.data, rounded_as_centers)
+    as_jl_labels = assign_labels(digits.data, as_jl_centers)
+    rounded_as_jl_labels = assign_labels(digits.data, rounded_as_jl_centers)
 
-    rounded_as_cost = kmeans_cost(digits.data, rounded_as_labels, rounded_as_centers)
+    rounded_as_jl_cost = kmeans_cost(digits.data, rounded_as_jl_labels, rounded_as_jl_centers)
     as_cost = kmeans_cost(digits.data, as_labels, as_centers)
-    mp_cost = kmeans_cost(digits.data, mp_labels, mp_centers)
+    as_jl_cost = kmeans_cost(digits.data, as_jl_labels, as_jl_centers)
+    #mp_cost = kmeans_cost(digits.data, mp_labels, mp_centers)
 
-    all_mp_costs.append(mp_cost)
+    #all_mp_costs.append(mp_cost)
     all_as_costs.append(as_cost)
-    all_rounded_as_costs.append(rounded_as_cost)
+    all_as_jl_costs.append(as_jl_cost)
+    all_rounded_as_jl_costs.append(rounded_as_jl_cost)
 
-    all_mp_comms.append(len(mp_centers)*32)
-    all_as_comms.append(len(as_centers)*32)
-    all_rounded_as_comms.append(len(as_centers)*5)
+    #all_mp_comms.append(len(mp_centers)*32)
+    all_as_comms.append(len(as_centers)*d*32)
+    all_as_jl_comms.append(len(as_centers)*d/4*32)
+    all_rounded_as_jl_comms.append(len(as_centers)*d/4*5*rounding)
 
 cs = [11,12,13,14,15,16,17,18,19,20]
 
 plt.ion()  # <-- allow multiple windows to appear without blocking
 
 plt.figure()
-plt.plot(cs, all_mp_comms, marker='o', markerfacecolor='none', label="MP Comms")
-plt.plot(cs, all_as_comms, marker='^', label="AS Comms")
-plt.plot(cs, all_rounded_as_comms, marker='x', label="EAS Comms")
+#plt.plot(cs, all_mp_comms, marker='o', markerfacecolor='none', label="MP Comms")
+plt.plot(cs, all_as_comms, marker='o', markerfacecolor='none', label="AS Comms")
+plt.plot(cs, all_as_jl_comms, marker='^', label="AS-JL Comms")
+plt.plot(cs, all_rounded_as_jl_comms, marker='x', label="EAS-JL Comms")
 
 # X-axis from 0 to 10 with ticks at every integer
 plt.xlim(11, 20)
@@ -316,9 +399,10 @@ plt.grid(True)
 plt.show()
 
 plt.figure()
-plt.plot(cs, all_mp_costs, marker='o', markerfacecolor='none', label="MP Costs")
-plt.plot(cs, all_as_costs, marker='^', label="AS Costs")
-plt.plot(cs, all_rounded_as_costs, marker='x', label="EAS Costs")
+#plt.plot(cs, all_mp_costs, marker='o', markerfacecolor='none', label="MP Costs")
+plt.plot(cs, all_as_costs, marker='o', markerfacecolor='none', label="AS Costs")
+plt.plot(cs, all_as_jl_costs, marker='^', label="AS-JL Costs")
+plt.plot(cs, all_rounded_as_jl_costs, marker='x', label="EAS-JL Costs")
 
 # X-axis from 11 to 20 with ticks at every integer
 plt.xlim(11, 20)

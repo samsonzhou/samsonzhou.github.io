@@ -4,8 +4,11 @@ from sklearn.cluster import KMeans
 from sklearn.datasets import load_digits
 import random
 
-random.seed(20)  # Set seed to any integer
-np.random.seed(20)
+seed = 6
+#22 is plots
+
+random.seed(seed)  # Set seed to any integer
+np.random.seed(seed)
 
 def sample_uniform(S, k):
     """
@@ -27,6 +30,58 @@ def sample_uniform(S, k):
     probs = np.ones(len(S)) / len(S)
 
     # Sample k points from S with replacement according to uniform distribution
+    indices = np.random.choice(len(S), size=k, replace=True, p=probs)
+    return S[indices].tolist()
+
+def random_jl(d, d_prime, seed=0):
+    rng = np.random.default_rng(seed)
+    # Gaussian JL: entries ~ N(0, 1/d')
+    return rng.normal(0, 1/np.sqrt(d_prime), size=(d_prime, d))
+
+def sample_by_jl_distance(S, C, k):
+    """
+    Sample k points from S with probability proportional to distance from C.
+    
+    Parameters:
+        S (list or np.ndarray): Candidate points, shape (n, d)
+        C (list or np.ndarray): Center points, shape (m, d)
+        k (int): Number of points to sample
+
+    Returns:
+        list: k sampled points from S
+    """
+    S = np.array(S)
+    C = np.array(C)
+    
+
+    if len(S) == 0 or k == 0:
+        return []
+
+    if len(C) == 0:
+        # If no centers, sample uniformly
+        probs = np.ones(len(S))
+    else:
+        # Compute distance from each point in S to its nearest center in C
+        d = S.shape[1]
+        d_prime = d // 2
+        R = random_jl(d, d_prime, seed=1)
+
+        #print(len(S), len(S[0]), len(R.T), len(R.T[0]))
+        S_proj = S @ R.T   # (n, d')
+        C_proj = C @ R.T   # (m, d')
+        dists = np.min(np.linalg.norm(S_proj[:, np.newaxis] - C_proj, axis=2),
+                       axis=1)
+        #dists = np.min(np.linalg.norm(S[:, np.newaxis] - C, axis=2), axis=1)
+        probs = dists
+
+    # Normalize to get probabilities
+    total = np.sum(probs)
+    if total == 0:
+        probs = np.ones(len(S)) / len(S)  # fallback to uniform
+    else:
+        probs = probs / total
+
+    # Sample k points from S with replacement according to probs
     indices = np.random.choice(len(S), size=k, replace=True, p=probs)
     return S[indices].tolist()
 
@@ -158,9 +213,9 @@ def mettu_plaxton(points, k, c):
     for _ in range(log_n):
         new_samples = sample_uniform(candidates, k)
         centers.extend(new_samples)
-        r = 0.1
-        while(count_within_radius(candidates, centers, r) < len(candidates)/2):
-            r = r*1.05
+        r = 1000
+        while(count_within_radius(candidates, centers, r) < len(candidates)/200):
+            r = r*2
         candidates = remove_within_radius(candidates, centers, r)
 
     return np.array(centers)
@@ -188,30 +243,28 @@ def adaptive_sampling(points, k, c):
         centers.extend(new_samples)
     return np.array(centers)
 
-def generate_gaussian_points(n, k, random_seed=None):
-    if random_seed is not None:
-        np.random.seed(random_seed)
+def adaptive_jl_sampling(points, k, c):
+    """
+    Adaptive sampling algorithm:
+    - Runs O(k) rounds
+    - Samples 1 points per round using sample_by_distance
 
-    points = []
-    labels = []
+    Parameters:
+        points (np.ndarray): Array of shape (n, d)
+        k (int): Number of samples per round
+        constant c
 
-    for i in range(k):
-        # Randomly generate mean in range [-10, 10] for each Gaussian
-        mean = np.random.uniform(-10, 10, size=2)
-        
-        # Create a random positive-definite covariance matrix
-        A = np.random.rand(2, 2)
-        cov = np.dot(A, A.T) + np.eye(2) * 0.5  # ensures it's positive-definite
+    Returns:
+        np.ndarray: Array of shape (k * log n, d) with sampled candidates
+    """
+    n = len(points)
+    candidates = points.copy()
+    centers = []
 
-        # Sample n points from this Gaussian
-        samples = np.random.multivariate_normal(mean, cov, n)
-        points.append(samples)
-        labels.extend([i] * n)
-
-    # Stack all the points together
-    all_points = np.vstack(points)
-    all_labels = np.array(labels)
-    return all_points, all_labels
+    for _ in range(k*c):
+        new_samples = sample_by_jl_distance(candidates, centers, 1)
+        centers.extend(new_samples)
+    return np.array(centers)
 
 def round_vector_to_nearest_power(v, q):
     """
@@ -259,70 +312,131 @@ def kmeans_cost(S, L, C):
     squared_distances = np.sum(diffs**2, axis=1)  # Squared L2 norm per point
     return np.sum(squared_distances)
 
-digits = load_digits()
-n = len(digits.data)
-d = len(digits.data[0])
-k = 10
-c = 2
+def generate_gaussian_points(n, k, d=8, random_seed=None):
+    if random_seed is not None:
+        np.random.seed(random_seed)
 
-all_mp_costs = []
+    points = []
+    labels = []
+
+    for i in range(k):
+        # Randomly generate mean in range [-10, 10] for each Gaussian
+        mean = np.random.uniform(-10, 10, size=d)
+        
+        # Create a random positive-definite covariance matrix
+        A = np.random.rand(d, d)
+        cov = np.dot(A, A.T) + np.eye(d) * 0.5  # ensures it's positive-definite
+
+        # Sample n points from this Gaussian
+        samples = np.random.multivariate_normal(mean, cov, n)
+        points.append(samples)
+        labels.extend([i] * n)
+
+    # Stack all the points together
+    all_points = np.vstack(points)
+    all_labels = np.array(labels)
+    return all_points, all_labels
+
+def plot_clusters(S, C, labels):
+    k = C.shape[0]
+    base_cmap = plt.colormaps.get_cmap('tab10')
+    color_list = [base_cmap(i % 10) for i in range(k)]  # tab10 has only 10 unique colors
+
+    plt.figure()
+    #plt.figure(figsize=(8, 6))
+
+    for j in range(k):
+        cluster_points = S[labels == j]
+        plt.scatter(cluster_points[:, 0], cluster_points[:, 1], 
+                    s=30, color=color_list[j], label=f'Cluster {j}')
+
+    plt.scatter(C[:, 0], C[:, 1], 
+                s=200, c='black', marker='X', label='Centers')
+
+    plt.title('Clusters and Centers')
+    plt.legend()
+    plt.grid(True)
+    plt.show()
+
+i = 5
+n = 20 * 2**i # number of points in each cluster
+d = 8
+k = 3 # number of clusters
+points, labels = generate_gaussian_points(n,k,d)
+
+#all_mp_costs = []
 all_as_costs = []
-all_rounded_as_costs = []
-all_mp_comms = []
+all_as_jl_costs = []
+all_rounded_as_jl_costs = []
+#all_mp_comms = []
 all_as_comms = []
-all_rounded_as_comms = []
+all_as_jl_comms = []
+all_rounded_as_jl_comms = []
 
-for c in range(11,21):
-    mp_centers = mettu_plaxton(digits.data, k, c)
-    as_centers = adaptive_sampling(digits.data, k, c)
-    q = 2
+#cs = [11,12,13,14,15,16,17,18,19,20]
+cs = [1,2,3,4,5,6,7,8,9,10]
+#cs = [1,2,3,4]
 
-    rounded_as_centers = round_vector_to_nearest_power(as_centers, q)
+for c in cs:
+    #mp_centers = mettu_plaxton(points, k, c)
+    as_jl_centers = adaptive_jl_sampling(points, k, c)
+    as_centers = adaptive_sampling(points, k, c)
+    rounding = 2
+    q = 2**(1/rounding)
 
-    mp_labels = assign_labels(digits.data, mp_centers)
-    as_labels = assign_labels(digits.data, as_centers)
-    rounded_as_labels = assign_labels(digits.data, rounded_as_centers)
+    rounded_as_jl_centers = round_vector_to_nearest_power(as_jl_centers, q)
 
-    rounded_as_cost = kmeans_cost(digits.data, rounded_as_labels, rounded_as_centers)
-    as_cost = kmeans_cost(digits.data, as_labels, as_centers)
-    mp_cost = kmeans_cost(digits.data, mp_labels, mp_centers)
+    #mp_labels = assign_labels(points, mp_centers)
+    as_labels = assign_labels(points, as_centers)
+    as_jl_labels = assign_labels(points, as_jl_centers)
+    rounded_as_jl_labels = assign_labels(points, rounded_as_jl_centers)
 
-    all_mp_costs.append(mp_cost)
+    rounded_as_jl_cost = kmeans_cost(points, rounded_as_jl_labels, rounded_as_jl_centers)
+    as_cost = kmeans_cost(points, as_labels, as_centers)
+    as_jl_cost = kmeans_cost(points, as_jl_labels, as_jl_centers)
+    #mp_cost = kmeans_cost(points, mp_labels, mp_centers)
+
+    #all_mp_costs.append(mp_cost)
     all_as_costs.append(as_cost)
-    all_rounded_as_costs.append(rounded_as_cost)
+    all_as_jl_costs.append(as_jl_cost)
+    all_rounded_as_jl_costs.append(rounded_as_jl_cost)
 
-    all_mp_comms.append(len(mp_centers)*32)
-    all_as_comms.append(len(as_centers)*32)
-    all_rounded_as_comms.append(len(as_centers)*5)
-
-cs = [11,12,13,14,15,16,17,18,19,20]
+    #all_mp_comms.append(len(mp_centers)*32)
+    all_as_comms.append(len(as_centers)*d*32)
+    all_as_jl_comms.append(len(as_centers)*d/2*32)
+    all_rounded_as_jl_comms.append(len(as_centers)*d/2*5*rounding)
 
 plt.ion()  # <-- allow multiple windows to appear without blocking
 
 plt.figure()
-plt.plot(cs, all_mp_comms, marker='o', markerfacecolor='none', label="MP Comms")
-plt.plot(cs, all_as_comms, marker='^', label="AS Comms")
-plt.plot(cs, all_rounded_as_comms, marker='x', label="EAS Comms")
+#plt.plot(cs, all_mp_comms, marker='o', markerfacecolor='none', label="MP Comms")
+plt.plot(cs, all_as_comms, marker='o', markerfacecolor='none', label="AS Comms")
+plt.plot(cs, all_as_jl_comms, marker='^', label="AS-JL Comms")
+plt.plot(cs, all_rounded_as_jl_comms, marker='x', label="EAS-JL Comms")
 
 # X-axis from 0 to 10 with ticks at every integer
-plt.xlim(11, 20)
-plt.xticks(np.arange(11, 21, 1))  # Ticks from 11 to 20
+#plt.xlim(11, 20)
+#plt.xticks(np.arange(11, 21, 1))  # Ticks from 11 to 20
+plt.xlim(1, 10)
+plt.xticks(np.arange(1, 11, 1))  # Ticks from 11 to 20
 
 plt.xlabel('Sampling Coefficient')
 plt.ylabel('Communication (Bits)')
 plt.title('Communication Costs')
 plt.legend()
 plt.grid(True)
-plt.show()
 
 plt.figure()
-plt.plot(cs, all_mp_costs, marker='o', markerfacecolor='none', label="MP Costs")
-plt.plot(cs, all_as_costs, marker='^', label="AS Costs")
-plt.plot(cs, all_rounded_as_costs, marker='x', label="EAS Costs")
+#plt.plot(cs, all_mp_costs, marker='o', markerfacecolor='none', label="MP Costs")
+plt.plot(cs, all_as_costs, marker='o', markerfacecolor='none', label="AS Costs")
+plt.plot(cs, all_as_jl_costs, marker='^', label="AS-JL Costs")
+plt.plot(cs, all_rounded_as_jl_costs, marker='x', label="EAS-JL Costs")
 
 # X-axis from 11 to 20 with ticks at every integer
-plt.xlim(11, 20)
-plt.xticks(np.arange(11, 21, 1))  # Ticks from 11 to 20
+#plt.xlim(11, 20)
+#plt.xticks(np.arange(11, 21, 1))  # Ticks from 11 to 20
+plt.xlim(1, 10)
+plt.xticks(np.arange(1, 11, 1))  # Ticks from 11 to 20
 
 plt.xlabel('Sampling Coefficient')
 plt.ylabel('Cost')
@@ -330,3 +444,12 @@ plt.title('Clustering Costs')
 plt.legend()
 plt.grid(True)
 plt.show()
+
+##S = rounded_as_jl_centers[rounded_as_jl_labels]
+##kmeans = KMeans(n_clusters=k, init='k-means++', random_state=22)
+##kmeans.fit(S)  # S is your (n, d) array of data points
+##
+##labels = kmeans.labels_       # labels[i] is the index of the cluster assigned to S[i]
+##centers = kmeans.cluster_centers_  # the resulting cluster centers
+##
+##plot_clusters(points, centers, labels)
