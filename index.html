@@ -3798,26 +3798,17 @@ for (i = 0; i < info.length; i++) {
 
 <script>
 document.addEventListener('DOMContentLoaded', () => {
-  const toggle = document.getElementById('darkModeToggle');
-  if (!toggle) return;
+  const darktoggle = document.getElementById('darkModeToggle');
 
-  // Check saved theme
-  const saved = localStorage.getItem('theme'); // "dark", "light", or null
+  // Apply saved theme
+  if (localStorage.getItem('theme') === 'dark') {
+    document.body.classList.add('dark-mode');
+    darktoggle.checked = true;
+  }
 
-  // Determine initial dark mode
-  const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-  const useDark = saved === 'dark' || (saved === null && systemPrefersDark);
-
-  // Apply class to body
-  if (useDark) document.body.classList.add('dark-mode');
-  else document.body.classList.remove('dark-mode');
-
-  // Set toggle state
-  toggle.checked = useDark;
-
-  // Toggle listener
-  toggle.addEventListener('change', () => {
-    if (toggle.checked) {
+  // Toggle dark mode
+  darktoggle.addEventListener('change', () => {
+    if (darktoggle.checked) {
       document.body.classList.add('dark-mode');
       localStorage.setItem('theme', 'dark');
     } else {
@@ -3825,23 +3816,8 @@ document.addEventListener('DOMContentLoaded', () => {
       localStorage.setItem('theme', 'light');
     }
   });
-
-  // Listen for system changes (only if no manual override)
-  window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
-    const saved = localStorage.getItem('theme');
-    if (!saved) {
-      if (e.matches) {
-        document.body.classList.add('dark-mode');
-        toggle.checked = true;
-      } else {
-        document.body.classList.remove('dark-mode');
-        toggle.checked = false;
-      }
-    }
-  });
 });
 </script>
-
 
 
 </html>
