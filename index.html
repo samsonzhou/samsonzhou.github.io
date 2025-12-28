@@ -3799,14 +3799,23 @@ for (i = 0; i < info.length; i++) {
 <script>
 document.addEventListener('DOMContentLoaded', () => {
   const darktoggle = document.getElementById('darkModeToggle');
+  
+  // 1. Check for a saved preference in localStorage
+  const savedTheme = localStorage.getItem('theme');
+  
+  // 2. Check the system/browser preference
+  const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
 
-  // Apply saved theme
-  if (localStorage.getItem('theme') === 'dark') {
+  // 3. Determine if dark mode should be active:
+  // Use saved choice if it exists; otherwise, use the system default.
+  const shouldBeDark = savedTheme === 'dark' || (!savedTheme && prefersDark);
+
+  if (shouldBeDark) {
     document.body.classList.add('dark-mode');
     darktoggle.checked = true;
   }
 
-  // Toggle dark mode
+  // Handle manual toggling
   darktoggle.addEventListener('change', () => {
     if (darktoggle.checked) {
       document.body.classList.add('dark-mode');
@@ -3818,7 +3827,6 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 });
 </script>
-
 
 </html>
 
