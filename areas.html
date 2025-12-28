@@ -130,7 +130,7 @@
 	}
 
 	a:hover { 
-	  text-decoration: underline; 
+	  text-decoration: underline dotted; 
 	  color: #800000; /* Slightly lighter maroon on hover */
 	}
 
@@ -182,6 +182,73 @@
 	  color: #ff8080;
 	}
 
+	
+	/* --- Gallery Styles --- */
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.gallery-item {
+  border-radius: 12px;
+  overflow: hidden;
+  background: white;
+  border: 1px solid #e2e8f0;
+  transition: transform 0.2s;
+}
+
+.gallery-item img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  display: block;
+}
+
+.gallery-info {
+  padding: 10px;
+  font-size: 12px;
+  color: #64748b;
+  text-align: center;
+}
+
+/* Hidden state for extra photos */
+.extra-photos {
+  display: none; /* Controlled by JS */
+}
+
+/* Dark Mode Overrides */
+body.dark-mode .gallery-item {
+  background: #111;
+  border-color: #222;
+}
+
+/* The "View All" Button */
+.view-more-btn {
+  display: block;
+  margin: 20px auto;
+  padding: 10px 24px;
+  background: transparent;
+  border: 2px solid #500000;
+  color: #500000;
+  border-radius: 25px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.3s;
+}
+
+body.dark-mode .view-more-btn {
+  border-color: #ff4d4d;
+  color: #ff4d4d;
+}
+
+.view-more-btn:hover {
+  background: #500000;
+  color: white;
+}
+	
+
     /* --- Toggle Switch --- */
     .header-controls {
       display: flex;
@@ -229,8 +296,8 @@
     </div>
 
   <div class="container">
-    <h1>Samson Zhou — Research Highlights</h1>
-
+    <h1>Research Group</h1>
+	<div class="section-title">Focus Areas</div>
     <div class="card">
       <img src="https://cdn-icons-png.flaticon.com/512/3081/3081652.png" alt="Data Stream Icon">
       <div class="card-content">
@@ -261,7 +328,7 @@
 
 	<div class="member-card">
 	  <div class="role-tag">Masters Student</div>
-	  <img src="shenghao2.jpg" alt="Member Photo" class="member-photo">
+	  <img src="pics/shenghao.jpg" alt="Member Photo" class="member-photo">
 	  <h3><a href="https://sites.google.com/view/shenghaoxie/">Shenghao Xie</a></h3>
 	  
 	  <div style="font-size: 12px; color: #eab308; display: flex; align-items: center; gap: 5px; margin: 5px 0; font-weight: 600;">
@@ -319,8 +386,8 @@
 		<div class="member-grid">
         <div class="member-card">
             <div class="role-tag">Alumni</div>
-            <img src="chen.jpg" alt="Chen Wang" class="member-photo">
-            <h3>Chen Wang</h3>
+            <img src="pics/chen.jpg" alt="Chen Wang" class="member-photo">
+            <h3> <a href="https://sites.google.com/view/chen-wang/home">Chen Wang</a></h3>
             <p>Postdoc (2024-2025)</p>
             <div class="next-stop">
                 <strong>Next Stop:</strong> Assistant Professor at Rensselaer Polytechnic Institute (RPI).
@@ -343,20 +410,73 @@
     </div>
 
     <div class="section-title">Recent Projects</div>
-    <div class="project-card">
-      <h3>Streaming Graph Sketches</h3>
-      <p>Developed compact sketches for massive graph streams enabling near-real-time analysis with provable accuracy guarantees. <a href="#">View project</a></p>
+	<div class="project-card">
+	  <h3>Adversarial Robustness in the Streaming Model</h3>
+	  <p>
+		Designing streaming algorithms that remain accurate even when the input stream is chosen adaptively by an adversary. This work focuses on defending against "black box" and "white box" attacks in big data models.
+	  </p>
+	  
+	  <div style="margin-top: 18px; padding-top: 15px; border-top: 1px solid #222; display: flex; flex-wrap: wrap; align-items: center; gap: 15px; font-size: 13px;">
+		
+		<span style="color: #64748b; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px;">Media Coverage:</span>
+		
+		<a href="https://engineering.tamu.edu/news/2024/04/how-researchers-are-protecting-ai-of-the-future.html" target="_blank" style="color: #800000; display: flex; align-items: center; gap: 4px;">
+		  Texas A&M Engineering News
+		</a>
+
+		<span style="color: #444;">•</span>
+
+		<a href="https://www.cs.cmu.edu/news/2024/strengthening-scalable-algorithms" target="_blank" style="color: #800000; display: flex; align-items: center; gap: 4px;">
+		  CMU School of Computer Science News
+		</a>
+
+		<div style="margin-left: auto; color: #64748b; font-style: italic; display: flex; align-items: center; gap: 6px;">
+  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="opacity: 0.7;">
+    <circle cx="12" cy="12" r="10"></circle>
+    <line x1="2" y1="12" x2="22" y2="12"></line>
+    <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+  </svg>
+  Supported by NSF
+</div>
+	  </div>
+	</div>
+
+<div class="project-card">
+  <h3>Differential Privacy</h3>
+  <p>
+    Developing algorithmic frameworks that enable high-utility data analysis while providing rigorous privacy guarantees. This research focuses on the trade-offs between accuracy, computational efficiency, and privacy budget in various differential privacy models.
+  </p>
+  
+  <div style="margin-top: 18px; padding-top: 15px; border-top: 1px solid #222; display: flex; flex-wrap: wrap; align-items: center; gap: 15px; font-size: 13px;">
+    
+    <div style="margin-left: auto; color: #64748b; font-style: italic; display: flex; align-items: center; gap: 6px;">
+       <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" style="opacity: 0.7;">
+         <path d="M17.05 20.28c-.98.95-2.05 1.79-3.23 1.72-1.15-.07-1.55-.76-2.91-.76-1.33 0-1.8.74-2.88.78-1.18.04-2.31-.9-3.32-2.33-2.04-2.92-1.56-8.23 1.12-11.45 1.33-1.6 3-2.61 4.81-2.65 1.38-.03 2.68.91 3.53.91.83 0 2.41-1.11 4.07-.94 1.25.06 2.37.5 3.12 1.39-2.5 1.48-2.09 5.37.4 6.94-.74 1.83-1.66 3.65-3.34 5.38zM12.02 4.65c-.06-1.89 1.54-3.5 3.39-3.65.23 2.15-2.02 4.04-3.39 3.65z"/>
+       </svg>
+       Supported by Apple
     </div>
+  </div>
+</div>
 
     <div class="project-card">
-      <h3>CostDP Mechanism for Adaptive Queries</h3>
-      <p>Designed an efficient differentially private framework that tracks query costs and maintains utility under adaptive adversaries. <a href="#">View project</a></p>
+  <h3>Efficient Synthetic Data Generation</h3>
+  <p>
+    Developing mathematical frameworks for private and scalable data generation. This research utilizes geometric coresets and algebraic low-rank approximation to construct high-utility synthetic datasets that represent the underlying structure of massive datasets while maintaining rigorous mathematical guarantees.
+  </p>
+  
+  <div style="margin-top: 18px; padding-top: 15px; border-top: 1px solid #222; display: flex; flex-wrap: wrap; align-items: center; gap: 15px; font-size: 13px;">
+    
+    <div style="margin-left: auto; color: #64748b; font-style: italic; display: flex; align-items: center; gap: 6px;">
+       <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="opacity: 0.7;">
+         <circle cx="12" cy="12" r="3"></circle>
+         <path d="M12 21.5c4.14 0 7.5-1.5 7.5-3.5S16.14 14.5 12 14.5s-7.5 1.5-7.5 3.5 3.36 3.5 7.5 3.5z"></path>
+         <path d="M12 9.5c4.14 0 7.5-1.5 7.5-3.5S16.14 2.5 12 2.5s-7.5 1.5-7.5 3.5 3.36 3.5 7.5 3.5z" transform="rotate(60 12 12)"></path>
+         <path d="M12 9.5c4.14 0 7.5-1.5 7.5-3.5S16.14 2.5 12 2.5s-7.5 1.5-7.5 3.5 3.36 3.5 7.5 3.5z" transform="rotate(-60 12 12)"></path>
+       </svg>
+       Supported by Oak Ridge National Laboratory
     </div>
-
-    <div class="project-card">
-      <h3>Scalable Clustering Pipeline</h3>
-      <p>Implemented a robust, scalable clustering framework for noisy high-dimensional datasets, integrating k-means, spectral methods, and visualizations. <a href="#">View project</a></p>
-    </div>
+  </div>
+</div>
 
     <div class="section-title">Featured Publications</div>
     <div class="publication-card">
@@ -373,6 +493,34 @@
       <h3>Robust Clustering in High Dimensions</h3>
       <p>Samson Zhou et al., <em>NeurIPS</em>, 2024. <a href="#">Read PDF</a></p>
     </div>
+  
+  <div class="section-title">Group Life & Events</div>
+
+<div class="gallery-grid">
+  <div class="gallery-item">
+    <img src="pics/gala-25-2.jpg" alt="">
+    <div class="gallery-info">Alan, Shenghao, and Soham at Engineering Awards Banquet 2025</div>
+  </div>
+  <div class="gallery-item">
+    <img src="pics/gala-25-1.jpg" alt="Conference">
+    <div class="gallery-info">Engineering Awards Banquet 2025</div>
+  </div>
+  <div class="gallery-item">
+    <img src="pics/hotpot-25.jpg" alt="Dinner">
+    <div class="gallery-info">Group Dinner 2025</div>
+  </div>
+  <!--<div class="gallery-item">
+    <img src="pic4.jpg" alt="Workshop">
+    <div class="gallery-info">Theory Workshop 2023</div>
+  </div>-->
+</div>
+<!--
+<div class="gallery-grid extra-photos" id="extraPhotos">
+  <div class="gallery-item"><img src="pic5.jpg" alt="Old Group"><div class="gallery-info">Group 2022</div></div>
+  <div class="gallery-item"><img src="pic6.jpg" alt="Coffee"><div class="gallery-info">Coffee Break</div></div>
+  </div>-->
+
+<!--<button class="view-more-btn" id="toggleGallery">View All Photos</button>-->
   
   <script>
     document.addEventListener('DOMContentLoaded', () => {
@@ -396,6 +544,20 @@
         }
       });
     });
+	
+	const toggleBtn = document.getElementById('toggleGallery');
+	const extraPhotos = document.getElementById('extraPhotos');
+
+	toggleBtn.addEventListener('click', () => {
+	if (extraPhotos.style.display === 'grid') {
+		extraPhotos.style.display = 'none';
+		toggleBtn.textContent = 'View All Photos';
+	} else {
+		extraPhotos.style.display = 'grid';
+		toggleBtn.textContent = 'Show Less';
+	}
+	});
+	
   </script>
 </body>
 </html>
