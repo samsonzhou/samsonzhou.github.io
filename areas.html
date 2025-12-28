@@ -5,104 +5,237 @@
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>Samson Zhou — Research Highlights</title>
   <style>
+    /* --- Base Styles (Light Mode) --- */
     body {
-      font-family: 'Inter', sans-serif;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
       margin: 0;
       background: #f8fafc;
       color: #1e293b;
       padding: 40px 20px;
+      transition: background 0.3s, color 0.3s;
     }
     .container {
-      max-width: 900px;
+      max-width: 1000px;
       margin: 0 auto;
     }
-    h1 {
-      font-size: 28px;
-      margin-bottom: 40px;
+    h1, .section-title {
       color: #0f172a;
-      text-align: center;
+      transition: color 0.3s;
     }
-    .card {
+    h1 { font-size: 32px; margin-bottom: 40px; text-align: center; font-weight: 800; }
+    .section-title { 
+        font-size: 26px; 
+        margin: 60px 0 30px; 
+        text-align: center; 
+        font-weight: 700;
+    }
+
+    /* Cards */
+    .card, .project-card, .publication-card, .member-card {
       background: white;
       border-radius: 16px;
       box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-      padding: 24px;
-      margin-bottom: 24px;
-      transition: transform 0.2s, box-shadow 0.2s;
+      transition: transform 0.2s, box-shadow 0.2s, background 0.3s;
+    }
+    
+    .card, .project-card, .publication-card { padding: 24px; margin-bottom: 24px; }
+    .card { display: flex; align-items: center; gap: 24px; }
+    
+    .card:hover, .project-card:hover, .publication-card:hover, .member-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+    }
+    .card img { width: 64px; height: 64px; flex-shrink: 0; }
+    
+    .card-content h2, .project-card h3, .publication-card h3, .member-card h3 {
+      font-size: 20px; margin: 0 0 8px; color: #0f172a; transition: color 0.3s;
+    }
+    .card-content p, .project-card p, .publication-card p, .member-card p {
+      font-size: 15px; color: #475569; line-height: 1.6; margin: 0; transition: color 0.3s;
+    }
+    
+    /* --- Member Grid --- */
+    .member-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 24px;
+      margin-top: 20px;
+    }
+
+    .member-card {
+      padding: 32px 24px;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .member-photo {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-bottom: 16px;
+      border: 4px solid #f1f5f9;
+      transition: border-color 0.3s;
+    }
+
+    .role-tag {
+      display: inline-block;
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+      letter-spacing: 0.8px;
+      background: #500000;
+      color: white;
+    }
+
+    /* --- Social Icons --- */
+    .member-social { display: flex; justify-content: center; gap: 12px; margin-top: auto; padding-top: 15px; }
+    .social-icon {
       display: flex;
       align-items: center;
-      gap: 20px;
+      justify-content: center;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: #f1f5f9;
+      color: #64748b;
+      transition: all 0.3s ease;
     }
-    .card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 8px 20px rgba(0,0,0,0.08);
-    }
-    .card img {
-      width: 80px;
-      height: 80px;
-      flex-shrink: 0;
-    }
-    .card-content {
+    .social-icon svg { width: 18px; height: 18px; fill: currentColor; }
+    .social-icon:hover { background: #500000; color: white; transform: translateY(-2px); }
+
+    .next-stop {
+      margin-top: 16px;
+      font-size: 13px;
+      padding: 12px;
+      background: #fff7ed;
+      border-radius: 12px;
+      color: #9a3412;
+      border-left: 4px solid #500000;
       text-align: left;
+      width: 100%;
+      box-sizing: border-box;
     }
-    .card-content h2 {
-      font-size: 20px;
-      margin: 0 0 8px;
-      color: #0f172a;
+
+	/* --- Link Styles (Light Mode) --- */
+	a { 
+	  color: #500000; /* TAMU Maroon */
+	  text-decoration: none; 
+	  transition: color 0.3s;
+	}
+
+	a:hover { 
+	  text-decoration: underline; 
+	  color: #800000; /* Slightly lighter maroon on hover */
+	}
+
+    /* --- BLACK THEME OVERRIDES (Dark Mode) --- */
+    body.dark-mode {
+      background: #000000; /* True Black */
+      color: #94a3b8;
     }
-    .card-content p {
-      font-size: 15px;
-      color: #334155;
-      line-height: 1.6;
-      margin: 0;
+    body.dark-mode h1, 
+    body.dark-mode .section-title, 
+    body.dark-mode .card-content h2, 
+    body.dark-mode .project-card h3, 
+    body.dark-mode .publication-card h3,
+    body.dark-mode .member-card h3 {
+      color: #ffffff;
     }
-    .section-title {
-      font-size: 24px;
-      color: #0f172a;
-      margin: 40px 0 24px;
-      text-align: center;
+    body.dark-mode .card, 
+    body.dark-mode .project-card, 
+    body.dark-mode .publication-card,
+    body.dark-mode .member-card {
+      background: #111111; /* Very dark gray for depth */
+      box-shadow: 0 4px 20px rgba(0,0,0,0.6);
+      border: 1px solid #222;
     }
-    .project-card, .publication-card {
-      background: white;
-      border-radius: 16px;
-      padding: 20px;
+    body.dark-mode .card-content p, 
+    body.dark-mode .project-card p, 
+    body.dark-mode .publication-card p,
+    body.dark-mode .member-card p {
+      color: #a1a1aa;
+    }
+    body.dark-mode .social-icon {
+      background: #222;
+      color: #94a3b8;
+    }
+    body.dark-mode .member-photo {
+      border-color: #222;
+    }
+    body.dark-mode .next-stop {
+      background: #1a1510;
+      color: #fb923c;
+      border-left-color: #7a0000;
+    }
+	/* --- Link Styles (Dark Mode Overrides) --- */
+	body.dark-mode a { 
+	  color: #ff4d4d; /* Lighter crimson for better contrast on black */
+	}
+
+	body.dark-mode a:hover {
+	  color: #ff8080;
+	}
+
+    /* --- Toggle Switch --- */
+    .header-controls {
+      display: flex;
+      justify-content: flex-end;
       margin-bottom: 20px;
-      box-shadow: 0 3px 10px rgba(0,0,0,0.05);
-      transition: transform 0.2s, box-shadow 0.2s;
+      align-items: center;
     }
-    .project-card:hover, .publication-card:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+    .switch {
+      position: relative;
+      display: inline-block;
+      width: 50px;
+      height: 26px;
     }
-    .project-card h3, .publication-card h3 {
-      margin: 0 0 8px;
-      font-size: 18px;
-      color: #0f172a;
+    .switch input { opacity: 0; width: 0; height: 0; }
+    .slider {
+      position: absolute;
+      cursor: pointer;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background-color: #cbd5e1;
+      transition: .4s;
+      border-radius: 34px;
     }
-    .project-card p, .publication-card p {
-      margin: 0;
-      color: #334155;
-      font-size: 14px;
-      line-height: 1.5;
+    .slider:before {
+      position: absolute;
+      content: "";
+      height: 20px; width: 20px;
+      left: 3px; bottom: 3px;
+      background-color: white;
+      transition: .4s;
+      border-radius: 50%;
     }
-    a {
-      color: #7dd3fc;
-      text-decoration: none;
-    }
-    a:hover { text-decoration: underline; }
+    input:checked + .slider { background-color: #500000; }
+    input:checked + .slider:before { transform: translateX(24px); }
   </style>
 </head>
 <body>
+
+    <div class="header-controls">
+      <span style="font-size: 14px; margin-right: 8px;">☀️</span>
+      <label class="switch">
+        <input type="checkbox" id="darkModeToggle">
+        <span class="slider"></span>
+      </label>
+      <span style="font-size: 14px; margin-left: 8px;">🌙</span>
+    </div>
+
   <div class="container">
     <h1>Samson Zhou — Research Highlights</h1>
 
-    <!-- Research Areas -->
     <div class="card">
       <img src="https://cdn-icons-png.flaticon.com/512/3081/3081652.png" alt="Data Stream Icon">
       <div class="card-content">
         <h2>Sublinear Algorithms</h2>
-		<p>How can you understand a dataset too big to store -- or even read -- completely? Sublinear algorithms efficiently find meaningful results 
-		from massive data, built on beautiful mathematics for tackling problems that seem too big to handle head-on.</p>
+        <p>How can you understand a dataset too big to store -- or even read -- completely? Sublinear algorithms efficiently find meaningful results from massive data, built on beautiful mathematics for tackling problems that seem too big to handle head-on.</p>
       </div>
     </div>
 
@@ -110,24 +243,106 @@
       <img src="https://cdn-icons-png.flaticon.com/512/3062/3062634.png" alt="Differential Privacy Icon">
       <div class="card-content">
         <h2>Differential Privacy</h2>
-        <p>How can you learn from sensitive data without revealing too much about any individual? Differential privacy enables meaningful analysis while protecting each user’s information, 
-		increasingly recognized as a vital tool for responsible, ethical use of data.</p>
+        <p>How can you learn from sensitive data without revealing too much about any individual? Differential privacy enables meaningful analysis while protecting each user’s information, increasingly recognized as a vital tool for responsible, ethical use of data.</p>
       </div>
     </div>
 
-	<div class="card">
-		<img src="https://cdn-icons-png.flaticon.com/512/414/414927.png" alt="Foundations of Data Science Icon">
-		<div class="card-content">
-		<h2>Foundations of Data Science</h2>
-		<p>How can you harness data to solve real problems? Foundations of data science equips you with 
-		techniques that are both reliable and implementable, helping ideas move from concept to application and 
-		turning insights into actionable results.</p>
+    <div class="card">
+        <img src="https://cdn-icons-png.flaticon.com/512/414/414927.png" alt="Foundations of Data Science Icon">
+        <div class="card-content">
+          <h2>Foundations of Data Science</h2>
+          <p>How can you harness data to solve real problems? Foundations of data science equips you with techniques that are both reliable and implementable, helping ideas move from concept to application and turning insights into actionable results.</p>
+        </div>
+    </div>
+
+<div class="section-title">Team Members</div>
+
+<div class="member-grid">
+
+	<div class="member-card">
+	  <div class="role-tag">Masters Student</div>
+	  <img src="shenghao2.jpg" alt="Member Photo" class="member-photo">
+	  <h3><a href="https://sites.google.com/view/shenghaoxie/">Shenghao Xie</a></h3>
+	  
+	  <div style="font-size: 12px; color: #eab308; display: flex; align-items: center; gap: 5px; margin: 5px 0; font-weight: 600;">
+		<svg width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+		  <path d="M2.5.5A.5.5 0 0 1 3 0h10a.5.5 0 0 1 .5.5c0 .538-.012 1.05-.034 1.536a3 3 0 1 1-1.133 5.89c-.79 1.865-1.878 2.777-2.833 3.011v2.173l1.425.356c.194.048.377.135.537.255L13.315 15a.5.5 0 0 1-.315.857H3a.5.5 0 0 1-.315-.857l1.813-1.366a1.34 1.34 0 0 0 .537-.255l1.425-.356v-2.173c-.955-.234-2.043-1.146-2.833-3.012a3 3 0 1 1-1.132-5.89A33.076 33.076 0 0 1 2.5.5zm.099 2.54a2 2 0 0 0 .72 3.935c-.033-1.32-.058-2.566-.067-3.414l-.653-.521zM13.401 3.04l-.653.522c-.009.848-.034 2.094-.067 3.413a2 2 0 0 0 .72-3.935z"/>
+		</svg>
+		2025-2026 Outstanding Engineering MS Graduate Student Award
+	  </div>
+
+	<div class="member-social">
+	  <a href="https://sites.google.com/view/shenghaoxie/" class="social-icon" title="Personal Webpage">
+		<svg viewBox="0 0 24 24">
+		  <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/>
+		</svg>
+	  </a>
+	  
+	  <a href="https://scholar.google.com/citations?user=JKjz5D8AAAAJ" class="social-icon" title="Google Scholar">
+		<svg viewBox="0 0 24 24">
+		  <path d="M12 3L1 9l4.59 2.5a6 6 0 0 0-.59 2.5c0 3.31 2.69 6 6 6s6-2.69 6-6c0-.88-.19-1.72-.54-2.47L23 9l-11-6zm0 8a4 4 0 1 1 0 8 4 4 0 0 1 0-8zm-6 10v1h12v-1c0-2-4-3-6-3s-6 1-6 3z"/>
+		</svg>
+	  </a>
 	</div>
 	</div>
 
-    <!-- Projects Section -->
+  <div class="member-card">
+    <div class="role-tag">Undergrad Student</div>
+    <img src="https://via.placeholder.com/150" alt="Member Photo" class="member-photo">
+    <h3>Soham Nagawanshi</h3>
+
+    <div class="member-social">
+      <a href="#" class="social-icon"><svg viewBox="0 0 24 24"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.092.682-.217.682-.482 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.34-3.369-1.34-.454-1.154-1.11-1.461-1.11-1.461-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.203 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482C19.138 20.161 22 16.416 22 12c0-5.523-4.477-10-10-10z"/></svg></a>
+      <a href="#" class="social-icon"><svg viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg></a>
+    </div>
+  </div>
+<!--
+
+  <div class="member-card">
+    <div class="role-tag">Undergrad Student</div>
+    <img src="https://via.placeholder.com/150" alt="Member Photo" class="member-photo">
+    <h3>Soham Nagawanshi</h3>
+
+    <div class="member-social">
+      <a href="#" class="social-icon"><svg viewBox="0 0 24 24"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.092.682-.217.682-.482 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.34-3.369-1.34-.454-1.154-1.11-1.461-1.11-1.461-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.203 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482C19.138 20.161 22 16.416 22 12c0-5.523-4.477-10-10-10z"/></svg></a>
+      <a href="#" class="social-icon"><svg viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg></a>
+    </div>
+  </div>
+  
+  -->
+  
+</div>
+
+
+
+    <div class="section-title">Alumni</div>
+		<div class="member-grid">
+        <div class="member-card">
+            <div class="role-tag">Alumni</div>
+            <img src="chen.jpg" alt="Chen Wang" class="member-photo">
+            <h3>Chen Wang</h3>
+            <p>Postdoc (2024-2025)</p>
+            <div class="next-stop">
+                <strong>Next Stop:</strong> Assistant Professor at Rensselaer Polytechnic Institute (RPI).
+            </div>
+			
+		<div class="member-social">
+		  <a href="https://sites.google.com/view/chen-wang/home" class="social-icon" title="Personal Webpage">
+			<svg viewBox="0 0 24 24">
+			  <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/>
+			</svg>
+		  </a>
+		  
+		  <a href="https://scholar.google.com/citations?hl=en&user=DnrU0k0AAAAJ" class="social-icon" title="Google Scholar">
+			<svg viewBox="0 0 24 24">
+			  <path d="M12 3L1 9l4.59 2.5a6 6 0 0 0-.59 2.5c0 3.31 2.69 6 6 6s6-2.69 6-6c0-.88-.19-1.72-.54-2.47L23 9l-11-6zm0 8a4 4 0 1 1 0 8 4 4 0 0 1 0-8zm-6 10v1h12v-1c0-2-4-3-6-3s-6 1-6 3z"/>
+			</svg>
+		  </a>
+		</div>
+		</div>
+    </div>
+
     <div class="section-title">Recent Projects</div>
-
     <div class="project-card">
       <h3>Streaming Graph Sketches</h3>
       <p>Developed compact sketches for massive graph streams enabling near-real-time analysis with provable accuracy guarantees. <a href="#">View project</a></p>
@@ -143,9 +358,7 @@
       <p>Implemented a robust, scalable clustering framework for noisy high-dimensional datasets, integrating k-means, spectral methods, and visualizations. <a href="#">View project</a></p>
     </div>
 
-    <!-- Featured Publications Section -->
     <div class="section-title">Featured Publications</div>
-
     <div class="publication-card">
       <h3>Sublinear Time Graph Summaries</h3>
       <p>Samson Zhou et al., <em>Journal of Algorithms</em>, 2025. <a href="#">Read PDF</a></p>
@@ -160,7 +373,29 @@
       <h3>Robust Clustering in High Dimensions</h3>
       <p>Samson Zhou et al., <em>NeurIPS</em>, 2024. <a href="#">Read PDF</a></p>
     </div>
+  
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const darktoggle = document.getElementById('darkModeToggle');
+      const savedTheme = localStorage.getItem('theme');
+      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      const shouldBeDark = savedTheme === 'dark' || (!savedTheme && prefersDark);
 
-  </div>
+      if (shouldBeDark) {
+        document.body.classList.add('dark-mode');
+        darktoggle.checked = true;
+      }
+
+      darktoggle.addEventListener('change', () => {
+        if (darktoggle.checked) {
+          document.body.classList.add('dark-mode');
+          localStorage.setItem('theme', 'dark');
+        } else {
+          document.body.classList.remove('dark-mode');
+          localStorage.setItem('theme', 'light');
+        }
+      });
+    });
+  </script>
 </body>
 </html>
