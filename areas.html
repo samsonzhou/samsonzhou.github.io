@@ -282,18 +282,126 @@ body.dark-mode .view-more-btn {
     }
     input:checked + .slider { background-color: #500000; }
     input:checked + .slider:before { transform: translateX(24px); }
+	
+	
+/* --- Sticky Navigation Bar --- */
+nav {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  z-index: 9999;
+  background-color: white;
+  border-bottom: 2px solid #500000;
+  height: 60px; 
+  /* Pulls nav to edges and top, clears body padding */
+  margin: -40px -20px 40px -20px; 
+  width: 100vw;
+  display: table;
+  table-layout: fixed;
+  transition: background-color 0.3s, border-color 0.3s;
+}
+
+body.dark-mode nav {
+  background-color: #121212;
+  border-bottom: 2px solid lightblue;
+}
+
+.nav-section {
+  display: table-cell;
+  vertical-align: middle;
+  height: 60px;
+}
+
+.nav-links a {
+  margin: 0 20px;
+  font-weight: bold;
+  font-size: 1.4rem;
+  text-decoration: none;
+  font-family: "Times New Roman", Times, serif; /* Keeps branding consistent */
+  color: teal;
+}
+
+body.dark-mode .nav-links a { color: lightblue; }
+
+.nav-links a:hover {
+  color: crimson;
+  text-decoration: underline dotted;
+}
+
+/* --- The Slider Fix --- */
+.dark-mode-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  /* Reset Inter font for toggle if needed */
+  font-family: sans-serif; 
+}
+
+.dark-mode-toggle span { font-size: 20px; }
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 44px;
+  height: 22px;
+}
+
+.switch input { opacity: 0; width: 0; height: 0; display: none; }
+
+.slider {
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background-color: #ccc;
+  border-radius: 34px;
+  transition: 0.4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 16px;
+  width: 16px;
+  left: 3px;
+  top: 3px;
+  background-color: white;
+  border-radius: 50%;
+  transition: 0.4s;
+}
+
+input:checked + .slider { background-color: #2196F3; }
+input:checked + .slider:before { transform: translateX(22px); }
+
+/* --- Scroll Offset Fix --- */
+html { scroll-behavior: smooth; }
+
+/* Ensures clicking 'Home' or 'Publications' doesn't hide text under the nav */
+h1, h2, h3, .section-title {
+  scroll-margin-top: 100px; 
+}
   </style>
 </head>
 <body>
 
-    <div class="header-controls">
-      <span style="font-size: 14px; margin-right: 8px;">☀️</span>
+<nav>
+  <div class="nav-section" style="width: 20%;"></div>  
+
+  <div class="nav-section nav-links" style="width: 60%; text-align: center;">
+    <a href="index.html#home">Home</a>
+    <a href="index.html#teaching">Teaching/Service</a>
+    <a href="index.html#publications">Publications</a>
+    <a href="areas.html">Research Group</a> </div>
+
+  <div class="nav-section" style="width: 20%; text-align: right; padding-right: 40px;">
+    <div class="dark-mode-toggle">
+      <span>☀️</span>
       <label class="switch">
         <input type="checkbox" id="darkModeToggle">
         <span class="slider"></span>
       </label>
-      <span style="font-size: 14px; margin-left: 8px;">🌙</span>
+      <span>🌙</span>
     </div>
+  </div>
+</nav>
 
   <div class="container">
     <h1>Research Group</h1>

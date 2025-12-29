@@ -116,6 +116,101 @@
   input:checked + .slider:before {
     transform: translateX(26px);
   }
+  
+  
+  
+/* --- Sticky Navigation Bar --- */
+nav {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  z-index: 9999;
+  background-color: white;
+  border-bottom: 2px solid #500000;
+  height: 60px; 
+  margin: -40px -20px 20px -20px;
+  width: 100vw;
+  display: table; /* Use table layout for rigid alignment */
+  table-layout: fixed;
+  transition: background-color 0.3s, border-color 0.3s;
+}
+
+body.dark-mode nav {
+  background-color: #121212;
+  border-bottom: 2px solid lightblue;
+}
+
+/* Internal cells */
+.nav-section {
+  display: table-cell;
+  vertical-align: middle; /* Forces vertical centering regardless of scroll */
+  height: 60px;
+}
+
+.nav-links a {
+  margin: 0 20px;
+  font-weight: bold;
+  font-size: 1.4rem; /* Larger font */
+  text-decoration: none;
+  font-family: "Times New Roman", Times, serif;
+  color: teal;
+}
+
+body.dark-mode .nav-links a { color: lightblue; }
+
+/* --- The Slider Fix --- */
+.dark-mode-toggle {
+  display: inline-flex; /* Use inline-flex inside the table-cell */
+  align-items: center;
+  gap: 10px;
+}
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 44px;
+  height: 22px;
+}
+
+.slider {
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background-color: #ccc;
+  border-radius: 34px;
+}
+
+/* The Dot: Fixed absolute pixels to prevent movement */
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 16px;
+  width: 16px;
+  left: 3px;
+  top: 3px; /* Absolute distance from top */
+  background-color: white;
+  border-radius: 50%;
+  transition: 0.4s;
+}
+
+input:checked + .slider:before {
+  transform: translateX(22px);
+}
+
+/* --- Fix Scroll Overlap --- */
+html {
+  scroll-behavior: smooth; /* Optional: adds a nice gliding effect */
+}
+
+/* Apply offset to any header that has an ID (the nav targets) */
+h3[id], p[id], div[id] {
+  scroll-margin-top: 85px; /* 60px for nav height + 25px for breathing room */
+}
+
+/* Special case for home to ensure it goes all the way to the top */
+#home {
+  scroll-margin-top: 0px;
+}
+  
 </style>
 
 <script>
@@ -128,7 +223,31 @@ function toggle(id) {
 }
 </script>
 
+<body id="home"> 
+<nav>
+  <div class="nav-section" style="width: 20%;"></div> 
+
+  <div class="nav-section nav-links" style="width: 60%; text-align: center;">
+    <a href="index.html#home">Home</a>
+    <a href="index.html#teaching">Teaching/Service</a>
+    <a href="index.html#publications">Publications</a>
+    <a href="areas.html">Research Group</a> </div>
+  </div>
+
+  <div class="nav-section" style="width: 20%; text-align: right; padding-top:20px; padding-right: 40px;">
+    <div class="dark-mode-toggle">
+      <span>☀️</span>
+      <label class="switch">
+        <input type="checkbox" id="darkModeToggle">
+        <span class="slider"></span>
+      </label>
+      <span>🌙</span>
+    </div>
+  </div>
+</nav>
+
 <center>
+</br>
 <table border="0" cellpadding="0" cellspacing="0" style="margin-top: -25px;">
 <tr>
 <td width="30%" colspan="2">
@@ -179,29 +298,15 @@ document.getElementById("profile-img").src = randomImage;
     <!-- Third column: logo and slider -->
     <td width="30%" style="text-align: center; vertical-align: top;">
       <!-- Logo on top -->
-      <img src="logo_tamu.png" style="width: 20%; margin-bottom: 10px;" alt="TAMU Logo">
-
-      <!-- Dark mode slider below -->
-      <div class="dark-mode-toggle" style="display: flex; justify-content: center; align-items: center; gap: 10px;">
-        <span>☀️</span>
-        <label class="switch">
-          <input type="checkbox" id="darkModeToggle">
-          <span class="slider"></span>
-        </label>
-        <span>🌙</span>
-      </div>
+      <img src="logo_tamu.png" style="width: 40%; margin-bottom: 10px;" alt="TAMU Logo">
     </td>
 </tr>
 </table>
 </center>
-<!--<h3>
-About
-</h3>-->
 
 <p id="intro">
 Hi, I'm an <a href="https://engineering.tamu.edu/cse/profiles/zhou-samson.html">Assistant Professor</a> in the 
 <a href="https://engineering.tamu.edu/cse/index.html">Department of Computer Science &#38; Engineering</a> at Texas A&#38;M University. 
-<!--<b style="color:maroon;">I'm starting as an Assistant Professor at Texas A&#38;M University in Fall 2023. </b>-->
 My research lies at the intersections of theoretical computer science, data science, and machine learning. 
 In particular, I am currently interested in numerical linear algebra, streaming algorithms, and differential privacy. 
 Here are some of my favorite <a href="links.html">links</a>.
@@ -261,13 +366,6 @@ body.dark-mode .research-blue { color: #4aa3ff; }   /* lighter blue for dark bg 
 body.dark-mode .research-maroon { color: #ff9999; } /* lighter maroon/pink for dark bg */
 </style>
 
-
-
-<!--
-I am co-organizing the <a href="http://waldo2021.github.io/">Workshop on Algorithms for Large Data (Online) 2021</a>, running from Monday, August 23 to Wednesday, August 25.
-</br>
-</br>
--->
 Profiles: 
 [<a href="https://dblp.uni-trier.de/pers/hd/z/Zhou:Samson">dblp</a>]
 [<a href="https://scholar.google.com/citations?user=NpjsgocAAAAJ">Scholar</a>]
@@ -307,7 +405,7 @@ Academic Positions and Education
 </ul>
 
 <hr>
-<h3>
+<h3 id="teaching">
 Teaching
 </h3>
 
@@ -381,7 +479,7 @@ Information Processing Letters, Journal of Computer and System Sciences</li>
 </ul>
 <hr>
 
-<h3>
+<h3 id="publications">
 Publications
 </h3>
 
