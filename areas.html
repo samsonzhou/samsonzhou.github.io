@@ -301,29 +301,6 @@ nav {
   transition: background-color 0.3s, border-color 0.3s;
 }
 
-/* --- MOBILE RESPONSIVE FIX --- */
-@media (max-width: 768px) {
-  nav {
-    /* RESET: Stop pulling the bar up so it doesn't overlap text */
-    margin: 0 -20px 20px -20px; 
-    height: auto;           /* Allow bar to grow if links wrap */
-    min-height: 50px;
-    flex-wrap: wrap;        /* Allow links to stack if screen is tiny */
-    justify-content: center;
-  }
-
-  .nav-links {
-    padding: 10px 0;
-    order: 1;               /* Keeps links in middle */
-  }
-
-  /* Shrink text for mobile */
-  .nav-links a {
-    font-size: 1.1rem;
-    margin: 0 10px;
-  }
-}
-
 body.dark-mode nav {
   background-color: #121212;
   border-bottom: 2px solid lightblue;
