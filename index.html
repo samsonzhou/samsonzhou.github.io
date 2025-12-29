@@ -1,19 +1,11 @@
 <html>
 <head>
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Samson Zhou</title>
-	<link rel="shortcut icon" href="favicon_tamu.ico">
+<title>Samson Zhou</title>
+<link rel="shortcut icon" href="favicon_tamu.ico">
 </head>
 
 <style>
   /* --- Light Mode --- */
-  \\body
-\\{
-\\background: url(background.jpg) no-repeat;
-\\background-size: 100% 100%;
-\\}
   body {
     background-color: white;
     color: black;
@@ -33,12 +25,6 @@
     padding: 5px;
   }
 
-\\a:link {color: crimson;
-\\	text-decoration: none;}
-\\a:visited {color: crimson;
-\\	text-decoration: none;}
-\\a:hover {color: midnightblue;
-\\	text-decoration: underline;}
   a:link, a:visited {
     color: teal;
     text-decoration: none;
@@ -130,54 +116,12 @@ nav {
   z-index: 9999;
   background-color: white;
   border-bottom: 2px solid #500000;
-  height: 40px; 
-  margin: -20px -20px 0px -20px;
+  height: 60px; 
+  margin: -40px -20px 20px -20px;
   width: 100vw;
-  display: flex; /* Use table layout for rigid alignment */
+  display: table; /* Use table layout for rigid alignment */
   table-layout: fixed;
   transition: background-color 0.3s, border-color 0.3s;
-}
-
-/* --- Fix Scroll Overlap --- */
-html {
-  scroll-behavior: smooth; /* Optional: adds a nice gliding effect */
-}
-
-/* Apply offset to any header that has an ID (the nav targets) */
-h3[id], p[id], div[id] {
-  scroll-margin-top: 60px; /* 60px for nav height + 25px for breathing room */
-}
-
-/* Special case for home to ensure it goes all the way to the top */
-#home {
-  scroll-margin-top: 0px;
-}
-
-@media (max-width: 768px) {
-  nav {
-    /* Pull the nav to the absolute top of the screen */
-    top: 0;
-    margin: 0 -20px 20px -20px; 
-    min-height: 120px; 
-    height: auto; /* Allow growth if text wraps */
-  }
-  
-  /* This pushes your bio/table down so it doesn't start under the nav */
-  body {
-    padding-top: 0px; 
-    margin-top: 0px;
-  }
-  
-  /* Apply a much larger offset for mobile headers */
-  h3[id], p[id], div[id] {
-	scroll-margin-top: 120px; /* 60px for nav height + 25px for breathing room */
-	}
-
-  /* Ensure the very top of the page still scrolls correctly */
-  #home {
-    scroll-margin-top: 0px;
-  }
-  
 }
 
 body.dark-mode nav {
@@ -244,7 +188,22 @@ body.dark-mode .nav-links a { color: lightblue; }
 input:checked + .slider:before {
   transform: translateX(22px);
 }
-  
+
+/* --- Fix Scroll Overlap --- */
+html {
+  scroll-behavior: smooth; /* Optional: adds a nice gliding effect */
+}
+
+/* Apply offset to any header that has an ID (the nav targets) */
+h3[id], p[id], div[id] {
+  scroll-margin-top: 85px; /* 60px for nav height + 25px for breathing room */
+}
+
+/* Special case for home to ensure it goes all the way to the top */
+#home {
+  scroll-margin-top: 0px;
+}
+ 
 </style>
 
 <script>
@@ -267,7 +226,7 @@ function toggle(id) {
     <a href="index.html#publications">Publications</a>
     <a href="areas.html">Research Group</a> </div>
 
-  <div class="nav-section" style="width: 20%; text-align: right; padding-top: 0px; padding-right: 40px;">
+  <div class="nav-section" style="width: 20%; text-align: right; padding-top:20px; padding-right: 40px;">
     <div class="dark-mode-toggle">
       <span>☀️</span>
       <label class="switch">
@@ -279,7 +238,6 @@ function toggle(id) {
   </div>
 </nav>
 
-<div>
 <center>
 </br>
 <table border="0" cellpadding="0" cellspacing="0" style="margin-top: -25px;">
@@ -289,7 +247,6 @@ function toggle(id) {
     <img id="profile-img" alt="Samson Zhou">
   </div>
 </td>
-</div>
 
 <style>
 /* Fixed-size container for consistent image size */
