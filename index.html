@@ -138,6 +138,21 @@ nav {
   transition: background-color 0.3s, border-color 0.3s;
 }
 
+/* --- Mobile Adjustment --- */
+@media (max-width: 768px) {
+  nav {
+    /* Remove the negative top margin on mobile so it doesn't overlap content */
+    margin: 0 -20px 20px -20px; 
+    /* Optional: slightly smaller height for mobile screens */
+    min-height: 50px; 
+  }
+  
+  /* Add padding to the top of the body only on mobile to push content down */
+  body {
+    padding-top: 10px;
+  }
+}
+
 body.dark-mode nav {
   background-color: #121212;
   border-bottom: 2px solid lightblue;
@@ -252,6 +267,7 @@ function toggle(id) {
   </div>
 </nav>
 
+<div>
 <center>
 </br>
 <table border="0" cellpadding="0" cellspacing="0" style="margin-top: -25px;">
@@ -261,6 +277,7 @@ function toggle(id) {
     <img id="profile-img" alt="Samson Zhou">
   </div>
 </td>
+</div>
 
 <style>
 /* Fixed-size container for consistent image size */
