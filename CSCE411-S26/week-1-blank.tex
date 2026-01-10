@@ -1,0 +1,479 @@
+\documentclass[11  pt]{article} 
+\usepackage[lmargin=1in,rmargin=1.75in,bmargin=1in,tmargin=1in]{geometry}  
+
+
+\input{preamble}
+\usepackage{graphicx}
+
+\begin{document}
+\onehalfspacing
+
+\lecture{1: Intro, Asymptotic Runtimes, Divide and Conquer}{January 13, 2026}
+
+\paragraph{Course Logistics}
+
+\begin{itemize}
+\item Read section 2.3, and chapter 4 for first week of classes.
+\item Read (or skim) chapters 1-3 to ensure familiarity with prerequisites
+\item Syllabus quiz is due Sat, Jan 17. HW 1 and intro video due Fri, Jan 23
+\end{itemize}
+
+\section{Computational Problems and Algorithms}
+
+\begin{definition} \noindent A \hide{\textbf{computational problem}} is a general task defined by a specific type of \hide{\textbf{input}} and an explanation for a desired \hide{\textbf{output}.} 
+\end{definition}
+
+\vs{.5cm}
+
+\noindent A specific case of the problem is called an \hide{\emph{instance}.}
+
+\begin{example}\textbf{Sorting} \\
+\framebox{
+\vbox{
+\textbf{Input}: A sequence of $n$ numbers: $a_1, a_2, \hdots, a_n$
+	
+\textbf{Output:} A permutation $\sigma$ of the input sequence so that
+	\begin{equation*}
+	a_{\sigma(1)} \leq 	a_{\sigma(2)} \leq \cdots \leq 	a_{\sigma(n)}
+	\end{equation*}
+}}
+
+
+An instance of this problem is the sequence %$1, 5, 92, -1, 2$.
+\end{example}
+\begin{example}\textbf{Min element} \\
+	\framebox{
+		\vbox{
+			\textbf{Input}: An array of $n$ numbers: $[a_1, a_2, \hdots, a_n]$\\
+			
+			\textbf{Output:} The smallest element in the array and its index.
+	}}
+	
+	\vs{5pt}
+\end{example}
+
+%\vs{1.5cm}
+\begin{definition} \noindent An \textbf{algorithm} is a computational procedure that
+	
+	\begin{itemize}
+		\item \hide{Takes in an input for a co}
+		\item  \hide{Applies a concrete set o }
+	\end{itemize}
+	
+An \textbf{algorithm} is said to be \textbf{correct} if it \hide{always produces }.
+\end{definition}
+\newpage
+
+
+\section{Asymptotic Runtime Analysis (Chapter 3)}
+
+\subsection{Rules for runtime analysis}
+\begin{itemize}
+		\setlength\itemsep{2em}
+		\item $n$ denotes the size of the input
+	\item Each basic operation takes constant time
+	\item We focus on the \hide{worst case} runtime
+	\item We only care about the \hide{order } of the runtime
+\end{itemize}
+
+\newpage
+\subsection{Some initial examples}
+\QU Given an array of $n$ items, find whether the array contains a negative number using the following steps:
+\begin{algorithmic}
+	\For{$i = 1$ to $n$}
+	\If{$a_i < 0$}
+	\State Return (true, $i$)
+	\EndIf
+	\EndFor
+\end{algorithmic}
+What is the runtime of this method?
+\begin{enumerate}
+	\aitem $O(1)$
+	\bitem $O(n)$
+	\citem $O(n^2)$
+	\ditem It depends
+	\eitem Other
+	\fitem Don't know, I need a reminder for how this works.
+\end{enumerate}
+\end{Qu}
+
+\vs{1cm}
+
+\QU Given an $n \times n$ matrix $A$, what is the runtime of summing the upper triangular portion using the following algorithm? (same answers).
+\begin{algorithmic}
+	\State $\mathit{sum} = 0$
+	\For{$i = 1$ to $n$}
+	\For{$j = i$ to $n$}
+	\State $\mathit{sum} = \mathit{sum} + a_{ij}$
+	\EndFor
+	\EndFor
+	\State Return $\mathit{sum}$
+\end{algorithmic}
+\end{Qu}
+
+\newpage
+\subsection{Formal Definitions}
+Let $n$ be input size, and let $f$ and $g$ be functions over $\mathbb{N}$.\\
+\begin{definition}\textbf{Big $O$ notation}.\\
+	
+	A function $g(n) = O(f(n))$ (we say, ``$g$ is big-O of $f(n)$'') means:\\
+	
+	
+
+\vs{3cm}
+\end{definition}
+\begin{definition}\textbf{Big $\Omega$ notation}.\\
+	
+	$g(n) = \Omega(f(n))$  means:\\
+	
+	\vs{3cm}
+\end{definition}
+
+\begin{definition}\textbf{$\Theta$ notation}.\\
+	
+	$g(n) = \Theta(f(n))$  means:\\
+	
+	\vs{3cm}
+	
+	
+	Equivalently, this means 
+	
+\end{definition}
+\newpage
+
+\paragraph{Additional runtime examples}
+
+\begin{enumerate}
+	\item $4n^4 + n^3 \log n + 100n \log n$ \\ \\
+	\item $n + 2(\log n)^2$ \\ \\
+	\item $2^n + 10^{100} n^45$
+\end{enumerate}
+
+
+\vspace{2cm}
+
+\paragraph{Logarithms in Runtimes}
+Which of the following runtimes are the same asymptotically? Which are not?
+
+\begin{itemize}
+	\item $O(n \log n)$ and $O(n \lg n)$\\\\
+	\item $O(\log n)$ and $O(\log^2 n)$\\\\
+	\item $O(\log n)$ and $O(\log (n^2))$\\\\
+	\item $O(n^{\log 100})$ and $O(n^{\lg 100})$\\
+\end{itemize}
+\newpage
+
+
+\section{How to Present an Algorithm}
+Presenting and analyzing can be broken up into four steps.
+\begin{enumerate}
+	\item \textbf{Explain}: the approach in basic English
+	\item \textbf{Pseudocode}: for formally presenting the algorithmic steps
+	\item {Prove}: the \textbf{correctness}
+	\item {Analyze}: the \textbf{runtime complexity}
+\end{enumerate}
+As a rule it's a good idea to go through all steps when presenting an algorithm. Sometimes we will focus more on just a subset of these (e.g., you may be asked to prove a runtime complexity of an algorithm on a homework but not a correctness proof). \\ 
+
+
+We will go through all four steps when we present the \emph{merge sort} algorithm.
+
+\section{The Divide and Conquer Paradigm}
+
+The divide and conquer paradigm has three components:
+\begin{itemize}
+	\setlength\itemsep{2em}
+	\item \textbf{Divide}:
+	\item \textbf{Conquer}:
+	\item \textbf{Combine}:
+\end{itemize}
+
+\newpage
+
+\paragraph{Example: Mergesort (Textbook, Chapter 2.3, 4)}
+Given $n$ numbers to sort, apply the following steps:
+\begin{itemize}
+	\item Divide the sequence of length $n$ into %arrays of length $\ceil{n/2}$ and $\floor{n/2}$
+	\item Recursively %sort the two halves
+	\item Combine\\ %the two halves by merging
+\end{itemize}
+
+%\vs{6cm}
+%\begin{figure}
+\includegraphics[width=.7\linewidth]{merge-sort.png}\\
+%\end{figure}
+Image courtesy of Wikipedia: \url{https://en.wikipedia.org/wiki/Merge_sort}.
+
+%\paragraph{Pseudocode}
+\begin{algorithm}
+	$\textsc{MergeSort}(A)$ 
+	\begin{algorithmic}
+		\State $n = \textbf{length}(A)$
+		\If{$n == 1$}
+		\State %Return $A$
+		\Else
+		\State $m = \floor{n/2}$
+		\State
+		\State
+		\State
+		\State
+		\State
+	    \State
+	    \State
+		\State
+		\EndIf
+	\end{algorithmic}
+\end{algorithm}
+
+
+\newpage
+
+\subsection{Analyzing The Merge Procedure}
+
+%\vs{12cm}
+\vfill
+\textbf{Correctness:} To merge two sorted subarrays into a master array
+\begin{itemize}
+	\setlength\itemsep{2em}
+	\item  Maintain a pointer to the \hide{end  of each subarray}
+	\item  At each step, \hide{compare the two numbers from the end}
+	\item Since subarrays are sorted, one of these numbers is \hide{guaranteed to be the} \\
+	
+	\hide{largest among unmerged numbers}
+	\item so place \hide{that largest number in the next open} 
+	\item At each step, we guarantee that: \hide{we place the next largest} \\
+	
+	\item So continuing until both subarrays are empty, \hide{this yields a sorted}
+\end{itemize}
+
+	\section{Continued Analysis of Merge Sort}
+\textbf{Merge Sort.} Given $n$ numbers to sort
+\begin{itemize}
+	\item Divide the sequence of length $n$ into arrays of length $\ceil{n/2}$ and $\floor{n/2}$
+	\item Recursively sort the two halves
+	\item (Merge Procedure) Combine the two halves by sorting them.
+\end{itemize}
+\QU
+What is the runtime of the \emph{merge procedure} in Merge Sort?
+\begin{itemize}
+	\aitem $\Theta(1)$
+	\bitem $\Theta(n \lg n)$
+	\citem $\Theta(n)$
+	\ditem $\Theta(n^2)$
+\end{itemize}
+
+\end{Qu}
+\newpage
+
+\section{Recurrence Analysis for Divide and Conquer}
+Runtimes for divide and conquer algorithms can be described in terms of a \hide{recurrence} \\
+
+relation, which \hide{lists the runtime for problem size $n$ i}\\
+
+Let $T(n)$ denote the runtime for a problem of size $n$. \\
+
+\paragraph{Example: merge-sort}
+Assume for this analysis that $n = 2^p$ where $p \in \mathbb{N}$. \\
+%\begin{equation}
+%	T(n) = \begin{cases}
+%		\Theta(1) & \text{if $n = 1$} \\
+%		2T(n/2) + \Theta(n) & \text{if $n > 1$} \\
+%	\end{cases}
+%\end{equation}
+%\textit{How do we turn this into a runtime?}
+
+
+\newpage
+
+
+\section{Three methods for solving recurrences}
+Given a recurrence relation, there are three approaches to finding the overall runtime.
+\begin{itemize}
+\item \textbf{Recursion tree}: 
+\item \textbf{Substitution method}: 
+\item \textbf{Master theorem}: 
+\end{itemize}
+
+\newpage
+\section{The Master Theorem for Recurrence Relations}
+\begin{theorem}
+	Let $a \geq 1$ and $b > 1$ be constants, let $f(n)$ be a function, and let $T(n)$ be defined on the nonnegative integers by the relation:
+	\begin{equation*}
+		\hide{T(n) = aT(n/b) + f(n).}
+	\end{equation*}
+	\begin{enumerate}
+		\itemsep = 4em
+		\item If $f(n) = O(n^{\log_b a - \epsilon})$ for some constant $\epsilon > 0$, then \hide{$T(n) = \Theta (n^{\log_b a })$.}
+		\item If $f(n) = \Theta(n^{\log_b a})$, then \hide{$T(n) = \Theta (n^{\log_b a } \log n)$.}
+		\item If $f(n) = \Omega(n^{\log_b a + \epsilon})$ for some constant $\epsilon > 0$, and if $a f(n/b) \leq c f(n)$ for some constant $c < 1$ and all sufficiently large $n$, then \hide{$T(n) = \Theta (f(n))$.}
+	\end{enumerate}
+\end{theorem}
+
+
+\subsection{Example: Merge-Sort}
+
+Recall that Merge-Sort satisfies the following recurrence:
+\begin{equation}
+	T(n) = \begin{cases}
+		\Theta(1) & \text{if $n = 1$} \\
+		2T(n/2) + \Theta(n) & \text{if $n > 1$} \\
+	\end{cases}
+\end{equation}
+
+We can apply the master theorem with:\\
+
+\vs{2cm} 
+
+%$b = a$, so that $\log_b a = 1$ and $f(n) = n$.\\
+%
+%Then, condition 2 holds and $T(n) = \Theta (n \log n)$.
+
+\subsection{What to know about the master method?}
+
+\emph{Proof idea:} \\ \\%Carefully apply the recursion tree technique to the recurrence $T(n) = aT(n/b) + f(n).$\\
+
+A full proof can be found in Section 4.6 of the textbook. \\
+
+
+What's more important:  %understand what the theorem means and how to apply the master theorem.
+
+\subsection{Examples}
+Apply the master theorem to the following recurrences:
+\begin{equation}
+	T(n) = 9 T(n/3) + n
+\end{equation}
+\begin{equation}
+	T(n) = 3 T(n/4) + n \log n
+\end{equation}
+\begin{equation}
+	T(n) = 7 T(n/2) + \Theta(n^2)
+\end{equation}
+\newpage
+
+\section{Strassen's Algorithm for Matrix Multiplication}
+
+Let $A$ and $B$ be $n \times n$ matrices, and $C = AB$. The $(i,j)$ entry of $C$ is defined by
+\begin{equation*}
+	c_{ij} = \sum_{k = 1}^n a_{ik} b_{kj}
+\end{equation*}
+
+
+%In pseudocode, matrix multiplication can be written as
+\begin{algorithm}[b]
+	\caption{Simple Square Matrix Multiply}
+	\begin{algorithmic}
+		\State \textbf{Input:} $A, B \in \mathbb{R}^{n\times n}$
+		\State \textbf{Output:} $C = AB \in \mathbb{R}^{n\times n}$
+		\State Let $C = zeros(n,n)$
+		\For{$i = 1$ to $n$}
+		\For{$j = 1$ to $n$}
+		\State $c_{ij} = 0$
+		\For{$i = 1$ to $n$}
+		\State $c_{ij} = c_{ij} + a_{ik}b_{kj}$
+		\EndFor
+		\EndFor
+		\EndFor
+		\State Return $C$
+	\end{algorithmic}
+\end{algorithm}
+
+%This algorithm has a runtime of $O(n^3)$. Is it ever possible to do better?
+
+\newpage
+
+\subsection{An attempt at divide-and conquer}
+
+Assume that $n = 2^p$ for some positive integer $p > 1$.
+
+
+\begin{algorithm}
+	\caption{Simple Recursive Square Matrix Multiply (SSMM)}
+	\begin{algorithmic}
+		\State \textbf{Input:} $A, B \in \mathbb{R}^{n\times n}$
+		\State \textbf{Output:} $C = AB \in \mathbb{R}^{n\times n}$
+		\If{$n == 1$}
+		\State $c_{11} = a_{11}b_{11}$
+		\Else
+		\State $C_{11} = \mathit{SSMM}(A_{11},B_{11}) +   \mathit{SSMM}(A_{12},B_{21})$
+		\State $C_{12} = \mathit{SSMM}(A_{11},B_{12}) +   \mathit{SSMM}(A_{12},B_{22})$
+		\State $C_{21} = \mathit{SSMM}(A_{21},B_{11}) +   \mathit{SSMM}(A_{22},B_{21})$
+		\State $C_{22} = \mathit{SSMM}(A_{21},B_{12}) +   \mathit{SSMM}(A_{22},B_{22})$
+		\EndIf
+		\State Return $C$
+	\end{algorithmic}
+\end{algorithm}
+
+\QU What recursion applies to the above algorithm when $n > 1$?
+\begin{enumerate}
+	\aitem $T(n) = 4T(n/2) + O(n^2)$
+	\bitem $T(n) = 8T(n/4) + O(n^2)$
+	\citem $T(n) = 8T(n/2) + O(n)$
+	\ditem $T(n) = 8T(n/2) + O(n^2)$
+\end{enumerate}
+\end{Qu}
+
+\newpage
+
+\subsection{Strassen's Algorithm}
+Strassen's algorithm introduces a new way to combine matrix multiplications and additions to obtain the matrix $C$.\\
+
+\textbf{Step 1: Partition $A$ and $B$ as before.}
+
+\vs{3cm}
+
+
+\paragraph{Step 2: Compute $S$ matrices}
+\begin{align*}
+S_1 &= B_{12} - B_{22} \\
+S_2 &= A_{11} + A_{12} \\
+S_3 &= A_{21} + A_{22} \\
+S_4 &= B_{21} - B_{11} \\
+S_5 &= A_{11} + A_{22} \\
+S_6 &= B_{11} + B_{22} \\
+S_7 &= A_{12} - A_{22} \\
+S_8 &= B_{21} + B_{22} \\
+S_9 &= A_{11} - A_{21} \\
+S_{10} &= B_{11} + B_{12}
+\end{align*}
+
+Runtime: we add (or subtract) 2 matrices of size $n/2 \times n/2$, 10 times.
+
+
+\paragraph{Step 3: Compute $P$ matrices}
+\begin{align*}
+P_1 &= A_{11} \cdot S_1 = A_{11}\cdot B_{12} - A_{11} \cdot B_{22} \\
+P_2 &= S_2 B_{22} \\
+P_3 &= S_3 B_{11} \\
+P_4 &= A_{22} S_4 \\
+P_5 &= S_5 S_6 \\
+P_6 &= S_7 S_8 \\
+P_7 &= S_9 S_{10}
+\end{align*}
+
+Runtime: we recursively call the matrix-matrix multiplication function for 7 matrices of size $n/2 \times n/2$.
+\newpage
+
+\paragraph{Step 4: Combine}
+
+Using the $P$ matrices, we can show that\\
+
+$
+C_{11} = P_5 + P_4 - P_2 + P_6 \\
+C_{12} = P_1 + P_2 \\
+C_{21} = P_3 + P_4 \\
+C_{22} = P_5 + P_1 - P_3 - P_7
+$
+
+\newpage
+\subsection{Analysis of Strassen's Method}
+\QU Strassen's algorithm satisfies which recurrence relation for $n > 1$?
+\begin{enumerate}
+\aitem $T(n) = 8T(n/2) + O(n^2)$
+\bitem $T(n) = 23T(n/2)$
+\citem $T(n) = 7T(n/2) + O(n^2)$
+\ditem $T(n) = 10T(n/2) + O(n^2)$
+\eitem $T(n) = 17T(n/2) + O(1)$
+\end{enumerate}
+\end{Qu}
+
+	
+\end{document}
