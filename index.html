@@ -480,6 +480,190 @@ Publications
 
 <ol reversed>
 
+
+<li>
+<b>
+Consistent Low-Rank Approximation
+</b>
+</br><i>
+--davidwoodruff--, 
+Samson Zhou
+</br></i>
+<a href="https://iclr.cc/Conferences/2026">ICLR 2026</a>
+[<a href="javascript:toggle('WZ26b')">abstract</a>]
+<!--[<a href="https://arxiv.org/pdf/2510.22816">pdf</a>]-->
+<div id="WZ26b" style="display: none">
+<p id="abs">
+We introduce and study the problem of consistent low-rank approximation, in which rows of an input matrix 
+$\mathbf{A}\in\mathbb{R}^{n\times d}$ arrive sequentially and the goal is to provide a sequence of subspaces 
+that well-approximate the optimal rank-$k$ approximation to the submatrix $\mathbf{A}^{(t)}$ that has arrived at each time $t$, 
+while minimizing the recourse, i.e., the overall change in the sequence of solutions. We first show that when the goal 
+is to achieve a low-rank cost within an additive $\varepsilon\cdot||\mathbf{A}^{(t)}||_F^2$ factor of the optimal cost, 
+roughly $\mathcal{O}\left(\frac{k}{\varepsilon}\log(nd)\right)$ recourse is feasible. For the more challenging goal of 
+achieving a relative $(1+\varepsilon)$-multiplicative approximation of the optimal rank-$k$ cost, we show that a 
+simple upper bound in this setting is $\frac{k^2}{\varepsilon^2}\cdot\text{poly}\log(nd)$ recourse, which 
+we further improve to $\frac{k^{3/2}}{\varepsilon^2}\cdot\text{poly}\log(nd)$ for integer-bounded matrices and 
+$\frac{k}{\varepsilon^2}\cdot\text{poly}\log(nd)$ for data streams with polynomial online condition number. 
+We also show that $\Omega\left(\frac{k}{\varepsilon}\log\frac{n}{k}\right)$ recourse is necessary for any algorithm 
+that maintains a multiplicative $(1+\varepsilon)$-approximation to the optimal low-rank cost, even if the full input 
+is known in advance. Finally, we perform a number of empirical evaluations to complement our theoretical guarantees, 
+demonstrating the efficacy of our algorithms in practice. 
+</div>
+</li>
+</br>
+
+
+<li>
+<b>
+Distributed Algorithms for Euclidean Clustering
+</b>
+</br><i>
+--vincentcohenaddad--,
+--liudengwang--,
+--davidwoodruff--, 
+Samson Zhou
+</br></i>
+<a href="https://iclr.cc/Conferences/2026">ICLR 2026</a>
+[<a href="javascript:toggle('CWWZ26')">abstract</a>]
+<!--[<a href="https://arxiv.org/pdf/2510.22816">pdf</a>]-->
+<div id="CWWZ26" style="display: none">
+<p id="abs">
+We study the problem of constructing $(1+\varepsilon)$-coresets for Euclidean $(k,z)$-clustering in the distributed setting, 
+where $n$ data points are partitioned across $s$ sites. We focus on two prominent communication models: 
+the coordinator model and the blackboard model. In the coordinator model, we design a protocol that achieves a 
+$(1+\varepsilon)$-strong coreset with total communication complexity 
+$\tilde{O}\left(sk + \frac{dk}{\min(\varepsilon^4,\varepsilon^{2+z})} + dk\log(n\Delta)\right)$ bits, 
+improving upon prior work (Chen et al., NeurIPS 2016) by eliminating the need to communicate explicit point 
+coordinates in-the-clear across all servers. In the blackboard model, we further reduce the communication complexity 
+to $\tilde{O}\left(s\log(n\Delta) + dk\log(n\Delta) + \frac{dk}{\min(\varepsilon^4,\varepsilon^{2+z})}\right)$ bits, 
+achieving better bounds than previous approaches while upgrading from constant-factor to $(1+\varepsilon)$-approximation 
+guarantees. Our techniques combine new strategies for constant-factor approximation with efficient coreset constructions 
+and compact encoding schemes, leading to optimal protocols that match both the communication costs of the best-known offline 
+coreset constructions and existing lower bounds (Chen et al., NeurIPS 2016, Huang et. al., STOC 2024), up to polylogarithmic factors.  
+</div>
+</li>
+</br>
+
+
+<li>
+<b>
+Learning-Augmented Moment Estimation on Time-Decay Models
+</b>
+</br><i>
+--sohamnagawanshi--,
+--shalinipanthangi--,
+--chenwang--,
+--davidwoodruff--,
+Samson Zhou
+</br></i>
+<a href="https://iclr.cc/Conferences/2026">ICLR 2026</a>
+[<a href="javascript:toggle('NPWWZ26')">abstract</a>]
+<!--[<a href="https://arxiv.org/pdf/2510.22816">pdf</a>]-->
+<div id="NPWWZ26" style="display: none">
+<p id="abs">
+Motivated by the prevalence and success of machine learning, a line of recent work has studied learning-augmented algorithms in the streaming model. 
+These results have shown that for natural and practical oracles implemented with machine learning models, we can obtain streaming algorithms 
+with improved space efficiency that are otherwise provably impossible. On the other hand, our understanding is much more limited when items 
+are weighted unequally, for example, in the sliding-window model, where older data must be expunged from the dataset, e.g., by privacy regulation laws. 
+In this paper, we utilize an oracle for the heavy-hitters of datasets to give learning-augmented algorithms for a number of fundamental problems, 
+such as norm/moment estimation, frequency estimation, cascaded norms, and rectangular moment estimation, in the time-decay setting. 
+We complement our theoretical results with a number of empirical evaluations that demonstrate the practical efficiency of our algorithms on real and synthetic datasets. 
+</div>
+</li>
+</br>
+
+
+<li>
+<b>
+Better Bounds for the Distributed Experts Problem
+</b>
+</br><i>
+--davidwoodruff--, 
+Samson Zhou
+</br></i>
+<a href="https://iclr.cc/Conferences/2026">ICLR 2026</a>
+[<a href="javascript:toggle('WZ26a')">abstract</a>]
+<!--[<a href="https://arxiv.org/pdf/2510.22816">pdf</a>]-->
+<div id="WZ26a" style="display: none">
+<p id="abs">
+In this paper, we study the distributed experts problem, where $n$ experts are distributed across $s$ servers for $T$ timesteps. 
+The loss of each expert at each time $t$ is the $\ell_p$ norm of the vector that consists of the losses of the expert at 
+each of the $s$ servers at time $t$. The goal is to minimize the regret $R$, i.e., the loss of the distributed protocol 
+compared to the loss of the best expert, amortized over the all $T$ times, while using the minimum amount of communication. 
+We give a protocol that achieves regret roughly $R\gtrsim\frac{1}{\sqrt{T}\cdot\text{poly}\log(nsT)}$, using 
+$\mathcal{O}\left(\frac{n}{R^2}+\frac{s}{R^2}\right)\cdot\max(s^{1-2/p},1)\cdot\text{poly}\log(nsT)$ bits of communication, 
+which improves on previous work. 
+</div>
+</li>
+</br>
+
+
+<li>
+<b>
+Nearly Space-Optimal Graph and Hypergraph Sparsification in Insertion-Only Data Streams
+</b>
+</br><i>
+--vincentcohenaddad--,
+--davidwoodruff--,
+--shenghaoxie--,
+Samson Zhou
+</br></i>
+<a href="https://iclr.cc/Conferences/2026">ICLR 2026</a>
+[<a href="javascript:toggle('CWXZ26')">abstract</a>]
+[<a href="https://arxiv.org/pdf/2510.18180">pdf</a>]
+</br>
+<div id="CWXZ26" style="display: none">
+<p id="abs">
+We study the problem of graph and hypergraph sparsification in insertion-only data streams. 
+The input is a hypergraph $H=(V, E, w)$ with $n$ nodes, $m$ hyperedges, and rank $r$, and the goal 
+is to compute a hypergraph $\widehat{H}$ that preserves the energy of each vector $x \in \mathbb{R}^n$ in $H$, 
+up to a small multiplicative error. In this paper, we give a streaming algorithm that achieves a 
+$(1+\varepsilon)$-approximation, using $\frac{rn}{\varepsilon^2} \log^2 n \log r \cdot\text{poly}(\log \log m)$ 
+bits of space, matching the sample complexity of the best known offline algorithm up to $\text{poly}(\log \log m)$ 
+factors. Our approach also provides a streaming algorithm for graph sparsification that achieves a 
+$(1+\varepsilon)$-approximation, using $\frac{n}{\varepsilon^2} \log n \cdot\text{poly}(\log\log n)$ 
+bits of space, improving the current bound by $\log n$ factors. Furthermore, we give a space-efficient 
+streaming algorithm for min-cut approximation. Along the way, we present an online algorithm for 
+$(1+\varepsilon)$-hypergraph sparsification, which is optimal up to poly-logarithmic factors. 
+As a result, we achieve $(1+\varepsilon)$-hypergraph sparsification in the sliding window model, 
+with space optimal up to poly-logarithmic factors. Lastly, we give an adversarially robust algorithm 
+for hypergraph sparsification using $\frac{n}{\varepsilon^2} \cdot\text{poly}(r, \log n, \log r, \log \log m)$ bits of space. 
+</div>
+</li>
+</br>
+
+
+
+
+<li>
+<b>
+Towards Sampling Data Structures for Tensor Products in Turnstile Streams
+</b>
+</br><i>
+--zhaosong--,
+--shenghaoxie--,
+Samson Zhou
+</br></i>
+<a href="https://iclr.cc/Conferences/2026">ICLR 2026</a>
+[<a href="javascript:toggle('SXZ26')">abstract</a>]
+[<a href="https://arxiv.org/pdf/2510.03678">pdf</a>]
+</br>
+<div id="SXZ26" style="display: none">
+<p id="abs">
+This paper studies the computational challenges of large-scale attention-based models in artificial intelligence by 
+utilizing importance sampling methods in the streaming setting. Inspired by the classical definition of the $\ell_2$ 
+sampler and the recent progress of the attention scheme in Large Language Models (LLMs), we propose the definition 
+of the attention sampler. Our approach significantly reduces the computational burden of traditional attention mechanisms. 
+We analyze the effectiveness of the attention sampler from a theoretical perspective, including space and update time. 
+Additionally, our framework exhibits scalability and broad applicability across various model architectures and domains. </div>
+</li>
+</br>
+
+
+
+
+
+
 <li>
 <b>
 L<sub>p</sub> Sampling in Distributed Data Streams with Applications to Adversarial Robustness
@@ -3418,41 +3602,6 @@ Preprints
 
 <li>
 <b>
-Nearly Space-Optimal Graph and Hypergraph Sparsification in Insertion-Only Data Streams
-</b>
-</br><i>
---vincentcohenaddad--,
---davidwoodruff--,
---shenghaoxie--,
-Samson Zhou
-</br></i>
-[<a href="javascript:toggle('CWXZ25')">abstract</a>]
-[<a href="https://arxiv.org/pdf/2510.18180">pdf</a>]
-</br>
-<div id="CWXZ25" style="display: none">
-<p id="abs">
-We study the problem of graph and hypergraph sparsification in insertion-only data streams. 
-The input is a hypergraph $H=(V, E, w)$ with $n$ nodes, $m$ hyperedges, and rank $r$, and the goal 
-is to compute a hypergraph $\widehat{H}$ that preserves the energy of each vector $x \in \mathbb{R}^n$ in $H$, 
-up to a small multiplicative error. In this paper, we give a streaming algorithm that achieves a 
-$(1+\varepsilon)$-approximation, using $\frac{rn}{\varepsilon^2} \log^2 n \log r \cdot\text{poly}(\log \log m)$ 
-bits of space, matching the sample complexity of the best known offline algorithm up to $\text{poly}(\log \log m)$ 
-factors. Our approach also provides a streaming algorithm for graph sparsification that achieves a 
-$(1+\varepsilon)$-approximation, using $\frac{n}{\varepsilon^2} \log n \cdot\text{poly}(\log\log n)$ 
-bits of space, improving the current bound by $\log n$ factors. Furthermore, we give a space-efficient 
-streaming algorithm for min-cut approximation. Along the way, we present an online algorithm for 
-$(1+\varepsilon)$-hypergraph sparsification, which is optimal up to poly-logarithmic factors. 
-As a result, we achieve $(1+\varepsilon)$-hypergraph sparsification in the sliding window model, 
-with space optimal up to poly-logarithmic factors. Lastly, we give an adversarially robust algorithm 
-for hypergraph sparsification using $\frac{n}{\varepsilon^2} \cdot\text{poly}(r, \log n, \log r, \log \log m)$ bits of space. 
-</div>
-</li>
-</br>
-
-
-
-<li>
-<b>
 Transductive and Learning-Augmented Online Regression
 </b>
 </br><i>
@@ -3488,28 +3637,6 @@ aligning with the broader learning-augmented model paradigm.
 
 
 
-<li>
-<b>
-Towards Sampling Data Structures for Tensor Products in Turnstile Streams
-</b>
-</br><i>
---zhaosong--,
---shenghaoxie--,
-Samson Zhou
-</br></i>
-[<a href="javascript:toggle('SXZ25')">abstract</a>]
-[<a href="https://arxiv.org/pdf/2510.03678">pdf</a>]
-</br>
-<div id="SXZ25" style="display: none">
-<p id="abs">
-This paper studies the computational challenges of large-scale attention-based models in artificial intelligence by 
-utilizing importance sampling methods in the streaming setting. Inspired by the classical definition of the $\ell_2$ 
-sampler and the recent progress of the attention scheme in Large Language Models (LLMs), we propose the definition 
-of the attention sampler. Our approach significantly reduces the computational burden of traditional attention mechanisms. 
-We analyze the effectiveness of the attention sampler from a theoretical perspective, including space and update time. 
-Additionally, our framework exhibits scalability and broad applicability across various model architectures and domains. </div>
-</li>
-</br>
 
 
 <li>
@@ -3876,6 +4003,9 @@ var info = new Array(  new Array('--jeremiahblocki--', 'Jeremiah Blocki', 'https
 					 , new Array('--williamswartworth--', 'William Swartworth', 'https://wswartworth.github.io/')
 					 , new Array('--sumeghagarg--', 'Sumegha Garg', 'https://sites.google.com/view/sumegha-garg/home')
 					 , new Array('--vinodraman--', 'Vinod Raman', 'https://vinodkraman.github.io/')
+					 , new Array('--shalinipanthangi--', 'Shalini Panthangi', 'https://www.linkedin.com/in/shalini-panthangi')
+					 , new Array('--sohamnagawanshi--', 'Soham Nagawanshi', 'https://www.linkedin.com/in/soham-nagawanshi-a3b22024a')					 
+					 
 					 
 					 );
 
