@@ -1,0 +1,151 @@
+\documentclass[11  pt]{exam} 
+\usepackage[lmargin=1in,rmargin=1in,bmargin=1in,tmargin=.75in]{geometry}  
+
+\usepackage{algorithm}
+\usepackage{algorithmicx}
+\usepackage{algpseudocode}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{url}
+\usepackage[shortlabels]{enumitem}
+\newcommand{\hide}[1]{\underline{\phantom{#1 #1}}}
+\usepackage{graphicx}
+% Matrices
+\newcommand{\mA}{\textbf{A}}
+\newcommand{\mB}{\textbf{B}}
+\newcommand{\mD}{\textbf{D}}
+\newcommand{\mL}{\textbf{L}}
+\newcommand{\mM}{\textbf{M}}
+\newcommand{\mP}{\textbf{P}}
+\newcommand{\mI}{\textbf{I}}
+
+\setlength{\parskip}{-2pt}
+%\footer{}{\thepage}{$\blacksquare$}
+
+% vectors
+\newcommand{\ve}{\textbf{e}}
+\newcommand{\vx}{\textbf{x}}
+\newcommand{\vz}{\textbf{z}}
+\newcommand{\vc}{\textbf{c}}
+\newcommand{\vv}{\textbf{v}}
+\newcommand{\vw}{\textbf{w}}
+\newcommand{\vb}{\textbf{b}}
+\newcommand{\vy}{\textbf{y}}
+\newcommand{\zero}{\textbf{0}}
+
+\newcommand{\ttu}{\tt{u}}
+\newcommand{\ttv}{\tt{v}}
+\newcommand{\ttw}{\tt{w}}
+\newcommand{\ttx}{\tt{x}}
+\newcommand{\tty}{\tt{y}}
+\newcommand{\ttz}{\tt{z}}
+
+\begin{document}
+	\begin{center}
+		\framebox{
+			\vbox{
+				\hbox to 5.78in { {\bf CSCE 411: Design and Analysis of Algorithms, Spring 2026} \hfill  }
+				\vspace{2mm}
+				\hbox to 5.78in { {\Large \hfill Test 1, Section 502 \hfill} }
+				%				\vspace{2mm}
+				%				\hbox to 5.78in { {\it Name: \hfill} }
+			}
+		}
+	\end{center}
+	
+	\noindent\textbf{Name}: \hide{your name here}  \\ \\
+	
+	\noindent\textbf{Instructions}: DO NOT OPEN THIS EXAM UNTIL YOU ARE TOLD TO. \\ \\
+	
+	\noindent Write your name at top of this page. Read the explanation of the test format, and the academic integrity statement, and sign at the bottom of the page. WHEN TAKING THE EXAM, WRITE YOUR INITIALS AT THE TOP OF EACH PAGE.\\ \\
+	
+	\noindent\textbf{Test Format}: The test consists of 
+	
+	\begin{itemize}
+		\item 12 multiple choice problems (5 points each)
+		\item 3 free answer questions
+	\end{itemize}
+	The total number of points on the exam is 100. \\ \\
+	
+	\noindent\textbf{Academic Integrity}: On my honor, as an Aggie, I will complete the exam without giving or receiving help from anyone else, and without consulting or using any resources other than \emph{my own} single note sheet that I am allowed as a part of the exam. \\
+	
+	\noindent Signed: \hide{your signature here} \\
+	
+
+	
+
+	\newpage
+	\noindent \begin{center}Test Helpers\end{center}
+	\paragraph{Divide-and-conquer.} 3 steps: (1) Divide, (2) Conquer, and (3) Combine. Runtimes satisfy a recurrence relationship, which can be turned into an actual runtime using a few different techniques.
+	
+	\paragraph{Dynamic programming.} For problems with optimal substructure and overlapping subproblems. Solves overlapping suproblems only once each using either a top-down or a bottom-up approach.
+	\paragraph{Greedy algorithms.} Make a decision at each step that is ``locally'' the best choice. Proving a greedy algorithm is optimal for a certain optimization problem typically involves proving that making a greedy choice at the first step is ``safe.''
+	\paragraph{Accounting and potential method.}
+	Similarity: both store ``credit'' and ``pay'' ahead of time. The accounting method stores credit in individual steps. The potential method stores credit as ``potential'' in a data structure $D_i$. For accounting method, define $\hat{c}_i$ and prove that $\sum_{i} c_i \leq \sum_i \hat{c}_i$. For potential method, choose $D_i$ and potential function $\Phi$, and then $\hat{c}_i = c_i + \Phi(D_i) - \Phi(D_{i-1})$ is given; proving $\Phi(D_i) \geq \Phi(D_0)$ guarantees $\sum_{i} c_i \leq \sum_i \hat{c}_i$. For both accounting and potential, must bound $\sum_{i} \hat{c}_i$ to prove runtime guarantee.
+	
+	\paragraph{Master theorem.}
+	Let $a \geq 1$ and $b > 1$ be constants, let $f(n)$ be a function, and let $T(n)$ be defined on the nonnegative integers by the relation $T(n) = aT(n/b) + f(n)$.
+	\begin{enumerate}
+		\item If $f(n) = O(n^{\log_b a - \epsilon})$ for some constant $\epsilon > 0$, then $T(n) = \Theta (n^{\log_b a })$.
+		\item If $f(n) = \Theta(n^{\log_b a})$, then $T(n) = \Theta (n^{\log_b a } \log n)$.
+		\item If $f(n) = \Omega(n^{\log_b a + \epsilon})$ for some constant $\epsilon > 0$, and if $a f(n/b) \leq c f(n)$ for some constant $c < 1$ and all sufficiently large $n$, then $T(n) = \Theta (f(n))$.
+	\end{enumerate}
+	\paragraph{Strassen's algorithm.} Relies on knowing how to multiply $2 \times 2$ matrices using a small number of additions and 7 multiplications. Uses this to multiply two matrices of size $n\times n$ (where $n = $ power of 2) by breaking them into blocks and recursively calling a matrix-matrix multiplication function $7$ times. Has recurrence relationships $T(n) = 7T(n/2) + \Theta(n^2)$.
+	
+	\paragraph{Matrix multiplication problem.} 
+	For $i = 1, 2, \hdots n$, let $A_i$ be a matrix of size $p_{i-1} \times p_i$. Find the way to parenthesize the matrix chain $A_1 A_2 \cdots A_n$ so that the total computational cost is minimized. It takes $\Theta(pqr)$ operations to multiply $AB$ if $A$ has size $p \times q$ and $B$ has size $q \times r$.
+	
+	\paragraph{The activity selection problem.} 
+	Let $(a_1, a_2, a_3, \hdots a_n)$ be activities with distinct start and finish times $(s_i, f_i)$ for $i = 1,2, \hdots, n$, ordered so that $f_1 < f_2 < \hdots < f_n$. Find the largest set of non-overlapping activities. 
+	
+	\paragraph{Multipop stack.} 
+	Has operations $\textsc{push}(S,x)$ (pushes $x$ onto $S$), \textsc{pop}$(S)$ (pops top element off), and \textsc{multipop}($S,k$) (pops $\min\{|S|,k\}$ elements). Running $n$ total operations always has $O(n)$ runtime; key idea is that you can't pop an element until you've pushed it.
+	
+	\paragraph{The optimal prefix code problem.} Given an alphabet $C$ and a frequency $\mathit{c.freq}$ for each $c \in C$ in a given string $s$,  find the prefix code that represents $s$ using a minimum number of bits. A prefix code associated each character with a binary codeword, such that the codeword for one character is never the start of a codeword for another character. A prefix code can be associated with a binary tree in which each character is associated with a leaf of the tree.
+	
+	
+	\paragraph{Binary counter.} Stores an integer in binary using a $\{0,1\}$ array $A$. Incrementing $A$ updates the binary number stored in $A$ to represent the next integer. Cost is given in terms of number of bits flipped. $A = [0101]$ represents $0 \times 2^0 + 1 \times 2^1 + 0 \times 2^2 + 1 \times 2^3 = 2 + 8 = 10$.\\
+	
+	\noindent	\textsc{BottomUpMatrixChainMultiplication}($\textbf{p} = [p_0, p_1, \hdots, p_n]$)
+	\begin{algorithmic}
+		\State $n = \text{length}(\textbf{p})-1$
+		\State Let $m[1 \hdots n][1 \hdots n]$ be an empty $n \times n$ array
+		\For{$i = 1$ to $n$}
+		\State $m[i,i] = 0$
+		\EndFor
+		\For{$\ell = 2$ to $n-1$}
+		\For{$i = 1$ to $n-\ell - 1$}
+		\State $j = i+\ell - 1$ 
+		\State $m[i,j] = \infty$
+		\For{$k = i$ to $j-1$}
+		\State $q = m[i,k] + m[k+1,j] + p_{i-1}p_k p_j$
+		\If{$q < m[i,j]$}
+		\State $m[i,j] = q$
+		\EndIf
+		\EndFor
+		\EndFor
+		\EndFor
+		\State Return $m[1,n]$
+	\end{algorithmic}
+	
+	\noindent\textsc{GreedyCoinChange}($C$, $v = [v_1, v_2, \hdots , v_n = 1]$)
+	\begin{algorithmic}
+		\State $n = \text{length}(v)$
+		\State Let $m = [0..0]$ be an empty array of $n$ zeros
+		\For{$i = 1$ to $n$}
+		\While{$C \geq v_i$}
+		\State $m[i] = m[i] + 1$
+		\State $C = C - v_i$
+		\EndWhile
+		\EndFor
+		\State Return $m$
+	\end{algorithmic}
+	
+	\noindent\textbf{Assorted Reminders}
+	\begin{itemize}
+		\item $\sum_{i = 0}^n \frac{1}{2^i} \leq 2$
+		\item $\sum_{i = 1}^n i = \frac{n(n+1)}{2}$
+	\end{itemize}
+
+	
+\end{document}

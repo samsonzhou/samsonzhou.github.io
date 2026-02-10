@@ -1,0 +1,233 @@
+\documentclass[11  pt]{exam} 
+\usepackage[lmargin=1in,rmargin=1.75in,bmargin=1in,tmargin=1in]{geometry}  
+
+
+\input{preamble}
+
+\begin{document}
+	
+	
+	%\lecture{8, Exam 1 Review}{February 11, 2025}
+	\week{5, Exam 1 Review}{February 10, 2026}
+	
+	\section{Test format and instructions}
+	
+	\begin{itemize}
+		\item 12 multiple choice questions, 3 long answer questions
+		\item You do not need to prove something unless you are explicitly asked to prove something
+		\item You will be asked to explicitly prove something 
+		\item Scratch paper will be provided
+		\item No calculators or electronic devices. You will not need them. If you have to do any computations, they will be basic enough to do by hand.
+		\item You will put your name on the front page, and put your initials at the top of every other page.
+		\item You have been provided with a ``cheat sheet'' with notes that you can use on the test without having to memorize it (including the Master Theorem among other things.) 
+	\end{itemize}
+	
+	\newpage 
+	
+	\section{Topics Covered on the Exam}
+	
+	%	These notes go over the main topics we have studied, list questions for you to fill in that you should know about on the test, and give some examples of things you might be required to do on the test.
+	%	
+	\subsection{Algorithm basics}
+	For the whole test, you should be familiar with
+	\begin{itemize}
+		\item $O$ notation, $\Theta$ notation, $\Omega$ notation, and the differences among them
+		\item Basic matrix multiplication
+		\item Basic proof strategies (i.e., induction, contradiction)
+	\end{itemize}
+	
+	\subsection{Divide-and Conquer}
+	%	Reading: Chapter 4. \\
+	
+	\textbf{Conceptual questions}
+	\begin{itemize}
+		\item What properties should hold in order to apply a divide-and-conquer approach?
+		\item What are the three steps of a divide-and-conquer method? 
+		\item What strategies are there for proving a runtime from a runtime recurrence relation?
+		\item What parts of the recurrence relation correspond to the three steps of divide and conquer?
+	\end{itemize}
+	
+	\textbf{Specific problems to know about}
+	\begin{itemize}
+		\item Merge-sort
+		\item Strassen's Algorithm for matrix multiplication
+	\end{itemize}
+	
+	\textbf{Possible types of sample questions} (non-exhaustive!)
+	\begin{itemize}
+		\item Use different methods to prove runtime guarantees from recurrence relations (e.g., apply the Master Theorem to give a runtime from a recurrence)
+		\item Find the recurrence related satisfied by an algorithm
+		\item Analyze the runtime of the combine step of a divide-and-conquer method
+		\item Provide pseudocode for the combine step of merge sort
+	\end{itemize}
+	
+	\subsection{Dynamic Programming}
+	\textbf{Conceptual Questions}
+	\begin{itemize}
+		\item What properties should hold in order to apply a dynamic programming approach?
+		\item How is dynamic programming similar and different from divide-and-conquer?
+		\item What are two different approaches for writing code for a dynamic programming algorithm?
+	\end{itemize}
+	
+	\textbf{Specific problems to know about}
+	\begin{itemize}
+		\item Fibonacci
+		\item Rod-cutting
+		\item Matrix Chain Multiplication
+		\item Min cost path in a grid
+	\end{itemize}
+	
+	\textbf{Possible types of sample questions} (non-exhaustive!)
+	\begin{itemize}
+				\item Answer some variant of the conceptual questions asked above
+				\item Analyze a variation or application of one of the three problems we considered
+		\item Provide pseudocode for a dynamic programming version of an algorithm (could be either version of dynamic programming)
+		\item Identify when dynamic programming is right for a problem
+		\item Give a recurrence relationship for a dynamic programming algorithm
+		\item Analyze a runtime based on a recurrence relationship
+		\item Prove/explain why overlapping subproblems holds for a certain problem
+	\end{itemize}
+	
+	\subsection{Greedy Algorithms}
+	\textbf{Conceptual Questions}
+	\begin{itemize}
+		\item What properties should hold in order to apply a greedy algorithm?
+		\item How is this similar to and different from other algorithmic paradigms?
+		\item What is an overall strategy for applying greedy approach to a problem?
+	\end{itemize}
+	
+	\textbf{Problems to know about}
+	\begin{itemize}
+		\item Activity subset selection problem
+		\item The coin change problem
+		\item Optimal prefix code problem
+		\item Fractional knapsack problem
+	\end{itemize}
+	
+	\textbf{Possible types of sample questions} (non-exhaustive!)
+	\begin{itemize}
+		%		\item Answer some variant of the conceptual questions asked above
+		%		\item Analyze a variation or application of one of the three problems listed above
+		\item Provide or analyze pseudocode for a greedy algorithm, e.g., coin change, activity subset selection
+		\item Prove that a greedy strategy is optimal for a certain type of problem
+		\item Prove that a greedy strategy is \emph{not} optimal
+		\item Identify when a greedy algorithm is right for a problem
+	\end{itemize}
+	
+	\subsection{Amortized Analysis}
+	\textbf{Conceptual Questions}
+	\begin{itemize}
+		\item What is the definition of amortized analysis?
+		\item How does it differ from other runtime analyses?
+		\item What three strategies did we cover for amortized analysis, and how does each one work? What do you have to choose/set/show for each one?
+		\item How are different strategies different?
+	\end{itemize}
+	
+	\textbf{Problems to know about}
+	\begin{itemize}
+		\item Multipop stack
+		\item Binary counter increment problem
+	\end{itemize}
+	
+	\textbf{Possible types of sample questions} (non-exhaustive!)
+	\begin{itemize}
+		%		\item Answer some variant of the conceptual questions asked above
+		%		\item Analyze a variation or application of one of the three problems listed above
+		\item Prove that a certain choice of amortized costs is bounded above
+		\item Prove that a certain choice of amortized costs bounds the actual cost
+		\item Identify the right potential function using the potential method
+		\item Perform an aggregate analysis of an algorithm
+	\end{itemize}
+	
+	
+	\section{Tips on How to do a Runtime Analysis}
+	
+	\begin{itemize}
+		\item \textbf{Simple Iterative Algorithms}
+		\begin{itemize} 
+			\item Bound number of iterations
+			\item Bound runtime for each iteration, multiply by number of iterations
+		\end{itemize}
+		\item \textbf{Divide and conquer}
+		\begin{itemize} 
+			\item Obtain a recurrence relationship
+			\item Confirm that subproblems do not overlap
+			\item Apply Master Theorem, or another approach
+		\end{itemize}
+		\item \textbf{Dynamic programming}
+		\begin{itemize} 
+			\item Prove recurrence relationship between subproblems
+			\item Confirm problems overlap
+			\item Design an implementation that only solves each subproblem once. Given that each problem is only solved once, what is the overall runtime cost?
+		\end{itemize}
+		\item \textbf{Amortized Analysis, for iterative method}
+		\begin{itemize} 
+			\item Aggregate analysis: bound total cost, divide by number of iterations (rather than multiplying number of iterations by maximum iteration cost)
+			\item There are two other methods...see practice problems and lecture notes for overview.
+		\end{itemize}
+	\end{itemize}
+	\newpage
+	
+	\section{Practice Problems}
+	
+	\begin{questions}
+		
+		\question What are the three steps of a divide-and-conquer method? Given examples.
+		
+		\question Describe what steps are needed to prove an amortized runtime analysis using the potential method and the accounting method.
+		
+		\question What two properties should be satisfied by a problem in order to use a greedy method?
+		
+		\question What is the strategy we have seen for proving that a greedy method is optimal?
+		
+		\question Consider the following recurrence:
+		\begin{equation*}
+			c[i,j] =\begin{cases}
+				0 & \text{ if $i = 0$ or $j = 0$} \\
+				c[i-1, j-1] + 1 & \text{ if $i,j > 0$ and \textsc{Special Condition} holds}\\
+				\max \{ c[i,j-1], c[i-1,j]\} & \text{ if $i,j > 0$ and \textsc{Special Condition} does not hold}.
+			\end{cases}
+		\end{equation*}
+		where $c[i,j]$ is a subproblem of a problem that can be solved via dynamic programming, and is defined for every $i$ and $j$ such that $1 \leq i \leq g$ and $1 \leq j \leq p$. What is the runtime for computing $c[g,p]$ if it takes $O(1)$ time to check \textsc{Special Condition}?
+		
+		\question Consider the following recurrence relations
+		\begin{align*}
+			T(n) &= 4T(n/4) + n \\
+			T(n) &= 7T(n/2) + n^2 \\
+			T(n) &= 3T(n/2) + n^5 \log n\\
+			T (n) &= 3T (n/3) + n \log n 
+		\end{align*}
+		What runtime for this method does the Master Theorem give in each case? Make sure you are aware of situations where the Master Theorem does not apply. You can find other versions of the Master Theorem from other sources, but we will restrict to using the version in our textbook (as presented in class).
+		
+		\question
+		Consider a data structure that maintains a stack of elements together with a counter.
+The data structure supports the following operations:
+
+\begin{itemize}
+\item \textsc{Push}$(x)$: pushes element $x$ onto the stack.
+\item \textsc{Pop}(): removes the top element of the stack.
+\item \textsc{Flush}(): removes \emph{all} elements currently in the stack.
+\end{itemize}
+
+The costs of operations are defined as follows:
+\begin{itemize}
+\item \textsc{Push}$(x)$ takes $O(1)$ time.
+\item \textsc{Pop}() takes $O(1)$ time.
+\item \textsc{Flush}() takes time proportional to the number of elements currently in the stack.
+\end{itemize}
+
+The stack is initially empty.  
+Let $T(m)$ denote the total running time of any sequence of $m$ operations.
+
+\begin{enumerate}
+\item Give the worst-case running time of each operation.
+\item Explain why the worst-case bound on \textsc{Flush}() does not imply that a sequence of $m$ operations takes $\Theta(m^2)$ time.
+\item Perform an amortized analysis to show that for any sequence of $m$ operations, the total running time $T(m)$ is $O(m)$.
+\item Clearly define a potential function and use it to justify your analysis.
+\item State the amortized cost of each operation.
+\end{enumerate}
+		
+		\textbf{Reviewing other homework problems is the next best way to prepare!}
+		
+	\end{questions}
+\end{document}
