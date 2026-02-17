@@ -1,0 +1,378 @@
+\documentclass[11  pt]{exam} 
+\usepackage[lmargin=1in,rmargin=1.75in,bmargin=1in,tmargin=1in]{geometry}  
+
+
+\input{preamble}
+
+\begin{document}
+	
+	\week{6: Graph Algorithms: More DFS}{February 24, 2026}
+	%\lecture{9: Intro to Graph Algorithms}{February 18}
+	
+	\paragraph{Course Logistics}
+	
+	\begin{itemize}
+		\item Graph algorithms: Chapter 22
+		\item Homework 5 out this weekend, due next Friday
+	\end{itemize}
+	
+	
+	
+	\section{Depth First Search Algorithm}
+	Recall that a \emph{breadth-first} search explores nodes that are $k$ steps away from node $s$ before exploring any nodes that are $k+1$ steps away. \\
+	
+	A \emph{depth-first search} instead explores the \emph{most recently discovered vertex} before backtracking and exploring other previously discovered nodes.\\
+	
+	Roughly speaking, this is accomplished by \hide{replacing the queue}. \\
+	
+	Recall that unlike in a BFS, a depth-first search (DFS):
+	\begin{itemize}
+		\item Explores the \emph{most recently discovered vertex} before backtracking and exploring other previously discovered vertices
+		\item All nodes in the graph are explored (rather than just a DFS for a single node $s$)
+		\item We keep track of a global \emph{time}, and each node is associated with two timestamps for when it is \emph{discovered} and \emph{explored}.
+	\end{itemize}
+	
+	Each node $u \in V$ is associated with the following attributes
+	
+	\begin{tabular}{| l | p{8cm} | p{6cm} |}
+		\hline
+		Attribute & Explanation &Initialization \\
+		\hline
+		$u.\text{status}$ & tells us whether a node has been \emph{undiscovered}, \emph{discovered}, and \emph{explored} &  $u.\text{status} = U$\\
+		\hline
+		$u.\text{D}$ & timestamp when $u$ is first discovered & NIL  \\
+		\hline
+		$u.\text{F}$ & timestamp when $u$ is finished being explored   & NIL  \\
+		\hline
+		$u.\text{parent}$ & predecessor/``discoverer" of $u$ & NIL \\
+		\hline
+	\end{tabular}
+	
+	\vspace{1cm} 
+	\begin{minipage}[t]{0.45\textwidth}
+		%	\begin{algorithm}
+		\textsc{DFS}($G$)
+		\begin{algorithmic}
+			\For{$v \in V $}
+			\State $v.\text{parent} = NIL$
+			\State $v.\text{status} = \text{U}$
+			\EndFor
+			\State $\text{time} = 0$
+			\For{$u \in V$}
+			\If{$u.\text{status} == U$}
+			\State $\textsc{DFS-Visit}(G,u)$
+			\EndIf
+			\EndFor
+		\end{algorithmic}
+		%	\end{algorithm}
+	\end{minipage}
+	\begin{minipage}[t]{0.45\textwidth}
+		%	\begin{algorithm}
+		\textsc{DFS-Visit}($G,u$)
+		\begin{algorithmic}
+			\State $\text{time} = \text{time} + 1$
+			\State $u.D = \text{time}$
+			\State $u.\text{status} = D$
+			\For{$v \in \text{Adj}[u]$}
+			\If{$v.\text{status} == U$}
+			\State $v.\text{parent} = u$
+			\State $\textsc{DFS-Visit}(G,v)$
+			\EndIf
+			\EndFor
+			\State $u.\text{status} = \text{E}$
+			\State $\text{time} = \text{time} + 1$
+			\State $u.F = \text{time}$
+		\end{algorithmic}
+		%	\end{algorithm}
+	\end{minipage}
+	\vspace{1cm}
+	
+	\newpage
+	\subsection{Runtime Analysis}
+	\begin{Qu}
+		What is the runtime of a depth first search, assuming that we store the graph in an adjacency list, and assuming that $|E| = \Omega(|V|)$?
+		\begin{itemize}
+			\aitem $O(|V|)$
+			\bitem $O(|E|)$
+			\citem $O(|V| \times |E|)$
+			\ditem $O(|V|^2)$
+			\eitem $O(|E|^2)$
+		\end{itemize}
+	\end{Qu}
+	\newpage
+	\subsection{Properties of DFS}
+	
+	\begin{theorem}
+		In any depth-first search of a graph $G = (V,E)$, for any pair of vertices $u$ and $v$, exactly one of the following conditions holds:\\ \\
+		\begin{itemize}
+			\item $[u.D,u.F]$ and $[v.D, v.F]$ are disjoint; \hide{neither of $u$ or $v$ is a} \\
+			\item $[v.D, v.F]$ contains $[u.D,u.F]$ and \hide{$v$ is a descendant of $u$} \\
+			\item $[u.D,u.F]$ contains $[v.D, v.F]$ and \hide{$u$ is a descendant of $v$}
+		\end{itemize}
+	\end{theorem}
+	
+	
+	\textbf{We will not prove this, but we'll give a quick illustration}\\
+	
+		\begin{center}
+	\includegraphics[width = .4\linewidth]{dfs.png}
+\end{center}
+
+\vspace{1cm} 
+	\begin{center}
+		{\Huge
+	\begin{tabular}{|c |  c c c c c c c c c c c c |}
+		\hline
+		\textcircled{1} & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 & 11 & 12 \\ \hline
+		\textcircled{2} & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 & 11 & 12 \\ \hline
+		\textcircled{3} & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 & 11 & 12 \\ \hline
+		\textcircled{4} & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 & 11 & 12 \\ \hline
+		\textcircled{5} & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 & 11 & 12 \\ \hline
+		\textcircled{6} & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 & 11 & 12 \\ \hline
+	\end{tabular}
+}
+\end{center}
+\vs{1cm}
+
+\begin{corollary}
+	$v$ is a descendant of $u \iff $ 
+\end{corollary}
+
+	\newpage
+	\subsection{Classification of Edges}
+	
+	Given a graph $G = (V,E)$ performing a DFS on $G$ produces a graph $\hat{G} = (V, \hat{E})$ where
+	\begin{align*}
+		\hat{E} = \{ (u.\text{parent}, u) \colon v \in V \text{ and } v.\text{parent} \neq NIL  \}
+	\end{align*}
+	This is called a \emph{depth-first} forest of $G$. \\
+	
+	\vspace{4cm}
+	
+	Given any edge $(u,v) \in E$, we can classify it based on the status of node $v$ when we are performing the DFS:\\
+	
+	
+	\begin{tabular}{| l | p{8cm} | p{6cm} |}
+		\hline
+		Edge & Explanation & How to tell when exploring $(u,v)$? \\
+		\hline
+		\textbf{Tree edge}  & edge in $\hat{E}$ & %$v.\text{status} == U$ 
+		\\
+		\hline
+		\textbf{Back edge} & connects $u$ to ancestor $v$ & %$v.\text{status} == D$ 
+		\\
+		\hline
+		\textbf{Forward edge} & connects vertex $u$ to descendant $v$ & \phantom{spaceasdfasdf2xsdf} \emph{and} $u.D < v.D$\\
+		\hline
+		\textbf{Cross edge} & either (a) connects two different trees or (b) crosses between siblings/cousins in same tree &  \phantom{spaceasdfasdf2xsdf} \emph{and} $u.D > v.D$\\
+		\hline
+	\end{tabular}
+	
+
+	\newpage
+	\subsection{Practice}
+	\includegraphics[width = .6\linewidth]{manydfs.png}
+	\newpage
+	\begin{Qu}
+		How many of the above graphs were directed acyclic graphs?
+		\begin{itemize}
+			\aitem 1
+			\bitem 2
+			\citem 3
+			\ditem 4
+			\eitem none of them
+		\end{itemize}
+	\end{Qu}
+
+\newpage
+
+	
+	\section{Depth First Search: Motivating Problems}
+
+	
+	Depth first search is used in several applications for analyzing directed graphs. We will now take a closer look at these applications. \\
+	
+	\paragraph{Directed graph reminders}
+	
+	% path
+	
+	\newpage
+	
+	\subsection{Reachability and Connected Components}
+	\textbf{Reachability.} Given a graph $G = (V,E)$ and node set $S \subseteq V$, node $v \in S$ is \emph{reachable} from node $u \in S$ if \hide{there is a path of nodes from $u$ to $v$}. \\
+	\vfill
+	
+	
+	\textbf{Connected components.} 
+	For an undirected graph $G = (V,E)$ a connected component is a maximal subgraph in which every node in is \hide{reachable from every other } \\
+	
+	
+	\vfill
+	
+	\textbf{Weakly Connected components} If $G = (V,E)$ is directed, a \emph{weakly connected component} is \hide{a connected component in the graph}\\ % obtained by ignoring edge directions. \\
+	
+	
+	\vfill
+	
+	
+	\textbf{Strongly Connected components} If $G = (V,E)$ is directed, a \emph{strongly connected component} is subgraph $S \subseteq V$ in which there is \hide{a directed path of nodes (in $S$)} \\ % every pair of nodes in $S$. 
+	\vfill 
+	
+	\newpage
+	
+	\begin{Qu}
+		How many weakly connected components and strongly connected components are there in the following graph, respectively?
+		
+		\begin{itemize}
+			\aitem 1 and 3
+			\bitem 1 and 2
+			\citem 0 and 1
+			\ditem 2 and 3
+		\end{itemize}
+		
+	\end{Qu}
+	
+	
+	\vs{3cm}
+	
+	\subsection{Directed Acyclic Graphs}
+	A \emph{cycle} in a directed graph is a directed path \hide{that starts and ends at} \\ % the same node. \\
+	
+	\vs{2cm}
+	
+	
+	A \emph{Directed acyclic} graph is a directed graph that \hide{has no cycles}.
+	
+	
+	\paragraph{Examples}
+	
+	
+	
+	\newpage
+	
+	
+	\subsection{Topological Sorting}
+	A topologically ordering of a directed acyclic graph $G = (V,E)$ is an ordering of nodes so that: \\
+	
+	
+	%for each edge  $(u,v) \in E$, $u$ comes before $v$ in the ordering.
+	
+	%	\paragraph{Examples and applications}
+	
+	\newpage
+	
+	
+	\newpage
+
+	\section{Application 1: Checking if $G$ is a DAG}
+	
+	\begin{theorem}
+		$G$ is a DAG $\iff$ a DFS yields no back edges. Equivalently:
+		\begin{center}
+			\hide{A DFS yields a back edge $\iff$ $G$ is .}
+		\end{center}
+	\end{theorem}
+	
+	\textit{Proof} First, ($\implies$) we show that if DFS yields a back edge, $G$ is not a DAG.\\
+	\vspace{4cm}
+	
+	
+	Next ($\Leftarrow$) we show that if $G$ is not a DAG there will be a back edge.\\
+	
+	\newpage
+	
+	\section{Application 2: Topological Sort}
+	Given a directed acyclic graph $G = (V,E)$, a topological sort of $G$ is an ordering of nodes such that for any $(u,v) \in E$, $u$ comes before $v$ in the ordering. \\
+	
+	We can use the following procedure to solve the topological sort problem:
+	\begin{enumerate}
+		\item  %Perform a DFS on $G = (V,E)$ \\
+		\item  %Order nodes by reverse order of finish time (i.e., last node to be fully explored is the first node in the ordering)
+		\vs{1cm}
+	\end{enumerate}
+	
+	
+	
+	\newpage
+	\begin{theorem}
+		Ordering nodes in a directed acyclic graph $G = (V,E)$ by reversed finish times will produce a topological sort of $G$. 
+	\end{theorem}
+	\begin{proof}
+		\begin{enumerate}
+			\item Let $(u,v)$ be an edge in $G$
+			\vs{2cm}
+			\item Our goal is to show that 
+			
+			\begin{equation*}
+				\hide{v.F < u.F}
+			\end{equation*}
+			
+			\item When $(u,v)$ is explored, there are three different possibilities for the status of $v$:
+			
+			\begin{itemize}
+				\item \textbf{Case 1}: $v.\text{status} == U$. This means $v$ becomes a descendant of $u$. \\
+				
+				Thus, $v.F < u.F$. Reason: \hide{Corollary 1.2}\\ \\
+				
+				\item \textbf{Case 2}: $v.\text{status} == E$, then we also have $v.F < u.F$.\\
+				
+				Reason:  \\ \\ 
+				
+				\item \textbf{Case 3}: $v.\text{status} == D$, this means that $v$ is an ancestor of $u$, so $(u,v)$ is a back edge. \\
+				
+				But this is impossible. Reason: \hide{Corollary 1.2}  \\ \\ \\
+				
+			\end{itemize}
+			\item In all cases that are possible, \hide{$v.F < u.F$.}
+		\end{enumerate}
+		
+		
+	\end{proof}
+
+
+	\section{The transpose graph and connected component graph}
+	If $G = (V,E)$ is a graph, a \emph{strongly connected component} is maximal subgraph $S \subseteq V$ in which every node is reachable from every other node by following paths in $S$. \\
+	
+	Let $G = (V,E)$ be a graph and assume that $\{C_1, C_2, \hdots , C_k\}$ represent its strongly connected components. 
+	
+	The \emph{connected component graph} $G^\text{scc} = (V^\text{scc}, E^\text{scc})$ is defined as follows:
+	\begin{itemize}
+		\item There is a node $v_i \in V^{\text{scc}}$ for each component $C_i$
+		\item There is an edge $(v_i, v_j) \in E^{\text{scc}}$ if and only if there is a directed edge between $C_i$ and $C_j$
+	\end{itemize}
+	\begin{lemma}
+		The connected component graph is \hide{ directed acyclic jj}
+	\end{lemma}
+	
+	\vs{5cm}
+	
+	The \emph{transpose graph} of $G$ is $G^T = (V, E^T)$ where
+	\begin{align*}
+		E^T = \{ (u,v) \colon (v,u) \in E\}
+	\end{align*}
+	
+	\begin{lemma}
+		$G$ and $G^T$ have \hide{the same strongly }
+	\end{lemma}
+	
+	\newpage
+	
+	
+	
+	
+	
+	\section{Strongly Connected Components}
+	The following algorithm will compute the strongly connected components of a graph $G = (V,E)$:
+	
+	\textsc{Strongly-Connected-Components}(G)
+	\begin{enumerate}
+		\item Find a DFS for $G$ to get finish times $u.F$ for each $u \in V$.
+		\item Compute the \emph{transpose graph} $G^T = (V,E^T)$
+		\item Find a DFS for $G^T$, but in the main loop of DFS, always visit nodes based on the reverse order of finish times from the DFS of $G$.
+		\item Output the vertices of each tree in the DFS of $G^T$. 
+	\end{enumerate}
+	\newpage
+	\paragraph{What is the key to making this work?}
+	In the second DFS, we essentially visit all of the nodes in the connected components graph in topologically sorted order.
+	
+\end{document}
