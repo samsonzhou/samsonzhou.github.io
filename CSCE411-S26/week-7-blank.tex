@@ -6,7 +6,7 @@
 
 \begin{document}
 	
-	\week{7: Graph Algorithms: More DFS}{February 24, 2026}
+	\week{7: Finishing DFS; Minimum Spanning Trees}{February 24, 2026}
 	%\lecture{9: Intro to Graph Algorithms}{February 18}
 	
 	\paragraph{Course Logistics}
@@ -17,175 +17,6 @@
 	\end{itemize}
 	
 	
-	
-	\section{Depth First Search Algorithm}
-	Recall that a \emph{breadth-first} search explores nodes that are $k$ steps away from node $s$ before exploring any nodes that are $k+1$ steps away. \\
-	
-	A \emph{depth-first search} instead explores the \emph{most recently discovered vertex} before backtracking and exploring other previously discovered nodes.\\
-	
-	Roughly speaking, this is accomplished by \hide{replacing the queue}. \\
-	
-	Recall that unlike in a BFS, a depth-first search (DFS):
-	\begin{itemize}
-		\item Explores the \emph{most recently discovered vertex} before backtracking and exploring other previously discovered vertices
-		\item All nodes in the graph are explored (rather than just a DFS for a single node $s$)
-		\item We keep track of a global \emph{time}, and each node is associated with two timestamps for when it is \emph{discovered} and \emph{explored}.
-	\end{itemize}
-	
-	Each node $u \in V$ is associated with the following attributes
-	
-	\begin{tabular}{| l | p{8cm} | p{6cm} |}
-		\hline
-		Attribute & Explanation &Initialization \\
-		\hline
-		$u.\text{status}$ & tells us whether a node has been \emph{undiscovered}, \emph{discovered}, and \emph{explored} &  $u.\text{status} = U$\\
-		\hline
-		$u.\text{D}$ & timestamp when $u$ is first discovered & NIL  \\
-		\hline
-		$u.\text{F}$ & timestamp when $u$ is finished being explored   & NIL  \\
-		\hline
-		$u.\text{parent}$ & predecessor/``discoverer" of $u$ & NIL \\
-		\hline
-	\end{tabular}
-	
-	\vspace{1cm} 
-	\begin{minipage}[t]{0.45\textwidth}
-		%	\begin{algorithm}
-		\textsc{DFS}($G$)
-		\begin{algorithmic}
-			\For{$v \in V $}
-			\State $v.\text{parent} = NIL$
-			\State $v.\text{status} = \text{U}$
-			\EndFor
-			\State $\text{time} = 0$
-			\For{$u \in V$}
-			\If{$u.\text{status} == U$}
-			\State $\textsc{DFS-Visit}(G,u)$
-			\EndIf
-			\EndFor
-		\end{algorithmic}
-		%	\end{algorithm}
-	\end{minipage}
-	\begin{minipage}[t]{0.45\textwidth}
-		%	\begin{algorithm}
-		\textsc{DFS-Visit}($G,u$)
-		\begin{algorithmic}
-			\State $\text{time} = \text{time} + 1$
-			\State $u.D = \text{time}$
-			\State $u.\text{status} = D$
-			\For{$v \in \text{Adj}[u]$}
-			\If{$v.\text{status} == U$}
-			\State $v.\text{parent} = u$
-			\State $\textsc{DFS-Visit}(G,v)$
-			\EndIf
-			\EndFor
-			\State $u.\text{status} = \text{E}$
-			\State $\text{time} = \text{time} + 1$
-			\State $u.F = \text{time}$
-		\end{algorithmic}
-		%	\end{algorithm}
-	\end{minipage}
-	\vspace{1cm}
-	
-	\newpage
-	\subsection{Runtime Analysis}
-	\begin{Qu}
-		What is the runtime of a depth first search, assuming that we store the graph in an adjacency list, and assuming that $|E| = \Omega(|V|)$?
-		\begin{itemize}
-			\aitem $O(|V|)$
-			\bitem $O(|E|)$
-			\citem $O(|V| \times |E|)$
-			\ditem $O(|V|^2)$
-			\eitem $O(|E|^2)$
-		\end{itemize}
-	\end{Qu}
-	\newpage
-	\subsection{Properties of DFS}
-	
-	\begin{theorem}
-		In any depth-first search of a graph $G = (V,E)$, for any pair of vertices $u$ and $v$, exactly one of the following conditions holds:\\ \\
-		\begin{itemize}
-			\item $[u.D,u.F]$ and $[v.D, v.F]$ are disjoint; \hide{neither of $u$ or $v$ is a} \\
-			\item $[v.D, v.F]$ contains $[u.D,u.F]$ and \hide{$v$ is a descendant of $u$} \\
-			\item $[u.D,u.F]$ contains $[v.D, v.F]$ and \hide{$u$ is a descendant of $v$}
-		\end{itemize}
-	\end{theorem}
-	
-	
-	\textbf{We will not prove this, but we'll give a quick illustration}\\
-	
-		\begin{center}
-	\includegraphics[width = .4\linewidth]{dfs.png}
-\end{center}
-
-\vspace{1cm} 
-	\begin{center}
-		{\Huge
-	\begin{tabular}{|c |  c c c c c c c c c c c c |}
-		\hline
-		\textcircled{1} & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 & 11 & 12 \\ \hline
-		\textcircled{2} & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 & 11 & 12 \\ \hline
-		\textcircled{3} & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 & 11 & 12 \\ \hline
-		\textcircled{4} & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 & 11 & 12 \\ \hline
-		\textcircled{5} & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 & 11 & 12 \\ \hline
-		\textcircled{6} & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 & 11 & 12 \\ \hline
-	\end{tabular}
-}
-\end{center}
-\vs{1cm}
-
-\begin{corollary}
-	$v$ is a descendant of $u \iff $ 
-\end{corollary}
-
-	\newpage
-	\subsection{Classification of Edges}
-	
-	Given a graph $G = (V,E)$ performing a DFS on $G$ produces a graph $\hat{G} = (V, \hat{E})$ where
-	\begin{align*}
-		\hat{E} = \{ (u.\text{parent}, u) \colon v \in V \text{ and } v.\text{parent} \neq NIL  \}
-	\end{align*}
-	This is called a \emph{depth-first} forest of $G$. \\
-	
-	\vspace{4cm}
-	
-	Given any edge $(u,v) \in E$, we can classify it based on the status of node $v$ when we are performing the DFS:\\
-	
-	
-	\begin{tabular}{| l | p{8cm} | p{6cm} |}
-		\hline
-		Edge & Explanation & How to tell when exploring $(u,v)$? \\
-		\hline
-		\textbf{Tree edge}  & edge in $\hat{E}$ & %$v.\text{status} == U$ 
-		\\
-		\hline
-		\textbf{Back edge} & connects $u$ to ancestor $v$ & %$v.\text{status} == D$ 
-		\\
-		\hline
-		\textbf{Forward edge} & connects vertex $u$ to descendant $v$ & \phantom{spaceasdfasdf2xsdf} \emph{and} $u.D < v.D$\\
-		\hline
-		\textbf{Cross edge} & either (a) connects two different trees or (b) crosses between siblings/cousins in same tree &  \phantom{spaceasdfasdf2xsdf} \emph{and} $u.D > v.D$\\
-		\hline
-	\end{tabular}
-	
-
-	\newpage
-	\subsection{Practice}
-	\includegraphics[width = .6\linewidth]{manydfs.png}
-	\newpage
-	\begin{Qu}
-		How many of the above graphs were directed acyclic graphs?
-		\begin{itemize}
-			\aitem 1
-			\bitem 2
-			\citem 3
-			\ditem 4
-			\eitem none of them
-		\end{itemize}
-	\end{Qu}
-
-\newpage
-
 	
 	\section{Depth First Search: Motivating Problems}
 
@@ -374,5 +205,148 @@
 	\newpage
 	\paragraph{What is the key to making this work?}
 	In the second DFS, we essentially visit all of the nodes in the connected components graph in topologically sorted order.
+	
+	
+	
+	\newpage
+	\section{Minimum Spanning Trees}
+Let $G = (V,E,w)$ be an undirected, connected, weighted graph where $w \colon E \rightarrow \mathbb{R}^+$ maps each edge to a nonnegative weight.
+
+
+\begin{center}
+	\includegraphics[width = .5\linewidth]{mst-graph.png}
+\end{center}
+
+A \emph{spanning tree} of $G$ is a subset of edges $E_T \subseteq E$ such that $T = (V,E_T)$ \hide{is a connect} 
+
+\begin{center}
+	\includegraphics[width = .5\linewidth]{mst-graph.png}
+\end{center}
+
+A \emph{minimum spanning tree} of $G$ is a spanning tree $T^*$ that minimizes
+
+\vs{2cm}
+over all spanning trees of $G$.
+
+\begin{center}
+	\includegraphics[width = .5\linewidth]{mst-graph.png}
+\end{center}
+
+\newpage
+\subsection{Minimum Spanning Tree Terminology}
+\textbf{Safe Edges.} Let $A$ be a subset of edges that is guaranteed to be in some minimum spanning tree of $G = (V,E)$. An edge $(u,v) \in E$ is \emph{safe} for $A$ if $A\cup \{(u,v)\}$ is contained in some minimum spanning tree of $G$.\\
+
+\textsc{GenericMST}$(G,w)$
+\begin{enumerate}
+	\item Set $A = \emptyset$
+	\item While $A$ is not a spanning tree
+	\item \;\;\; find a safe edge $(u,v)$ for $A$
+	\item \;\;\; $A \leftarrow A \cup \{(u,v)\}$
+\end{enumerate}
+
+The key to implementing this method is \emph{finding a safe edge $(u,v)$ at each step}.\\
+
+\paragraph{Cut terminology}
+Let $G = (V,E)$ and $A$ be a set of its edges.
+\begin{itemize}
+	\item If $S \subseteq V$, we call the partition $(S, V-S)$ a \hide{cut}\\
+	\item An edge $(u,v) \in E$ \hide{crosses} the cut $(S, V-S)$ if \hide{one of its endpoint} \\
+	\item A cut \hide{respects} $A$ if no edge in $A$ is cut\\
+	\item An edge $(u,v)$ is a \hide{light edge} if is has minimum weight among all cut edges. 
+\end{itemize}
+
+\newpage
+\subsection{Generic greedy strategy}
+We define the following \emph{greedy} strategy for choosing a \emph{safe} edge to add to $A$
+
+\textsc{GenericFindSafe}$(G,A,w)$
+\begin{enumerate}
+	\item Let $(S, V-S)$ be a cut that \emph{respects} $A$
+	\item Let $(u,v)$ be a light edge in $(S, V-S)$
+	\item Return $(u,v)$
+\end{enumerate}
+\begin{lemma}
+	If $A$ is a subset of the edges in a minimum spanning tree $T$ of $G$, then \textsc{GenericFindSafe} will return a safe edge for $A$
+\end{lemma}
+
+
+\newpage
+
+\subsection{Algorithms of Kruskal and Prim}
+Kruskal algorithm and Prim's algorithm are two strategies for creating an MST of $G = (V,E)$.\\
+
+\begin{tabular}{| l | p{7cm} | p{6cm} |}
+	\hline
+	\textbf{Strategy} & \textbf{What is $A$?} & At each step we add: \\
+	\hline
+	Kruskal &  \phantom{least weight edge connecting two components} & \phantom{least weight edge connecting two components} \phantom{more of the same stuff right here} \\
+	\hline
+	Prim & & \phantom{least weight edge connecting tree to another previously unconnected node} \phantom{more of the same stuff right here}\\
+	\hline
+\end{tabular}
+
+\begin{center}
+	\includegraphics[width = .75\linewidth]{mst-graph.png}
+\end{center}
+
+\vs{1cm}
+
+\begin{center}
+	\includegraphics[width = .75\linewidth]{mst-graph.png}
+\end{center}
+
+\newpage
+\subsection{Prim's Algorithm in More Depth}
+
+During Prim's algorithm, we grow out a tree from an arbitrary starting node $r$. Each node has the following attributes:
+\begin{itemize}
+	\item $v.\text{parent}$ = parent node of $v$ in the tree we are constructing
+	\item $v.\text{key}$ = minimum weight of an edge connecting $v$ to the tree
+\end{itemize}
+We will use a min-priority queue $Q$ to store the nodes \emph{not in the tree} with their keys, which allows us to find the node with the smallest key in $O(\log V)$ time. 
+
+\begin{algorithm}
+	\textsc{MST-Prim}($G,r$)
+	\begin{algorithmic}
+		\For{$u \in V$}
+		\State $u.\text{key} = \infty$
+		\State $u.\text{parent} = NIL$
+		\EndFor
+		\State $r.\text{key} = 0$
+		\State $Q = G.V$ 
+		\While{$|Q| > 0$}
+		\State $u = \textsc{ExtractMin}{Q}$
+		\If{$u \neq r$}
+		\State Add edge $(u,u.\text{parent})$ to $A$
+		\EndIf
+		\For{$v \in \text{Adj[u]}$}
+		\If{$v \in Q$ and $w(u,v) < v.\text{key}$}
+		\State $v.\text{parent} = u$
+		\State $v.\text{key} = w(u,v)$
+		\EndIf
+		\EndFor
+		\EndWhile
+		\State Return $A$
+	\end{algorithmic}
+\end{algorithm}
+
+\begin{center}
+	\includegraphics[width = .75\linewidth]{mst-graph.png}
+\end{center}
+
+\newpage
+
+\begin{Qu}
+	What is the runtime of Prim's algorithm, knowing that it takes $O(\log V)$ time to extract the minimum element from $Q$ or update the key of an element in $Q$?
+	\begin{itemize}
+		\aitem $\Theta(\log V)$
+		\bitem $\Theta(\log E)$
+		\citem $\Theta(V \log V)$
+		\ditem $\Theta(E \log V)$
+		\eitem $\Theta(V^2)$
+	\end{itemize}
+\end{Qu}
+
+\end{document}
 	
 \end{document}
