@@ -1,0 +1,287 @@
+\documentclass[11  pt]{article} 
+\usepackage[lmargin=1in,rmargin=1.75in,bmargin=1in,tmargin=1in]{geometry}  
+
+
+\input{preamble}
+
+\begin{document}
+	\week{12: Reductions and Undecidability}{April 7, 2026}
+	
+	
+\section{Vertex Cover Problem}
+A vertex cover of an undirected graph $G = (V,E)$ is a set of nodes $S \subseteq V$ such that:\\ \\
+
+
+\vs{2cm}
+
+We say an edge is \hide{covered} if at least one of its vertices are in the vertex cover. \\
+
+The \textbf{vertex-cover problem} is the task of finding a vertex cover of minimum size. The decision version of the problem is written as follows:
+
+\begin{center}
+	\textsc{VertexCover} = \phantom{$\langle G,k \rangle \colon $ more more more more more more more more} 
+\end{center}		
+
+
+%	\paragraph{Example}
+
+
+
+\newpage
+\begin{theorem}
+	The vertex-cover problem is \hide{NP-hard.}
+\end{theorem}
+\vs{1cm}
+\begin{Qu}
+	Assume we have proven the above theorem. Which of the following statements is true?
+	\begin{itemize}
+		\aitem Vertex-cover is NP-complete, because any problem that is NP-hard is also NP-complete
+		\bitem Vertex-cover is NP-complete, because of a different reason from the above reason
+		\citem It is possible that vertex-cover is not NP-complete, this is still an unsettled open question
+		\ditem The fact that vertex-cover is NP-hard means that we can for sure rule out the possibility of having a polynomial-time algorithm for solving it.
+	\end{itemize}	
+	
+\end{Qu}
+
+\newpage
+\subsection*{The complement of a graph}
+Given an undirected graph $G = (V,E)$, the \emph{complement} graph $\bar{G} = (V,\bar{E})$ is the graph with the same set of nodes where:
+
+\vs{1cm} 
+
+Formally, this means that:
+\begin{equation*}
+	\bar{E} = \phantom{\{(i,j) \in V \times V \colon i\neq j \text{ and } (i,j) \notin E)\}}
+\end{equation*}
+
+
+
+\vfill
+\textbf{Observation.} The complement of $\bar{G}$ is $G$. In other words, taking the complement of a complement returns the original graph.
+\newpage
+
+\subsection*{Proof that vertex-cover is NP-hard}
+
+
+We will reduce the Clique Problem to vertex cover. 
+
+\paragraph{The reduction}
+
+\begin{itemize}
+	\item Let $G = (V,E)$ be the input for \textsc{Clique}$(G,k)$
+	
+	\item Construct the complement graph $\bar{G}$
+	
+	
+	\item The output is $\langle \bar{G}, |V|-k \rangle$; i.e., \\%we wish to solve $\textsc{VertexCover}(\bar{G}, |V|-k)$
+	
+\end{itemize}
+
+\vs{.5cm}
+
+\textbf{What must hold for the reduction}
+\begin{itemize}
+	\item $(\implies)$ Assume $G$ has a $k$-clique and prove this means $\bar{G}$ has a vertex cover of size $|V| - k$
+	\item $(\Longleftarrow)$ Assume $\bar{G}$ has a vertex cover of size $|V| - k$ and prove that $G$ has a $k$-clique
+\end{itemize}
+
+We could prove each piece separately, but in some cases there is an easier way to show a reduction all at once.
+\begin{theorem}
+	A graph $G$ has a size $k$ clique $\iff$ $\bar{G}$ has a size $|V| - k$ vertex cover.
+\end{theorem}
+
+
+\newpage
+
+
+	\section{Other NP-complete problems}
+We have already talked about the following NP-complete problems
+\begin{itemize}
+	\item SAT and 3SAT
+	\item The \textsc{Clique} problem
+	\item The \textsc{Vertex cover} problem
+\end{itemize}
+
+Although we will not provide explicit reductions to prove the following are NP-complete, here are some more well-studied NP-complete problems you should be aware of:
+\begin{itemize}
+	\item Subset sum
+	\item Maximum Cut
+	\item Hamitonian Path
+	\item Traveling Salesman
+	\item Graph Coloring
+	\item Clique Cover
+\end{itemize}
+
+\paragraph{Warm-up question before we move on}
+\begin{Qu}
+	It is NP-hard to find a vertex cover for a graph $G$
+	\begin{itemize}
+		\aitem True
+		\bitem False
+	\end{itemize}
+\end{Qu}
+
+\newpage
+\section{Summary of a few NP-complete graph problems}
+\paragraph{Subset sum}
+The input to a subset sum problem is a list of integers $L$ (could be positive or negative) and a target sum $T$. The goal is to find a subset of integers in $L$ that sum to $T$. Several special variants are also NP-complete:
+\begin{itemize}
+	\item The special case where $T = 0$
+	\item The special case where all integers are positive
+	\item The special case where all integers are positive and $T = \frac{1}{2} \text{sum}(L)$.
+\end{itemize}
+
+\newpage
+All graph problem in the rest of the lecture take as input an undirected graph $G = (V,E)$ (which may or may not have weights) and an arbitrary nonnegative integer $k$.
+
+\paragraph{Hamiltonian Cycle}
+A Hamiltonian cycle is a cycle in the graph that visits every node exactly once.
+
+
+\vfill
+
+\paragraph{Traveling salesman problem}
+The traveling salesman problem seeks the smallest weight Hamiltonian cycle. The decision version asks: is there a Hamiltonian cycle with weight at most $W$?
+
+
+\vfill
+
+
+\newpage
+\paragraph{Graph Coloring}
+Check whether we can assign one of $k$ colors to each node $v \in V$ in such a way that if $(u,v) \in E$, then $u$ and $v$ have been assigned different colors. 
+
+\vfill
+
+This problem is NP-hard even if $k = 3$, but becomes polynomial time for $k = 2$. 
+
+\paragraph{Clique Cover}
+A clique cover of size $k$ is set of nodes $\mathcal{S} = \{S_1, S_2, \hdots S_k\}$ such that:
+\begin{itemize}
+	\item $\mathcal{S}$ is a partition: $S_i \cap S_j = \emptyset $ if $i \neq j$, and $\bigcup_{i = 1}^k S_i = V$
+	\item $S_i$ is a clique for each $i = 1, 2, \hdots , k$
+\end{itemize}
+Checking whether a graph $G$ has a size $k$ clique cover is NP-complete
+\vfill
+
+\newpage
+\section{Relationship between clique cover and graph coloring}
+Recall the following theorem regarding the relationship between the \textsc{Vertex Cover} problem and the \textsc{Clique} problem.
+\begin{theorem}
+	A graph $G = (V,E)$ has a clique of size $k$ if and only if the complement graph $\bar{G}$ has a vertex cover of size $|V| -k$.
+\end{theorem}
+\textit{Proof.} 
+
+
+\vfill
+There is a relationship between graph coloring and clique cover that is very similar and can be proven using similar arguments. This will be a good practice problem for the final exam!
+
+\newpage
+\paragraph{Maximum cut}
+A \emph{cut set} of an undirected graph $G$ is a partition of the nodes $\{S, V-S\}$ and the cut value is the weight of edges across the cutset:
+\begin{equation}
+	\cut(S) = \sum_{(u,v) \in E} w_{uv}.
+\end{equation}
+
+Finding a set $S$ that maximizes $\cut(S)$ is the \emph{maximum cut} problem.\\
+
+The decision version asks: given a value $k$, is there a set $S$ with $\cut(S) \geq k$? \\
+
+
+\newpage
+
+	\section{Decision problems and undecidability}
+	A decision problem $Q$ is \emph{undecidable} if there cannot exist an algorithm that always provides the correct YES or NO answer.
+	
+	\begin{Qu}
+		Say that $Q$ is an NP-Complete problem. Which of the following statements is true?
+		\begin{itemize}
+			\aitem $Q$ is undecidable 
+			\bitem If $P \neq NP$, then $Q$ is undecidable, but we just do not now for sure yet
+			\citem Neither of the above is true
+		\end{itemize}
+	\end{Qu}
+	
+
+
+
+
+%\vfill
+%Question: Are NP-hard problems the hardest problems that exist? Can anything be harder?
+\newpage
+
+\section{Halting and the Halting Problem}
+Let $P$ represent some notion of a computer program and $I$ represent some type of input that you give $P$. You can think of both as strings.\\
+
+We say that $P$ \emph{halts} on $I$ if \hide{running $P$ on input $I$} \\
+
+\paragraph{Example}
+Let $P = \textsc{OddHello}$ be represented by the following code snippet.
+\begin{algorithm}
+	\textsc{OddHello}($I$)
+	\begin{algorithmic}
+		\If{the input is a string with an even number of letter characters (a-z)}
+		\While{true}
+		\State continue
+		\EndWhile
+		\Else
+		\State return ``hello!''
+		\EndIf
+	\end{algorithmic}
+\end{algorithm}
+% iftheinputisastringwithanevennumberoflettercharactersazthenwhiletruedocontinueendwhileelseReturnHelloendif has 101 characters
+
+\begin{Qu}
+	Does $\langle P, I\rangle$ halt when $I$ = ``hello"?
+	\begin{itemize}
+		\aitem Yes
+		\bitem Nope
+		\citem It depends
+		\ditem There is no way of knowing
+	\end{itemize}
+\end{Qu}
+
+\begin{Qu}
+Does $\langle P, I\rangle$ halt when $I$ = ``hi"?
+	\begin{itemize}
+		\aitem Yes
+		\bitem Nope
+		\citem It depends
+		\ditem There is no way of knowing
+	\end{itemize}
+\end{Qu}
+
+\begin{Qu}
+	Does $\langle P, I\rangle$ halt when $I$ = $P$?
+	\begin{itemize}
+		\aitem Yes 
+		\bitem Nope
+		\citem This question cannot have an answer
+	\end{itemize}
+\end{Qu}
+
+\vspace{1cm}
+
+\newpage
+
+
+\textbf{Definition: The Halting Problem.} The \emph{halting problem} is a decision problem that takes in inputs of the form $\langle P, I \rangle$ and outputs
+\begin{itemize}
+	\item YES \\ \\%if $P$ halts on $I$ 
+	\item NO \\% if $P$ does not halt on $I$\\
+\end{itemize}
+
+\emph{To be clear}
+\begin{itemize}
+	\item An instance of the halting problem is given by a \\ \\
+	\item An algorithm $A$ solves the halting problem if % for every program-input (P,I) it correctly answers whether or not P halts on I.
+\end{itemize}
+
+
+\newpage
+
+\begin{theorem} The Halting Problem is \hide{undecidable.}
+\end{theorem}
+
+
+\end{document}
