@@ -1,9 +1,9 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (MiKTeX 24.4) (preloaded format=pdflatex 2025.1.14)  20 APR 2026 12:12
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (MiKTeX 24.4) (preloaded format=pdflatex 2025.1.14)  20 APR 2026 12:18
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
-**./week-14b-blank.tex
-(week-14b-blank.tex
+**./week-14c-blank.tex
+(week-14c-blank.tex
 LaTeX2e <2024-06-01> patch level 2
 L3 programming layer <2024-08-16>
 (C:\Users\Samson Zhou\AppData\Local\Programs\MiKTeX\tex/latex/exam\exam.cls
@@ -572,8 +572,9 @@ nd-pdftex.def
 File: l3backend-pdftex.def 2024-05-08 L3 backend support: PDF output (pdfTeX)
 \l__color_backend_stack_int=\count367
 \l__pdf_internal_box=\box59
-) (week-14b-blank.aux)
-\openout1 = `week-14b-blank.aux'.
+)
+No file week-14c-blank.aux.
+\openout1 = `week-14c-blank.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 7.
 LaTeX Font Info:    ... okay on input line 7.
@@ -593,7 +594,6 @@ LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 7.
 LaTeX Font Info:    ... okay on input line 7.
 LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 7.
 LaTeX Font Info:    ... okay on input line 7.
-
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
 *geometry* verbose mode - [ preamble ] result:
@@ -642,9 +642,8 @@ Package color Info: Driver file: pdftex.def on input line 149.
 (C:\Users\Samson Zhou\AppData\Local\Programs\MiKTeX\tex/latex/graphics\mathcolo
 r.ltx))
 Package hyperref Info: Link coloring ON on input line 7.
- (week-14b-blank.out) (week-14b-blank.out)
 \@outlinefile=\write3
-\openout3 = `week-14b-blank.out'.
+\openout3 = `week-14c-blank.out'.
 
 
 (C:\Users\Samson Zhou\AppData\Local\Programs\MiKTeX\tex/context/base/mkii\supp-
@@ -757,22 +756,22 @@ Underfull \hbox (badness 10000) in paragraph at lines 49--50
 
 
 [2]
-<figures/A.pdf, id=110, 315.37228pt x 230.21338pt>
+<figures/A.pdf, id=20, 315.37228pt x 230.21338pt>
 File: figures/A.pdf Graphic file (type pdf)
 <use figures/A.pdf>
 Package pdftex.def Info: figures/A.pdf  used on input line 58.
 (pdftex.def)             Requested size: 22.76164pt x 14.22319pt.
-<figures/B.pdf, id=111, 314.21352pt x 229.77534pt>
+<figures/B.pdf, id=21, 314.21352pt x 229.77534pt>
 File: figures/B.pdf Graphic file (type pdf)
 <use figures/B.pdf>
 Package pdftex.def Info: figures/B.pdf  used on input line 59.
 (pdftex.def)             Requested size: 22.7595pt x 14.22418pt.
-<figures/C.pdf, id=112, 314.27463pt x 230.07079pt>
+<figures/C.pdf, id=22, 314.27463pt x 230.07079pt>
 File: figures/C.pdf Graphic file (type pdf)
 <use figures/C.pdf>
 Package pdftex.def Info: figures/C.pdf  used on input line 60.
 (pdftex.def)             Requested size: 22.75914pt x 14.22491pt.
-<figures/D.pdf, id=113, 313.57942pt x 227.58772pt>
+<figures/D.pdf, id=23, 313.57942pt x 227.58772pt>
 File: figures/D.pdf Graphic file (type pdf)
 <use figures/D.pdf>
 Package pdftex.def Info: figures/D.pdf  used on input line 61.
@@ -1003,7 +1002,7 @@ File: figures/D.pdf Graphic file (type pdf)
 <use figures/D.pdf>
 Package pdftex.def Info: figures/D.pdf  used on input line 346.
 (pdftex.def)             Requested size: 22.76143pt x 14.2242pt.
-<figures/E.pdf, id=319, 314.30771pt x 229.9817pt>
+<figures/E.pdf, id=240, 314.30771pt x 229.9817pt>
 File: figures/E.pdf Graphic file (type pdf)
 <use figures/E.pdf>
 Package pdftex.def Info: figures/E.pdf  used on input line 347.
@@ -1083,19 +1082,30 @@ Package pdftex.def Info: figures/E.pdf  used on input line 538.
 
 [23]
 This exam contains 0 questions with 0 parts, 0 subparts, and 0 subsubparts.
-(week-14b-blank.aux)
+
+Class exam Warning: Point totals have changed. Rerun to get point totals right.
+
+
+(week-14c-blank.aux)
  ***********
 LaTeX2e <2024-06-01> patch level 2
 L3 programming layer <2024-08-16>
  ***********
-Package rerunfilecheck Info: File `week-14b-blank.out' has not changed.
-(rerunfilecheck)             Checksum: 85971471CDD9ABCF4FF72C2FA772A6DD;4918.
+
+
+Package rerunfilecheck Warning: File `week-14c-blank.out' has changed.
+(rerunfilecheck)                Rerun to get outlines right
+(rerunfilecheck)                or use package `bookmark'.
+
+Package rerunfilecheck Info: Checksums for `week-14c-blank.out':
+(rerunfilecheck)             Before: <no file>
+(rerunfilecheck)             After:  85971471CDD9ABCF4FF72C2FA772A6DD;4918.
  ) 
 Here is how much of TeX's memory you used:
- 14883 strings out of 473898
- 237899 string characters out of 5723611
+ 14851 strings out of 473898
+ 237198 string characters out of 5723611
  1940960 words of memory out of 5000000
- 37474 multiletter control sequences out of 15000+600000
+ 37448 multiletter control sequences out of 15000+600000
  570235 words of font info for 64 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  80i,10n,82p,553b,444s stack positions out of 10000i,1000n,20000p,200000b,200000s
@@ -1116,9 +1126,9 @@ on Zhou/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb
 s/cm/cmsy8.pfb><C:/Users/Samson Zhou/AppData/Local/Programs/MiKTeX/fonts/type1/
 public/amsfonts/cm/cmti10.pfb><C:/Users/Samson Zhou/AppData/Local/Programs/MiKT
 eX/fonts/type1/public/lm/lmssbx10.pfb>
-Output written on week-14b-blank.pdf (23 pages, 794667 bytes).
+Output written on week-14c-blank.pdf (23 pages, 785365 bytes).
 PDF statistics:
- 480 PDF objects out of 1000 (max. 8388607)
+ 410 PDF objects out of 1000 (max. 8388607)
  87 named destinations out of 1000 (max. 500000)
- 210 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 26 words of extra memory for PDF output out of 10000 (max. 10000000)
 

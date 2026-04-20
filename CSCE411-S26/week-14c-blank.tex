@@ -1,0 +1,542 @@
+\documentclass[11pt]{exam} 
+\usepackage[lmargin=1in,rmargin=1.75in,bmargin=1in,tmargin=1in]{geometry}  
+
+
+\input{preamble}
+
+\begin{document}
+	
+	\week{8: Randomized Algorithms; Hashing; PageRank}{March 24, 2026}
+	%\lecture{10: Intro to Randomized Algorithms}{March 24}
+	
+	\paragraph{Course Logistics}
+	
+	\begin{itemize}
+		\item Randomized algorithms, hashing, and PageRank: Chapters 5, 11, and 20
+		\item Homework 5 out, due this Friday
+	\end{itemize}
+	
+	
+	
+	\section{Randomized Algorithms: Motivating Problems}
+
+	
+	Randomized algorithms are used in several applications for analyzing large datasets and strings. We will now take a closer look at these applications. \\
+	
+	\paragraph{Probability reminders}
+	
+	% expectation
+	
+	\newpage
+	
+	\subsection{Monte Carlo and Las Vegas Algorithms}
+	\textbf{Monte Carlo Algorithms.} A randomized algorithm whose runtime is deterministic, but has a small probability of \hide{producing an incorrect answer}. \\
+	\vfill
+	
+	
+	\textbf{Las Vegas Algorithms.} 
+	A randomized algorithm that \hide{always produces the correct answer}, but whose runtime is a random variable. \\
+	
+	
+	\vfill
+	
+	\textbf{One-sided Error} If a Monte Carlo algorithm can err on only one type of output (e.g., false positives but no false negatives), it has \hide{one-sided error}\\ % obtained by bounding the probability. \\
+	
+	
+	\vfill
+	
+	
+	\textbf{Probability Amplification} If we run a Monte Carlo algorithm with a bounded error probability multiple times, we can reduce the probability of failure to \hide{an exponentially small amount} \\ % every independent run. 
+	\vfill 
+	
+	\newpage
+	
+	\begin{Qu}
+		Suppose a Monte Carlo algorithm for a decision problem has a probability of $1/3$ of returning an incorrect answer. If we run it $k$ independent times and take the majority vote, what happens to the probability of success?
+		
+		\begin{itemize}
+			\aitem It remains $2/3$
+			\bitem It approaches $1$ as $k$ increases
+			\citem It approaches $0$ as $k$ increases
+			\ditem It becomes exactly $1$ after $k = 3$ iterations
+		\end{itemize}
+		
+	\end{Qu}
+	
+	
+	\vs{3cm}
+	
+	\subsection{Fingerprinting and String Matching}
+	The \emph{string matching problem} asks us to find occurrences of a pattern $P$ of length $m$ in a text $T$ of length $n$. A naive algorithm takes time \hide{proportional to $O(n \cdot m)$}. \\ % checking every window. \\
+	
+	\vs{2cm}
+	
+	
+	Instead of comparing the characters directly, we can compare the \hide{fingerprints (or hash values) of the strings}.
+	
+	
+	\paragraph{Rolling Hashes}
+	
+	
+	
+	\newpage
+	
+	
+	\subsection{The Karp-Rabin Algorithm}
+	A rolling hash of a string allows us to slide a window of length $m$ over the text $T$ so that: \\
+	
+	
+	%for each shift of the window, the new hash is computed in O(1) time.
+	
+	%	\paragraph{Examples and applications}
+	
+	\newpage
+	
+	
+	\newpage
+
+	\section{Application 1: Checking if Two Strings Match}
+	
+	\begin{theorem}
+		Fingerprints do not match $\implies$ strings are different. Equivalently:
+		\begin{center}
+			\hide{Strings are identical $\implies$ their fingerprints match.}
+		\end{center}
+	\end{theorem}
+	
+	\textit{Proof} First, ($\implies$) we show that if the strings are different, the fingerprints can still match (a false positive or collision).\\
+	\vspace{4cm}
+	
+	
+	Next ($\Leftarrow$) we show that if strings are identical, their fingerprints will perfectly match.\\
+	
+	\newpage
+	
+	\section{Application 2: Hash Tables and Dictionaries}
+	Given a universe of keys $U$, a dictionary maintains a dynamic set of elements supporting insert, delete, and search operations. \\
+	
+	We can use the following procedure to resolve collisions using chaining:
+	\begin{enumerate}
+		\item  %Map each key to a slot using a hash function $h(k)$ \\
+		\item  %Store all elements that hash to the same slot in a linked list
+		\vs{1cm}
+	\end{enumerate}
+	
+	
+	
+	\newpage
+	\begin{theorem}
+		For any deterministic hash function, an adversary can choose $n$ keys that all hash to the same slot, causing search times to be $\Theta(n)$. 
+	\end{theorem}
+	\begin{proof}
+		\begin{enumerate}
+			\item Let $U$ be a universe of keys where $|U| > n \cdot m$
+			\vs{2cm}
+			\item Our goal is to show that 
+			
+			\begin{equation*}
+				\hide{\text{there is a slot with } \ge n \text{ keys}}
+			\end{equation*}
+			
+			\item When keys are mapped to $m$ slots, there are three different possibilities for the adversary:
+			
+			\begin{itemize}
+				\item \textbf{Case 1}: By the Pigeonhole Principle, at least one slot receives $\ge \lceil |U| / m \rceil$ keys. \\
+				
+				Thus, since $|U| > n \cdot m$, this slot gets $> n$ keys. Reason: \hide{Pigeonhole Principle}\\ \\
+				
+				\item \textbf{Case 2}: The adversary selects $n$ keys from this heavily loaded slot.\\
+				
+				Reason: \hide{They know the deterministic hash function} \\ \\ 
+				
+				\item \textbf{Case 3}: All $n$ keys are inserted into the hash table, forming a single linked list of length $n$. \\
+				
+				Searching for the last element takes time proportional to $n$. Reason: \hide{Chaining bounds search by list length}  \\ \\ \\
+				
+			\end{itemize}
+			\item In all cases that are possible, \hide{the worst-case search time is $\Theta(n)$.}
+		\end{enumerate}
+		
+		
+	\end{proof}
+
+
+	\section{Universal Hashing and Expected Chain Lengths}
+	If $U$ is a universe of keys and $m$ is the table size, a \emph{universal hash family} $\mathcal{H}$ is a collection of hash functions in which the probability of a collision between any two distinct keys is at most $1/m$. \\
+	
+	Let $x, y \in U$ be distinct keys and assume that $h$ is chosen uniformly at random from $\mathcal{H}$. 
+	
+	The \emph{expected chain length} for a hash table is bounded as follows:
+	\begin{itemize}
+		\item There is a random choice of $h \in \mathcal{H}$ at runtime
+		\item There is a collision $h(x) = h(y)$ with probability $\le 1/m$
+	\end{itemize}
+	\begin{lemma}
+		The expected chain length for any key $x$ is \hide{ bounded by $1 + \alpha$ }
+	\end{lemma}
+	
+	\vs{5cm}
+	
+	The \emph{load factor} of a hash table with $n$ elements and $m$ slots is $\alpha$.
+	\begin{align*}
+		\alpha = \frac{n}{m}
+	\end{align*}
+	
+	\begin{lemma}
+		If we use universal hashing, the expected time for a search operation is \hide{$\Theta(1 + \alpha)$ }
+	\end{lemma}
+	
+	\newpage
+	
+	
+	
+	
+	
+	\section{Computing PageRank}
+	The following algorithm will compute the PageRank of nodes in a web graph $G = (V,E)$:
+	
+	\textsc{PageRank-Power-Iteration}(G)
+	\begin{enumerate}
+		\item Initialize $PR(u) = 1/|V|$ for each $u \in V$.
+		\item Identify the \emph{teleportation parameter} $d$ (often set to $0.85$).
+		\item Update the PageRank of each node by summing the contributions from its incoming edges, and applying the teleportation jump.
+		\item Output the converged PageRank scores after the values stabilize. 
+	\end{enumerate}
+	\newpage
+	\paragraph{What is the key to making this work?}
+	In the random surfer model, we essentially transition through the network's Markov chain to find the stationary distribution.
+	
+	
+	
+	\newpage
+	\section{Random Walks and PageRank}
+Let $G = (V,E)$ be a directed graph representing the web, where $V$ is the set of web pages and $E$ is the set of hyperlinks.
+
+
+\begin{center}
+	%\includegraphics[width = .5\linewidth]{pagerank-graph.png}
+\end{center}
+
+A \emph{random surfer} is a model of user behavior where a user on page $u$ follows an outgoing link to page $v$ with probability \hide{$1 / d_{out}(u)$} 
+
+\begin{center}
+	%\includegraphics[width = .5\linewidth]{pagerank-graph.png}
+\end{center}
+
+A \emph{PageRank vector} of $G$ is a probability distribution $PR$ that satisfies
+
+\vs{2cm}
+over all nodes in the network.
+
+\begin{center}
+	%\includegraphics[width = .5\linewidth]{pagerank-graph.png}
+\end{center}
+
+\newpage
+\subsection{PageRank Terminology}
+\textbf{Dead Ends.} Let $u$ be a node with no outgoing edges. If the random surfer reaches $u$, they get stuck, causing the probabilities to \hide{leak out of the system}.\\
+
+\textsc{GenericRandomWalk}$(G)$
+\begin{enumerate}
+	\item Set current node $u$ to a random page
+	\item While the surfer keeps browsing
+	\item \;\;\; find an outgoing edge $(u,v)$ uniformly at random
+	\item \;\;\; $u \leftarrow v$
+\end{enumerate}
+
+The key to implementing this method is \emph{ensuring the surfer doesn't get permanently trapped}.\\
+
+\paragraph{Spider Trap terminology}
+Let $G = (V,E)$ and $S$ be a set of its nodes.
+\begin{itemize}
+	\item If $S \subseteq V$ has no outgoing edges to $V-S$, we call it a \hide{spider trap}\\
+	\item A random surfer \hide{gets stuck} inside $S$ if \hide{they enter it} \\
+	\item A teleportation jump \hide{escapes} the trap by randomly jumping anywhere in the graph\\
+	\item A PageRank vector is a \hide{stationary distribution} if it remains unchanged after an update step. 
+\end{itemize}
+
+\newpage
+\subsection{Generic teleportation strategy}
+We define the following \emph{teleportation} strategy for updating a node's PageRank score
+
+\textsc{GenericPageRankUpdate}$(G,v,d)$
+\begin{enumerate}
+	\item Let $jump = (1-d) / |V|$ be the probability of teleporting to $v$
+	\item Let $link\_sum = \sum_{(u,v) \in E} d \cdot \frac{PR(u)}{d_{out}(u)}$ be the probability of arriving via links
+	\item Return $jump + link\_sum$
+\end{enumerate}
+\begin{lemma}
+	If $d$ is a damping factor between $0$ and $1$, then \textsc{GenericPageRankUpdate} will ensure the Markov chain is irreducible and aperiodic.
+\end{lemma}
+
+
+\newpage
+
+\subsection{Random Walk Strategies}
+The simple random walk and the teleportation random walk are two strategies for traversing $G = (V,E)$.\\
+
+\begin{tabular}{| l | p{7cm} | p{6cm} |}
+	\hline
+	\textbf{Strategy} & \textbf{What is the state transition?} & At each step we transition: \\
+	\hline
+	Simple Random Walk &  \phantom{Follow a random outgoing edge uniformly} & \phantom{along edges according to transition probabilities} \phantom{more of the same stuff right here} \\
+	\hline
+	Teleportation Walk & & \phantom{by following an edge or jumping to a random node} \phantom{more of the same stuff right here}\\
+	\hline
+\end{tabular}
+
+\begin{center}
+	%\includegraphics[width = .75\linewidth]{pagerank-graph.png}
+\end{center}
+
+\vs{1cm}
+
+\begin{center}
+	%\includegraphics[width = .75\linewidth]{pagerank-graph.png}
+\end{center}
+
+\newpage
+\subsection{Power Iteration Algorithm in More Depth}
+
+During the Power Iteration algorithm, we update the scores over a series of iterations. Each node has the following attributes:
+\begin{itemize}
+	\item $u.\text{score}$ = current PageRank score of $u$
+	\item $u.\text{out\_degree}$ = number of outgoing edges from $u$
+\end{itemize}
+We will use a secondary array $\text{new\_score}$ to store the updated probabilities during the iteration, which allows us to perform synchronous updates in $O(V + E)$ time. 
+
+\begin{algorithm}
+	\textsc{PageRank-Power-Iteration}($G,d$)
+	\begin{algorithmic}
+		\For{$u \in V$}
+		\State $u.\text{score} = 1 / |V|$
+		\EndFor
+		\State $\text{converged} = \text{FALSE}$ 
+		\While{$\text{converged} == \text{FALSE}$}
+		\State $\text{converged} = \text{TRUE}$
+		\For{$v \in V$}
+		\State $\text{new\_score}[v] = (1-d) / |V|$
+		\For{$u \in \text{InEdges}[v]$}
+		\State $\text{new\_score}[v] = \text{new\_score}[v] + d \frac{u.\text{score}}{u.\text{out\_degree}}$
+		\EndFor
+		\If{$|\text{new\_score}[v] - v.\text{score}| > \epsilon$}
+		\State $\text{converged} = \text{FALSE}$
+		\EndIf
+		\EndFor
+		\For{$v \in V$}
+		\State $v.\text{score} = \text{new\_score}[v]$
+		\EndFor
+		\EndWhile
+		\State Return scores
+	\end{algorithmic}
+\end{algorithm}
+
+\begin{center}
+	%\includegraphics[width = .75\linewidth]{pagerank-graph.png}
+\end{center}
+
+\newpage
+
+\begin{Qu}
+	What is the runtime of one full iteration of the PageRank algorithm, knowing that it requires visiting every node and traversing every incoming edge?
+	\begin{itemize}
+		\aitem $\Theta(\log V)$
+		\bitem $\Theta(\log E)$
+		\citem $\Theta(V + E)$
+		\ditem $\Theta(E \log V)$
+		\eitem $\Theta(V^2)$
+	\end{itemize}
+\end{Qu}
+
+\section{Introduction: Web Search and PageRank}
+Before Google, web search engines often struggled to rank results effectively, heavily relying on simple text matching. The \textbf{PageRank algorithm}, famously invented by Larry Page and Sergei Brin (founders of Google), assigns a \emph{PageRank} (a score, or a measure of importance) to each webpage.
+
+Given webpages numbered $1, \ldots, n$. The PageRank of webpage $i$ is based on its \textbf{linking webpages} (webpages $j$ that link to $i$), but we don't just count the number of linking webpages, i.e., we don't want to treat all linking webpages equally.
+
+Instead, we \textbf{weight} the links from different webpages:
+\begin{itemize}
+    \item Webpages that link to $i$, and have high PageRank scores themselves, should be given \hide{more weight}.
+    \item Webpages that link to $i$, but link to a lot of other webpages in general, should be given \hide{less weight}.
+\end{itemize}
+Note that the first idea is circular! (But that's OK).
+
+\newpage
+\section{BrokenRank (almost PageRank) definition}
+Let $G = (V,E)$ be a directed graph representing the web, where $V$ is the set of web pages and $E$ is the set of hyperlinks.
+
+Let $L_{ij} = 1$ if webpage $j$ links to webpage $i$ (written $j \to i$), and $L_{ij} = 0$ otherwise. 
+Also let $m_j = \sum_{k=1}^n L_{kj}$, the total number of webpages that $j$ links to (also known as the out-degree $d_{out}(j)$).
+
+First we define something that's almost PageRank, but not quite, because it's broken. The \textbf{BrokenRank} $p_i$ of webpage $i$ is:
+\[
+p_i = \sum_{j \to i} \frac{p_j}{m_j} = \sum_{j=1}^n \frac{L_{ij}}{m_j} p_j
+\]
+Does this match our ideas from the last section? Yes: for $j \to i$, the weight is $p_j/m_j$---this increases with $p_j$, but decreases with $m_j$.
+
+\subsection{BrokenRank as a Markov chain}
+Think of a \textbf{Markov Chain} as a random process that moves between states numbered $1,\ldots n$ (each step of the process is one move).
+Recall that for a Markov chain to have an $n \times n$ transition matrix $P$, this means $P(\text{go from } i \text{ to } j) = P_{ij}$.
+
+Suppose $p^{(0)}$ is an $n$-dimensional vector giving initial probabilities. After one step, $p^{(1)} = P^T p^{(0)}$ gives probabilities of being in each state.
+
+Now consider a Markov chain, with the states as webpages, and with transition matrix $A^T$. Note that $(A^T)_{ij} = A_{ji} = L_{ji}/m_i$, so we can describe the chain as:
+\[
+P(\text{go from } i \text{ to } j) = \begin{cases} 
+1/m_i & \text{if } i \to j \\
+0 & \text{otherwise}
+\end{cases}
+\]
+This is like a \emph{random surfer}, i.e., a person surfing the web by clicking on links uniformly at random. A random surfer is a model of user behavior where a user on page $u$ follows an outgoing link to page $v$ with probability \hide{$1 / d_{out}(u)$}.
+
+\textsc{GenericRandomWalk}$(G)$
+\begin{enumerate}
+    \item Set current node $u$ to a random page
+    \item While the surfer keeps browsing
+    \item \;\;\; find an outgoing edge $(u,v)$ uniformly at random
+    \item \;\;\; $u \leftarrow v$
+\end{enumerate}
+
+\newpage
+\subsection{Why is BrokenRank broken?}
+There's a problem here. Our Markov chain, a random surfer on the web graph, is \textbf{not strongly connected}, in three cases (at least):
+\begin{itemize}
+    \item \textbf{Disconnected components}
+    \item \textbf{Dangling links (Dead Ends).} Let $u$ be a node with no outgoing edges. If the random surfer reaches $u$, they get stuck, causing the probabilities to \hide{leak out of the system}.
+    \item \textbf{Loops (Spider Traps).} Let $S$ be a set of nodes. If $S \subseteq V$ has no outgoing edges to $V-S$, we call it a \hide{spider trap}. A random surfer \hide{gets stuck} inside $S$ if \hide{they enter it}.
+\end{itemize}
+
+Actually, even for Markov chains that are not strongly connected, a stationary distribution always exists, but may be \textbf{nonunique}. In other words, the BrokenRank vector $p$ exists but is \textbf{ambiguously defined} (yielding totally opposite rankings depending on start conditions).
+
+\newpage
+\section{PageRank as a Markov chain}
+\paragraph{What is the key to making this work?}
+In the random surfer model, we essentially transition through the network's Markov chain to find the stationary distribution. The key to implementing this method is \emph{ensuring the surfer doesn't get permanently trapped}.
+
+Let $A = \frac{1-d}{n} E + d L M^{-1}$, and consider as before a Markov chain with transition matrix $A^T$. Here $d$ is the \emph{teleportation parameter} (often set to $0.85$).
+
+Well $(A^T)_{ij} = A_{ji} = (1-d)/n + d L_{ji}/m_i$, so the chain can be described as:
+\[
+P(\text{go from } i \text{ to } j) = \begin{cases} 
+(1-d)/n + d/m_i & \text{if } i \to j \\
+(1-d)/n & \text{otherwise}
+\end{cases}
+\]
+The chain moves through a link with probability $(1-d)/n + d/m_i$, and with probability $(1-d)/n$ it jumps to an unlinked webpage.
+
+Hence this is like a \textbf{random surfer with random jumps}. Fortunately, the random jumps get rid of our problems: a teleportation jump \hide{escapes} the trap by randomly jumping anywhere in the graph. Our Markov chain is now \textbf{strongly connected}. Therefore the stationary distribution (i.e., PageRank vector) $p$ is \textbf{unique}.
+
+A \emph{PageRank vector} of $G$ is a probability distribution $PR$ that satisfies
+\vs{2cm}
+over all nodes in the network. A PageRank vector is a \hide{stationary distribution} if it remains unchanged after an update step. 
+
+\newpage
+\subsection{Generic teleportation strategy}
+We define the following \emph{teleportation} strategy for updating a node's PageRank score:
+
+\textsc{GenericPageRankUpdate}$(G,v,d)$
+\begin{enumerate}
+    \item Let $jump = (1-d) / |V|$ be the probability of teleporting to $v$
+    \item Let $link\_sum = \sum_{(u,v) \in E} d \cdot \frac{PR(u)}{d_{out}(u)}$ be the probability of arriving via links
+    \item Return $jump + link\_sum$
+\end{enumerate}
+\begin{lemma}
+    If $d$ is a damping factor between $0$ and $1$, then \textsc{GenericPageRankUpdate} will ensure the Markov chain is irreducible and aperiodic.
+\end{lemma}
+
+\newpage
+\subsection{Random Walk Strategies}
+The simple random walk and the teleportation random walk are two strategies for traversing $G = (V,E)$.\\
+
+\begin{tabular}{| l | p{7cm} | p{6cm} |}
+    \hline
+    \textbf{Strategy} & \textbf{What is the state transition?} & At each step we transition: \\
+    \hline
+    Simple Random Walk &  \phantom{Follow a random outgoing edge uniformly} & \phantom{along edges according to transition probabilities} \phantom{more of the same stuff right here} \\
+    \hline
+    Teleportation Walk & & \phantom{by following an edge or jumping to a random node} \phantom{more of the same stuff right here}\\
+    \hline
+\end{tabular}
+
+\begin{center}
+    %\includegraphics[width = .75\linewidth]{pagerank-graph.png}
+\end{center}
+
+\vs{1cm}
+
+\begin{center}
+    %\includegraphics[width = .75\linewidth]{pagerank-graph.png}
+\end{center}
+
+\newpage
+\section{Computing PageRank}
+We can compute $p$ by repeatedly multiplying by $A$. The following algorithm will compute the PageRank of nodes in a web graph $G = (V,E)$:
+ 
+\textsc{PageRank-Power-Iteration}(G)
+\begin{enumerate}
+    \item Initialize $PR(u) = 1/|V|$ for each $u \in V$.
+    \item Identify the \emph{teleportation parameter} $d$ (often set to $0.85$).
+    \item Update the PageRank of each node by summing the contributions from its incoming edges, and applying the teleportation jump.
+    \item Output the converged PageRank scores after the values stabilize. 
+\end{enumerate}
+
+\subsection{Power Iteration Algorithm in More Depth}
+During the Power Iteration algorithm, we update the scores over a series of iterations. Each node has the following attributes:
+\begin{itemize}
+    \item $u.\text{score}$ = current PageRank score of $u$
+    \item $u.\text{out\_degree}$ = number of outgoing edges from $u$
+\end{itemize}
+We will use a secondary array $\text{new\_score}$ to store the updated probabilities during the iteration, which allows us to perform synchronous updates in $O(V + E)$ time. 
+
+\begin{algorithm}
+    \textsc{PageRank-Power-Iteration}($G,d$)
+    \begin{algorithmic}
+        \For{$u \in V$}
+        \State $u.\text{score} = 1 / |V|$
+        \EndFor
+        \State $\text{converged} = \text{FALSE}$ 
+        \While{$\text{converged} == \text{FALSE}$}
+        \State $\text{converged} = \text{TRUE}$
+        \For{$v \in V$}
+        \State $\text{new\_score}[v] = (1-d) / |V|$
+        \For{$u \in \text{InEdges}[v]$}
+        \State $\text{new\_score}[v] = \text{new\_score}[v] + d \frac{u.\text{score}}{u.\text{out\_degree}}$
+        \EndFor
+        \If{$|\text{new\_score}[v] - v.\text{score}| > \epsilon$}
+        \State $\text{converged} = \text{FALSE}$
+        \EndIf
+        \EndFor
+        \For{$v \in V$}
+        \State $v.\text{score} = \text{new\_score}[v]$
+        \EndFor
+        \EndWhile
+        \State Return scores
+    \end{algorithmic}
+\end{algorithm}
+
+\begin{center}
+    %\includegraphics[width = .75\linewidth]{pagerank-graph.png}
+\end{center}
+
+\newpage
+\section{A Basic Web Search}
+For a basic web search, given a query, we could do the following:
+\begin{enumerate}
+    \item Compute the PageRank vector $p$ \textbf{once} (Google recomputes this from time to time, to stay current)
+    \item Find the documents containing all words in the query
+    \item \textbf{Sort} these documents \textbf{by PageRank}, and return the top $k$ (e.g., $k=50$)
+\end{enumerate}
+
+\vspace{1cm}
+
+\begin{Qu}
+    What is the runtime of one full iteration of the PageRank algorithm, knowing that it requires visiting every node and traversing every incoming edge?
+    \begin{itemize}
+        \aitem $\Theta(\log V)$
+        \bitem $\Theta(\log E)$
+        \citem $\Theta(V + E)$
+        \ditem $\Theta(E \log V)$
+        \eitem $\Theta(V^2)$
+    \end{itemize}
+\end{Qu}
+
+\end{document}

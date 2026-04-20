@@ -1,5 +1,5 @@
 SyncTeX Version:1
-Input:1:C:\Users\Samson Zhou\Documents\GitHub\samsonzhou.github.io\CSCE411-S26\week-14b-blank.tex
+Input:1:C:\Users\Samson Zhou\Documents\GitHub\samsonzhou.github.io\CSCE411-S26\week-14c-blank.tex
 Input:2:C:\Users\Samson Zhou\AppData\Local\Programs\MiKTeX\tex\latex\exam\exam.cls
 Input:3:C:\Users\Samson Zhou\AppData\Local\Programs\MiKTeX\tex\latex\base\ifthen.sty
 Input:4:C:\Users\Samson Zhou\AppData\Local\Programs\MiKTeX\tex\latex\base\article.cls
@@ -64,23 +64,20 @@ Input:62:C:\Users\Samson Zhou\AppData\Local\Programs\MiKTeX\tex\latex\tools\calc
 Input:63:C:\Users\Samson Zhou\AppData\Local\Programs\MiKTeX\tex\latex\mathtools\mhsetup.sty
 Input:64:C:\Users\Samson Zhou\AppData\Local\Programs\MiKTeX\tex\latex\setspace\setspace.sty
 Input:65:C:\Users\Samson Zhou\AppData\Local\Programs\MiKTeX\tex\latex\l3backend\l3backend-pdftex.def
-Input:66:C:\Users\Samson Zhou\Documents\GitHub\samsonzhou.github.io\CSCE411-S26\week-14b-blank.aux
-Input:67:C:\Users\Samson Zhou\AppData\Local\Programs\MiKTeX\tex\latex\graphics\color.sty
-Input:68:C:\Users\Samson Zhou\AppData\Local\Programs\MiKTeX\tex\latex\graphics-cfg\color.cfg
-Input:69:C:\Users\Samson Zhou\AppData\Local\Programs\MiKTeX\tex\latex\graphics\mathcolor.ltx
-Input:70:C:\Users\Samson Zhou\Documents\GitHub\samsonzhou.github.io\CSCE411-S26\week-14b-blank.out
-Input:71:C:\Users\Samson Zhou\Documents\GitHub\samsonzhou.github.io\CSCE411-S26\week-14b-blank.out
-Input:72:C:\Users\Samson Zhou\AppData\Local\Programs\MiKTeX\tex\context\base\mkii\supp-pdf.mkii
-Input:73:C:\Users\Samson Zhou\AppData\Local\Programs\MiKTeX\tex\latex\epstopdf-pkg\epstopdf-base.sty
-Input:74:C:\Users\Samson Zhou\AppData\Local\Programs\MiKTeX\tex\latex\00miktex\epstopdf-sys.cfg
-Input:75:C:\Users\Samson Zhou\AppData\Local\Programs\MiKTeX\tex\latex\lm\ot1lmss.fd
+Input:66:C:\Users\Samson Zhou\AppData\Local\Programs\MiKTeX\tex\latex\graphics\color.sty
+Input:67:C:\Users\Samson Zhou\AppData\Local\Programs\MiKTeX\tex\latex\graphics-cfg\color.cfg
+Input:68:C:\Users\Samson Zhou\AppData\Local\Programs\MiKTeX\tex\latex\graphics\mathcolor.ltx
+Input:69:C:\Users\Samson Zhou\AppData\Local\Programs\MiKTeX\tex\context\base\mkii\supp-pdf.mkii
+Input:70:C:\Users\Samson Zhou\AppData\Local\Programs\MiKTeX\tex\latex\epstopdf-pkg\epstopdf-base.sty
+Input:71:C:\Users\Samson Zhou\AppData\Local\Programs\MiKTeX\tex\latex\00miktex\epstopdf-sys.cfg
+Input:72:C:\Users\Samson Zhou\AppData\Local\Programs\MiKTeX\tex\latex\lm\ot1lmss.fd
 Output:pdf
 Magnification:1000
 Unit:1
 X Offset:0
 Y Offset:0
 Content:
-!7021
+!6724
 {1
 [1,30:4736286,49263411:27233650,44527125,0
 h1,30:4736286,4736286:0,0,0
@@ -447,9 +444,9 @@ v1,30:31969936,49486233:0,0,0
 ]
 !8575
 }1
-Input:76:C:\Users\Samson Zhou\AppData\Local\Programs\MiKTeX\tex\latex\jknappen\ursfs.fd
-Input:77:C:\Users\Samson Zhou\AppData\Local\Programs\MiKTeX\tex\latex\amsfonts\umsa.fd
-Input:78:C:\Users\Samson Zhou\AppData\Local\Programs\MiKTeX\tex\latex\amsfonts\umsb.fd
+Input:73:C:\Users\Samson Zhou\AppData\Local\Programs\MiKTeX\tex\latex\jknappen\ursfs.fd
+Input:74:C:\Users\Samson Zhou\AppData\Local\Programs\MiKTeX\tex\latex\amsfonts\umsa.fd
+Input:75:C:\Users\Samson Zhou\AppData\Local\Programs\MiKTeX\tex\latex\amsfonts\umsb.fd
 !271
 {2
 [1,52:4736286,49263411:27233650,44527125,0
@@ -13064,7 +13061,7 @@ v1,542:31969936,49976605:0,0,0
 ]
 !27970
 }23
-Input:79:C:\Users\Samson Zhou\Documents\GitHub\samsonzhou.github.io\CSCE411-S26\week-14b-blank.aux
+Input:76:C:\Users\Samson Zhou\Documents\GitHub\samsonzhou.github.io\CSCE411-S26\week-14c-blank.aux
 !110
 Postamble:
 Count:8999
