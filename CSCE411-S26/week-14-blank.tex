@@ -1,0 +1,400 @@
+\documentclass[11 pt]{exam} 
+\usepackage[lmargin=1in,rmargin=1.75in,bmargin=1in,tmargin=1in]{geometry}  
+
+
+\input{preamble}
+
+\begin{document}
+	
+	\week{14: Randomized Algorithms: Fingerprinting, Hashing, PageRank}{April 21, 2026}
+	%\lecture{10: Intro to Randomized Algorithms}{March 25}
+	
+	\paragraph{Course Logistics}
+	
+	\begin{itemize}
+		\item Randomized algorithms: Chapter 5
+		\item Hashing and PageRank: Chapters 11 and 14
+		\item Homework 5 out this weekend, due next Friday
+	\end{itemize}
+	
+	\section{Introduction to Randomized Algorithms}
+	
+	A \textbf{randomized algorithm} is defined by  %its use of a random number generator to determine its behavior.
+	\vspace{1.5cm}
+	
+	\noindent An algorithm that always outputs the correct answer but has a random runtime is denoted a \under{4cm}\\ \\
+	
+	We can also denote an algorithm with a fixed runtime but a probability of outputting an incorrect answer as a \under{4cm}\\ \\ 
+	% Monte Carlo algorithm \\ \\ \\ \\
+	
+	\vspace{8cm}
+	
+	\noindent If an algorithm has a failure probability of $p$, we can run it independently $k$ times. The probability that it fails every single time is \under{3cm}. The process of running an algorithm multiple times to reduce failure probability is:
+	
+	%\begin{equation*}
+	%P(k) = (p)^k
+	%\end{equation*}
+	\vspace{2cm}
+	
+	\noindent The \emph{expected} runtime of a Las Vegas algorithm is calculated over the \under{2cm} %internal random choices.
+	
+	\vspace{1cm}
+	
+	\newpage 
+	
+	\subsection{Classes of randomized algorithms}
+	\vs{1cm}
+	
+	\begin{itemize}
+		\item Las Vegas: %always correct, random runtime 
+		
+		\vs{3cm}
+		
+		\item Monte Carlo: %deterministic runtime, random correctness 
+		
+	\end{itemize}
+	
+	\vs{3cm}
+	
+	\subsection{Basic fingerprinting and verification structures}
+	
+	\begin{itemize}
+		\item A \textbf{fingerprint} is a small signature in which \\
+		
+		\vspace{2cm}
+		
+		\item A \textbf{false positive} is a scenario in which \\
+		
+		\vspace{2cm}
+		
+		\item \textbf{Freivalds' algorithm}: randomized approach to verify matrix multiplication $AB=C$: 
+		
+		\begin{equation*}
+			\vec{r} \in \{0,1\}^n \text{ such that }  A(B\vec{r}) = C\vec{r}
+		\end{equation*}
+		\vspace{2cm}
+		
+		\item \textbf{Polynomial Identity Testing}: checks if two polynomials are equivalent:
+		
+		\begin{equation*}
+			P(x), Q(x) \text{ where } P(r) = Q(r) \text{ for random } r \in S.
+		\end{equation*}
+		\vspace{2cm}
+		
+		\item \textbf{String Matching (Rabin-Karp)}: utilizes a rolling hash to compare strings:
+		
+		\begin{equation*}
+			H(P) = H(T[i \dots i+m-1]) \text{ for some window } i.
+		\end{equation*}
+		\vspace{4cm}
+		
+		\item \textbf{Amplification}: a strategy in which repeating the algorithm decreases error probability.
+		\vspace{2cm}
+		
+	\end{itemize}
+	\newpage
+	
+	\subsection{Verification Problems using Fingerprinting}
+	Many verification problems amount to evaluating identity over a randomized input.
+	
+	\begin{example}\textbf{Matrix Multiplication.}
+		Given three matrices $A, B \in \mathbb{R}^{n \times n}$ and $C \in \mathbb{R}^{n \times n}$, verify if $AB = C$. 
+	\end{example}
+	
+	\vspace{5cm}
+	
+	\begin{example}\textbf{Database Equality.}
+		Let Alice and Bob hold databases $D_A$ and $D_B$. Find if they are identical with minimal communication.
+	\end{example}
+	
+	
+	
+	\vspace{5cm}
+	
+	\begin{example}\textbf{Find Substrings.}
+		Return the starting indices of a pattern $P$ in text $T$:
+		
+	\end{example}
+	
+	\newpage
+	
+	\section{Hashing Representation}
+	Consider a dynamic set of elements $S$ from a fixed universe of keys $U = \{1, 2, \hdots , |U|\}$.
+	
+	\paragraph{Hash Table}
+	The \textbf{hash table} $\mathcal{T}$ of size $m$ is defined so that
+	
+	\vspace{7cm}
+	
+	\paragraph{Hash Function}
+	The \textbf{hash function} $h(x)$ of $\mathcal{T}$ is 
+	
+	\newpage 
+	
+	\subsection*{Hashing Activity}
+	Consider the following hash function $h(x) = x \pmod 7$:
+	
+	\vs{8cm}
+	
+	
+	\begin{itemize}
+		\item Write down the hash value for $x = 10$
+		\item Write down the hash value for $x = 24$ 
+		\item Write down the load factor if $n = 14$ elements are inserted
+		\item Write down the elements that map to slot $3$
+		\item Find the number of collisions among the keys $\{3, 10, 17\}$
+	\end{itemize}
+	\begin{Qu}
+		Assume that $U$ is a large universe of keys and we map them to a table of size $m$. Let $n$ be the number of elements inserted. How much worst-case time is needed to search the table if an adversary picks the keys?
+		\begin{itemize}
+			\aitem $O(1)$ 
+			\bitem $O(\log n)$
+			\citem $O(n)$
+			\ditem $O(mn)$
+		\end{itemize}
+	\end{Qu}
+	\newpage
+	
+	\section{Universal Hashing Algorithm}
+	\textbf{Dictionary Problem:} Given a universe $U$ and hash table $T$, map elements $x \in S$ into $T$ evenly, preventing an adversary from causing $\Omega(n)$ worst-case search times. \\
+	
+	We will do this using the \emph{universal hashing} scheme.
+	
+	\begin{tabular}{| l | p{8cm} | p{6cm} |}
+		\hline
+		Attribute & Explanation &Initialization \\
+		\hline
+		$h.\text{family}$ & tells us whether a hash function belongs to a \phantom{undiscovered} \phantom{discovered}  \phantom{explored} &  \\
+		\hline
+		$x.\text{key}$ & \phantom{the unique identifier for the element a a a a a}
+		\phantom{for more writing later on in the dell you know}&  \\
+		\hline
+		$x.\text{next}$ & \phantom{pointer to the next colliding element a a a a} \phantom{for more writing later on in the dell you know}& \\
+		\hline
+	\end{tabular}
+	
+	\vs{.25cm}
+	We will also make use of \\ %a random number generator. 
+	
+	\textbf{Basic Idea}
+	\begin{itemize}
+		\item Define a family of hash functions $\mathcal{H}$ %mapping U to m
+		\item Randomly \emph{select} $h \in \mathcal{H}$ at the start of execution %to find new \emph{discovered} nodes
+		\item Continuously update %the table using the chosen h
+	\end{itemize} 
+	\textbf{Example}
+	\vs{1cm}
+	
+	\includegraphics[width = .25\linewidth]{hashing1.png}
+	\newpage
+	
+	\includegraphics[width = .35\linewidth]{hashing2.png}
+	
+	\subsection{Collisions and Universal Hash Families}
+	\begin{definition}
+		Given a universe $U$, table size $m$, and a randomly selected $h \in \mathcal{H}$, a \hide{universal family} is a set of functions where
+		
+		\vs{3cm}
+		%		\begin{align*}
+		%%			\Pr_{h \in \mathcal{H}}[h(x) = h(y)] \le \frac{1}{m}
+		%		\end{align*}
+		
+		It is furthermore strongly universal if it generates a unique random permutation \\
+		
+		from $U$ to $m$ that is \hide{pairwise independent.} \\
+	\end{definition}
+	
+	\textbf{Benefits of Universal Hashing}
+	\begin{itemize}
+		\item If chaining is used, it provides an \hide{expected chain length of $\alpha$} \\%$s$ is in
+		\item It tells us the \hide{expected search time is $O(1)$ }\\ %to each node
+		\item It provides a \hide{randomized guarantee against adversaries} 
+	\end{itemize}
+	
+	
+	
+	
+	\newpage
+	
+	\subsection{Code and Runtime Analysis}
+	\begin{algorithm}[t]
+		\textsc{Universal-Hash-Insert}($T, x$)
+		\begin{algorithmic}
+			\State Initialize $\mathcal{H}$ as universal family
+			\If{$T.\text{hash\_func} == NIL$}
+			\State $T.\text{hash\_func} = \text{RandomSelect}(\mathcal{H})$
+			\EndIf
+			\State $h = T.\text{hash\_func}$
+			\State $index = h(x.\text{key})$
+			\If{$T[index] == NIL$}
+			\State $T[index] = x$
+			\Else
+			\State $curr = T[index]$
+			\While{$curr.\text{next} \neq NIL$}
+			\State $curr = curr.\text{next}$
+			\EndWhile
+			\State $curr.\text{next} = x$
+			\EndIf
+			\State $x.\text{next} = NIL$
+		\end{algorithmic}
+	\end{algorithm}
+	
+	
+	\begin{itemize}
+		\item We assume $T$ uses chaining for collision resolution.
+		\item Initializing the hash function takes \hide{$O(1)$ time}
+		\item Each element $x$ enters the table, and hashing it takes \hide{$O(1)$}
+		\item When we \emph{insert} $x$, we traverse up to \hide{$\alpha$ elements}
+	\end{itemize}
+	Using expected value analysis, what is the overall runtime of this method? \\
+
+	
+	\newpage
+	
+	\section{PageRank Algorithm}
+	Unlike regular directed graph traversal, the PageRank algorithm:
+	\begin{itemize}
+		\item Explores the \emph{stationary distribution} of a random walk before stabilizing and outputting probability scores
+		\item All nodes in the graph are scored simultaneously (rather than just paths from a single node $s$)
+		\item We keep track of a global \emph{damping factor}, and each node is associated with two buffers for when it is \emph{updated} and \emph{finalized}.
+	\end{itemize}
+	
+	Each node $u \in V$ is associated with the following attributes
+	
+	\begin{tabular}{| l | p{8cm} | p{6cm} |}
+		\hline
+		Attribute & Explanation &Initialization \\
+		\hline
+		$u.\text{out\_degree}$ & tells us whether a node has outgoing links to be \emph{distributed}, \emph{absorbed}, and \emph{teleported} &  \\
+		\hline
+		$u.\text{PR}$ & probability mass when $u$ is evaluated \phantom{the aa} \phantom{quick brown fox jumps over the lazy dog}
+		\phantom{for more writing later on in the dell you know} &  \\
+		\hline
+		$u.\text{new\_PR}$ & probability mass when $u$ is finished being updated \phantom{the aa} \phantom{quick brown fox jumps over the lazy dog}
+		\phantom{for more writing later on in the dell you know}  &  \\
+		\hline
+		$u.\text{Adj}$ & outgoing links/``destinations" of $u$ \phantom{s a a a a a  here} \phantom{for more writing later on in the dell you know}& \\
+		\hline
+	\end{tabular}
+	\newpage 
+	
+	%\section{Code and Example}
+	
+	\begin{minipage}[t]{0.45\textwidth}
+		%	\begin{algorithm}
+		\textsc{PageRank}($G, d, k$)
+		\begin{algorithmic}
+			\For{$v \in V $}
+			\State $v.\text{new\_PR} = 0$
+			\State $v.\text{PR} = 1 / |V|$
+			\EndFor
+			\For{$step = 1 \text{ to } k$}
+			\For{$u \in V$}
+			\State $\textsc{PR-Update}(G,u, d)$
+			\EndFor
+			\For{$v \in V$}
+			\State $v.\text{PR} = v.\text{new\_PR}$
+			\State $v.\text{new\_PR} = 0$
+			\EndFor
+			\EndFor
+		\end{algorithmic}
+		%	\end{algorithm}
+	\end{minipage}
+	\begin{minipage}[t]{0.52\textwidth}
+		%	\begin{algorithm}
+		\textsc{PR-Update}($G,u, d$)
+		\begin{algorithmic}
+			\State $teleport = (1 - d) / |V|$
+			\State $u.\text{new\_PR} = u.\text{new\_PR} + teleport$
+			\State $deg = u.\text{out\_degree}$
+			\If{$deg > 0$}
+			\For{$v \in u.\text{Adj}$}
+			\State $v.\text{new\_PR} = v.\text{new\_PR} + d \cdot (u.\text{PR} / deg)$
+			\EndFor
+			\Else
+			\State Handle sink by distributing evenly
+			\For{$v \in V$}
+			\State $v.\text{new\_PR} = v.\text{new\_PR} + d \cdot (u.\text{PR} / |V|)$
+			\EndFor
+			\EndIf
+		\end{algorithmic}
+		%	\end{algorithm}
+	\end{minipage}
+	\vspace{1cm}
+	
+	\includegraphics[width = .4\linewidth]{pagerank_walk.png}
+	\newpage 
+	
+	\newpage
+	\subsection{Runtime Analysis}
+	\begin{Qu}
+		What is the runtime of $k$ iterations of PageRank, assuming that we store the graph in an adjacency list, and assuming there are no sinks ($deg > 0$ for all nodes)?
+		\begin{itemize}
+			\aitem $O(k|V|)$
+			\bitem $O(k|E|)$
+			\citem $O(k(|V| + |E|))$
+			\ditem $O(k|V|^2)$
+			\eitem $O(k|E|^2)$
+		\end{itemize}
+	\end{Qu}
+	\newpage
+	\subsection{Properties of PageRank}
+	
+	\begin{theorem}
+		In any execution of PageRank on a web graph $G = (V,E)$, with a damping factor $0 < d < 1$, exactly one of the following conditions holds for the underlying Markov chain:\\ \\
+		\begin{itemize}
+			\item The chain is regular and \hide{aperiodic, so it converges to a unique stationary distribution} \\
+			\item The distribution of probability mass across $V$ \hide{always sums to exactly $1$} \\
+			\item The initial scores assigned to nodes \hide{do not affect the final converged ranking}
+		\end{itemize}
+	\end{theorem}
+	
+	\vs{2cm}
+	
+	
+	\newpage
+	\subsection{Classification of Web Graph Structures}
+	
+	Given a web graph $G = (V,E)$ running PageRank models a random walk traversing the edges of $E$.
+	\begin{align*}
+		\hat{E} = \{ (u, v) \colon u \in V \text{ and } v \in u.\text{Adj}  \}
+	\end{align*}
+	This is called the \emph{transition space} of $G$. \\
+	
+	\vspace{4cm}
+	
+	Given any node $u \in V$, we can classify it based on the status of its outgoing edges when we are computing PageRank:\\
+	
+	
+	\begin{tabular}{| l | p{8cm} | p{6cm} |}
+		\hline
+		Structure & Explanation & How to resolve when evaluating? \\
+		\hline
+		\textbf{Normal Node}  & node with outgoing links in $\hat{E}$ & %Distribute PR equally to neighbors 
+		\\
+		\hline
+		\textbf{Dead End} & node $u$ with no outgoing links & %Teleport PR mass to all nodes in V 
+		\\
+		\hline
+		\textbf{Spider Trap} & a group of nodes with no links to the outside & \phantom{spaceasdfasdf2xsdf} \emph{Use} a damping factor $d < 1$\\
+		\hline
+		\textbf{Disconnected Component} & a subgraph with no incoming links from the rest of the web &  \phantom{spaceasdfasdf2xsdf} \emph{Use} random teleportation with $1-d$\\
+		\hline
+	\end{tabular}
+	
+	\newpage
+	\section{Practice}
+	\includegraphics[width = .6\linewidth]{manypageranks.png}
+	\newpage
+	\begin{Qu}
+		How many of the above graphs contained a spider trap?
+		\begin{itemize}
+			\aitem 1
+			\bitem 2
+			\citem 3
+			\ditem 4
+			\eitem none of them
+		\end{itemize}
+	\end{Qu}
+	
+\end{document}
