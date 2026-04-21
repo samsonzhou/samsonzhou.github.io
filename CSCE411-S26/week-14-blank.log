@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 23.4) (preloaded format=pdflatex 2024.2.3)  18 APR 2026 15:18
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 23.4) (preloaded format=pdflatex 2024.2.3)  21 APR 2026 01:53
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -519,32 +519,308 @@ Package: mhsetup 2021/03/18 v1.4 programming setup (MH)
 (C:\Program Files\MiKTeX\tex/latex/setspace\setspace.sty
 Package: setspace 2022/12/04 v6.7b set line spacing
 ))
+(C:\Program Files\MiKTeX\tex/latex/pgf/frontendlayer\tikz.sty
+(C:\Program Files\MiKTeX\tex/latex/pgf/basiclayer\pgf.sty
+(C:\Program Files\MiKTeX\tex/latex/pgf/utilities\pgfrcs.sty
+(C:\Program Files\MiKTeX\tex/generic/pgf/utilities\pgfutil-common.tex
+\pgfutil@everybye=\toks40
+\pgfutil@tempdima=\dimen191
+\pgfutil@tempdimb=\dimen192
+)
+(C:\Program Files\MiKTeX\tex/generic/pgf/utilities\pgfutil-latex.def
+\pgfutil@abb=\box58
+)
+(C:\Program Files\MiKTeX\tex/generic/pgf/utilities\pgfrcs.code.tex
+(C:\Program Files\MiKTeX\tex/generic/pgf\pgf.revision.tex)
+Package: pgfrcs 2023-01-15 v3.1.10 (3.1.10)
+))
+Package: pgf 2023-01-15 v3.1.10 (3.1.10)
+
+(C:\Program Files\MiKTeX\tex/latex/pgf/basiclayer\pgfcore.sty
+(C:\Program Files\MiKTeX\tex/latex/pgf/systemlayer\pgfsys.sty
+(C:\Program Files\MiKTeX\tex/generic/pgf/systemlayer\pgfsys.code.tex
+Package: pgfsys 2023-01-15 v3.1.10 (3.1.10)
+
+(C:\Program Files\MiKTeX\tex/generic/pgf/utilities\pgfkeys.code.tex
+\pgfkeys@pathtoks=\toks41
+\pgfkeys@temptoks=\toks42
+
+(C:\Program Files\MiKTeX\tex/generic/pgf/utilities\pgfkeyslibraryfiltered.code.
+tex
+\pgfkeys@tmptoks=\toks43
+))
+\pgf@x=\dimen193
+\pgf@y=\dimen194
+\pgf@xa=\dimen195
+\pgf@ya=\dimen196
+\pgf@xb=\dimen197
+\pgf@yb=\dimen198
+\pgf@xc=\dimen199
+\pgf@yc=\dimen256
+\pgf@xd=\dimen257
+\pgf@yd=\dimen258
+\w@pgf@writea=\write3
+\r@pgf@reada=\read2
+\c@pgf@counta=\count357
+\c@pgf@countb=\count358
+\c@pgf@countc=\count359
+\c@pgf@countd=\count360
+\t@pgf@toka=\toks44
+\t@pgf@tokb=\toks45
+\t@pgf@tokc=\toks46
+\pgf@sys@id@count=\count361
+ (C:\Program Files\MiKTeX\tex/generic/pgf/systemlayer\pgf.cfg
+File: pgf.cfg 2023-01-15 v3.1.10 (3.1.10)
+)
+Driver file for pgf: pgfsys-pdftex.def
+
+(C:\Program Files\MiKTeX\tex/generic/pgf/systemlayer\pgfsys-pdftex.def
+File: pgfsys-pdftex.def 2023-01-15 v3.1.10 (3.1.10)
+
+(C:\Program Files\MiKTeX\tex/generic/pgf/systemlayer\pgfsys-common-pdf.def
+File: pgfsys-common-pdf.def 2023-01-15 v3.1.10 (3.1.10)
+)))
+(C:\Program Files\MiKTeX\tex/generic/pgf/systemlayer\pgfsyssoftpath.code.tex
+File: pgfsyssoftpath.code.tex 2023-01-15 v3.1.10 (3.1.10)
+\pgfsyssoftpath@smallbuffer@items=\count362
+\pgfsyssoftpath@bigbuffer@items=\count363
+)
+(C:\Program Files\MiKTeX\tex/generic/pgf/systemlayer\pgfsysprotocol.code.tex
+File: pgfsysprotocol.code.tex 2023-01-15 v3.1.10 (3.1.10)
+))
+(C:\Program Files\MiKTeX\tex/latex/xcolor\xcolor.sty
+Package: xcolor 2022/06/12 v2.14 LaTeX color extensions (UK)
+
+(C:\Program Files\MiKTeX\tex/latex/graphics-cfg\color.cfg
+File: color.cfg 2016/01/02 v1.6 sample color configuration
+)
+Package xcolor Info: Driver file: pdftex.def on input line 227.
+
+(C:\Program Files\MiKTeX\tex/latex/graphics\mathcolor.ltx)
+Package xcolor Info: Model `cmy' substituted by `cmy0' on input line 1353.
+Package xcolor Info: Model `hsb' substituted by `rgb' on input line 1357.
+Package xcolor Info: Model `RGB' extended on input line 1369.
+Package xcolor Info: Model `HTML' substituted by `rgb' on input line 1371.
+Package xcolor Info: Model `Hsb' substituted by `hsb' on input line 1372.
+Package xcolor Info: Model `tHsb' substituted by `hsb' on input line 1373.
+Package xcolor Info: Model `HSB' substituted by `hsb' on input line 1374.
+Package xcolor Info: Model `Gray' substituted by `gray' on input line 1375.
+Package xcolor Info: Model `wave' substituted by `hsb' on input line 1376.
+)
+(C:\Program Files\MiKTeX\tex/generic/pgf/basiclayer\pgfcore.code.tex
+Package: pgfcore 2023-01-15 v3.1.10 (3.1.10)
+
+(C:\Program Files\MiKTeX\tex/generic/pgf/math\pgfmath.code.tex
+(C:\Program Files\MiKTeX\tex/generic/pgf/math\pgfmathutil.code.tex)
+(C:\Program Files\MiKTeX\tex/generic/pgf/math\pgfmathparser.code.tex
+\pgfmath@dimen=\dimen259
+\pgfmath@count=\count364
+\pgfmath@box=\box59
+\pgfmath@toks=\toks47
+\pgfmath@stack@operand=\toks48
+\pgfmath@stack@operation=\toks49
+)
+(C:\Program Files\MiKTeX\tex/generic/pgf/math\pgfmathfunctions.code.tex)
+(C:\Program Files\MiKTeX\tex/generic/pgf/math\pgfmathfunctions.basic.code.tex)
+(C:\Program Files\MiKTeX\tex/generic/pgf/math\pgfmathfunctions.trigonometric.co
+de.tex)
+(C:\Program Files\MiKTeX\tex/generic/pgf/math\pgfmathfunctions.random.code.tex)
+
+(C:\Program Files\MiKTeX\tex/generic/pgf/math\pgfmathfunctions.comparison.code.
+tex)
+(C:\Program Files\MiKTeX\tex/generic/pgf/math\pgfmathfunctions.base.code.tex)
+(C:\Program Files\MiKTeX\tex/generic/pgf/math\pgfmathfunctions.round.code.tex)
+(C:\Program Files\MiKTeX\tex/generic/pgf/math\pgfmathfunctions.misc.code.tex)
+(C:\Program Files\MiKTeX\tex/generic/pgf/math\pgfmathfunctions.integerarithmeti
+cs.code.tex) (C:\Program Files\MiKTeX\tex/generic/pgf/math\pgfmathcalc.code.tex
+) (C:\Program Files\MiKTeX\tex/generic/pgf/math\pgfmathfloat.code.tex
+\c@pgfmathroundto@lastzeros=\count365
+))
+(C:\Program Files\MiKTeX\tex/generic/pgf/math\pgfint.code.tex)
+(C:\Program Files\MiKTeX\tex/generic/pgf/basiclayer\pgfcorepoints.code.tex
+File: pgfcorepoints.code.tex 2023-01-15 v3.1.10 (3.1.10)
+\pgf@picminx=\dimen260
+\pgf@picmaxx=\dimen261
+\pgf@picminy=\dimen262
+\pgf@picmaxy=\dimen263
+\pgf@pathminx=\dimen264
+\pgf@pathmaxx=\dimen265
+\pgf@pathminy=\dimen266
+\pgf@pathmaxy=\dimen267
+\pgf@xx=\dimen268
+\pgf@xy=\dimen269
+\pgf@yx=\dimen270
+\pgf@yy=\dimen271
+\pgf@zx=\dimen272
+\pgf@zy=\dimen273
+)
+(C:\Program Files\MiKTeX\tex/generic/pgf/basiclayer\pgfcorepathconstruct.code.t
+ex
+File: pgfcorepathconstruct.code.tex 2023-01-15 v3.1.10 (3.1.10)
+\pgf@path@lastx=\dimen274
+\pgf@path@lasty=\dimen275
+)
+(C:\Program Files\MiKTeX\tex/generic/pgf/basiclayer\pgfcorepathusage.code.tex
+File: pgfcorepathusage.code.tex 2023-01-15 v3.1.10 (3.1.10)
+\pgf@shorten@end@additional=\dimen276
+\pgf@shorten@start@additional=\dimen277
+)
+(C:\Program Files\MiKTeX\tex/generic/pgf/basiclayer\pgfcorescopes.code.tex
+File: pgfcorescopes.code.tex 2023-01-15 v3.1.10 (3.1.10)
+\pgfpic=\box60
+\pgf@hbox=\box61
+\pgf@layerbox@main=\box62
+\pgf@picture@serial@count=\count366
+)
+(C:\Program Files\MiKTeX\tex/generic/pgf/basiclayer\pgfcoregraphicstate.code.te
+x
+File: pgfcoregraphicstate.code.tex 2023-01-15 v3.1.10 (3.1.10)
+\pgflinewidth=\dimen278
+)
+(C:\Program Files\MiKTeX\tex/generic/pgf/basiclayer\pgfcoretransformations.code
+.tex
+File: pgfcoretransformations.code.tex 2023-01-15 v3.1.10 (3.1.10)
+\pgf@pt@x=\dimen279
+\pgf@pt@y=\dimen280
+\pgf@pt@temp=\dimen281
+) (C:\Program Files\MiKTeX\tex/generic/pgf/basiclayer\pgfcorequick.code.tex
+File: pgfcorequick.code.tex 2023-01-15 v3.1.10 (3.1.10)
+) (C:\Program Files\MiKTeX\tex/generic/pgf/basiclayer\pgfcoreobjects.code.tex
+File: pgfcoreobjects.code.tex 2023-01-15 v3.1.10 (3.1.10)
+)
+(C:\Program Files\MiKTeX\tex/generic/pgf/basiclayer\pgfcorepathprocessing.code.
+tex
+File: pgfcorepathprocessing.code.tex 2023-01-15 v3.1.10 (3.1.10)
+) (C:\Program Files\MiKTeX\tex/generic/pgf/basiclayer\pgfcorearrows.code.tex
+File: pgfcorearrows.code.tex 2023-01-15 v3.1.10 (3.1.10)
+\pgfarrowsep=\dimen282
+) (C:\Program Files\MiKTeX\tex/generic/pgf/basiclayer\pgfcoreshade.code.tex
+File: pgfcoreshade.code.tex 2023-01-15 v3.1.10 (3.1.10)
+\pgf@max=\dimen283
+\pgf@sys@shading@range@num=\count367
+\pgf@shadingcount=\count368
+)
+(C:\Program Files\MiKTeX\tex/generic/pgf/basiclayer\pgfcoreimage.code.tex
+File: pgfcoreimage.code.tex 2023-01-15 v3.1.10 (3.1.10)
+)
+(C:\Program Files\MiKTeX\tex/generic/pgf/basiclayer\pgfcoreexternal.code.tex
+File: pgfcoreexternal.code.tex 2023-01-15 v3.1.10 (3.1.10)
+\pgfexternal@startupbox=\box63
+)
+(C:\Program Files\MiKTeX\tex/generic/pgf/basiclayer\pgfcorelayers.code.tex
+File: pgfcorelayers.code.tex 2023-01-15 v3.1.10 (3.1.10)
+)
+(C:\Program Files\MiKTeX\tex/generic/pgf/basiclayer\pgfcoretransparency.code.te
+x
+File: pgfcoretransparency.code.tex 2023-01-15 v3.1.10 (3.1.10)
+) (C:\Program Files\MiKTeX\tex/generic/pgf/basiclayer\pgfcorepatterns.code.tex
+File: pgfcorepatterns.code.tex 2023-01-15 v3.1.10 (3.1.10)
+) (C:\Program Files\MiKTeX\tex/generic/pgf/basiclayer\pgfcorerdf.code.tex
+File: pgfcorerdf.code.tex 2023-01-15 v3.1.10 (3.1.10)
+)))
+(C:\Program Files\MiKTeX\tex/generic/pgf/modules\pgfmoduleshapes.code.tex
+File: pgfmoduleshapes.code.tex 2023-01-15 v3.1.10 (3.1.10)
+\pgfnodeparttextbox=\box64
+)
+(C:\Program Files\MiKTeX\tex/generic/pgf/modules\pgfmoduleplot.code.tex
+File: pgfmoduleplot.code.tex 2023-01-15 v3.1.10 (3.1.10)
+)
+(C:\Program Files\MiKTeX\tex/latex/pgf/compatibility\pgfcomp-version-0-65.sty
+Package: pgfcomp-version-0-65 2023-01-15 v3.1.10 (3.1.10)
+\pgf@nodesepstart=\dimen284
+\pgf@nodesepend=\dimen285
+)
+(C:\Program Files\MiKTeX\tex/latex/pgf/compatibility\pgfcomp-version-1-18.sty
+Package: pgfcomp-version-1-18 2023-01-15 v3.1.10 (3.1.10)
+)) (C:\Program Files\MiKTeX\tex/latex/pgf/utilities\pgffor.sty
+(C:\Program Files\MiKTeX\tex/latex/pgf/utilities\pgfkeys.sty
+(C:\Program Files\MiKTeX\tex/generic/pgf/utilities\pgfkeys.code.tex))
+(C:\Program Files\MiKTeX\tex/latex/pgf/math\pgfmath.sty
+(C:\Program Files\MiKTeX\tex/generic/pgf/math\pgfmath.code.tex))
+(C:\Program Files\MiKTeX\tex/generic/pgf/utilities\pgffor.code.tex
+Package: pgffor 2023-01-15 v3.1.10 (3.1.10)
+\pgffor@iter=\dimen286
+\pgffor@skip=\dimen287
+\pgffor@stack=\toks50
+\pgffor@toks=\toks51
+))
+(C:\Program Files\MiKTeX\tex/generic/pgf/frontendlayer/tikz\tikz.code.tex
+Package: tikz 2023-01-15 v3.1.10 (3.1.10)
+
+(C:\Program Files\MiKTeX\tex/generic/pgf/libraries\pgflibraryplothandlers.code.
+tex
+File: pgflibraryplothandlers.code.tex 2023-01-15 v3.1.10 (3.1.10)
+\pgf@plot@mark@count=\count369
+\pgfplotmarksize=\dimen288
+)
+\tikz@lastx=\dimen289
+\tikz@lasty=\dimen290
+\tikz@lastxsaved=\dimen291
+\tikz@lastysaved=\dimen292
+\tikz@lastmovetox=\dimen293
+\tikz@lastmovetoy=\dimen294
+\tikzleveldistance=\dimen295
+\tikzsiblingdistance=\dimen296
+\tikz@figbox=\box65
+\tikz@figbox@bg=\box66
+\tikz@tempbox=\box67
+\tikz@tempbox@bg=\box68
+\tikztreelevel=\count370
+\tikznumberofchildren=\count371
+\tikznumberofcurrentchild=\count372
+\tikz@fig@count=\count373
+ (C:\Program Files\MiKTeX\tex/generic/pgf/modules\pgfmodulematrix.code.tex
+File: pgfmodulematrix.code.tex 2023-01-15 v3.1.10 (3.1.10)
+\pgfmatrixcurrentrow=\count374
+\pgfmatrixcurrentcolumn=\count375
+\pgf@matrix@numberofcolumns=\count376
+)
+\tikz@expandcount=\count377
+
+(C:\Program Files\MiKTeX\tex/generic/pgf/frontendlayer/tikz/libraries\tikzlibra
+rytopaths.code.tex
+File: tikzlibrarytopaths.code.tex 2023-01-15 v3.1.10 (3.1.10)
+))) (C:\Program Files\MiKTeX\tex/latex/oberdiek\centernot.sty
+Package: centernot 2016/05/16 v1.4 Centers the not symbol horizontally (HO)
+)
+(C:\Program Files\MiKTeX\tex/generic/pgf/libraries\pgflibraryarrows.meta.code.t
+ex
+File: pgflibraryarrows.meta.code.tex 2023-01-15 v3.1.10 (3.1.10)
+\pgfarrowinset=\dimen297
+\pgfarrowlength=\dimen298
+\pgfarrowwidth=\dimen299
+\pgfarrowlinewidth=\dimen300
+)
+(C:\Program Files\MiKTeX\tex/generic/pgf/frontendlayer/tikz/libraries\tikzlibra
+rypositioning.code.tex
+File: tikzlibrarypositioning.code.tex 2023-01-15 v3.1.10 (3.1.10)
+)
 (C:\Program Files\MiKTeX\tex/latex/l3backend\l3backend-pdftex.def
 File: l3backend-pdftex.def 2023-03-30 L3 backend support: PDF output (pdfTeX)
-\l__color_backend_stack_int=\count357
-\l__pdf_internal_box=\box58
+\l__color_backend_stack_int=\count378
+\l__pdf_internal_box=\box69
 )
 No file week-14-blank.aux.
 \openout1 = `week-14-blank.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 7.
-LaTeX Font Info:    ... okay on input line 7.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 7.
-LaTeX Font Info:    ... okay on input line 7.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 7.
-LaTeX Font Info:    ... okay on input line 7.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 7.
-LaTeX Font Info:    ... okay on input line 7.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 7.
-LaTeX Font Info:    ... okay on input line 7.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 7.
-LaTeX Font Info:    ... okay on input line 7.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 7.
-LaTeX Font Info:    ... okay on input line 7.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 7.
-LaTeX Font Info:    ... okay on input line 7.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 7.
-LaTeX Font Info:    ... okay on input line 7.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 10.
+LaTeX Font Info:    ... okay on input line 10.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 10.
+LaTeX Font Info:    ... okay on input line 10.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 10.
+LaTeX Font Info:    ... okay on input line 10.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 10.
+LaTeX Font Info:    ... okay on input line 10.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 10.
+LaTeX Font Info:    ... okay on input line 10.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 10.
+LaTeX Font Info:    ... okay on input line 10.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 10.
+LaTeX Font Info:    ... okay on input line 10.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 10.
+LaTeX Font Info:    ... okay on input line 10.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 10.
+LaTeX Font Info:    ... okay on input line 10.
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
 *geometry* verbose mode - [ preamble ] result:
@@ -579,33 +855,23 @@ LaTeX Font Info:    ... okay on input line 7.
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
-(C:\Program Files\MiKTeX\tex/latex/graphics\color.sty
-Package: color 2022/01/06 v1.3d Standard LaTeX Color (DPC)
-
-(C:\Program Files\MiKTeX\tex/latex/graphics-cfg\color.cfg
-File: color.cfg 2016/01/02 v1.6 sample color configuration
-)
-Package color Info: Driver file: pdftex.def on input line 149.
-
-(C:\Program Files\MiKTeX\tex/latex/graphics\mathcolor.ltx))
-Package hyperref Info: Link coloring ON on input line 7.
-\@outlinefile=\write3
-\openout3 = `week-14-blank.out'.
-
+Package hyperref Info: Link coloring ON on input line 10.
+\@outlinefile=\write4
+\openout4 = `week-14-blank.out'.
 
 (C:\Program Files\MiKTeX\tex/context/base/mkii\supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count358
-\scratchdimen=\dimen191
-\scratchbox=\box59
-\nofMPsegments=\count359
-\nofMParguments=\count360
-\everyMPshowfont=\toks40
-\MPscratchCnt=\count361
-\MPscratchDim=\dimen192
-\MPnumerator=\count362
-\makeMPintoPDFobject=\count363
-\everyMPtoPDFconversion=\toks41
+\scratchcounter=\count379
+\scratchdimen=\dimen301
+\scratchbox=\box70
+\nofMPsegments=\count380
+\nofMParguments=\count381
+\everyMPshowfont=\toks52
+\MPscratchCnt=\count382
+\MPscratchDim=\dimen302
+\MPnumerator=\count383
+\makeMPintoPDFobject=\count384
+\everyMPtoPDFconversion=\toks53
 ) (C:\Program Files\MiKTeX\tex/latex/epstopdf-pkg\epstopdf-base.sty
 Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
 Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
@@ -619,371 +885,113 @@ Package caption Info: subfig package v1.3 is loaded.
 Package caption Info: float package is loaded.
 Package caption Info: End \AtBeginDocument code.
 
-Overfull \hbox (19.90755pt too wide) detected at line 9
-  \OT1/cmr/m/n/14.4 Week 14: Randomized Algorithms: Fingerprinting, Hashing, Pa
-geRank  
- []
-
-
-Overfull \hbox (16.26796pt too wide) in paragraph at lines 9--9
+Overfull \hbox (16.26796pt too wide) in paragraph at lines 12--12
  [] 
  []
 
 LaTeX Font Info:    Trying to load font information for OT1+lmss on input line 
-20.
+16.
 (C:\Program Files\MiKTeX\tex/latex/lm\ot1lmss.fd
 File: ot1lmss.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
 LaTeX Font Info:    Font shape `OT1/lmss/b/n' in size <14> not available
-(Font)              Font shape `OT1/lmss/bx/n' tried instead on input line 20.
-LaTeX Font Info:    Trying to load font information for U+rsfs on input line 25
+(Font)              Font shape `OT1/lmss/bx/n' tried instead on input line 16.
+LaTeX Font Info:    Font shape `OT1/lmss/b/n' in size <12> not available
+(Font)              Font shape `OT1/lmss/bx/n' tried instead on input line 26.
+LaTeX Font Info:    Trying to load font information for U+rsfs on input line 31
 .
 
 (C:\Program Files\MiKTeX\tex/latex/jknappen\ursfs.fd
 File: ursfs.fd 1998/03/24 rsfs font definition file (jk)
 )
-LaTeX Font Info:    Trying to load font information for U+msa on input line 25.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 31.
 
 
 (C:\Program Files\MiKTeX\tex/latex/amsfonts\umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 25.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 31.
 
 
 (C:\Program Files\MiKTeX\tex/latex/amsfonts\umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
-)
-Underfull \hbox (badness 10000) in paragraph at lines 25--26
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 25--26
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 27--29
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 27--29
-
- []
-
-[1
+) [1
 
 {C:/Users/samso/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}{C:/Program Fi
-les/MiKTeX/fonts/enc/dvips/lm/lm-rm.enc}] [2]
-LaTeX Font Info:    Font shape `OT1/lmss/b/n' in size <12> not available
-(Font)              Font shape `OT1/lmss/bx/n' tried instead on input line 45.
-
-Underfull \hbox (badness 10000) in paragraph at lines 62--63
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 66--67
-
- []
-
-[3] [4] [5] [6]
-<figures/A.pdf, id=47, 315.37228pt x 230.21338pt>
+les/MiKTeX/fonts/enc/dvips/lm/lm-rm.enc}]
+<figures/A.pdf, id=24, 315.37228pt x 230.21338pt>
 File: figures/A.pdf Graphic file (type pdf)
 <use figures/A.pdf>
-Package pdftex.def Info: figures/A.pdf  used on input line 150.
+Package pdftex.def Info: figures/A.pdf  used on input line 64.
 (pdftex.def)             Requested size: 22.76164pt x 14.22319pt.
-<figures/B.pdf, id=48, 314.21352pt x 229.77534pt>
+<figures/B.pdf, id=25, 314.21352pt x 229.77534pt>
 File: figures/B.pdf Graphic file (type pdf)
 <use figures/B.pdf>
-Package pdftex.def Info: figures/B.pdf  used on input line 151.
+Package pdftex.def Info: figures/B.pdf  used on input line 65.
 (pdftex.def)             Requested size: 22.7595pt x 14.22418pt.
-<figures/C.pdf, id=49, 314.27463pt x 230.07079pt>
+<figures/C.pdf, id=26, 314.27463pt x 230.07079pt>
 File: figures/C.pdf Graphic file (type pdf)
 <use figures/C.pdf>
-Package pdftex.def Info: figures/C.pdf  used on input line 152.
+Package pdftex.def Info: figures/C.pdf  used on input line 66.
 (pdftex.def)             Requested size: 22.75914pt x 14.22491pt.
-<figures/D.pdf, id=50, 313.57942pt x 227.58772pt>
+<figures/D.pdf, id=27, 313.57942pt x 227.58772pt>
 File: figures/D.pdf Graphic file (type pdf)
 <use figures/D.pdf>
-Package pdftex.def Info: figures/D.pdf  used on input line 153.
+Package pdftex.def Info: figures/D.pdf  used on input line 67.
 (pdftex.def)             Requested size: 22.76143pt x 14.2242pt.
- [7 <./figures/A.pdf> <./figures/B.pdf> <./figures/C.pdf> <./figures/D.pdf>]
-Underfull \hbox (badness 10000) in paragraph at lines 159--160
+ [2 <./figures/A.pdf> <./figures/B.pdf> <./figures/C.pdf> <./figures/D.pdf>] [3
+] [4] [5]
+Underfull \hbox (badness 10000) in paragraph at lines 213--214
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 169--170
-[][]
+Overfull \hbox (30.78186pt too wide) in paragraph at lines 223--224
+[][]\OT1/cmr/bx/n/10.95 Lemma 4.1. []\OT1/cmr/m/it/10.95 The ex-pected chain le
+ngth for any key $\OML/cmm/m/it/10.95 x$ \OT1/cmr/m/it/10.95 is $[]$ 
  []
 
-
-Underfull \hbox (badness 10000) in paragraph at lines 172--172
-[][]
- []
-
-
-Overfull \hbox (63.8332pt too wide) in paragraph at lines 163--175
-[][] 
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 177--178
+[6]
+<query-university.png, id=185, 435.50203pt x 319.56891pt>
+File: query-university.png Graphic file (type png)
+<use query-university.png>
+Package pdftex.def Info: query-university.png  used on input line 242.
+(pdftex.def)             Requested size: 311.66438pt x 228.69482pt.
+ [7 <./query-university.png>] [8] [9]
+Underfull \hbox (badness 10000) in paragraph at lines 434--435
 
  []
 
-
-LaTeX Warning: File `hashing1.png' not found on input line 188.
-
-
-! Package pdftex.def Error: File `hashing1.png' not found: using draft setting.
-
-
-See the pdftex.def package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.188 ...hics[width = .25\linewidth]{hashing1.png}
-                                                  
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-[8]
-
-LaTeX Warning: File `hashing2.png' not found on input line 191.
-
-
-! Package pdftex.def Error: File `hashing2.png' not found: using draft setting.
-
-
-See the pdftex.def package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.191 ...hics[width = .35\linewidth]{hashing2.png}
-                                                  
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 202--203
-
+[10] [11] [12]
+Overfull \hbox (66.36191pt too wide) in paragraph at lines 519--532
+ [] 
  []
 
-
-Underfull \hbox (badness 10000) in paragraph at lines 204--205
-
- []
-
-
-Overfull \hbox (25.1322pt too wide) in paragraph at lines 209--210
-[]\OT1/cmr/m/n/10.95 If chain-ing is used, it pro-vides an $[]$ 
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 209--210
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 210--211
-
- []
-
-
-Overfull \hbox (75.1601pt too wide) in paragraph at lines 211--212
-[]\OT1/cmr/m/n/10.95 It pro-vides a $[]$ 
- []
-
-[9]
-Underfull \hbox (badness 10000) in paragraph at lines 249--250
-
- []
-
-[10]
-Underfull \hbox (badness 10000) in paragraph at lines 270--271
-[]
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 273--274
-[]\OT1/cmr/m/n/10.95 probability mass when $\OML/cmm/m/it/10.95 u$ \OT1/cmr/m/n
-/10.95 is fin-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 273--274
-\OT1/cmr/m/n/10.95 ished be-ing up-dated []
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 273--274
-[]
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 276--276
-[]\OT1/cmr/m/n/10.95 outgoing links/``destinations"
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 276--276
-\OT1/cmr/m/n/10.95 of $\OML/cmm/m/it/10.95 u$ []
- []
-
-
-Overfull \hbox (78.30194pt too wide) in paragraph at lines 264--279
-[][] 
- []
-
-[11]
-Underfull \hbox (badness 6428) in paragraph at lines 312--313
-[] $\OML/cmm/m/it/10.95 v:[] \OT1/cmr/m/n/10.95 = \OML/cmm/m/it/10.95 v:[] \OT1
-/cmr/m/n/10.95 + \OML/cmm/m/it/10.95 d \OMS/cmsy/m/n/10.95 ^^A
- []
-
-
-Underfull \hbox (badness 6428) in paragraph at lines 317--318
-[] $\OML/cmm/m/it/10.95 v:[] \OT1/cmr/m/n/10.95 = \OML/cmm/m/it/10.95 v:[] \OT1
-/cmr/m/n/10.95 + \OML/cmm/m/it/10.95 d \OMS/cmsy/m/n/10.95 ^^A
- []
-
-
-LaTeX Warning: File `pagerank_walk.png' not found on input line 325.
-
-
-! Package pdftex.def Error: File `pagerank_walk.png' not found: using draft set
-ting.
-
-See the pdftex.def package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.325 ...[width = .4\linewidth]{pagerank_walk.png}
-                                                  
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-[12]
+[13]
+Package hyperref Info: bookmark level for unknown algorithm defaults to 0 on in
+put line 592.
 File: figures/A.pdf Graphic file (type pdf)
 <use figures/A.pdf>
-Package pdftex.def Info: figures/A.pdf  used on input line 333.
+Package pdftex.def Info: figures/A.pdf  used on input line 610.
 (pdftex.def)             Requested size: 22.76164pt x 14.22319pt.
 File: figures/B.pdf Graphic file (type pdf)
 <use figures/B.pdf>
-Package pdftex.def Info: figures/B.pdf  used on input line 334.
+Package pdftex.def Info: figures/B.pdf  used on input line 611.
 (pdftex.def)             Requested size: 22.7595pt x 14.22418pt.
 File: figures/C.pdf Graphic file (type pdf)
 <use figures/C.pdf>
-Package pdftex.def Info: figures/C.pdf  used on input line 335.
+Package pdftex.def Info: figures/C.pdf  used on input line 612.
 (pdftex.def)             Requested size: 22.75914pt x 14.22491pt.
 File: figures/D.pdf Graphic file (type pdf)
 <use figures/D.pdf>
-Package pdftex.def Info: figures/D.pdf  used on input line 336.
+Package pdftex.def Info: figures/D.pdf  used on input line 613.
 (pdftex.def)             Requested size: 22.76143pt x 14.2242pt.
-<figures/E.pdf, id=204, 314.30771pt x 229.9817pt>
+<figures/E.pdf, id=237, 314.30771pt x 229.9817pt>
 File: figures/E.pdf Graphic file (type pdf)
 <use figures/E.pdf>
-Package pdftex.def Info: figures/E.pdf  used on input line 337.
+Package pdftex.def Info: figures/E.pdf  used on input line 614.
 (pdftex.def)             Requested size: 22.76154pt x 14.22292pt.
- [13 <./figures/E.pdf>]
-Underfull \hbox (badness 10000) in paragraph at lines 344--345
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 344--345
-
- []
-
-
-Overfull \hbox (308.04272pt too wide) in paragraph at lines 346--347
-[]\OT1/cmr/m/it/10.95 The chain is reg-u-lar and $[]$ 
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 346--347
-
- []
-
-
-Overfull \hbox (63.31842pt too wide) in paragraph at lines 347--348
-[]\OT1/cmr/m/it/10.95 The dis-tri-bu-tion of prob-a-bil-ity mass across $\OML/c
-mm/m/it/10.95 V$ $[]$ 
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 347--348
-
- []
-
-
-Overfull \hbox (164.90895pt too wide) in paragraph at lines 348--349
-[]\OT1/cmr/m/it/10.95 The ini-tial scores as-signed to nodes $[]$ 
- []
-
-[14]
-Underfull \hbox (badness 10000) in paragraph at lines 361--363
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 366--367
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 381--382
-[][] \OT1/cmr/m/it/10.95 Use \OT1/cmr/m/n/10.95 ran-dom
- []
-
-
-Overfull \hbox (159.85915pt too wide) in paragraph at lines 369--384
-[][] 
- []
-
-[15]
-
-LaTeX Warning: File `manypageranks.png' not found on input line 387.
-
-
-! Package pdftex.def Error: File `manypageranks.png' not found: using draft set
-ting.
-
-See the pdftex.def package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.387 ...[width = .6\linewidth]{manypageranks.png}
-                                                  
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-[16]
-File: figures/A.pdf Graphic file (type pdf)
-<use figures/A.pdf>
-Package pdftex.def Info: figures/A.pdf  used on input line 392.
-(pdftex.def)             Requested size: 22.76164pt x 14.22319pt.
-File: figures/B.pdf Graphic file (type pdf)
-<use figures/B.pdf>
-Package pdftex.def Info: figures/B.pdf  used on input line 393.
-(pdftex.def)             Requested size: 22.7595pt x 14.22418pt.
-File: figures/C.pdf Graphic file (type pdf)
-<use figures/C.pdf>
-Package pdftex.def Info: figures/C.pdf  used on input line 394.
-(pdftex.def)             Requested size: 22.75914pt x 14.22491pt.
-File: figures/D.pdf Graphic file (type pdf)
-<use figures/D.pdf>
-Package pdftex.def Info: figures/D.pdf  used on input line 395.
-(pdftex.def)             Requested size: 22.76143pt x 14.2242pt.
-File: figures/E.pdf Graphic file (type pdf)
-<use figures/E.pdf>
-Package pdftex.def Info: figures/E.pdf  used on input line 396.
-(pdftex.def)             Requested size: 22.76154pt x 14.22292pt.
- [17]
+ [14 <./figures/E.pdf>] [15]
 This exam contains 0 questions with 0 parts, 0 subparts, and 0 subsubparts.
 
 Class exam Warning: Point totals have changed. Rerun to get point totals right.
@@ -997,32 +1005,37 @@ Package rerunfilecheck Warning: File `week-14-blank.out' has changed.
 
 Package rerunfilecheck Info: Checksums for `week-14-blank.out':
 (rerunfilecheck)             Before: <no file>
-(rerunfilecheck)             After:  5470F98FB21BD3723970FF83F1C54989;2633.
+(rerunfilecheck)             After:  DA4F7A3290A84C1D31CE08C9EC28482B;3275.
  ) 
 Here is how much of TeX's memory you used:
- 14651 strings out of 476331
- 234891 string characters out of 5797581
- 1861660 words of memory out of 5000000
- 34832 multiletter control sequences out of 15000+600000
- 525223 words of font info for 63 fonts, out of 8000000 for 9000
+ 25597 strings out of 476331
+ 470824 string characters out of 5797581
+ 1863660 words of memory out of 5000000
+ 45555 multiletter control sequences out of 15000+600000
+ 526015 words of font info for 65 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 80i,11n,82p,289b,517s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 84i,10n,89p,418b,840s stack positions out of 10000i,1000n,20000p,200000b,200000s
  <C:\Users\samso\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\tcrm
 1095.pk><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C:/
-Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmcsc10.pfb><C:/Program Fil
-es/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Program Files/MiKTeX/fo
-nts/type1/public/amsfonts/cm/cmmi8.pfb><C:/Program Files/MiKTeX/fonts/type1/pub
-lic/amsfonts/cm/cmr10.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/
-cm/cmr12.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmr8.pfb><
-C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Program F
-iles/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy8.pfb><C:/Program Files/MiKTeX/f
-onts/type1/public/amsfonts/cm/cmti10.pfb><C:/Program Files/MiKTeX/fonts/type1/p
-ublic/amsfonts/cm/cmtt10.pfb><C:/Program Files/MiKTeX/fonts/type1/public/lm/lms
-sbx10.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/symbols/msbm10.p
-fb>
-Output written on week-14-blank.pdf (17 pages, 756903 bytes).
+Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmbxti10.pfb><C:/Program Fi
+les/MiKTeX/fonts/type1/public/amsfonts/cm/cmcsc10.pfb><C:/Program Files/MiKTeX/
+fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Program Files/MiKTeX/fonts/type1/
+public/amsfonts/cm/cmmi10.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfo
+nts/cm/cmmi6.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi8.
+pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Progr
+am Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Program Files/MiKT
+eX/fonts/type1/public/amsfonts/cm/cmr6.pfb><C:/Program Files/MiKTeX/fonts/type1
+/public/amsfonts/cm/cmr8.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfon
+ts/cm/cmr9.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmss10.p
+fb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmssbx10.pfb><C:/Pro
+gram Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Program Files/M
+iKTeX/fonts/type1/public/amsfonts/cm/cmsy8.pfb><C:/Program Files/MiKTeX/fonts/t
+ype1/public/amsfonts/cm/cmti10.pfb><C:/Program Files/MiKTeX/fonts/type1/public/
+lm/lmssbx10.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/symbols/ms
+bm10.pfb>
+Output written on week-14-blank.pdf (15 pages, 1276774 bytes).
 PDF statistics:
- 334 PDF objects out of 1000 (max. 8388607)
- 39 named destinations out of 1000 (max. 500000)
- 26 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 384 PDF objects out of 1000 (max. 8388607)
+ 58 named destinations out of 1000 (max. 500000)
+ 43 words of extra memory for PDF output out of 10000 (max. 10000000)
 

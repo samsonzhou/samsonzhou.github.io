@@ -1,400 +1,630 @@
-\documentclass[11 pt]{exam} 
+\documentclass[11pt]{exam} 
 \usepackage[lmargin=1in,rmargin=1.75in,bmargin=1in,tmargin=1in]{geometry}  
 
 
 \input{preamble}
+\usepackage{tikz}
+\usepackage{centernot}
+\usetikzlibrary{arrows.meta, positioning}
 
 \begin{document}
 	
-	\week{14: Randomized Algorithms: Fingerprinting, Hashing, PageRank}{April 21, 2026}
-	%\lecture{10: Intro to Randomized Algorithms}{March 25}
-	
-	\paragraph{Course Logistics}
-	
-	\begin{itemize}
-		\item Randomized algorithms: Chapter 5
-		\item Hashing and PageRank: Chapters 11 and 14
-		\item Homework 5 out this weekend, due next Friday
-	\end{itemize}
-	
-	\section{Introduction to Randomized Algorithms}
-	
-	A \textbf{randomized algorithm} is defined by  %its use of a random number generator to determine its behavior.
-	\vspace{1.5cm}
-	
-	\noindent An algorithm that always outputs the correct answer but has a random runtime is denoted a \under{4cm}\\ \\
-	
-	We can also denote an algorithm with a fixed runtime but a probability of outputting an incorrect answer as a \under{4cm}\\ \\ 
-	% Monte Carlo algorithm \\ \\ \\ \\
-	
-	\vspace{8cm}
-	
-	\noindent If an algorithm has a failure probability of $p$, we can run it independently $k$ times. The probability that it fails every single time is \under{3cm}. The process of running an algorithm multiple times to reduce failure probability is:
-	
-	%\begin{equation*}
-	%P(k) = (p)^k
-	%\end{equation*}
-	\vspace{2cm}
-	
-	\noindent The \emph{expected} runtime of a Las Vegas algorithm is calculated over the \under{2cm} %internal random choices.
-	
-	\vspace{1cm}
-	
-	\newpage 
-	
-	\subsection{Classes of randomized algorithms}
-	\vs{1cm}
-	
-	\begin{itemize}
-		\item Las Vegas: %always correct, random runtime 
-		
-		\vs{3cm}
-		
-		\item Monte Carlo: %deterministic runtime, random correctness 
-		
-	\end{itemize}
-	
-	\vs{3cm}
-	
-	\subsection{Basic fingerprinting and verification structures}
-	
-	\begin{itemize}
-		\item A \textbf{fingerprint} is a small signature in which \\
-		
-		\vspace{2cm}
-		
-		\item A \textbf{false positive} is a scenario in which \\
-		
-		\vspace{2cm}
-		
-		\item \textbf{Freivalds' algorithm}: randomized approach to verify matrix multiplication $AB=C$: 
-		
-		\begin{equation*}
-			\vec{r} \in \{0,1\}^n \text{ such that }  A(B\vec{r}) = C\vec{r}
-		\end{equation*}
-		\vspace{2cm}
-		
-		\item \textbf{Polynomial Identity Testing}: checks if two polynomials are equivalent:
-		
-		\begin{equation*}
-			P(x), Q(x) \text{ where } P(r) = Q(r) \text{ for random } r \in S.
-		\end{equation*}
-		\vspace{2cm}
-		
-		\item \textbf{String Matching (Rabin-Karp)}: utilizes a rolling hash to compare strings:
-		
-		\begin{equation*}
-			H(P) = H(T[i \dots i+m-1]) \text{ for some window } i.
-		\end{equation*}
-		\vspace{4cm}
-		
-		\item \textbf{Amplification}: a strategy in which repeating the algorithm decreases error probability.
-		\vspace{2cm}
-		
-	\end{itemize}
-	\newpage
-	
-	\subsection{Verification Problems using Fingerprinting}
-	Many verification problems amount to evaluating identity over a randomized input.
-	
-	\begin{example}\textbf{Matrix Multiplication.}
-		Given three matrices $A, B \in \mathbb{R}^{n \times n}$ and $C \in \mathbb{R}^{n \times n}$, verify if $AB = C$. 
-	\end{example}
-	
-	\vspace{5cm}
-	
-	\begin{example}\textbf{Database Equality.}
-		Let Alice and Bob hold databases $D_A$ and $D_B$. Find if they are identical with minimal communication.
-	\end{example}
+	\week{14: Randomized Algorithms; Hashing; PageRank}{April 20, 2026}
+	%\lecture{10: Intro to Randomized Algorithms}{March 24}
 	
 	
-	
-	\vspace{5cm}
-	
-	\begin{example}\textbf{Find Substrings.}
-		Return the starting indices of a pattern $P$ in text $T$:
-		
-	\end{example}
-	
-	\newpage
-	
-	\section{Hashing Representation}
-	Consider a dynamic set of elements $S$ from a fixed universe of keys $U = \{1, 2, \hdots , |U|\}$.
-	
-	\paragraph{Hash Table}
-	The \textbf{hash table} $\mathcal{T}$ of size $m$ is defined so that
-	
-	\vspace{7cm}
-	
-	\paragraph{Hash Function}
-	The \textbf{hash function} $h(x)$ of $\mathcal{T}$ is 
-	
-	\newpage 
-	
-	\subsection*{Hashing Activity}
-	Consider the following hash function $h(x) = x \pmod 7$:
-	
-	\vs{8cm}
-	
-	
-	\begin{itemize}
-		\item Write down the hash value for $x = 10$
-		\item Write down the hash value for $x = 24$ 
-		\item Write down the load factor if $n = 14$ elements are inserted
-		\item Write down the elements that map to slot $3$
-		\item Find the number of collisions among the keys $\{3, 10, 17\}$
-	\end{itemize}
-	\begin{Qu}
-		Assume that $U$ is a large universe of keys and we map them to a table of size $m$. Let $n$ be the number of elements inserted. How much worst-case time is needed to search the table if an adversary picks the keys?
-		\begin{itemize}
-			\aitem $O(1)$ 
-			\bitem $O(\log n)$
-			\citem $O(n)$
-			\ditem $O(mn)$
-		\end{itemize}
-	\end{Qu}
-	\newpage
-	
-	\section{Universal Hashing Algorithm}
-	\textbf{Dictionary Problem:} Given a universe $U$ and hash table $T$, map elements $x \in S$ into $T$ evenly, preventing an adversary from causing $\Omega(n)$ worst-case search times. \\
-	
-	We will do this using the \emph{universal hashing} scheme.
-	
-	\begin{tabular}{| l | p{8cm} | p{6cm} |}
-		\hline
-		Attribute & Explanation &Initialization \\
-		\hline
-		$h.\text{family}$ & tells us whether a hash function belongs to a \phantom{undiscovered} \phantom{discovered}  \phantom{explored} &  \\
-		\hline
-		$x.\text{key}$ & \phantom{the unique identifier for the element a a a a a}
-		\phantom{for more writing later on in the dell you know}&  \\
-		\hline
-		$x.\text{next}$ & \phantom{pointer to the next colliding element a a a a} \phantom{for more writing later on in the dell you know}& \\
-		\hline
-	\end{tabular}
-	
-	\vs{.25cm}
-	We will also make use of \\ %a random number generator. 
-	
-	\textbf{Basic Idea}
-	\begin{itemize}
-		\item Define a family of hash functions $\mathcal{H}$ %mapping U to m
-		\item Randomly \emph{select} $h \in \mathcal{H}$ at the start of execution %to find new \emph{discovered} nodes
-		\item Continuously update %the table using the chosen h
-	\end{itemize} 
-	\textbf{Example}
-	\vs{1cm}
-	
-	\includegraphics[width = .25\linewidth]{hashing1.png}
-	\newpage
-	
-	\includegraphics[width = .35\linewidth]{hashing2.png}
-	
-	\subsection{Collisions and Universal Hash Families}
-	\begin{definition}
-		Given a universe $U$, table size $m$, and a randomly selected $h \in \mathcal{H}$, a \hide{universal family} is a set of functions where
-		
-		\vs{3cm}
-		%		\begin{align*}
-		%%			\Pr_{h \in \mathcal{H}}[h(x) = h(y)] \le \frac{1}{m}
-		%		\end{align*}
-		
-		It is furthermore strongly universal if it generates a unique random permutation \\
-		
-		from $U$ to $m$ that is \hide{pairwise independent.} \\
-	\end{definition}
-	
-	\textbf{Benefits of Universal Hashing}
-	\begin{itemize}
-		\item If chaining is used, it provides an \hide{expected chain length of $\alpha$} \\%$s$ is in
-		\item It tells us the \hide{expected search time is $O(1)$ }\\ %to each node
-		\item It provides a \hide{randomized guarantee against adversaries} 
-	\end{itemize}
-	
-	
-	
-	
-	\newpage
-	
-	\subsection{Code and Runtime Analysis}
-	\begin{algorithm}[t]
-		\textsc{Universal-Hash-Insert}($T, x$)
-		\begin{algorithmic}
-			\State Initialize $\mathcal{H}$ as universal family
-			\If{$T.\text{hash\_func} == NIL$}
-			\State $T.\text{hash\_func} = \text{RandomSelect}(\mathcal{H})$
-			\EndIf
-			\State $h = T.\text{hash\_func}$
-			\State $index = h(x.\text{key})$
-			\If{$T[index] == NIL$}
-			\State $T[index] = x$
-			\Else
-			\State $curr = T[index]$
-			\While{$curr.\text{next} \neq NIL$}
-			\State $curr = curr.\text{next}$
-			\EndWhile
-			\State $curr.\text{next} = x$
-			\EndIf
-			\State $x.\text{next} = NIL$
-		\end{algorithmic}
-	\end{algorithm}
-	
-	
-	\begin{itemize}
-		\item We assume $T$ uses chaining for collision resolution.
-		\item Initializing the hash function takes \hide{$O(1)$ time}
-		\item Each element $x$ enters the table, and hashing it takes \hide{$O(1)$}
-		\item When we \emph{insert} $x$, we traverse up to \hide{$\alpha$ elements}
-	\end{itemize}
-	Using expected value analysis, what is the overall runtime of this method? \\
+	\section{Randomized Algorithms: Motivating Problems}
 
+Randomized algorithms are widely used for processing large datasets and strings. Their power comes from trading exact deterministic behavior for efficiency, while still guaranteeing correctness with high probability.
+
+We now study two representative settings:
+\begin{itemize}
+    \item randomized computation models (Monte Carlo vs Las Vegas),
+    \item randomized string processing via hashing (fingerprinting).
+\end{itemize}
+
+\subsection{Monte Carlo and Las Vegas Algorithms}
+
+\vspace{0.5em}
+
+\textbf{Monte Carlo Algorithms.}
+A Monte Carlo algorithm has deterministic runtime but may output \hide{an error} with small probability.
+
+Formally, for input $x$, it outputs $A(x)$ such that
+\[
+\Pr[A(x) \neq f(x)] \le \delta.
+\]
+
+\vspace{0.3in}
+
+\textbf{Las Vegas Algorithms.}
+A Las Vegas algorithm always outputs the correct answer, but has random runtime.
+
+\[
+\Pr[A(x) = f(x)] = 1,
+\]
+but the runtime is a \hide{random variable}.
+
+\vspace{0.5in}
+
+\textbf{One-sided Error.}
+A Monte Carlo algorithm has one-sided error if it can only fail in one direction (e.g., false positives). \hide{asymmetric failure}
+
+\vspace{0.5in}
+
+\textbf{Probability Amplification.}
+Repeating an algorithm reduces failure probability to \hide{exponentially small} in the number of repetitions, i.e., $\Pr[\text{failure}] \le e^{-\Omega(k)}$.
+
+\newpage
+
+\begin{Qu}
+Suppose a Monte Carlo algorithm has error probability $1/3$. If we run it $k$ independent times and take majority vote, what happens?
+
+\begin{itemize}
+    \aitem It remains $2/3$
+    \bitem It approaches $1$ as $k$ increases
+    \citem It approaches $0$ as $k$ increases
+    \ditem It becomes exactly $1$ after $k = 3$
+\end{itemize}
+\end{Qu}
+
+\vspace{1em}
+
+\subsection{Fingerprinting and String Matching}
+
+We study the string matching problem: given pattern $P$ and text $T$, find all occurrences of $P$ in $T$. 
+A na\"{i}ve algorithm compares each alignment directly, giving runtime $\hide{O(nm)}$.
+
+\vspace{1em}
+
+Instead, we use \hide{fingerprinting}, where strings are mapped to compact hash values.
+
+A hash function:
+\[
+h: \Sigma^m \to \mathbb{Z}_M
+\]
+assigns each string a numeric fingerprint.
+
+We compute:
+\begin{itemize}
+    \item $h(P)$ for the pattern,
+    \item $h(T[i:i+m])$ for substrings of $T$.
+\end{itemize}
+
+\vspace{0.5em}
+
+Key property:
+\[
+P = Q \implies h(P) = h(Q),
+\]
+but equality of hashes does not guarantee equality of strings due to \hide{collisions}.
+
+\paragraph{Rolling Hashes}
+
+Directly computing each substring hash costs $O(m)$ per position. The goal is to update hashes in \hide{constant time} as the window shifts.
+
+\newpage
+
+\subsection{The Karp--Rabin Algorithm}
+
+We define a rolling hash using base $b$ and modulus $M$:
+\[
+h(S) = \left(\sum_{i=0}^{m-1} s_i \cdot b^{m-1-i}\right) \bmod M.
+\]
+
+This treats strings as \hide{polynomials modulo $M$}.
+
+\vspace{0.5in}
+
+\textbf{Rolling update rule.}
+When shifting the window:
+\begin{itemize}
+    \item remove left character,
+    \item multiply by $b$,
+    \item add new character.
+\end{itemize}
+
+Thus all substring hashes are computed in total time $\hide{O(n)}$.
+
+\vspace{0.5in}
+
+\textbf{Correctness guarantee.}
+If $P$ occurs in $T$, then their hashes match exactly:
+\[
+h(P) = h(T[i:i+m]).
+\]
+
+However, we may still have:
+\[
+h(P) = h(T[i:i+m]) \quad \text{but} \quad P \neq T[i:i+m],
+\]
+due to \hide{hash collisions}.
+
+\vspace{0.5em}
+
+The probability of collision can be made \hide{negligible} by choosing large $M$.
+
+\newpage
+
+\section{Application 1: Checking if Two Strings Match}
+
+Fingerprinting gives a randomized method for string equality testing.
+
+\begin{theorem}
+If two strings are identical, then their fingerprints match:
+\[
+x = y \implies h(x) = h(y).
+\]
+\end{theorem}
+
+\textit{Proof.}
+Equality implies identical polynomial representations, hence identical hashes modulo $M$.
+
+\vspace{0.5em}
+
+The converse may fail due to \hide{rare collisions}:
+\[
+h(x) = h(y) \centernot\implies x = y.
+\]
+
+Thus fingerprinting is a Monte Carlo equality test: always correct when strings differ, but may fail due to \hide{collision events}.
 	
-	\newpage
+\section{Application 2: Hash Tables and Dictionaries}
+
+Given a universe of keys $U$, a dictionary maintains a dynamic set of elements supporting insert, delete, and search operations.
+
+\vspace{0.5em}
+
+We resolve collisions using chaining:
+\begin{enumerate}
+    \item Map each key to a slot using a hash function $h(k)$.
+    \item Store all elements that hash to the same slot in a linked list.
+\end{enumerate}
+
+\newpage
+
+\begin{theorem}
+For any deterministic hash function, an adversary can choose $n$ keys that all hash to the same slot, causing search time $\Theta(n)$.
+\end{theorem}
+
+\begin{proof}
+Let $U$ be a universe of keys with $|U| > n \cdot m$.
+
+\begin{enumerate}
+    \item When hashing $|U|$ keys into $m$ slots, by the pigeonhole principle there exists a slot containing at least
+    \[
+    \left\lceil \frac{|U|}{m} \right\rceil > n
+    \]
+    keys. Reason: \hide{pigeonhole principle}
+
+    \item Since the hash function is deterministic, the adversary can identify a subset of $n$ keys that all map to this same slot. \\
+		Reason: \hide{adversary knows hash function}
+
+    \item These keys form a linked list of length $n$ under chaining, so searching requires linear scan. \\
+		Reason: \hide{cost proportional to list length}
+\end{enumerate}
+
+Therefore, the worst-case search time is \hide{$\Theta(n)$}.
+\end{proof}
+
+\newpage
+
+	\section{Universal Hashing and Expected Chain Lengths}
+	If $U$ is a universe of keys and $m$ is the table size, a \emph{universal hash family} $\mathcal{H}$ is a collection of hash functions in which the probability of a collision between any two distinct keys is at most $1/m$. \\
 	
-	\section{PageRank Algorithm}
-	Unlike regular directed graph traversal, the PageRank algorithm:
+	Let $x, y \in U$ be distinct keys and assume that $h$ is chosen uniformly at random from $\mathcal{H}$. 
+	
+	The \emph{expected chain length} for a hash table is bounded as follows:
 	\begin{itemize}
-		\item Explores the \emph{stationary distribution} of a random walk before stabilizing and outputting probability scores
-		\item All nodes in the graph are scored simultaneously (rather than just paths from a single node $s$)
-		\item We keep track of a global \emph{damping factor}, and each node is associated with two buffers for when it is \emph{updated} and \emph{finalized}.
+		\item There is a random choice of $h \in \mathcal{H}$ at runtime
+		\item There is a collision $h(x) = h(y)$ with probability $\le 1/m$
 	\end{itemize}
+	\begin{lemma}
+		The expected chain length for any key $x$ is \hide{ bounded by $1 + \alpha$ }
+	\end{lemma}
 	
-	Each node $u \in V$ is associated with the following attributes
+	\vs{5cm}
 	
-	\begin{tabular}{| l | p{8cm} | p{6cm} |}
-		\hline
-		Attribute & Explanation &Initialization \\
-		\hline
-		$u.\text{out\_degree}$ & tells us whether a node has outgoing links to be \emph{distributed}, \emph{absorbed}, and \emph{teleported} &  \\
-		\hline
-		$u.\text{PR}$ & probability mass when $u$ is evaluated \phantom{the aa} \phantom{quick brown fox jumps over the lazy dog}
-		\phantom{for more writing later on in the dell you know} &  \\
-		\hline
-		$u.\text{new\_PR}$ & probability mass when $u$ is finished being updated \phantom{the aa} \phantom{quick brown fox jumps over the lazy dog}
-		\phantom{for more writing later on in the dell you know}  &  \\
-		\hline
-		$u.\text{Adj}$ & outgoing links/``destinations" of $u$ \phantom{s a a a a a  here} \phantom{for more writing later on in the dell you know}& \\
-		\hline
-	\end{tabular}
-	\newpage 
-	
-	%\section{Code and Example}
-	
-	\begin{minipage}[t]{0.45\textwidth}
-		%	\begin{algorithm}
-		\textsc{PageRank}($G, d, k$)
-		\begin{algorithmic}
-			\For{$v \in V $}
-			\State $v.\text{new\_PR} = 0$
-			\State $v.\text{PR} = 1 / |V|$
-			\EndFor
-			\For{$step = 1 \text{ to } k$}
-			\For{$u \in V$}
-			\State $\textsc{PR-Update}(G,u, d)$
-			\EndFor
-			\For{$v \in V$}
-			\State $v.\text{PR} = v.\text{new\_PR}$
-			\State $v.\text{new\_PR} = 0$
-			\EndFor
-			\EndFor
-		\end{algorithmic}
-		%	\end{algorithm}
-	\end{minipage}
-	\begin{minipage}[t]{0.52\textwidth}
-		%	\begin{algorithm}
-		\textsc{PR-Update}($G,u, d$)
-		\begin{algorithmic}
-			\State $teleport = (1 - d) / |V|$
-			\State $u.\text{new\_PR} = u.\text{new\_PR} + teleport$
-			\State $deg = u.\text{out\_degree}$
-			\If{$deg > 0$}
-			\For{$v \in u.\text{Adj}$}
-			\State $v.\text{new\_PR} = v.\text{new\_PR} + d \cdot (u.\text{PR} / deg)$
-			\EndFor
-			\Else
-			\State Handle sink by distributing evenly
-			\For{$v \in V$}
-			\State $v.\text{new\_PR} = v.\text{new\_PR} + d \cdot (u.\text{PR} / |V|)$
-			\EndFor
-			\EndIf
-		\end{algorithmic}
-		%	\end{algorithm}
-	\end{minipage}
-	\vspace{1cm}
-	
-	\includegraphics[width = .4\linewidth]{pagerank_walk.png}
-	\newpage 
-	
-	\newpage
-	\subsection{Runtime Analysis}
-	\begin{Qu}
-		What is the runtime of $k$ iterations of PageRank, assuming that we store the graph in an adjacency list, and assuming there are no sinks ($deg > 0$ for all nodes)?
-		\begin{itemize}
-			\aitem $O(k|V|)$
-			\bitem $O(k|E|)$
-			\citem $O(k(|V| + |E|))$
-			\ditem $O(k|V|^2)$
-			\eitem $O(k|E|^2)$
-		\end{itemize}
-	\end{Qu}
-	\newpage
-	\subsection{Properties of PageRank}
-	
-	\begin{theorem}
-		In any execution of PageRank on a web graph $G = (V,E)$, with a damping factor $0 < d < 1$, exactly one of the following conditions holds for the underlying Markov chain:\\ \\
-		\begin{itemize}
-			\item The chain is regular and \hide{aperiodic, so it converges to a unique stationary distribution} \\
-			\item The distribution of probability mass across $V$ \hide{always sums to exactly $1$} \\
-			\item The initial scores assigned to nodes \hide{do not affect the final converged ranking}
-		\end{itemize}
-	\end{theorem}
-	
-	\vs{2cm}
-	
-	
-	\newpage
-	\subsection{Classification of Web Graph Structures}
-	
-	Given a web graph $G = (V,E)$ running PageRank models a random walk traversing the edges of $E$.
+	The \emph{load factor} of a hash table with $n$ elements and $m$ slots is $\alpha$.
 	\begin{align*}
-		\hat{E} = \{ (u, v) \colon u \in V \text{ and } v \in u.\text{Adj}  \}
+		\alpha = \frac{n}{m}
 	\end{align*}
-	This is called the \emph{transition space} of $G$. \\
 	
-	\vspace{4cm}
-	
-	Given any node $u \in V$, we can classify it based on the status of its outgoing edges when we are computing PageRank:\\
-	
-	
-	\begin{tabular}{| l | p{8cm} | p{6cm} |}
-		\hline
-		Structure & Explanation & How to resolve when evaluating? \\
-		\hline
-		\textbf{Normal Node}  & node with outgoing links in $\hat{E}$ & %Distribute PR equally to neighbors 
-		\\
-		\hline
-		\textbf{Dead End} & node $u$ with no outgoing links & %Teleport PR mass to all nodes in V 
-		\\
-		\hline
-		\textbf{Spider Trap} & a group of nodes with no links to the outside & \phantom{spaceasdfasdf2xsdf} \emph{Use} a damping factor $d < 1$\\
-		\hline
-		\textbf{Disconnected Component} & a subgraph with no incoming links from the rest of the web &  \phantom{spaceasdfasdf2xsdf} \emph{Use} random teleportation with $1-d$\\
-		\hline
-	\end{tabular}
+	\begin{lemma}
+		If we use universal hashing, the expected time for a search operation is \hide{$\Theta(1 + \alpha)$ }
+	\end{lemma}
 	
 	\newpage
-	\section{Practice}
-	\includegraphics[width = .6\linewidth]{manypageranks.png}
-	\newpage
-	\begin{Qu}
-		How many of the above graphs contained a spider trap?
-		\begin{itemize}
-			\aitem 1
-			\bitem 2
-			\citem 3
-			\ditem 4
-			\eitem none of them
-		\end{itemize}
-	\end{Qu}
-	
+
+\section{Introduction: Web Search and PageRank}
+
+\begin{center}
+\includegraphics[width = .75\linewidth]{query-university.png}
+\end{center}
+
+Before Google, ranking web pages was largely based on simple text matching.  
+The \textbf{PageRank algorithm}, introduced by Larry Page and Sergei Brin, assigns each webpage a score reflecting its \emph{importance} in the web graph.
+
+\vspace{0.5em}
+
+Given webpages labeled $1,\ldots,n$, the PageRank of a page $i$ depends on the pages that link to it. However, we do not treat all incoming links equally.
+
+\vspace{0.5em}
+
+Instead, we weight contributions as follows:
+\begin{itemize}
+    \item Links from high-PageRank pages contribute \hide{more}.
+    \item Links from pages with many outgoing links contribute \hide{less}.
+\end{itemize}
+
+\vspace{0.5em}
+
+The first principle is circular, but this is exactly what makes the model powerful.
+
+\newpage
+\section{BrokenRank (Almost PageRank)}
+
+Let $G = (V,E)$ be a directed graph of the web.
+
+Define $L_{ij} = 1$ if $j \to i$, and $0$ otherwise.  
+Let $m_j = \sum_{k=1}^n L_{kj}$ denote the out-degree of $j$.
+
+\vspace{0.5em}
+
+We define a preliminary (but flawed) version of PageRank. The \textbf{BrokenRank} $p_i$ is
+\[
+p_i = \sum_{j \to i} \frac{p_j}{m_j}
+    = \sum_{j=1}^n \frac{L_{ij}}{m_j} \, p_j.
+\]
+
+This reflects our intuition: contributions scale with $p_j$ and are diluted by $m_j$.
+
+\subsection*{BrokenRank as a Markov Chain}
+
+A \textbf{Markov chain} is a random process that moves between states $1,\dots,n$, where each step corresponds to a transition.  
+It is described by an $n \times n$ matrix $P$, where
+\[
+P(\text{go from } i \text{ to } j) = P_{ij}.
+\]
+
+\vspace{0.5em}
+
+Let $p^{(0)}$ be an initial probability distribution.  
+After one step,
+\[
+p^{(1)} = P^T p^{(0)}.
+\]
+Each state collects mass from \hide{all others}.
+
+\vspace{0.5em}
+
+Now consider a Markov chain where the states are webpages and the transition matrix is $A^T$.  
+Since $(A^T)_{ij} = A_{ji} = L_{ji}/m_i$, we have
+\[
+P(\text{go from } i \text{ to } j) =
+\begin{cases}
+\frac{1}{m_i} & \text{if } i \to j, \\
+0 & \text{otherwise}.
+\end{cases}\]
+
+\vspace{0.5em}
+
+This corresponds to a \emph{random surfer} who follows outgoing links uniformly at random, with probability \hide{$1/d_{\text{out}}(u)$}.
+
+\vspace{0.5em}
+
+\textsc{GenericRandomWalk}$(G)$
+\begin{enumerate}
+    \item Initialize $u$ to a random page.
+    \item While the surfer continues:
+    \begin{enumerate}
+        \item Pick an outgoing edge $(u,v)$ uniformly at random.
+        \item Set $u \leftarrow v$.
+    \end{enumerate}
+\end{enumerate}
+
+\newpage
+\subsection{Why is BrokenRank Broken?}
+
+The issue is that this Markov chain is not \textbf{strongly connected}. This occurs in several scenarios:
+\begin{itemize}
+    \item \textbf{Disconnected components.}
+    \item \textbf{Dangling nodes (dead ends):} reaching such a node causes probability mass to \hide{vanish}.
+    \item \textbf{Spider traps:} a set $S \subseteq V$ with no outgoing edges traps the walk once entered; the surfer \hide{cannot escape}.
+\end{itemize}
+
+\vspace{0.5em}
+
+\begin{center}
+\begin{tikzpicture}[
+    page/.style={draw=blue!80!black, fill=blue!50, minimum width=0.5cm, minimum height=0.7cm, rectangle, rounded corners=1pt},
+    edge/.style={->, >=stealth, thick, draw=blue!80!black}
+]
+    % --- Disconnected components ---
+    \node[page] (d1) at (0, 0) {};
+    \node[page] (d2) at (1, 0) {};
+    \node[page] (d3) at (0.5, -0.8) {};
+    \draw[edge] (d1) to[bend left=20] (d2);
+    \draw[edge] (d2) to[bend left=20] (d3);
+    \draw[edge] (d3) to[bend left=20] (d1);
+    
+    \node[page] (d4) at (1.8, -0.1) {};
+    \node[page] (d5) at (2.4, -0.7) {};
+    \draw[edge] (d4) to[bend left=20] (d5);
+    \draw[edge] (d5) to[bend left=20] (d4);
+    
+    \node[font=\sffamily\small, text=blue!80!black, align=center] at (1, 0.8) {Disconnected\\components};
+
+    % --- Dangling links ---
+    \node[page] (a1) at (4.5, 0) {};
+    \node[page] (a2) at (6, 0) {};
+    \node[page] (a3) at (4.8, -0.8) {};
+    \draw[edge] (a1) to[bend left=20] (a2);
+    \draw[edge] (a3) to[bend left=20] (a1);
+    \draw[edge] (a1) to[bend left=20] (a3);
+    
+    \node[font=\sffamily\small, text=blue!80!black, align=center] at (5.2, 0.8) {Dangling nodes};
+
+    % --- Loops ---
+    \node[page] (l1) at (8, 0) {};
+    \node[page] (l2) at (9.2, 0) {};
+    \node[page] (l3) at (9.8, -0.8) {};
+    \draw[edge] (l1) to[bend left=20] (l2);
+    \draw[edge] (l2) to[bend left=20] (l3);
+    \draw[edge] (l3) to[bend left=20] (l2);
+    
+    \node[font=\sffamily\small, text=blue!80!black, align=center] at (8.8, 0.8) {Spider traps};
+\end{tikzpicture}
+\end{center}
+
+\vspace{0.5em}
+
+Although a stationary distribution exists, it may be \textbf{non-unique}.  
+Thus, BrokenRank is \textbf{ill-defined} and depends on the \hide{starting distribution}.
+
+\newpage
+
+\paragraph{BrokenRank example}
+
+\begin{center}
+\begin{minipage}{0.35\textwidth}
+    \centering
+    \begin{tikzpicture}[
+        page/.style={draw=blue!80!black, fill=blue!50, text=white, minimum size=0.6cm, font=\sffamily\bfseries, rectangle, rounded corners=1pt},
+        myedge/.style={->, thick, draw=blue!80!black}
+    ]
+        % Component 1
+        \node[page] (1) at (0, 0) {1};
+        \node[page] (2) at (1.2, 0) {2};
+        \node[page] (3) at (0.6, -1) {3};
+        \draw[myedge] (1) to[bend left=15] (2);
+        \draw[myedge] (2) to[bend left=15] (3);
+        \draw[myedge] (3) to[bend left=15] (1);
+        
+        % Component 2
+        \node[page] (4) at (2.5, -0.1) {4};
+        \node[page] (5) at (3.3, -0.8) {5};
+        \draw[myedge] (4) to[bend left=15] (5);
+        \draw[myedge] (5) to[bend left=15] (4);
+    \end{tikzpicture}
+\end{minipage}%
+\begin{minipage}{0.6\textwidth}
+    Here $A = LM^{-1} = 
+    \begin{pmatrix}
+        0 & 0 & 1 & 0 & 0 \\
+        1 & 0 & 0 & 0 & 0 \\
+        0 & 1 & 0 & 0 & 0 \\
+        0 & 0 & 0 & 0 & 1 \\
+        0 & 0 & 0 & 1 & 0
+    \end{pmatrix}$
+ 
+\end{minipage}
+\end{center}
+
+\vspace{0.5cm}
+Here there are two eigenvectors of $A$ with eigenvalue 1:
+
+\[
+p = \begin{pmatrix} 1/3 \\[0.3em] 1/3 \\[0.3em] 1/3 \\[0.3em] 0 \\[0.3em] 0 \end{pmatrix} 
+\qquad \text{and} \qquad 
+p = \begin{pmatrix} 0 \\[0.3em] 0 \\[0.3em] 0 \\[0.3em] 1/2 \\[0.3em] 1/2 \end{pmatrix}
+\]
+
+\vspace{0.2cm}
+\textcolor{red}{These are totally opposite rankings!} \\
+
+If a surfer starts in the first component, pages 1, 2, and 3 receive all the mass; 
+if they start in the second, pages 4 and 5 do. 
+Because of disconnected components, \hide{the notion of importance is ambiguous}.
+
+\newpage
+\section{PageRank as a Markov Chain}
+
+\paragraph{Key idea.}
+Modify the process so the surfer never gets trapped.
+
+\vspace{0.5em}
+Let $E$ be the $n \times n$ all-ones matrix, i.e., $E_{ij} = 1$ for all $i,j$.  
+Define
+\[
+A = \frac{1-d}{n}E + d L M^{-1},
+\]
+where $d \in (0,1)$ is the teleportation parameter (typically $0.85$).
+
+Then
+\[
+P(\text{go from } i \text{ to } j) =
+\begin{cases}
+\frac{1-d}{n} + \frac{d}{m_i} & \text{if } i \to j, \\
+\frac{1-d}{n} & \text{otherwise}.
+\end{cases}
+\]
+
+\vspace{0.5em}
+
+This is a \textbf{random surfer with teleportation}: with probability $d$ follow a link, otherwise jump uniformly.
+
+\vspace{0.5em}
+
+Teleportation ensures the walk can always \hide{escape traps}, making the chain \textbf{strongly connected}.  
+Therefore, the stationary distribution is \textbf{unique}.
+
+\vspace{0.5em}
+
+A \emph{PageRank vector} $\pi$ satisfies
+\[
+\pi = A^T \pi,
+\]
+i.e., it is a \hide{stationary distribution}.
+
+\newpage
+\subsection{Generic Teleportation Update}
+
+\textsc{GenericPageRankUpdate}$(G,v,d)$
+\begin{enumerate}
+    \item $jump \gets (1-d)/|V|$
+    \item $link\_sum \gets \sum_{(u,v)\in E} d \cdot \frac{\pi(u)}{d_{\text{out}}(u)}$
+    \item \textbf{return} $jump + link\_sum$
+\end{enumerate}
+
+\begin{lemma}
+For any teleportation parameter $d \in (0,1)$, the induced Markov chain is \textbf{strongly connected}. Consequently, the stationary distribution (the PageRank vector) $p$ is \textbf{unique}.
+\end{lemma}
+
+\vspace{0.5em}
+
+\paragraph{Why does this matter?}
+This lemma is the key guarantee that PageRank is well-defined and computable.  
+In contrast, BrokenRank failed due to structural issues in the web graph: \emph{disconnected components}, \emph{dangling nodes}, and \emph{spider traps}. Teleportation resolves all of these simultaneously.
+
+\vspace{0.5em}
+
+\begin{itemize}
+    \item \textbf{Disconnected components (strong connectivity).}  
+    Since $d < 1$, the teleportation probability $(1-d)$ is strictly positive.  
+    From any page, there is a nonzero probability of jumping to \emph{any} other page in a single step.  
+    Effectively, teleportation introduces \hide{a complete set of directed edges} between all nodes, making the graph strongly connected.
+
+    \item \textbf{Spider traps and cycles (convergence).}  
+    Without teleportation, probability mass can get trapped or cycle indefinitely.  
+    Teleportation breaks this behavior by allowing the surfer to leave any set of nodes at any time.  
+    In particular, there is always a chance of jumping \hide{back to the current node}, which acts like a self-loop and prevents periodic oscillations.
+\end{itemize}
+
+\newpage
+\subsection{Random Walk Strategies}
+
+\begin{center}
+\renewcommand{\arraystretch}{1.3}
+\begin{tabular}{| l | p{6cm} | p{6cm} |}
+\hline
+\textbf{Strategy} & \textbf{Transition rule} & \textbf{Interpretation} \\
+\hline
+Simple Random Walk 
+& Follow a uniformly random outgoing edge 
+& Moves only along existing links \\
+\hline
+Teleportation Walk 
+& Follow a link with prob.\ $d$, otherwise jump uniformly 
+& Avoids dead ends and traps \\
+\hline
+\end{tabular}
+\end{center}
+
+\vspace{1em}
+
+\begin{center}
+\begin{tikzpicture}[
+    page/.style={circle, draw=black!80, fill=gray!20, minimum size=0.9cm, font=\sffamily\bfseries},
+    myedge/.style={->, thick, draw=black!80},
+    teleport/.style={->, thick, dashed, draw=red!70}
+]
+    % Central Node (explicitly anchored at 0,0 to prevent layout bugs)
+    \node[page, fill=blue!20, draw=blue!80!black] (u) at (0, 0) {$u$};
+    
+    % Standard Link Destinations (to the right)
+    \node[page] (v1) at (3, 1.5) {$v_1$};
+    \node[page] (v2) at (3.5, 0) {$v_2$};
+    \node[page] (v3) at (3, -1.5) {$v_3$};
+    
+    % Random Teleport Destination (spaced safely to the left)
+    \node[page, draw=red!80!black, fill=red!20] (rand) at (-3.5, 0) {any $v$};
+    
+    % Standard links (Solid lines)
+    \draw[myedge] (u) -- node[above left, sloped, font=\footnotesize] {Follow link} (v1);
+    \draw[myedge] (u) -- (v2);
+    \draw[myedge] (u) -- (v3);
+    
+    % Teleportation jumps (Dashed red lines)
+    \draw[teleport] (u) to[bend left=20] node[above, font=\footnotesize] {Teleport jump} (rand);
+    
+    % Self-loop (placed safely at the top so it doesn't overlap)
+    \draw[teleport] (u) to[out=60, in=120, looseness=6] node[above, font=\footnotesize] {Self-loop} (u);
+    
+\end{tikzpicture}
+\end{center}
+
+\newpage
+\section{Computing PageRank}
+
+We compute $\pi$ via repeated multiplication by $A$.
+
+\vspace{0.5em}
+
+\textsc{PageRank-Power-Iteration}$(G)$
+\begin{enumerate}
+    \item Initialize $\pi(u) = 1/|V|$ for all $u \in V$.
+    \item Choose teleportation parameter $d$ (typically $0.85$).
+    \item Iteratively update scores using incoming edges and teleportation.
+    \item Output the values once they stabilize.
+\end{enumerate}
+
+\subsection{Power Iteration Details}
+
+We represent the PageRank vector and related quantities as follows:
+\begin{itemize}
+    \item $\pi \in \mathbb{R}^V$, where $\pi(u)$ is the PageRank score of node $u$.
+    \item $d_{\text{out}}(u)$ denotes the out-degree of node $u$.
+    \item $\pi_{\text{new}}$ is an auxiliary array used for synchronous updates.
+\end{itemize}
+
+\begin{algorithm}
+\caption{\textsc{PageRank-Power-Iteration}$(G,d)$}
+\begin{algorithmic}
+\State Initialize $\pi(u) \gets 1/|V|$ for all $u \in V$
+\Repeat
+    \State $\pi_{\text{new}}(v) \gets (1-d)/|V| \quad \forall v \in V$
+    \For{$(u,v) \in E$}
+        \State $\pi_{\text{new}}(v) \gets \pi_{\text{new}}(v) + d \cdot \frac{\pi(u)}{d_{\text{out}}(u)}$
+    \EndFor
+    \State $\Delta \gets \max_{v \in V} |\pi_{\text{new}}(v) - \pi(v)|$
+    \State $\pi \gets \pi_{\text{new}}$
+\Until{$\Delta \le \epsilon$}
+\State \Return $\pi$
+\end{algorithmic}
+\end{algorithm}
+
+\begin{Qu}
+What is the runtime of one iteration of PageRank?
+\begin{itemize}
+    \aitem $\Theta(\log V)$
+    \bitem $\Theta(\log E)$
+    \citem $\Theta(V + E)$
+    \ditem $\Theta(E \log V)$
+    \eitem $\Theta(V^2)$
+\end{itemize}
+\end{Qu}
+
+\vspace{1em}
+
+
+Given a query:
+\begin{enumerate}
+    \item Retrieve the PageRank vector $\pi$ (precomputed offline).
+    \item Filter documents containing the query terms.
+    \item Sort by $\pi$ and return the top $k$.
+\end{enumerate}
+
+
+
 \end{document}
