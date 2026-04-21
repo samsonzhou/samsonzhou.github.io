@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (MiKTeX 24.4) (preloaded format=pdflatex 2025.1.14)  21 APR 2026 14:34
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (MiKTeX 24.4) (preloaded format=pdflatex 2025.1.14)  21 APR 2026 15:42
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1041,25 +1041,25 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 
 {C:/Users/Samson Zhou/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}{C:/User
 s/Samson Zhou/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-rm.enc}]
-<figures/A.pdf, id=82, 315.37228pt x 230.21338pt>
+<figures/A.pdf, id=79, 315.37228pt x 230.21338pt>
 File: figures/A.pdf Graphic file (type pdf)
 <use figures/A.pdf>
-Package pdftex.def Info: figures/A.pdf  used on input line 64.
+Package pdftex.def Info: figures/A.pdf  used on input line 59.
 (pdftex.def)             Requested size: 22.76164pt x 14.22319pt.
-<figures/B.pdf, id=83, 314.21352pt x 229.77534pt>
+<figures/B.pdf, id=80, 314.21352pt x 229.77534pt>
 File: figures/B.pdf Graphic file (type pdf)
 <use figures/B.pdf>
-Package pdftex.def Info: figures/B.pdf  used on input line 65.
+Package pdftex.def Info: figures/B.pdf  used on input line 60.
 (pdftex.def)             Requested size: 22.7595pt x 14.22418pt.
-<figures/C.pdf, id=84, 314.27463pt x 230.07079pt>
+<figures/C.pdf, id=81, 314.27463pt x 230.07079pt>
 File: figures/C.pdf Graphic file (type pdf)
 <use figures/C.pdf>
-Package pdftex.def Info: figures/C.pdf  used on input line 66.
+Package pdftex.def Info: figures/C.pdf  used on input line 61.
 (pdftex.def)             Requested size: 22.75914pt x 14.22491pt.
-<figures/D.pdf, id=85, 313.57942pt x 227.58772pt>
+<figures/D.pdf, id=82, 313.57942pt x 227.58772pt>
 File: figures/D.pdf Graphic file (type pdf)
 <use figures/D.pdf>
-Package pdftex.def Info: figures/D.pdf  used on input line 67.
+Package pdftex.def Info: figures/D.pdf  used on input line 62.
 (pdftex.def)             Requested size: 22.76143pt x 14.2242pt.
 
 
@@ -1070,25 +1070,25 @@ Package pdftex.def Info: figures/D.pdf  used on input line 67.
 [4]
 
 [5]
+<chaining.png, id=229, 678.3744pt x 370.0224pt>
+File: chaining.png Graphic file (type png)
+<use chaining.png>
+Package pdftex.def Info: chaining.png  used on input line 247.
+(pdftex.def)             Requested size: 373.99472pt x 204.00415pt.
 
-[6]
-Underfull \hbox (badness 10000) in paragraph at lines 247--248
 
- []
+[6 <./chaining.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 253--254
 
-
-Overfull \hbox (30.78186pt too wide) in paragraph at lines 257--258
-[][]\OT1/cmr/bx/n/10.95 Lemma 4.1. []\OT1/cmr/m/it/10.95 The ex-pected chain le
-ngth for any key $\OML/cmm/m/it/10.95 x$ \OT1/cmr/m/it/10.95 is $[]$ 
  []
 
 
 
 [7]
-<query-university.png, id=244, 435.50203pt x 319.56891pt>
+<query-university.png, id=246, 435.50203pt x 319.56891pt>
 File: query-university.png Graphic file (type png)
 <use query-university.png>
-Package pdftex.def Info: query-university.png  used on input line 276.
+Package pdftex.def Info: query-university.png  used on input line 279.
 (pdftex.def)             Requested size: 311.66438pt x 228.69482pt.
 
 
@@ -1097,7 +1097,7 @@ Package pdftex.def Info: query-university.png  used on input line 276.
 [9]
 
 [10]
-Underfull \hbox (badness 10000) in paragraph at lines 471--472
+Underfull \hbox (badness 10000) in paragraph at lines 474--475
 
  []
 
@@ -1108,7 +1108,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 471--472
 [12]
 
 [13]
-Overfull \hbox (66.36191pt too wide) in paragraph at lines 557--570
+Overfull \hbox (66.36191pt too wide) in paragraph at lines 560--573
  [] 
  []
 
@@ -1116,27 +1116,27 @@ Overfull \hbox (66.36191pt too wide) in paragraph at lines 557--570
 
 [14]
 Package hyperref Info: bookmark level for unknown algorithm defaults to 0 on in
-put line 630.
+put line 633.
 File: figures/A.pdf Graphic file (type pdf)
 <use figures/A.pdf>
-Package pdftex.def Info: figures/A.pdf  used on input line 648.
+Package pdftex.def Info: figures/A.pdf  used on input line 651.
 (pdftex.def)             Requested size: 22.76164pt x 14.22319pt.
 File: figures/B.pdf Graphic file (type pdf)
 <use figures/B.pdf>
-Package pdftex.def Info: figures/B.pdf  used on input line 649.
+Package pdftex.def Info: figures/B.pdf  used on input line 652.
 (pdftex.def)             Requested size: 22.7595pt x 14.22418pt.
 File: figures/C.pdf Graphic file (type pdf)
 <use figures/C.pdf>
-Package pdftex.def Info: figures/C.pdf  used on input line 650.
+Package pdftex.def Info: figures/C.pdf  used on input line 653.
 (pdftex.def)             Requested size: 22.75914pt x 14.22491pt.
 File: figures/D.pdf Graphic file (type pdf)
 <use figures/D.pdf>
-Package pdftex.def Info: figures/D.pdf  used on input line 651.
+Package pdftex.def Info: figures/D.pdf  used on input line 654.
 (pdftex.def)             Requested size: 22.76143pt x 14.2242pt.
-<figures/E.pdf, id=289, 314.30771pt x 229.9817pt>
+<figures/E.pdf, id=291, 314.30771pt x 229.9817pt>
 File: figures/E.pdf Graphic file (type pdf)
 <use figures/E.pdf>
-Package pdftex.def Info: figures/E.pdf  used on input line 652.
+Package pdftex.def Info: figures/E.pdf  used on input line 655.
 (pdftex.def)             Requested size: 22.76154pt x 14.22292pt.
 
 
@@ -1153,10 +1153,10 @@ Package rerunfilecheck Info: File `week-14-blank.out' has not changed.
 (rerunfilecheck)             Checksum: DA4F7A3290A84C1D31CE08C9EC28482B;3275.
  ) 
 Here is how much of TeX's memory you used:
- 25907 strings out of 473898
- 480505 string characters out of 5723611
+ 25913 strings out of 473898
+ 480626 string characters out of 5723611
  1939960 words of memory out of 5000000
- 48304 multiletter control sequences out of 15000+600000
+ 48311 multiletter control sequences out of 15000+600000
  572301 words of font info for 72 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  84i,13n,93p,552b,834s stack positions out of 10000i,1000n,20000p,200000b,200000s
@@ -1185,9 +1185,9 @@ ic/amsfonts/cm/cmti10.pfb><C:/Users/Samson Zhou/AppData/Local/Programs/MiKTeX/f
 onts/type1/public/amsfonts/cm/cmtt10.pfb><C:/Users/Samson Zhou/AppData/Local/Pr
 ograms/MiKTeX/fonts/type1/public/lm/lmssbx10.pfb><C:/Users/Samson Zhou/AppData/
 Local/Programs/MiKTeX/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on week-14-blank.pdf (16 pages, 1294082 bytes).
+Output written on week-14-blank.pdf (16 pages, 5745371 bytes).
 PDF statistics:
- 439 PDF objects out of 1000 (max. 8388607)
- 59 named destinations out of 1000 (max. 500000)
- 163 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 441 PDF objects out of 1000 (max. 8388607)
+ 58 named destinations out of 1000 (max. 500000)
+ 168 words of extra memory for PDF output out of 10000 (max. 10000000)
 
