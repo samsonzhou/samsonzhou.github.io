@@ -9,7 +9,7 @@
 
 \begin{document}
 	
-	\week{14: Randomized Algorithms; Hashing; PageRank}{April 20, 2026}
+	\week{14: Randomized Algorithms; Hashing; PageRank}{April 21, 2026}
 	%\lecture{10: Intro to Randomized Algorithms}{March 24}
 	
 	
@@ -48,17 +48,12 @@ but the runtime is a \hide{random variable}.
 \vspace{0.5in}
 
 \textbf{One-sided Error.}
-A Monte Carlo algorithm has one-sided error if it can only fail in one direction (e.g., false positives). \hide{asymmetric failure}
-
-\vspace{0.5in}
-
-\textbf{Probability Amplification.}
-Repeating an algorithm reduces failure probability to \hide{exponentially small} in the number of repetitions, i.e., $\Pr[\text{failure}] \le e^{-\Omega(k)}$.
+A Monte Carlo algorithm has one-sided error if it can only fail in one direction (e.g., false positives), i.e., \hide{asymmetric failure}. 
 
 \newpage
 
 \begin{Qu}
-Suppose a Monte Carlo algorithm has error probability $1/3$. If we run it $k$ independent times and take majority vote, what happens?
+Suppose a Monte Carlo algorithm has error probability $1/3$. If we run it $k$ independent times and take majority vote, what happens to the probability of success?
 
 \begin{itemize}
     \aitem It remains $2/3$
@@ -67,6 +62,11 @@ Suppose a Monte Carlo algorithm has error probability $1/3$. If we run it $k$ in
     \ditem It becomes exactly $1$ after $k = 3$
 \end{itemize}
 \end{Qu}
+
+\vspace{0.5in}
+
+\textbf{Probability Amplification.}
+Repeating an algorithm reduces failure probability to \hide{exponentially small} in the number of repetitions, i.e., $\Pr[\text{failure}] \le e^{-\Omega(k)}$.
 
 \vspace{1em}
 
@@ -114,6 +114,40 @@ h(S) = \left(\sum_{i=0}^{m-1} s_i \cdot b^{m-1-i}\right) \bmod M.
 
 This treats strings as \hide{polynomials modulo $M$}.
 
+\vspace{0.5em}
+
+\textbf{Example 1 (numeric alphabet).}
+Suppose the alphabet is digits $\{0,1,\dots,9\}$, and consider the string $S = 314$ with base $b = 10$:
+\[
+\phantom{h(S) = 3 \cdot 10^2 + 1 \cdot 10^1 + 4 \cdot 10^0 = 314.}
+\]
+If we take modulus $M = 101$, then:
+\[
+\phantom{h(S) = 314 \bmod 101 = 11.}
+\]
+
+\vspace{0.5em}
+
+\textbf{Example 2 (characters).}
+Map characters to integers, e.g., $a=1, b=2, \dots, z=26$.  
+Let $S = \texttt{cab}$, with $b = 31$:
+\[
+\phantom{h(S) = 3 \cdot 31^2 + 1 \cdot 31^1 + 2 \cdot 31^0.}
+\]
+Expanding:
+\[
+\phantom{h(S) = 3 \cdot 961 + 1 \cdot 31 + 2 = 2883 + 31 + 2 = 2916.}
+\]
+If $M = 1000$, then:
+\[
+\phantom{h(S) = 2916 \bmod 1000 = 916.}
+\]
+
+\vspace{0.5em}
+
+\textbf{Interpretation.}
+The hash is simply evaluating a polynomial at $b$, then reducing modulo $M$.  
+Different strings correspond to different polynomials, but distinct polynomials may agree modulo $M$, leading to \hide{collisions}.
 \vspace{0.5in}
 
 \textbf{Rolling update rule.}
@@ -124,7 +158,7 @@ When shifting the window:
     \item add new character.
 \end{itemize}
 
-Thus all substring hashes are computed in total time $\hide{O(n)}$.
+Thus all substring hashes are computed in total time $\hide{O(m)}$.
 
 \vspace{0.5in}
 
@@ -207,6 +241,12 @@ Let $U$ be a universe of keys with $|U| > n \cdot m$.
 Therefore, the worst-case search time is \hide{$\Theta(n)$}.
 \end{proof}
 
+\vspace{2em}
+
+\begin{center}
+\includegraphics[width = .9\linewidth]{chaining.png}
+\end{center}
+
 \newpage
 
 	\section{Universal Hashing and Expected Chain Lengths}
@@ -218,10 +258,7 @@ Therefore, the worst-case search time is \hide{$\Theta(n)$}.
 	\begin{itemize}
 		\item There is a random choice of $h \in \mathcal{H}$ at runtime
 		\item There is a collision $h(x) = h(y)$ with probability $\le 1/m$
-	\end{itemize}
-	\begin{lemma}
-		The expected chain length for any key $x$ is \hide{ bounded by $1 + \alpha$ }
-	\end{lemma}
+	\end{itemize} 
 	
 	\vs{5cm}
 	
@@ -272,9 +309,9 @@ Let $m_j = \sum_{k=1}^n L_{kj}$ denote the out-degree of $j$.
 \vspace{0.5em}
 
 We define a preliminary (but flawed) version of PageRank. The \textbf{BrokenRank} $p_i$ is
-\[
+\[\phantom{
 p_i = \sum_{j \to i} \frac{p_j}{m_j}
-    = \sum_{j=1}^n \frac{L_{ij}}{m_j} \, p_j.
+    = \sum_{j=1}^n \frac{L_{ij}}{m_j} \, p_j.}
 \]
 
 This reflects our intuition: contributions scale with $p_j$ and are diluted by $m_j$.
@@ -284,7 +321,7 @@ This reflects our intuition: contributions scale with $p_j$ and are diluted by $
 A \textbf{Markov chain} is a random process that moves between states $1,\dots,n$, where each step corresponds to a transition.  
 It is described by an $n \times n$ matrix $P$, where
 \[
-P(\text{go from } i \text{ to } j) = P_{ij}.
+\phantom{P_{ij} = P(\text{go from } i \text{ to } j).}
 \]
 
 \vspace{0.5em}
@@ -292,7 +329,7 @@ P(\text{go from } i \text{ to } j) = P_{ij}.
 Let $p^{(0)}$ be an initial probability distribution.  
 After one step,
 \[
-p^{(1)} = P^T p^{(0)}.
+\phantom{p^{(1)} = P^T p^{(0)}.}
 \]
 Each state collects mass from \hide{all others}.
 
@@ -301,11 +338,14 @@ Each state collects mass from \hide{all others}.
 Now consider a Markov chain where the states are webpages and the transition matrix is $A^T$.  
 Since $(A^T)_{ij} = A_{ji} = L_{ji}/m_i$, we have
 \[
+\phantom{
 P(\text{go from } i \text{ to } j) =
 \begin{cases}
 \frac{1}{m_i} & \text{if } i \to j, \\
 0 & \text{otherwise}.
-\end{cases}\]
+\end{cases}
+}
+\]
 
 \vspace{0.5em}
 
@@ -447,7 +487,8 @@ Modify the process so the surfer never gets trapped.
 Let $E$ be the $n \times n$ all-ones matrix, i.e., $E_{ij} = 1$ for all $i,j$.  
 Define
 \[
-A = \frac{1-d}{n}E + d L M^{-1},
+\phantom{
+A = \frac{1-d}{n}E + d L M^{-1},}
 \]
 where $d \in (0,1)$ is the teleportation parameter (typically $0.85$).
 
@@ -551,7 +592,7 @@ Teleportation Walk
     \node[page, draw=red!80!black, fill=red!20] (rand) at (-3.5, 0) {any $v$};
     
     % Standard links (Solid lines)
-    \draw[myedge] (u) -- node[above left, sloped, font=\footnotesize] {Follow link} (v1);
+    \draw[myedge] (u) -- node[pos=0.45, above, sloped,font=\footnotesize] {Follow link} (v1);
     \draw[myedge] (u) -- (v2);
     \draw[myedge] (u) -- (v3);
     
@@ -608,10 +649,10 @@ We represent the PageRank vector and related quantities as follows:
 What is the runtime of one iteration of PageRank?
 \begin{itemize}
     \aitem $\Theta(\log V)$
-    \bitem $\Theta(\log E)$
-    \citem $\Theta(V + E)$
-    \ditem $\Theta(E \log V)$
-    \eitem $\Theta(V^2)$
+    \bitem $\Theta(V + E)$
+    \citem $\Theta(E \log V)$
+    \ditem $\Theta(V^2)$
+		\eitem $\Theta(VE)$
 \end{itemize}
 \end{Qu}
 
