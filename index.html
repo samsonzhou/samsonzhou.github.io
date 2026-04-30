@@ -514,6 +514,72 @@ Publications
 <ol reversed>
 
 
+<li>
+<b>
+Active Learning with Low-Rank Structure for Data Selection
+</b>
+</br><i>
+--vincentcohenaddad--,
+--sasidharkunapuli--,
+--vahabmirrokni--,
+--mahdinikdan--,
+--davidwoodruff--,
+Samson Zhou
+</br></i>
+<a href="https://icml.cc/Conferences/2026">ICML 2026</a>
+[<a href="javascript:toggle('CKMNWZ26')">abstract</a>]
+<!--[<a href="https://arxiv.org/pdf/2506.05495">pdf</a>]-->
+<div id="CKMNWZ26" style="display: none">
+<p id="abs">
+In the data selection problem, the objective is to choose a small, representative subset of data that can be used to efficiently train a machine learning model. 
+Sener and Savarese [ICLR 2018] showed that, given an embedding representation of the data and suitable geometric assumptions, heuristics based on $k$-center clustering 
+can be used to perform data selection. This perspective was further explored by Axiotis et. al. [ICML 2024], who proposed a data selection approach 
+based on $k$-means clustering and sensitivity sampling. However, these methods rely on the assumption that the dataset exhibits intrinsic 
+geometric structure that can be effectively captured by clustering, whereas many modern datasets instead possess global algebraic structure 
+that is better exploited by low-rank approximation or principal component analysis.
+</br></br>
+In this paper, we introduce a new data selection framework based on low-rank approximation and residual-based sampling, 
+formulated through the lens of row subset selection and loss-preserving coreset construction. 
+Given an embedding representation of the data satisfying mild regularity conditions, which can be interpreted as algebraic or angular notions of Lipschitz continuity, 
+we show that it is possible to select a weighted subset of $\tilde{O}\left(k + \frac{1}{\varepsilon^2}\right)$ data points 
+whose average loss approximates the average loss over the full dataset within a $(1+\varepsilon)$ relative error, 
+up to an additive $\varepsilon \Phi_k$ term, where $\Phi_k$ denotes the optimal rank-$k$ approximation cost of the embedding matrix. 
+We complement these theoretical guarantees with empirical evaluations, demonstrating that on a range of real-world datasets, 
+our data selection approach achieves improved performance over prior strategies based on uniform sampling or clustering-based sensitivity sampling. 
+</div>
+</li>
+</br>
+
+
+
+<li>
+<b>
+Online Learning with Recency: Algorithms for Sliding-window Streaming Multi-armed Bandits
+</b>
+</br><i>
+--vladimirbraverman--,
+--chenwang--,
+--liudengwang--,
+Samson Zhou
+</br></i>
+<a href="https://icml.cc/Conferences/2026">ICML 2026</a>
+[<a href="javascript:toggle('BWWZ26')">abstract</a>]
+<!--[<a href="https://arxiv.org/pdf/2506.05495">pdf</a>]-->
+<div id="BWWZ26" style="display: none">
+<p id="abs">
+Motivated by the recency effect in online learning, we study algorithms for single-pass \emph{sliding-window streaming multi-armed bandits (MABs)} in this paper. 
+In this setting, we are given $n$ arms with unknown sub-Gaussian reward distributions and a parameter $W$. The arms arrive in a single-pass stream, and only the most recent 
+$W$ arms are considered valid. The algorithm is required to perform pure exploration and regret minimization with \emph{limited memory}, defined as the number of stored arms. 
+The model is a natural extension of the streaming multi-armed bandits model (without the sliding window) that has been extensively studied in recent years. 
+We provide a comprehensive analysis of both the pure exploration and regret minimization problems with the model.  
+For pure exploration, we prove that finding the best arm is hard with sublinear memory while finding an \emph{approximate} best arm admits an efficient algorithm. 
+For regret minimization, we explore a new notion of regret and give sharp memory-regret trade-offs for any single-pass algorithms. 
+We complement our theoretical results with experiments, demonstrating the trade-offs between sample, regret, and memory.
+</div>
+</li>
+</br>
+
+
 
 <li>
 <b>
@@ -4073,6 +4139,8 @@ var info = new Array(  new Array('--jeremiahblocki--', 'Jeremiah Blocki', 'https
 					 , new Array('--vinodraman--', 'Vinod Raman', 'https://vinodkraman.github.io/')
 					 , new Array('--shalinipanthangi--', 'Shalini Panthangi', 'https://www.linkedin.com/in/shalini-panthangi')
 					 , new Array('--sohamnagawanshi--', 'Soham Nagawanshi', 'https://ndsoham-amber-ten-32.vercel.app/home')					 
+					 , new Array('--sasidharkunapuli--', 'Sasidhar Kunapuli', 'https://dblp.org/pid/391/4882.html')	
+					 , new Array('--mahdinikdan--', 'Mahdi Nikdan', 'https://mnikdan.github.io/')	
 					 
 					 
 					 );
