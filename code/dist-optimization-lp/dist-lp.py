@@ -1,197 +1,177 @@
-"""
-Proof-of-concept for Algorithm 2: Distributed ClarksonCoordinator
-from "On Distributed Separation Oracles and the Communication Cost of Optimization".
-"""
 import numpy as np
-import gurobipy as gp
-from gurobipy import GRB
+from scipy.optimize import linprog
 import math
-import random
+import matplotlib.pyplot as plt
 
-def generate_feasible_lp(d, s, seed=42):
-    """
-    Step 0: Generate a synthetic, random Linear Program distributed across s servers.
-    Each server `i` holds a single linear constraint (a half-space) C_i: A_i * x <= b_i.
+def generate_data(s, n_i, d):
+    """Generates Chebyshev (l_inf) robust regression data."""
+    D = d + 1
+    c = np.zeros(D)
+    c[-1] = 1.0 # Minimize maximum error t
     
-    Args:
-        d (int): Dimension of the problem space.
-        s (int): Total number of distributed servers (constraints).
-        seed (int): Random seed for reproducibility.
+    servers_A, servers_b = [], []
+    w_true = np.random.randn(d)
+    
+    for _ in range(s):
+        X = np.random.randn(n_i, d)
+        y = X @ w_true + 0.1 * np.random.randn(n_i)
         
-    Returns:
-        phi (np.ndarray): The linear objective vector to minimize.
-        A (np.ndarray): The constraint normals (s x d matrix).
-        b (np.ndarray): The constraint offsets (vector of size s).
-    """
-    np.random.seed(seed)
-    random.seed(seed)
-    
-    # Generate a random objective vector phi
-    phi = np.random.uniform(-1, 1, size=d)
-    
-    # Generate random constraint directions (the hyperplanes)
-    A = np.random.uniform(-1, 1, size=(s, d))
-    
-    # We guarantee x=0 is strictly feasible by setting b > 0.
-    # This ensures the intersection of all C_i is not empty.
-    b = np.random.uniform(0.1, 1.0, size=s)
-    
-    return phi, A, b
-
-
-def find_opt(d, phi, A, b, active_indices):
-    """
-    Subroutine: FindOPT(T U R, phi)
-    This simulates the coordinator solving the subproblem defined ONLY by the 
-    constraints that have been sampled (R) or accumulated as previous violations (T).
-    
-    Args:
-        d (int): Dimension.
-        phi (np.ndarray): Objective vector.
-        A, b: Global constraints (only accessed via active_indices).
-        active_indices (list/set): The indices in T U R.
+        # Chebyshev constraints: Xw - t <= y, -Xw - t <= -y
+        A1 = np.hstack([X, -np.ones((n_i, 1))])
+        A2 = np.hstack([-X, -np.ones((n_i, 1))])
         
-    Returns:
-        x_star (np.ndarray): The optimal point for this subproblem.
-        obj_val (float): The objective value at x_star.
-    """
-    # Initialize Gurobi environment (suppressing terminal output for clean logs)
-    env = gp.Env(empty=True)
-    env.setParam('OutputFlag', 0)
-    env.start()
-    
-    m = gp.Model("FindOPT", env=env)
-    m.setParam('Method', 1) # Use Dual Simplex to ensure we find a basic feasible solution
-    
-    # Theorem 3.5 in the paper mentions a global convex constraint G known to all servers.
-    # We enforce a bounding box [-10, 10]^d here as G to ensure intermediate 
-    # FindOPT queries don't become unbounded before enough constraints are sampled.
-    x = m.addMVar(d, lb=-10.0, ub=10.0, name="x")
-    m.setObjective(phi @ x, GRB.MINIMIZE)
-    
-    # Add ONLY the active constraints (T U R) to the model. 
-    # The coordinator never sees the full massive set of s constraints!
-    if len(active_indices) > 0:
-        indices = list(active_indices)
-        m.addConstr(A[indices] @ x <= b[indices])
+        servers_A.append(np.vstack([A1, A2]))
+        servers_b.append(np.concatenate([y, -y]))
         
-    m.optimize()
-    
-    if m.status == GRB.OPTIMAL:
-        return x.X, m.ObjVal
-    return None, None
+    return servers_A, servers_b, D, c
 
-
-def check_violations(A, b, x_star, tol=1e-6):
-    """
-    Simulate the broadcast step: The coordinator broadcasts x_star to all s servers.
-    Each server checks locally if x_star violates its constraint.
+def simulate_vww20(servers_A, servers_b, D, c):
+    """Simulates VWW20 (Standard Distributed Clarkson) baseline."""
+    flat_A = np.vstack(servers_A)
+    flat_b = np.concatenate(servers_b)
+    N = len(flat_b)
+    weights = np.ones(N)
     
-    Args:
-        A, b: Constraint data.
-        x_star: The candidate optimum from the current round.
-        tol: Floating point tolerance.
-        
-    Returns:
-        V (set): The set of server indices where x_star is NOT feasible (x_* \notin C_i).
-    """
-    # Calculate how much x_star violates each constraint: (A * x_star) - b
-    violations = A @ x_star - b
-    
-    # Find all indices where the violation is strictly positive (greater than tolerance)
-    V = set(np.where(violations > tol)[0])
-    return V
-
-
-def centralized_opt(d, phi, A, b):
-    """
-    Verification Subroutine.
-    Solves the full problem centrally using all s constraints at once. 
-    This is just to prove that Algorithm 2 actually found the true global optimum.
-    """
-    x_star, obj_val = find_opt(d, phi, A, b, range(len(b)))
-    return x_star, obj_val
-
-
-def run_distributed_clarkson(d, s):
-    """
-    Main implementation of Algorithm 2: Distributed ClarksonCoordinator.
-    """
-    # 1. Setup the distributed problem
-    phi, A, b = generate_feasible_lp(d, s)
-    
-    # 2. Initialize tracking variables
-    T = set() # T: Tracks constraints that were violated in "successful" rounds
-    
-    # Sample size per round based on Lemma 6.2: |R| = ceil(d * sqrt(s))
-    sample_size = int(math.ceil(d * math.sqrt(s)))
-    
-    # Threshold for a "successful" round: |V| <= 2 * sqrt(s)
-    max_violations = 2 * math.sqrt(s)
-    
-    print("=" * 70)
-    print(" Distributed Clarkson Coordinator (Algorithm 2)")
-    print("=" * 70)
-    print(f"Dimension (d)                : {d}")
-    print(f"Total Servers (s)            : {s}")
-    print(f"Subproblem Sample Size |R|   : {sample_size} constraints")
-    print(f"Violation Threshold 2*sqrt(s): {max_violations:.2f}")
-    print("-" * 70)
-    
-    iteration = 0
-    successful_iterations = 0
+    global_pings = 0
+    A_box = np.vstack([np.eye(D), -np.eye(D)])
+    b_box = 1000 * np.ones(2 * D)
     
     while True:
-        iteration += 1
+        global_pings += 1
+        W = np.sum(weights)
         
-        # Algorithm 2, Step 1: Sample R uniformly at random from server indices
-        R = set(random.sample(range(s), min(sample_size, s)))
+        sample_size = min(N, 9 * D**2)
+        idx = np.random.choice(N, sample_size, p=weights/W, replace=True)
         
-        # Algorithm 2, Step 2: Coordinator computes x_* over T U R
-        active_indices = T.union(R)
-        x_star, obj_val = find_opt(d, phi, A, b, active_indices)
+        A_sub = np.vstack([flat_A[idx], A_box])
+        b_sub = np.concatenate([flat_b[idx], b_box])
         
-        if x_star is None:
-            print("Subproblem is unbounded/infeasible.")
-            break
+        res = linprog(c, A_ub=A_sub, b_ub=b_sub, bounds=(None, None), method='highs')
+        if not res.success: return global_pings
             
-        # Algorithm 2, Step 3: Servers verify x_star locally and report violations (V)
-        V = check_violations(A, b, x_star)
+        x_star = res.x
+        violations = (flat_A @ x_star - flat_b > 1e-6)
+        violating_indices = np.where(violations)[0]
         
-        print(f"Iter {iteration:>2}: |T U R|={len(active_indices):>4} constraints used -> Violations |V|={len(V):>4}")
+        if len(violating_indices) == 0:
+            return global_pings
+            
+        W_V = np.sum(weights[violating_indices])
+        if W_V <= (2 / (9*D + 1)) * W:
+            weights[violating_indices] *= 2
         
-        # Algorithm 2, Step 4: If V is empty, x_star is feasible globally! We are done.
-        if len(V) == 0:
-            print("-" * 70)
-            print(f" => Algorithm converged to global optimum in {iteration} total iterations!")
-            print(f" => Successful iterations (|V| <= threshold): {successful_iterations}")
-            print(f" => Theorem 6.3 Guarantee: expected successful iterations is O(d).")
-            print("-" * 70)
+        if global_pings > 150: break # Failsafe
             
-            # Verify correctness against a standard centralized solve
-            _, true_obj = centralized_opt(d, phi, A, b)
-            print(f" Distributed Objective : {obj_val:.6f}")
-            print(f" Centralized Objective : {true_obj:.6f}")
-            print(f" Optima Match          : {abs(obj_val - true_obj) < 1e-5}")
-            print("=" * 70)
-            break
-            
-        # Algorithm 2, Step 5: Check if the round was "successful"
-        # If the number of violations is small enough, add them to T.
-        if len(V) <= max_violations:
-            T = T.union(V)
-            successful_iterations += 1
-            print(f"          -> SUCCESS. Added {len(V)} constraints to T.")
-        else:
-            # If V is too large, the round is discarded (Markov's inequality bounds the probability of this).
-            print(f"          -> FAIL. |V| exceeded threshold. Discarding and resampling...")
+    return global_pings
 
+def check_violation(A, b, x, tol=1e-6):
+    return np.any(A @ x - b > tol)
+
+def simulate_hybrid_clarkson(servers_A, servers_b, D, c):
+    """Simulates the proposed HybridClarkson method (Algorithms 8 & 9)."""
+    s = len(servers_A)
+    T_indices = set()
+    global_pings = 0
+    
+    A_box = np.vstack([np.eye(D), -np.eye(D)])
+    b_box = 1000 * np.ones(2 * D)
+    
+    for _ in range(50): # Failsafe outer loop
+        sample_size = min(s, math.ceil(D * math.sqrt(s)))
+        avail = list(set(range(s)) - T_indices)
+        take = min(len(avail), sample_size)
+        if take > 0:
+            R_indices = set(np.random.choice(avail, take, replace=False))
+        else:
+            R_indices = set()
+            
+        S_prime = list(R_indices.union(T_indices))
+        if len(S_prime) == 0: S_prime = list(range(s))
+        
+        w = np.ones(len(S_prime))
+        
+        for _ in range(100): # Inner WeightedClarkson
+            W = np.sum(w)
+            B_size = min(len(S_prime), 6 * D**2)
+            B_indices = np.random.choice(len(S_prime), B_size, p=w/W, replace=True)
+            B_servers = [S_prime[i] for i in B_indices]
+            
+            A_sub = np.vstack([servers_A[i] for i in B_servers] + [A_box])
+            b_sub = np.concatenate([servers_b[i] for i in B_servers] + [b_box])
+            
+            res = linprog(c, A_ub=A_sub, b_ub=b_sub, bounds=(None, None), method='highs')
+            if not res.success: break
+            
+            V_inner, W_V = [], 0
+            for idx, s_idx in enumerate(S_prime):
+                if check_violation(servers_A[s_idx], servers_b[s_idx], res.x):
+                    V_inner.append(idx)
+                    W_V += w[idx]
+                    
+            if len(V_inner) == 0: break
+            if W_V <= W / (3 * D):
+                for idx in V_inner: w[idx] *= 2
+        
+        global_pings += 1 # Global DSO Check
+        
+        V_global = set()
+        for i in range(s):
+            if check_violation(servers_A[i], servers_b[i], res.x):
+                V_global.add(i)
+                
+        if len(V_global) == 0:
+            return global_pings
+            
+        if len(V_global) <= 2 * D * math.sqrt(s):
+            T_indices = T_indices.union(V_global)
+            
+    return global_pings
 
 if __name__ == "__main__":
-    # Test case scaled for the free Gurobi Size-Limited License.
-    # The Gurobi free license allows a maximum of 2,000 variables/constraints.
-    # 
-    # With s = 1500 and d = 10:
-    # - The centralized verification step will load exactly 1500 constraints (Under 2000 -> PASS).
-    # - The distributed rounds will sample |R| = ceil(10 * sqrt(1500)) = 388 constraints.
-    run_distributed_clarkson(d=10, s=1500)
+    print("Running Experiment A: Varying Local Dataset Size (n_i)...")
+    s_fixed, d_fixed = 50, 3
+    n_list = [10, 50, 100, 200, 500]
+    
+    ours_pings_A, vww_pings_A = [], []
+    np.random.seed(42)
+    for n in n_list:
+        A, b, D, c = generate_data(s_fixed, n, d_fixed)
+        p_o = np.mean([simulate_hybrid_clarkson(A, b, D, c) for _ in range(3)])
+        p_v = np.mean([simulate_vww20(A, b, D, c) for _ in range(3)])
+        ours_pings_A.append(p_o); vww_pings_A.append(p_v)
+        print(f"  n={n} | Ours: {p_o:.1f} | VWW20: {p_v:.1f}")
+        
+    print("\nRunning Experiment B: Varying Number of Servers (s)...")
+    n_fixed = 50
+    s_list = [20, 50, 100, 200, 300]
+    
+    ours_pings_B, vww_pings_B = [], []
+    for s_val in s_list:
+        A, b, D, c = generate_data(s_val, n_fixed, d_fixed)
+        p_o = np.mean([simulate_hybrid_clarkson(A, b, D, c) for _ in range(3)])
+        p_v = np.mean([simulate_vww20(A, b, D, c) for _ in range(3)])
+        ours_pings_B.append(p_o); vww_pings_B.append(p_v)
+        print(f"  s={s_val} | Ours: {p_o:.1f} | VWW20: {p_v:.1f}")
+        
+    # --- Plotting ---
+    plt.rcParams.update({'font.size': 12})
+    fig, axes = plt.subplots(1, 2, figsize=(11, 4.5))
+    
+    axes[0].plot(n_list, ours_pings_A, marker='o', linewidth=2, label='Our Algorithm', color='#348ABD')
+    axes[0].plot(n_list, vww_pings_A, marker='s', linewidth=2, label='Baseline (VWW20)', color='#E24A33')
+    axes[0].set_xscale('log')
+    axes[0].set_xlabel('Local Constraints per Server ($n_i$)')
+    axes[0].set_ylabel('Global Synchronization Rounds')
+    axes[0].legend(); axes[0].grid(True, alpha=0.3)
+    axes[0].set_title('Exp A: Decoupling $n$ from Sync Rounds')
+
+    axes[1].plot(s_list, ours_pings_B, marker='o', linewidth=2, label='Our Algorithm', color='#348ABD')
+    axes[1].plot(s_list, vww_pings_B, marker='s', linewidth=2, label='Baseline (VWW20)', color='#E24A33')
+    axes[1].set_xlabel('Number of Distributed Servers ($s$)')
+    axes[1].set_ylabel('Global Synchronization Rounds')
+    axes[1].legend(); axes[1].grid(True, alpha=0.3)
+    axes[1].set_title('Exp B: Scaling with Network Size')
+
+    plt.tight_layout()
+    plt.savefig('neurips_experiments.pdf', bbox_inches='tight')
+    print("\nSuccess! Plots saved to 'neurips_experiments.pdf'.")
