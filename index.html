@@ -517,6 +517,40 @@ Publications
 
 <li>
 <b>
+High Probability Streaming Lower Bounds for F<sub>2</sub> Estimation
+</b>
+</br><i>
+--williamswartworth--,
+--davidwoodruff--,
+Samson Zhou
+</br></i>
+<a href="https://randomconference.com/random-2026-home/">RANDOM 2026</a>
+[<a href="javascript:toggle('SWZ26')">abstract</a>]
+<!--[<a href="https://arxiv.org/pdf/2606.16045">pdf</a>]-->
+<div id="SWZ26" style="display: none">
+<p id="abs">
+Estimating the second frequency moment ($F_2$) of an underlying frequency vector is a fundamental problem in the streaming model. 
+While recent work by Braverman and Zamir [STOC 2025] resolved the space complexity for constant failure probability in the insertion-only model, 
+the optimal dependence on the failure parameter $\delta$ remained open.
+</br></br>
+We close this gap by proving a tight high-probability lower bound of 
+$\Omega\left(\frac{1}{\varepsilon^2}\log\frac{1}{\delta}\,\log\frac{\varepsilon\sqrt{n}}{\log(1/\delta)}\right)$
+for $(1\pm\varepsilon)$-approximate $F_2$ estimation. The key challenge is the failure of prior multi-scale direct sum 
+arguments under noise sensitivity. We introduce a noise-robust communication primitive, \textit{Exam Mostly Set Disjointness}, 
+and prove an $\Omega\left(\frac{m}{t}\log\frac{1}{\delta}\right)$ one-way lower bound. Embedding this into a multi-scale reduction yields the correct $\log(1/\delta)$ dependence.
+</br></br>
+We also give two complementary algorithms under natural structure assumptions. For streams with frequency bound $B$, 
+we design a subsampling method using continuous $F_0$ tracking that replaces a $\log n$ factor with $\log B$. 
+For $k$-sparse streams, we develop a two-stage sketch using approximate Morris counters, replacing $\log n$ with $\log k$ and 
+achieving a further $\log\log m$ dependence on stream length.
+</div>
+</li>
+</br>
+
+
+
+<li>
+<b>
 Active Learning with Low-Rank Structure for Data Selection
 </b>
 </br><i>
