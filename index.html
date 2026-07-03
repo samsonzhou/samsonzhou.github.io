@@ -514,6 +514,45 @@ Publications
 
 <ol reversed>
 
+<li>
+<b>
+Adversarial Robustness for Small Frequency Moments and a Weak Equivalence Theorem for Turnstile Streams
+</b>
+</br><i>
+--elenagribelyuk--,
+--honghaolin--,
+--davidwoodruff--,
+--huachengyu--,
+Samson Zhou
+</br></i>
+<a href="https://focs.computer.org/2026/">FOCS 2026</a>
+[<a href="javascript:toggle('GLWYZ26b')">abstract</a>]
+<!--[<a href="https://arxiv.org/pdf/2606.16045">pdf</a>]-->
+<div id="GLWYZ26b" style="display: none">
+<p id="abs">
+We study adversarially robust algorithms for insertion-deletion (turnstile) streams, where future updates may depend on past algorithm outputs. 
+While recent work achieved a robust $(1+\varepsilon)$-approximation for the second moment $F_2$ in polylogarithmic space, achieving high accuracy 
+for other frequency moments remained a major open question; for $p \in [0, 2)$, including the fundamental distinct elements problem ($F_0$), 
+only constant-factor approximations were known in sublinear space. We close this gap, showing that $(1+\varepsilon)$-approximate robustness 
+can be achieved in polylogarithmic space for all $p \in [0, 2]$. Our approach generalizes the estimator-corrector-learner framework to 
+non-Hilbert spaces by dynamically maintaining implicit isometric embeddings into $L_2$ and performing regularized kernel ridge regression 
+over adaptively discovered hard queries, yielding the first insertion-deletion algorithms that approximate: (1) the $p$-th frequency moment 
+$F_p$ up to a $(1+\varepsilon)$-factor in $\text{poly}(1/\varepsilon, \log n)$ space for all $p \in [0, 2]$, including the support size $F_0$, 
+(2) metric and information-theoretic quantities, including the Earth Mover Distance (EMD) and $k$-median clustering cost over $[\Delta]^d$ 
+up to an $\mathcal{O}(d \log \Delta)$-factor, and the Shannon entropy up to an $\varepsilon$-additive error, and (3) non-normed symmetric losses 
+defined by Bernstein functions up to a $(1+\varepsilon)$-factor. For the $F_p$ moments, our algorithm is optimal up to 
+$\text{poly}(1/\varepsilon, \log n)$ factors. Furthermore, we establish a weak equivalence between classical oblivious sketching and 
+adversarial robustness. We prove that for any sub-multiplicative norm, the existence of an efficient classical linear sketch is equivalent 
+to the existence of an efficient adversarially robust turnstile algorithm, up to polynomial factors, formalizing $L_1$ embeddability as the 
+fundamental mechanism governing both models.
+</div>
+</li>
+</br>
+
+
+
+
+
 
 <li>
 <b>
