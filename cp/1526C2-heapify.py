@@ -18,3 +18,6 @@ for x in arr:
         total -= removed
 
 print(len(heap))
+
+heapq.heapify(x) #min-heap
+heapq.heapify_max(x) #max-heap

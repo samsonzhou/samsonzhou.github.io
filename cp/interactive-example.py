@@ -1,6 +1,5 @@
 import sys
 #from collections import defaultdict, deque, Counter
-#import heapq
 import math
 
 # Overwrite standard input for fast I/O
@@ -30,9 +29,36 @@ def solve():
 if __name__ == '__main__':
     # Most Codeforces problems have multiple test cases.
     # If a problem only has one test case, remove the loop and just call solve() once.
-    t = int(input())
-    for _ in range(t):
-        solve()
+    n = int(input())
+    if n==1:
+        print("! 1", flush=True)
+        sys.exit(0)
+    else:
+        i=1
+        j=2
+        cnt=0
+        while(i<=n and j<=n):
+            print("? "+str(i)+" "+str(j), flush=True)
+            r = input().strip()
+            if r=="Yes":
+                if j<n:
+                    j+=1
+                elif j==n and j-i>1:
+                    cnt+=(n-i)
+                    i+=1
+                else:
+                    cnt+=1
+                    i+=1
+                    j+=1
+            else:
+                if j-i==1:
+                    i+=1
+                    j+=1
+                else:
+                    cnt+=(j-i-1)
+                    i+=1
+        print("! "+str(cnt), flush=True)
+        sys.exit(0)
 
 #Booth's algorithm
 #Finds first lexicographically ordered cyclic shift of a string s

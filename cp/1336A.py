@@ -1,6 +1,5 @@
 import sys
-#from collections import defaultdict, deque, Counter
-#import heapq
+from collections import defaultdict, deque, Counter
 import math
 
 # Overwrite standard input for fast I/O
@@ -30,9 +29,49 @@ def solve():
 if __name__ == '__main__':
     # Most Codeforces problems have multiple test cases.
     # If a problem only has one test case, remove the loop and just call solve() once.
-    t = int(input())
-    for _ in range(t):
-        solve()
+    n, k = map(int, input().split())
+    adj=[[] for _ in range(n)]
+    for i in range(n-1):
+        u,v = map(int, input().split())
+        adj[u-1].append(v-1)
+        adj[v-1].append(u-1)
+    order=[]
+    q=[]
+    q.append(0)
+    parent=[-1]*n
+    while q:
+        v=q.pop()
+        order.append(v)
+        for u in adj[v]:
+            if parent[v]!=u:
+                q.append(u)
+                parent[u]=v
+    order.reverse()
+    subcnt=[-1]*n
+    for v in order:
+        cnt=0
+        for u in adj[v]:
+            if parent[v]!=u:
+                cnt+=subcnt[u]
+        subcnt[v]=cnt+1
+    q=deque()
+    height=[-1]*n
+    height[0]=1
+    q.append(0)
+    while q:
+        v=q.popleft()
+        for u in adj[v]:
+            if parent[v]!=u:
+                q.append(u)
+                height[u]=height[v]+1
+    eff=[-1]*n
+    for i in range(n):
+        eff[i]=(height[i]-subcnt[i],i)
+    eff.sort(reverse=True)
+    tot=0
+    for i in range(k):
+        tot+=((height[eff[i][1]]-1)-(subcnt[eff[i][1]]-1))
+    print(tot)
 
 #Booth's algorithm
 #Finds first lexicographically ordered cyclic shift of a string s
@@ -77,7 +116,7 @@ def all_divs_up_to(n):
     return ls
 
 #from tryingoutcp
-def dfs_iterative(graph, root, parent, sz):
+#def dfs_iterative(graph, root, parent, sz):
     n = len(graph)
  
     visited = [0] * n

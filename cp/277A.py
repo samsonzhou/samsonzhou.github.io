@@ -1,6 +1,5 @@
 import sys
 #from collections import defaultdict, deque, Counter
-#import heapq
 import math
 
 # Overwrite standard input for fast I/O
@@ -17,7 +16,7 @@ def solve():
     # n = int(input())
     
     # 2. Read multiple integers on a single line
-    # n, m = map(int, input().split())
+    
     
     # 3. Read a list of integers
     # a = list(map(int, input().split()))
@@ -30,9 +29,52 @@ def solve():
 if __name__ == '__main__':
     # Most Codeforces problems have multiple test cases.
     # If a problem only has one test case, remove the loop and just call solve() once.
-    t = int(input())
-    for _ in range(t):
-        solve()
+    n, m = map(int, input().split())
+
+    L=[[i] for i in range(m+1)]
+    p=[-1 for i in range(m+1)]
+    
+    def dsuget(a):
+        return p[a]
+    
+    def dsuunion(a,b):
+        if p[a]==p[b]:
+            return
+        if len(L[p[a]])>len(L[p[b]]):
+            c=p[b]
+            L[p[a]].extend(L[p[b]])
+            for u in L[c]:
+                p[u]=p[a]
+            L[c].clear()
+        else:
+            c=p[a]
+            L[p[b]].extend(L[p[a]])
+            for u in L[c]:
+                p[u]=p[b]
+            
+            L[c].clear()
+    z=0
+    for i in range(n):
+        a = list(map(int, input().split()))
+        if len(a)==1:
+            z+=1
+        else:
+            a=a[1:]
+            for j in range(len(a)):
+                if p[a[j]]==-1:
+                    p[a[j]]=a[j]
+            if len(a)==0:
+                continue
+            else:
+                for j in range(len(a)-1):
+                    dsuunion(a[j],a[j+1])
+
+    cnt=0
+    for i in range(m+1):
+        if len(L[i])!=0:
+            if len(L[i])!=1 or p[L[i][0]]!=-1:
+                cnt+=1
+    print(max(0,cnt-1)+z)
 
 #Booth's algorithm
 #Finds first lexicographically ordered cyclic shift of a string s

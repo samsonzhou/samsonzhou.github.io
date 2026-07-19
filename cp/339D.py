@@ -1,6 +1,5 @@
 import sys
 #from collections import defaultdict, deque, Counter
-#import heapq
 import math
 
 # Overwrite standard input for fast I/O
@@ -9,31 +8,48 @@ input = sys.stdin.readline
 # Increase recursion depth for deep trees/graphs (Codeforces default is often too low)
 #sys.setrecursionlimit(200000)
 
-def solve():
-    """
-    Main logic for a single test case.
-    """
-    # 1. Read a single integer
-    # n = int(input())
-    
-    # 2. Read multiple integers on a single line
-    # n, m = map(int, input().split())
-    
-    # 3. Read a list of integers
-    # a = list(map(int, input().split()))
-    
-    # 4. Read a string (strip to remove the trailing newline character '\n')
-    # s = input().strip()
-    
-    pass
-
 if __name__ == '__main__':
     # Most Codeforces problems have multiple test cases.
     # If a problem only has one test case, remove the loop and just call solve() once.
-    t = int(input())
-    for _ in range(t):
-        solve()
-
+    n, m = map(int, input().split())
+    a = list(map(int, input().split()))
+    N=2**n
+    tree=[0]*(2*N)
+    for i in range(N):
+        tree[i]=a[i]
+    newd=N
+    oldd=0
+    p=1
+    b=0
+    for i in range(n):
+        for j in range(N//(2**p)):
+            if b==0:
+                tree[newd+j]=tree[oldd+2*j]|tree[oldd+2*j+1]
+            else:
+                tree[newd+j]=tree[oldd+2*j]^tree[oldd+2*j+1]
+        oldd=newd
+        newd=newd+N//(2**p)
+        p+=1
+        b=1-b
+        
+    for i in range(m):
+        q, x = map(int, input().split())
+        q-=1
+        tree[q]=x
+        b=0
+        newd=N
+        oldd=0
+        for j in range(n):
+            if b==0:
+                tree[newd+q//2]=tree[oldd+q]|tree[1^(oldd+q)]
+            else:
+                tree[newd+q//2]=tree[oldd+q]^tree[1^(oldd+q)]
+            b=1-b
+            oldd=newd
+            newd=newd+N//2**(j+1)
+            q//=2
+        print(tree[-2])
+    
 #Booth's algorithm
 #Finds first lexicographically ordered cyclic shift of a string s
 #Essentially iterate over ss (s repeated twice) and KMP-style search

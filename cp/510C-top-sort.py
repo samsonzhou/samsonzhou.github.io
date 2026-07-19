@@ -1,6 +1,5 @@
 import sys
 #from collections import defaultdict, deque, Counter
-#import heapq
 import math
 
 # Overwrite standard input for fast I/O
@@ -14,7 +13,10 @@ def solve():
     Main logic for a single test case.
     """
     # 1. Read a single integer
-    # n = int(input())
+
+                
+                        
+                
     
     # 2. Read multiple integers on a single line
     # n, m = map(int, input().split())
@@ -30,9 +32,60 @@ def solve():
 if __name__ == '__main__':
     # Most Codeforces problems have multiple test cases.
     # If a problem only has one test case, remove the loop and just call solve() once.
-    t = int(input())
-    for _ in range(t):
-        solve()
+    n = int(input())
+
+    adj=[[] for _ in range(26)]
+    old=input().strip()
+    flag=False
+    for i in range(n-1):
+        new=input().strip()
+        j=0
+        while j<len(old) and j<len(new) and old[j]==new[j]:
+            j+=1
+        if j>=len(old) and j<len(new):
+            continue
+        elif j<len(old) and j>=len(new):
+            flag=True
+        else:
+            x=ord(old[j])-97
+            y=ord(new[j])-97
+            if x not in adj[y]:
+                adj[y].append(x)
+            #if ord(new[j])-97 not in adj[ord(old[j])-97]:
+            #    adj[ord(old[j])-97].append(ord(new[j])-97)
+        old=new
+    explored=[0]*26 # 0=unvisited, 1=in-progress, 2=finished
+    order=[]
+
+    def explore(v):
+        global flag
+        if explored[v]==2:
+            pass
+        else:
+            explored[v]=1
+            if len(adj[v])==0:
+                order.append(v)
+            else:
+                for u in adj[v]:
+                    if explored[u]==1:
+                        flag=True
+                    else:
+                        explore(u)
+                order.append(v)
+            explored[v]=2
+    
+    for i in range(26):
+        if explored[i]==2:
+            i+=1
+        else:
+            explore(i)
+    out=[]
+    if flag:
+        print("Impossible")
+    else:
+        for i in order:
+            out.append(chr(97+i))
+        print(*out,sep="")
 
 #Booth's algorithm
 #Finds first lexicographically ordered cyclic shift of a string s

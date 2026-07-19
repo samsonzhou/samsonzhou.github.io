@@ -1,6 +1,5 @@
 import sys
 #from collections import defaultdict, deque, Counter
-#import heapq
 import math
 
 # Overwrite standard input for fast I/O
@@ -14,7 +13,45 @@ def solve():
     Main logic for a single test case.
     """
     # 1. Read a single integer
-    # n = int(input())
+    n = int(input())
+
+    ints=[]
+    for i in range(n):
+        ai,bi= map(int, input().split())
+        ints.append((ai,bi))
+    ints.sort()
+
+    def cnt_invs(arr):
+        if len(arr)==1:
+            return 0
+        else:
+            L=len(arr)
+            larr=arr[:L//2]
+            rarr=arr[L//2:]
+            lfin = [larr[i][1] for i in range(len(larr))]
+            rfin = [rarr[i][1] for i in range(len(rarr))]
+            lfin.sort()
+            rfin.sort()
+            cnt=0
+            i=0
+            j=0
+            while i < len(lfin) and j<len(rfin):
+                if lfin[i]<rfin[j]:
+                    cnt+=j
+                    i+=1
+                else:
+                    while j<len(rfin) and lfin[i]>=rfin[j]:
+                        j+=1
+                    if j<len(rfin) and lfin[i]<rfin[j]:
+                        cnt+=j
+                        i+=1
+            if i<len(lfin) and j==len(rfin):
+                thiscnt=(len(lfin)-i)*len(rfin)
+                cnt+=thiscnt
+            return cnt_invs(larr)+cnt_invs(rarr)+cnt
+
+    out=cnt_invs(ints)
+    print(out)    
     
     # 2. Read multiple integers on a single line
     # n, m = map(int, input().split())

@@ -1,6 +1,5 @@
 import sys
 #from collections import defaultdict, deque, Counter
-#import heapq
 import math
 
 # Overwrite standard input for fast I/O
@@ -17,7 +16,13 @@ def solve():
     # n = int(input())
     
     # 2. Read multiple integers on a single line
-    # n, m = map(int, input().split())
+    l,r = map(int, input().split())
+    cnt=0
+    i=0
+    while 10**i<=r:
+        cnt+=(r//10**i-l//10**i)
+        i+=1
+    print(cnt)
     
     # 3. Read a list of integers
     # a = list(map(int, input().split()))
