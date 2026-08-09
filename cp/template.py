@@ -99,3 +99,12 @@ def dfs_iterative(graph, root, parent, sz):
         for neighbor in graph[node]:
             if neighbor != parent[node]:
                 sz[node] += sz[neighbor]
+
+def factorial(n, MOD):
+    factorial = [1]
+    for i in range(1,n):
+        factorial.append(factorial[-1] * i % MOD)
+    
+def choose(n, k, MOD):
+    denom = factorial[k] * factorial[n-k] % MOD
+    return factorial[n] * pow(denom, -1, MOD) % MOD
