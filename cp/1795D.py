@@ -13,26 +13,50 @@ def solve():
     """
     Main logic for a single test case.
     """
-    # 1. Read a single integer
-    # n = int(input())
-    
-    # 2. Read multiple integers on a single line
-    # n, m = map(int, input().split())
-    
-    # 3. Read a list of integers
-    # a = list(map(int, input().split()))
-    
-    # 4. Read a string (strip to remove the trailing newline character '\n')
-    # s = input().strip()
+
     
     pass
 
 if __name__ == '__main__':
     # Most Codeforces problems have multiple test cases.
     # If a problem only has one test case, remove the loop and just call solve() once.
-    t = int(input())
-    for _ in range(t):
-        solve()
+    # 1. Read a single integer
+    n = int(input())
+    
+    # 2. Read multiple integers on a single line
+    # n, m = map(int, input().split())
+    
+    # 3. Read a list of integers
+    w = list(map(int, input().split()))
+    threesame=0
+    twosame=0
+    for i in range(n//3):
+        x=w[3*i]
+        y=w[3*i+1]
+        z=w[3*i+2]
+        if x==y and y==z:
+            threesame+=1
+        else:
+            if x==y and y<z:
+                twosame+=1
+            elif x==z and x<y:
+                twosame+=1
+            elif y==z and y<x:
+                twosame+=1
+    st=n//6
+    MOD=998244353
+    ans=1
+    for i in range(1,st+1):
+        ans=ans*(2*i-1)*(2*i)//pow(i,2)
+    ans=ans%MOD
+    for i in range(threesame):
+        ans=(ans*3)%MOD
+    for i in range(twosame):
+        ans=(ans*2)%MOD
+    #print(twosame,threesame)
+    print(ans)
+    # 4. Read a string (strip to remove the trailing newline character '\n')
+    # s = input().strip()
 
 #Booth's algorithm
 #Finds first lexicographically ordered cyclic shift of a string s
@@ -66,14 +90,14 @@ def least_rotation(s):
 #Sieve approach, removes all multiples, runtime O(n log log n)
 def all_divs_up_to(n):
     ls=[-1]*n
-    for i in range(2,n):
+    for i in range(2,big):
         if ls[i]==-1:
-            for j in range(i*i,n,i):
+            for j in range(i*i,big,i):
                 if ls[j]==-1:
                     ls[j]=i
     ls[0]=0
     ls[1]=1
-    primes=[j for j in range(n) if ls[j]==-1]
+    primes=[j for j in range(big) if ls[j]==-1]
     return ls
 
 #from tryingoutcp

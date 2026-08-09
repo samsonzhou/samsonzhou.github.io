@@ -9,21 +9,53 @@ input = sys.stdin.readline
 # Increase recursion depth for deep trees/graphs (Codeforces default is often too low)
 #sys.setrecursionlimit(200000)
 
+#1100011
+#1010011
+#1010101
+
 def solve():
     """
     Main logic for a single test case.
     """
     # 1. Read a single integer
-    # n = int(input())
+    #n = int(input())
     
     # 2. Read multiple integers on a single line
-    # n, m = map(int, input().split())
+    n, q = map(int, input().split())
     
     # 3. Read a list of integers
     # a = list(map(int, input().split()))
     
     # 4. Read a string (strip to remove the trailing newline character '\n')
-    # s = input().strip()
+    s = input().strip()
+    prez=[0]*(n+1)
+    preo=[0]*(n+1)
+    for i in range(n):
+        if i>0 and s[i]==s[i-1]:
+            if s[i]=='0':
+                prez[i+1]=prez[i]+1
+                preo[i+1]=preo[i]
+            else:
+                preo[i+1]=preo[i]+1
+                prez[i+1]=prez[i]
+        else:
+            preo[i+1]=preo[i]
+            prez[i+1]=prez[i]
+    #print(preo,prez)
+    for i in range(q):
+        l, r, k = map(int, input().split())
+        os=preo[r]-preo[l]
+        zs=prez[r]-prez[l]
+        if os+zs<=2*k:
+            print("YES")
+##        if os>0 and zs>0 and os+zs-1<=k:
+##            print("YES")
+##        elif os+zs<=k:
+##            print("YES")
+        else:
+            print("NO")
+
+            
     
     pass
 

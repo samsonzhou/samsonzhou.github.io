@@ -1,5 +1,5 @@
 import sys
-#from collections import defaultdict, deque, Counter
+from collections import defaultdict, deque, Counter
 #import heapq
 import math
 
@@ -14,7 +14,52 @@ def solve():
     Main logic for a single test case.
     """
     # 1. Read a single integer
-    # n = int(input())
+    n = int(input())
+
+    pts=[[] for _ in range(n)]
+    for i in range(n):
+        ai,bi=map(int,input().split())
+        pts[ai-1].append(i)
+        pts[bi-1].append(i)
+
+    jvr=False
+    adj=[[] for _ in range(n)]
+    for i in range(n):
+        if len(pts[i])>=3:
+            jvr=True
+        elif len(pts[i])==2:
+            u,v=pts[i][0],pts[i][1]
+            adj[u].append(v)
+            adj[v].append(u)
+
+    color=[-1]*n
+    exp=[-1]*n
+    i=0
+    exp[0]=1
+    color[0]=0
+    while i<n and not jvr:
+        q=deque()
+        q.append(i)
+        while q and not jvr:
+            v=q.popleft()
+            c=color[v]
+            for u in adj[v]:
+                if color[u]!=-1 and color[u]==color[v]:
+                    jvr=True
+                    break
+                color[u]=1-color[v]
+                if exp[u]==-1:
+                    exp[u]=1
+                    q.append(u)
+        i+=1
+        while i<n and exp[i]==1:
+            i+=1
+    if jvr:
+        print("NO")
+    else:
+        print("YES")
+        
+
     
     # 2. Read multiple integers on a single line
     # n, m = map(int, input().split())

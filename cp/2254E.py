@@ -2,6 +2,7 @@ import sys
 #from collections import defaultdict, deque, Counter
 #import heapq
 import math
+import bisect
 
 # Overwrite standard input for fast I/O
 input = sys.stdin.readline
@@ -14,13 +15,71 @@ def solve():
     Main logic for a single test case.
     """
     # 1. Read a single integer
-    # n = int(input())
+    n = int(input())
     
     # 2. Read multiple integers on a single line
     # n, m = map(int, input().split())
     
     # 3. Read a list of integers
-    # a = list(map(int, input().split()))
+    b = list(map(int, input().split()))
+    pos=[]
+    neg=[0]
+    z=0
+    tot=0
+    for i in b:
+        if i<0:
+            neg.append(abs(i))
+        elif i>0:
+            pos.append(i)
+        else:
+            z+=1
+        tot+=i
+
+    if tot<=0:
+        print(-1)
+    else:
+        neg.sort()
+        pos.sort()
+        out=[]
+        k=len(neg)
+        tot=0
+        j=0
+        p=[i for i in range(k)]
+        out.append(pos[j])
+        tot=pos[j]
+
+        def find(x):
+            while p[x]!=x:
+                p[x]=p[p[x]]
+                x=p[x]
+            return p[x]
+        
+        j+=1
+        ind=bisect.bisect_right(neg,tot-1)-1
+        ind=find(ind)
+        while ind!=0 and p[ind]!=0:
+            tot-=neg[p[ind]]
+            out.append(tot)
+            p[ind]=ind-1
+            ind=bisect.bisect_right(neg,tot-1)-1
+            ind=find(ind)
+        for i in range(z):
+            out.append(tot)
+        while len(out)<n and j<len(pos):
+            tot+=pos[j]
+            out.append(tot)
+            j+=1
+            ind=bisect.bisect_right(neg,tot-1)-1
+            ind=find(ind)
+            while len(out)<n and ind!=0 and p[ind]!=0:
+                tot-=neg[p[ind]]
+                out.append(tot)
+                p[ind]=ind-1
+                ind=bisect.bisect_right(neg,tot-1)-1
+                ind=find(ind)
+        print(*out)
+            
+        
     
     # 4. Read a string (strip to remove the trailing newline character '\n')
     # s = input().strip()
