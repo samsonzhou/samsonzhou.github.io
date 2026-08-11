@@ -546,6 +546,37 @@ Publications
 <ol reversed>
 
 
+
+<li>
+<b>
+Fast Perfect L<sub>2</sub> Sampling
+</b>
+</br><i>
+--davidwoodruff--,
+Samson Zhou
+</br></i>
+<a href="https://2027.sigmod.org/">PODS 2027</a>
+[<a href="javascript:toggle('WZ27')">abstract</a>]
+<!--[<a href="https://arxiv.org/pdf/2607.06312">pdf</a>]-->
+<div id="WZ27" style="display: none">
+<p id="abs">
+Perfect $L_2$ sampling is a powerful primitive for turnstile data streams, allowing algorithms to extract an 
+index with probability proportional to its squared frequency, with applications to dynamic join size estimation, 
+query optimization, heavy-hitters, sampling from self-joins, and real-time monitoring of evolving datasets. 
+The setting $p=2$ is also the largest $p$ for which $L_p$ sampling can be achieved in polylogarithmic space. 
+However, existing space-optimal perfect samplers rely on explicit polynomial duplication, requiring inefficient 
+polynomial update times per stream arrival. Resolving a open question left by Swartworth, Woodruff, and Zhou [FOCS 2025], 
+we present a perfect $L_2$ sampler that achieves an expected $\text{polylog}(n)$ update time while 
+maintaining an optimal $\tilde{\mathcal{O}}(\log^3 n)$ bits of space.
+</div>
+</li>
+</br>
+
+
+
+
+
+
 <li>
 <b>
 Adversarial Robustness for Small Frequency Moments and a Weak Equivalence Theorem for Turnstile Streams
