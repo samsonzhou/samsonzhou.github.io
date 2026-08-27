@@ -1,0 +1,637 @@
+\documentclass[11  pt]{article} 
+\usepackage[lmargin=1in,rmargin=1.75in,bmargin=1in,tmargin=1in]{geometry}  
+
+\input{preamble}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{amssymb}
+
+
+\begin{document}
+\onehalfspacing
+
+\lecture{2: Fast Fourier Transforms}{January 15, 2026}
+
+\paragraph{Course Logistics}
+
+\begin{itemize}
+\item Read Chapter 30 of the textbook for this week's material on polynomials and the FFT.
+\item Syllabus quiz is due Sat, Jan 17. HW 1 and intro video due Fri, Jan 23.
+\end{itemize}
+
+\section{Motivation: Polynomial Multiplication}
+
+We will introduce a powerful application of the divide and conquer paradigm: the Fast Fourier Transform (FFT). We will motivate it through the problem of polynomial multiplication.
+
+\begin{definition} \noindent A \hide{\textbf{polynomial}} in the variable $x$ over an algebraic field is a representation of a function $A(x)$ as a formal sum:
+    \begin{equation*}
+        A(x) = \sum_{j=0}^{n-1} a_j x^j
+    \end{equation*}
+    The values $a_0, a_1, \hdots, a_{n-1}$ are the \hide{\textbf{coefficients}} of the polynomial. 
+\end{definition}
+
+\vs{.5cm}
+
+\begin{example}\textbf{Polynomial Multiplication} \\
+\framebox{
+\vbox{
+\textbf{Input}: Two polynomials $A(x) = \sum_{j=0}^{n-1} a_j x^j$ and $B(x) = \sum_{j=0}^{n-1} b_j x^j$ of degree bound $n$.
+    
+\textbf{Output:} A polynomial $C(x) = A(x)B(x)$ of degree bound $2n-1$ such that:
+    \begin{equation*}
+    C(x) = \sum_{j=0}^{2n-2} c_j x^j \quad \text{where} \quad c_j = \sum_{k=0}^{j} a_k b_{j-k}
+    \end{equation*}
+}}
+
+\vs{5pt}
+
+An instance of this problem is multiplying $A(x) = 2 + 3x$ and $B(x) = 1 - x$.
+\end{example}
+
+\vs{1cm}
+
+\QU What is the asymptotic runtime of multiplying two polynomials of degree bound $n$ using the standard, naive approach?
+\begin{enumerate}
+    \aitem $O(1)$
+    \bitem $O(n)$
+    \citem $O(n \log n)$
+    \ditem $O(n^2)$
+    \eitem Other
+\end{enumerate}
+\end{Qu}
+
+
+\newpage
+\section{Representations of Polynomials}
+To multiply polynomials faster, we can change how we represent them.
+
+\subsection{Coefficient Representation}
+We represent $A(x)$ as a vector of coefficients $a = (a_0, a_1, \hdots, a_{n-1})$.
+\begin{itemize}
+    \item Evaluating $A(x)$ at a given point takes \hide{$O(n)$} time.
+    \item Multiplying two polynomials takes \hide{$O(n^2)$} time.
+\end{itemize}
+
+\subsection{Point-Value Representation}
+A polynomial of degree bound $n$ is uniquely determined by its values at $n$ distinct points. 
+We can represent $A(x)$ as a set of $n$ point-value pairs:
+\begin{equation*}
+    \{ (x_0, y_0), (x_1, y_1), \hdots, (x_{n-1}, y_{n-1}) \}
+\end{equation*}
+where $y_k = A(x_k)$ for $k = 0, 1, \hdots, n-1$.
+
+\vs{0.5cm}
+
+\textbf{Why use point-value representation?} \\
+If we have $A$ and $B$ in point-value form evaluated at the \emph{same} points $x_0, \hdots, x_{2n-1}$, how long does it take to compute $C(x) = A(x)B(x)$ in point-value form? \\
+
+\hide{Since $C(x_k) = A(x_k)B(x_k)$, we just multiply the $y$-values! This takes $O(n)$ time!}
+
+\vs{0.5cm}
+
+\QU How many point-value pairs do we need to compute the polynomial $C(x) = A(x)B(x)$ uniquely, assuming $A$ and $B$ have degree bound $n$?
+\begin{enumerate}
+    \aitem $n$
+    \bitem $2n-1$
+    \citem $n^2$
+    \ditem $2n$
+\end{enumerate}
+\end{Qu}
+
+\vs{0.5cm}
+\paragraph{The Strategy:}
+\begin{itemize}
+    \item \textbf{Evaluate}: Convert $A$ and $B$ to point-value form at $2n$ points.
+    \item \textbf{Point-wise Multiply}: Multiply the values in \hide{$O(n)$} time.
+    \item \textbf{Interpolate}: Convert $C$ back to coefficient form.
+\end{itemize}
+If we use arbitrary points, Evaluation and Interpolation take \hide{$O(n^2)$} time. We need to choose our evaluation points strategically!
+
+\newpage
+
+\section{Background Math: Complex Roots of Unity}
+
+To evaluate our polynomials efficiently, we will evaluate them at the \textbf{complex roots of unity}.
+
+\begin{definition} \noindent The \textbf{$n$-th complex roots of unity} are the $n$ complex numbers $\omega$ such that:
+    \begin{equation*}
+        \hide{\omega^n = 1}
+    \end{equation*}
+\end{definition}
+
+Using Euler's formula, $e^{iu} = \cos(u) + i\sin(u)$, these roots are given by:
+\begin{equation*}
+    \omega_n^k = e^{2\pi i k / n} \quad \text{for } k = 0, 1, \hdots, n-1
+\end{equation*}
+
+\begin{example}\textbf{Elementary Example: $n = 4$} \\
+    The 4-th roots of unity are:
+    \begin{itemize}
+        \item $k=0: \omega_4^0 = $ \hide{$1$}
+        \item $k=1: \omega_4^1 = $ \hide{$i$}
+        \item $k=2: \omega_4^2 = $ \hide{$-1$}
+        \item $k=3: \omega_4^3 = $ \hide{$-i$}
+    \end{itemize}
+\end{example}
+
+\vs{1cm}
+
+\subsection{Crucial Properties for Divide and Conquer}
+
+\begin{lemma}\textbf{Cancellation Lemma:} For any integers $n \geq 0, k \geq 0, d > 0$:
+    \begin{equation*}
+        \hide{\omega_{dn}^{dk} = \omega_n^k}
+    \end{equation*}
+\end{lemma}
+
+\vs{0.25cm}
+\textbf{Proof:} \\
+By the definition of the complex roots of unity, we have:
+\begin{equation*}
+    \hide{\omega_{dn}^{dk} = \left(e^{2\pi i / dn}\right)^{dk} = e^{2\pi i (dk) / (dn)} = e^{2\pi i k / n} = \omega_n^k}
+\end{equation*}
+This allows us to mathematically ``cancel'' common factors in the exponent's fraction.
+
+\vs{1cm}
+
+\begin{lemma}\textbf{Halving Lemma:} If $n > 0$ is even, then the squares of the $n$ complex $n$-th roots of unity are exactly the $n/2$ complex $(n/2)$-th roots of unity.
+    \begin{equation*}
+        \hide{(\omega_n^k)^2 = \omega_{n/2}^k}
+    \end{equation*}
+\end{lemma}
+
+\vs{0.25cm}
+\textbf{Proof:} \\
+Applying the Cancellation Lemma with $d=2$, we immediately get $(\omega_n^k)^2 = \omega_n^{2k} = \omega_{n/2}^k$.
+
+However, we must also show that squaring all $n$ roots of unity yields exactly the $n/2$ distinct $(n/2)$-th roots of unity without missing any. For $k \geq n/2$, we can write $k = j + n/2$ where $j < n/2$. Then:
+\begin{equation*}
+    \hide{(\omega_n^{j + n/2})^2 = \omega_n^{2j + n} = \omega_n^{2j} \cdot \omega_n^n = \omega_{n/2}^j \cdot 1 = \omega_{n/2}^j}
+\end{equation*}
+This shows that squaring $\omega_n^j$ and squaring $\omega_n^{j + n/2}$ produce the exact same result!
+
+\vs{1cm}
+The Halving Lemma implies that if we square our $n$ evaluation points, we are left with only \hide{$n/2$ distinct points}. This is perfect for divide and conquer!
+
+\newpage
+
+\subsection{The Summation Lemma}
+
+Before we move to the algorithm, we introduce a third lemma that will be strictly necessary when we want to reverse the process during Interpolation.
+
+\begin{lemma}\textbf{Summation Lemma:} For any integer $n \geq 1$ and non-zero integer $k$ not divisible by $n$:
+    \begin{equation*}
+        \sum_{j=0}^{n-1} (\omega_n^k)^j = \hide{0}
+    \end{equation*}
+\end{lemma}
+
+\vs{0.5cm}
+\textbf{Proof:} \\
+This is a standard finite geometric series with common ratio $r = \omega_n^k$. 
+Recall the formula for the sum of a finite geometric series: $\sum_{j=0}^{n-1} r^j = \frac{1 - r^n}{1 - r}$. 
+
+Substituting $r = \omega_n^k$, we get:
+\begin{equation*}
+    \hide{\frac{1 - (\omega_n^k)^n}{1 - \omega_n^k} = \frac{1 - (\omega_n^n)^k}{1 - \omega_n^k} = \frac{1 - (1)^k}{1 - \omega_n^k} = \frac{0}{1 - \omega_n^k} = 0}
+\end{equation*}
+
+Because $k$ is not a multiple of $n$, we know $\omega_n^k \neq 1$, which guarantees the denominator is not zero. Geometrically, this means the vector sum of any regular polygon centered at the origin in the complex plane perfectly cancels out.
+
+\vs{1.5cm}
+
+\section{Intuition for the Fast Fourier Transform}
+
+We want to evaluate a polynomial $A(x)$ of degree bound $n$ at the $n$-th roots of unity: $1, \omega_n, \omega_n^2, \hdots, \omega_n^{n-1}$. Assume $n$ is a power of 2.
+
+\paragraph{Divide}
+We can split $A(x)$ into its even-indexed coefficients and odd-indexed coefficients:
+\begin{align*}
+    A^{[0]}(x) &= a_0 + a_2 x + a_4 x^2 + \hdots + a_{n-2} x^{n/2 - 1} \\
+    A^{[1]}(x) &= a_1 + a_3 x + a_5 x^2 + \hdots + a_{n-1} x^{n/2 - 1}
+\end{align*}
+
+We can express $A(x)$ in terms of these new polynomials:
+\begin{equation*}
+    A(x) = \hide{A^{[0]}(x^2) + x A^{[1]}(x^2)}
+\end{equation*}
+
+\paragraph{Conquer}
+To evaluate $A(x)$ at the $n$ roots of unity, we need to evaluate $A^{[0]}$ and $A^{[1]}$ at the \emph{squares} of the $n$ roots of unity. \\
+
+By the \textbf{Halving Lemma}, these squares are exactly the \hide{$(n/2)$-th roots of unity}. \\
+
+So we just need to evaluate two polynomials of degree bound $n/2$ at $n/2$ roots of unity. This is two recursive calls of size $n/2$!
+
+\paragraph{Combine}
+For $k < n/2$, we compute:
+\begin{equation*}
+    A(\omega_n^k) = A^{[0]}(\omega_{n/2}^k) + \omega_n^k A^{[1]}(\omega_{n/2}^k)
+\end{equation*}
+
+For $k \geq n/2$, we use the fact that $\omega_n^{k + n/2} = -\omega_n^k$:
+\begin{equation*}
+    A(\omega_n^{k + n/2}) = \hide{A^{[0]}(\omega_{n/2}^k) - \omega_n^k A^{[1]}(\omega_{n/2}^k)}
+\end{equation*}
+
+\vs{1cm}
+
+\newpage
+\section{The Algorithm}
+
+Here is the pseudocode for the recursive FFT algorithm, which evaluates a polynomial at the $n$-th roots of unity.
+
+\begin{algorithm}
+    \caption{Recursive-FFT($a$)}
+    \begin{algorithmic}
+        \State $n = \textbf{length}(a)$
+        \If{$n == 1$}
+        \State Return $a$
+        \EndIf
+        \State $\omega_n = e^{2\pi i / n}$
+        \State $\omega = 1$
+        \State $a^{[0]} = (a_0, a_2, \hdots, a_{n-2})$
+        \State $a^{[1]} = (a_1, a_3, \hdots, a_{n-1})$
+        \State $y^{[0]} = \textsc{Recursive-FFT}(a^{[0]})$
+        \State $y^{[1]} = \textsc{Recursive-FFT}(a^{[1]})$
+        \State Let $y$ be a new array of length $n$
+        \For{$k = 0$ to $n/2 - 1$}
+            \State $y_k = y^{[0]}_k + \omega \cdot y^{[1]}_k$
+            \State $y_{k + n/2} = y^{[0]}_k - \omega \cdot y^{[1]}_k$
+            \State $\omega = \omega \cdot \omega_n$
+        \EndFor
+        \State Return $y$
+    \end{algorithmic}
+\end{algorithm}
+
+\vs{1cm}
+
+\section{Formal Analysis}
+
+\QU What is the recurrence relation for the runtime $T(n)$ of the \textsc{Recursive-FFT} algorithm?
+\begin{enumerate}
+    \aitem $T(n) = T(n/2) + \Theta(n)$
+    \bitem $T(n) = 2T(n/2) + \Theta(1)$
+    \citem $T(n) = 2T(n/2) + \Theta(n)$
+    \ditem $T(n) = 4T(n/2) + \Theta(n)$
+\end{enumerate}
+\end{Qu}
+
+\vs{1cm}
+
+Using the \textbf{Master Theorem} from Lecture 1:
+\begin{itemize}
+    \item $a = \hide{2}$
+    \item $b = \hide{2}$
+    \item $f(n) = \hide{\Theta(n)}$
+\end{itemize}
+
+\vs{1cm}
+
+Since $f(n) = \Theta(n^{\log_b a})$, we are in Case 2. Thus, the runtime is:
+\begin{equation*}
+    T(n) = \hide{\Theta(n \log n)}
+\end{equation*}
+
+\newpage
+
+\section{Tracing the Recursive FFT}
+
+To solidify our understanding, let's manually trace the \textsc{Recursive-FFT} algorithm on a small example. 
+
+Let $A(x) = 1 + 2x + 3x^2 + 4x^3$. We want to evaluate this at the 4-th roots of unity ($n=4$). 
+Our input coefficient vector is $a = (1, 2, 3, 4)$. The 4-th roots of unity are $1, i, -1, -i$.
+
+\vs{0.5cm}
+
+\paragraph{Step 1: Top-Level Divide ($n=4$)}
+We split the initial vector $a$ into even and odd indices:
+\begin{itemize}
+    \item $a^{[0]} = $ \hide{$(1, 3) \implies A^{[0]}(x) = 1 + 3x$}
+    \item $a^{[1]} = $ \hide{$(2, 4) \implies A^{[1]}(x) = 2 + 4x$}
+\end{itemize}
+We now make two recursive calls: \textsc{Recursive-FFT}($a^{[0]}$) and \textsc{Recursive-FFT}($a^{[1]}$).
+
+\vs{0.5cm}
+
+\paragraph{Step 2: Recursive Calls ($n=2$)}
+For the recursive calls where $n=2$, the 2-nd roots of unity are $\omega_2^0 = 1$ and $\omega_2^1 = -1$.
+Because $n=2$, the algorithm will recursively split again into size 1 (the base case) which simply returns the scalar coefficient. 
+
+Let's compute the results of evaluating $A^{[0]}$ and $A^{[1]}$ at $1$ and $-1$:
+
+Evaluating $A^{[0]}(x) = 1 + 3x$:
+\begin{itemize}
+    \item $y^{[0]}_0 = A^{[0]}(1) = 1 + 3(1) = $ \hide{$4$}
+    \item $y^{[0]}_1 = A^{[0]}(-1) = 1 + 3(-1) = $ \hide{$-2$}
+\end{itemize}
+
+Evaluating $A^{[1]}(x) = 2 + 4x$:
+\begin{itemize}
+    \item $y^{[1]}_0 = A^{[1]}(1) = 2 + 4(1) = $ \hide{$6$}
+    \item $y^{[1]}_1 = A^{[1]}(-1) = 2 + 4(-1) = $ \hide{$-2$}
+\end{itemize}
+
+\vs{0.5cm}
+
+\paragraph{Step 3: The Combine Step ($n=4$)}
+We are now back at the top level. The principal root of unity for $n=4$ is $\omega_4 = i$. 
+Our formula for the combine step loops $k$ from 0 to 1 (which is $n/2 - 1$):
+\begin{equation*}
+    y_k = y^{[0]}_k + \omega_4^k \cdot y^{[1]}_k \quad \text{and} \quad y_{k+2} = y^{[0]}_k - \omega_4^k \cdot y^{[1]}_k
+\end{equation*}
+
+\textbf{For $k = 0$ ($\omega = \omega_4^0 = 1$):}
+\begin{itemize}
+    \item $y_0 = y^{[0]}_0 + (1) \cdot y^{[1]}_0 = 4 + 6 = $ \hide{$10$}
+    \item $y_2 = y^{[0]}_0 - (1) \cdot y^{[1]}_0 = 4 - 6 = $ \hide{$-2$}
+\end{itemize}
+
+\textbf{For $k = 1$ ($\omega = \omega_4^1 = i$):}
+\begin{itemize}
+    \item $y_1 = y^{[0]}_1 + (i) \cdot y^{[1]}_1 = -2 + (i)(-2) = $ \hide{$-2 - 2i$}
+    \item $y_3 = y^{[0]}_1 - (i) \cdot y^{[1]}_1 = -2 - (i)(-2) = $ \hide{$-2 + 2i$}
+\end{itemize}
+
+\textbf{Final Result:} Evaluated at $(1, i, -1, -i)$, the polynomial yields the point-value vector:
+\begin{equation*}
+    y = \hide{(10, -2-2i, -2, -2+2i)}
+\end{equation*}
+
+\vs{0.5cm}
+\textit{Sanity check:} Let's manually evaluate $A(x)$ at $x=i$: 
+\begin{equation*}
+A(i) = 1 + 2(i) + 3(i^2) + 4(i^3) = 1 + 2i - 3 - 4i = \hide{-2 - 2i}
+\end{equation*}
+Matches perfectly!
+
+\newpage
+
+\section{The Matrix Perspective (Discrete Fourier Transform)}
+
+When we evaluate a polynomial $A(x)$ at the $n$-th roots of unity, we are fundamentally applying a linear transformation to its coefficient vector. We can write this elegantly as a matrix-vector product $y = V_n a$, where $a$ is the vector of coefficients, $y$ is the vector of evaluations, and $V_n$ is a special matrix called the \textbf{Vandermonde Matrix}.
+
+\begin{equation*}
+    \begin{bmatrix}
+        y_0 \\ y_1 \\ y_2 \\ \vdots \\ y_{n-1}
+    \end{bmatrix}
+    =
+    \begin{bmatrix}
+        1 & 1 & 1 & \cdots & 1 \\
+        1 & \omega_n & \omega_n^2 & \cdots & \omega_n^{n-1} \\
+        1 & \omega_n^2 & \omega_n^4 & \cdots & \omega_n^{2(n-1)} \\
+        \vdots & \vdots & \vdots & \ddots & \vdots \\
+        1 & \omega_n^{n-1} & \omega_n^{2(n-1)} & \cdots & \omega_n^{(n-1)(n-1)}
+    \end{bmatrix}
+    \begin{bmatrix}
+        a_0 \\ a_1 \\ a_2 \\ \vdots \\ a_{n-1}
+    \end{bmatrix}
+\end{equation*}
+
+Notice that the entry in row $j$ and column $k$ (0-indexed) is given by:
+\begin{equation*}
+    (V_n)_{j,k} = \hide{\omega_n^{jk}}
+\end{equation*}
+This specific transformation is known as the \textbf{Discrete Fourier Transform (DFT)}.
+
+\vs{1cm}
+
+\begin{example}\textbf{The $4 \times 4$ DFT Matrix} \\
+For $n=4$, substituting the principal root $\omega_4 = i$, the matrix $V_4$ looks like this:
+\begin{equation*}
+    V_4 = 
+    \begin{bmatrix}
+    1 & 1 & 1 & 1 \\
+    1 & i & i^2 & i^3 \\
+    1 & i^2 & i^4 & i^6 \\
+    1 & i^3 & i^6 & i^9
+    \end{bmatrix}
+    =
+    \hide{
+    \begin{bmatrix}
+    1 & 1 & 1 & 1 \\
+    1 & i & -1 & -i \\
+    1 & -1 & 1 & -1 \\
+    1 & -i & -1 & i
+    \end{bmatrix}
+    }
+\end{equation*}
+\end{example}
+
+\vs{1cm}
+
+\QU What is the naive runtime of computing this matrix-vector product using standard matrix multiplication?
+\begin{enumerate}
+    \aitem $O(n)$
+    \bitem $O(n \log n)$
+    \citem $O(n^2)$
+    \ditem $O(n^3)$
+\end{enumerate}
+\end{Qu}
+
+\vs{1cm}
+
+The Fast Fourier Transform is simply an extraordinarily efficient algorithm to multiply this highly structured matrix $V_n$ by a vector in $O(n \log n)$ time, bypassing the naive $O(n^2)$ matrix-vector multiplication bound!
+
+\newpage
+
+\section{Interpolation and the Inverse FFT}
+
+To convert our point-value results back into coefficient form, we need to invert this process. In matrix terms, we know $y = V_n a$. To solve for $a$, we must compute:
+\begin{equation*}
+    a = \hide{V_n^{-1} y}
+\end{equation*}
+
+Inverting an arbitrary $n \times n$ matrix takes $O(n^3)$ time. Fortunately, the Vandermonde matrix of the roots of unity has a beautifully simple inverse, which we can prove using the \textbf{Summation Lemma}.
+
+\begin{theorem}
+The entries of the inverse matrix $V_n^{-1}$ are given by:
+\begin{equation*}
+    (V_n^{-1})_{j,k} = \frac{1}{n} \omega_n^{-jk}
+\end{equation*}
+\end{theorem}
+
+\vs{0.5cm}
+Let's prove this! If this is the true inverse, then multiplying $V_n^{-1}$ by $V_n$ should yield the Identity matrix $I_n$. 
+
+Consider the entry in row $j$ and column $k$ of the product matrix $M = V_n^{-1} V_n$. This is the dot product of the $j$-th row of $V_n^{-1}$ and the $k$-th column of $V_n$:
+\begin{equation*}
+    M_{j,k} = \sum_{m=0}^{n-1} (V_n^{-1})_{j,m} (V_n)_{m,k} 
+    = \sum_{m=0}^{n-1} \left( \frac{1}{n} \omega_n^{-jm} \right) \left( \omega_n^{mk} \right) 
+    = \frac{1}{n} \sum_{m=0}^{n-1} \omega_n^{m(k-j)}
+\end{equation*}
+
+\vs{0.5cm}
+
+\paragraph{Case 1: On the Diagonal ($j = k$)}
+If $j=k$, then $k-j = 0$. The exponent becomes $0$, and $\omega_n^0 = 1$.
+\begin{equation*}
+    M_{j,j} = \frac{1}{n} \sum_{m=0}^{n-1} 1 = \frac{1}{n} (n) = \hide{1}
+\end{equation*}
+This correctly matches the 1s on the diagonal of the identity matrix!
+
+\vs{0.5cm}
+
+\paragraph{Case 2: Off the Diagonal ($j \neq k$)}
+If $j \neq k$, then $(k-j)$ is an integer strictly between $-n$ and $n$, and it is not zero. Thus, it is not divisible by $n$.
+By our \textbf{Summation Lemma}, the sum of these roots of unity is exactly \hide{0}! 
+\begin{equation*}
+    M_{j,k} = \frac{1}{n} (0) = \hide{0}
+\end{equation*}
+This correctly matches the 0s off the diagonal of the identity matrix! 
+
+\vs{1cm}
+
+\textbf{What does this mean for our algorithm?} \\
+Look closely at the resulting formula to compute the coefficients $a_j$:
+\begin{equation*}
+    a_j = \frac{1}{n} \sum_{k=0}^{n-1} y_k (\omega_n^{-1})^{jk}
+\end{equation*}
+This is \emph{exactly} the same summation structure as the forward DFT! The only differences are swapping $\omega_n$ for $\omega_n^{-1}$ and dividing by $n$. This leads us perfectly to our main theorem.
+
+\newpage
+
+\section{Main Takeaway: The Convolution Theorem}
+
+We showed how to evaluate polynomials at roots of unity in $\Theta(n \log n)$ time. To finish polynomial multiplication, we need to interpolate the result back to coefficient form.
+
+\paragraph{Interpolation} 
+It turns out that interpolating at the complex roots of unity is mathematically identical to evaluating, but using $\omega_n^{-1}$ instead of $\omega_n$, and dividing the final results by $n$. 
+
+Thus, the \textbf{Inverse FFT} can also be computed in \hide{$\Theta(n \log n)$} time!
+
+\vs{1.5cm}
+
+\paragraph{Fast Polynomial Multiplication}
+
+Given two polynomials $A(x)$ and $B(x)$ of degree bound $n$:
+\begin{enumerate}
+    \setlength\itemsep{2em}
+    \item \textbf{Pad:} Add zeros to $A$ and $B$ so they have degree bound $2n$.
+    \item \textbf{Evaluate (FFT):} Compute point-value representations of $A$ and $B$ of length $2n$. \\ \textit{Runtime: \hide{$\Theta(n \log n)$}}
+    \item \textbf{Point-wise Multiply:} Compute $y_k = A(\omega_{2n}^k) B(\omega_{2n}^k)$ for all $k$. \\ \textit{Runtime: \hide{$\Theta(n)$}}
+    \item \textbf{Interpolate (Inverse FFT):} Convert point-values $y_k$ back to coefficients. \\ \textit{Runtime: \hide{$\Theta(n \log n)$}}
+\end{enumerate}
+
+\vs{1cm}
+
+\textbf{Total Runtime for Polynomial Multiplication:} \hide{$\Theta(n \log n)$}. \\
+
+\vs{0.5cm}
+
+By leveraging the \textbf{Divide and Conquer} paradigm and evaluating at mathematically symmetric points, we can bypass the naive $O(n^2)$ limit. FFT is an incredibly important algorithm used heavily in signal processing, image compression, and fast large-integer multiplication!
+
+\newpage
+
+\section{Convolution and Padding}
+
+We have established the complete algorithm for fast polynomial multiplication. But why did we emphasize padding the polynomials to degree bound $2n$ in Step 1? 
+
+In mathematics, multiplying two polynomials corresponds to the \textbf{Linear Convolution} of their coefficient vectors. 
+If $a$ and $b$ are vectors of length $n$, their linear convolution $c = a * b$ is a vector of length $2n-1$.
+
+\vs{0.5cm}
+
+\QU What happens if we skip the padding step? What if we run the FFT on vectors $a$ and $b$ of length $n$, multiply them pointwise, and run an Inverse FFT of size $n$?
+\begin{enumerate}
+    \aitem The program will crash.
+    \bitem It will output the first $n$ coefficients of the correct answer.
+    \citem It will compute the Cyclic Convolution of the vectors.
+    \ditem It will run in $O(n^2)$ time instead.
+\end{enumerate}
+\end{Qu}
+
+\vs{1cm}
+
+\paragraph{Cyclic Convolution}
+If we do not pad, the FFT operates purely in the modular arithmetic of $n$-th roots of unity. The operation computes the polynomial multiplication modulo $(x^n - 1)$:
+\begin{equation*}
+    C(x) = A(x)B(x) \pmod{x^n - 1}
+\end{equation*}
+
+Because $x^n \equiv 1 \pmod{x^n - 1}$, any term in the correct answer of degree $n$ or higher will "wrap around" and be added to the lower degree terms! This phenomenon is known in signal processing as \textbf{aliasing}.
+
+For example, if the true polynomial product is $c_0 + c_1 x + c_2 x^2 + c_3 x^3 + c_4 x^4$, but we only used an FFT of size $n=3$, the $x^3$ term wraps around and adds to the $x^0$ term, and the $x^4$ term wraps around and adds to the $x^1$ term.
+
+\vs{1cm}
+By zero-padding our input vectors to length $2n$ (or the nearest power of 2 greater than $2n-1$), we ensure that the maximum possible degree of the product is strictly less than the wrap-around threshold. Thus, the cyclic convolution perfectly matches the desired linear convolution!
+
+\newpage
+
+\section{Practical Implementation: The Iterative FFT}
+
+The \textsc{Recursive-FFT} algorithm takes $\Theta(n \log n)$ time, which is asymptotically optimal. However, in practice, making recursive function calls and allocating new arrays for $a^{[0]}$ and $a^{[1]}$ at every level adds a massive constant factor overhead. 
+
+Highly optimized libraries (like FFTW, the "Fastest Fourier Transform in the West") compute the FFT \textbf{iteratively} and \textbf{in-place}.
+
+To see how to do this, let's track where the elements of an array end up at the base cases of the recursion tree. Consider an input array of size $n=8$ with indices $0, 1, 2, 3, 4, 5, 6, 7$.
+
+\begin{itemize}
+    \item \textbf{Level 0 (Start):} $(0, 1, 2, 3, 4, 5, 6, 7)$
+    \item \textbf{Level 1 (Evens/Odds):} $(0, 2, 4, 6)$ and $(1, 3, 5, 7)$
+    \item \textbf{Level 2 (Evens/Odds):} $(0, 4), (2, 6)$ and $(1, 5), (3, 7)$
+    \item \textbf{Level 3 (Leaves):} $0, 4, 2, 6, 1, 5, 3, 7$
+\end{itemize}
+
+\vs{0.5cm}
+
+Let's look at the binary representations of these indices:
+\begin{center}
+\renewcommand{\arraystretch}{1.5}
+\begin{tabular}{|c|c|c|c|}
+\hline
+\textbf{Original Index} & \textbf{Binary} & \textbf{Leaf Index} & \textbf{Binary} \\
+\hline
+0 & 000 & 0 & \hide{000} \\
+1 & 001 & 4 & \hide{100} \\
+2 & 010 & 2 & \hide{010} \\
+3 & 011 & 6 & \hide{110} \\
+4 & 100 & 1 & \hide{001} \\
+5 & 101 & 5 & \hide{101} \\
+6 & 110 & 3 & \hide{011} \\
+7 & 111 & 7 & \hide{111} \\
+\hline
+\end{tabular}
+\end{center}
+
+\vs{0.5cm}
+To move an element from its original index to its correct position at the bottom of the recursion tree, we simply reverse the bits of its index! This is called a \hide{\textbf{Bit-Reversal Permutation}}.
+
+\vs{0.5cm}
+\paragraph{The Butterfly Operation}
+An Iterative FFT first applies the bit-reversal permutation to the array in $O(n)$ time. Then, it iteratively builds the results from the bottom up. 
+
+In each combine step, we update two elements $u$ and $v$ in place:
+\begin{align*}
+    u_{new} &= u + \omega \cdot v \\
+    v_{new} &= u - \omega \cdot v
+\end{align*}
+This fundamental constant-time update is known as a \hide{\textbf{Butterfly Operation}}, named for the crossed-wing shape of its data-flow diagram. This allows the FFT to run in strictly $O(1)$ auxiliary space!
+
+\newpage
+
+\section{Real-World Applications}
+
+The FFT is frequently cited as the most important numerical algorithm of the 20th century. By breaking the $O(n^2)$ barrier for convolution, it enabled the digital revolution. 
+
+\vs{0.5cm}
+
+\paragraph{1. Digital Signal Processing (DSP)}
+In engineering, signals (like audio) are recorded as a sequence of amplitudes over time (the Time Domain). The FFT converts this signal into the Frequency Domain, revealing the exact frequencies present in the sound.
+\begin{itemize}
+    \item \textbf{Noise Filtering:} To remove static from a recording, one can take the FFT, zero-out the high-frequency components, and apply the Inverse FFT. Doing this naively takes $O(n^2)$, which is far too slow for real-time audio. FFT makes it possible.
+    \item \textbf{Compression:} MP3 audio and JPEG images use variants of the FFT (like the Discrete Cosine Transform) to identify and discard frequencies that human ears and eyes cannot perceive, drastically reducing file sizes without noticeable quality loss.
+\end{itemize}
+
+\vs{1cm}
+
+\paragraph{2. Fast Integer Multiplication}
+In modern cryptography (like RSA), computers must multiply prime numbers that are thousands of digits long. The grade-school multiplication algorithm takes $O(n^2)$ time. 
+
+However, we can treat a massive integer as a polynomial evaluated at $x=10$! For instance:
+\begin{equation*}
+    1234 = 1(10^3) + 2(10^2) + 3(10^1) + 4(10^0)
+\end{equation*}
+
+The \textbf{Schonhage-Strassen Algorithm} converts huge numbers into polynomials, multiplies them using the FFT, and then processes the carries. This reduces large integer multiplication to \hide{$O(n \log n \log \log n)$} time, an essential speedup for encrypting data on the internet.
+
+\end{document}
