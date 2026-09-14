@@ -1,0 +1,279 @@
+\documentclass[11  pt]{article} 
+\usepackage[lmargin=1in,rmargin=1.75in,bmargin=1in,tmargin=.5in]{geometry}  
+
+\input{hw-preamble}
+
+\begin{document}
+	
+\hw{2}{September 11}
+		
+\problem (points removed for not answering!) Write down all outside resources you consulted, and the names of any other students that you worked with in any way. By turning in this homework, you acknowledge that you have read and abide by all course policies on outside resources and collaboration as stated in the course syllabus. If you did not work with others or use outside resources, then write that down.\\
+	
+\vspace{0.5in}
+
+\problem (10 points total) 
+Consider the following algorithm, which recursively computes each term of the Fibonacci sequence \textbf{without dynamic programming or memoization}. 
+
+\begin{algorithm}
+\textsc{Fib}(n)
+\begin{algorithmic}
+	\If{$n == 0$}
+	\State Return 0
+	\ElsIf{$n == 1$}
+	\State Return 1
+	\Else
+	\State Return $\textsc{Fib}(n-1) + \textsc{Fib}(n-2)$
+	\EndIf
+\end{algorithmic}
+\end{algorithm}
+
+In class, we stated that such a computation may be especially time-consuming. 
+\begin{enumerate}[(a)]
+\item (5 points)
+Let $T(n)$ be the runtime of the above algorithm for computing the $n$-th Fibonacci number. 
+Write down the recurrence relation for $T(n)$. 
+
+\vspace{1in}\noindent
+\item (5 points)
+Prove that the runtime of the algorithm is $2^{\Omega(n)}$. 
+
+HINT: You may use any approach to solve this problem. 
+There are many elegant ways to approach this problem that are within the scope of the techniques discussed in class. 
+A less elegant approach might use the fact that Binet's formula is a closed-form solution for the $n$-th Fibonacci number, so that $F(n)=\frac{\varphi^n-\psi^n}{\sqrt{5}}$, where $\varphi=\frac{1+\sqrt{5}}{2}\approx1.618$ is the golden ratio and $\psi=\frac{1-\sqrt{5}}{2}\approx-0.618$ is its conjugate. 
+\end{enumerate}
+
+\newpage
+
+\problem 
+(20 points total)
+\textbf{Matrix chain multiplication.}  
+
+You are given a list \texttt{dims} of two-dimensional matrix dimensions such that every two consecutive values represent the dimensions of a matrix in the chain. 
+For example, \texttt{dims} = $[10, 20, 30, 40]$ represents three matrices with dimensions $10 \times 20$, $20 \times 30$, and $30 \times 40$. 
+As you know, matrix multiplication is associative, meaning that, for example, $(A \times B) \times C = A \times (B \times C)$. 
+While mathematically equivalent, these multiplications might not be equally efficient. 
+Your goal is to find the optimal parenthesization that minimizes the total number of scalar multiplications required.
+
+\babc
+\item 
+(5 points) 
+What is the number of scalar multiplications between matrices with dimensions $(a, b)$ and $(b, c)$? 
+\item 
+(5 points) 
+Write the recurrence relation for the minimum number of scalar multiplications needed to compute the matrix product defined by the list of dimensions \texttt{dims}. 
+Let $M[i][j]$ represent the minimum cost to multiply the matrices formed by the sublist of dimensions from $i$ to $j$.
+\item 
+(5 points) 
+Write a dynamic programming algorithm to solve the matrix chain multiplication problem using the list of dimensions \texttt{dims}. Your algorithm should have a time complexity of $O(n^3)$, where $n$ is the number of matrices, or equivalently, $n = |\texttt{dims}| - 1$.
+\item 
+(5 points) 
+Analyze the runtime of your dynamic programming solution.
+\eabc
+
+
+\textbf{Example:}
+Suppose you are given the list of dimensions $[10, 20, 30, 40]$. The most efficient way to multiply the matrices represented by these dimensions requires 18,000 scalar multiplications.
+
+There are two possible ways to parenthesize the multiplication:
+
+\begin{enumerate}
+\item \textbf{(($A_1$ x $A_2$) x $A_3$)}: - First, multiply $A_1$ (10 x 20) and $A_2$ (20 x 30); this requires $10 \times 20 \times 30 = 6,000$ scalar multiplications. Then, multiply the resulting matrix (10 x 30) with $A_3$ (30 x 40); this requires $10 \times 30 \times 40 = 12,000$ scalar multiplications. Total number of scalar multiplications: $6,000 + 12,000 = 18,000$.
+
+\item \textbf{($A_1$ x ($A_2$ x $A_3$))}: First, multiply $A_2$ (20 x 30) and $A_3$ (30 x 40); this requires $20 \times 30 \times 40 = 24,000$ scalar multiplications. 
+Then, multiply $A_1$ (10 x 20) with the resulting matrix (20 x 40): This requires $10 \times 20 \times 40 = 8,000$ scalar multiplications. 
+Total number of scalar multiplications: $24,000 + 8,000 = 32,000$.
+
+\end{enumerate}
+
+Thus, the optimal way to multiply the matrices is to compute \textbf{(($A_1$ x $A_2$) x $A_3$)}, which results in a total of 18,000 scalar multiplications, compared to 32,000 scalar multiplications for the other option.
+
+\newpage
+
+\problem (10 points total)
+You are scheduling the Aggies’ upcoming football season, and your goal is to maximize the total expected attendance across all Aggie games. You must follow two rules: you cannot schedule two consecutive games at home, and you cannot skip any games. Each game must be scheduled either at home or away.  
+
+For the $i$-th game, if it is played at home the expected attendance is $H_i$, and if it is played away the expected attendance is $A_i$. The attendance values are given as two sequences
+\[
+H_1, H_2, \dots, H_n \quad \text{and} \quad A_1, A_2, \dots, A_n,
+\]
+where $H_i$ and $A_i$ denote the expected home and away attendance of the $i$-th game, respectively.   
+
+\babc
+\item (5 points)
+Given an integer $t$ such that $1\le t\le n$, let $A(t)$ be the maximum attendance of $t$ games while following the rule.
+What is the recurrence relation for $A(t)$? 
+Justify your answer. 
+\vfill
+\item (5 points)
+Write pseudo-code for an algorithm that finds the maximum attendance you can achieve while following the rules.
+\vfill
+\eabc
+
+\newpage
+
+\problem (10 points total) 
+\textbf{Counting well-formed parentheses sequences.}
+
+A \emph{well-formed parentheses sequence} of length $2n$ is a sequence consisting of $n$ opening parentheses `(' and $n$ closing parentheses `)', such that in every prefix of the sequence, the number of opening parentheses is greater than or equal to the number of closing parentheses. 
+
+Let $C_n$ denote the number of well-formed parentheses sequences consisting of $n$ pairs of parentheses. 
+By convention, the empty sequence is considered well-formed, so $C_0 = 1$. 
+For $n = 1$, the only well-formed sequence is
+\[(),\]
+so $C_1 = 1$. 
+For $n = 2$, the well-formed sequences are
+\[(()), \quad ()(),\]
+so $C_2 = 2$.
+For $n = 3$, there are exactly $5$ well-formed sequences:
+\[((())), \quad (()()), \quad (())(), \quad ()(()), \quad ()()(),\]
+so $C_3 = 5$.
+\babc
+\item (5 points)
+Write the recursive formula for $C_n$ in terms of smaller values $C_0, C_1, \ldots, C_{n-1}$. 
+Justify your answer. 
+\vfill
+\item (5 points) 
+What is the asymptotic runtime of an optimal dynamic programming algorithm that computes $C_n$ using this recursion? 
+Justify your answer. 
+\vfill
+\eabc
+
+\newpage
+\hrule
+\vspace{0.5in}
+\begin{center}
+PRACTICE PROBLEMS -- DO NOT TURN IN
+\end{center}
+\vspace{0.5in}
+\noindent
+\exercise 
+You are a chef preparing meals for a food delivery service. You have $n$ different recipes to choose from, so that each recipe $i\in[n]$ can earn $p_i$ dollars in profit and requires $t_i$ time to prepare. 
+You can prepare each recipe as many times as you want, as long as the total time does not exceed $T$. You goal is to find the maximum profit you can earn in $T$ minutes. 
+
+Formally, the input is:
+\begin{itemize}
+\item $T$: The available time you have (in minutes). 
+\item $n$: The number of available recipes.
+\item $t_i\ge 0$: The time the $i$-th recipe takes to prepare, in minutes ($1\le i\le n$).
+\item $p_i\ge 0$: The profit of the $i$-th item, in dollars ($1\le i\le n$).
+\end{itemize}
+
+\babc
+\item
+Let $S(t)$ be the maximum profit that can be obtained in $t$ minutes. 
+You may assume $t\ge 0$ is an integer and $t\ge\max_{i\in[n]} t_i$. 
+What is the recurrence relation for $S(t)$? 
+Justify your answer. 
+
+\item
+Consider an asymptotically optimal dynamic programming algorithm to compute $S(T)$, the maximum profit that you can make.
+What is the runtime of the algorithm? 
+Justify your answer. 
+\eabc
+
+\vspace{0.2in}
+
+\exercise
+A shipping company needs to transport goods across a chain of $n$ cities, labeled $1,2,\ldots,n$. 
+The goods must start in city $1$ and end in city $n$. 
+For each $i$ and $j$ with $1\le i\le j\le n$, there is a direct shipping route from city $i$ to city $j$ with cost $c_{i,j}\ge 0$, and you may assume $c_{1,1}=0$. 
+The company wants to minimize the total cost of transporting goods from city $1$ to city $n$, but a shipment can only move forward (from a city with a smaller number to a city with a larger number). 
+
+\babc
+\item
+Let $M(n)$ be the minimum total cost of transporting goods from city $1$ to city $n$. 
+Write and justify the recurrence relationship for $M(n)$. 
+
+\item
+Write pseudo-code for an algorithm that computes the minimum shipping cost $M(n)$ from city $1$ to city $n$.
+
+\eabc
+
+\newpage
+
+\exercise
+A robot starts at the origin \((0,0)\) on a Cartesian plane. 
+The robot can only move either:
+
+\begin{itemize}
+    \item One unit to the right \((+1, 0)\), denoted \texttt{R}, or
+    \item One unit up \((0, +1)\), denoted \texttt{U}. 
+\end{itemize}
+
+Given a destination point \((x,y)\) where \(x, y\) are non-negative integers, determine the number of distinct paths the robot can take to reach \((x,y)\) from \((0,0)\).
+
+
+\vskip 0.1in\noindent
+\textbf{Example:} If \((x,y) = (2,2)\), the possible paths are:
+\begin{center}
+    \texttt{RRUU, RURU, RUUR, URRU, URUR, UURR}
+\end{center}
+Thus, there are \(6\) possible ways.
+
+\begin{figure}[!htb]
+  \centering
+  \includegraphics[width=0.6\textwidth]{grid.png}
+  \caption{Example grid illustration.}
+  \label{fig:grid}
+\end{figure}
+
+\babc
+\item 
+Let $N(x,y)$ be the number of distinct paths the robot can take to reach \((x,y)\) from \((0,0)\). 
+Write the recurrence relationship for $N(x,y)$, including the base cases. 
+\vfill
+
+\item 
+What is the runtime of an asymptotically optimal dynamic programming implementation of an algorithm to solve the robot counting problem, i.e., an algorithm that outputs $N(x,y)$ for integer inputs $x,y\ge 0$?
+\vfill
+
+\item
+Using your recurrence relationship, compute $N(6,4)$, the number of distinct paths the robot can take to reach \((6,4)\) from \((0,0)\). 
+Show your work. 
+\vfill
+\eabc
+
+\newpage
+
+\exercise 
+You are climbing the Zachry staircase, which has $n$ steps. You can climb either 1, 2, or 3 steps at a time (if you really stretch your legs). Your task is to determine the number of distinct ways to reach the top of the staircase.
+
+  \textbf{Example:}
+If $n = 4$, the distinct ways to reach the top are:
+\begin{enumerate}
+    \item 1 + 1 + 1 + 1
+    \item 1 + 1 + 2
+    \item 1 + 2 + 1
+    \item 2 + 1 + 1
+    \item 2 + 2
+    \item 1 + 3
+    \item 3 + 1
+\end{enumerate}
+Thus, the total number of ways is 7.
+
+\babc
+\item
+Let $S(n)$ be the number of ways to reach the $n$-th step. 
+Write down the recurrence relation for $S(n)$. 
+\vfill
+
+\item
+What is the runtime of an asymptotically optimal dynamic programming algorithm to compute $S(n)$ for a given $n \ge 0$?
+\vfill
+
+\item
+How many different ways are there to reach the $10$-th step?
+\vfill
+\eabc
+
+\challenge
+Let $A[1, \ldots, n]$ be an array of real numbers. A \emph{subarray} is a contiguous sequence of elements $A[i], A[i+1], \ldots, A[j]$ for some $1 \le i \le j \le n$.
+You are allowed to delete at most one element from the array (or delete no elements). 
+After this optional deletion, consider all contiguous subarrays of the resulting array.
+
+Design an algorithm that computes the maximum possible sum of a subarray under this rule. 
+Your algorithm should run in $O(n)$ time. 
+Clearly describe your algorithm, justify its correctness, and analyze its running time.
+
+\vfill
+\end{document}
