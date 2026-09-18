@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (MiKTeX 24.4) (preloaded format=pdflatex 2025.1.14)  10 SEP 2026 14:43
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (MiKTeX 24.4) (preloaded format=pdflatex 2025.1.14)  10 SEP 2026 14:45
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -447,11 +447,6 @@ Underfull \hbox (badness 10000) in paragraph at lines 72--73
 [1
 
 {C:/Users/Samson Zhou/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}]
-Underfull \hbox (badness 10000) in paragraph at lines 107--108
-
- []
-
-
 
 [2]
 
@@ -466,11 +461,11 @@ L3 programming layer <2024-08-16>
 Here is how much of TeX's memory you used:
  5281 strings out of 473898
  79863 string characters out of 5723611
- 1940960 words of memory out of 5000000
+ 1943960 words of memory out of 5000000
  28110 multiletter control sequences out of 15000+600000
  566235 words of font info for 65 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 57i,10n,65p,651b,190s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 57i,10n,65p,627b,312s stack positions out of 10000i,1000n,20000p,200000b,200000s
  <C:\Users\Samson Zhou\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi60
 0\tcrm1095.pk><C:/Users/Samson Zhou/AppData/Local/Programs/MiKTeX/fonts/type1/p
 ublic/amsfonts/cm/cmbx10.pfb><C:/Users/Samson Zhou/AppData/Local/Programs/MiKTe
@@ -487,7 +482,7 @@ on Zhou/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb
 ><C:/Users/Samson Zhou/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfont
 s/cm/cmsy8.pfb><C:/Users/Samson Zhou/AppData/Local/Programs/MiKTeX/fonts/type1/
 public/amsfonts/cm/cmti10.pfb>
-Output written on exam-1-notes.pdf (3 pages, 162317 bytes).
+Output written on exam-1-notes.pdf (3 pages, 163802 bytes).
 PDF statistics:
  77 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)

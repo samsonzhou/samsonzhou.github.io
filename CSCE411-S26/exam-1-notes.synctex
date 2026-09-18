@@ -1,46 +1,46 @@
 SyncTeX Version:1
-Input:1:C:\Users\samso\OneDrive\Documents\GitHub\samsonzhou.github.io\CSCE411-S26\exam-1-notes.tex
-Input:2:C:\Program Files\MiKTeX\tex\latex\exam\exam.cls
-Input:3:C:\Program Files\MiKTeX\tex\latex\base\ifthen.sty
-Input:4:C:\Program Files\MiKTeX\tex\latex\base\article.cls
-Input:5:C:\Program Files\MiKTeX\tex\latex\base\size11.clo
-Input:6:C:\Program Files\MiKTeX\tex\latex\geometry\geometry.sty
-Input:7:C:\Program Files\MiKTeX\tex\latex\graphics\keyval.sty
-Input:8:C:\Program Files\MiKTeX\tex\generic\iftex\ifvtex.sty
-Input:9:C:\Program Files\MiKTeX\tex\generic\iftex\iftex.sty
-Input:10:C:\Program Files\MiKTeX\tex\latex\geometry\geometry.cfg
-Input:11:C:\Program Files\MiKTeX\tex\latex\algorithms\algorithm.sty
-Input:12:C:\Program Files\MiKTeX\tex\latex\float\float.sty
-Input:13:C:\Program Files\MiKTeX\tex\latex\algorithmicx\algorithmicx.sty
-Input:14:C:\Program Files\MiKTeX\tex\latex\algorithmicx\algpseudocode.sty
-Input:15:C:\Program Files\MiKTeX\tex\latex\amsmath\amsmath.sty
-Input:16:C:\Program Files\MiKTeX\tex\latex\amsmath\amstext.sty
-Input:17:C:\Program Files\MiKTeX\tex\latex\amsmath\amsgen.sty
-Input:18:C:\Program Files\MiKTeX\tex\latex\amsmath\amsbsy.sty
-Input:19:C:\Program Files\MiKTeX\tex\latex\amsmath\amsopn.sty
-Input:20:C:\Program Files\MiKTeX\tex\latex\amsfonts\amssymb.sty
-Input:21:C:\Program Files\MiKTeX\tex\latex\amsfonts\amsfonts.sty
-Input:22:C:\Program Files\MiKTeX\tex\latex\url\url.sty
-Input:23:C:\Program Files\MiKTeX\tex\latex\enumitem\enumitem.sty
-Input:24:C:\Program Files\MiKTeX\tex\latex\graphics\graphicx.sty
-Input:25:C:\Program Files\MiKTeX\tex\latex\graphics\graphics.sty
-Input:26:C:\Program Files\MiKTeX\tex\latex\graphics\trig.sty
-Input:27:C:\Program Files\MiKTeX\tex\latex\graphics-cfg\graphics.cfg
-Input:28:C:\Program Files\MiKTeX\tex\latex\graphics-def\pdftex.def
-Input:29:C:\Program Files\MiKTeX\tex\latex\l3backend\l3backend-pdftex.def
-Input:30:C:\Users\samso\OneDrive\Documents\GitHub\samsonzhou.github.io\CSCE411-S26\exam-1-notes.aux
-Input:31:C:\Program Files\MiKTeX\tex\context\base\mkii\supp-pdf.mkii
-Input:32:C:\Program Files\MiKTeX\tex\latex\epstopdf-pkg\epstopdf-base.sty
-Input:33:C:\Program Files\MiKTeX\tex\latex\00miktex\epstopdf-sys.cfg
-Input:34:C:\Program Files\MiKTeX\tex\latex\amsfonts\umsa.fd
-Input:35:C:\Program Files\MiKTeX\tex\latex\amsfonts\umsb.fd
+Input:1:C:\Users\Samson Zhou\Documents\GitHub\samsonzhou.github.io\CSCE411-S26\exam-1-notes.tex
+Input:2:C:\Users\Samson Zhou\AppData\Local\Programs\MiKTeX\tex\latex\exam\exam.cls
+Input:3:C:\Users\Samson Zhou\AppData\Local\Programs\MiKTeX\tex\latex\base\ifthen.sty
+Input:4:C:\Users\Samson Zhou\AppData\Local\Programs\MiKTeX\tex\latex\base\article.cls
+Input:5:C:\Users\Samson Zhou\AppData\Local\Programs\MiKTeX\tex\latex\base\size11.clo
+Input:6:C:\Users\Samson Zhou\AppData\Local\Programs\MiKTeX\tex\latex\geometry\geometry.sty
+Input:7:C:\Users\Samson Zhou\AppData\Local\Programs\MiKTeX\tex\latex\graphics\keyval.sty
+Input:8:C:\Users\Samson Zhou\AppData\Local\Programs\MiKTeX\tex\generic\iftex\ifvtex.sty
+Input:9:C:\Users\Samson Zhou\AppData\Local\Programs\MiKTeX\tex\generic\iftex\iftex.sty
+Input:10:C:\Users\Samson Zhou\AppData\Local\Programs\MiKTeX\tex\latex\geometry\geometry.cfg
+Input:11:C:\Users\Samson Zhou\AppData\Local\Programs\MiKTeX\tex\latex\algorithms\algorithm.sty
+Input:12:C:\Users\Samson Zhou\AppData\Local\Programs\MiKTeX\tex\latex\float\float.sty
+Input:13:C:\Users\Samson Zhou\AppData\Local\Programs\MiKTeX\tex\latex\algorithmicx\algorithmicx.sty
+Input:14:C:\Users\Samson Zhou\AppData\Local\Programs\MiKTeX\tex\latex\algorithmicx\algpseudocode.sty
+Input:15:C:\Users\Samson Zhou\AppData\Local\Programs\MiKTeX\tex\latex\amsmath\amsmath.sty
+Input:16:C:\Users\Samson Zhou\AppData\Local\Programs\MiKTeX\tex\latex\amsmath\amstext.sty
+Input:17:C:\Users\Samson Zhou\AppData\Local\Programs\MiKTeX\tex\latex\amsmath\amsgen.sty
+Input:18:C:\Users\Samson Zhou\AppData\Local\Programs\MiKTeX\tex\latex\amsmath\amsbsy.sty
+Input:19:C:\Users\Samson Zhou\AppData\Local\Programs\MiKTeX\tex\latex\amsmath\amsopn.sty
+Input:20:C:\Users\Samson Zhou\AppData\Local\Programs\MiKTeX\tex\latex\amsfonts\amssymb.sty
+Input:21:C:\Users\Samson Zhou\AppData\Local\Programs\MiKTeX\tex\latex\amsfonts\amsfonts.sty
+Input:22:C:\Users\Samson Zhou\AppData\Local\Programs\MiKTeX\tex\latex\url\url.sty
+Input:23:C:\Users\Samson Zhou\AppData\Local\Programs\MiKTeX\tex\latex\enumitem\enumitem.sty
+Input:24:C:\Users\Samson Zhou\AppData\Local\Programs\MiKTeX\tex\latex\graphics\graphicx.sty
+Input:25:C:\Users\Samson Zhou\AppData\Local\Programs\MiKTeX\tex\latex\graphics\graphics.sty
+Input:26:C:\Users\Samson Zhou\AppData\Local\Programs\MiKTeX\tex\latex\graphics\trig.sty
+Input:27:C:\Users\Samson Zhou\AppData\Local\Programs\MiKTeX\tex\latex\graphics-cfg\graphics.cfg
+Input:28:C:\Users\Samson Zhou\AppData\Local\Programs\MiKTeX\tex\latex\graphics-def\pdftex.def
+Input:29:C:\Users\Samson Zhou\AppData\Local\Programs\MiKTeX\tex\latex\l3backend\l3backend-pdftex.def
+Input:30:C:\Users\Samson Zhou\Documents\GitHub\samsonzhou.github.io\CSCE411-S26\exam-1-notes.aux
+Input:31:C:\Users\Samson Zhou\AppData\Local\Programs\MiKTeX\tex\context\base\mkii\supp-pdf.mkii
+Input:32:C:\Users\Samson Zhou\AppData\Local\Programs\MiKTeX\tex\latex\epstopdf-pkg\epstopdf-base.sty
+Input:33:C:\Users\Samson Zhou\AppData\Local\Programs\MiKTeX\tex\latex\00miktex\epstopdf-sys.cfg
+Input:34:C:\Users\Samson Zhou\AppData\Local\Programs\MiKTeX\tex\latex\amsfonts\umsa.fd
+Input:35:C:\Users\Samson Zhou\AppData\Local\Programs\MiKTeX\tex\latex\amsfonts\umsb.fd
 Output:pdf
 Magnification:1000
 Unit:1
 X Offset:0
 Y Offset:0
 Content:
-!2396
+!3281
 {1
 [1,77:4736286,49263411:30785865,44527125,0
 (1,77:4736286,4736286:0,0,0
@@ -3840,8 +3840,8 @@ v1,151:35522151,49976605:0,0,0
 ]
 !30028
 }3
-Input:36:C:\Users\samso\OneDrive\Documents\GitHub\samsonzhou.github.io\CSCE411-S26\exam-1-notes.aux
-!110
+Input:36:C:\Users\Samson Zhou\Documents\GitHub\samsonzhou.github.io\CSCE411-S26\exam-1-notes.aux
+!107
 Postamble:
 Count:2362
 !27
