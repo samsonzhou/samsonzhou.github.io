@@ -586,6 +586,143 @@ maintaining an optimal $\tilde{\mathcal{O}}(\log^3 n)$ bits of space.
 
 
 
+
+
+<li>
+<b>
+Fast Diverse Nearest Neighbor Search
+</b>
+</br><i>
+--justinchen--,
+--sohamnagawanshi--,
+--shenghaoxie--,
+--haikexu--,
+--alanzhou--,
+Samson Zhou
+</br></i>
+<a href="https://neurips.cc/Conferences/2026">NeurIPS 2026</a>
+[<a href="javascript:toggle('AFNNTZ26')">abstract</a>]
+<!--[<a href="https://arxiv.org/pdf/2607.06312">pdf</a>]-->
+<div id="AFNNTZ26" style="display: none">
+<p id="abs">
+In the $k$-diverse nearest neighbor search problem, the input is a dataset in which each point is assigned a color, 
+and given a query $q$, the goal is to retrieve $k$ approximate nearest neighbors with distinct colors. 
+This color diversity metric is essential for information retrieval tasks where results are required to 
+have different categories, e.g., recommending products from different sellers. Previous state-of-the-art 
+solution by Anand et al. [ICML 2025] constructs a diversity-aware graph to meet this requirement. 
+However, they suffer from an $\mathcal{O}(k^2)$  multiplicative query time overhead, creating a 
+computational bottleneck when $k$ is large.
+
+To break this barrier, we propose a novel color bucketing framework that selects a subset of colors 
+in each bucket and instantiates an independent approximate nearest neighbor search algorithm on the 
+corresponding points. Inspired by group testing, we provide a randomized color sampling scheme that 
+achieves an $\mathcal{O}\left(k^{1-\frac{1}{c^2}-o(1)}\log k\right)$ overhead in Euclidean spaces and 
+an $\mathcal{O}\left(k \log k\right)$ overhead in general metric spaces, where $c$ is the approximation 
+factor, reducing a factor of $k$. In addition, the space usage to store the data structure matches or 
+improves upon prior methods. Empirical results on semi-synthetic and real-world datasets demonstrate that 
+our approach achieves significantly faster search times and higher recall compared to state-of-the-art diversity search baselines.
+
+Furthermore, we introduce a dataset-oblivious deterministic bucketing scheme using expander graphs for a 
+relaxed diverse search problem that only requires $k(1-\varepsilon)$ colors. Here, dataset-oblivious means 
+that the color bucket construction does not depend on the spatial configuration of the dataset. We then 
+establish an $\Omega(k^2)$ lower bound on the number of buckets for any dataset-oblivious deterministic 
+bucketing scheme that gives an \emph{exact} $k$-diverse solution. We subsequently circumvent this by a 
+dataset-aware adaptive segment tree bucketing scheme with an overhead of only $\mathcal{O}(k \log N)$, 
+where $N$ is the number of colors. As an extension of our results, we solve the problem with general 
+diversity metric, where the goal is to maximize the minimum pair-wise distance of the $k$ solutions, 
+and improve the query time.
+</div>
+</li>
+</br>
+
+
+
+
+
+<li>
+<b>
+Space-Optimal Streaming Algorithms via Efficient Encodings
+</b>
+</br><i>
+--hilalasi--,
+--vitalyfeldman--,
+--jelaninelson--,
+--huynguyen--,
+--kunaltalwar--,
+Samson Zhou
+</br></i>
+<a href="https://neurips.cc/Conferences/2026">NeurIPS 2026</a>
+[<a href="javascript:toggle('AFNNTZ26')">abstract</a>]
+<!--[<a href="https://arxiv.org/pdf/2607.06312">pdf</a>]-->
+<div id="AFNNTZ26" style="display: none">
+<p id="abs">
+Differential privacy (DP) has become the standard for privacy-preserving data analysis, 
+yet its practical implementation in federated or distributed settings often faces a 
+significant utility gap compared to the central model. While existing frameworks, 
+including local, shuffle, and secure aggregation models, offer vetted primitives, 
+they can incur high error for important tasks such as selection. Our first contribution 
+is to show that this is inherent in the aggregation model: any private selection algorithm 
+relying on the standard noisy aggregation primitive requires $\Omega(\sqrt{d}/\varepsilon)$ 
+samples. To address this limitation, we propose adding a new primitive that implements a 
+version of the \textit{Sparse Vector Technique} (SVT) and argue that it has simple 
+implementations under various trust models. We demonstrate its power by developing an 
+$\varepsilon$-differentially private algorithm for the selection problem. For selection 
+in dimension $d$, our algorithm achieves an additive error of $O\left(\frac{\log d}{\varepsilon}\right)$, 
+matching that of the central model. Furthermore, we show that this can be done using a 
+near-optimal number of SVT queries. Together with existing lower bounds for the shuffle model, 
+this result establishes an exponential separation between the SVT model and shuffle or aggregation-based models. 
+We demonstrate the model's broad applicability to diverse tasks such as $F_p$ loss minimization, 
+heavy-hitter identification, and sparse mean estimation.
+</div>
+</li>
+</br>
+
+
+
+
+
+<li>
+<b>
+Space-Optimal Streaming Algorithms via Efficient Encodings
+</b>
+</br><i>
+--liudengwang--,
+--shenghaoxie--,
+--davidwoodruff--,
+Samson Zhou
+</br></i>
+<a href="https://neurips.cc/Conferences/2026">NeurIPS 2026</a>
+[<a href="javascript:toggle('WWXZ26')">abstract</a>]
+<!--[<a href="https://arxiv.org/pdf/2607.06312">pdf</a>]-->
+<div id="WWXZ26" style="display: none">
+<p id="abs">
+We study the problem of constructing coresets on data streams: Given a dataset of $n$ points in $\mathbb{R}^d$ 
+arriving sequentially, the goal is to maintain a small weighted subset that accurately approximates 
+the objective values of the entire dataset for a given class of query functions. Previous methods like 
+merge-and-reduce and online sensitivity sampling required more space than the size of an optimal 
+such subset in the offline setting. In this work, we show that such overheads are not necessary by 
+presenting space-optimal streaming algorithms for central high-dimensional optimization problems 
+such as Euclidean $(k,z)$-clustering and $L_p$ subspace embeddings, as well as applications 
+to projection-cost preserving sketches. 
+
+For $(k,z)$-clustering, our streaming algorithm uses memory independent of the number $n$ of input points 
+(in words of memory) and the aspect ratio $\Delta$, yielding a coreset with an optimal 
+$\tilde{\mathcal{O}}\left(\frac{dk}{\min(\varepsilon^4,\varepsilon^{z+2})}\right)$ words of memory 
+for accuracy parameter $\varepsilon\in(0,1)$. For $L_p$ subspace embeddings, where the rows of 
+matrix $\mathbf{A} \in \mathbb{R}^{n \times d}$ arrive in an insertion-only stream, we achieve an 
+efficient algorithm that uses optimal space for different ranges of $p$: 
+$\tilde{\mathcal{O}}\left(\frac{d^2}{\varepsilon^2}\right)$ words for $p\le 2$ and 
+$\tilde{\mathcal{O}}\left(\frac{d^{p/2+1}}{\varepsilon^2}\right)$ words for $p>2$, 
+both independent of the number of rows $n$. Thus, our work shows that streaming algorithms 
+can match offline algorithms in space complexity. 
+</div>
+</li>
+</br>
+
+
+
+
+
 <li>
 <b>
 Adversarial Robustness for Small Frequency Moments and a Weak Equivalence Theorem for Turnstile Streams
@@ -1561,10 +1698,10 @@ Private Vector Mean Estimation in the Shuffle Model: Optimal Rates Require Many 
 --kunaltalwar--,
 Samson Zhou</br></i>
 <a href="https://icml.cc/Conferences/2024">ICML 2024</a>
-[<a href="javascript:toggle('AFNNZT24')">abstract</a>]
+[<a href="javascript:toggle('AFNNTZ24')">abstract</a>]
 [<a href="https://arxiv.org/pdf/2404.10201.pdf">pdf</a>]
 </br>
-<div id="AFNNZT24" style="display: none">
+<div id="AFNNTZ24" style="display: none">
 <p id="abs">
 We study the problem of private vector mean estimation in the shuffle model of privacy where $n$ users each have a unit vector $v^{(i)} \in\mathbb{R}^d$. 
 We propose a new  multi-message protocol that achieves the optimal error using $\tilde{\mathcal{O}}\left(\min(n\varepsilon^2,d)\right)$ messages per user. 
@@ -4288,7 +4425,9 @@ var info = new Array(  new Array('--jeremiahblocki--', 'Jeremiah Blocki', 'https
 					 , new Array('--sohamnagawanshi--', 'Soham Nagawanshi', 'https://ndsoham-amber-ten-32.vercel.app/home')					 
 					 , new Array('--sasidharkunapuli--', 'Sasidhar Kunapuli', 'https://dblp.org/pid/391/4882.html')	
 					 , new Array('--mahdinikdan--', 'Mahdi Nikdan', 'https://mnikdan.github.io/')	
-					 
+					 , new Array('--justinchen--', 'Justin Y. Chen', 'https://jusyc.github.io/')	
+					 , new Array('--haikexu--', 'Haike Xu', 'https://haikexu.com/')	
+					 , new Array('--alanzhou--', 'Alan Zhou', 'https://www.linkedin.com/in/alanzhou0')	
 					 
 					 );
 
