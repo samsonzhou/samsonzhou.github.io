@@ -601,9 +601,9 @@ Fast Diverse Nearest Neighbor Search
 Samson Zhou
 </br></i>
 <a href="https://neurips.cc/Conferences/2026">NeurIPS 2026</a>
-[<a href="javascript:toggle('AFNNTZ26')">abstract</a>]
+[<a href="javascript:toggle('CNXXZZ26')">abstract</a>]
 <!--[<a href="https://arxiv.org/pdf/2607.06312">pdf</a>]-->
-<div id="AFNNTZ26" style="display: none">
+<div id="CNXXZ26" style="display: none">
 <p id="abs">
 In the $k$-diverse nearest neighbor search problem, the input is a dataset in which each point is assigned a color, 
 and given a query $q$, the goal is to retrieve $k$ approximate nearest neighbors with distinct colors. 
@@ -612,7 +612,7 @@ have different categories, e.g., recommending products from different sellers. P
 solution by Anand et al. [ICML 2025] constructs a diversity-aware graph to meet this requirement. 
 However, they suffer from an $\mathcal{O}(k^2)$  multiplicative query time overhead, creating a 
 computational bottleneck when $k$ is large.
-
+</br></br>
 To break this barrier, we propose a novel color bucketing framework that selects a subset of colors 
 in each bucket and instantiates an independent approximate nearest neighbor search algorithm on the 
 corresponding points. Inspired by group testing, we provide a randomized color sampling scheme that 
@@ -621,7 +621,7 @@ an $\mathcal{O}\left(k \log k\right)$ overhead in general metric spaces, where $
 factor, reducing a factor of $k$. In addition, the space usage to store the data structure matches or 
 improves upon prior methods. Empirical results on semi-synthetic and real-world datasets demonstrate that 
 our approach achieves significantly faster search times and higher recall compared to state-of-the-art diversity search baselines.
-
+</br></br>
 Furthermore, we introduce a dataset-oblivious deterministic bucketing scheme using expander graphs for a 
 relaxed diverse search problem that only requires $k(1-\varepsilon)$ colors. Here, dataset-oblivious means 
 that the color bucket construction does not depend on the spatial configuration of the dataset. We then 
@@ -704,7 +704,7 @@ such subset in the offline setting. In this work, we show that such overheads ar
 presenting space-optimal streaming algorithms for central high-dimensional optimization problems 
 such as Euclidean $(k,z)$-clustering and $L_p$ subspace embeddings, as well as applications 
 to projection-cost preserving sketches. 
-
+</br></br>
 For $(k,z)$-clustering, our streaming algorithm uses memory independent of the number $n$ of input points 
 (in words of memory) and the aspect ratio $\Delta$, yielding a coreset with an optimal 
 $\tilde{\mathcal{O}}\left(\frac{dk}{\min(\varepsilon^4,\varepsilon^{z+2})}\right)$ words of memory 
