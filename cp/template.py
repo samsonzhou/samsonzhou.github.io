@@ -81,8 +81,8 @@ def dijkstra(n,start,edges):
         if fin[v]==0:
             fin[v]=1
             dist[v]=d
-        for (u,w) in adj[v]:
-            if fin[u]==0:
-                heapq.heappush(q,(d+w,u))
+            for (u,w) in adj[v]:
+                if fin[u]==0:
+                    heapq.heappush(q,(d+w,u))
     return dist
                 
