@@ -1,5 +1,5 @@
 import sys
-#from collections import defaultdict, deque, Counter
+from collections import defaultdict, deque, Counter
 import heapq
 import math
 
@@ -9,7 +9,7 @@ input = sys.stdin.readline
 # Increase recursion depth for deep trees/graphs (Codeforces default is often too low)
 #sys.setrecursionlimit(200000)
 
-def solve(pos,tar,tight,nzs):
+def solve():
     """
     Main logic for a single test case.
     """
@@ -30,11 +30,69 @@ def solve(pos,tar,tight,nzs):
 if __name__ == '__main__':
     # Most Codeforces problems have multiple test cases.
     # If a problem only has one test case, remove the loop and just call solve() once.
-    t = int(input())
-    for _ in range(t):
-        L, R = map(int, input().split())
-        print(solve(0,R,True,0)-solve(0,L-1,True,0))
-
+    n, qs = map(int, input().split())
+    d=[0]*n
+    par=[-1]*n
+    a = list(map(int, input().split()))
+    adj=[[] for _ in range(n)]
+    for i in range(n-1):
+        adj[i+1].append(a[i]-1)
+        adj[a[i]-1].append(i+1)
+        par[i+1]=a[i]-1
+    lvls=n.bit_length()
+    pars=[[-1]*n for _ in range(lvls)]
+    for i in range(n):
+        pars[0][i]=par[i]
+    for i in range(1,lvls):
+        for j in range(n):
+            if pars[i-1][j]==-1:
+                pars[i][j]=-1
+            else:
+                pars[i][j]=pars[i-1][pars[i-1][j]]
+    def pval(v,k):
+        u=v
+        jvr=False
+        for i in range(lvls-1,-1,-1):
+            if (k>>i)&1==1:
+                u=pars[i][u]
+                if u==-1:
+                    jvr=True
+                    break
+        if jvr:
+            return(-1)
+        else:
+            return(u)
+        
+    deep=[-1]*n
+    deep[0]=0
+    q=deque()
+    q.append(0)
+    while q:
+        v=q.popleft()
+        for u in adj[v]:
+            if deep[u]==-1:
+                q.append(u)
+                deep[u]=deep[v]+1
+    for _ in range(qs):
+        u,v = map(int, input().split())
+        u-=1
+        v-=1
+        if deep[u]>deep[v]:
+            h=deep[u]-deep[v]
+            u=pval(u,h)
+        else:
+            h=deep[v]-deep[u]
+            v=pval(v,h)
+        if u==v:
+            print(u+1)
+        else:
+            for i in range(lvls-1,-1,-1):
+                if pars[i][u]!=pars[i][v]:
+                    u=pars[i][u]
+                    v=pars[i][v]
+            print(pars[0][u]+1)
+        
+    
 
 #Subroutine for creating a list of all primes up to n
 #Sieve approach, removes all multiples, runtime O(n log log n)
@@ -82,7 +140,8 @@ def dijkstra(n,start,edges):
         if fin[v]==0:
             fin[v]=1
             dist[v]=d
-        for (u,w) in adj[v]:
-            heapq.heappush(q,(d+w,u))
+            for (u,w) in adj[v]:
+                if fin[u]==0:
+                    heapq.heappush(q,(d+w,u))
     return dist
                 

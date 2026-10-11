@@ -67,7 +67,7 @@ def choose(n, k, MOD):
     return (num * pow(denom, -1, MOD)) % MOD
 
 def dijkstra(n,start,edges):
-    MAX = pow(10,10)
+    MAX = pow(10,18)
     dist = [MAX]*n
     adj=[[] for _ in range(n)]
     for (u,v,w) in edges:
@@ -85,4 +85,3 @@ def dijkstra(n,start,edges):
                 if fin[u]==0:
                     heapq.heappush(q,(d+w,u))
     return dist
-                
