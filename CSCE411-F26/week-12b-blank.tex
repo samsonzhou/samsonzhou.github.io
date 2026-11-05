@@ -1,0 +1,314 @@
+\documentclass[11  pt]{article}
+\usepackage[lmargin=1in,rmargin=1.75in,bmargin=1in,tmargin=1in]{geometry}
+
+\input{preamble}
+
+\begin{document}
+% Fill in the date when scheduling this lecture.
+\sweek{Lecture 3: Diagonalization and Time Hierarchy}{}
+
+\section{From Undecidability to Running-Time Lower Bounds}
+We have seen that the halting problem is undecidable. We have also proved the containments
+\begin{equation*}
+    \mathrm{P}\subseteq\mathrm{NP}\subseteq\mathrm{PSPACE}\subseteq\mathrm{EXPTIME}.
+\end{equation*}
+Today we will prove that the two endpoints are different.
+
+\paragraph{Recall the halting problem}
+There is no algorithm that always halts and correctly determines whether an arbitrary program $M$ halts on an arbitrary input $I$.
+
+\begin{Qu}
+    What if we are also given a positive integer $T$ and only ask whether $M$ accepts $I$ within $T$ steps?
+    \begin{itemize}
+        \aitem This is still undecidable
+        \bitem We can decide it by simulating $M$ for at most $T$ steps
+        \citem We can decide it only if $M$ eventually halts
+    \end{itemize}
+\end{Qu}
+% Answer: (b). Accept if M accepts within T steps, and reject otherwise.
+
+\vs{.5cm}
+\paragraph{Proving a lower bound}
+Suppose we have an exponential-time algorithm for a problem $Q$. Why does this alone not prove that $Q\notin\mathrm{P}$?
+\vs{1.5cm}
+% There could be a different polynomial-time algorithm for Q.
+
+\vfill
+We will use a deadline to make diagonalization into an algorithm, then show that no polynomial-time algorithm can solve the resulting problem.
+
+\newpage
+\section{Separating P and EXPTIME}
+\begin{theorem}
+    $\mathrm{P}\subsetneq\mathrm{EXPTIME}$.
+\end{theorem}
+
+To prove this theorem, we need a decision problem $D$ such that:
+\begin{itemize}
+    \item There is \hide{an exponential-time algorithm for $D$.}
+    \item There is no \hide{polynomial-time algorithm for $D$.}
+\end{itemize}
+
+We will use the same idea as in the halting problem proof: run a program on its own description and give the opposite answer. This time, we will stop the simulation after a fixed number of steps.
+
+\paragraph{The input}
+An input has the form
+\begin{equation*}
+    w=\langle M\rangle\#1^r,
+\end{equation*}
+where $\langle M\rangle$ describes a deterministic program, $\#$ separates its code from the padding, and $1^r$ is a string of $r$ ones.
+
+The input length is $n=|w|$, including the padding.
+
+\paragraph{Why include extra ones?}
+The code for $M$ stays the same, but we can make the input as long as we like by increasing $r$.
+
+\vs{1cm}
+\textbf{To be clear.} We will run $M$ on the entire string $w$, including its own description and the padding. The program $M$ need not recognize the input as its own code.
+
+\newpage
+\subsection*{A problem that gives the opposite answer}
+Define $D$ to be the set of strings accepted by the following algorithm.
+
+\begin{algorithm}[h]
+    \textsc{Diagonal}($w$)
+    \begin{algorithmic}
+        \If{$w$ is not of the form $\langle M\rangle\#1^r$}
+            \State reject
+        \EndIf
+        \State Let $n=|w|$
+        \State Simulate $M$ on input $w$ for at most $2^n$ steps of $M$
+        \If{$M$ accepts within those $2^n$ steps}
+            \State reject
+        \Else
+            \State accept
+        \EndIf
+    \end{algorithmic}
+\end{algorithm}
+
+\begin{Qu}
+    What does \textsc{Diagonal} output in each case?
+    \begin{itemize}
+        \aitem $M(w)$ accepts by the deadline: \hide{NO}
+        \bitem $M(w)$ rejects by the deadline: \hide{YES}
+        \citem $M(w)$ is still running at the deadline: \hide{YES}
+    \end{itemize}
+\end{Qu}
+
+\paragraph{First, show that $D\in\mathrm{EXPTIME}$}
+Why does \textsc{Diagonal} always halt?
+\vs{1cm}
+% The simulation stops at the deadline even if M never halts.
+
+We use the fact that a simulator can carry out $T$ steps of a program in time polynomial in $n+T$, when the program description and its input each have length at most $n$. Thus, the total running time is
+\begin{equation*}
+    (n+2^n)^{O(1)}=\hide{2^{O(n)}}.
+\end{equation*}
+% This bound includes the clock. Simulated steps and simulator steps differ.
+
+\newpage
+\subsection*{Could a polynomial-time algorithm solve D?}
+Suppose an algorithm $A$ correctly decides $D$ in time $q(n)$ for some polynomial $q$.
+
+Choose the input
+\begin{equation*}
+    w=\langle A\rangle\#1^r, \qquad n=|w|.
+\end{equation*}
+
+\paragraph{Choosing the padding}
+How large should $r$ be? We want
+\begin{equation*}
+    \hide{q(n)<2^n.}
+\end{equation*}
+Why is it possible to arrange this?
+\vs{1cm}
+% A and q are fixed, while the padding lets n grow arbitrarily large.
+% Eventually 2^n exceeds q(n).
+
+With this choice, $A(w)$ finishes before the deadline. There are two cases:
+\begin{itemize}
+    \item If $A(w)$ accepts, the definition of $D$ says that $w$ \hide{is not in $D$.}
+    \vs{.5cm}
+    \item If $A(w)$ rejects, the definition of $D$ says that $w$ \hide{is in $D$.}
+\end{itemize}
+
+Therefore, \hide{$A$ gives the wrong answer on $w$.} This contradicts the assumption that $A$ decides $D$.
+
+\vfill
+We have shown that $D\in\mathrm{EXPTIME}$ and $D\notin\mathrm{P}$. Hence,
+\begin{equation*}
+    \mathrm{P}\subsetneq\mathrm{EXPTIME}.
+\end{equation*}
+
+\newpage
+\subsection*{What made the argument work?}
+\begin{Qu}
+    Why did we add padding instead of using only $\langle A\rangle$?
+    \begin{itemize}
+        \aitem A program cannot take its own code as input without padding
+        \bitem The unpadded input might be too short for $q(n)<2^n$ to hold
+        \citem Adding padding changes $A$ into a faster program
+        \ditem Padding makes an undecidable problem decidable
+    \end{itemize}
+\end{Qu}
+% Answer: (b).
+
+\vs{.5cm}
+\begin{Qu}
+    Does \textsc{Diagonal} need to know the polynomial $q(n)$?
+    \begin{itemize}
+        \aitem Yes, to choose its deadline
+        \bitem No, its deadline is always $2^n$
+        \citem Yes, to decide whether $w$ is a valid input
+    \end{itemize}
+\end{Qu}
+% Answer: (b). The proof uses q only to choose a failing input for A.
+
+\paragraph{Compare with the halting problem}
+\begin{itemize}
+    \item For the halting problem, we ruled out \hide{every algorithm that always halts and is correct.}
+    \vs{.5cm}
+    \item For $D$, we ruled out \hide{every polynomial-time algorithm that is correct.}
+\end{itemize}
+
+\vfill
+This method of making a program disagree with a proposed solver on a description of that solver is called \hide{diagonalization.}
+
+
+\newpage
+\subsection*{What does the separation tell us?}
+We have proved that
+\begin{equation*}
+    \mathrm{P}\subseteq\mathrm{NP}\subseteq\mathrm{PSPACE}\subseteq\mathrm{EXPTIME},
+\end{equation*}
+and that $\mathrm{P}\neq\mathrm{EXPTIME}$.
+
+\begin{Qu}
+    Which conclusion must follow?
+    \begin{itemize}
+        \aitem $\mathrm{P}\neq\mathrm{NP}$
+        \bitem $\mathrm{NP}\neq\mathrm{PSPACE}$
+        \citem $\mathrm{PSPACE}\neq\mathrm{EXPTIME}$
+        \ditem At least one of the three containments is strict
+    \end{itemize}
+\end{Qu}
+% Answer: (d).
+
+\paragraph{Return to Games}
+Could \textsc{Games} have a polynomial-time algorithm?
+\vs{1.5cm}
+% No. By EXPTIME-completeness, every EXPTIME problem would then have
+% a polynomial-time algorithm, contradicting P != EXPTIME.
+
+\paragraph{Return to TQBF}
+If \textsc{TQBF} had a polynomial-time algorithm, what would the chain become? Fill each blank with $=$ or $\subsetneq$.
+\begin{equation*}
+    \mathrm{P}\ \hide{=}\ \mathrm{NP}\ \hide{=}\ \mathrm{PSPACE}\ \hide{\subsetneq}\ \mathrm{EXPTIME}.
+\end{equation*}
+\vs{1cm}
+% PSPACE-completeness collapses the first three classes. The last inclusion
+% is still strict because the first class differs from EXPTIME.
+
+\newpage
+\section{The Time Hierarchy Theorem}
+We have shown that exponential time lets us solve some problems that polynomial time does not. Can the same idea separate other running-time bounds?
+
+Write $\mathrm{DTIME}(t(n))$ for the decision problems solvable by a deterministic algorithm in $O(t(n))$ time. For this theorem, we use the standard multitape Turing-machine model.
+
+\paragraph{Constructing a clock}
+A function $t(n)\geq n$ is \emph{time-constructible} if, on input $1^n$, a machine can write $1^{t(n)}$ in $O(t(n))$ time. We can use these $t(n)$ marks to count steps. The bounds $n^2$, $n^3$, and $2^n$ are examples.
+
+\begin{theorem}[Deterministic Time Hierarchy Theorem]
+    Let $t(n),T(n)\geq n$ be time-constructible functions. If
+    \begin{equation*}
+        t(n)\log t(n)=o(T(n)),
+    \end{equation*}
+    then
+    \begin{equation*}
+        \mathrm{DTIME}(t(n))\subsetneq\mathrm{DTIME}(T(n)).
+    \end{equation*}
+\end{theorem}
+Here $f(n)=o(g(n))$ means that $f(n)/g(n)$ tends to zero as $n$ grows.
+
+\paragraph{Example}
+Since $n^2\log(n^2)=o(n^3)$, the theorem gives
+\begin{equation*}
+    \mathrm{DTIME}(n^2)\ \hide{\subsetneq}\ \mathrm{DTIME}(n^3).
+\end{equation*}
+Does a problem separating these two classes have to be outside $\mathrm{P}$?
+\vs{1cm}
+% No. The O(n^3)-time algorithm is still polynomial-time.
+
+\newpage
+\subsection*{Accounting for the simulation}
+\textit{Proof of the time hierarchy theorem.} We will construct a decision problem $D_T$ that belongs to $\mathrm{DTIME}(T(n))$ but not to $\mathrm{DTIME}(t(n))$.
+
+\paragraph{A simulation fact}
+There is a fixed universal simulator $U$ with the following property. For every fixed program $A$ that runs in $O(t(n))$ time, there is a constant $c_A$ such that $U$ can simulate $A$ on an input of length $n$ in at most
+\begin{equation*}
+    c_A t(n)\log t(n)
+\end{equation*}
+steps, for all sufficiently large $n$. We will use this efficient simulation fact without proving it.
+
+Here $U$ takes a string $w=\langle M\rangle\#1^r$, decodes $M$, and simulates $M$ on the entire string $w$. Its running time includes decoding and preparing the simulated input. On malformed inputs, $U$ rejects.
+
+\paragraph{Which steps should the clock count?}
+In our earlier proof, we allowed $2^n$ steps of $M$. The actual simulation could take longer, but its time was still exponential.
+
+Now we want a specific $O(T(n))$ bound. We will therefore allow at most $T(n)$ steps of \hide{the simulator $U$.}
+
+\begin{algorithm}[h]
+    \textsc{Hierarchy}($w$)
+    \begin{algorithmic}
+        \State Let $n=|w|$
+        \State Construct a clock with $T(n)$ marks on a separate work tape
+        \State Run $U$ on $w$ for at most $T(n)$ steps of $U$
+        \If{$U$ accepts by the deadline}
+            \State reject
+        \Else
+            \State accept
+        \EndIf
+    \end{algorithmic}
+\end{algorithm}
+
+Define $D_T$ to be the set of inputs accepted by \textsc{Hierarchy}.
+% Parsing is inside the clocked simulation. No expensive preprocessing
+% of an arbitrary encoded program takes place outside the clock.
+% The behavior on malformed inputs is immaterial to diagonalization.
+
+\newpage
+\subsection*{Proving the two running-time claims}
+\paragraph{First, show that $D_T\in\mathrm{DTIME}(T(n))$}
+Constructing the clock takes \hide{$O(T(n))$ time.} Move its head to the next mark after each step of $U$. This adds only constant work per simulator step.
+
+Thus, the simulation and clock together take \hide{$O(T(n))$ time.} Reading the input length also fits within this bound, because $T(n)\geq n$.
+
+\paragraph{Next, show that $D_T\notin\mathrm{DTIME}(t(n))$}
+Suppose $A$ decides $D_T$ in $O(t(n))$ time. Choose an input
+\begin{equation*}
+    w=\langle A\rangle\#1^r,\qquad n=|w|.
+\end{equation*}
+The simulation fact gives a constant $c_A$ bounding the simulation time of $A$. Choose $r$ large enough that
+\begin{equation*}
+    \hide{c_A t(n)\log t(n)<T(n).}
+\end{equation*}
+Why is this possible?
+\vs{1cm}
+% The ratio t(n) log t(n) / T(n) tends to zero. Once A is fixed,
+% c_A is fixed, and padding makes n arbitrarily large. We also choose
+% n beyond the threshold at which the simulation bound holds.
+
+The simulation of $A(w)$ now finishes before the deadline.
+\begin{itemize}
+    \item If $A(w)$ accepts, then \textsc{Hierarchy}$(w)$ \hide{rejects.}
+    \item If $A(w)$ rejects, then \textsc{Hierarchy}$(w)$ \hide{accepts.}
+\end{itemize}
+Thus, $A$ gives the wrong answer for $D_T$ on $w$, a contradiction.
+
+\vfill
+Finally, $t(n)=O(T(n))$, so $\mathrm{DTIME}(t(n))\subseteq\mathrm{DTIME}(T(n))$. The language $D_T$ proves that this containment is strict.
+% The proof chooses padding separately for each A. The algorithm never
+% needs to know A's running-time constant or the simulator's constant c_A.
+% A reference for the clock construction and the diagonal proof:
+% https://www.cs.ubc.ca/~condon/cpsc506/handouts/time-hierarchy.pdf
+
+\end{document}
