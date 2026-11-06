@@ -558,6 +558,48 @@ Publications
 
 <li>
 <b>
+Tight Bounds for Distributed Norm Estimation
+</b>
+</br><i>
+--davidwoodruff--,
+--shenghaoxie--,
+Samson Zhou
+</br></i>
+<a href="https://itcs-conf.org/index.html">ITCS 2027</a>
+[<a href="javascript:toggle('WXZ27')">abstract</a>]
+<!--[<a href="https://arxiv.org/pdf/2610.38860">pdf</a>]-->
+<div id="WXZ27" style="display: none">
+<p id="abs">
+We study distributed norm estimation, where the goal is to output a $(1+\varepsilon)$-approximation to the $L_p$ norm of 
+a dataset distributed across $k$ servers. Prior work has settled the complexity of the problem in the number $k$ of servers 
+and the accuracy parameter $\varepsilon$ for $p=1$ and for $p\ge2$: for $p=1$, Huang, Yi, and Zhang [PODS 2012] gave 
+matching upper and lower bounds of $\tilde{\Theta}(k+\sqrt{k}/\varepsilon)$ communication; for $p>1$, 
+Woodruff and Zhang [STOC 2012] established a lower bound of $\Omega(k+k^{p-1}/\varepsilon^2)$, 
+which was recently matched by Esfandiari, Kacham, Mirrokni, Woodruff, and Zhong [STOC 2024], 
+but only for $p\ge2$. The regime $p\in(1,2)$ has nevertheless remained unresolved, 
+where the best known protocols use $\tilde{\mathcal{O}}(k+k^{p-1}/\varepsilon^{10p^2/(p-1)})$ communication, 
+due to Woodruff and Zhang, and $\tilde{\mathcal{O}}(k^p/\varepsilon^2)$, due to Kannan, Vempala, and Woodruff [COLT 2014]. 
+We close this gap by giving a near-optimal distributed protocol with 
+$\tilde{\mathcal{O}}(k+k^{p-1}/\varepsilon^2)$ communication, matching the lower bound by Woodruff and Zhang. 
+Together with the previous results, this resolves the communication complexity of estimating every 
+$L_p$ norm in the distributed model.
+
+We then extend our techniques to achieve protocols for norm estimation that use 
+(1) $\tilde{\mathcal{O}}(k+k^{p-1}/\varepsilon^2)$ communication in the distributed monitoring model and 
+(2) $\tilde{\mathcal{O}}(k/\varepsilon+k^{p-1}/\varepsilon^2)$ communication in the a
+dversarially robust distributed monitoring model, the latter being the first nontrivial robust protocol in this regime. 
+At the heart of our approach is a novel telescoping approach that iteratively performs bias reduction, 
+which may be of independent interest.
+</div>
+</li>
+</br>
+
+
+
+
+
+<li>
+<b>
 Fast Perfect L<sub>2</sub> Sampling
 </b>
 </br><i>
