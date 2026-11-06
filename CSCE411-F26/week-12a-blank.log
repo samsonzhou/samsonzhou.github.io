@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (MiKTeX 24.4) (preloaded format=pdflatex 2025.1.14)  5 NOV 2026 13:50
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (MiKTeX 24.4) (preloaded format=pdflatex 2025.1.14)  5 NOV 2026 14:43
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -493,8 +493,7 @@ nd-pdftex.def
 File: l3backend-pdftex.def 2024-05-08 L3 backend support: PDF output (pdfTeX)
 \l__color_backend_stack_int=\count325
 \l__pdf_internal_box=\box58
-)
-No file week-12a-blank.aux.
+) (week-12a-blank.aux)
 \openout1 = `week-12a-blank.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 7.
@@ -515,6 +514,7 @@ LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 7.
 LaTeX Font Info:    ... okay on input line 7.
 LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 7.
 LaTeX Font Info:    ... okay on input line 7.
+
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
 *geometry* verbose mode - [ preamble ] result:
@@ -563,6 +563,7 @@ Package color Info: Driver file: pdftex.def on input line 149.
 (C:\Users\Samson Zhou\AppData\Local\Programs\MiKTeX\tex/latex/graphics\mathcolo
 r.ltx))
 Package hyperref Info: Link coloring ON on input line 7.
+ (week-12a-blank.out) (week-12a-blank.out)
 \@outlinefile=\write3
 \openout3 = `week-12a-blank.out'.
 
@@ -632,17 +633,17 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 s/Samson Zhou/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-rm.enc}]
 LaTeX Font Info:    Font shape `OT1/lmss/b/n' in size <12> not available
 (Font)              Font shape `OT1/lmss/bx/n' tried instead on input line 36.
-<figures/A.pdf, id=18, 315.37228pt x 230.21338pt>
+<figures/A.pdf, id=41, 315.37228pt x 230.21338pt>
 File: figures/A.pdf Graphic file (type pdf)
 <use figures/A.pdf>
 Package pdftex.def Info: figures/A.pdf  used on input line 63.
 (pdftex.def)             Requested size: 22.76164pt x 14.22319pt.
-<figures/B.pdf, id=19, 314.21352pt x 229.77534pt>
+<figures/B.pdf, id=42, 314.21352pt x 229.77534pt>
 File: figures/B.pdf Graphic file (type pdf)
 <use figures/B.pdf>
 Package pdftex.def Info: figures/B.pdf  used on input line 64.
 (pdftex.def)             Requested size: 22.7595pt x 14.22418pt.
-<figures/C.pdf, id=20, 314.27463pt x 230.07079pt>
+<figures/C.pdf, id=43, 314.27463pt x 230.07079pt>
 File: figures/C.pdf Graphic file (type pdf)
 <use figures/C.pdf>
 Package pdftex.def Info: figures/C.pdf  used on input line 65.
@@ -704,7 +705,7 @@ File: figures/C.pdf Graphic file (type pdf)
 <use figures/C.pdf>
 Package pdftex.def Info: figures/C.pdf  used on input line 179.
 (pdftex.def)             Requested size: 22.75914pt x 14.22491pt.
-<figures/D.pdf, id=137, 313.57942pt x 227.58772pt>
+<figures/D.pdf, id=158, 313.57942pt x 227.58772pt>
 File: figures/D.pdf Graphic file (type pdf)
 <use figures/D.pdf>
 Package pdftex.def Info: figures/D.pdf  used on input line 180.
@@ -746,11 +747,6 @@ Package pdftex.def Info: figures/C.pdf  used on input line 257.
 [9]
 
 [10]
-Overfull \hbox (113.00818pt too wide) in paragraph at lines 332--333
-\OT1/cmr/m/n/10.95 For the prob-lem be-low, a po-si-tion is a string of $\OML/c
-mm/m/it/10.95 k$ \OT1/cmr/m/n/10.95 bits. Thus there are $[]$
- []
-
 
 LaTeX Font Warning: Font shape `OT1/cmr/m/scit' undefined
 (Font)              using `OT1/cmr/m/sc' instead on input line 354.
@@ -763,33 +759,20 @@ LaTeX Font Warning: Font shape `OT1/cmr/m/scit' undefined
 (Font)              using `OT1/cmr/m/sc' instead on input line 368.
 
 
-Overfull \hbox (86.66171pt too wide) in paragraph at lines 396--397
-[] []\OT1/cmr/bx/n/10.95 Run-ning time[] \OT1/cmr/m/n/10.95 There are at most $
-[]$
- []
-
-
 
 [12] (week-12a-blank.aux)
  ***********
 LaTeX2e <2024-06-01> patch level 2
 L3 programming layer <2024-08-16>
  ***********
-
-
-Package rerunfilecheck Warning: File `week-12a-blank.out' has changed.
-(rerunfilecheck)                Rerun to get outlines right
-(rerunfilecheck)                or use package `bookmark'.
-
-Package rerunfilecheck Info: Checksums for `week-12a-blank.out':
-(rerunfilecheck)             Before: <no file>
-(rerunfilecheck)             After:  0293B58F15D7D896C05845024BE452BD;992.
+Package rerunfilecheck Info: File `week-12a-blank.out' has not changed.
+(rerunfilecheck)             Checksum: 0293B58F15D7D896C05845024BE452BD;992.
  ) 
 Here is how much of TeX's memory you used:
- 13701 strings out of 473898
- 220449 string characters out of 5723611
+ 13716 strings out of 473898
+ 220900 string characters out of 5723611
  1933960 words of memory out of 5000000
- 36355 multiletter control sequences out of 15000+600000
+ 36364 multiletter control sequences out of 15000+600000
  571538 words of font info for 68 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  80i,8n,82p,553b,440s stack positions out of 10000i,1000n,20000p,200000b,200000s
@@ -809,9 +792,9 @@ n Zhou/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb>
 <C:/Users/Samson Zhou/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts
 /cm/cmti10.pfb><C:/Users/Samson Zhou/AppData/Local/Programs/MiKTeX/fonts/type1/
 public/lm/lmssbx10.pfb>
-Output written on week-12a-blank.pdf (12 pages, 656243 bytes).
+Output written on week-12a-blank.pdf (12 pages, 659039 bytes).
 PDF statistics:
- 272 PDF objects out of 1000 (max. 8388607)
+ 291 PDF objects out of 1000 (max. 8388607)
  32 named destinations out of 1000 (max. 500000)
- 21 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 69 words of extra memory for PDF output out of 10000 (max. 10000000)
 

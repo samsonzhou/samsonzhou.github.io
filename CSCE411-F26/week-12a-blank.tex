@@ -5,7 +5,7 @@
 \input{preamble}
 
 \begin{document}
-    \sweek{Lecture 2: Space Complexity and Games}{}
+    \sweek{12a: Space Complexity and Games}{November 10, 2026}
     % Fill in the lecture date in the second argument above.
 
 \section{Space Complexity}
@@ -329,7 +329,7 @@ Which first move lets Alice force a win? What happens if Alice chooses the other
 
 \newpage
 \subsection*{Describing a large game}
-For the problem below, a position is a string of $k$ bits. Thus there are \hide{$2^k$ possible positions.} We describe the rules compactly, instead of listing all positions and moves.
+For the problem below, a position is a string of $k$ bits. Thus there are \hide{$2^k$} possible positions. We describe the rules compactly, instead of listing all positions and moves.
 
 \paragraph{The input}
 An instance consists of an initial position $s_0\in\{0,1\}^k$ and Boolean circuits specifying:
@@ -393,7 +393,7 @@ After the process stops, can Bob keep the token outside the marked set?
 % Bob can therefore prevent reaching any goal forever.
 
 \paragraph{Running time}
-There are at most \hide{$2^k$ rounds that add new positions.} Each round takes polynomial time in the size of the explicit position table and the circuit descriptions. If $n$ is the total input length, then $k\leq n$, and the total running time is
+There are at most \hide{$2^k$} rounds that add new positions. Each round takes polynomial time in the size of the explicit position table and the circuit descriptions. If $n$ is the total input length, then $k\leq n$, and the total running time is
 \begin{equation*}
     (2^k+n)^{O(1)}=2^{\mathrm{poly}(n)}.
 \end{equation*}
