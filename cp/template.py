@@ -85,3 +85,35 @@ def dijkstra(n,start,edges):
                 if fin[u]==0:
                     heapq.heappush(q,(d+w,u))
     return dist
+
+def mat_mul(X,Y,MOD):
+    m=len(X)
+    n=len(X[0])
+    p=len(Y[0])
+    Z=[]
+    for i in range(m):
+        row=[]
+        for j in range(p):
+            val=0
+            for k in range(n):
+                val+=(X[i][k]*Y[k][j])
+                val=val%MOD
+            row.append(val)
+        Z.append(row)
+    return(Z)
+
+def mat_pow(M,e,MOD):
+    m=len(M)
+    R=[]
+    for i in range(m):
+        out=[0]*m
+        out[i]=1
+        R.append(out)
+    C=M
+    p=1
+    while p<=e.bit_length():
+        if (e>>(p-1))&1==1:
+            R=mat_mul(R,C,MOD)
+        C=mat_mul(C,C,MOD)
+        p+=1
+    return R
