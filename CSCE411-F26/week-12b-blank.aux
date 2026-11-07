@@ -2,58 +2,44 @@
 \providecommand\hyper@newdestlabel[2]{}
 \providecommand\HyField@AuxAddToFields[1]{}
 \providecommand\HyField@AuxAddToCoFields[2]{}
-\@writefile{toc}{\contentsline {section}{\numberline {1}Web Search and PageRank}{1}{section.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {paragraph}{Counting incoming links}{1}{section.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {paragraph}{A recursive notion of importance}{1}{section.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {2}Markov Chains}{2}{section.2}\protected@file@percent }
-\@writefile{toc}{\contentsline {paragraph}{The transition matrix}{2}{section.2}\protected@file@percent }
-\@writefile{toc}{\contentsline {paragraph}{Following the probability mass}{2}{section.2}\protected@file@percent }
-\@writefile{toc}{\contentsline {paragraph}{Write the matrix}{3}{Qu.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {1}Ranking Webpages}{1}{section.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{A first idea: count incoming links}{1}{section.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Not all links should count equally}{1}{section.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {2}A Random Surfer}{2}{section.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{A local rule}{2}{section.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{The Markov property}{2}{section.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Predict one day ahead}{3}{Qu.2}\protected@file@percent }
 \@writefile{toc}{\contentsline {paragraph}{Predict two days ahead}{3}{Qu.2}\protected@file@percent }
-\@writefile{toc}{\contentsline {paragraph}{Why are Markov chains useful?}{3}{Qu.2}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {3}Stationary Distributions}{4}{section.3}\protected@file@percent }
-\@writefile{toc}{\contentsline {paragraph}{Return to the weather model}{4}{section.3}\protected@file@percent }
-\@writefile{toc}{\contentsline {paragraph}{Three different questions}{4}{Qu.3}\protected@file@percent }
-\@writefile{toc}{\contentsline {paragraph}{What about one long sample path?}{4}{Item.3}\protected@file@percent }
-\@writefile{toc}{\contentsline {paragraph}{First, check the normalization}{5}{theorem.3.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {paragraph}{Next, check one coordinate}{5}{theorem.3.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {paragraph}{Example: A star}{5}{theorem.3.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {4}BrokenRank (Almost PageRank)}{6}{section.4}\protected@file@percent }
-\@writefile{toc}{\contentsline {paragraph}{How should a page receive importance?}{6}{section.4}\protected@file@percent }
-\@writefile{toc}{\contentsline {paragraph}{A small calculation}{6}{section.4}\protected@file@percent }
-\@writefile{toc}{\contentsline {paragraph}{A page with no outgoing links}{7}{section.4}\protected@file@percent }
-\@writefile{toc}{\contentsline {paragraph}{A group with no links to the outside}{7}{section.4}\protected@file@percent }
-\@writefile{toc}{\contentsline {paragraph}{Disconnected components}{8}{section.4}\protected@file@percent }
-\@writefile{toc}{\contentsline {paragraph}{A strongly connected graph can still oscillate}{8}{section.4}\protected@file@percent }
-\@writefile{toc}{\contentsline {paragraph}{A standard finite-chain theorem}{8}{Qu.5}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {5}PageRank}{9}{section.5}\protected@file@percent }
-\@writefile{toc}{\contentsline {paragraph}{First, repair dangling nodes}{9}{section.5}\protected@file@percent }
-\@writefile{toc}{\contentsline {paragraph}{Next, allow teleportation}{9}{section.5}\protected@file@percent }
-\@writefile{toc}{\contentsline {paragraph}{Why does this help?}{9}{section.5}\protected@file@percent }
-\@writefile{toc}{\contentsline {paragraph}{Take two steps}{10}{section.5}\protected@file@percent }
-\@writefile{toc}{\contentsline {paragraph}{Solve for the stationary scores}{10}{section.5}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {6}Computing PageRank}{11}{section.6}\protected@file@percent }
-\@writefile{toc}{\contentsline {paragraph}{Why use a separate array?}{11}{section.6}\protected@file@percent }
-\@writefile{toc}{\contentsline {paragraph}{Return to the two-page dead end}{12}{Qu.6}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {7}Why Does the Iteration Converge?}{13}{section.7}\protected@file@percent }
-\@writefile{toc}{\contentsline {paragraph}{First, understand the intuition}{13}{section.7}\protected@file@percent }
-\@writefile{toc}{\contentsline {paragraph}{Use the triangle inequality}{13}{theorem.7.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {paragraph}{Now compare two PageRank updates}{13}{theorem.7.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {paragraph}{Existence and uniqueness}{14}{theorem.7.2}\protected@file@percent }
-\@writefile{toc}{\contentsline {paragraph}{How many iterations suffice?}{14}{theorem.7.2}\protected@file@percent }
-\@writefile{toc}{\contentsline {paragraph}{When can we stop early?}{14}{theorem.7.2}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {8}Personalized PageRank}{15}{section.8}\protected@file@percent }
-\@writefile{toc}{\contentsline {paragraph}{What if some entries of $v$ are zero?}{15}{section.8}\protected@file@percent }
-\@writefile{toc}{\contentsline {paragraph}{Choosing the link-follow probability}{15}{section.8}\protected@file@percent }
-\@writefile{toc}{\contentsline {paragraph}{Why does $\pi $ approach $v$ as $d\to 0$?}{15}{section.8}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {9}What Have We Learned?}{16}{section.9}\protected@file@percent }
-\@writefile{toc}{\contentsline {paragraph}{Complete the three equations}{16}{Qu.8}\protected@file@percent }
-\@writefile{toc}{\contentsline {paragraph}{Check the modeling choices}{16}{Qu.8}\protected@file@percent }
-\@writefile{toc}{\contentsline {paragraph}{Where else could we use a random walk?}{16}{Qu.8}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {10}Optional: PageRank as a Random-Length Walk}{17}{section.10}\protected@file@percent }
-\@writefile{toc}{\contentsline {paragraph}{How many steps do we take?}{17}{section.10}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {11}Optional: Laziness and Sampling Accuracy}{18}{section.11}\protected@file@percent }
-\@writefile{toc}{\contentsline {paragraph}{Can we remove periodicity without changing stationarity?}{18}{section.11}\protected@file@percent }
-\@writefile{toc}{\contentsline {paragraph}{Estimate one score using independent samples}{18}{section.11}\protected@file@percent }
-\@writefile{toc}{\contentsline {paragraph}{Why insist on independent runs?}{18}{section.11}\protected@file@percent }
-\gdef \@abspage@last{18}
+\@writefile{toc}{\contentsline {paragraph}{Why is this useful?}{3}{Qu.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {3}Distributing Scores Along Links}{4}{section.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{First, decide what each page sends}{4}{section.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Next, add what each page receives}{4}{section.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Check a proposed answer}{5}{section.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{What does stationary mean?}{5}{Qu.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {4}Why Following Links Is Not Enough}{6}{section.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Dead ends}{6}{section.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Spider traps}{6}{section.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Scores can also oscillate}{6}{section.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {5}PageRank: Add Random Jumps}{7}{section.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{The random-surfer interpretation}{7}{section.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{The update when there are no dead ends}{7}{Qu.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{What we can guarantee}{7}{Qu.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{First, add the jump contribution}{8}{Qu.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Next, add the link contributions}{8}{Qu.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Fill in the table}{8}{Qu.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {6}Implementing the Algorithm}{9}{section.6}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Remember the pages with no outgoing links}{9}{section.6}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Why use two arrays?}{9}{section.6}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Follow what happens to the score at $A$}{10}{Qu.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Follow what happens to the score at $B$}{10}{Qu.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Add the contributions}{10}{Qu.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Now compare with the algorithm}{10}{Qu.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {7}What Happens If We Add a Link?}{11}{section.7}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Predict before calculating}{11}{section.7}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Compute one round}{11}{section.7}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Explain the change}{11}{section.7}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {8}Using and Interpreting PageRank}{12}{section.8}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{A score for the graph}{12}{section.8}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Changing the jump rule}{12}{section.8}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Changing $d$}{12}{section.8}\protected@file@percent }
+\gdef \@abspage@last{12}

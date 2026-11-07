@@ -7,112 +7,123 @@
 
 \begin{document}
 % Fill in the date when scheduling this lecture.
-\sweek{Lecture 2: Markov Chains and PageRank}{}
+\sweek{14b: PageRank and Random Walks}{November 12}
 
-% TWO-HOUR TEACHING PLAN (including a five-minute break)
-%  0--8: Web ranking and why random walks are useful.
-%  8--20: Markov property, matrix convention, weather calculation.
-% 20--31: Stationary distributions and their interpretation.
-% 31--40: Undirected walks, degree bias, sampling discussion.
-% 40--55: BrokenRank and four distinct failure modes.
+% Suggested two-hour plan, including a five-minute break.
+% 0--10: Ranking webpages and the limitations of counting links.
+% 10--17: The random surfer and the Markov property in words.
+% 17--25: Weather example and a two-step probability calculation.
+% 25--35: Distribute scores on the running three-page graph.
+% 35--45: Check an equilibrium and interpret stationary scores.
+% 45--55: Dead ends, traps, and oscillation.
 % 55--60: Break.
-% 60--72: Dangling-node repair and teleportation.
-% 72--84: Three-page example and student calculations.
-% 84--98: Sparse power iteration, runtime, dangling-node exercise.
-% 98--110: Contraction, convergence, and stopping rules.
-% 110--115: Personalization, damping, and limitations.
-% 115--120: Exit ticket and discussion.
-% Optional sections provide additional material beyond the two-hour plan.
-% If calculations take longer, state the contraction result and assign
-% its proof as reading. Answer comments are for the instructor.
+% 60--72: Teleportation and its qualitative guarantee.
+% 72--87: Two PageRank rounds by hand; compare intermediate rankings.
+% 87--102: Implement the update and analyze its running time.
+% 102--110: Work through a dangling-node example.
+% 110--116: Paired exercise: add a link and recompute one round.
+% 116--120: Personalization, interpretation, and exit questions.
+% This plan includes board work and student discussion. The hand calculations
+% and graph-modification exercise supply practice rather than additional theory.
+% No matrix notation or general Markov-chain convergence theorem is required.
 
-\section{Web Search and PageRank}
-Suppose a search engine finds one million pages containing the word \texttt{university}. Which pages should it display first?
+\section{Ranking Webpages}
+Suppose a search engine finds one million pages containing the word
+\texttt{university}. Which pages should it display first?
 
-Text matching tells us whether a page mentions a topic. The web graph provides another kind of information: which pages \hide{link to it.}
+Text matching tells us whether a page mentions a topic. Links provide another
+kind of information: which pages other pages refer to.
 
-\paragraph{Counting incoming links}
-One idea is to rank a page by the number of other pages that link to it. What could go wrong with this rule?
-\vs{1.3cm}
-% Answer: Many incoming links could come from unimportant or coordinated
-% pages. A link from a page with two outgoing links also receives the
-% same weight as one from a page with thousands of outgoing links.
+\paragraph{A first idea: count incoming links}
+Why might a page with many incoming links be useful? Can you think of a way
+to make this rule give a misleading ranking?
+\vs{1.2cm}
+% Answer: Incoming links can indicate attention or usefulness, but someone
+% could create many low-quality pages that all link to the same target.
 
-\paragraph{A recursive notion of importance}
-Instead, suppose every page divides its importance among its outgoing links.
+\paragraph{Not all links should count equally}
+PageRank uses two ideas:
 \begin{itemize}
-    \item Links from important pages should contribute \hide{more.}
+    \item A link from an important page should contribute \hide{more.}
     \vs{.3cm}
-    \item A page with many outgoing links should contribute \hide{less along each link.}
+    \item More outgoing links divide a page's contribution among
+    \hide{more destinations.}
 \end{itemize}
-This definition is circular. To determine which pages are important, we seem to need to know which pages are important already.
+
+The difficulty is that we seem to need to know which pages are important
+before we can determine which pages are important.
 
 \begin{Qu}
-    How might we make such a circular definition precise?
+    How could we get started without knowing the final scores?
     \begin{itemize}
-        \aitem Circular definitions can never be useful
-        \bitem Write equations that all the scores must satisfy together
-        \citem Choose the most important page in advance
+        \aitem Give every page an initial score and repeatedly update the scores
+        \bitem Choose the most important page in advance
+        \citem Ignore all outgoing links
     \end{itemize}
 \end{Qu}
-% Answer: (b). A stationary distribution will give us the desired equations.
+% Answer: (a). We will turn this into a precise iterative algorithm.
 
 \vfill
-We will use a random walk to define the scores, then analyze and compute them using Markov chains.
+We will represent the web as a directed graph, define an update rule, and
+analyze an algorithm that applies that rule efficiently.
 
 \newpage
-\section{Markov Chains}
-A \textbf{Markov chain} is a random sequence of states $X_0,X_1,X_2,\ldots$. Given the present state, the next-state distribution does not depend on the earlier history:
-\begin{equation*}
-    \Pr[X_{t+1}=i\mid X_t=j,X_{t-1},\ldots,X_0]
-    =\Pr[X_{t+1}=i\mid X_t=j].
-\end{equation*}
-We consider histories with positive probability, and assume that the transition rule is the same at every step.
+\section{A Random Surfer}
+Imagine a person browsing the web. At each page, the person chooses one
+outgoing link uniformly at random and follows it.
 
-\paragraph{The transition matrix}
-Throughout this lecture, distributions are column vectors, and
-\begin{equation*}
-    P_{ij}=\Pr[X_{t+1}=i\mid X_t=j].
-\end{equation*}
-Column $j$ describes where the chain goes \emph{from} state $j$. Thus,
-\begin{equation*}
-    P_{ij}\geq0,
-    \qquad \sum_{i=1}^{n}P_{ij}=\hide{1}.
-\end{equation*}
-We call this a \textbf{column-stochastic} matrix.
+\paragraph{A local rule}
+If a page has four outgoing links, the probability of following any particular
+one is \hide{$1/4$.} To choose the next page, the surfer only needs to know
+\hide{the current page and its outgoing links.}
 
-\paragraph{Following the probability mass}
-Let $p_i^{(t)}=\Pr[X_t=i]$. How much mass moves from state $j$ to state $i$ in the next step?
-\begin{equation*}
-    \hide{P_{ij}p_j^{(t)}}.
-\end{equation*}
-Adding the contributions from all possible starting states gives
-\begin{equation*}
-    p_i^{(t+1)}=\hide{\sum_{j=1}^{n}P_{ij}p_j^{(t)}},
-    \qquad p^{(t+1)}=\hide{Pp^{(t)}}.
-\end{equation*}
+\begin{center}
+\begin{tikzpicture}[page/.style={circle,draw,fill=blue!10,minimum size=.8cm},
+    edge/.style={->,>=Stealth,thick}]
+    \node[page] (a) at (0,0) {$A$};
+    \node[page] (b) at (3,1) {$B$};
+    \node[page] (c) at (3,-1) {$C$};
+    \draw[edge] (a)--node[above,sloped] {$1/2$} (b);
+    \draw[edge] (a)--node[below,sloped] {$1/2$} (c);
+\end{tikzpicture}
+\end{center}
+
+\paragraph{The Markov property}
+A \textbf{Markov chain} is a random process in which the next-state
+probabilities depend only on the current state. They do not require the
+entire history of how we arrived there.
+
+For our surfer, the states are \hide{webpages.} We assume that the graph and
+the transition rule stay fixed while we analyze the walk.
 
 \begin{Qu}
-    If the chain starts at state $j$ with probability $1$, where do we find its distribution after one step?
+    Two surfers reach the same page by different routes. Under our rule,
+    do they have the same probabilities for their next page?
     \begin{itemize}
-        \aitem Row $j$ of $P$
-        \bitem Column $j$ of $P$
-        \citem The diagonal of $P$
+        \aitem Yes
+        \bitem No, because their browsing histories differ
     \end{itemize}
 \end{Qu}
-% Answer: (b). The initial vector is e_j, and Pe_j is column j.
+% Answer: (a). The current page determines the available links and their
+% probabilities. The two surfers need not make the same random choice.
+
+\vfill
+The ranking idea is to give a high score to a page that the surfer visits
+often. First, we need a way to keep track of the surfer's probabilities.
 
 \newpage
-\subsection*{A two-state weather model}
-Suppose tomorrow's weather depends only on today's weather:
+\subsection*{A small Markov-chain example}
+Suppose we use the following simplified model of weather:
 \begin{itemize}
     \item After a sunny day, tomorrow is sunny with probability $0.8$.
     \item After a rainy day, tomorrow is sunny with probability $0.4$.
 \end{itemize}
-This is a simplified model. Real weather may require more information than these two states.
+This is a model for the example, not a claim that real weather depends only
+on whether today is sunny or rainy.
 
 \begin{center}
-\begin{tikzpicture}[state/.style={circle,draw,fill=blue!10,minimum size=1.1cm},edge/.style={->,>=Stealth,thick}]
+\begin{tikzpicture}[state/.style={circle,draw,fill=blue!10,minimum size=1.1cm},
+    edge/.style={->,>=Stealth,thick}]
     \node[state] (s) at (0,0) {Sunny};
     \node[state] (r) at (4,0) {Rainy};
     \draw[edge] (s) to[bend left=22] node[above] {$0.2$} (r);
@@ -122,184 +133,142 @@ This is a simplified model. Real weather may require more information than these
 \end{tikzpicture}
 \end{center}
 
-\paragraph{Write the matrix}
-In the order (Sunny, Rainy), fill in the transition matrix:
+\paragraph{Predict one day ahead}
+If today is sunny, tomorrow's probabilities are
 \begin{equation*}
-    P=\begin{pmatrix}\hide{0.8}&\hide{0.4}\\\hide{0.2}&\hide{0.6}\end{pmatrix}.
+    \Pr[\text{sunny tomorrow}]=\hide{0.8},\qquad
+    \Pr[\text{rainy tomorrow}]=\hide{0.2}.
 \end{equation*}
-Check that each \hide{column} sums to $1$.
 
 \paragraph{Predict two days ahead}
-If today is sunny, then $p^{(0)}=(1,0)^T$ and $p^{(1)}=(0.8,0.2)^T$. What is the probability that it is sunny two days from now?
-\vs{1.2cm}
-% Answer: There are two ways to end sunny. Their probabilities sum to
-% 0.8(0.8)+0.4(0.2)=0.72. Thus p^{(2)}=(0.72,0.28)^T.
-
-\paragraph{Why are Markov chains useful?}
-They turn a local transition rule into predictions about later behavior. Similar models describe queues, movement through a network, or changes between operating states of a machine.
-
-\vfill
-Multiplying by $P$ tracks the distribution. Simulating the chain produces one particular sequence of states. These are different objects.
-
-\newpage
-\section{Stationary Distributions}
-A probability vector $\pi$ is a \textbf{stationary distribution} if
+There are two ways to be sunny two days from now:
+\begin{itemize}
+    \item Sunny tomorrow, then sunny again: probability \hide{$0.8\cdot0.8$.}
+    \item Rainy tomorrow, then sunny: probability \hide{$0.2\cdot0.4$.}
+\end{itemize}
+Adding gives
 \begin{equation*}
-    P\pi=\pi,\qquad \pi_i\geq0,\qquad \sum_i\pi_i=1.
+    \Pr[\text{sunny in two days}]=\hide{0.72}.
 \end{equation*}
-If we start with distribution $\pi$, the distribution after one step is \hide{still $\pi$.}
-
-\paragraph{Return to the weather model}
-Write $\pi=(s,1-s)^T$. The sunny coordinate must satisfy
-\begin{equation*}
-    s=0.8s+0.4(1-s).
-\end{equation*}
-Solve for $s$:
-\vs{1cm}
-% Answer: 0.6s=0.4, so s=2/3 and pi=(2/3,1/3)^T.
-
-\begin{Qu}
-    What does stationarity mean for this weather model?
-    \begin{itemize}
-        \aitem Sunny days can no longer be followed by rainy days
-        \bitem The probability of each weather state stays the same
-        \citem Successive days are independent
-    \end{itemize}
-\end{Qu}
-% Answer: (b). States may change, and consecutive states remain dependent.
-
-\paragraph{Three different questions}
-\begin{enumerate}
-    \item Does a stationary distribution \emph{exist}?
-    \item Is it \emph{unique}?
-    \item Does $P^tp^{(0)}$ \emph{converge} to it from every start?
-\end{enumerate}
-Every finite stochastic matrix has a stationary distribution. We will use this fact without proof. The other two properties need additional arguments.
-
-\paragraph{What about one long sample path?}
-For a finite irreducible chain, the fraction of time spent in state $i$ converges to $\pi_i$ with probability $1$. Here irreducible means that every state can reach every other state. This long-run frequency statement does not require consecutive observations to be independent.
-
-\newpage
-\subsection*{Random walks and sampling}
-Consider a connected undirected graph with at least one edge. From vertex $j$, choose a neighbor uniformly. Then
-\begin{equation*}
-    P_{ij}=\begin{cases}
-        1/\deg(j),&\text{if }\{i,j\}\in E,\\
-        0,&\text{otherwise}.
-    \end{cases}
-\end{equation*}
-
-\begin{lemma}
-    The vector $\pi_i=\deg(i)/(2|E|)$ is a stationary distribution.
-\end{lemma}
-
-\paragraph{First, check the normalization}
-Why do the entries of $\pi$ sum to $1$?
+What is the probability of rain in two days?
 \vs{.7cm}
-% Answer: The sum of the degrees is 2|E|, since each edge has two endpoints.
+% Answer: 1-0.72=0.28.
 
-\paragraph{Next, check one coordinate}
-For a vertex $i$,
-\begin{equation*}
-    (P\pi)_i
-    =\sum_{j:\{i,j\}\in E}\frac{1}{\deg(j)}\frac{\deg(j)}{2|E|}
-    =\hide{\frac{\deg(i)}{2|E|}}
-    =\pi_i.
-\end{equation*}
-Each neighbor contributes the same amount, and there are \hide{$\deg(i)$ neighbors.}
-
-\paragraph{Example: A star}
-A center is connected to four leaves. What stationary probability does each vertex receive?
-\begin{equation*}
-    \pi_{\mathrm{center}}=\hide{1/2},
-    \qquad \pi_{\mathrm{each\ leaf}}=\hide{1/8}.
-\end{equation*}
-
-\begin{Qu}
-    A researcher samples users by repeatedly moving to a uniformly chosen friend. Is this a uniform sample of users?
-    \begin{itemize}
-        \aitem Yes, because every choice is uniform
-        \bitem No, users with more friends have larger stationary probabilities
-        \citem No, users with fewer friends have larger stationary probabilities
-    \end{itemize}
-\end{Qu}
-% Answer: (b). Local uniform choices need not produce a uniform stationary
-% distribution. Successive samples are also correlated.
+\paragraph{Why is this useful?}
+A simple rule for one step lets us predict later behavior. Similar models
+describe movement through a network, customer queues, and machine operating
+states, when the chosen state includes the information needed for the next step.
 
 \vfill
-Random walks let us sample or explore a large graph using only local information. We must check which distribution the walk actually samples.
+For PageRank, we will perform the same kind of calculation: multiply along
+each possible transition, then add the contributions arriving at a page.
 
 \newpage
-\section{BrokenRank (Almost PageRank)}
-Let $G=(V,E)$ be the directed graph of webpages, with $|V|=n$. Define $L_{ij}=1$ if $j\to i$, and $0$ otherwise. Let
-\begin{equation*}
-    m_j=\sum_iL_{ij}
-\end{equation*}
-be the number of outgoing links from page $j$.
-
-For now, assume every page has at least one outgoing link. A random surfer follows an outgoing link uniformly, so
-\begin{equation*}
-    P_{ij}=\hide{\frac{L_{ij}}{m_j}}.
-\end{equation*}
-
-\paragraph{How should a page receive importance?}
-If page $j$ has importance $p_j$, how much does it send along each outgoing link?
-\vs{.7cm}
-% Answer: It sends p_j/m_j along each outgoing link.
-
-Our preliminary ranking asks for a probability vector satisfying
-\begin{equation*}
-    p_i=\hide{\sum_{j:j\to i}\frac{p_j}{m_j}},
-    \qquad p=\hide{Pp}.
-\end{equation*}
-This is precisely a stationary distribution of the surfer's walk.
-
-\begin{algorithm}[h]
-    \textsc{GenericRandomWalk}($G,p^{(0)}$)
-    \begin{algorithmic}
-        \State Draw the starting page $j$ from $p^{(0)}$
-        \While{the surfer continues}
-            \State Choose an outgoing edge $(j,i)$ uniformly
-            \State Set $j\gets i$
-        \EndWhile
-    \end{algorithmic}
-\end{algorithm}
-
-\paragraph{A small calculation}
-A page has current mass $0.12$ and three outgoing links. It sends \hide{$0.04$} along each link, so its total outgoing contribution is \hide{$0.12$.}
-
-\vfill
-The equations look reasonable. What happens when the graph has dead ends, closed groups of pages, disconnected components, or cycles?
-
-\newpage
-\subsection*{Dead ends and spider traps}
-\paragraph{A page with no outgoing links}
-Suppose the only link is $A\to B$, and $B$ has no outgoing links.
-
+\section{Distributing Scores Along Links}
+We will use the following graph throughout the lecture:
 \begin{center}
-\begin{tikzpicture}[page/.style={circle,draw,fill=blue!10,minimum size=.8cm},edge/.style={->,>=Stealth,thick}]
+\begin{tikzpicture}[page/.style={circle,draw,fill=blue!10,minimum size=.8cm},
+    edge/.style={->,>=Stealth,thick}]
     \node[page] (a) at (0,0) {$A$};
     \node[page] (b) at (3,0) {$B$};
+    \node[page] (c) at (1.5,-1.4) {$C$};
     \draw[edge] (a)--(b);
+    \draw[edge] (a) to[bend right=15] (c);
+    \draw[edge] (b)--(c);
+    \draw[edge] (c) to[bend right=15] (a);
 \end{tikzpicture}
 \end{center}
-We call $B$ a \textbf{dangling node}. What goes wrong with the formula $P_{ij}=L_{ij}/m_j$?
-\vs{.6cm}
-% Answer: m_B=0, so the formula divides by zero.
 
-Suppose we simply replace the column for $B$ by zeros. Starting at $A$, the distributions would become
+Let $p(u)$ be the probability that the surfer is currently at page $u$.
+The probabilities sum to $1$. We also call these values the current scores.
+
+\paragraph{First, decide what each page sends}
+Write $\deg^+(u)$ for the number of outgoing links from $u$. Each outgoing
+link receives a contribution of
 \begin{equation*}
-    \begin{pmatrix}1\\0\end{pmatrix},\quad
-    \begin{pmatrix}0\\1\end{pmatrix},\quad
-    \hide{\begin{pmatrix}0\\0\end{pmatrix}}.
+    \hide{\frac{p(u)}{\deg^+(u)}}.
 \end{equation*}
-The last vector is not a probability distribution: its entries sum to \hide{zero.}
+For now, every page has at least one outgoing link.
 
-\paragraph{A group with no links to the outside}
-Now suppose the links are $A\to B$, $B\to C$, and $C\to B$.
+\paragraph{Next, add what each page receives}
+Start with $p(A)=p(B)=p(C)=1/3$. Fill in the new scores:
+\begin{equation*}
+    p_{\mathrm{new}}(A)=\hide{1/3},\qquad
+    p_{\mathrm{new}}(B)=\hide{1/6},\qquad
+    p_{\mathrm{new}}(C)=\hide{1/2}.
+\end{equation*}
+% Answer: C sends 1/3 to A. A sends 1/6 each to B and C.
+% B sends its full 1/3 to C, so C receives 1/6+1/3=1/2.
 
+Check that the new scores still sum to $1$. Then perform one more round.
+\vs{1.2cm}
+% Answer: The second round gives (1/2,1/6,1/3), in the order (A,B,C).
+
+\vfill
+All contributions in a round must use the \hide{old scores.} We should not
+use a newly computed score until the next round.
+
+\newpage
+\subsection*{When have the scores settled down?}
+The link-following update is
+\begin{equation*}
+    p_{\mathrm{new}}(v)=\sum_{u:u\to v}\frac{p(u)}{\deg^+(u)}.
+\end{equation*}
+A set of probabilities that is unchanged by this update is called a
+\textbf{stationary distribution}.
+
+\paragraph{Check a proposed answer}
+For our three-page graph, suppose
+\begin{equation*}
+    p(A)=\frac25,\qquad p(B)=\frac15,\qquad p(C)=\frac25.
+\end{equation*}
+Without solving any equations, check what happens after another round:
+\begin{itemize}
+    \item $A$ receives \hide{$2/5$} from $C$.
+    \vs{.3cm}
+    \item $B$ receives \hide{$1/5$} from $A$.
+    \vs{.3cm}
+    \item $C$ receives \hide{$1/5+1/5=2/5$} from $A$ and $B$.
+\end{itemize}
+The probabilities are unchanged, even though the surfer continues moving.
+
+\begin{Qu}
+    Pages $A$ and $B$ each have one incoming link. Must they have the same score?
+    \begin{itemize}
+        \aitem Yes, the number of incoming links determines the score
+        \bitem No, the contributions depend on which pages link to them
+    \end{itemize}
+\end{Qu}
+% Answer: (b). Here C sends all of its score to A, while A splits its
+% score between B and C.
+
+\paragraph{What does stationary mean?}
+Does it mean that the surfer eventually stops at one page?
+\vs{.8cm}
+% Answer: No. The probability of each page stays the same after an update;
+% the actual page visited by an individual surfer can change.
+
+\vfill
+This example has sensible stationary scores. Unfortunately, following links
+alone does not always give a useful ranking or an iteration that settles down.
+
+\newpage
+\section{Why Following Links Is Not Enough}
+\paragraph{Dead ends}
+Suppose the only link is $A\to B$, and $B$ has no outgoing links. What should
+the surfer do after reaching $B$?
+\vs{.8cm}
+% Answer: The link-following rule gives no next move. Such a page is called
+% a dangling node. We will choose a fresh page when this happens.
+
+In score updates, simply discarding the score at $B$ would make the total
+score \hide{smaller than $1$.}
+
+\paragraph{Spider traps}
+Now consider this graph:
 \begin{center}
-\begin{tikzpicture}[page/.style={circle,draw,fill=blue!10,minimum size=.8cm},edge/.style={->,>=Stealth,thick}]
+\begin{tikzpicture}[page/.style={circle,draw,fill=blue!10,minimum size=.8cm},
+    edge/.style={->,>=Stealth,thick}]
     \node[page] (a) at (0,0) {$A$};
     \node[page] (b) at (2.3,0) {$B$};
     \node[page] (c) at (4.6,0) {$C$};
@@ -308,464 +277,307 @@ Now suppose the links are $A\to B$, $B\to C$, and $C\to B$.
     \draw[edge] (c) to[bend left=18] (b);
 \end{tikzpicture}
 \end{center}
-Once the surfer enters $\{B,C\}$, it \hide{cannot escape.} Such a closed group is called a \textbf{spider trap}.
+Once the surfer enters $\{B,C\}$, it \hide{cannot leave.} A closed group of
+pages like this is called a \textbf{spider trap}.
 
-Why might this give an undesirable ranking?
-\vs{.6cm}
-% Answer: A group may receive all the eventual mass because it cannot
-% send the surfer outside, rather than because it has broad support.
-% A trap does not automatically imply nonuniqueness: this example has
-% the unique stationary distribution (0,1/2,1/2)^T.
+Why might a group receive too much importance just because it links only
+to itself?
+\vs{.8cm}
+% Answer: It retains every surfer who enters, regardless of whether the
+% pages are useful or have broad support from the rest of the graph.
+
+\paragraph{Scores can also oscillate}
+With just two links $A\to B$ and $B\to A$, start with scores $(1,0)$.
+What are the next three pairs of scores?
+\vs{.8cm}
+% Answer: (0,1), (1,0), (0,1). A stationary pair (1/2,1/2) exists,
+% but these updates do not approach it from the chosen start.
+
+\vfill
+We need a rule that lets the surfer leave a page or a group of pages without
+depending entirely on the available links.
+% Suggested five-minute break here.
 
 \newpage
-\subsection*{Existence, uniqueness, and convergence can differ}
-\paragraph{Disconnected components}
-Suppose pages $1,2,3$ form a directed cycle, and pages $4,5$ form a separate directed cycle. Both vectors below are stationary:
-\begin{equation*}
-    \pi^{(1)}=(1/3,1/3,1/3,0,0)^T,
-    \qquad \pi^{(2)}=(0,0,0,1/2,1/2)^T.
-\end{equation*}
-Why is $a\pi^{(1)}+(1-a)\pi^{(2)}$ also stationary for every $0\leq a\leq1$?
-\vs{.7cm}
-% Answer: Apply P and use linearity and P pi^(1)=pi^(1), P pi^(2)=pi^(2).
+\section{PageRank: Add Random Jumps}
+Choose a number $d$ with $0<d<1$. At a page that has outgoing links:
+\begin{itemize}
+    \item With probability $d$, follow a uniformly chosen outgoing link.
+    \item With probability $1-d$, jump to a uniformly chosen page.
+\end{itemize}
+At a page with no outgoing links, always jump to a uniformly chosen page.
+A jump may choose the current page again.
 
-There is no unique stationary ranking. The amount of mass in each component depends on \hide{where we start.}
-
-\paragraph{A strongly connected graph can still oscillate}
-For the two-page cycle $1\to2\to1$,
-\begin{equation*}
-    P=\begin{pmatrix}0&1\\1&0\end{pmatrix},
-    \qquad \pi=\begin{pmatrix}1/2\\1/2\end{pmatrix}.
-\end{equation*}
-The stationary distribution is unique. But from $(1,0)^T$, the walk alternates between $(1,0)^T$ and $(0,1)^T$, so its distribution \hide{does not converge.}
+\paragraph{The random-surfer interpretation}
+The jumps are called \textbf{teleportation}. For example, if $d=0.85$, the
+surfer follows a link with probability \hide{$0.85$} and chooses a random page
+with probability \hide{$0.15$}, when outgoing links exist.
 
 \begin{Qu}
-    Does the fraction of visits to page $1$ still approach $1/2$?
+    Why can a surfer now escape a spider trap?
     \begin{itemize}
-        \aitem Yes, because the sample path alternates
-        \bitem No, because the time-$t$ distribution oscillates
+        \aitem We delete the links inside the trap
+        \bitem A random jump can move to a page outside the trap
+        \citem Every trapped page must gain a new ordinary link
     \end{itemize}
 \end{Qu}
-% Answer: (a). Time averages and the distribution at one particular time
-% are different. The star walk also alternates between center and leaves.
+% Answer: (b). The same mechanism also connects separate parts of the graph.
 
-\paragraph{A standard finite-chain theorem}
-A chain is \textbf{irreducible} if every state can reach every other state. An irreducible chain is \textbf{aperiodic} if return times have greatest common divisor $1$. If a finite chain has both properties, its stationary distribution is unique and the time-$t$ distribution converges to it from every start.
-% A positive self-loop in an irreducible chain guarantees aperiodicity.
-% Take the five-minute break here. We will prove PageRank convergence
-% directly, without proving the general theorem.
+\paragraph{The update when there are no dead ends}
+If there are $n$ pages, then
+\begin{equation*}
+    p_{\mathrm{new}}(v)=\frac{1-d}{n}
+      +d\sum_{u:u\to v}\frac{p(u)}{\deg^+(u)}.
+\end{equation*}
+The first term is the contribution from \hide{random jumps.} The second is
+the contribution from \hide{following links.}
+% The link-following sum assumes all pages have positive out-degree.
+% The general implementation below also redistributes dangling-node mass.
+
+\paragraph{What we can guarantee}
+With these jumps and the dead-end rule, there is a unique stationary set of
+scores. Repeated updates approach those scores from any starting probability
+distribution. We will use this fact without proving it.
+
+\vfill
+These stationary scores are the \textbf{PageRank scores}. They describe how
+often the modified random surfer visits each page in the long run.
 
 \newpage
-\section{PageRank}
-We will modify the surfer so that it can leave a page even when there are no links, and can escape a closed group of pages.
+\subsection*{Compute two PageRank rounds}
+Return to the links $A\to B$, $A\to C$, $B\to C$, and $C\to A$.
+Use $d=1/2$ to keep the arithmetic simple, and start with score $1/3$ at each page.
 
-\paragraph{First, repair dangling nodes}
-Choose a probability vector $v$, called the \textbf{restart distribution}. For ordinary PageRank, $v_i=1/n$. Define
+\paragraph{First, add the jump contribution}
+There are three pages, so each receives
 \begin{equation*}
-    P_{ij}=\begin{cases}
-        L_{ij}/m_j,&m_j>0,\\
-        v_i,&m_j=0.
-    \end{cases}
-\end{equation*}
-At a dangling node, the surfer draws a new page from $v$. Each column now sums to \hide{1.}
-
-\paragraph{Next, allow teleportation}
-Fix $0<d<1$. At each step,
-\begin{itemize}
-    \item With probability $d$, take a step according to $P$.
-    \item With probability $1-d$, draw a fresh page from $v$.
-\end{itemize}
-Thus $d$ is the link-follow probability; the teleportation probability is \hide{$1-d$.} A common illustrative choice is $d=0.85$.
-
-Let $\mathbf{1}$ be the all-ones column vector. The new transition matrix is
-\begin{equation*}
-    Q=dP+(1-d)v\mathbf{1}^T.
-\end{equation*}
-Since $\mathbf{1}^Tp=1$ for a probability vector $p$,
-\begin{equation*}
-    Qp=\hide{dPp+(1-d)v}.
-\end{equation*}
-A PageRank vector therefore satisfies
-\begin{equation*}
-    \pi=Q\pi=\hide{dP\pi+(1-d)v}.
+    \frac{1-d}{3}=\hide{\frac16}.
 \end{equation*}
 
-\paragraph{Why does this help?}
-For uniform $v$, every entry of $Q$ is at least $(1-d)/n>0$. Every page can reach every other page, and every page has a self-loop. Thus the chain is \hide{irreducible and aperiodic.}
-% Answer: Dangling repair is still essential. Adding teleportation to a
-% zero column gives a column summing to 1-d, not 1.
+\paragraph{Next, add the link contributions}
+For this graph, one round is
+\begin{equation*}
+    \begin{aligned}
+        p_{\mathrm{new}}(A)&=\frac16+\frac12p(C),\\
+        p_{\mathrm{new}}(B)&=\frac16+\frac14p(A),\\
+        p_{\mathrm{new}}(C)&=\frac16+\frac14p(A)+\frac12p(B).
+    \end{aligned}
+\end{equation*}
+Why is the coefficient of $p(A)$ equal to $1/4$ rather than $1/2$?
+\vs{.6cm}
+% Answer: A splits its score between two links, and the probability of
+% following a link is 1/2. Each contribution is (1/2)(p(A)/2)=p(A)/4.
+
+\paragraph{Fill in the table}
+\begin{center}
+\renewcommand{\arraystretch}{1.7}
+\begin{tabular}{c|ccc}
+Round & $A$ & $B$ & $C$\\\hline
+0 & $1/3$ & $1/3$ & $1/3$\\
+1 & $\hide{1/3}$ & $\hide{1/4}$ & $\hide{5/12}$\\
+2 & $\hide{3/8}$ & $\hide{1/4}$ & $\hide{3/8}$
+\end{tabular}
+\end{center}
+Check that each row sums to $1$. Which page is ranked first after each round?
+\vs{.6cm}
+% Answer: C is first after round 1. A and C tie after round 2.
+
+\vfill
+After many rounds, the scores approach approximately $(0.359,0.256,0.385)$,
+so the final ordering is $C>A>B$. A small number of rounds need not give
+the final ordering, especially when scores are close.
+% The exact stationary scores are (14,10,15)/39. They may be checked by
+% substitution, but solving the three simultaneous equations is not required.
 
 \newpage
-\subsection*{Compute PageRank on three pages}
-Consider the links $A\to B$, $A\to C$, $B\to C$, and $C\to A$.
+\section{Implementing the Algorithm}
+We can compute all the new scores by scanning the outgoing links of each
+page. Store the graph using adjacency lists.
+
+\paragraph{Remember the pages with no outgoing links}
+Let $z$ be the sum of their current scores. In addition to the ordinary jump
+contribution, distribute their remaining score $dz$ uniformly. Thus each
+page starts the round with $((1-d)+dz)/n$.
+
+\begin{algorithm}[h]
+    \textsc{PageRank}($G,d,K$), where $0<d<1$ and $K\geq1$
+    \begin{algorithmic}
+        \State Let $n=|V|$ and compute the out-degree $\deg^+(u)$ of every page
+        \State Initialize $p(u)\gets1/n$ for every page $u$
+        \For{$t=1,\ldots,K$}
+            \State $z\gets\sum_{u:\deg^+(u)=0}p(u)$
+            \State $p_{\mathrm{new}}(v)\gets((1-d)+dz)/n$ for every page $v$
+            \For{each edge $(u,v)\in E$}
+                \State $p_{\mathrm{new}}(v)\gets p_{\mathrm{new}}(v)+d\,p(u)/\deg^+(u)$
+            \EndFor
+            \State $p\gets p_{\mathrm{new}}$
+        \EndFor
+        \State \Return $p$
+    \end{algorithmic}
+\end{algorithm}
+
+\paragraph{Why use two arrays?}
+Why should we not overwrite $p(v)$ immediately as we scan the edges?
+\vs{.7cm}
+% Answer: Every contribution must use the same old scores. Otherwise an
+% updated page could send its new score during the current round, making
+% the result depend on the order in which we scan edges.
+
+\begin{Qu}
+    What is the running time of one round?
+    \begin{itemize}
+        \aitem $O(n+|E|)$
+        \bitem $O(n^2)$, because a jump can go to any page
+        \citem $O(|E|^2)$
+    \end{itemize}
+\end{Qu}
+% Answer: (a). Scan the vertices for dangling mass and initialization,
+% and scan the edges once. We never explicitly create all possible jump edges.
+
+With $K$ rounds, the total running time is \hide{$O(K(n+|E|))$.}
+The two score arrays use $O(n)$ space in addition to the graph.
+The returned scores after $K$ rounds are approximations.
+% K is a positive integer. The output is an approximation; we are not
+% claiming an accuracy guarantee for an arbitrary chosen value of K.
+
+\newpage
+\subsection*{Check the dead-end rule}
+Suppose there are only two pages, with the single link $A\to B$.
+Page $B$ has no outgoing links. Start with $p(A)=p(B)=1/2$, and use $d=1/2$.
+
+\paragraph{Follow what happens to the score at $A$}
+Half of $A$'s score follows its link to $B$. The other half is split equally
+between the two pages by random jumps.
+\begin{equation*}
+    \text{From $A$ to $A$: }\hide{\frac18},\qquad
+    \text{from $A$ to $B$: }\hide{\frac38}.
+\end{equation*}
+
+\paragraph{Follow what happens to the score at $B$}
+There is no outgoing link, so all of $B$'s score is distributed uniformly:
+\begin{equation*}
+    \text{From $B$ to $A$: }\hide{\frac14},\qquad
+    \text{from $B$ to $B$: }\hide{\frac14}.
+\end{equation*}
+
+\paragraph{Add the contributions}
+The new scores are
+\begin{equation*}
+    p_{\mathrm{new}}(A)=\hide{\frac38},\qquad
+    p_{\mathrm{new}}(B)=\hide{\frac58}.
+\end{equation*}
+Check that their sum is $1$.
+
+\paragraph{Now compare with the algorithm}
+Here $z=\hide{1/2}$, so the initialization gives every page
+\begin{equation*}
+    \frac{(1-d)+dz}{2}=\hide{\frac38}.
+\end{equation*}
+The edge $A\to B$ then adds \hide{$1/4$} to $B$.
+
+\begin{Qu}
+    What would go wrong if we initialized each score to $(1-d)/2$ and
+    then scanned the edges, without accounting for $z$?
+\end{Qu}
+\vs{1cm}
+% Answer: We would get (1/4,1/2), whose entries sum to only 3/4.
+% We lost the half of B's score assigned to the link-follow option.
+
+\vfill
+Every page must distribute all of its score. Having no outgoing links is a
+case the implementation must handle explicitly.
+
+\newpage
+\section{What Happens If We Add a Link?}
+Work with a partner. Start with our original three-page graph, then add the
+link $B\to A$. The new graph is shown below.
 
 \begin{center}
-\begin{tikzpicture}[page/.style={circle,draw,fill=blue!10,minimum size=.8cm},edge/.style={->,>=Stealth,thick}]
+\begin{tikzpicture}[page/.style={circle,draw,fill=blue!10,minimum size=.8cm},
+    edge/.style={->,>=Stealth,thick}]
     \node[page] (a) at (0,0) {$A$};
     \node[page] (b) at (3,0) {$B$};
-    \node[page] (c) at (1.5,-1.3) {$C$};
-    \draw[edge] (a)--(b);
+    \node[page] (c) at (1.5,-1.5) {$C$};
+    \draw[edge] (a) to[bend left=18] (b);
+    \draw[edge,dashed] (b) to[bend left=18] node[below] {new link} (a);
     \draw[edge] (a) to[bend right=15] (c);
     \draw[edge] (b)--(c);
     \draw[edge] (c) to[bend right=15] (a);
 \end{tikzpicture}
 \end{center}
 
-Use $d=1/2$ and $v=(1/3,1/3,1/3)^T$. In the order $(A,B,C)$,
-\begin{equation*}
-    P=\begin{pmatrix}0&0&1\\1/2&0&0\\1/2&1&0\end{pmatrix},
-    \qquad p^{(t+1)}=\tfrac12Pp^{(t)}+\tfrac12v.
-\end{equation*}
+Use $d=1/2$ and restart the calculation with score $1/3$ at each page.
 
-\paragraph{Take two steps}
-Starting from $p^{(0)}=v$, compute $p^{(1)}$ and $p^{(2)}$.
+\paragraph{Predict before calculating}
+Which page receives a new contribution? Which old contribution becomes smaller?
 \vs{1cm}
-% Answer: p^{(1)}=(1/3,1/4,5/12)^T and p^{(2)}=(3/8,1/4,3/8)^T.
-% Each vector sums to 1. The ranking after two steps ties A and C.
+% Answer: A now receives a contribution from B. B splits its link-following
+% score between A and C, so the contribution from B to C becomes smaller.
 
-\paragraph{Solve for the stationary scores}
-The fixed-point equations are
+\paragraph{Compute one round}
 \begin{equation*}
-    \pi_A=\tfrac16+\tfrac12\pi_C,\qquad
-    \pi_B=\tfrac16+\tfrac14\pi_A,\qquad
-    \pi_C=\tfrac16+\tfrac14\pi_A+\tfrac12\pi_B.
+    p_{\mathrm{new}}(A)=\hide{\frac5{12}},\qquad
+    p_{\mathrm{new}}(B)=\hide{\frac14},\qquad
+    p_{\mathrm{new}}(C)=\hide{\frac13}.
 \end{equation*}
-Together with normalization, they give
-\begin{equation*}
-    \pi=\hide{\frac1{39}(14,10,15)^T}.
-\end{equation*}
-Check the equations and compare the ranking with the two-step calculation.
-\vs{.7cm}
-% Answer: The final ranking is C>A>B. Intermediate rankings need not
-% equal the final ranking. A receives support from the high-scoring C.
+Compare this with the old first-round scores $(1/3,1/4,5/12)$.
+
+\paragraph{Explain the change}
+Page $C$ still has the same two incoming links. Why did its score decrease
+in this round?
+\vs{.8cm}
+% Answer: The source B now divides its contribution between two destinations.
+% Counting incoming links alone misses this change in contribution size.
+
+\vfill
+This compares one round from the same starting scores. To find the new
+stationary ranking, we would continue applying updates on the new graph.
 
 \newpage
-\section{Computing PageRank}
-Although $Q$ is dense, we do not need to construct it. Teleportation contributes only a multiple of $v$.
+\section{Using and Interpreting PageRank}
+\paragraph{A score for the graph}
+Ordinary PageRank depends on the link graph, not on a particular search
+query. We can compute it in advance and combine it with information about
+how well each page matches a query.
 
-Let $z=\sum_{j:m_j=0}p_j$ be the current mass at dangling nodes. Then
-\begin{equation*}
-    p_i^{\mathrm{new}}=((1-d)+dz)v_i
-        +d\sum_{j:j\to i}\frac{p_j}{m_j}.
-\end{equation*}
-Where do the terms $1-d$ and $dz$ come from?
+Would a page with a high PageRank necessarily be a good answer to a search
+for a particular restaurant's opening hours?
+\vs{.7cm}
+% Answer: No. Link-based importance does not imply relevance to the query.
+% A small relevant page may be more useful than a highly ranked general page.
+
+\paragraph{Changing the jump rule}
+For \textbf{personalized PageRank}, random jumps favor selected pages, such
+as pages about a topic or items a user likes. Following links then spreads
+that emphasis through the graph.
+
+What might this be useful for besides ranking webpages?
+\vs{.7cm}
+% Answer: Finding related items for recommendations, identifying papers
+% near a research topic, or exploring a user's part of a social network.
+
+\paragraph{Changing $d$}
+More frequent jumps make the starting point matter less and put more emphasis
+on the jump rule. More link-following makes the graph structure more influential.
+
+If $d=0$ and jumps are uniform, what scores do we obtain?
 \vs{.6cm}
-% Answer: 1-d is ordinary teleportation. The term dz redistributes the
-% mass at dangling nodes when the link-follow option is selected.
+% Answer: Every page has score 1/n, regardless of the links. At d=1,
+% the original problems with traps and oscillation can return.
 
-\begin{algorithm}[h]
-    \textsc{PageRank}($G,d,v,\epsilon$), where $0<d,\epsilon<1$
-    \begin{algorithmic}
-        \State Compute the out-degrees $m_j$ and initialize $p\gets v$
-        \State Set $T\gets\lceil\log(2/\epsilon)/(1-d)\rceil$
-        \For{$t=1,\ldots,T$}
-            \State $z\gets\sum_{j:m_j=0}p_j$
-            \State $p_i^{\mathrm{new}}\gets((1-d)+dz)v_i$ for all $i$
-            \For{each edge $(j,i)\in E$}
-                \State $p_i^{\mathrm{new}}\gets p_i^{\mathrm{new}}+d\,p_j/m_j$
-            \EndFor
-            \State $\Delta\gets\sum_i|p_i^{\mathrm{new}}-p_i|$
-            \State $p\gets p^{\mathrm{new}}$
-            \If{$\Delta\leq(1-d)\epsilon$}
-                \State \Return $p$
-            \EndIf
-        \EndFor
-        \State \Return $p$
-    \end{algorithmic}
-\end{algorithm}
-
-\paragraph{Why use a separate array?}
-What could go wrong if we modified $p$ while scanning the edges?
-\vs{.6cm}
-% Answer: Contributions would use a mixture of old and new scores.
-% The result would depend on edge order rather than being Qp.
-
-We will justify both the fixed budget $T$ and the early stopping rule. The analysis assumes exact arithmetic.
-
-\newpage
-\subsection*{Running time and dangling nodes}
 \begin{Qu}
-    Using adjacency lists, what is the running time of one iteration?
+    Which statement best describes PageRank?
     \begin{itemize}
-        \aitem $O(\log n)$
-        \bitem $O(n+|E|)$
-        \citem $O(n^2)$, because $Q$ is dense
-        \ditem $O(n|E|)$
+        \aitem It counts incoming links
+        \bitem It computes scores from a random-surfer model by repeated updates
+        \citem It guarantees that highly ranked pages are true and useful
     \end{itemize}
 \end{Qu}
-% Answer: (b). Initialization, dangling mass, and the stopping statistic
-% require vertex scans. Contributions require one scan of the edges.
-
-With $t$ iterations, the running time is \hide{$O(t(n+|E|))$.} Storage is $O(n+|E|)$ including the graph, with $O(n)$ extra space for the vectors.
-
-\paragraph{Return to the two-page dead end}
-The only edge is $A\to B$, and $B$ is dangling. Let $d=1/2$, $v=(1/2,1/2)^T$, and $p=(1/2,1/2)^T$.
-\begin{itemize}
-    \item The dangling mass is $z=\hide{1/2}$.
-    \vs{.3cm}
-    \item The shared restart contribution to each page is
-    \begin{equation*}
-        ((1-d)+dz)/2=\hide{3/8}.
-    \end{equation*}
-    \item The edge $A\to B$ contributes an additional \hide{$1/4$} to $B$.
-\end{itemize}
-Therefore,
-\begin{equation*}
-    p^{\mathrm{new}}=\hide{(3/8,5/8)^T}.
-\end{equation*}
-
-What vector would we get if we omitted dangling redistribution? Would it sum to $1$?
-\vs{.8cm}
-% Answer: We would get (1/4,1/2)^T, which sums to 3/4. Teleportation
-% alone has not repaired the missing column.
+% Answer: (b). The model is useful, but links can be manipulated and the
+% scores alone do not establish truth, usefulness, or query relevance.
 
 \vfill
-In general, the restart part contributes $(1-d)+dz$ and the ordinary edges contribute $d(1-z)$. Their sum is \hide{1.}
-
-\newpage
-\section{Why Does the Iteration Converge?}
-For a vector $x$, write $\|x\|_1=\sum_i|x_i|$. The distance between two probability vectors is at most \hide{$2$.} Half of this distance is called total variation distance.
-
-\paragraph{First, understand the intuition}
-Imagine two surfers with different starts. Use the same teleportation decisions for both. When they teleport, send them to the same draw from $v$ and use identical random choices afterward.
-
-What is the probability that no teleportation occurs in the first $t$ steps?
-\begin{equation*}
-    \hide{d^t}.
-\end{equation*}
-Teleportation makes the walk forget its starting point. We will now express this as an inequality.
-
-\begin{lemma}
-    If $P$ is column-stochastic, then $\|Px\|_1\leq\|x\|_1$ for every vector $x$.
-\end{lemma}
-
-\paragraph{Use the triangle inequality}
-\begin{equation*}
-    \|Px\|_1
-    =\sum_i\left|\sum_jP_{ij}x_j\right|
-    \leq\sum_i\sum_jP_{ij}|x_j|
-    =\sum_j|x_j|\sum_iP_{ij}.
-\end{equation*}
-Each column sum is \hide{$1$}, so the last expression is \hide{$\|x\|_1$.}
-
-\paragraph{Now compare two PageRank updates}
-For probability vectors $p,q$, their restart terms cancel:
-\begin{equation*}
-    Qp-Qq=\hide{dP(p-q)}.
-\end{equation*}
-Applying the lemma gives
-\begin{equation*}
-    \|Qp-Qq\|_1\leq\hide{d\|p-q\|_1}.
-\end{equation*}
-Thus each step shrinks discrepancies by a factor at most \hide{$d$.}
-
-\newpage
-\subsection*{Turn the inequality into a guarantee}
-\begin{theorem}
-    For $0<d<1$ and any restart distribution $v$, PageRank has a unique stationary probability vector $\pi$. From every initial probability vector,
-    \begin{equation*}
-        \|p^{(t)}-\pi\|_1\leq d^t\|p^{(0)}-\pi\|_1\leq2d^t.
-    \end{equation*}
-\end{theorem}
-
-\paragraph{Existence and uniqueness}
-Existence follows because $Q$ is a finite stochastic matrix. If $\pi$ and $\rho$ were both stationary, contraction would give
-\begin{equation*}
-    \|\pi-\rho\|_1=\|Q\pi-Q\rho\|_1
-    \leq d\|\pi-\rho\|_1.
-\end{equation*}
-Since $d<1$, this forces \hide{$\pi=\rho$.} Applying contraction repeatedly with $q=\pi$ proves the error bound.
-% An alternative existence proof uses successive differences:
-% ||p^(t+1)-p^t||_1 <= d^t ||p^1-p^0||_1. Their tails are bounded
-% by a geometric series, so the iterates are Cauchy and converge.
-% Taking limits in p^(t+1)=Qp^t gives a stationary probability vector.
-
-\paragraph{How many iterations suffice?}
-To make $2d^t\leq\epsilon$, it is enough that
-\begin{equation*}
-    t\geq\frac{\log(2/\epsilon)}{-\log d}.
-\end{equation*}
-Since $-\log d\geq1-d$, our budget $T=\lceil\log(2/\epsilon)/(1-d)\rceil$ suffices. The total running time is
-\begin{equation*}
-    \hide{O\!\left((n+|E|)\frac{\log(2/\epsilon)}{1-d}\right)}.
-\end{equation*}
-
-\paragraph{When can we stop early?}
-Let $p^{\mathrm{new}}=Qp$ and $\Delta=\|p^{\mathrm{new}}-p\|_1$. By the triangle inequality and contraction,
-\begin{equation*}
-    \|p-\pi\|_1\leq\Delta+d\|p-\pi\|_1,
-    \qquad \|p-\pi\|_1\leq\hide{\frac{\Delta}{1-d}}.
-\end{equation*}
-The new vector has error at most $d\Delta/(1-d)$. Thus stopping when $\Delta\leq(1-d)\epsilon$ is also valid. The budget $T$ ensures the stated runtime even if early stopping never occurs.
-% The returned vector is the new vector. This is an absolute error
-% guarantee; it need not settle the order of nearly tied scores.
-
-\newpage
-\section{Personalized PageRank}
-Why must the restart distribution be uniform? Suppose we instead put more restart probability on pages related to a topic or a user's interests.
-
-The equation stays the same:
-\begin{equation*}
-    \pi=dP\pi+(1-d)v.
-\end{equation*}
-The scores now measure importance relative to the chosen restart distribution. In an item graph, restarting at a user's seed items can help identify related items.
-
-\paragraph{What if some entries of $v$ are zero?}
-The chain may no longer be irreducible. Does the contraction calculation still work?
-\vs{.8cm}
-% Answer: Yes. The restart terms still cancel and P is still stochastic.
-% The stationary vector remains unique, and iteration converges from
-% every start, although some states may receive zero stationary mass.
-
-\paragraph{Choosing the link-follow probability}
-\begin{itemize}
-    \item A smaller $d$ gives more weight to \hide{the restart distribution.}
-    \vs{.3cm}
-    \item A larger $d$ permits longer stretches of link-following, but the convergence guarantee becomes \hide{slower.}
-    \vs{.3cm}
-    \item At $d=0$, the answer is $\pi=\hide{v}$. At $d=1$, teleportation disappears and BrokenRank's issues can return.
-\end{itemize}
-
-\paragraph{Why does $\pi$ approach $v$ as $d\to0$?}
-For a fixed repaired matrix $P$, use the fixed-point equation to show that $\|\pi-v\|_1\leq2d$.
-\vs{.8cm}
-% Answer: pi-v=d(P pi-v), and P pi and v are probability vectors.
-% Their l1 distance is at most 2.
-
-\vfill
-PageRank describes a chosen random-surfer model. A large score does not certify truth or relevance to every query, and links can be manipulated. A search system can use PageRank alongside textual relevance and other signals.
-
-\newpage
-\section{What Have We Learned?}
-\begin{Qu}
-    A chain has a unique stationary distribution. What must follow?
-    \begin{itemize}
-        \aitem The chain eventually stops moving
-        \bitem The time-$t$ distribution converges from every start
-        \citem Neither statement must follow
-    \end{itemize}
-\end{Qu}
-% Answer: (c). The two-state alternating chain has a unique stationary
-% distribution, keeps moving, and oscillates from a deterministic start.
-
-\vs{.5cm}
-\begin{Qu}
-    Why can we compute a PageRank update in $O(n+|E|)$ time even though $Q$ is dense?
-    \begin{itemize}
-        \aitem Most teleportation entries are actually zero
-        \bitem The teleportation contribution is a multiple of $v$
-        \citem We ignore teleportation during the computation
-    \end{itemize}
-\end{Qu}
-% Answer: (b). Dangling mass is also redistributed as a multiple of v.
-
-\paragraph{Complete the three equations}
-\begin{equation*}
-    p^{(t+1)}=\hide{Pp^{(t)}},
-    \qquad \pi=\hide{dP\pi+(1-d)v},
-    \qquad \|p^{(t)}-\pi\|_1\leq\hide{2d^t}.
-\end{equation*}
-
-\paragraph{Check the modeling choices}
-Why does adding teleportation to an unrepaired zero dangling column still fail to produce a stochastic matrix?
-\vs{.8cm}
-% Answer: The resulting column is (1-d)v and sums to 1-d rather than 1.
-
-\paragraph{Where else could we use a random walk?}
-Suggest an application in which a local transition rule could define a useful global score or sampling distribution. What would you need to check?
-\vs{1cm}
-% Answer: Examples include ranking papers in a citation graph,
-% recommendations in an item graph, network exploration, and queues.
-% Check the intended stationary distribution and convergence properties.
-
-\newpage
-\section{Optional: PageRank as a Random-Length Walk}
-Start with the fixed-point equation and substitute it into itself:
-\begin{equation*}
-    \pi=(1-d)v+dP\pi
-    =(1-d)v+d(1-d)Pv+d^2P^2\pi.
-\end{equation*}
-If we continue, the remaining term tends to zero in $\ell_1$, giving
-\begin{equation*}
-    \pi=(1-d)\sum_{k=0}^{\infty}d^kP^kv.
-\end{equation*}
-Why can we view this as a mixture of probability distributions?
-\vs{.7cm}
-% Answer: Each P^k v is a probability vector, the coefficients are
-% nonnegative, and (1-d) sum_{k>=0}d^k=1.
-
-\begin{algorithm}[h]
-    \textsc{SamplePageRank}($P,d,v$)
-    \begin{algorithmic}
-        \State Draw a starting page $j$ from $v$
-        \While{true}
-            \If{an independent coin is heads, with probability $1-d$}
-                \State \Return $j$
-            \EndIf
-            \State Take one step from $j$ according to the repaired matrix $P$
-        \EndWhile
-    \end{algorithmic}
-\end{algorithm}
-
-\paragraph{How many steps do we take?}
-Let $K$ be the number of steps before stopping. Then
-\begin{equation*}
-    \Pr[K=k]=\hide{(1-d)d^k},\qquad k=0,1,2,\ldots.
-\end{equation*}
-Conditioned on $K=k$, the endpoint distribution is $P^kv$. Therefore the unconditional endpoint distribution is \hide{$\pi$.}
-
-What is $\mathbb{E}[K]$? What does it tell us about the effect of $d$?
-\vs{.8cm}
-% Answer: E[K]=d/(1-d). At d=0.85 this is approximately 5.67 steps.
-% Larger d permits longer walks. At dangling nodes, P uses the restart
-% rule, so a step of P is not always an actual graph edge.
-
-\vfill
-Power iteration propagates all the probability mass. Independent random-length walks sample from the same target distribution.
-
-\newpage
-\section{Optional: Laziness and Sampling Accuracy}
-\paragraph{Can we remove periodicity without changing stationarity?}
-For a connected undirected graph with at least one edge, consider
-\begin{equation*}
-    P_{\mathrm{lazy}}=\tfrac12I+\tfrac12P.
-\end{equation*}
-The walker stays put with probability $1/2$ and otherwise takes an ordinary step. If $P\pi=\pi$, then
-\begin{equation*}
-    P_{\mathrm{lazy}}\pi=\tfrac12\pi+\tfrac12P\pi=\hide{\pi}.
-\end{equation*}
-The self-loops remove periodicity, while the degree-proportional stationary distribution stays the same.
-
-Why would laziness fail to connect disconnected components?
-\vs{.7cm}
-% Answer: Staying put creates no paths between components. Initial mass
-% in each component is preserved. Teleportation can connect components.
-
-\paragraph{Estimate one score using independent samples}
-Run \textsc{SamplePageRank} independently $R$ times. Let $Y_r=1$ if run $r$ ends at page $i$, and $0$ otherwise. Define
-\begin{equation*}
-    \widehat\pi_i=\frac1R\sum_{r=1}^{R}Y_r,
-    \qquad \mathbb{E}[\widehat\pi_i]=\hide{\pi_i}.
-\end{equation*}
-Hoeffding's inequality gives
-\begin{equation*}
-    \Pr[|\widehat\pi_i-\pi_i|>\eta]\leq2e^{-2R\eta^2}.
-\end{equation*}
-How large should $R$ be to make this probability at most $\delta$?
-\begin{equation*}
-    R\geq\hide{\frac{\log(2/\delta)}{2\eta^2}}.
-\end{equation*}
-For all $n$ pages simultaneously, a union bound replaces $\log(2/\delta)$ by \hide{$\log(2n/\delta)$.}
-
-\paragraph{Why insist on independent runs?}
-Could we apply the same argument directly to consecutive positions on one long walk?
-\vs{.7cm}
-% Answer: Not directly. Consecutive positions are generally dependent.
-% Also, these bounds concern additive error. Estimating a tiny score
-% to small relative error can require substantially more samples.
-
-% Instructor further reading:
-% https://web.stanford.edu/class/cs276b/handouts/lecture9.pdf
-% https://nlp.stanford.edu/IR-book/html/htmledition/pagerank-1.html
+The main algorithmic ideas are to model a problem using a graph, define a
+local update, and compute repeated updates by scanning vertices and edges.
 
 \end{document}

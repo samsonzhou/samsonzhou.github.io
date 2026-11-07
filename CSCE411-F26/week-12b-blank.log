@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (MiKTeX 24.4) (preloaded format=pdflatex 2025.1.14)  6 NOV 2026 19:32
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (MiKTeX 24.4) (preloaded format=pdflatex 2025.1.14)  6 NOV 2026 20:16
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -835,8 +835,7 @@ nd-pdftex.def
 File: l3backend-pdftex.def 2024-05-08 L3 backend support: PDF output (pdfTeX)
 \l__color_backend_stack_int=\count346
 \l__pdf_internal_box=\box69
-)
-No file week-12b-blank.aux.
+) (week-12b-blank.aux)
 \openout1 = `week-12b-blank.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 8.
@@ -857,6 +856,7 @@ LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 8.
 LaTeX Font Info:    ... okay on input line 8.
 LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 8.
 LaTeX Font Info:    ... okay on input line 8.
+
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
 *geometry* verbose mode - [ preamble ] result:
@@ -892,6 +892,7 @@ LaTeX Font Info:    ... okay on input line 8.
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
 Package hyperref Info: Link coloring ON on input line 8.
+(week-12b-blank.out) (week-12b-blank.out)
 \@outlinefile=\write4
 \openout4 = `week-12b-blank.out'.
 
@@ -931,48 +932,48 @@ Overfull \hbox (16.26796pt too wide) in paragraph at lines 10--10
  []
 
 LaTeX Font Info:    Trying to load font information for OT1+lmss on input line 
-29.
+30.
 (C:\Users\Samson Zhou\AppData\Local\Programs\MiKTeX\tex/latex/lm\ot1lmss.fd
 File: ot1lmss.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
 LaTeX Font Info:    Font shape `OT1/lmss/b/n' in size <14> not available
-(Font)              Font shape `OT1/lmss/bx/n' tried instead on input line 29.
-LaTeX Font Info:    Trying to load font information for U+rsfs on input line 32
+(Font)              Font shape `OT1/lmss/bx/n' tried instead on input line 30.
+LaTeX Font Info:    Trying to load font information for U+rsfs on input line 47
 .
 
 (C:\Users\Samson Zhou\AppData\Local\Programs\MiKTeX\tex/latex/jknappen\ursfs.fd
 File: ursfs.fd 1998/03/24 rsfs font definition file (jk)
 )
-LaTeX Font Info:    Trying to load font information for U+msa on input line 32.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 47.
 
 
 (C:\Users\Samson Zhou\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 32.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 47.
 
 (C:\Users\Samson Zhou\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-Overfull \hbox (47.47972pt too wide) in paragraph at lines 46--47
-[]\OT1/cmr/m/n/10.95 A page with many out-go-ing links should con-tribute $[]$ 
-
+Overfull \hbox (53.9598pt too wide) in paragraph at lines 49--51
+[]\OT1/cmr/m/n/10.95 More out-go-ing links di-vide a page's con-tri-bu-tion amo
+ng $[]$ 
  []
 
-<figures/A.pdf, id=6, 315.37228pt x 230.21338pt>
+<figures/A.pdf, id=38, 315.37228pt x 230.21338pt>
 File: figures/A.pdf Graphic file (type pdf)
 <use figures/A.pdf>
-Package pdftex.def Info: figures/A.pdf  used on input line 53.
+Package pdftex.def Info: figures/A.pdf  used on input line 59.
 (pdftex.def)             Requested size: 22.76164pt x 14.22319pt.
-<figures/B.pdf, id=7, 314.21352pt x 229.77534pt>
+<figures/B.pdf, id=39, 314.21352pt x 229.77534pt>
 File: figures/B.pdf Graphic file (type pdf)
 <use figures/B.pdf>
-Package pdftex.def Info: figures/B.pdf  used on input line 54.
+Package pdftex.def Info: figures/B.pdf  used on input line 60.
 (pdftex.def)             Requested size: 22.7595pt x 14.22418pt.
-<figures/C.pdf, id=8, 314.27463pt x 230.07079pt>
+<figures/C.pdf, id=40, 314.27463pt x 230.07079pt>
 File: figures/C.pdf Graphic file (type pdf)
 <use figures/C.pdf>
-Package pdftex.def Info: figures/C.pdf  used on input line 55.
+Package pdftex.def Info: figures/C.pdf  used on input line 61.
 (pdftex.def)             Requested size: 22.75914pt x 14.22491pt.
 
 
@@ -983,75 +984,72 @@ s/Samson Zhou/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-rm.enc} <./fi
 gures/A.pdf> <./figures/B.pdf> <./figures/C.pdf>]
 File: figures/A.pdf Graphic file (type pdf)
 <use figures/A.pdf>
-Package pdftex.def Info: figures/A.pdf  used on input line 98.
+Package pdftex.def Info: figures/A.pdf  used on input line 103.
 (pdftex.def)             Requested size: 22.76164pt x 14.22319pt.
 File: figures/B.pdf Graphic file (type pdf)
 <use figures/B.pdf>
-Package pdftex.def Info: figures/B.pdf  used on input line 99.
+Package pdftex.def Info: figures/B.pdf  used on input line 104.
 (pdftex.def)             Requested size: 22.7595pt x 14.22418pt.
-File: figures/C.pdf Graphic file (type pdf)
-<use figures/C.pdf>
-Package pdftex.def Info: figures/C.pdf  used on input line 100.
-(pdftex.def)             Requested size: 22.75914pt x 14.22491pt.
 
 
 [2]
 LaTeX Font Info:    Font shape `OT1/lmss/b/n' in size <12> not available
-(Font)              Font shape `OT1/lmss/bx/n' tried instead on input line 106.
+(Font)              Font shape `OT1/lmss/bx/n' tried instead on input line 115.
 
 
 
 [3]
-File: figures/A.pdf Graphic file (type pdf)
-<use figures/A.pdf>
-Package pdftex.def Info: figures/A.pdf  used on input line 164.
-(pdftex.def)             Requested size: 22.76164pt x 14.22319pt.
-File: figures/B.pdf Graphic file (type pdf)
-<use figures/B.pdf>
-Package pdftex.def Info: figures/B.pdf  used on input line 165.
-(pdftex.def)             Requested size: 22.7595pt x 14.22418pt.
-File: figures/C.pdf Graphic file (type pdf)
-<use figures/C.pdf>
-Package pdftex.def Info: figures/C.pdf  used on input line 166.
-(pdftex.def)             Requested size: 22.75914pt x 14.22491pt.
-
 
 [4]
-Overfull \hbox (27.16399pt too wide) in paragraph at lines 208--210
-\OT1/cmr/m/n/10.95 Each neigh-bor con-tributes the same amount, and there are $
-[]$ 
- []
-
 File: figures/A.pdf Graphic file (type pdf)
 <use figures/A.pdf>
-Package pdftex.def Info: figures/A.pdf  used on input line 221.
+Package pdftex.def Info: figures/A.pdf  used on input line 238.
 (pdftex.def)             Requested size: 22.76164pt x 14.22319pt.
 File: figures/B.pdf Graphic file (type pdf)
 <use figures/B.pdf>
-Package pdftex.def Info: figures/B.pdf  used on input line 222.
+Package pdftex.def Info: figures/B.pdf  used on input line 239.
 (pdftex.def)             Requested size: 22.7595pt x 14.22418pt.
-File: figures/C.pdf Graphic file (type pdf)
-<use figures/C.pdf>
-Package pdftex.def Info: figures/C.pdf  used on input line 223.
-(pdftex.def)             Requested size: 22.75914pt x 14.22491pt.
 
 
 [5]
+Overfull \hbox (94.2656pt too wide) in paragraph at lines 264--266
+[]\OT1/cmr/m/n/10.95 In score up-dates, sim-ply dis-card-ing the score at $\OML
+/cmm/m/it/10.95 B$ \OT1/cmr/m/n/10.95 would make the to-tal score $[]$ 
+ []
+
+
 
 [6]
-
-[7]
 File: figures/A.pdf Graphic file (type pdf)
 <use figures/A.pdf>
-Package pdftex.def Info: figures/A.pdf  used on input line 345.
+Package pdftex.def Info: figures/A.pdf  used on input line 319.
 (pdftex.def)             Requested size: 22.76164pt x 14.22319pt.
 File: figures/B.pdf Graphic file (type pdf)
 <use figures/B.pdf>
-Package pdftex.def Info: figures/B.pdf  used on input line 346.
+Package pdftex.def Info: figures/B.pdf  used on input line 320.
 (pdftex.def)             Requested size: 22.7595pt x 14.22418pt.
+File: figures/C.pdf Graphic file (type pdf)
+<use figures/C.pdf>
+Package pdftex.def Info: figures/C.pdf  used on input line 321.
+(pdftex.def)             Requested size: 22.75914pt x 14.22491pt.
 
+
+[7]
 
 [8]
+File: figures/A.pdf Graphic file (type pdf)
+<use figures/A.pdf>
+Package pdftex.def Info: figures/A.pdf  used on input line 429.
+(pdftex.def)             Requested size: 22.76164pt x 14.22319pt.
+File: figures/B.pdf Graphic file (type pdf)
+<use figures/B.pdf>
+Package pdftex.def Info: figures/B.pdf  used on input line 430.
+(pdftex.def)             Requested size: 22.7595pt x 14.22418pt.
+File: figures/C.pdf Graphic file (type pdf)
+<use figures/C.pdf>
+Package pdftex.def Info: figures/C.pdf  used on input line 431.
+(pdftex.def)             Requested size: 22.75914pt x 14.22491pt.
+
 
 [9]
 
@@ -1060,83 +1058,34 @@ Package pdftex.def Info: figures/B.pdf  used on input line 346.
 [11]
 File: figures/A.pdf Graphic file (type pdf)
 <use figures/A.pdf>
-Package pdftex.def Info: figures/A.pdf  used on input line 490.
+Package pdftex.def Info: figures/A.pdf  used on input line 571.
 (pdftex.def)             Requested size: 22.76164pt x 14.22319pt.
 File: figures/B.pdf Graphic file (type pdf)
 <use figures/B.pdf>
-Package pdftex.def Info: figures/B.pdf  used on input line 491.
+Package pdftex.def Info: figures/B.pdf  used on input line 572.
 (pdftex.def)             Requested size: 22.7595pt x 14.22418pt.
 File: figures/C.pdf Graphic file (type pdf)
 <use figures/C.pdf>
-Package pdftex.def Info: figures/C.pdf  used on input line 492.
-(pdftex.def)             Requested size: 22.75914pt x 14.22491pt.
-<figures/D.pdf, id=175, 313.57942pt x 227.58772pt>
-File: figures/D.pdf Graphic file (type pdf)
-<use figures/D.pdf>
-Package pdftex.def Info: figures/D.pdf  used on input line 493.
-(pdftex.def)             Requested size: 22.76143pt x 14.2242pt.
-
-
-[12 <./figures/D.pdf>]
-
-[13]
-
-[14]
-
-[15]
-File: figures/A.pdf Graphic file (type pdf)
-<use figures/A.pdf>
-Package pdftex.def Info: figures/A.pdf  used on input line 643.
-(pdftex.def)             Requested size: 22.76164pt x 14.22319pt.
-File: figures/B.pdf Graphic file (type pdf)
-<use figures/B.pdf>
-Package pdftex.def Info: figures/B.pdf  used on input line 644.
-(pdftex.def)             Requested size: 22.7595pt x 14.22418pt.
-File: figures/C.pdf Graphic file (type pdf)
-<use figures/C.pdf>
-Package pdftex.def Info: figures/C.pdf  used on input line 645.
-(pdftex.def)             Requested size: 22.75914pt x 14.22491pt.
-File: figures/A.pdf Graphic file (type pdf)
-<use figures/A.pdf>
-Package pdftex.def Info: figures/A.pdf  used on input line 655.
-(pdftex.def)             Requested size: 22.76164pt x 14.22319pt.
-File: figures/B.pdf Graphic file (type pdf)
-<use figures/B.pdf>
-Package pdftex.def Info: figures/B.pdf  used on input line 656.
-(pdftex.def)             Requested size: 22.7595pt x 14.22418pt.
-File: figures/C.pdf Graphic file (type pdf)
-<use figures/C.pdf>
-Package pdftex.def Info: figures/C.pdf  used on input line 657.
+Package pdftex.def Info: figures/C.pdf  used on input line 573.
 (pdftex.def)             Requested size: 22.75914pt x 14.22491pt.
 
 
-[16]
-
-[17]
-
-[18] (week-12b-blank.aux)
+[12] (week-12b-blank.aux)
  ***********
 LaTeX2e <2024-06-01> patch level 2
 L3 programming layer <2024-08-16>
  ***********
-
-
-Package rerunfilecheck Warning: File `week-12b-blank.out' has changed.
-(rerunfilecheck)                Rerun to get outlines right
-(rerunfilecheck)                or use package `bookmark'.
-
-Package rerunfilecheck Info: Checksums for `week-12b-blank.out':
-(rerunfilecheck)             Before: <no file>
-(rerunfilecheck)             After:  24EAF6ED0AB988E308B8745B236DAEEE;1908.
+Package rerunfilecheck Info: File `week-12b-blank.out' has not changed.
+(rerunfilecheck)             Checksum: E917E8EF63DF3C2A2B03B23420D5D73E;1459.
  ) 
 Here is how much of TeX's memory you used:
- 24684 strings out of 473898
- 462498 string characters out of 5723611
+ 24669 strings out of 473898
+ 462495 string characters out of 5723611
  1936960 words of memory out of 5000000
- 47110 multiletter control sequences out of 15000+600000
- 571024 words of font info for 67 fonts, out of 8000000 for 9000
+ 47105 multiletter control sequences out of 15000+600000
+ 571212 words of font info for 69 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 84i,12n,93p,553b,911s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 84i,12n,93p,553b,909s stack positions out of 10000i,1000n,20000p,200000b,200000s
  <C:\Users\Samson Zhou\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi60
 0\tcrm1095.pk><C:/Users/Samson Zhou/AppData/Local/Programs/MiKTeX/fonts/type1/p
 ublic/amsfonts/cm/cmbx10.pfb><C:/Users/Samson Zhou/AppData/Local/Programs/MiKTe
@@ -1144,23 +1093,20 @@ X/fonts/type1/public/amsfonts/cm/cmcsc10.pfb><C:/Users/Samson Zhou/AppData/Loca
 l/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Users/Samson Zh
 ou/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/
 Users/Samson Zhou/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/
-cmmi6.pfb><C:/Users/Samson Zhou/AppData/Local/Programs/MiKTeX/fonts/type1/publi
-c/amsfonts/cm/cmmi8.pfb><C:/Users/Samson Zhou/AppData/Local/Programs/MiKTeX/fon
-ts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/Samson Zhou/AppData/Local/Progr
-ams/MiKTeX/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Users/Samson Zhou/AppDa
-ta/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr6.pfb><C:/Users/Sams
-on Zhou/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr8.pfb><
-C:/Users/Samson Zhou/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/
-cm/cmsy10.pfb><C:/Users/Samson Zhou/AppData/Local/Programs/MiKTeX/fonts/type1/p
-ublic/amsfonts/cm/cmsy8.pfb><C:/Users/Samson Zhou/AppData/Local/Programs/MiKTeX
-/fonts/type1/public/amsfonts/cm/cmti10.pfb><C:/Users/Samson Zhou/AppData/Local/
-Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmtt10.pfb><C:/Users/Samson Zhou
-/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmssbx10.pfb><C:/Users/Sam
-son Zhou/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/symbols/msbm
-10.pfb>
-Output written on week-12b-blank.pdf (18 pages, 729513 bytes).
+cmmi8.pfb><C:/Users/Samson Zhou/AppData/Local/Programs/MiKTeX/fonts/type1/publi
+c/amsfonts/cm/cmr10.pfb><C:/Users/Samson Zhou/AppData/Local/Programs/MiKTeX/fon
+ts/type1/public/amsfonts/cm/cmr12.pfb><C:/Users/Samson Zhou/AppData/Local/Progr
+ams/MiKTeX/fonts/type1/public/amsfonts/cm/cmr6.pfb><C:/Users/Samson Zhou/AppDat
+a/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Users/Samso
+n Zhou/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb>
+<C:/Users/Samson Zhou/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts
+/cm/cmsy8.pfb><C:/Users/Samson Zhou/AppData/Local/Programs/MiKTeX/fonts/type1/p
+ublic/amsfonts/cm/cmti10.pfb><C:/Users/Samson Zhou/AppData/Local/Programs/MiKTe
+X/fonts/type1/public/amsfonts/cm/cmtt10.pfb><C:/Users/Samson Zhou/AppData/Local
+/Programs/MiKTeX/fonts/type1/public/lm/lmssbx10.pfb>
+Output written on week-12b-blank.pdf (12 pages, 570806 bytes).
 PDF statistics:
- 330 PDF objects out of 1000 (max. 8388607)
- 44 named destinations out of 1000 (max. 500000)
- 33 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 274 PDF objects out of 1000 (max. 8388607)
+ 28 named destinations out of 1000 (max. 500000)
+ 92 words of extra memory for PDF output out of 10000 (max. 10000000)
 
