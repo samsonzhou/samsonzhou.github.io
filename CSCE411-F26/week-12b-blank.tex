@@ -1,314 +1,771 @@
-\documentclass[11  pt]{article}
+\documentclass[11pt]{article}
 \usepackage[lmargin=1in,rmargin=1.75in,bmargin=1in,tmargin=1in]{geometry}
 
 \input{preamble}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta,positioning,calc}
 
 \begin{document}
 % Fill in the date when scheduling this lecture.
-\sweek{Lecture 3: Diagonalization and Time Hierarchy}{}
+\sweek{Lecture 2: Markov Chains and PageRank}{}
 
-\section{From Undecidability to Running-Time Lower Bounds}
-We have seen that the halting problem is undecidable. We have also proved the containments
-\begin{equation*}
-    \mathrm{P}\subseteq\mathrm{NP}\subseteq\mathrm{PSPACE}\subseteq\mathrm{EXPTIME}.
-\end{equation*}
-Today we will prove that the two endpoints are different.
+% TWO-HOUR TEACHING PLAN (including a five-minute break)
+%  0--8: Web ranking and why random walks are useful.
+%  8--20: Markov property, matrix convention, weather calculation.
+% 20--31: Stationary distributions and their interpretation.
+% 31--40: Undirected walks, degree bias, sampling discussion.
+% 40--55: BrokenRank and four distinct failure modes.
+% 55--60: Break.
+% 60--72: Dangling-node repair and teleportation.
+% 72--84: Three-page example and student calculations.
+% 84--98: Sparse power iteration, runtime, dangling-node exercise.
+% 98--110: Contraction, convergence, and stopping rules.
+% 110--115: Personalization, damping, and limitations.
+% 115--120: Exit ticket and discussion.
+% Optional sections provide additional material beyond the two-hour plan.
+% If calculations take longer, state the contraction result and assign
+% its proof as reading. Answer comments are for the instructor.
 
-\paragraph{Recall the halting problem}
-There is no algorithm that always halts and correctly determines whether an arbitrary program $M$ halts on an arbitrary input $I$.
+\section{Web Search and PageRank}
+Suppose a search engine finds one million pages containing the word \texttt{university}. Which pages should it display first?
+
+Text matching tells us whether a page mentions a topic. The web graph provides another kind of information: which pages \hide{link to it.}
+
+\paragraph{Counting incoming links}
+One idea is to rank a page by the number of other pages that link to it. What could go wrong with this rule?
+\vs{1.3cm}
+% Answer: Many incoming links could come from unimportant or coordinated
+% pages. A link from a page with two outgoing links also receives the
+% same weight as one from a page with thousands of outgoing links.
+
+\paragraph{A recursive notion of importance}
+Instead, suppose every page divides its importance among its outgoing links.
+\begin{itemize}
+    \item Links from important pages should contribute \hide{more.}
+    \vs{.3cm}
+    \item A page with many outgoing links should contribute \hide{less along each link.}
+\end{itemize}
+This definition is circular. To determine which pages are important, we seem to need to know which pages are important already.
 
 \begin{Qu}
-    What if we are also given a positive integer $T$ and only ask whether $M$ accepts $I$ within $T$ steps?
+    How might we make such a circular definition precise?
     \begin{itemize}
-        \aitem This is still undecidable
-        \bitem We can decide it by simulating $M$ for at most $T$ steps
-        \citem We can decide it only if $M$ eventually halts
+        \aitem Circular definitions can never be useful
+        \bitem Write equations that all the scores must satisfy together
+        \citem Choose the most important page in advance
     \end{itemize}
 \end{Qu}
-% Answer: (b). Accept if M accepts within T steps, and reject otherwise.
-
-\vs{.5cm}
-\paragraph{Proving a lower bound}
-Suppose we have an exponential-time algorithm for a problem $Q$. Why does this alone not prove that $Q\notin\mathrm{P}$?
-\vs{1.5cm}
-% There could be a different polynomial-time algorithm for Q.
+% Answer: (b). A stationary distribution will give us the desired equations.
 
 \vfill
-We will use a deadline to make diagonalization into an algorithm, then show that no polynomial-time algorithm can solve the resulting problem.
+We will use a random walk to define the scores, then analyze and compute them using Markov chains.
 
 \newpage
-\section{Separating P and EXPTIME}
+\section{Markov Chains}
+A \textbf{Markov chain} is a random sequence of states $X_0,X_1,X_2,\ldots$. Given the present state, the next-state distribution does not depend on the earlier history:
+\begin{equation*}
+    \Pr[X_{t+1}=i\mid X_t=j,X_{t-1},\ldots,X_0]
+    =\Pr[X_{t+1}=i\mid X_t=j].
+\end{equation*}
+We consider histories with positive probability, and assume that the transition rule is the same at every step.
+
+\paragraph{The transition matrix}
+Throughout this lecture, distributions are column vectors, and
+\begin{equation*}
+    P_{ij}=\Pr[X_{t+1}=i\mid X_t=j].
+\end{equation*}
+Column $j$ describes where the chain goes \emph{from} state $j$. Thus,
+\begin{equation*}
+    P_{ij}\geq0,
+    \qquad \sum_{i=1}^{n}P_{ij}=\hide{1}.
+\end{equation*}
+We call this a \textbf{column-stochastic} matrix.
+
+\paragraph{Following the probability mass}
+Let $p_i^{(t)}=\Pr[X_t=i]$. How much mass moves from state $j$ to state $i$ in the next step?
+\begin{equation*}
+    \hide{P_{ij}p_j^{(t)}}.
+\end{equation*}
+Adding the contributions from all possible starting states gives
+\begin{equation*}
+    p_i^{(t+1)}=\hide{\sum_{j=1}^{n}P_{ij}p_j^{(t)}},
+    \qquad p^{(t+1)}=\hide{Pp^{(t)}}.
+\end{equation*}
+
+\begin{Qu}
+    If the chain starts at state $j$ with probability $1$, where do we find its distribution after one step?
+    \begin{itemize}
+        \aitem Row $j$ of $P$
+        \bitem Column $j$ of $P$
+        \citem The diagonal of $P$
+    \end{itemize}
+\end{Qu}
+% Answer: (b). The initial vector is e_j, and Pe_j is column j.
+
+\newpage
+\subsection*{A two-state weather model}
+Suppose tomorrow's weather depends only on today's weather:
+\begin{itemize}
+    \item After a sunny day, tomorrow is sunny with probability $0.8$.
+    \item After a rainy day, tomorrow is sunny with probability $0.4$.
+\end{itemize}
+This is a simplified model. Real weather may require more information than these two states.
+
+\begin{center}
+\begin{tikzpicture}[state/.style={circle,draw,fill=blue!10,minimum size=1.1cm},edge/.style={->,>=Stealth,thick}]
+    \node[state] (s) at (0,0) {Sunny};
+    \node[state] (r) at (4,0) {Rainy};
+    \draw[edge] (s) to[bend left=22] node[above] {$0.2$} (r);
+    \draw[edge] (r) to[bend left=22] node[below] {$0.4$} (s);
+    \draw[edge] (s) edge[loop left] node[left] {$0.8$} (s);
+    \draw[edge] (r) edge[loop right] node[right] {$0.6$} (r);
+\end{tikzpicture}
+\end{center}
+
+\paragraph{Write the matrix}
+In the order (Sunny, Rainy), fill in the transition matrix:
+\begin{equation*}
+    P=\begin{pmatrix}\hide{0.8}&\hide{0.4}\\\hide{0.2}&\hide{0.6}\end{pmatrix}.
+\end{equation*}
+Check that each \hide{column} sums to $1$.
+
+\paragraph{Predict two days ahead}
+If today is sunny, then $p^{(0)}=(1,0)^T$ and $p^{(1)}=(0.8,0.2)^T$. What is the probability that it is sunny two days from now?
+\vs{1.2cm}
+% Answer: There are two ways to end sunny. Their probabilities sum to
+% 0.8(0.8)+0.4(0.2)=0.72. Thus p^{(2)}=(0.72,0.28)^T.
+
+\paragraph{Why are Markov chains useful?}
+They turn a local transition rule into predictions about later behavior. Similar models describe queues, movement through a network, or changes between operating states of a machine.
+
+\vfill
+Multiplying by $P$ tracks the distribution. Simulating the chain produces one particular sequence of states. These are different objects.
+
+\newpage
+\section{Stationary Distributions}
+A probability vector $\pi$ is a \textbf{stationary distribution} if
+\begin{equation*}
+    P\pi=\pi,\qquad \pi_i\geq0,\qquad \sum_i\pi_i=1.
+\end{equation*}
+If we start with distribution $\pi$, the distribution after one step is \hide{still $\pi$.}
+
+\paragraph{Return to the weather model}
+Write $\pi=(s,1-s)^T$. The sunny coordinate must satisfy
+\begin{equation*}
+    s=0.8s+0.4(1-s).
+\end{equation*}
+Solve for $s$:
+\vs{1cm}
+% Answer: 0.6s=0.4, so s=2/3 and pi=(2/3,1/3)^T.
+
+\begin{Qu}
+    What does stationarity mean for this weather model?
+    \begin{itemize}
+        \aitem Sunny days can no longer be followed by rainy days
+        \bitem The probability of each weather state stays the same
+        \citem Successive days are independent
+    \end{itemize}
+\end{Qu}
+% Answer: (b). States may change, and consecutive states remain dependent.
+
+\paragraph{Three different questions}
+\begin{enumerate}
+    \item Does a stationary distribution \emph{exist}?
+    \item Is it \emph{unique}?
+    \item Does $P^tp^{(0)}$ \emph{converge} to it from every start?
+\end{enumerate}
+Every finite stochastic matrix has a stationary distribution. We will use this fact without proof. The other two properties need additional arguments.
+
+\paragraph{What about one long sample path?}
+For a finite irreducible chain, the fraction of time spent in state $i$ converges to $\pi_i$ with probability $1$. Here irreducible means that every state can reach every other state. This long-run frequency statement does not require consecutive observations to be independent.
+
+\newpage
+\subsection*{Random walks and sampling}
+Consider a connected undirected graph with at least one edge. From vertex $j$, choose a neighbor uniformly. Then
+\begin{equation*}
+    P_{ij}=\begin{cases}
+        1/\deg(j),&\text{if }\{i,j\}\in E,\\
+        0,&\text{otherwise}.
+    \end{cases}
+\end{equation*}
+
+\begin{lemma}
+    The vector $\pi_i=\deg(i)/(2|E|)$ is a stationary distribution.
+\end{lemma}
+
+\paragraph{First, check the normalization}
+Why do the entries of $\pi$ sum to $1$?
+\vs{.7cm}
+% Answer: The sum of the degrees is 2|E|, since each edge has two endpoints.
+
+\paragraph{Next, check one coordinate}
+For a vertex $i$,
+\begin{equation*}
+    (P\pi)_i
+    =\sum_{j:\{i,j\}\in E}\frac{1}{\deg(j)}\frac{\deg(j)}{2|E|}
+    =\hide{\frac{\deg(i)}{2|E|}}
+    =\pi_i.
+\end{equation*}
+Each neighbor contributes the same amount, and there are \hide{$\deg(i)$ neighbors.}
+
+\paragraph{Example: A star}
+A center is connected to four leaves. What stationary probability does each vertex receive?
+\begin{equation*}
+    \pi_{\mathrm{center}}=\hide{1/2},
+    \qquad \pi_{\mathrm{each\ leaf}}=\hide{1/8}.
+\end{equation*}
+
+\begin{Qu}
+    A researcher samples users by repeatedly moving to a uniformly chosen friend. Is this a uniform sample of users?
+    \begin{itemize}
+        \aitem Yes, because every choice is uniform
+        \bitem No, users with more friends have larger stationary probabilities
+        \citem No, users with fewer friends have larger stationary probabilities
+    \end{itemize}
+\end{Qu}
+% Answer: (b). Local uniform choices need not produce a uniform stationary
+% distribution. Successive samples are also correlated.
+
+\vfill
+Random walks let us sample or explore a large graph using only local information. We must check which distribution the walk actually samples.
+
+\newpage
+\section{BrokenRank (Almost PageRank)}
+Let $G=(V,E)$ be the directed graph of webpages, with $|V|=n$. Define $L_{ij}=1$ if $j\to i$, and $0$ otherwise. Let
+\begin{equation*}
+    m_j=\sum_iL_{ij}
+\end{equation*}
+be the number of outgoing links from page $j$.
+
+For now, assume every page has at least one outgoing link. A random surfer follows an outgoing link uniformly, so
+\begin{equation*}
+    P_{ij}=\hide{\frac{L_{ij}}{m_j}}.
+\end{equation*}
+
+\paragraph{How should a page receive importance?}
+If page $j$ has importance $p_j$, how much does it send along each outgoing link?
+\vs{.7cm}
+% Answer: It sends p_j/m_j along each outgoing link.
+
+Our preliminary ranking asks for a probability vector satisfying
+\begin{equation*}
+    p_i=\hide{\sum_{j:j\to i}\frac{p_j}{m_j}},
+    \qquad p=\hide{Pp}.
+\end{equation*}
+This is precisely a stationary distribution of the surfer's walk.
+
+\begin{algorithm}[h]
+    \textsc{GenericRandomWalk}($G,p^{(0)}$)
+    \begin{algorithmic}
+        \State Draw the starting page $j$ from $p^{(0)}$
+        \While{the surfer continues}
+            \State Choose an outgoing edge $(j,i)$ uniformly
+            \State Set $j\gets i$
+        \EndWhile
+    \end{algorithmic}
+\end{algorithm}
+
+\paragraph{A small calculation}
+A page has current mass $0.12$ and three outgoing links. It sends \hide{$0.04$} along each link, so its total outgoing contribution is \hide{$0.12$.}
+
+\vfill
+The equations look reasonable. What happens when the graph has dead ends, closed groups of pages, disconnected components, or cycles?
+
+\newpage
+\subsection*{Dead ends and spider traps}
+\paragraph{A page with no outgoing links}
+Suppose the only link is $A\to B$, and $B$ has no outgoing links.
+
+\begin{center}
+\begin{tikzpicture}[page/.style={circle,draw,fill=blue!10,minimum size=.8cm},edge/.style={->,>=Stealth,thick}]
+    \node[page] (a) at (0,0) {$A$};
+    \node[page] (b) at (3,0) {$B$};
+    \draw[edge] (a)--(b);
+\end{tikzpicture}
+\end{center}
+We call $B$ a \textbf{dangling node}. What goes wrong with the formula $P_{ij}=L_{ij}/m_j$?
+\vs{.6cm}
+% Answer: m_B=0, so the formula divides by zero.
+
+Suppose we simply replace the column for $B$ by zeros. Starting at $A$, the distributions would become
+\begin{equation*}
+    \begin{pmatrix}1\\0\end{pmatrix},\quad
+    \begin{pmatrix}0\\1\end{pmatrix},\quad
+    \hide{\begin{pmatrix}0\\0\end{pmatrix}}.
+\end{equation*}
+The last vector is not a probability distribution: its entries sum to \hide{zero.}
+
+\paragraph{A group with no links to the outside}
+Now suppose the links are $A\to B$, $B\to C$, and $C\to B$.
+
+\begin{center}
+\begin{tikzpicture}[page/.style={circle,draw,fill=blue!10,minimum size=.8cm},edge/.style={->,>=Stealth,thick}]
+    \node[page] (a) at (0,0) {$A$};
+    \node[page] (b) at (2.3,0) {$B$};
+    \node[page] (c) at (4.6,0) {$C$};
+    \draw[edge] (a)--(b);
+    \draw[edge] (b) to[bend left=18] (c);
+    \draw[edge] (c) to[bend left=18] (b);
+\end{tikzpicture}
+\end{center}
+Once the surfer enters $\{B,C\}$, it \hide{cannot escape.} Such a closed group is called a \textbf{spider trap}.
+
+Why might this give an undesirable ranking?
+\vs{.6cm}
+% Answer: A group may receive all the eventual mass because it cannot
+% send the surfer outside, rather than because it has broad support.
+% A trap does not automatically imply nonuniqueness: this example has
+% the unique stationary distribution (0,1/2,1/2)^T.
+
+\newpage
+\subsection*{Existence, uniqueness, and convergence can differ}
+\paragraph{Disconnected components}
+Suppose pages $1,2,3$ form a directed cycle, and pages $4,5$ form a separate directed cycle. Both vectors below are stationary:
+\begin{equation*}
+    \pi^{(1)}=(1/3,1/3,1/3,0,0)^T,
+    \qquad \pi^{(2)}=(0,0,0,1/2,1/2)^T.
+\end{equation*}
+Why is $a\pi^{(1)}+(1-a)\pi^{(2)}$ also stationary for every $0\leq a\leq1$?
+\vs{.7cm}
+% Answer: Apply P and use linearity and P pi^(1)=pi^(1), P pi^(2)=pi^(2).
+
+There is no unique stationary ranking. The amount of mass in each component depends on \hide{where we start.}
+
+\paragraph{A strongly connected graph can still oscillate}
+For the two-page cycle $1\to2\to1$,
+\begin{equation*}
+    P=\begin{pmatrix}0&1\\1&0\end{pmatrix},
+    \qquad \pi=\begin{pmatrix}1/2\\1/2\end{pmatrix}.
+\end{equation*}
+The stationary distribution is unique. But from $(1,0)^T$, the walk alternates between $(1,0)^T$ and $(0,1)^T$, so its distribution \hide{does not converge.}
+
+\begin{Qu}
+    Does the fraction of visits to page $1$ still approach $1/2$?
+    \begin{itemize}
+        \aitem Yes, because the sample path alternates
+        \bitem No, because the time-$t$ distribution oscillates
+    \end{itemize}
+\end{Qu}
+% Answer: (a). Time averages and the distribution at one particular time
+% are different. The star walk also alternates between center and leaves.
+
+\paragraph{A standard finite-chain theorem}
+A chain is \textbf{irreducible} if every state can reach every other state. An irreducible chain is \textbf{aperiodic} if return times have greatest common divisor $1$. If a finite chain has both properties, its stationary distribution is unique and the time-$t$ distribution converges to it from every start.
+% A positive self-loop in an irreducible chain guarantees aperiodicity.
+% Take the five-minute break here. We will prove PageRank convergence
+% directly, without proving the general theorem.
+
+\newpage
+\section{PageRank}
+We will modify the surfer so that it can leave a page even when there are no links, and can escape a closed group of pages.
+
+\paragraph{First, repair dangling nodes}
+Choose a probability vector $v$, called the \textbf{restart distribution}. For ordinary PageRank, $v_i=1/n$. Define
+\begin{equation*}
+    P_{ij}=\begin{cases}
+        L_{ij}/m_j,&m_j>0,\\
+        v_i,&m_j=0.
+    \end{cases}
+\end{equation*}
+At a dangling node, the surfer draws a new page from $v$. Each column now sums to \hide{1.}
+
+\paragraph{Next, allow teleportation}
+Fix $0<d<1$. At each step,
+\begin{itemize}
+    \item With probability $d$, take a step according to $P$.
+    \item With probability $1-d$, draw a fresh page from $v$.
+\end{itemize}
+Thus $d$ is the link-follow probability; the teleportation probability is \hide{$1-d$.} A common illustrative choice is $d=0.85$.
+
+Let $\mathbf{1}$ be the all-ones column vector. The new transition matrix is
+\begin{equation*}
+    Q=dP+(1-d)v\mathbf{1}^T.
+\end{equation*}
+Since $\mathbf{1}^Tp=1$ for a probability vector $p$,
+\begin{equation*}
+    Qp=\hide{dPp+(1-d)v}.
+\end{equation*}
+A PageRank vector therefore satisfies
+\begin{equation*}
+    \pi=Q\pi=\hide{dP\pi+(1-d)v}.
+\end{equation*}
+
+\paragraph{Why does this help?}
+For uniform $v$, every entry of $Q$ is at least $(1-d)/n>0$. Every page can reach every other page, and every page has a self-loop. Thus the chain is \hide{irreducible and aperiodic.}
+% Answer: Dangling repair is still essential. Adding teleportation to a
+% zero column gives a column summing to 1-d, not 1.
+
+\newpage
+\subsection*{Compute PageRank on three pages}
+Consider the links $A\to B$, $A\to C$, $B\to C$, and $C\to A$.
+
+\begin{center}
+\begin{tikzpicture}[page/.style={circle,draw,fill=blue!10,minimum size=.8cm},edge/.style={->,>=Stealth,thick}]
+    \node[page] (a) at (0,0) {$A$};
+    \node[page] (b) at (3,0) {$B$};
+    \node[page] (c) at (1.5,-1.3) {$C$};
+    \draw[edge] (a)--(b);
+    \draw[edge] (a) to[bend right=15] (c);
+    \draw[edge] (b)--(c);
+    \draw[edge] (c) to[bend right=15] (a);
+\end{tikzpicture}
+\end{center}
+
+Use $d=1/2$ and $v=(1/3,1/3,1/3)^T$. In the order $(A,B,C)$,
+\begin{equation*}
+    P=\begin{pmatrix}0&0&1\\1/2&0&0\\1/2&1&0\end{pmatrix},
+    \qquad p^{(t+1)}=\tfrac12Pp^{(t)}+\tfrac12v.
+\end{equation*}
+
+\paragraph{Take two steps}
+Starting from $p^{(0)}=v$, compute $p^{(1)}$ and $p^{(2)}$.
+\vs{1cm}
+% Answer: p^{(1)}=(1/3,1/4,5/12)^T and p^{(2)}=(3/8,1/4,3/8)^T.
+% Each vector sums to 1. The ranking after two steps ties A and C.
+
+\paragraph{Solve for the stationary scores}
+The fixed-point equations are
+\begin{equation*}
+    \pi_A=\tfrac16+\tfrac12\pi_C,\qquad
+    \pi_B=\tfrac16+\tfrac14\pi_A,\qquad
+    \pi_C=\tfrac16+\tfrac14\pi_A+\tfrac12\pi_B.
+\end{equation*}
+Together with normalization, they give
+\begin{equation*}
+    \pi=\hide{\frac1{39}(14,10,15)^T}.
+\end{equation*}
+Check the equations and compare the ranking with the two-step calculation.
+\vs{.7cm}
+% Answer: The final ranking is C>A>B. Intermediate rankings need not
+% equal the final ranking. A receives support from the high-scoring C.
+
+\newpage
+\section{Computing PageRank}
+Although $Q$ is dense, we do not need to construct it. Teleportation contributes only a multiple of $v$.
+
+Let $z=\sum_{j:m_j=0}p_j$ be the current mass at dangling nodes. Then
+\begin{equation*}
+    p_i^{\mathrm{new}}=((1-d)+dz)v_i
+        +d\sum_{j:j\to i}\frac{p_j}{m_j}.
+\end{equation*}
+Where do the terms $1-d$ and $dz$ come from?
+\vs{.6cm}
+% Answer: 1-d is ordinary teleportation. The term dz redistributes the
+% mass at dangling nodes when the link-follow option is selected.
+
+\begin{algorithm}[h]
+    \textsc{PageRank}($G,d,v,\epsilon$), where $0<d,\epsilon<1$
+    \begin{algorithmic}
+        \State Compute the out-degrees $m_j$ and initialize $p\gets v$
+        \State Set $T\gets\lceil\log(2/\epsilon)/(1-d)\rceil$
+        \For{$t=1,\ldots,T$}
+            \State $z\gets\sum_{j:m_j=0}p_j$
+            \State $p_i^{\mathrm{new}}\gets((1-d)+dz)v_i$ for all $i$
+            \For{each edge $(j,i)\in E$}
+                \State $p_i^{\mathrm{new}}\gets p_i^{\mathrm{new}}+d\,p_j/m_j$
+            \EndFor
+            \State $\Delta\gets\sum_i|p_i^{\mathrm{new}}-p_i|$
+            \State $p\gets p^{\mathrm{new}}$
+            \If{$\Delta\leq(1-d)\epsilon$}
+                \State \Return $p$
+            \EndIf
+        \EndFor
+        \State \Return $p$
+    \end{algorithmic}
+\end{algorithm}
+
+\paragraph{Why use a separate array?}
+What could go wrong if we modified $p$ while scanning the edges?
+\vs{.6cm}
+% Answer: Contributions would use a mixture of old and new scores.
+% The result would depend on edge order rather than being Qp.
+
+We will justify both the fixed budget $T$ and the early stopping rule. The analysis assumes exact arithmetic.
+
+\newpage
+\subsection*{Running time and dangling nodes}
+\begin{Qu}
+    Using adjacency lists, what is the running time of one iteration?
+    \begin{itemize}
+        \aitem $O(\log n)$
+        \bitem $O(n+|E|)$
+        \citem $O(n^2)$, because $Q$ is dense
+        \ditem $O(n|E|)$
+    \end{itemize}
+\end{Qu}
+% Answer: (b). Initialization, dangling mass, and the stopping statistic
+% require vertex scans. Contributions require one scan of the edges.
+
+With $t$ iterations, the running time is \hide{$O(t(n+|E|))$.} Storage is $O(n+|E|)$ including the graph, with $O(n)$ extra space for the vectors.
+
+\paragraph{Return to the two-page dead end}
+The only edge is $A\to B$, and $B$ is dangling. Let $d=1/2$, $v=(1/2,1/2)^T$, and $p=(1/2,1/2)^T$.
+\begin{itemize}
+    \item The dangling mass is $z=\hide{1/2}$.
+    \vs{.3cm}
+    \item The shared restart contribution to each page is
+    \begin{equation*}
+        ((1-d)+dz)/2=\hide{3/8}.
+    \end{equation*}
+    \item The edge $A\to B$ contributes an additional \hide{$1/4$} to $B$.
+\end{itemize}
+Therefore,
+\begin{equation*}
+    p^{\mathrm{new}}=\hide{(3/8,5/8)^T}.
+\end{equation*}
+
+What vector would we get if we omitted dangling redistribution? Would it sum to $1$?
+\vs{.8cm}
+% Answer: We would get (1/4,1/2)^T, which sums to 3/4. Teleportation
+% alone has not repaired the missing column.
+
+\vfill
+In general, the restart part contributes $(1-d)+dz$ and the ordinary edges contribute $d(1-z)$. Their sum is \hide{1.}
+
+\newpage
+\section{Why Does the Iteration Converge?}
+For a vector $x$, write $\|x\|_1=\sum_i|x_i|$. The distance between two probability vectors is at most \hide{$2$.} Half of this distance is called total variation distance.
+
+\paragraph{First, understand the intuition}
+Imagine two surfers with different starts. Use the same teleportation decisions for both. When they teleport, send them to the same draw from $v$ and use identical random choices afterward.
+
+What is the probability that no teleportation occurs in the first $t$ steps?
+\begin{equation*}
+    \hide{d^t}.
+\end{equation*}
+Teleportation makes the walk forget its starting point. We will now express this as an inequality.
+
+\begin{lemma}
+    If $P$ is column-stochastic, then $\|Px\|_1\leq\|x\|_1$ for every vector $x$.
+\end{lemma}
+
+\paragraph{Use the triangle inequality}
+\begin{equation*}
+    \|Px\|_1
+    =\sum_i\left|\sum_jP_{ij}x_j\right|
+    \leq\sum_i\sum_jP_{ij}|x_j|
+    =\sum_j|x_j|\sum_iP_{ij}.
+\end{equation*}
+Each column sum is \hide{$1$}, so the last expression is \hide{$\|x\|_1$.}
+
+\paragraph{Now compare two PageRank updates}
+For probability vectors $p,q$, their restart terms cancel:
+\begin{equation*}
+    Qp-Qq=\hide{dP(p-q)}.
+\end{equation*}
+Applying the lemma gives
+\begin{equation*}
+    \|Qp-Qq\|_1\leq\hide{d\|p-q\|_1}.
+\end{equation*}
+Thus each step shrinks discrepancies by a factor at most \hide{$d$.}
+
+\newpage
+\subsection*{Turn the inequality into a guarantee}
 \begin{theorem}
-    $\mathrm{P}\subsetneq\mathrm{EXPTIME}$.
+    For $0<d<1$ and any restart distribution $v$, PageRank has a unique stationary probability vector $\pi$. From every initial probability vector,
+    \begin{equation*}
+        \|p^{(t)}-\pi\|_1\leq d^t\|p^{(0)}-\pi\|_1\leq2d^t.
+    \end{equation*}
 \end{theorem}
 
-To prove this theorem, we need a decision problem $D$ such that:
-\begin{itemize}
-    \item There is \hide{an exponential-time algorithm for $D$.}
-    \item There is no \hide{polynomial-time algorithm for $D$.}
-\end{itemize}
-
-We will use the same idea as in the halting problem proof: run a program on its own description and give the opposite answer. This time, we will stop the simulation after a fixed number of steps.
-
-\paragraph{The input}
-An input has the form
+\paragraph{Existence and uniqueness}
+Existence follows because $Q$ is a finite stochastic matrix. If $\pi$ and $\rho$ were both stationary, contraction would give
 \begin{equation*}
-    w=\langle M\rangle\#1^r,
+    \|\pi-\rho\|_1=\|Q\pi-Q\rho\|_1
+    \leq d\|\pi-\rho\|_1.
 \end{equation*}
-where $\langle M\rangle$ describes a deterministic program, $\#$ separates its code from the padding, and $1^r$ is a string of $r$ ones.
+Since $d<1$, this forces \hide{$\pi=\rho$.} Applying contraction repeatedly with $q=\pi$ proves the error bound.
+% An alternative existence proof uses successive differences:
+% ||p^(t+1)-p^t||_1 <= d^t ||p^1-p^0||_1. Their tails are bounded
+% by a geometric series, so the iterates are Cauchy and converge.
+% Taking limits in p^(t+1)=Qp^t gives a stationary probability vector.
 
-The input length is $n=|w|$, including the padding.
+\paragraph{How many iterations suffice?}
+To make $2d^t\leq\epsilon$, it is enough that
+\begin{equation*}
+    t\geq\frac{\log(2/\epsilon)}{-\log d}.
+\end{equation*}
+Since $-\log d\geq1-d$, our budget $T=\lceil\log(2/\epsilon)/(1-d)\rceil$ suffices. The total running time is
+\begin{equation*}
+    \hide{O\!\left((n+|E|)\frac{\log(2/\epsilon)}{1-d}\right)}.
+\end{equation*}
 
-\paragraph{Why include extra ones?}
-The code for $M$ stays the same, but we can make the input as long as we like by increasing $r$.
-
-\vs{1cm}
-\textbf{To be clear.} We will run $M$ on the entire string $w$, including its own description and the padding. The program $M$ need not recognize the input as its own code.
+\paragraph{When can we stop early?}
+Let $p^{\mathrm{new}}=Qp$ and $\Delta=\|p^{\mathrm{new}}-p\|_1$. By the triangle inequality and contraction,
+\begin{equation*}
+    \|p-\pi\|_1\leq\Delta+d\|p-\pi\|_1,
+    \qquad \|p-\pi\|_1\leq\hide{\frac{\Delta}{1-d}}.
+\end{equation*}
+The new vector has error at most $d\Delta/(1-d)$. Thus stopping when $\Delta\leq(1-d)\epsilon$ is also valid. The budget $T$ ensures the stated runtime even if early stopping never occurs.
+% The returned vector is the new vector. This is an absolute error
+% guarantee; it need not settle the order of nearly tied scores.
 
 \newpage
-\subsection*{A problem that gives the opposite answer}
-Define $D$ to be the set of strings accepted by the following algorithm.
+\section{Personalized PageRank}
+Why must the restart distribution be uniform? Suppose we instead put more restart probability on pages related to a topic or a user's interests.
 
-\begin{algorithm}[h]
-    \textsc{Diagonal}($w$)
-    \begin{algorithmic}
-        \If{$w$ is not of the form $\langle M\rangle\#1^r$}
-            \State reject
-        \EndIf
-        \State Let $n=|w|$
-        \State Simulate $M$ on input $w$ for at most $2^n$ steps of $M$
-        \If{$M$ accepts within those $2^n$ steps}
-            \State reject
-        \Else
-            \State accept
-        \EndIf
-    \end{algorithmic}
-\end{algorithm}
-
-\begin{Qu}
-    What does \textsc{Diagonal} output in each case?
-    \begin{itemize}
-        \aitem $M(w)$ accepts by the deadline: \hide{NO}
-        \bitem $M(w)$ rejects by the deadline: \hide{YES}
-        \citem $M(w)$ is still running at the deadline: \hide{YES}
-    \end{itemize}
-\end{Qu}
-
-\paragraph{First, show that $D\in\mathrm{EXPTIME}$}
-Why does \textsc{Diagonal} always halt?
-\vs{1cm}
-% The simulation stops at the deadline even if M never halts.
-
-We use the fact that a simulator can carry out $T$ steps of a program in time polynomial in $n+T$, when the program description and its input each have length at most $n$. Thus, the total running time is
+The equation stays the same:
 \begin{equation*}
-    (n+2^n)^{O(1)}=\hide{2^{O(n)}}.
+    \pi=dP\pi+(1-d)v.
 \end{equation*}
-% This bound includes the clock. Simulated steps and simulator steps differ.
+The scores now measure importance relative to the chosen restart distribution. In an item graph, restarting at a user's seed items can help identify related items.
 
-\newpage
-\subsection*{Could a polynomial-time algorithm solve D?}
-Suppose an algorithm $A$ correctly decides $D$ in time $q(n)$ for some polynomial $q$.
+\paragraph{What if some entries of $v$ are zero?}
+The chain may no longer be irreducible. Does the contraction calculation still work?
+\vs{.8cm}
+% Answer: Yes. The restart terms still cancel and P is still stochastic.
+% The stationary vector remains unique, and iteration converges from
+% every start, although some states may receive zero stationary mass.
 
-Choose the input
-\begin{equation*}
-    w=\langle A\rangle\#1^r, \qquad n=|w|.
-\end{equation*}
-
-\paragraph{Choosing the padding}
-How large should $r$ be? We want
-\begin{equation*}
-    \hide{q(n)<2^n.}
-\end{equation*}
-Why is it possible to arrange this?
-\vs{1cm}
-% A and q are fixed, while the padding lets n grow arbitrarily large.
-% Eventually 2^n exceeds q(n).
-
-With this choice, $A(w)$ finishes before the deadline. There are two cases:
+\paragraph{Choosing the link-follow probability}
 \begin{itemize}
-    \item If $A(w)$ accepts, the definition of $D$ says that $w$ \hide{is not in $D$.}
-    \vs{.5cm}
-    \item If $A(w)$ rejects, the definition of $D$ says that $w$ \hide{is in $D$.}
+    \item A smaller $d$ gives more weight to \hide{the restart distribution.}
+    \vs{.3cm}
+    \item A larger $d$ permits longer stretches of link-following, but the convergence guarantee becomes \hide{slower.}
+    \vs{.3cm}
+    \item At $d=0$, the answer is $\pi=\hide{v}$. At $d=1$, teleportation disappears and BrokenRank's issues can return.
 \end{itemize}
 
-Therefore, \hide{$A$ gives the wrong answer on $w$.} This contradicts the assumption that $A$ decides $D$.
+\paragraph{Why does $\pi$ approach $v$ as $d\to0$?}
+For a fixed repaired matrix $P$, use the fixed-point equation to show that $\|\pi-v\|_1\leq2d$.
+\vs{.8cm}
+% Answer: pi-v=d(P pi-v), and P pi and v are probability vectors.
+% Their l1 distance is at most 2.
 
 \vfill
-We have shown that $D\in\mathrm{EXPTIME}$ and $D\notin\mathrm{P}$. Hence,
-\begin{equation*}
-    \mathrm{P}\subsetneq\mathrm{EXPTIME}.
-\end{equation*}
+PageRank describes a chosen random-surfer model. A large score does not certify truth or relevance to every query, and links can be manipulated. A search system can use PageRank alongside textual relevance and other signals.
 
 \newpage
-\subsection*{What made the argument work?}
+\section{What Have We Learned?}
 \begin{Qu}
-    Why did we add padding instead of using only $\langle A\rangle$?
+    A chain has a unique stationary distribution. What must follow?
     \begin{itemize}
-        \aitem A program cannot take its own code as input without padding
-        \bitem The unpadded input might be too short for $q(n)<2^n$ to hold
-        \citem Adding padding changes $A$ into a faster program
-        \ditem Padding makes an undecidable problem decidable
+        \aitem The chain eventually stops moving
+        \bitem The time-$t$ distribution converges from every start
+        \citem Neither statement must follow
     \end{itemize}
 \end{Qu}
-% Answer: (b).
+% Answer: (c). The two-state alternating chain has a unique stationary
+% distribution, keeps moving, and oscillates from a deterministic start.
 
 \vs{.5cm}
 \begin{Qu}
-    Does \textsc{Diagonal} need to know the polynomial $q(n)$?
+    Why can we compute a PageRank update in $O(n+|E|)$ time even though $Q$ is dense?
     \begin{itemize}
-        \aitem Yes, to choose its deadline
-        \bitem No, its deadline is always $2^n$
-        \citem Yes, to decide whether $w$ is a valid input
+        \aitem Most teleportation entries are actually zero
+        \bitem The teleportation contribution is a multiple of $v$
+        \citem We ignore teleportation during the computation
     \end{itemize}
 \end{Qu}
-% Answer: (b). The proof uses q only to choose a failing input for A.
+% Answer: (b). Dangling mass is also redistributed as a multiple of v.
 
-\paragraph{Compare with the halting problem}
-\begin{itemize}
-    \item For the halting problem, we ruled out \hide{every algorithm that always halts and is correct.}
-    \vs{.5cm}
-    \item For $D$, we ruled out \hide{every polynomial-time algorithm that is correct.}
-\end{itemize}
-
-\vfill
-This method of making a program disagree with a proposed solver on a description of that solver is called \hide{diagonalization.}
-
-
-\newpage
-\subsection*{What does the separation tell us?}
-We have proved that
+\paragraph{Complete the three equations}
 \begin{equation*}
-    \mathrm{P}\subseteq\mathrm{NP}\subseteq\mathrm{PSPACE}\subseteq\mathrm{EXPTIME},
+    p^{(t+1)}=\hide{Pp^{(t)}},
+    \qquad \pi=\hide{dP\pi+(1-d)v},
+    \qquad \|p^{(t)}-\pi\|_1\leq\hide{2d^t}.
 \end{equation*}
-and that $\mathrm{P}\neq\mathrm{EXPTIME}$.
 
-\begin{Qu}
-    Which conclusion must follow?
-    \begin{itemize}
-        \aitem $\mathrm{P}\neq\mathrm{NP}$
-        \bitem $\mathrm{NP}\neq\mathrm{PSPACE}$
-        \citem $\mathrm{PSPACE}\neq\mathrm{EXPTIME}$
-        \ditem At least one of the three containments is strict
-    \end{itemize}
-\end{Qu}
-% Answer: (d).
+\paragraph{Check the modeling choices}
+Why does adding teleportation to an unrepaired zero dangling column still fail to produce a stochastic matrix?
+\vs{.8cm}
+% Answer: The resulting column is (1-d)v and sums to 1-d rather than 1.
 
-\paragraph{Return to Games}
-Could \textsc{Games} have a polynomial-time algorithm?
-\vs{1.5cm}
-% No. By EXPTIME-completeness, every EXPTIME problem would then have
-% a polynomial-time algorithm, contradicting P != EXPTIME.
-
-\paragraph{Return to TQBF}
-If \textsc{TQBF} had a polynomial-time algorithm, what would the chain become? Fill each blank with $=$ or $\subsetneq$.
-\begin{equation*}
-    \mathrm{P}\ \hide{=}\ \mathrm{NP}\ \hide{=}\ \mathrm{PSPACE}\ \hide{\subsetneq}\ \mathrm{EXPTIME}.
-\end{equation*}
+\paragraph{Where else could we use a random walk?}
+Suggest an application in which a local transition rule could define a useful global score or sampling distribution. What would you need to check?
 \vs{1cm}
-% PSPACE-completeness collapses the first three classes. The last inclusion
-% is still strict because the first class differs from EXPTIME.
+% Answer: Examples include ranking papers in a citation graph,
+% recommendations in an item graph, network exploration, and queues.
+% Check the intended stationary distribution and convergence properties.
 
 \newpage
-\section{The Time Hierarchy Theorem}
-We have shown that exponential time lets us solve some problems that polynomial time does not. Can the same idea separate other running-time bounds?
-
-Write $\mathrm{DTIME}(t(n))$ for the decision problems solvable by a deterministic algorithm in $O(t(n))$ time. For this theorem, we use the standard multitape Turing-machine model.
-
-\paragraph{Constructing a clock}
-A function $t(n)\geq n$ is \emph{time-constructible} if, on input $1^n$, a machine can write $1^{t(n)}$ in $O(t(n))$ time. We can use these $t(n)$ marks to count steps. The bounds $n^2$, $n^3$, and $2^n$ are examples.
-
-\begin{theorem}[Deterministic Time Hierarchy Theorem]
-    Let $t(n),T(n)\geq n$ be time-constructible functions. If
-    \begin{equation*}
-        t(n)\log t(n)=o(T(n)),
-    \end{equation*}
-    then
-    \begin{equation*}
-        \mathrm{DTIME}(t(n))\subsetneq\mathrm{DTIME}(T(n)).
-    \end{equation*}
-\end{theorem}
-Here $f(n)=o(g(n))$ means that $f(n)/g(n)$ tends to zero as $n$ grows.
-
-\paragraph{Example}
-Since $n^2\log(n^2)=o(n^3)$, the theorem gives
+\section{Optional: PageRank as a Random-Length Walk}
+Start with the fixed-point equation and substitute it into itself:
 \begin{equation*}
-    \mathrm{DTIME}(n^2)\ \hide{\subsetneq}\ \mathrm{DTIME}(n^3).
+    \pi=(1-d)v+dP\pi
+    =(1-d)v+d(1-d)Pv+d^2P^2\pi.
 \end{equation*}
-Does a problem separating these two classes have to be outside $\mathrm{P}$?
-\vs{1cm}
-% No. The O(n^3)-time algorithm is still polynomial-time.
-
-\newpage
-\subsection*{Accounting for the simulation}
-\textit{Proof of the time hierarchy theorem.} We will construct a decision problem $D_T$ that belongs to $\mathrm{DTIME}(T(n))$ but not to $\mathrm{DTIME}(t(n))$.
-
-\paragraph{A simulation fact}
-There is a fixed universal simulator $U$ with the following property. For every fixed program $A$ that runs in $O(t(n))$ time, there is a constant $c_A$ such that $U$ can simulate $A$ on an input of length $n$ in at most
+If we continue, the remaining term tends to zero in $\ell_1$, giving
 \begin{equation*}
-    c_A t(n)\log t(n)
+    \pi=(1-d)\sum_{k=0}^{\infty}d^kP^kv.
 \end{equation*}
-steps, for all sufficiently large $n$. We will use this efficient simulation fact without proving it.
-
-Here $U$ takes a string $w=\langle M\rangle\#1^r$, decodes $M$, and simulates $M$ on the entire string $w$. Its running time includes decoding and preparing the simulated input. On malformed inputs, $U$ rejects.
-
-\paragraph{Which steps should the clock count?}
-In our earlier proof, we allowed $2^n$ steps of $M$. The actual simulation could take longer, but its time was still exponential.
-
-Now we want a specific $O(T(n))$ bound. We will therefore allow at most $T(n)$ steps of \hide{the simulator $U$.}
+Why can we view this as a mixture of probability distributions?
+\vs{.7cm}
+% Answer: Each P^k v is a probability vector, the coefficients are
+% nonnegative, and (1-d) sum_{k>=0}d^k=1.
 
 \begin{algorithm}[h]
-    \textsc{Hierarchy}($w$)
+    \textsc{SamplePageRank}($P,d,v$)
     \begin{algorithmic}
-        \State Let $n=|w|$
-        \State Construct a clock with $T(n)$ marks on a separate work tape
-        \State Run $U$ on $w$ for at most $T(n)$ steps of $U$
-        \If{$U$ accepts by the deadline}
-            \State reject
-        \Else
-            \State accept
-        \EndIf
+        \State Draw a starting page $j$ from $v$
+        \While{true}
+            \If{an independent coin is heads, with probability $1-d$}
+                \State \Return $j$
+            \EndIf
+            \State Take one step from $j$ according to the repaired matrix $P$
+        \EndWhile
     \end{algorithmic}
 \end{algorithm}
 
-Define $D_T$ to be the set of inputs accepted by \textsc{Hierarchy}.
-% Parsing is inside the clocked simulation. No expensive preprocessing
-% of an arbitrary encoded program takes place outside the clock.
-% The behavior on malformed inputs is immaterial to diagonalization.
-
-\newpage
-\subsection*{Proving the two running-time claims}
-\paragraph{First, show that $D_T\in\mathrm{DTIME}(T(n))$}
-Constructing the clock takes \hide{$O(T(n))$ time.} Move its head to the next mark after each step of $U$. This adds only constant work per simulator step.
-
-Thus, the simulation and clock together take \hide{$O(T(n))$ time.} Reading the input length also fits within this bound, because $T(n)\geq n$.
-
-\paragraph{Next, show that $D_T\notin\mathrm{DTIME}(t(n))$}
-Suppose $A$ decides $D_T$ in $O(t(n))$ time. Choose an input
+\paragraph{How many steps do we take?}
+Let $K$ be the number of steps before stopping. Then
 \begin{equation*}
-    w=\langle A\rangle\#1^r,\qquad n=|w|.
+    \Pr[K=k]=\hide{(1-d)d^k},\qquad k=0,1,2,\ldots.
 \end{equation*}
-The simulation fact gives a constant $c_A$ bounding the simulation time of $A$. Choose $r$ large enough that
-\begin{equation*}
-    \hide{c_A t(n)\log t(n)<T(n).}
-\end{equation*}
-Why is this possible?
-\vs{1cm}
-% The ratio t(n) log t(n) / T(n) tends to zero. Once A is fixed,
-% c_A is fixed, and padding makes n arbitrarily large. We also choose
-% n beyond the threshold at which the simulation bound holds.
+Conditioned on $K=k$, the endpoint distribution is $P^kv$. Therefore the unconditional endpoint distribution is \hide{$\pi$.}
 
-The simulation of $A(w)$ now finishes before the deadline.
-\begin{itemize}
-    \item If $A(w)$ accepts, then \textsc{Hierarchy}$(w)$ \hide{rejects.}
-    \item If $A(w)$ rejects, then \textsc{Hierarchy}$(w)$ \hide{accepts.}
-\end{itemize}
-Thus, $A$ gives the wrong answer for $D_T$ on $w$, a contradiction.
+What is $\mathbb{E}[K]$? What does it tell us about the effect of $d$?
+\vs{.8cm}
+% Answer: E[K]=d/(1-d). At d=0.85 this is approximately 5.67 steps.
+% Larger d permits longer walks. At dangling nodes, P uses the restart
+% rule, so a step of P is not always an actual graph edge.
 
 \vfill
-Finally, $t(n)=O(T(n))$, so $\mathrm{DTIME}(t(n))\subseteq\mathrm{DTIME}(T(n))$. The language $D_T$ proves that this containment is strict.
-% The proof chooses padding separately for each A. The algorithm never
-% needs to know A's running-time constant or the simulator's constant c_A.
-% A reference for the clock construction and the diagonal proof:
-% https://www.cs.ubc.ca/~condon/cpsc506/handouts/time-hierarchy.pdf
+Power iteration propagates all the probability mass. Independent random-length walks sample from the same target distribution.
+
+\newpage
+\section{Optional: Laziness and Sampling Accuracy}
+\paragraph{Can we remove periodicity without changing stationarity?}
+For a connected undirected graph with at least one edge, consider
+\begin{equation*}
+    P_{\mathrm{lazy}}=\tfrac12I+\tfrac12P.
+\end{equation*}
+The walker stays put with probability $1/2$ and otherwise takes an ordinary step. If $P\pi=\pi$, then
+\begin{equation*}
+    P_{\mathrm{lazy}}\pi=\tfrac12\pi+\tfrac12P\pi=\hide{\pi}.
+\end{equation*}
+The self-loops remove periodicity, while the degree-proportional stationary distribution stays the same.
+
+Why would laziness fail to connect disconnected components?
+\vs{.7cm}
+% Answer: Staying put creates no paths between components. Initial mass
+% in each component is preserved. Teleportation can connect components.
+
+\paragraph{Estimate one score using independent samples}
+Run \textsc{SamplePageRank} independently $R$ times. Let $Y_r=1$ if run $r$ ends at page $i$, and $0$ otherwise. Define
+\begin{equation*}
+    \widehat\pi_i=\frac1R\sum_{r=1}^{R}Y_r,
+    \qquad \mathbb{E}[\widehat\pi_i]=\hide{\pi_i}.
+\end{equation*}
+Hoeffding's inequality gives
+\begin{equation*}
+    \Pr[|\widehat\pi_i-\pi_i|>\eta]\leq2e^{-2R\eta^2}.
+\end{equation*}
+How large should $R$ be to make this probability at most $\delta$?
+\begin{equation*}
+    R\geq\hide{\frac{\log(2/\delta)}{2\eta^2}}.
+\end{equation*}
+For all $n$ pages simultaneously, a union bound replaces $\log(2/\delta)$ by \hide{$\log(2n/\delta)$.}
+
+\paragraph{Why insist on independent runs?}
+Could we apply the same argument directly to consecutive positions on one long walk?
+\vs{.7cm}
+% Answer: Not directly. Consecutive positions are generally dependent.
+% Also, these bounds concern additive error. Estimating a tiny score
+% to small relative error can require substantially more samples.
+
+% Instructor further reading:
+% https://web.stanford.edu/class/cs276b/handouts/lecture9.pdf
+% https://nlp.stanford.edu/IR-book/html/htmledition/pagerank-1.html
 
 \end{document}

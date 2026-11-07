@@ -2,31 +2,54 @@
 \providecommand\hyper@newdestlabel[2]{}
 \providecommand\HyField@AuxAddToFields[1]{}
 \providecommand\HyField@AuxAddToCoFields[2]{}
-\@writefile{toc}{\contentsline {section}{\numberline {1}Space Complexity}{1}{section.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {paragraph}{Example}{1}{section.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {paragraph}{The algorithm}{2}{theorem.1.2}\protected@file@percent }
-\@writefile{toc}{\contentsline {paragraph}{Account for the space}{2}{theorem.1.2}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {2}Quantified Boolean Formulas}{3}{section.2}\protected@file@percent }
-\@writefile{toc}{\contentsline {paragraph}{Play with a neighbor}{3}{section.2}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {3}True Quantified Boolean Formula}{4}{section.3}\protected@file@percent }
-\@writefile{toc}{\contentsline {paragraph}{Example}{4}{section.3}\protected@file@percent }
-\@writefile{toc}{\contentsline {paragraph}{Evaluating the game tree}{4}{section.3}\protected@file@percent }
-\@writefile{toc}{\contentsline {paragraph}{Account for the space}{5}{theorem.3.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {paragraph}{Use the containments we have proved}{6}{Qu.3}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {4}Exponential Time}{7}{section.4}\protected@file@percent }
-\@writefile{toc}{\contentsline {paragraph}{Examples of allowed time bounds}{7}{section.4}\protected@file@percent }
-\@writefile{toc}{\contentsline {paragraph}{Example}{7}{Qu.4}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {5}Relating Space and Time}{8}{section.5}\protected@file@percent }
-\@writefile{toc}{\contentsline {paragraph}{A small example}{8}{section.5}\protected@file@percent }
-\@writefile{toc}{\contentsline {paragraph}{Configurations}{8}{section.5}\protected@file@percent }
-\@writefile{toc}{\contentsline {paragraph}{Count the configurations}{9}{theorem.5.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {6}Games and Exponential Time}{10}{section.6}\protected@file@percent }
-\@writefile{toc}{\contentsline {paragraph}{A reachability game}{10}{section.6}\protected@file@percent }
-\@writefile{toc}{\contentsline {paragraph}{Play with a neighbor}{10}{section.6}\protected@file@percent }
-\@writefile{toc}{\contentsline {paragraph}{The input}{11}{section.6}\protected@file@percent }
-\@writefile{toc}{\contentsline {paragraph}{The rules}{11}{section.6}\protected@file@percent }
-\@writefile{toc}{\contentsline {paragraph}{Why are the marked positions winning?}{12}{theorem.6.2}\protected@file@percent }
-\@writefile{toc}{\contentsline {paragraph}{What about an unmarked position?}{12}{theorem.6.2}\protected@file@percent }
-\@writefile{toc}{\contentsline {paragraph}{Running time}{12}{theorem.6.2}\protected@file@percent }
-\@writefile{toc}{\contentsline {paragraph}{Looking ahead}{12}{theorem.6.2}\protected@file@percent }
-\gdef \@abspage@last{12}
+\@writefile{toc}{\contentsline {section}{\numberline {1}Dictionaries and Hashing}{1}{section.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Why not use an array?}{1}{section.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Monte Carlo algorithms}{2}{Qu.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Las Vegas algorithms}{2}{Qu.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Reducing the probability of error}{2}{Qu.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {2}Collisions}{3}{section.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Counting colliding pairs}{3}{section.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{The birthday effect}{3}{section.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Example}{4}{Qu.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Deleting a key}{4}{Qu.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {3}Universal Hashing}{5}{section.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Finding a bad set}{5}{theorem.3.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Choosing a function at random}{5}{theorem.3.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{First, consider an unsuccessful search}{6}{theorem.3.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Next, consider a successful search}{6}{theorem.3.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Return to the birthday effect}{6}{Qu.6}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {4}Open Addressing}{7}{section.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Linear probing}{7}{section.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Fill in the table}{7}{section.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Why might runs of occupied slots grow?}{7}{Qu.7}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Inserting after deletions}{8}{Qu.7}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{A different probe sequence}{8}{Qu.7}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {5}Resizing and Amortized Analysis}{9}{section.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{What must be moved?}{9}{section.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Count the work over many insertions}{9}{section.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Avoiding repeated rebuilds}{9}{Qu.8}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {6}Fingerprints and String Equality}{10}{section.6}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{What can equal hashes tell us?}{10}{section.6}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{What work have we saved?}{10}{Qu.9}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{A related problem: string matching}{10}{Qu.9}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Example: digits}{11}{Qu.9}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Example: characters}{11}{Qu.9}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Computing one fingerprint}{11}{Qu.9}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Remove the old character}{12}{Qu.10}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Shift the remaining characters and add the new one}{12}{Qu.10}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Try one update}{12}{Qu.10}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {7}The Karp--Rabin Algorithm}{13}{section.7}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{First, account for the running time}{13}{section.7}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Why can a true occurrence never be missed?}{13}{theorem.7.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{What do we know about this polynomial?}{14}{Qu.12}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{When do the hashes collide?}{14}{theorem.7.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{What about every window in the text?}{14}{theorem.7.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Account for the extra work}{15}{Qu.13}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Can true matches be expensive?}{15}{Qu.13}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {8}What Does Hashing Guarantee?}{16}{section.8}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Return to the guarantees}{16}{Qu.15}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Find a coordinate where the keys differ}{17}{theorem.8.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Try the construction}{17}{theorem.8.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{How full does the bit array become?}{18}{Qu.16}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Why is deletion difficult?}{18}{Qu.16}\protected@file@percent }
+\gdef \@abspage@last{18}

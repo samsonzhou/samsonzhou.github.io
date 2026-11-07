@@ -1,0 +1,411 @@
+\documentclass[11  pt]{article} 
+\usepackage[lmargin=1in,rmargin=1.75in,bmargin=1in,tmargin=1in]{geometry}  
+
+
+\input{preamble}
+
+\begin{document}
+    \sweek{12a: Space Complexity and Games}{November 10, 2026}
+    % Fill in the lecture date in the second argument above.
+
+\section{Space Complexity}
+Last lecture, we distinguished the size of an input from the value it represents. We now ask how much memory an algorithm needs, as a function of that input size.
+
+\paragraph{Example}
+Suppose we solve SAT by trying all assignments to $n$ Boolean variables.
+\begin{itemize}
+    \item How many assignments are there? \hide{$2^n$.}
+    \item How many bits are needed to store one assignment? \hide{$n$.}
+    \item Do we need to keep all the assignments in memory at once?
+\end{itemize}
+\vs{1cm}
+
+The \emph{space complexity} of an algorithm measures the largest amount of workspace it uses at any one time. We include counters and the recursion stack, but do not count the read-only input.
+
+\textbf{Definition.} The class $\mathrm{PSPACE}$ consists of decision problems solvable by a deterministic algorithm that always halts and uses polynomial space.
+
+\begin{theorem}
+    $\mathrm{P}\subseteq\mathrm{PSPACE}$.
+\end{theorem}
+\textit{Proof.} How much workspace can an algorithm visit in a polynomial number of steps?
+\vs{1.5cm}
+% A machine with a fixed number of tapes visits at most O(t(n)+1)
+% work cells in t(n) steps.
+
+\newpage
+\subsection*{What about NP?}
+\begin{theorem}
+    $\mathrm{NP}\subseteq\mathrm{PSPACE}$.
+\end{theorem}
+
+\textit{Proof.} Let $Q\in\mathrm{NP}$. There is a polynomial-time verifier $V$ and a polynomial $p$ such that
+\begin{equation*}
+    x\in Q \iff V(x,y)\text{ accepts for some }y\text{ with }|y|\leq p(|x|).
+\end{equation*}
+
+\paragraph{The algorithm}
+\begin{itemize}
+    \item Enumerate all binary strings $y$ of length at most $p(|x|)$, one at a time.
+    \item For each $y$, run $V(x,y)$. Accept if it accepts.
+    \item If no candidate is accepted, reject.
+\end{itemize}
+
+\paragraph{Account for the space}
+What do we need to keep in memory? Which workspace can we reuse?
+\vs{2cm}
+% The current candidate and enumeration counters use polynomial space.
+% The verifier uses polynomial time, hence polynomial space, because
+% |y| is polynomial in |x|. Reuse its workspace for each candidate.
+
+\begin{Qu}
+    Why does the exponential number of possible certificates not force exponential space?
+    \begin{itemize}
+        \aitem We only need to store one candidate and one verifier computation at a time
+        \bitem Every NP problem has only polynomially many certificates
+        \citem Exponential time always implies polynomial space
+    \end{itemize}
+\end{Qu}
+% Answer: (a).
+
+
+\newpage
+\section{Quantified Boolean Formulas}
+Recall that SAT asks whether there is an assignment that makes a Boolean formula true. We can write this as
+\begin{equation*}
+    \exists x_1\exists x_2\cdots\exists x_m\ \varphi(x_1,\ldots,x_m).
+\end{equation*}
+
+What changes if some variables must work for \emph{both} possible values?
+\begin{itemize}
+    \item $\exists x\,\varphi(x)$ is true if \hide{at least one choice makes $\varphi$ true.}
+    \item $\forall x\,\varphi(x)$ is true if \hide{both choices make $\varphi$ true.}
+\end{itemize}
+
+\paragraph{Play with a neighbor}
+One player is True and chooses the variables marked $\exists$. The other is False and chooses the variables marked $\forall$. Read from left to right; each player sees all earlier choices. True wins if the resulting formula is true.
+
+\begin{Qu}
+    Who has a winning strategy in each game? Here $x\leftrightarrow y$ means that $x$ and $y$ have the same value.
+    \begin{itemize}
+        \aitem $\forall x\exists y\ (x\leftrightarrow y)$
+        \vs{1cm}
+        \bitem $\exists y\forall x\ (x\leftrightarrow y)$
+        \vs{1cm}
+    \end{itemize}
+\end{Qu}
+% (a) True wins by choosing y=x after seeing x.
+% (b) False wins by choosing x=1-y after seeing y.
+
+The quantified formula is true exactly when \hide{True has a winning strategy.}
+
+\vfill
+\textbf{Observation.} An existential choice can depend on earlier universal choices, but cannot depend on choices that have not been made yet.
+
+\newpage
+\section{True Quantified Boolean Formula}
+An input to \textsc{TQBF} has the form
+\begin{equation*}
+    Q_1x_1Q_2x_2\cdots Q_mx_m\ \varphi(x_1,\ldots,x_m),
+\end{equation*}
+where every $Q_i$ is either $\exists$ or $\forall$, and every variable is quantified. The decision problem asks whether the quantified formula is true.
+
+\begin{center}
+    \textsc{TQBF} $=\phantom{\{\langle\Phi\rangle:\Phi\text{ is a true quantified Boolean formula}\}}$
+\end{center}
+
+\paragraph{Example}
+Consider the formula
+\begin{equation*}
+    \exists x\forall y\exists z\ \big[(x\lor y)\land(y\leftrightarrow z)\big].
+\end{equation*}
+Does True have a winning strategy? Specify the first choice and how the last choice depends on False's move.
+\vs{2cm}
+% True chooses x=1, then z=y.
+
+\paragraph{Evaluating the game tree}
+Try both values of the next variable and recursively evaluate what remains.
+\begin{itemize}
+    \item At an $\exists$ node, combine the two answers using \hide{OR.}
+    \item At a $\forall$ node, combine the two answers using \hide{AND.}
+\end{itemize}
+
+\newpage
+\subsection*{How much space does the game tree need?}
+\begin{theorem}
+    $\textsc{TQBF}\in\mathrm{PSPACE}$.
+\end{theorem}
+
+\textit{Proof.} Evaluate the tree using depth-first search. At each node, evaluate the first child, remember its answer, and then evaluate the second child.
+
+\paragraph{Account for the space}
+Let $n$ be the length of the input formula and $m\leq n$ its number of variables.
+\begin{itemize}
+    \item How deep is the recursion? \hide{$m$ levels.}
+    \vs{.5cm}
+    \item What must we remember about the assignments on the current path?
+    \vs{1cm}
+    \item After evaluating the first child, how much of its subtree must we keep while evaluating the second child?
+    \vs{1cm}
+\end{itemize}
+% Keep the current partial assignment, the next child to explore, and
+% one returned answer per level. Indices use O(log n) bits per frame.
+% Reuse the workspace for each child. Evaluate the matrix in polynomial
+% space at each leaf. The original formula stays on the read-only input.
+
+There can be $2^m$ leaves, but we do not store the whole tree. The current path, recursion stack, and workspace for evaluating $\varphi$ all take polynomial space in $n$.
+
+\vfill
+\textbf{Observation.} As with enumerating SAT assignments, a large number of possibilities does not mean that all possibilities must be stored at once.
+
+
+\newpage
+\subsection*{PSPACE-completeness}
+A decision problem $Q$ is \emph{PSPACE-complete} if:
+\begin{itemize}
+    \item $Q\in\mathrm{PSPACE}$; and
+    \item Every problem in $\mathrm{PSPACE}$ has a polynomial-time reduction to $Q$.
+\end{itemize}
+
+\begin{theorem}
+    \textsc{TQBF} is \hide{PSPACE-complete.}
+\end{theorem}
+We proved that $\textsc{TQBF}\in\mathrm{PSPACE}$. We will use the hardness part as a known theorem, without giving the reductions.
+
+\begin{Qu}
+    Suppose someone finds a polynomial-time algorithm for \textsc{TQBF}. What follows?
+    \begin{itemize}
+        \aitem Only \textsc{TQBF} becomes easy
+        \bitem Every problem in $\mathrm{PSPACE}$ can be solved in polynomial time
+        \citem Every decidable problem can be solved in polynomial time
+        \ditem The halting problem becomes decidable
+    \end{itemize}
+\end{Qu}
+% Answer: (b). Compose a polynomial-time reduction with the assumed solver.
+
+\paragraph{Use the containments we have proved}
+Under this hypothesis, fill in the relationships:
+\begin{equation*}
+    \mathrm{P}\ \hide{=}\ \mathrm{NP}\ \hide{=}\ \mathrm{PSPACE}.
+\end{equation*}
+Explain where we used PSPACE-completeness.
+\vs{1.5cm}
+% Every problem in PSPACE reduces to TQBF in polynomial time.
+% The reduction's output has polynomial length, so the composition
+% with the assumed polynomial-time TQBF algorithm is polynomial-time.
+
+\vfill
+We have seen that a problem can be solved using a modest amount of memory while taking a very large number of steps. Next, we will place an upper bound on that running time.
+
+\newpage
+\section{Exponential Time}
+The class $\mathrm{EXPTIME}$ consists of decision problems that can be solved by a deterministic algorithm in time $2^{p(n)}$ for some polynomial $p$, where $n$ is the input length.
+
+\paragraph{Examples of allowed time bounds}
+\begin{equation*}
+    2^n, \qquad 2^{n^2}, \qquad 2^{n^3}.
+\end{equation*}
+
+\begin{theorem}
+    $\mathrm{P}\subseteq\mathrm{EXPTIME}$.
+\end{theorem}
+\textit{Proof.}
+\vs{1.5cm}
+% Every polynomial running time is bounded by 2^{p(n)} for a suitable polynomial p.
+
+\begin{Qu}
+    An algorithm takes $2^n$ steps to solve a decision problem $Q$. Does this prove that $Q\notin\mathrm{P}$?
+    \begin{itemize}
+        \aitem Yes, because $2^n$ is not polynomial
+        \bitem No, because there might be a faster algorithm for $Q$
+        \citem No, because $2^n$ is polynomial
+    \end{itemize}
+\end{Qu}
+% Answer: (b).
+
+\paragraph{Example}
+A program waits for $2^n$ steps, then accepts if its input begins with $1$ and rejects otherwise. It rejects the empty string. How quickly could we solve the same problem?
+\vs{1cm}
+% Check the first symbol immediately.
+
+
+\newpage
+\section{Relating Space and Time}
+A polynomial-space algorithm might take much longer than polynomial time. How long could it run before it must repeat itself?
+
+\paragraph{A small example}
+Suppose a deterministic machine has:
+\begin{itemize}
+    \item $3$ possible internal states;
+    \item $4$ work-tape cells, each containing one bit;
+    \item a work-tape head pointing to one of the $4$ cells.
+\end{itemize}
+For this example, its input head stays fixed.
+
+How many different complete snapshots of this machine are possible?
+\begin{equation*}
+    \hide{3\cdot 4\cdot 2^4=192.}
+\end{equation*}
+
+\paragraph{Configurations}
+A \emph{configuration} records everything needed to determine the next step: the internal state, the tape contents, and all head positions. We consider a fixed input.
+
+\begin{Qu}
+    If a deterministic machine repeats a configuration before halting, what happens?
+    \begin{itemize}
+        \aitem It must halt at the next step
+        \bitem It repeats the same computation and loops forever
+        \citem It may choose a different next step the second time
+    \end{itemize}
+\end{Qu}
+% Answer: (b).
+
+\newpage
+\subsection*{Polynomial space gives an exponential time bound}
+\begin{theorem}
+    $\mathrm{PSPACE}\subseteq\mathrm{EXPTIME}$.
+\end{theorem}
+
+\textit{Proof.} Fix a deterministic decider and an input of length $n$. Suppose the machine uses at most $s(n)\geq 1$ work-tape cells, where $s$ is polynomial.
+
+For simplicity, use one work tape. The input head stays between the two input endmarkers. Let $q$ be the number of internal states and $\Gamma$ the work-tape alphabet. Both are constants for this machine.
+
+\paragraph{Count the configurations}
+\begin{itemize}
+    \item Internal state: \hide{$q$ possibilities.}
+    \item Input-head position: \hide{$n+2$ possibilities.}
+    \item Work-head position: \hide{$s(n)$ possibilities.}
+    \item Work-tape contents: \hide{$|\Gamma|^{s(n)}$ possibilities.}
+\end{itemize}
+
+Therefore, the number of configurations is at most
+\begin{equation*}
+    q(n+2)s(n)|\Gamma|^{s(n)}\leq\hide{2^{p(n)}}
+\end{equation*}
+for some polynomial $p$.
+
+Why can the decider not repeat a configuration before halting?
+\vs{1.5cm}
+% Repetition would force an infinite loop, but a decider always halts.
+
+Thus, its running time is bounded by the number of possible configurations, which is exponential in a polynomial in $n$.
+% A fixed number of work tapes changes the count but not this conclusion.
+
+
+\begin{equation*}
+    \mathrm{P}\subseteq\mathrm{NP}\subseteq\mathrm{PSPACE}\subseteq\mathrm{EXPTIME}.
+\end{equation*}
+Which of these containments are strict? We will return to this question in the next lecture.
+
+\newpage
+\section{Games and Exponential Time}
+In \textsc{TQBF}, two players choose Boolean values, and each play has only one move per variable. What happens when a game can continue for many more moves?
+
+\paragraph{A reachability game}
+Two players, Alice and Bob, move a token between positions. Each position specifies whose turn it is and two possible next positions.
+\begin{itemize}
+    \item Alice wins if the token reaches a goal position.
+    \item Bob wins if the token never reaches a goal position.
+\end{itemize}
+Both players know the current position and all earlier moves. A strategy tells a player which move to make after each possible history.
+
+\paragraph{Play with a neighbor}
+The token begins at $s$. The goal is $g$. A position $\ell$ is a losing trap: both moves from $\ell$ return to $\ell$.
+\begin{center}
+    \begin{tabular}{c|c|c|c}
+        Position & Whose turn? & First move & Second move \\
+        \hline
+        $s$ & Alice & $a$ & $b$ \\
+        $a$ & Bob & $g$ & $\ell$ \\
+        $b$ & Alice & $g$ & $\ell$ \\
+        $\ell$ & Bob & $\ell$ & $\ell$
+    \end{tabular}
+\end{center}
+Which first move lets Alice force a win? What happens if Alice chooses the other first move?
+\vs{1.5cm}
+% Alice chooses b, then g. If she chooses a, Bob chooses the trap ell.
+
+\vfill
+\textbf{Observation.} Having some sequence of moves that reaches the goal is different from having a strategy that wins against every response by the opponent.
+
+\newpage
+\subsection*{Describing a large game}
+For the problem below, a position is a string of $k$ bits. Thus there are \hide{$2^k$} possible positions. We describe the rules compactly, instead of listing all positions and moves.
+
+\paragraph{The input}
+An instance consists of an initial position $s_0\in\{0,1\}^k$ and Boolean circuits specifying:
+\begin{itemize}
+    \item $O(s)$: whose turn it is at position $s$ ($0$ for Alice, $1$ for Bob);
+    \item $G(s)$: whether $s$ is a goal position;
+    \item $N_0(s)$ and $N_1(s)$: the two possible next positions, each a $k$-bit string.
+\end{itemize}
+A Boolean circuit is a finite acyclic network of AND, OR, and NOT gates. We can evaluate it in time polynomial in its description length.
+
+\paragraph{The rules}
+At a goal position, Alice immediately wins. Otherwise, the player whose turn it is chooses one of the two next positions. If play continues forever without reaching a goal, Bob wins. The two next positions are allowed to be the same.
+
+\textbf{Definition.} The decision problem \textsc{Games} asks whether Alice has a winning strategy from $s_0$.
+\begin{center}
+    \textsc{Games} $=\phantom{\{\langle s_0,O,G,N_0,N_1\rangle:\text{Alice has a winning strategy}\}}$
+\end{center}
+
+\textbf{To be clear.} The input is the initial position and the circuits. Its length is not the number of positions in the game.
+
+\begin{theorem}
+    \textsc{Games} is \hide{EXPTIME-complete.}
+\end{theorem}
+This means that \textsc{Games} belongs to $\mathrm{EXPTIME}$ and every problem in $\mathrm{EXPTIME}$ has a polynomial-time reduction to \textsc{Games}. We will use hardness as a known theorem and prove membership next.
+% This is succinct two-player reachability, not an explicitly listed game graph.
+% EXPTIME-hardness follows from APSPACE=EXPTIME (Chandra--Kozen--Stockmeyer):
+% encode polynomial-space alternating-machine configurations as positions,
+% existential/universal states as Alice/Bob, and accepting states as goals.
+% The owner, goal, and two transition functions have polynomial-size circuits.
+% Rejecting configurations are non-goal traps; malformed configurations can
+% also be made traps. Source: https://research.ibm.com/publications/alternation
+
+\newpage
+\subsection*{Finding the winning positions}
+\begin{theorem}
+    $\textsc{Games}\in\mathrm{EXPTIME}$.
+\end{theorem}
+
+\textit{Proof.} Enumerate the $2^k$ positions. Initially, mark all goal positions as winning for Alice. Repeatedly apply the following rules:
+\begin{itemize}
+    \item If it is Alice's turn, mark the position when:
+    \vs{.5cm}
+    % At least one successor is marked.
+    \item If it is Bob's turn, mark the position when:
+    \vs{.5cm}
+    % Both successors are marked.
+\end{itemize}
+In each round, use the marks from the previous round. Stop when a round adds no new marks. Answer YES exactly when $s_0$ is marked.
+
+\paragraph{Why are the marked positions winning?}
+Think about the round in which a position was first marked. Can Alice ensure that this round number decreases after each move, until the goal is reached?
+\vs{1cm}
+% At an Alice position she selects a successor marked in an earlier round.
+% At a Bob position both successors were marked in an earlier round.
+
+\paragraph{What about an unmarked position?}
+After the process stops, can Bob keep the token outside the marked set?
+\vs{1cm}
+% Every unmarked Alice position has both successors unmarked.
+% Every unmarked Bob position has at least one unmarked successor.
+% Bob can therefore prevent reaching any goal forever.
+
+\paragraph{Running time}
+There are at most \hide{$2^k$} rounds that add new positions. Each round takes polynomial time in the size of the explicit position table and the circuit descriptions. If $n$ is the total input length, then $k\leq n$, and the total running time is
+\begin{equation*}
+    (2^k+n)^{O(1)}=2^{\mathrm{poly}(n)}.
+\end{equation*}
+% Even a polynomial overhead for accessing the explicit marked-state table
+% on a Turing machine preserves an exponential-time bound.
+
+\vfill
+\textbf{Observation.} If the whole game graph were explicitly listed, this procedure would take polynomial time in the size of that graph. The compact representation is essential here.
+
+
+
+\paragraph{Looking ahead}
+We have algorithms that use exponential time. Can we prove that some decidable problem has no polynomial-time algorithm? Next lecture, we will return to the halting proof and add a clock.
+
+\end{document}
